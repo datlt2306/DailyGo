@@ -152,6 +152,14 @@ export default {
                             text: "9: Kiểm tra Quyền trong API",
                             link: "/nodejs/api/lesson-9",
                         },
+                        {
+                            text: "10: Thiết Kế Schema MongoDB",
+                            link: "/nodejs/api/lesson-10",
+                        },
+                        {
+                            text: "11: Hiểu Về Populate Trong MongoDB",
+                            link: "/nodejs/api/lesson-11",
+                        },
                         // { text: "10: Xây dựng API Products", link: "/nodejs/api/lesson-10" },
                         // { text: "11: Xây dựng API Cart", link: "/nodejs/api/lesson-11" },
                         // { text: "12: Xây dựng API Orders", link: "/nodejs/api/lesson-12" },
