@@ -21,29 +21,64 @@ MongoDB là một NoSQL database, và mặc dù nó có một số điểm tươ
 
 Để dễ dàng tìm ra cách thiết kế đúng trong MongoDB, chúng ta hãy cùng so sánh giữa SQL và MongoDB nhé!
 
-
-### Thiết kế cơ sở dữ liệu quan hệ
-
-Trong cơ sở dữ liệu quan hệ, dữ liệu thường được chia thành các bảng để tránh trùng lặp. Ví dụ, chúng ta có 3 bảng: `Users`, `Orders`, và `Products`.
-
+### Thiết kế cơ sở dữ liệu SQL
+Trong SQL, chúng ta thường chia dữ liệu thành nhiều bảng (tables) và sử dụng các khóa ngoại (foreign keys) để liên kết chúng lại với nhau. Mỗi bảng sẽ có một schema rõ ràng, và chúng ta sẽ sử dụng JOIN để truy xuất dữ liệu từ nhiều bảng.
 #### SQL Example:
-- Bảng `Users` chứa thông tin người dùng.
-- Bảng `Orders` và `Products` tham chiếu đến `Users` thông qua khóa ngoại (`user_id`).
-
-
+```sql
+CREATE TABLE Users (
+  user_id INT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100)
+);
+CREATE TABLE Orders ( 
+  order_id INT PRIMARY KEY,
+  user_id INT,
+  date DATE,
+  FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+CREATE TABLE OrderItems (
+  order_item_id INT PRIMARY KEY,
+  order_id INT,
+  product_id INT,
+  quantity INT,
+  price DECIMAL(10, 2),
+  FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+);
+```
 ### Thiết kế cơ sở dữ liệu MongoDB
 
 MongoDB thì khác nhé các bạn! Thay vì chia nhỏ dữ liệu thành nhiều collection, chúng ta có thể nhúng các mảng và đối tượng trực tiếp vào một document.
 
+```sql
+
+User {
+  _id: ObjectId,
+  name: String,
+  email: String,
+  orders: [ObjectId] // ref: 'Order'
+}
+Order {
+  _id: ObjectId,
+  userId: ObjectId, // ref: 'User'
+  date: Date,
+  items: [
+    {
+      productId: ObjectId, // ref: 'Product'
+      quantity: Number,
+      price: Number
+    }
+  ]
+}
+```
 #### MongoDB Example:
 ```json
 {
-  "user_id": "12345",
+  "_id": "12345",
   "name": "Nguyễn Văn A",
   "email": "nguyenvana@example.com",
   "orders": [
     {
-      "order_id": "ORD001",
+      "_id": "ORD001",
       "date": "2023-10-01",
       "items": [
         { "product_id": "PROD001", "product_name": "Laptop", "quantity": 1, "price": 1500 },
@@ -51,7 +86,7 @@ MongoDB thì khác nhé các bạn! Thay vì chia nhỏ dữ liệu thành nhi�
       ]
     },
     {
-      "order_id": "ORD002",
+      "_id": "ORD002",
       "date": "2023-10-05",
       "items": [
         { "product_id": "PROD003", "product_name": "Keyboard", "quantity": 1, "price": 100 }
@@ -102,7 +137,6 @@ Ví dụ
 
 ✅ Ưu điểm:
 - Đọc nhanh hơn: chỉ 1 truy vấn (findOne)
-- Không cần $lookup
 - Đơn giản, dễ hiểu
 
 ⚠️ Hạn chế:
@@ -181,13 +215,12 @@ Ví dụ
 
 (Nhúng để tối ưu tốc độ, tham chiếu để linh hoạt mở rộng)
 
-
 ## Các loại quan hệ
 
 ### Quan hệ 1-1 (One-to-One)
 
-	•	Mô tả: Một đối tượng liên kết với duy nhất một đối tượng khác.
-	•	Cách lưu: Có thể nhúng trực tiếp nếu dữ liệu không quá lớn hoặc thường truy cập cùng nhau.
+- Mô tả: Một đối tượng liên kết với duy nhất một đối tượng khác.
+- Cách lưu: Có thể nhúng trực tiếp nếu dữ liệu không quá lớn hoặc thường truy cập cùng nhau.
 ```json
 {
   "_id": "ObjectId('AAA')",
@@ -201,11 +234,10 @@ Ví dụ
 ```
 
 ### Quan hệ 1 - nhiều (One-to-Many)
-
-	•	Mô tả: Một đối tượng liên kết với nhiều đối tượng khác.
-	•	Cách lưu:
-	•	Nếu ít phần tử (few) → nhúng (embed)
-	•	Nếu nhiều hoặc cần tái sử dụng → dùng reference
+- Mô tả: Một đối tượng liên kết với nhiều đối tượng khác.
+- Cách lưu:
+	- Nếu ít phần tử (few) → nhúng (embed)
+	- Nếu nhiều hoặc cần tái sử dụng → dùng reference
 
 ```json
 // Một book có nhiều category → dùng reference (dễ tìm sách theo thể loại)
@@ -226,9 +258,9 @@ Không nên lưu như sau, vì mảng lớn sẽ phình to và khó cập nhật
 }
 ```
 ### Quan hệ Nhiều - Nhiều (Many-to-Many)
+- Ví dụ: User có thể thích nhiều phim; mỗi phim được nhiều user thích.
+- Dùng mảng ObjectId ở cả hai bên (nếu chỉ cần liên kết đơn giản):
 
-	•	Ví dụ: User có thể thích nhiều phim; mỗi phim được nhiều user thích.
-	•	Cách lưu 1: Dùng mảng ObjectId ở cả hai bên (nếu chỉ cần liên kết đơn giản):
 ```json
 // 👤 User
 {
