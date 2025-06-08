@@ -74,86 +74,106 @@ Khi thiết kế schema cho MongoDB, chúng ta sẽ đứng giữa hai lựa ch�
 
 ---
 
-### Nhúng
+### Embedded Document – Nhúng
 
-Nhúng có nghĩa là đưa hết dữ liệu vào trong một document.
+Lưu tài liệu con bên trong tài liệu cha (trong cùng 1 document).
 
-#### Ưu điểm:
-- Bạn có thể truy xuất tất cả thông tin liên quan trong một query.
-- Tránh việc join hoặc lookup trong ứng dụng.
-- Update các thông tin liên quan trong một query duy nhất.
+Khi nào nên dùng?
+Tình huống
+Ví dụ
+Vì sao?
+1. Quan hệ 1-1 hoặc 1-nhỏ (n < 20)
+1 user có danh sách địa chỉ giao hàng
+Dễ đọc cùng lúc
+2. Dữ liệu luôn được dùng chung với nhau
+Bình luận của 1 bài viết
+Đọc bài viết là cần cả comment
+3. Không cần tái sử dụng ở nơi khác
+Setting của 1 user
+Gắn chặt với user đó
 
-#### Hạn chế:
-- Khi document lớn lên sẽ gây gánh nặng cho những trường không liên quan.
-- Giới hạn cho document là 16 MB trong MongoDB.
-
----
-
-### Tham chiếu
-
-Tham chiếu là lưu trữ dữ liệu trong các collection riêng biệt và liên kết chúng thông qua khóa ngoại hoặc `$lookup`.
-
-#### Ưu điểm:
-- Document nhỏ hơn, gọn gàng hơn.
-- Ít khả năng đạt giới hạn 16 MB cho mỗi document.
-- Những dữ liệu không cần thiết sẽ không bị đính kèm vào các truy vấn.
-
-#### Hạn chế:
-- Để truy xuất được hết dữ liệu, chúng ta cần tối thiểu là 2 query hoặc dùng `$lookup`.
-
----
-
-### Khi nào nên sử dụng nhúng?
-
-Nhúng thường được ưu tiên khi:
-- Dữ liệu liên quan thường được truy cập cùng nhau.
-- Kích thước của document không quá lớn (dưới giới hạn 16 MB).
-- Dữ liệu không cần truy cập độc lập hoặc không cần chia sẻ giữa các document.
-
-Ví dụ: Một danh mục với một vài sản phẩm nổi bật.
-
+Ví dụ
 ```json
+// 1 bài viết có 2 bình luận – Embedded
 {
-  "_id": "ObjectId('CAT001')",
-  "name": "Điện tử",
-  "featured_products": [
-    { "product_id": "PROD001", "name": "Laptop", "price": 1500 },
-    { "product_id": "PROD002", "name": "Smartphone", "price": 800 }
+  "_id": 1,
+  "title": "Hello Mongo",
+  "comments": [
+    { "author": "A", "text": "Hay quá!" },
+    { "author": "B", "text": "Thầy Đạt giảng đỉnh!" }
   ]
 }
 ```
 
+✅ Ưu điểm:
+- Đọc nhanh hơn: chỉ 1 truy vấn (findOne)
+- Không cần $lookup
+- Đơn giản, dễ hiểu
+
+⚠️ Hạn chế:
+- Không thể chia sẻ/reuse dữ liệu con
+- Nếu nhúng quá sâu, quá dài → outlier, performance kém
+
+### Referenced Document – Tham chiếu
+
+Dữ liệu được tách ra collection riêng và liên kết qua ID tham chiếu
+
+✅ Khi nào nên dùng?
+1. Quan hệ 1-nhiều lớn (n lớn)  
+   *Ví dụ:* 1 user có 1000 orders  
+   *Lý do:* Tách ra để tránh document quá lớn
+   
+2. Dữ liệu con dùng lại ở nhiều nơi  
+   *Ví dụ:* 1 product được mua trong nhiều orders  
+   *Lý do:* Reuse được
+   
+3. Cần query riêng phần con thường xuyên  
+   *Ví dụ:* Lọc tất cả bình luận của 1 user  
+   *Lý do:* Comment cần tách riêng để truy vấn chủ động
+
+Ví dụ
+```json
+// post
+{
+  "_id": 1,
+  "title": "Hello Mongo"
+}
+
+// comments
+{ "_id": 101, "postId": 1, "author": "A", "text": "Hay quá!" }
+{ "_id": 102, "postId": 1, "author": "B", "text": "Đỉnh!" }
+```
+
+✅ Ưu điểm:
+- Dễ tái sử dụng
+- Tách riêng, tránh document quá nặng
+- Dễ mở rộng
+
+⚠️ Hạn chế:
+- Cần $lookup để JOIN
+- Truy vấn chậm hơn (nhiều query)
+
 ---
 
-### Khi nào nên sử dụng tham chiếu?
+## Bảng so sánh Embedded vs Referenced
 
-Tham chiếu nên được sử dụng khi:
-- Dữ liệu cần truy cập độc lập hoặc được chia sẻ giữa nhiều document.
-- Kích thước của dữ liệu liên quan quá lớn để nhúng vào một document.
-- Bạn muốn giảm trùng lặp dữ liệu trong cơ sở dữ liệu.
-- Dữ liệu liên quan không thường xuyên được truy cập cùng nhau.
+| Tiêu chí | Embedded | Referenced |
+|----------|----------|------------|
+| Tốc độ đọc | 🚀 Nhanh (1 document) | 🐢 Chậm hơn (JOIN hoặc nhiều truy vấn) |
+| Tái sử dụng dữ liệu | ❌ Không | ✅ Có thể |
+| Cập nhật riêng dữ liệu con | ❌ Khó | ✅ Dễ |
+| Dữ liệu thay đổi thường xuyên | ❌ Không nên nhúng | ✅ Nên dùng reference |
+| Gắn chặt với cha | ✅ Rất hợp | ❌ Không cần thiết |
+| Số lượng phần tử con | Ít (1–20) | Nhiều (hàng trăm, hàng ngàn) |
 
-Ví dụ: Một danh mục với nhiều sản phẩm.
+### Cách nhớ nhanh
 
-#### Collection Categories:
-```json
-{
-  "_id": "ObjectID('CAT001')",
-  "name": "Điện tử",
-  "products": ["ObjectID('PROD001')", "ObjectID('PROD002')"]
-}
-```
-#### Collection Products:
-```json
-{
-  "_id": "ObjectID('PROD001')",
-  "name": "Laptop",
-  "price": 1500,
-  "category_id": "ObjectID('CAT001')"
-}
-```
-
-💡 **Mẹo:** Sử dụng tham chiếu khi dữ liệu cần được truy cập riêng biệt hoặc khi dữ liệu có khả năng phát triển lớn.
+| Câu hỏi | Nếu trả lời là… | Dùng… |
+|---------|-----------------|-------|
+| Có cần đọc cùng lúc không? | Có | 🟩 Embedded |
+| Dữ liệu con có dùng ở nhiều nơi không? | Có | 🟦 Reference |
+| Số lượng con có lớn không? | Lớn | 🟦 Reference |
+| Dữ liệu có gắn chặt với cha không? | Có | 🟩 Embedded |
 
 ---
 
@@ -162,7 +182,11 @@ Ví dụ: Một danh mục với nhiều sản phẩm.
 - **Nhúng**: Khi dữ liệu nhỏ, thường xuyên được truy cập cùng nhau, và không cần truy cập độc lập.
 - **Tham chiếu**: Khi dữ liệu lớn, cần truy cập độc lập, hoặc được chia sẻ giữa nhiều document.
 
-Hãy cân nhắc cách ứng dụng của bạn sử dụng dữ liệu để chọn phương pháp phù hợp nhé!
+✅ Nguyên tắc vàng
+
+“Embed for performance, Reference for flexibility.”
+
+(Nhúng để tối ưu tốc độ, tham chiếu để linh hoạt mở rộng)
 
 ---
 
@@ -170,7 +194,8 @@ Hãy cân nhắc cách ứng dụng của bạn sử dụng dữ liệu để ch
 
 ### Quan hệ 1-1 (One-to-One)
 
-Ví dụ: Một người dùng với một tài khoản thanh toán.
+	•	Mô tả: Một đối tượng liên kết với duy nhất một đối tượng khác.
+	•	Cách lưu: Có thể nhúng trực tiếp nếu dữ liệu không quá lớn hoặc thường truy cập cùng nhau.
 ```json
 {
   "_id": "ObjectId('AAA')",
@@ -183,174 +208,47 @@ Ví dụ: Một người dùng với một tài khoản thanh toán.
 }
 ```
 
----
-
-### Quan hệ 1 - ít (One-to-Few)
-
-Ví dụ: Một người dùng với một vài địa chỉ giao hàng.
-```json
-{
-  "_id": "ObjectId('AAA')",
-  "name": "Nguyễn Văn A",
-  "addresses": [
-    { "street": "123 Đường A", "city": "Hà Nội", "country": "Việt Nam" },
-    { "street": "456 Đường B", "city": "TP. Hồ Chí Minh", "country": "Việt Nam" }
-  ]
-}
-```
-
-💡 **Mẹo:** Nhúng dữ liệu cho quan hệ 1 - ít.
-
----
-
 ### Quan hệ 1 - nhiều (One-to-Many)
 
-Ví dụ: Một sản phẩm với nhiều đánh giá.
-#### Collection Products:
+	•	Mô tả: Một đối tượng liên kết với nhiều đối tượng khác.
+	•	Cách lưu:
+	•	Nếu ít phần tử (few) → nhúng (embed)
+	•	Nếu nhiều hoặc cần tái sử dụng → dùng reference
+
 ```json
+// Một book có nhiều category → dùng reference (dễ tìm sách theo thể loại)
 {
-  "_id": "ObjectID('PROD001')",
-  "name": "Laptop",
-  "manufacturer": "Công ty XYZ",
-  "reviews": ["ObjectID('REV001')", "ObjectID('REV002')"]
+  _id,
+  title,
+  categoryIds: [ObjectId] // ref: 'Category'
 }
 ```
-#### Collection Reviews:
+🛑 Không nên làm ngược lại:
+Không nên lưu như sau, vì mảng lớn sẽ phình to và khó cập nhật:
 ```json
+// Sai về mặt thiết kế nếu book quá nhiều
 {
-  "_id": "ObjectID('REV001')",
-  "user_id": "12345",
-  "rating": 5,
-  "comment": "Sản phẩm rất tốt!"
+  _id,
+  name: 'Fiction',
+  books: [ObjectId, ObjectId, ...] // ❌ Tránh!
 }
 ```
-
-💡 **Mẹo:** Sử dụng tham chiếu cho quan hệ 1 - nhiều.
-
----
-
-### Quan hệ 1 - rất nhiều (One-to-Very-Many)
-
-Ví dụ: Một cửa hàng với hàng triệu giao dịch.
-#### Collection Stores:
-```json
-{
-  "_id": ObjectID("STORE001"),
-  "name": "Cửa hàng ABC",
-  "location": "Hà Nội"
-}
-```
-#### Collection Transactions:
-```json
-{
-  "transaction_id": "TRANS001",
-  "timestamp": ISODate("2023-10-01T10:00:00Z"),
-  "amount": 1500,
-  "store_id": ObjectID("STORE001")
-}
-```
-
-💡 **Mẹo:** Tránh nhúng mảng với số lượng lớn.
-
----
-
 ### Quan hệ Nhiều - Nhiều (Many-to-Many)
 
-Ví dụ: Người dùng và sản phẩm yêu thích.
-#### Collection Users:
+	•	Ví dụ: User có thể thích nhiều phim; mỗi phim được nhiều user thích.
+	•	Cách lưu 1: Dùng mảng ObjectId ở cả hai bên (nếu chỉ cần liên kết đơn giản):
 ```json
+// 👤 User
 {
-  "_id": ObjectID("USER001"),
-  "name": "Nguyễn Văn A",
-  "favorites": [ObjectID("PROD001"), ObjectID("PROD002")]
+  _id,
+  name,
+  favoriteMovieIds: [ObjectId] // ref: 'Movie'
+}
+
+// 🎬 Movie
+{
+  _id,
+  title,
+  likedByUserIds: [ObjectId] // ref: 'User'
 }
 ```
-#### Collection Products:
-```json
-{
-  "_id": ObjectID("PROD001"),
-  "name": "Laptop",
-  "liked_by": [ObjectID("USER001"), ObjectID("USER002")]
-}
-```
-
----
-
-## Ví dụ: Các Bước Phân Tích Khi Nhận Yêu Cầu Thiết Kế Website Bán Hàng
-
-Khi nhận yêu cầu thiết kế một website bán hàng, bạn cần thực hiện các bước phân tích sau để đảm bảo thiết kế schema phù hợp với ứng dụng.
-
----
-
-## 1. Hiểu rõ yêu cầu của dự án
-
-Hãy bắt đầu bằng việc thu thập thông tin từ khách hàng hoặc đội ngũ phát triển:
-- **Chức năng chính**: Website cần làm gì? (Ví dụ: quản lý sản phẩm, đơn hàng, người dùng).
-- **Quy mô dữ liệu**: Có bao nhiêu sản phẩm, người dùng, đơn hàng dự kiến?
-- **Hiệu suất**: Website cần xử lý bao nhiêu lượt truy cập mỗi ngày?
-- **Tương tác dữ liệu**: Dữ liệu nào thường được truy cập cùng nhau?
-
----
-
-## 2. Xác định các thực thể chính
-
-Dựa trên yêu cầu, xác định các thực thể chính trong hệ thống:
-- **Người dùng**: Lưu thông tin khách hàng.
-- **Sản phẩm**: Lưu thông tin sản phẩm.
-- **Đơn hàng**: Lưu thông tin các giao dịch mua bán.
-
----
-
-## 3. Phân tích mối quan hệ giữa các thực thể
-
-Xác định cách các thực thể liên kết với nhau:
-- **Người dùng - Đơn hàng**: Một người dùng có thể có nhiều đơn hàng (quan hệ 1 - nhiều).
-- **Đơn hàng - Sản phẩm**: Một đơn hàng có thể chứa nhiều sản phẩm (quan hệ nhiều - nhiều).
-
----
-
-## 4. Quyết định nhúng hay tham chiếu
-
-Dựa trên cách dữ liệu được sử dụng, quyết định nhúng hay tham chiếu:
-- **Nhúng**: Khi dữ liệu thường xuyên được truy cập cùng nhau (ví dụ: danh sách sản phẩm trong đơn hàng).
-- **Tham chiếu**: Khi dữ liệu lớn hoặc được chia sẻ giữa nhiều thực thể (ví dụ: sản phẩm).
-
----
-
-## 5. Thiết kế schema
-
-Dựa trên phân tích, thiết kế schema cho từng thực thể:
-- **Collection Users**: Lưu thông tin người dùng và danh sách đơn hàng.
-- **Collection Products**: Lưu thông tin sản phẩm.
-- **Collection Orders**: Lưu thông tin chi tiết đơn hàng.
-
----
-
-## 6. Kiểm tra và tối ưu hóa
-
-Sau khi thiết kế schema, kiểm tra xem:
-- **Query**: Các truy vấn có hiệu quả không?
-- **Hiệu suất**: Schema có đáp ứng được yêu cầu về hiệu suất không?
-- **Mở rộng**: Schema có thể mở rộng khi dữ liệu tăng trưởng không?
-
----
-
-## 7. Triển khai và theo dõi
-
-Sau khi triển khai, theo dõi hệ thống để:
-- Đảm bảo schema hoạt động như mong đợi.
-- Điều chỉnh schema nếu có vấn đề phát sinh.
-
----
-
-💡 **Mẹo:** Luôn đặt câu hỏi "Dữ liệu nào thường được truy cập cùng nhau?" để quyết định nhúng hay tham chiếu. Điều này giúp tối ưu hóa hiệu suất của ứng dụng.
-
----
-
-## Tóm lại
-
-💡 **Mẹo:** Với MongoDB, cách bạn mô hình hóa dữ liệu phụ thuộc vào cách bạn sử dụng dữ liệu. Bạn muốn cấu trúc dữ liệu của bạn phù hợp với cách mà ứng dụng của bạn query và update nó.
-
-Hãy nhớ rằng mỗi ứng dụng có một yêu cầu riêng, vậy nên thiết kế của schema sẽ phản ánh nhu cầu cụ thể ứng dụng đó.
-
-Chúc các bạn học tốt và áp dụng thành công nhé!
