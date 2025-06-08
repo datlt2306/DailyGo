@@ -12,7 +12,6 @@ Có rất nhiều yếu tố ảnh hưởng đến cách bạn thiết kế sche
 
 Trong bài học này, chúng ta sẽ cùng nhau tìm hiểu cách mô hình hóa cơ sở dữ liệu MongoDB thông qua các ví dụ thực tế. Các bạn sẽ học được các phương pháp phổ biến để thiết kế schema cho ứng dụng của mình.
 
----
 
 ## Cách tiếp cận thiết kế cơ sở dữ liệu - Relational vs MongoDB
 
@@ -22,7 +21,6 @@ MongoDB là một NoSQL database, và mặc dù nó có một số điểm tươ
 
 Để dễ dàng tìm ra cách thiết kế đúng trong MongoDB, chúng ta hãy cùng so sánh giữa SQL và MongoDB nhé!
 
----
 
 ### Thiết kế cơ sở dữ liệu quan hệ
 
@@ -32,7 +30,6 @@ Trong cơ sở dữ liệu quan hệ, dữ liệu thường được chia thành
 - Bảng `Users` chứa thông tin người dùng.
 - Bảng `Orders` và `Products` tham chiếu đến `Users` thông qua khóa ngoại (`user_id`).
 
----
 
 ### Thiết kế cơ sở dữ liệu MongoDB
 
@@ -66,13 +63,11 @@ MongoDB thì khác nhé các bạn! Thay vì chia nhỏ dữ liệu thành nhi�
 
 Các bạn thấy không, thay vì chia nhỏ dữ liệu thành từng collection, chúng ta tận dụng lợi thế của MongoDB document để lưu trữ array và object bên trong User object. Bây giờ chỉ với một query đơn giản, chúng ta có thể kéo tất cả dữ liệu về ứng dụng của mình. Tiện lợi quá phải không nào?
 
----
 
 ## Nhúng vs Tham chiếu
 
 Khi thiết kế schema cho MongoDB, chúng ta sẽ đứng giữa hai lựa chọn: **Nhúng** hay **Tham chiếu**. Nào, cùng tìm hiểu nhé!
 
----
 
 ### Embedded Document – Nhúng
 
@@ -153,7 +148,6 @@ Ví dụ
 - Cần $lookup để JOIN
 - Truy vấn chậm hơn (nhiều query)
 
----
 
 ## Bảng so sánh Embedded vs Referenced
 
@@ -175,7 +169,6 @@ Ví dụ
 | Số lượng con có lớn không? | Lớn | 🟦 Reference |
 | Dữ liệu có gắn chặt với cha không? | Có | 🟩 Embedded |
 
----
 
 ### Tóm lại: Nhúng hay Tham chiếu?
 
@@ -188,7 +181,6 @@ Ví dụ
 
 (Nhúng để tối ưu tốc độ, tham chiếu để linh hoạt mở rộng)
 
----
 
 ## Các loại quan hệ
 
