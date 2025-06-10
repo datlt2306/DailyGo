@@ -189,6 +189,8 @@ export default {
                         },
                         { text: "JavaScript Tips", link: "/blog/javascript-tips" },
                         { text: "CSS Grid vs Flexbox", link: "/blog/css-grid-vs-flexbox" },
+                        { text: "Promise", link: "/blog/promise" },
+                        { text: "API", link: "/blog/api" },
                     ],
                 },
                 {
