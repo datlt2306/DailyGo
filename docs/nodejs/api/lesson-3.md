@@ -238,4 +238,6 @@ Nhập prompt sau:
 3. Chọn file JSON đã export (ví dụ: `FPL-WEB503.postman_collection.json`) và nhấn **Open**.
 4. Sau khi import thành công, bạn sẽ thấy Collection xuất hiện trong Postman.
 
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀
+— **Thầy Đạt 🧡**

@@ -145,4 +145,7 @@ app.post("/api/posts", (req, res) => {
 
 > **Lưu ý:** Nếu không sử dụng `express.json()`, `req.body` sẽ là `undefined`.
 
-Chúc các em thực hành vui vẻ và sáng tạo! 🚀
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Chúc các em học tốt! 🚀
+— **Thầy Đạt 🧡**
+

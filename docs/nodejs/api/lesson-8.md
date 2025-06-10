@@ -494,6 +494,6 @@ Qua bài học này, các em đã được hướng dẫn cách xây dựng ch�
 
 Hãy áp dụng những kiến thức này vào các dự án thực tế của mình. Nếu có bất kỳ thắc mắc nào, đừng ngần ngại đặt câu hỏi nhé!
 
-**Chúc các em học tốt!** ✨  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**
-

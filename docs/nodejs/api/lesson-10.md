@@ -276,3 +276,7 @@ Không nên lưu như sau, vì mảng lớn sẽ phình to và khó cập nhật
   likedByUserIds: [ObjectId] // ref: 'User'
 }
 ```
+
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Chúc các em học tốt! 🚀
+— **Thầy Đạt 🧡**

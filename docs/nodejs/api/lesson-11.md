@@ -297,3 +297,7 @@ Total: $1550
 3. Viết code để cập nhật danh sách sản phẩm trong một đơn hàng.
 
 Chúc bạn học tốt và áp dụng thành công!
+
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Chúc các em học tốt! 🚀
+— **Thầy Đạt 🧡**

@@ -298,6 +298,7 @@ export default router;
 
 Các em thấy không, việc sử dụng Joi giúp chúng ta kiểm tra dữ liệu đầu vào một cách dễ dàng và hiệu quả. Hãy nhớ rằng, việc validate dữ liệu là rất quan trọng để đảm bảo ứng dụng của chúng ta hoạt động ổn định và an toàn.
 
-Chúc các em học tốt! 🚀  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**
 

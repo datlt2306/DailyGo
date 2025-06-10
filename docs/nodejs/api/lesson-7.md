@@ -190,5 +190,6 @@ Hãy tưởng tượng một sinh viên đến trường và gửi xe. Ông bả
 - **Cookie-based Authentication** đơn giản và dễ triển khai, nhưng cần bảo vệ cookie cẩn thận.
 - **JWT-based Authentication** là lựa chọn tốt cho các hệ thống phân tán hoặc microservices, nhưng cần cân nhắc về bảo mật và quản lý vòng đời token.
 
-**Happy coding các em!** ✨  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

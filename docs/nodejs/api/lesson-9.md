@@ -179,5 +179,6 @@ productRouter.delete("/:id", deleteProduct);
 - **Tích hợp Middleware**: Sử dụng `verifyJWT` và `restrictTo` trong API sản phẩm để bảo vệ các route quan trọng.
 - **Test Postman**: Kiểm tra các endpoint với token JWT và vai trò phù hợp.
 
-**Happy coding các em!** ✨  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

@@ -383,4 +383,6 @@ export default router;
 -   Hiểu rõ sự khác biệt giữa NoSQL và SQL giúp bạn chọn công cụ phù hợp với dự án.
 -   Làm quen với các khái niệm cơ bản trong MongoDB và Mongoose là bước đầu để xây dựng ứng dụng hiệu quả.
 
-Chúc các bạn học tốt! 🚀
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Chúc các em học tốt! 🚀
+— **Thầy Đạt 🧡**

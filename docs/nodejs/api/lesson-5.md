@@ -479,5 +479,6 @@ Dưới đây là một số dữ liệu mẫu để kiểm tra API:
 - **Test Postman**: Kiểm tra các endpoint `/api/products` với các phương thức `GET`, `POST`, `PUT`, và `DELETE`.
 - **Kết quả**: Đảm bảo API hoạt động đúng với các yêu cầu CRUD.
 
-Chúc các em học tốt! 🚀  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

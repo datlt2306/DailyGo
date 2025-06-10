@@ -254,4 +254,6 @@ Qua bài này, các em không chỉ biết cách tạo một dự án Node.js/Ex
 Hãy luôn tự hỏi "vì sao mình làm như vậy", vì hiểu bản chất sẽ giúp các em tiến xa hơn rất nhiều!
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
-Chúc các em học tốt! 😄
+Chúc các em học tốt! 🚀
+— **Thầy Đạt 🧡**
+
