@@ -4,7 +4,7 @@
 
 API (Application Programming Interface) hay Giao diện lập trình ứng dụng là một tập hợp các quy tắc, giao thức và công cụ cho phép các phần mềm khác nhau giao tiếp với nhau. API hoạt động như một "cầu nối" giữa các ứng dụng, cho phép chúng trao đổi dữ liệu và chức năng.
 
-![API Diagram](https://via.placeholder.com/800x400?text=API+Diagram)
+![API Diagram](https://craftware.com/wp-content/uploads/2023/08/1.png)
 
 ## Tại sao API quan trọng?
 
