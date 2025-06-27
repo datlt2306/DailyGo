@@ -7,9 +7,15 @@
 -   Làm quen với các khái niệm quan trọng trong MongoDB.
 -   Chuẩn bị môi trường để làm việc với MongoDB.
 
+---
+
 ## Giới thiệu MongoDB
 
+### MongoDB là gì?
+
 MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết kế để lưu trữ dữ liệu dưới dạng JSON-like (BSON). Nó được sử dụng rộng rãi trong các ứng dụng hiện đại nhờ khả năng mở rộng linh hoạt và hiệu năng cao.
+
+---
 
 ### Tại sao nên sử dụng MongoDB?
 
@@ -19,12 +25,16 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 -   **Dữ liệu dạng JSON-like:** Dễ dàng tích hợp với các ứng dụng JavaScript/Node.js.
 -   **Cộng đồng lớn:** Được hỗ trợ bởi cộng đồng và có nhiều tài liệu hướng dẫn.
 
+---
+
 ### Khi nào nên chọn NoSQL?
 
 -   Khi cần lưu trữ dữ liệu phi cấu trúc hoặc bán cấu trúc.
 -   Khi cần mở rộng hệ thống dễ dàng theo chiều ngang.
 -   Khi cần xử lý dữ liệu lớn hoặc real-time.
 -   Khi không cần mối quan hệ phức tạp giữa các dữ liệu.
+
+---
 
 ### Sự khác nhau giữa NoSQL và SQL
 
@@ -37,24 +47,23 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 | **Khả năng mở rộng**  | Theo chiều dọc (vertical scaling)      | Theo chiều ngang (horizontal scaling)   |
 | **Ứng dụng phổ biến** | Hệ thống tài chính, ERP, CRM           | Ứng dụng web, IoT, big data, real-time  |
 
+---
+
 ### Các khái niệm cơ bản trong MongoDB
 
-**_Database (Cơ sở dữ liệu)_**
+#### Database (Cơ sở dữ liệu)
+- Là nơi lưu trữ các collection.
+- Một MongoDB server có thể chứa nhiều database.
 
--   Là nơi lưu trữ các collection.
--   Một MongoDB server có thể chứa nhiều database.
+#### Collection (Bộ sưu tập)
+- Tương tự như bảng (table) trong SQL.
+- Chứa các document, không yêu cầu schema cố định.
 
-**_Collection (Bộ sưu tập)_**
+#### Document (Tài liệu)
+- Tương tự như một hàng (row) trong SQL.
+- Dữ liệu được lưu trữ dưới dạng JSON-like (BSON).
 
--   Tương tự như bảng (table) trong SQL.
--   Chứa các document, không yêu cầu schema cố định.
-
-**_Document (Tài liệu)_**
-
--   Tương tự như một hàng (row) trong SQL.
--   Dữ liệu được lưu trữ dưới dạng JSON-like (BSON).
-
-#### Ví dụ document:
+##### Ví dụ document:
 
 ```json
 {
@@ -65,17 +74,19 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 }
 ```
 
-**_`_id` (Định danh duy nhất)_**
+#### `_id` (Định danh duy nhất)
+- Mỗi document trong MongoDB đều có một trường `_id` duy nhất.
+- Nếu không cung cấp `_id`, MongoDB sẽ tự động tạo.
 
--   Mỗi document trong MongoDB đều có một trường `_id` duy nhất.
--   Nếu không cung cấp `_id`, MongoDB sẽ tự động tạo.
+#### BSON (Binary JSON)
+- Là định dạng nhị phân của JSON, được MongoDB sử dụng để lưu trữ dữ liệu.
+- Hỗ trợ nhiều kiểu dữ liệu hơn JSON, như `Date`, `ObjectId`.
 
-**_### BSON (Binary JSON)_**
-
--   Là định dạng nhị phân của JSON, được MongoDB sử dụng để lưu trữ dữ liệu.
--   Hỗ trợ nhiều kiểu dữ liệu hơn JSON, như `Date`, `ObjectId`.
+---
 
 ## Cài đặt MongoDB
+
+### Cài đặt MongoDB Community Edition
 
 1. Truy cập [https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community) để tải MongoDB Community Edition.
 2. Cài đặt theo hướng dẫn trên trang web.
@@ -84,16 +95,22 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
     mongod --version
     ```
 
+---
+
 ### Sử dụng MongoDB Atlas (Cloud)
 
 1. Truy cập [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas) và tạo tài khoản.
 2. Tạo một cluster miễn phí.
 3. Kết nối cluster với ứng dụng bằng URI (ví dụ: `mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority`).
 
+---
+
 ### Cài đặt MongoDB Compass (GUI)
 
--   MongoDB Compass là công cụ GUI giúp quản lý và truy vấn dữ liệu MongoDB dễ dàng.
--   Tải về tại [https://www.mongodb.com/products/compass](https://www.mongodb.com/products/compass).
+- MongoDB Compass là công cụ GUI giúp quản lý và truy vấn dữ liệu MongoDB dễ dàng.
+- Tải về tại [https://www.mongodb.com/products/compass](https://www.mongodb.com/products/compass).
+
+---
 
 ## Giới thiệu về Mongoose
 
@@ -101,107 +118,125 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 
 Mongoose là một thư viện Node.js giúp làm việc với MongoDB dễ dàng hơn. Nó cung cấp một lớp trừu tượng (abstraction layer) để tương tác với MongoDB, cho phép bạn định nghĩa schema, thực hiện các thao tác CRUD, và quản lý dữ liệu một cách hiệu quả.
 
+---
+
 ### Tại sao sử dụng Mongoose?
 
--   **Định nghĩa schema:**  
-    Schema giúp bạn định nghĩa cấu trúc dữ liệu rõ ràng, kiểm soát các trường dữ liệu và kiểu dữ liệu.
+#### Định nghĩa schema
+Schema giúp bạn định nghĩa cấu trúc dữ liệu rõ ràng, kiểm soát các trường dữ liệu và kiểu dữ liệu.
 
-    **Ví dụ:**
+##### Ví dụ:
 
-    ```javascript
-    const postSchema = new mongoose.Schema({
-        title: { type: String, required: true },
-        content: { type: String, required: true },
-    });
-    const Post = mongoose.model("Post", postSchema);
-    ```
+```javascript
+// filepath: src/models/Post.js
+const postSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    content: { type: String, required: true },
+});
+const Post = mongoose.model("Post", postSchema);
+```
 
--   **Validation:**  
-    Mongoose hỗ trợ kiểm tra dữ liệu trước khi lưu vào cơ sở dữ liệu, đảm bảo dữ liệu luôn hợp lệ.
+---
 
-    **Ví dụ:**
+#### Validation
+Mongoose hỗ trợ kiểm tra dữ liệu trước khi lưu vào cơ sở dữ liệu, đảm bảo dữ liệu luôn hợp lệ.
 
-    ```javascript
-    const postSchema = new mongoose.Schema({
-        title: { type: String, required: [true, "Tiêu đề là bắt buộc"] },
-        content: { type: String, minlength: [10, "Nội dung phải có ít nhất 10 ký tự"] },
-    });
-    ```
+##### Ví dụ:
 
--   **Query mạnh mẽ:**  
-    Mongoose cung cấp các phương thức truy vấn linh hoạt như `find`, `findById`, `findOne`, và hỗ trợ các bộ lọc phức tạp.
+```javascript
+const postSchema = new mongoose.Schema({
+    title: { type: String, required: [true, "Tiêu đề là bắt buộc"] },
+    content: { type: String, minlength: [10, "Nội dung phải có ít nhất 10 ký tự"] },
+});
+```
 
-    **Ví dụ:**
+---
 
-    ```javascript
-    const posts = await Post.find({ title: /Node.js/i }); // Tìm bài viết có tiêu đề chứa "Node.js"
-    ```
+#### Query mạnh mẽ
+Mongoose cung cấp các phương thức truy vấn linh hoạt như `find`, `findById`, `findOne`, và hỗ trợ các bộ lọc phức tạp.
 
--   **Middleware:**  
-    Middleware trong Mongoose cho phép bạn thực hiện các logic trước hoặc sau khi thao tác với dữ liệu, như mã hóa mật khẩu trước khi lưu.
+##### Ví dụ:
 
-    **Ví dụ:**
+```javascript
+const posts = await Post.find({ title: /Node.js/i }); // Tìm bài viết có tiêu đề chứa "Node.js"
+```
 
-    ```javascript
-    postSchema.pre("save", function (next) {
-        console.log("Trước khi lưu bài viết");
-        next();
-    });
-    ```
+---
 
--   **Tích hợp tốt với Node.js:**  
-    Mongoose dễ dàng tích hợp vào các ứng dụng Node.js/Express, giúp bạn quản lý dữ liệu hiệu quả.
+#### Middleware
+Middleware trong Mongoose cho phép bạn thực hiện các logic trước hoặc sau khi thao tác với dữ liệu, như mã hóa mật khẩu trước khi lưu.
+
+##### Ví dụ:
+
+```javascript
+postSchema.pre("save", function (next) {
+    console.log("Trước khi lưu bài viết");
+    next();
+});
+```
+
+---
 
 ## Cài đặt Mongoose và kết nối DB
 
-1. Cài đặt Mongoose bằng lệnh:
+### Cài đặt Mongoose
 
-    ```bash
-    pnpm i mongoose
-    ```
+Cài đặt Mongoose bằng lệnh:
 
-2. Kết nối Mongoose với MongoDB trong ứng dụng Node.js. Ví dụ:
+```bash
+pnpm i mongoose
+```
 
-    **src/database.js**
+---
 
-    ```javascript
-    import mongoose from "mongoose";
+### Kết nối Mongoose với MongoDB
 
-    const connectDB = async () => {
-        try {
-            await mongoose.connect(process.env.MONGO_URI, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-            });
-            console.log("Kết nối MongoDB thành công!");
-        } catch (err) {
-            console.error("Lỗi kết nối MongoDB:", err.message);
-            process.exit(1);
-        }
-    };
+**src/database.js**
 
-    export default connectDB;
-    ```
+```javascript
+// filepath: src/database.js
+import mongoose from "mongoose";
 
-3. Sử dụng kết nối trong ứng dụng chính:
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("Kết nối MongoDB thành công!");
+    } catch (err) {
+        console.error("Lỗi kết nối MongoDB:", err.message);
+        process.exit(1);
+    }
+};
 
-    **src/app.js**
+export default connectDB;
+```
 
-    ```javascript
-    import express from "express";
-    import dotenv from "dotenv";
-    import connectDB from "./database";
+---
 
-    dotenv.config();
-    connectDB();
+### Sử dụng kết nối trong ứng dụng chính
 
-    const app = express();
-    app.use(express.json());
+**src/app.js**
 
-    app.listen(process.env.PORT, () => {
-        console.log(`Server is running on port ${process.env.PORT}`);
-    });
-    ```
+```javascript
+// filepath: src/app.js
+import express from "express";
+import dotenv from "dotenv";
+import connectDB from "./database";
+
+dotenv.config();
+connectDB();
+
+const app = express();
+app.use(express.json());
+
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
+});
+```
+
+---
 
 ## Thực hành
 
@@ -376,13 +411,15 @@ router.use("/posts", routePost);
 export default router;
 ```
 
+---
+
 ## Kết luận
 
--   MongoDB là một cơ sở dữ liệu NoSQL mạnh mẽ, phù hợp với các ứng dụng hiện đại.
--   Mongoose giúp đơn giản hóa việc làm việc với MongoDB trong Node.js, cung cấp các tính năng mạnh mẽ như schema, validation, và middleware.
--   Hiểu rõ sự khác biệt giữa NoSQL và SQL giúp bạn chọn công cụ phù hợp với dự án.
--   Làm quen với các khái niệm cơ bản trong MongoDB và Mongoose là bước đầu để xây dựng ứng dụng hiệu quả.
+- MongoDB là một cơ sở dữ liệu NoSQL mạnh mẽ, phù hợp với các ứng dụng hiện đại.
+- Mongoose giúp đơn giản hóa việc làm việc với MongoDB trong Node.js, cung cấp các tính năng mạnh mẽ như schema, validation, và middleware.
+- Hiểu rõ sự khác biệt giữa NoSQL và SQL giúp bạn chọn công cụ phù hợp với dự án.
+- Làm quen với các khái niệm cơ bản trong MongoDB và Mongoose là bước đầu để xây dựng ứng dụng hiệu quả.
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
-Chúc các em học tốt! 🚀
+Chúc các em học tốt! 🚀  
 — **Thầy Đạt 🧡**
