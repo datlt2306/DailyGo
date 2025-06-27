@@ -1,25 +1,20 @@
----
-id: tao-trang-danh-sach-blog
-title: Tạo Trang Danh Sách Blog
-sidebar_position: 23
----
-
 # Tạo Trang Danh Sách Blog
 
 ## Giới thiệu
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập trang danh sách blog trên website WordPress của mình. Đây là một bước quan trọng để hiển thị các bài đăng blog gần đây nhất trên một trang riêng biệt. Nào, cùng bắt đầu nhé!
 
-## Mục lục
+---
 
-1. [Giới thiệu](#giới-thiệu)
-2. [Tạo trang chủ và trang blog](#tạo-trang-chủ-và-trang-blog)
-3. [Cấu hình trang blog trong WordPress](#cấu-hình-trang-blog-trong-wordpress)
-4. [Tạo mẫu trang blog](#tạo-mẫu-trang-blog)
-    - [Tạo tệp `front-page.php`](#tạo-tệp-front-pagephp)
-    - [Tạo tệp `index.php` cho danh sách blog](#tạo-tệp-indexphp-cho-danh-sách-blog)
-5. [Hiển thị bài đăng blog](#hiển-thị-bài-đăng-blog)
-6. [Tổng kết](#tổng-kết)
+## Lý thuyết về trang danh sách blog
+
+### Trang danh sách blog là gì?
+Trang danh sách blog trong WordPress là một trang đặc biệt hiển thị danh sách các bài đăng blog gần đây nhất. Đây là nơi người dùng có thể xem toàn bộ nội dung blog của bạn, được sắp xếp theo thứ tự thời gian.
+
+### Tại sao cần trang danh sách blog?
+- **Tổ chức nội dung**: Hiển thị các bài đăng blog một cách rõ ràng và dễ truy cập.
+- **Tăng tương tác**: Giúp người dùng dễ dàng khám phá các bài viết cũ hơn.
+- **SEO tốt hơn**: Tăng khả năng hiển thị nội dung trên công cụ tìm kiếm.
 
 ---
 
@@ -45,6 +40,10 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập t
 - Đặt **Homepage** là **Trang chủ** và **Posts page** là **Blog**.
 - Nhấn **Save Changes** để lưu cài đặt.
 
+### Tại sao cần làm như vậy?
+- **Trang tĩnh**: Cho phép bạn tách biệt nội dung trang chủ và danh sách blog.
+- **Posts page**: Xác định trang nào sẽ hiển thị danh sách các bài đăng blog.
+
 ---
 
 ## Tạo mẫu trang blog
@@ -56,6 +55,7 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập t
 ### Tạo tệp `index.php` cho danh sách blog
 - Mở tệp `index.php` và sửa lại như sau:
 ```php
+// filepath: index.php
 <?php get_header(); ?>
 <div class="page-banner">
     <h1>Chào mừng bạn đến với blog của chúng tôi</h1>
@@ -86,6 +86,12 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập t
 </div>
 <?php get_footer(); ?>
 ```
+
+### Tại sao cần viết như vậy?
+- **`have_posts()` và `the_post()`**: Vòng lặp WordPress để kiểm tra và hiển thị các bài đăng blog.
+- **`the_title()` và `the_permalink()`**: Hiển thị tiêu đề bài đăng và liên kết đến bài viết chi tiết.
+- **`the_excerpt()`**: Hiển thị đoạn trích ngắn của bài viết.
+- **`the_author_posts_link()` và `the_time()`**: Hiển thị thông tin tác giả và ngày đăng bài.
 
 ---
 

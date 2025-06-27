@@ -10,6 +10,16 @@ Trên trang chủ của website, chúng ta sẽ xuất các bài đăng blog g�
 
 ---
 
+## Lý thuyết về vòng lặp WordPress
+
+### Vòng lặp là gì?
+Vòng lặp (The Loop) trong WordPress là một cơ chế giúp chúng ta truy xuất và hiển thị nội dung từ cơ sở dữ liệu. Nó hoạt động như một vòng lặp trong lập trình thông thường, nhưng được tối ưu hóa để làm việc với các bài đăng, trang, và các loại nội dung khác.
+
+### Tại sao cần vòng lặp?
+Trong WordPress, nội dung được lưu trữ trong cơ sở dữ liệu. Để hiển thị nội dung này trên giao diện người dùng, chúng ta cần một cách để truy xuất và hiển thị từng bài đăng hoặc trang. Vòng lặp giúp chúng ta làm điều này một cách dễ dàng và hiệu quả.
+
+---
+
 ## Chuẩn bị nội dung
 
 ### 1. Tạo bài đăng giả
@@ -27,25 +37,27 @@ Trên trang chủ của website, chúng ta sẽ xuất các bài đăng blog g�
 - Thêm đoạn mã sau để tạo vòng lặp:
 ```php
 <?php
+// Kiểm tra xem có bài đăng nào không
 if (have_posts()) {
+    // Bắt đầu vòng lặp để duyệt qua các bài đăng
     while (have_posts()) {
-        the_post();
+        the_post(); // Lấy dữ liệu của bài đăng hiện tại
         ?>
-        <h2><?php the_title(); ?></h2>
-        <p><?php the_content(); ?></p>
-        <hr>
+        <h2><?php the_title(); ?></h2> <!-- Hiển thị tiêu đề bài đăng -->
+        <p><?php the_content(); ?></p> <!-- Hiển thị nội dung bài đăng -->
+        <hr> <!-- Thêm đường kẻ ngang để phân cách các bài đăng -->
         <?php
     }
 }
 ?>
 ```
 
-### 2. Giải thích mã
-- **`have_posts()`**: Kiểm tra xem có bài đăng nào để hiển thị không.
-- **`the_post()`**: Lấy dữ liệu của bài đăng hiện tại.
-- **`the_title()`**: Hiển thị tiêu đề bài đăng.
-- **`the_content()`**: Hiển thị nội dung bài đăng.
-- **`<hr>`**: Thêm đường kẻ ngang để phân cách các bài đăng.
+### Tại sao viết như vậy?
+- **`have_posts()`**: Đây là một hàm kiểm tra xem có bài đăng nào để hiển thị không. Nếu có, nó trả về `true`.
+- **`while (have_posts())`**: Vòng lặp này sẽ tiếp tục chạy cho đến khi không còn bài đăng nào.
+- **`the_post()`**: Hàm này lấy dữ liệu của bài đăng hiện tại và chuẩn bị để hiển thị.
+- **`the_title()`**: Hiển thị tiêu đề của bài đăng.
+- **`the_content()`**: Hiển thị nội dung của bài đăng.
 
 ---
 
@@ -57,8 +69,8 @@ if (have_posts()) {
 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 ```
 
-### 2. Kết quả
-- Tiêu đề bài đăng sẽ trở thành liên kết dẫn đến trang chi tiết của bài đăng.
+### Tại sao cần liên kết?
+- **`the_permalink()`**: Hàm này tạo URL dẫn đến trang chi tiết của bài đăng. Việc biến tiêu đề thành liên kết giúp người dùng dễ dàng truy cập nội dung chi tiết.
 
 ---
 
@@ -73,7 +85,7 @@ if (have_posts()) {
     while (have_posts()) {
         the_post();
         ?>
-        <h2><?php the_title(); ?></h2>
+        <h2><?php the_title(); ?></h2> <!-- Tiêu đề không còn là liên kết -->
         <p><?php the_content(); ?></p>
         <?php
     }
@@ -81,8 +93,8 @@ if (have_posts()) {
 ?>
 ```
 
-### 2. Kết quả
-- Khi truy cập trang chi tiết của bài đăng, tiêu đề sẽ không còn là liên kết.
+### Tại sao cần tệp `single.php`?
+- Tệp này kiểm soát cách hiển thị nội dung chi tiết của một bài đăng. Nó giúp tách biệt giao diện trang chủ và trang chi tiết.
 
 ---
 
@@ -95,8 +107,8 @@ if (have_posts()) {
 <h1>Đây là một trang, không phải một bài đăng!</h1>
 ```
 
-### 2. Kết quả
-- Khi truy cập trang, thông báo sẽ hiển thị cùng với nội dung của trang.
+### Tại sao cần tệp `page.php`?
+- Tệp này kiểm soát cách hiển thị nội dung của các trang (Pages). Nó giúp phân biệt giữa bài đăng (Posts) và trang (Pages).
 
 ---
 
@@ -108,4 +120,4 @@ if (have_posts()) {
 
 ---
 
-Hy vọng bài viết này giúp các em hiểu rõ hơn về vòng lặp WordPress. Trong bài học tiếp theo, chúng ta sẽ học cách tạo header và footer toàn cục cho website. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay
+Hy vọng bài viết này giúp các em hiểu rõ hơn về vòng lặp WordPress. Trong bài học tiếp theo, chúng ta sẽ học cách tạo header và footer toàn cục cho website. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay!

@@ -12,6 +12,18 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập *
 
 ---
 
+## Lý thuyết về đầu trang và chân trang
+
+### Đầu trang (Header) và chân trang (Footer) là gì?
+Trong WordPress, **header.php** và **footer.php** là các tệp mẫu (template files) được sử dụng để hiển thị nội dung đầu trang và chân trang trên mọi trang của website. Chúng giúp đảm bảo tính nhất quán trong giao diện và giảm thiểu việc lặp lại mã.
+
+### Tại sao cần sử dụng các tệp này?
+- **Tính tái sử dụng**: Một lần định nghĩa, sử dụng trên mọi trang.
+- **Dễ quản lý**: Khi cần thay đổi nội dung đầu trang hoặc chân trang, chỉ cần sửa trong một tệp duy nhất.
+- **Tích hợp với WordPress**: Các hàm như `wp_head()` và `wp_footer()` giúp WordPress tự động thêm các tài nguyên cần thiết (CSS, JavaScript, v.v.) vào website.
+
+---
+
 ## Tạo đầu trang và chân trang
 
 ### 1. Tạo tệp `header.php`
@@ -21,11 +33,11 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập *
 <!DOCTYPE html>
 <html>
 <head>
-    <?php wp_head(); ?>
+    <?php wp_head(); ?> <!-- Hàm này cho phép WordPress tự động thêm các tài nguyên cần thiết -->
 </head>
 <body>
     <header>
-        <h1>Đây là vùng tiêu đề</h1>
+        <h1>Đây là vùng tiêu đề</h1> <!-- Hiển thị tiêu đề của website -->
     </header>
 ```
 
@@ -34,9 +46,9 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập *
 - Thêm nội dung sau:
 ```php
     <footer>
-        <p>Đây là vùng chân trang</p>
+        <p>Đây là vùng chân trang</p> <!-- Hiển thị nội dung chân trang -->
     </footer>
-    <?php wp_footer(); ?>
+    <?php wp_footer(); ?> <!-- Hàm này cho phép WordPress thêm các tài nguyên cần thiết vào cuối trang -->
 </body>
 </html>
 ```
@@ -44,11 +56,11 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập *
 ### 3. Sử dụng `header.php` và `footer.php` trong các tệp mẫu
 - Mở tệp `index.php` và sửa lại như sau:
 ```php
-<?php get_header(); ?>
+<?php get_header(); ?> <!-- Gọi tệp header.php -->
 <main>
-    <h2>Nội dung chính của trang</h2>
+    <h2>Nội dung chính của trang</h2> <!-- Hiển thị nội dung chính -->
 </main>
-<?php get_footer(); ?>
+<?php get_footer(); ?> <!-- Gọi tệp footer.php -->
 ```
 
 - Lặp lại tương tự trong các tệp `single.php` và `page.php`:
@@ -60,8 +72,8 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập *
         while (have_posts()) {
             the_post();
             ?>
-            <h2><?php the_title(); ?></h2>
-            <p><?php the_content(); ?></p>
+            <h2><?php the_title(); ?></h2> <!-- Hiển thị tiêu đề bài đăng -->
+            <p><?php the_content(); ?></p> <!-- Hiển thị nội dung bài đăng -->
             <?php
         }
     }
@@ -69,6 +81,9 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập *
 </main>
 <?php get_footer(); ?>
 ```
+
+### Tại sao viết như vậy?
+- **`get_header()` và `get_footer()`**: Đây là các hàm WordPress dùng để gọi nội dung từ các tệp `header.php` và `footer.php`. Chúng giúp giảm thiểu việc lặp lại mã trong các tệp mẫu.
 
 ---
 
@@ -80,9 +95,9 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập *
 ```php
 <?php
 function fictional_university_files() {
-    wp_enqueue_style('main-styles', get_stylesheet_uri());
+    wp_enqueue_style('main-styles', get_stylesheet_uri()); // Tải tệp CSS chính
 }
-add_action('wp_enqueue_scripts', 'fictional_university_files');
+add_action('wp_enqueue_scripts', 'fictional_university_files'); // Kích hoạt hàm fictional_university_files
 ```
 
 ### 2. Kiểm tra tệp CSS
@@ -107,7 +122,9 @@ footer {
 }
 ```
 
-- Làm mới trang web để kiểm tra giao diện.
+### Tại sao cần viết như vậy?
+- **`wp_enqueue_style()`**: Hàm này giúp WordPress tải tệp CSS một cách chính xác và tránh xung đột với các plugin hoặc chủ đề khác.
+- **`get_stylesheet_uri()`**: Trả về đường dẫn đến tệp `style.css` trong thư mục chủ đề.
 
 ---
 
@@ -119,14 +136,14 @@ footer {
 <?php wp_footer(); ?>
 ```
 
-### 2. Kết quả
-- Khi đăng nhập vào WordPress, thanh menu quản trị màu đen sẽ xuất hiện ở đầu trang.
+### Tại sao cần `wp_footer()`?
+- Hàm này cho phép WordPress thêm các tài nguyên cần thiết vào cuối trang, bao gồm thanh menu quản trị màu đen khi người dùng đăng nhập.
 
 ---
 
 ## Tóm tắt nhanh
 
-- **Tệp `header.php` và `footer.php`**: Tạo đầu trang và chân trang toàn cục.
+- **Tệp `header.php` và `footer.php`**: Tạo đầu trang và chân trang toàn cục để đảm bảo tính nhất quán.
 - **Tệp `functions.php`**: Tải tệp CSS để định dạng giao diện.
 - **Thanh menu quản trị**: Sử dụng `wp_footer()` để hiển thị thanh menu quản trị.
 

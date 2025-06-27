@@ -1,24 +1,30 @@
----
-id: truy-van-tuy-chinh-wordpress
-title: Truy Vấn Tùy Chỉnh trong WordPress
-sidebar_position: 26
----
-
 # Truy Vấn Tùy Chỉnh trong WordPress
 
 ## Giới thiệu
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em về **truy vấn tùy chỉnh** trong WordPress. Đây là một khái niệm quan trọng giúp chúng ta kiểm soát nội dung hiển thị trên website. Truy vấn tùy chỉnh cho phép chúng ta tải bất kỳ nội dung nào, ở bất kỳ đâu, bất kể URL hiện tại. Nào, cùng bắt đầu nhé!
 
-## Mục lục
+---
 
-1. [Giới thiệu](#giới-thiệu)
-2. [Truy vấn mặc định của WordPress](#truy-vấn-mặc-định-của-wordpress)
-3. [Tạo truy vấn tùy chỉnh](#tạo-truy-vấn-tùy-chỉnh)
-4. [Hiển thị nội dung với truy vấn tùy chỉnh](#hiển-thị-nội-dung-với-truy-vấn-tùy-chỉnh)
-5. [Tổng kết](#tổng-kết)
+## Lý thuyết về truy vấn tùy chỉnh
+
+### Truy vấn mặc định của WordPress là gì?
+Truy vấn mặc định trong WordPress là cơ chế tự động lấy nội dung dựa trên URL hiện tại. Ví dụ:
+- **Trang chủ**: Hiển thị nội dung của trang được đặt làm trang chủ.
+- **Danh mục**: Hiển thị các bài đăng thuộc danh mục cụ thể.
+- **Tác giả**: Hiển thị các bài đăng của một tác giả.
+
+### Hạn chế của truy vấn mặc định
+- Không thể tùy chỉnh nội dung hiển thị theo nhu cầu cụ thể.
+- Không hỗ trợ việc lấy nội dung từ nhiều nguồn hoặc theo các tiêu chí phức tạp.
+
+### Truy vấn tùy chỉnh là gì?
+Truy vấn tùy chỉnh sử dụng lớp `WP_Query` để tạo các truy vấn riêng biệt, giúp bạn kiểm soát nội dung hiển thị theo nhu cầu cụ thể. Ví dụ:
+- Hiển thị bài đăng từ một danh mục cụ thể.
+- Hiển thị bài đăng theo thứ tự tùy chỉnh.
 
 ---
+
 
 ## Truy vấn mặc định của WordPress
 
@@ -39,6 +45,7 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em về **truy vấn tù
 ### 1. Cấu trúc cơ bản
 - Sử dụng lớp `WP_Query` để tạo truy vấn tùy chỉnh:
 ```php
+// filepath: example.php
 <?php
 $custom_query = new WP_Query(array(
     'posts_per_page' => 2, // Số lượng bài đăng cần truy vấn
@@ -46,10 +53,18 @@ $custom_query = new WP_Query(array(
 ?>
 ```
 
+### Tại sao cần viết như vậy?
+- **`WP_Query`**: Đây là lớp mạnh mẽ trong WordPress, cho phép bạn tạo các truy vấn tùy chỉnh để lấy nội dung theo tiêu chí cụ thể.
+- **`posts_per_page`**: Xác định số lượng bài đăng cần hiển thị trên mỗi trang.
+
+---
+
 ### 2. Các tham số phổ biến
-- `posts_per_page`: Số lượng bài đăng trên mỗi trang.
-- `category_name`: Tên danh mục cần truy vấn.
-- `post_type`: Loại bài đăng (ví dụ: `post`, `page`).
+- **`posts_per_page`**: Số lượng bài đăng trên mỗi trang.
+- **`category_name`**: Tên danh mục cần truy vấn.
+- **`post_type`**: Loại bài đăng (ví dụ: `post`, `page`).
+- **`orderby`**: Sắp xếp bài đăng theo tiêu chí (ví dụ: `date`, `title`).
+- **`order`**: Thứ tự sắp xếp (`ASC` hoặc `DESC`).
 
 ---
 
@@ -58,6 +73,7 @@ $custom_query = new WP_Query(array(
 ### 1. Sử dụng vòng lặp `while`
 - Sử dụng vòng lặp để hiển thị nội dung từ truy vấn tùy chỉnh:
 ```php
+// filepath: example.php
 <?php
 if ($custom_query->have_posts()) {
     while ($custom_query->have_posts()) {
@@ -72,9 +88,17 @@ wp_reset_postdata(); // Dọn dẹp sau khi sử dụng truy vấn tùy chỉnh
 ?>
 ```
 
+### Tại sao cần viết như vậy?
+- **`have_posts()`**: Kiểm tra xem có bài đăng nào trong truy vấn tùy chỉnh không.
+- **`the_post()`**: Lấy dữ liệu của bài đăng hiện tại trong truy vấn.
+- **`wp_reset_postdata()`**: Dọn dẹp dữ liệu sau khi sử dụng truy vấn tùy chỉnh để tránh xung đột với truy vấn mặc định.
+
+---
+
 ### 2. Kết hợp với HTML
 - Sử dụng cấu trúc HTML để định dạng nội dung:
 ```php
+// filepath: example.php
 <div class="post-item">
     <h2 class="headline headline--medium headline--post-title">
         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
@@ -88,6 +112,10 @@ wp_reset_postdata(); // Dọn dẹp sau khi sử dụng truy vấn tùy chỉnh
     </div>
 </div>
 ```
+
+### Tại sao cần viết như vậy?
+- **HTML và CSS**: Kết hợp với các lớp CSS như `headline`, `metabox`, và `btn` để định dạng giao diện.
+- **`the_permalink()` và `the_title()`**: Hiển thị liên kết và tiêu đề bài đăng.
 
 ---
 

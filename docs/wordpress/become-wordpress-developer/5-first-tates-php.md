@@ -1,26 +1,34 @@
 # Làm quen với PHP trong WordPress: Hướng dẫn từ Thầy Đạt
 
-Chào các em, hôm nay thầy sẽ hướng dẫn các em làm quen với PHP – ngôn ngữ cốt lõi của WordPress. Đừng lo lắng nếu các em chưa từng làm việc với ngôn ngữ lập trình trước đây, chúng ta sẽ cùng nhau vượt qua từng bước một cách dễ dàng. Nào, cùng bắt đầu nhé!
+## Giới thiệu
+
+Chào các em, hôm nay thầy sẽ hướng dẫn các em làm quen với PHP – ngôn ngữ cốt lõi của WordPress. Đừng lo lắng nếu các em chưa từng làm việc với ngôn ngữ lập trình trước đây, chúng ta sẽ cùng nhau vượt qua từng bước một cách dễ dàng.
+
+### PHP là gì và tại sao nó quan trọng?
+PHP (Hypertext Preprocessor) là một ngôn ngữ lập trình phía máy chủ (server-side), được sử dụng để tạo các trang web động. Trong WordPress, PHP đóng vai trò trung tâm, giúp:
+- **Tương tác với cơ sở dữ liệu**: Lấy dữ liệu bài đăng, người dùng, và các thông tin khác.
+- **Xử lý logic**: Tạo điều kiện, vòng lặp, và các thao tác phức tạp.
+- **Kết hợp với HTML**: Hiển thị nội dung động trên giao diện người dùng.
 
 ---
 
-## PHP là gì và tại sao nó quan trọng?
+## Mục tiêu bài học
 
-PHP là ngôn ngữ lập trình phía máy chủ, được sử dụng để cung cấp sức mạnh cho WordPress. Với PHP, chúng ta có thể:
-- Tạo các trang web động.
-- Giao tiếp với cơ sở dữ liệu.
-- Xử lý logic phức tạp như gửi email tự động, thay đổi kích thước hình ảnh, và nhiều hơn nữa.
+- Làm quen với cú pháp cơ bản của PHP.
+- Hiểu cách PHP hoạt động trong WordPress.
+- Tạo một tệp PHP thử nghiệm để thực hành.
 
 ---
 
 ## Thiết lập môi trường làm việc
 
 ### 1. Tìm thư mục WordPress
+Để làm việc với PHP trong WordPress, các em cần tìm thư mục chứa các tệp hệ thống của WordPress:
 - Nếu các em sử dụng **Local by Flywheel**, nhấp chuột phải vào trang web của mình và chọn **Show in Finder** (Mac) hoặc **Open Folder** (Windows).
 - Điều hướng đến thư mục `app/public`, nơi chứa các tệp hệ thống WordPress.
 
 ### 2. Cài đặt trình soạn thảo văn bản
-Thầy khuyên các em sử dụng **Visual Studio Code**:
+Thầy khuyên các em sử dụng **Visual Studio Code** – một trình soạn thảo văn bản miễn phí và mạnh mẽ:
 1. Tìm kiếm "Visual Studio Code" trên trình duyệt.
 2. Tải xuống và cài đặt từ [code.visualstudio.com](https://code.visualstudio.com).
 3. Mở Visual Studio Code và tạo một tệp mới.
@@ -32,6 +40,7 @@ Thầy khuyên các em sử dụng **Visual Studio Code**:
 ### 1. Tạo tệp mới
 - Trong Visual Studio Code, tạo một tệp mới và nhập nội dung sau:
 ```php
+// filepath: /Users/ken/Folders/Projects/polytuts-5/app/public/test.php
 <?php
 echo "Hello, WordPress!";
 ```
@@ -48,27 +57,33 @@ echo "Hello, WordPress!";
 ## Làm quen với cú pháp PHP
 
 ### 1. Xuất nội dung ra trang
-- Sử dụng `echo` để hiển thị nội dung:
+PHP sử dụng lệnh `echo` để hiển thị nội dung trên trình duyệt:
 ```php
+// filepath: /Users/ken/Folders/Projects/polytuts-5/app/public/test.php
 <?php
 echo 2 + 2; // Kết quả: 4
 ```
+- **Giải thích**: Lệnh `echo` xuất kết quả của phép tính `2 + 2` ra màn hình.
 
 ### 2. Kết hợp PHP và HTML
-- Chuyển đổi giữa PHP và HTML:
+PHP có thể được nhúng trực tiếp vào HTML để tạo nội dung động:
 ```php
+// filepath: /Users/ken/Folders/Projects/polytuts-5/app/public/test.php
 <h1><?php echo "Trang này là tất cả về Thầy Đạt"; ?></h1>
 ```
+- **Giải thích**: PHP được sử dụng để xuất nội dung động bên trong thẻ HTML `<h1>`.
 
 ### 3. Sử dụng biến
-- Tạo biến và sử dụng trong nhiều nơi:
+Biến trong PHP giúp lưu trữ dữ liệu và tái sử dụng ở nhiều nơi:
 ```php
+// filepath: /Users/ken/Folders/Projects/polytuts-5/app/public/test.php
 <?php
 $name = "Thầy Đạt";
 ?>
 <h1>Trang này là tất cả về <?php echo $name; ?></h1>
 <h2>Học WordPress cùng <?php echo $name; ?></h2>
 ```
+- **Giải thích**: Biến `$name` lưu trữ giá trị `"Thầy Đạt"` và được sử dụng để hiển thị nội dung động.
 
 ---
 

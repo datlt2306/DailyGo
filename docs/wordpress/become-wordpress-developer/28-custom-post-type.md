@@ -6,30 +6,35 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo **Custom 
 
 ---
 
+## Lý thuyết về Custom Post Type
+
+### Loại bài đăng là gì?
+Trong WordPress, **Post Type** là một loại nội dung. Mặc định, WordPress cung cấp hai loại bài đăng chính:
+- **Post**: Dùng cho bài đăng blog, thường được tổ chức theo danh mục và thẻ.
+- **Page**: Dùng cho các trang tĩnh như "Giới thiệu" hoặc "Liên hệ".
+
+### Custom Post Type là gì?
+**Custom Post Type** cho phép bạn tạo các loại nội dung mới ngoài các loại mặc định. Ví dụ:
+- **Sự kiện**: Hiển thị các sự kiện sắp tới.
+- **Chương trình**: Hiển thị thông tin về các chương trình học.
+- **Giáo sư**: Hiển thị danh sách giáo sư.
+- **Khu học xá**: Hiển thị thông tin về các khu học xá.
+
+### Tại sao cần Custom Post Type?
+- **Tổ chức nội dung**: Giúp bạn quản lý nội dung theo cách phù hợp với mục đích của website.
+- **Mở rộng khả năng**: Tạo các loại nội dung tùy chỉnh để đáp ứng nhu cầu cụ thể.
+- **Thân thiện với người dùng**: Hiển thị nội dung một cách rõ ràng và dễ điều hướng.
+
+---
+
 ## Mục lục
 
 1. [Giới thiệu](#giới-thiệu)
 2. [Loại bài đăng là gì?](#loại-bài-đăng-là-gì)
-3. [Tạo Custom Post Type](#tạo-loại-bài-đăng-tùy-chỉnh)
-4. [Cấu hình Custom Post Type](#cấu-hình-loại-bài-đăng-tùy-chỉnh)
+3. [Tạo Custom Post Type](#tạo-custom-post-type)
+4. [Cấu hình Custom Post Type](#cấu-hình-custom-post-type)
 5. [Sử dụng plugin "Must-Use" để bảo vệ loại bài đăng](#sử-dụng-plugin-must-use-để-bảo-vệ-loại-bài-đăng)
 6. [Tổng kết](#tổng-kết)
-
----
-
-## Loại bài đăng là gì?
-
-### 1. Loại bài đăng mặc định
-- WordPress mặc định cung cấp hai loại bài đăng:
-  - **Post**: Dùng cho bài đăng blog.
-  - **Page**: Dùng cho các trang tĩnh.
-
-### 2. Custom Post Type
-- Custom Post Type cho phép chúng ta tạo các loại nội dung mới, ví dụ:
-  - **Sự kiện**: Hiển thị các sự kiện sắp tới.
-  - **Chương trình**: Hiển thị thông tin về các chương trình.
-  - **Giáo sư**: Hiển thị danh sách giáo sư.
-  - **Khu học xá**: Hiển thị thông tin về các khu học xá.
 
 ---
 
@@ -38,6 +43,7 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo **Custom 
 ### 1. Thêm mã vào tệp `functions.php`
 - Mở tệp `functions.php` trong thư mục chủ đề.
 - Thêm đoạn mã sau để tạo Custom Post Type:
+
 ```php
 // filepath: /Users/ken/Folders/Projects/polytuts-5/theme/functions.php
 function university_post_types() {
@@ -55,6 +61,14 @@ function university_post_types() {
 }
 add_action('init', 'university_post_types');
 ```
+
+### Tại sao cần viết như vậy?
+- **`register_post_type()`**: Hàm này đăng ký một loại bài đăng mới trong WordPress.
+- **`public`**: Xác định rằng loại bài đăng này có thể hiển thị trên giao diện người dùng.
+- **`labels`**: Tùy chỉnh các nhãn hiển thị trong giao diện quản trị viên.
+- **`menu_icon`**: Thêm biểu tượng cho loại bài đăng trong thanh bên của WordPress Admin.
+
+---
 
 ### 2. Kết quả
 - Sau khi lưu tệp, loại bài đăng **Sự kiện** sẽ xuất hiện trong thanh bên của WordPress Admin.
@@ -84,6 +98,7 @@ add_action('init', 'university_post_types');
 ### 2. Tạo tệp plugin
 - Tạo tệp mới trong thư mục `mu-plugins`, ví dụ: `university-post-types.php`.
 - Thêm đoạn mã sau:
+
 ```php
 // filepath: /Users/ken/Folders/Projects/polytuts-5/wp-content/mu-plugins/university-post-types.php
 <?php
@@ -102,6 +117,11 @@ function university_post_types() {
 }
 add_action('init', 'university_post_types');
 ```
+
+### Tại sao cần làm như vậy?
+- **Must-Use Plugins**: Đây là loại plugin đặc biệt luôn được kích hoạt, ngay cả khi chủ đề hoặc plugin khác bị thay đổi. Điều này giúp bảo vệ loại bài đăng tùy chỉnh khỏi bị vô tình xóa.
+
+---
 
 ### 3. Kết quả
 - Loại bài đăng **Sự kiện** sẽ luôn được kích hoạt, ngay cả khi chủ đề hoặc plugin khác bị thay đổi.

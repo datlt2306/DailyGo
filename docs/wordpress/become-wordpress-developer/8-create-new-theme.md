@@ -1,6 +1,21 @@
 # Tạo chủ đề WordPress tùy chỉnh: Hướng dẫn từ Thầy Đạt
 
-Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một chủ đề WordPress hoàn toàn mới từ đầu. Đừng lo lắng, nghe có vẻ phức tạp nhưng thực tế rất đơn giản. Thầy sẽ hướng dẫn từng bước để các em có thể tự tin tạo chủ đề của riêng mình. Nào, cùng bắt đầu nhé!
+## Giới thiệu
+
+Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một chủ đề WordPress hoàn toàn mới từ đầu. Đừng lo lắng, nghe có vẻ phức tạp nhưng thực tế rất đơn giản. Thầy sẽ hướng dẫn từng bước để các em có thể tự tin tạo chủ đề của riêng mình.
+
+### Tại sao cần tạo chủ đề tùy chỉnh?
+- **Kiểm soát giao diện**: Chủ đề tùy chỉnh cho phép các em kiểm soát hoàn toàn giao diện và chức năng của website.
+- **Học cách làm việc với WordPress**: Tạo chủ đề từ đầu giúp các em hiểu rõ cách WordPress hoạt động.
+- **Tùy chỉnh theo nhu cầu**: Các em có thể thêm các tính năng độc đáo mà chủ đề có sẵn không cung cấp.
+
+---
+
+## Mục tiêu bài học
+
+- Tạo một chủ đề WordPress cơ bản.
+- Hiểu cách các tệp như `index.php` và `style.css` hoạt động trong chủ đề.
+- Kích hoạt chủ đề và kiểm tra kết quả.
 
 ---
 
@@ -20,6 +35,8 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một ch�
 ## Tạo thư mục chủ đề
 
 ### 1. Tìm thư mục chủ đề
+Để WordPress nhận diện chủ đề mới, các em cần tạo một thư mục trong `wp-content/themes`. Đây là nơi chứa tất cả các chủ đề của website.
+
 - Điều hướng đến thư mục hệ thống WordPress:
   - **Local by Flywheel**: Nhấp chuột phải vào trang web > **Show in Finder** (Mac) hoặc **Open Folder** (Windows).
   - Đi đến `app/public/wp-content/themes`.
@@ -32,22 +49,29 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một ch�
 ## Tạo các tệp cần thiết
 
 ### 1. Tạo tệp `index.php`
+Tệp `index.php` là tệp chính của chủ đề, nơi WordPress sẽ tìm kiếm để hiển thị nội dung.
+
 - Mở thư mục `fictional-university-theme` trong **Visual Studio Code**.
 - Tạo tệp mới tên là `index.php` và thêm nội dung sau:
 ```php
+// filepath: /Users/ken/Folders/Projects/polytuts-5/wp-content/themes/fictional-university-theme/index.php
 <?php
 echo "Đây là chủ đề tùy chỉnh tuyệt vời của chúng tôi!";
 ```
+- **Giải thích**: Lệnh `echo` hiển thị nội dung "Đây là chủ đề tùy chỉnh tuyệt vời của chúng tôi!" trên trình duyệt.
 
 ### 2. Tạo tệp `style.css`
+Tệp `style.css` là nơi chứa thông tin về chủ đề và định dạng giao diện.
+
 - Tạo tệp mới tên là `style.css` và thêm nội dung sau:
 ```css
-/*
+/* 
 Theme Name: Fictional University
 Author: Thầy Đạt
 Version: 1.0
 */
 ```
+- **Giải thích**: Phần comment này cung cấp thông tin về chủ đề, bao gồm tên, tác giả, và phiên bản.
 
 ---
 
@@ -76,7 +100,9 @@ Version: 1.0
 
 ## Xóa các chủ đề không cần thiết
 
-- Quay lại thư mục `themes` và xóa các thư mục của các chủ đề mặc định như `twentyseventeen`, `twentysixteen`, v.v.
+Để giữ cho thư mục chủ đề gọn gàng, các em có thể xóa các chủ đề mặc định như `twentyseventeen`, `twentysixteen`, v.v.
+
+- Quay lại thư mục `themes` và xóa các thư mục của các chủ đề mặc định.
 - Làm mới bảng điều khiển để chỉ giữ lại chủ đề tùy chỉnh của các em.
 
 ---

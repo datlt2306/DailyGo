@@ -1,29 +1,27 @@
----
-id: chuyen-doi-html-css-tinh-thanh-theme-wordpress-phan-2
-title: Chuyển Đổi HTML/CSS phần 2
-sidebar_position: 8
----
-
 # Chuyển Đổi HTML và CSS Tĩnh Thành Theme trong WordPress phần 2
 
 Chào mừng bạn đã trở lại!
 
-Trong bài học này, chúng ta sẽ học cách chuyển đổi một trang HTML và CSS tĩnh thành một chủ đề WordPress sống động. Đến thời điểm này của khóa học, chủ đề và trang web WordPress mà chúng tôi đang làm việc không có phong cách hoặc thiết kế nào cho nó. Điều này không thực tế lắm phải không? Vì vậy, chúng ta cần thêm thiết kế và hướng nghệ thuật vào chủ đề của chúng ta.
+Trong bài học này, chúng ta sẽ tiếp tục học cách chuyển đổi một trang HTML và CSS tĩnh thành một chủ đề WordPress sống động. Đến thời điểm này của khóa học, chủ đề và trang web WordPress mà chúng tôi đang làm việc không có phong cách hoặc thiết kế nào cho nó. Điều này không thực tế lắm phải không? Vì vậy, chúng ta cần thêm thiết kế và hướng nghệ thuật vào chủ đề của chúng ta.
 
-## Mục lục
+---
 
-1. [Bắt đầu với tiêu đề](#bắt-đầu-với-tiêu-đề)
-2. [Sao chép mã HTML tiêu đề](#sao-chép-mã-html-tiêu-đề)
-3. [Dán mã vào `header.php`](#dán-mã-vào-headerphp)
-4. [Bài tập](#bài-tập)
-5. [Tổng kết](#tổng-kết)
+## Lý thuyết về chuyển đổi HTML tĩnh sang WordPress
 
-# 1. Bắt đầu với tiêu đề
+### Tại sao cần chuyển đổi HTML tĩnh sang WordPress?
+HTML tĩnh chỉ phù hợp với các trang web đơn giản, không có khả năng quản lý nội dung động. WordPress, với hệ thống quản lý nội dung (CMS) mạnh mẽ, cho phép bạn dễ dàng quản lý, chỉnh sửa, và mở rộng nội dung của website. Việc chuyển đổi HTML tĩnh sang WordPress giúp:
+- **Tự động hóa**: Tách biệt các phần như tiêu đề (header), chân trang (footer), và nội dung chính để tái sử dụng.
+- **Quản lý nội dung động**: Sử dụng giao diện quản trị của WordPress để thêm, sửa, hoặc xóa nội dung.
+- **Tích hợp tính năng nâng cao**: Thêm plugin, widget, và các tính năng tùy chỉnh.
 
-Chúng ta sẽ bắt đầu với phần tiêu đề, nơi chứa logo và các liên kết điều hướng.
+### Các tệp mẫu (Template Files) trong WordPress
+WordPress sử dụng các tệp mẫu như `header.php`, `footer.php`, và `index.php` để xây dựng giao diện website. Các tệp này giúp bạn tổ chức mã HTML và PHP một cách rõ ràng và dễ quản lý.
 
-<strong>Sao chép mã HTML tiêu đề</strong>
+---
 
+## 1. Bắt đầu với tiêu đề
+
+### Sao chép mã HTML tiêu đề
 Mở tệp `index.html` trong thư mục `university-static-master` và sao chép phần tử tiêu đề:
 
 ```html
@@ -39,21 +37,20 @@ Mở tệp `index.html` trong thư mục `university-static-master` và sao ché
 </header>
 ```
 
-<strong>Dán mã vào `header.php`</strong>
-
+### Dán mã vào `header.php`
 Mở tệp `header.php` trong thư mục chủ đề WordPress của bạn và dán mã HTML vào:
 
 ```php
-<!-- header.php -->
+<!-- filepath: header.php -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Trang chủ</title>
-    <?php wp_head(); ?>
+    <?php wp_head(); ?> <!-- Hàm này cho phép WordPress tự động thêm các tài nguyên cần thiết -->
 </head>
 <body>
     <header>
-        <div class="logo">Logo</div>
+        <div class="logo">Logo</div> <!-- Hiển thị logo -->
         <nav>
             <ul>
                 <li><a href="#">Trang chủ</a></li>
@@ -64,11 +61,14 @@ Mở tệp `header.php` trong thư mục chủ đề WordPress của bạn và d
     </header>
 ```
 
+### Tại sao cần viết như vậy?
+- **`wp_head()`**: Hàm này cho phép WordPress tự động thêm các tài nguyên như CSS, JavaScript, và meta tags vào phần `<head>` của trang.
+
+---
+
 ## 2. Chuyển phần chân trang
 
-Tiếp theo, chúng ta sẽ chuyển phần chân trang từ HTML tĩnh sang WordPress.
-
-<strong>Sao chép mã HTML chân trang</strong>
+### Sao chép mã HTML chân trang
 Mở tệp `index.html` và sao chép phần tử chân trang:
 
 ```html
@@ -77,82 +77,81 @@ Mở tệp `index.html` và sao chép phần tử chân trang:
 </footer>
 ```
 
-<strong>Dán mã vào `footer.php`</strong>
+### Dán mã vào `footer.php`
 Mở tệp `footer.php` trong thư mục chủ đề WordPress của bạn và dán mã HTML vào:
 
 ```php
-<!-- footer.php -->
+<!-- filepath: footer.php -->
     <footer>
-        <p>Đây là khu vực chân trang</p>
+        <p>Đây là khu vực chân trang</p> <!-- Hiển thị nội dung chân trang -->
     </footer>
-    <?php wp_footer(); ?>
+    <?php wp_footer(); ?> <!-- Hàm này cho phép WordPress thêm các tài nguyên cần thiết vào cuối trang -->
 </body>
 </html>
 ```
 
+### Tại sao cần viết như vậy?
+- **`wp_footer()`**: Hàm này cho phép WordPress thêm các tài nguyên như JavaScript vào cuối trang, đảm bảo website hoạt động đúng cách.
+
+---
+
 ## 3. Tích hợp CSS và JavaScript
 
-Để tích hợp CSS và JavaScript, chúng ta sẽ tạo một tệp `functions.php` và thêm mã để tải các tệp này.
-
-<strong>Tạo tệp functions.php</strong>
+### Tạo tệp `functions.php`
+Tệp `functions.php` được sử dụng để đăng ký và tải các tệp CSS và JavaScript vào website.
 
 ```php
-<!-- functions.php -->
+<!-- filepath: functions.php -->
 <?php
 function university_files() {
-    wp_enqueue_style('university_main_styles', get_template_directory_uri() . '/build/css/style-index.css');
-    wp_enqueue_style('university_additional_styles', get_template_directory_uri() . '/build/css/style-additional.css');
-    wp_enqueue_script('university_main_scripts', get_template_directory_uri() . '/build/js/index.js', array('jquery'), '1.0', true);
+    wp_enqueue_style('university_main_styles', get_template_directory_uri() . '/build/css/style-index.css'); // Tải tệp CSS chính
+    wp_enqueue_style('university_additional_styles', get_template_directory_uri() . '/build/css/style-additional.css'); // Tải tệp CSS bổ sung
+    wp_enqueue_script('university_main_scripts', get_template_directory_uri() . '/build/js/index.js', array('jquery'), '1.0', true); // Tải tệp JavaScript
 }
 
-add_action('wp_enqueue_scripts', 'university_files');
+add_action('wp_enqueue_scripts', 'university_files'); // Kích hoạt hàm university_files
 ?>
 ```
 
+### Tại sao cần viết như vậy?
+- **`wp_enqueue_style()`**: Hàm này giúp WordPress tải tệp CSS một cách chính xác và tránh xung đột.
+- **`wp_enqueue_script()`**: Hàm này giúp tải tệp JavaScript vào website.
+- **`add_action()`**: Kích hoạt các hàm trên tại thời điểm WordPress tải tài nguyên.
+
+---
+
 ## 4. Chuyển hình ảnh và các tệp khác
 
-Chúng ta cần chuyển các thư mục hình ảnh, CSS và JavaScript từ thư mục `university-static-master` sang thư mục chủ đề WordPress của chúng ta.
-
-<strong>Chuyển các thư mục</strong>
+### Chuyển các thư mục
 Di chuyển các thư mục `build`, `images`, `css`, và `js` từ `university-static-master` vào thư mục chủ đề WordPress của bạn.
 
-<strong>Cập nhật đường dẫn hình ảnh</strong>
+### Cập nhật đường dẫn hình ảnh
 Cập nhật đường dẫn hình ảnh trong tệp `index.php` để sử dụng hàm `get_template_directory_uri()` của WordPress:
 
-```html
+```php
+<!-- filepath: index.php -->
 <div
     class="banner"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/library-hero.jpg');"
 ></div>
 ```
 
-ipt, và chuyển các tệp hình ảnh và các tệp khác.
+### Tại sao cần viết như vậy?
+- **`get_template_directory_uri()`**: Hàm này trả về đường dẫn đến thư mục chủ đề, giúp bạn dễ dàng quản lý các tài nguyên như hình ảnh.
+
+---
 
 ## Bài tập
 
-Tạo một tệp `header.php` và `footer.php` trong thư mục chủ đề của bạn.
-Bao gồm các tệp này trong tệp `index.php` của bạn bằng cách sử dụng các hàm get_header() và get_footer().
-Tạo tệp `functions.php` và thêm mã để tải các tệp CSS và JavaScript.
-Cập nhật đường dẫn hình ảnh trong tệp index.php để sử dụng hàm `get_template_directory_uri()`.
+1. Tạo một tệp `header.php` và `footer.php` trong thư mục chủ đề của bạn.
+2. Bao gồm các tệp này trong tệp `index.php` của bạn bằng cách sử dụng các hàm `get_header()` và `get_footer()`.
+3. Tạo tệp `functions.php` và thêm mã để tải các tệp CSS và JavaScript.
+4. Cập nhật đường dẫn hình ảnh trong tệp `index.php` để sử dụng hàm `get_template_directory_uri()`.
 
-## Hướng dẫn cách làm
-
-1. <strong>Tạo tệp `header.php` và `footer.php`</strong>:
-    - Mở thư mục chủ đề của bạn.
-    - Tạo tệp `header.php` và thêm mã HTML cho phần đầu trang.
-    - Tạo tệp `footer.php` và thêm mã HTML cho phần chân trang.
-2. <strong>Bao gồm các tệp này trong tệp `index.php`</strong>:
-    - Mở tệp `index.php` trong thư mục chủ đề của bạn.
-    - Thêm các hàm `get_header()` và `get_footer()` vào các vị trí thích hợp trong tệp index.php.
-3. <strong>Tạo tệp functions.php</strong>:
-    - Mở thư mục chủ đề của bạn.
-    - Tạo tệp `functions.php` và thêm mã để tải các tệp CSS và JavaScript.
-4. <strong>Cập nhật đường dẫn hình ảnh</strong>:
-    - Mở tệp `index.php` trong thư mục chủ đề của bạn.
-    - Sử dụng hàm `get_template_directory_uri()` để cập nhật đường dẫn hình ảnh.
-
-Chúc các bạn thành công!
+---
 
 ## Tổng kết
 
 Trong bài học này, chúng ta đã học cách chuyển đổi một trang HTML và CSS tĩnh thành một chủ đề WordPress sống động. Chúng ta đã bắt đầu với tiêu đề, chuyển phần chân trang, tích hợp CSS và JavaScript, cập nhật đường dẫn hình ảnh và các tệp khác.
+
+Hy vọng bài học này giúp bạn hiểu rõ hơn về cách chuyển đổi HTML tĩnh sang WordPress. Trong bài học tiếp theo, chúng ta sẽ tiếp tục xây dựng các tính năng nâng cao cho chủ đề của mình. Hãy chuẩn bị tinh thần nhé!

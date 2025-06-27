@@ -6,11 +6,13 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em thực hiện một v
 
 ---
 
-## Mục lục
+## Lý thuyết về liên kết và trạng thái menu trong WordPress
 
-1. [Cập nhật nút "Xem tất cả các bài đăng trên blog"](#cập-nhật-nút-xem-tất-cả-các-bài-đăng-trên-blog)
-2. [Sửa liên kết blog trong điều hướng tiêu đề](#sửa-liên-kết-blog-trong-điều-hướng-tiêu-đề)
-3. [Tổng kết](#tổng-kết)
+### Liên kết trong WordPress
+Liên kết (Links) trong WordPress thường được sử dụng để điều hướng giữa các trang, bài đăng, hoặc màn hình lưu trữ. Việc sử dụng hàm `site_url()` giúp tạo liên kết động, đảm bảo rằng liên kết sẽ hoạt động chính xác ngay cả khi URL của website thay đổi.
+
+### Trạng thái menu hiện tại
+Trạng thái menu hiện tại (Current Menu Item) là một lớp CSS được thêm vào liên kết để chỉ định rằng người dùng đang ở trang liên quan. Điều này giúp cải thiện trải nghiệm người dùng bằng cách làm nổi bật menu hiện tại.
 
 ---
 
@@ -20,8 +22,15 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em thực hiện một v
 - Mở tệp `front-page.php` và tìm nút "Xem tất cả các bài đăng trên blog".
 - Sửa giá trị `href` của nút:
 ```php
+// filepath: front-page.php
+// ...existing code...
 <a class="btn btn--blue" href="<?php echo site_url('/blog'); ?>">Xem tất cả các bài đăng trên blog</a>
 ```
+
+### Tại sao cần viết như vậy?
+- **`site_url()`**: Hàm này trả về URL của website, giúp tạo liên kết động đến trang blog. Điều này đảm bảo rằng liên kết sẽ hoạt động chính xác ngay cả khi URL của website thay đổi.
+
+---
 
 ### 2. Kết quả
 - Khi nhấn vào nút, người dùng sẽ được chuyển đến trang danh sách blog.
@@ -34,6 +43,8 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em thực hiện một v
 - Mở tệp `header.php` và tìm liên kết blog trong điều hướng tiêu đề.
 - Sửa giá trị `href` của liên kết:
 ```php
+// filepath: header.php
+// ...existing code...
 <li>
     <a href="<?php echo site_url('/blog'); ?>" 
        class="<?php if (get_post_type() === 'post') echo 'current-menu-item'; ?>">
@@ -41,6 +52,12 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em thực hiện một v
     </a>
 </li>
 ```
+
+### Tại sao cần viết như vậy?
+- **`get_post_type()`**: Hàm này trả về loại bài đăng hiện tại. Nếu loại bài đăng là `post`, liên kết blog sẽ được thêm lớp `current-menu-item`.
+- **`current-menu-item`**: Lớp CSS này giúp làm nổi bật liên kết blog khi người dùng đang ở trang blog, bài đăng blog cá nhân, hoặc màn hình lưu trữ liên quan đến blog.
+
+---
 
 ### 2. Kết quả
 - Liên kết blog sẽ hoạt động và chuyển đến trang danh sách blog.
