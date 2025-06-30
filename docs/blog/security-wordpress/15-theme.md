@@ -1,8 +1,7 @@
-# Bảo mật khi sử dụng theme trong WordPress: Hướng dẫn từ Thầy Đạt
+# Bảo mật khi sử dụng theme trong WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng theme trong WordPress một cách an toàn. Theme không chỉ giúp website của các em đẹp hơn mà còn ảnh hưởng trực tiếp đến bảo mật. Nếu không cẩn thận, theme cũng có thể trở thành lỗ hổng bảo mật. Nào, cùng tìm hiểu nhé!
 
----
 
 ## Chỉ sử dụng theme từ nguồn đáng tin cậy
 
@@ -17,7 +16,6 @@ Nếu các em muốn sử dụng theme cao cấp (premium theme), hãy chọn t�
 
 > **Lời khuyên:** Luôn kiểm tra đánh giá và uy tín của nhà cung cấp trước khi mua theme.
 
----
 
 ## Tránh theme có liên kết ngược
 
@@ -30,7 +28,6 @@ Một số theme có thể thêm liên kết ngược (backlink) đến website 
 
 > **Lưu ý:** Chỉ sử dụng theme không chứa liên kết ngược hoặc từ nguồn uy tín.
 
----
 
 ## Luôn cập nhật theme
 
@@ -43,7 +40,6 @@ Một số theme có thể thêm liên kết ngược (backlink) đến website 
 2. Kiểm tra xem theme có bản cập nhật không.
 3. Nhấn **Update** để cập nhật theme.
 
----
 
 ## Sử dụng Child Theme để tùy chỉnh
 
@@ -56,7 +52,6 @@ Child Theme là một theme con được tạo ra dựa trên theme chính (pare
 
 > **Mẹo nhỏ:** Sử dụng Child Theme giúp các em dễ dàng cập nhật theme chính mà không mất các tùy chỉnh.
 
----
 
 ## Tóm tắt nhanh
 
@@ -65,6 +60,5 @@ Child Theme là một theme con được tạo ra dựa trên theme chính (pare
 - **Luôn cập nhật theme** để đảm bảo bảo mật và tương thích.
 - **Sử dụng Child Theme** để tùy chỉnh mà không ảnh hưởng đến khả năng cập nhật.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em quản lý theme trong WordPress một cách an toàn. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công!

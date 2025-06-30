@@ -1,8 +1,7 @@
-# Lộ trình khóa học WordPress năm 2024: Hướng dẫn từ Thầy Đạt
+# Lộ trình khóa học WordPress năm 2024: 
 
 Chào các em, chào mừng các em đến với khóa học WordPress năm 2024! Trong bài viết này, thầy sẽ cung cấp cho các em một bức tranh tổng quan về những gì các em sẽ học trong khóa học này, cũng như các con đường khác nhau mà các em có thể chọn để phát triển kỹ năng của mình. Nào, cùng bắt đầu nhé!
 
----
 
 ## Mục tiêu của khóa học
 
@@ -17,7 +16,6 @@ Dù các em muốn tập trung vào **front-end**, **back-end**, hay cả hai, k
 ### 2. Cập nhật mới nhất năm 2024
 Khóa học đã được cập nhật toàn diện để phù hợp với công nghệ WordPress hiện đại nhất. Các em có thể yên tâm rằng mọi kiến thức trong khóa học đều mới mẻ và thực tiễn.
 
----
 
 ## Nội dung khóa học
 
@@ -33,7 +31,6 @@ Khóa học bắt đầu bằng việc hướng dẫn các em thiết lập môi
 ### Triển khai website
 Một chương hoàn toàn mới sẽ hướng dẫn các em cách triển khai website từ môi trường phát triển cá nhân lên môi trường lưu trữ thực tế. Các em sẽ học cách sử dụng Git để hỗ trợ triển khai mượt mà.
 
----
 
 ### Phát triển plugin WordPress
 Khóa học không chỉ dừng lại ở chủ đề mà còn bao gồm phát triển plugin:
@@ -42,7 +39,6 @@ Khóa học không chỉ dừng lại ở chủ đề mà còn bao gồm phát t
 - **Plugin dựa trên khối**: Tạo plugin cung cấp bài kiểm tra trắc nghiệm cho khách truy cập.
 - **API tương tác**: Tìm hiểu API tương tác mới nhất của WordPress, một công nghệ đột phá trong hơn một thập kỷ.
 
----
 
 ### Các tính năng bổ sung
 Khóa học còn bao gồm nhiều nội dung thú vị khác:
@@ -51,7 +47,6 @@ Khóa học còn bao gồm nhiều nội dung thú vị khác:
 - Cho phép khách truy cập đăng ký tài khoản miễn phí.
 - Tạo hình ảnh nổi bật với tỷ lệ khung hình khác nhau.
 
----
 
 ## Tóm tắt nhanh
 
@@ -59,6 +54,5 @@ Khóa học còn bao gồm nhiều nội dung thú vị khác:
 - **Plugin WordPress**: Từ cơ bản đến nâng cao, bao gồm API tương tác mới nhất.
 - **Triển khai website**: Học cách đưa website từ môi trường phát triển lên môi trường lưu trữ thực tế.
 
----
 
 Hy vọng bài viết này giúp các em hình dung rõ hơn về lộ trình học tập trong khóa học WordPress năm 2024. Thầy rất vui mừng được đồng hành cùng các em trong hành trình này. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu viết mã và khám phá thế giới WordPress ngay

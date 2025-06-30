@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách hiển thị các bài đăng từ loại bài đăng tùy chỉnh trên giao diện người dùng của trang web. Loại bài đăng tùy chỉnh là một cách mạnh mẽ để mở rộng khả năng của WordPress, cho phép chúng ta tạo các loại nội dung mới như sự kiện, chương trình, giáo sư, và khu học xá.
 
----
 
 ## Lý thuyết về hiển thị loại bài đăng tùy chỉnh
 
@@ -18,7 +17,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách hiển thị c�
 - **Mẫu bài đăng (Single Template)**: Kiểm soát cách hiển thị nội dung của từng bài đăng tùy chỉnh.
 - **Mẫu lưu trữ (Archive Template)**: Hiển thị danh sách tất cả các bài đăng thuộc loại bài đăng tùy chỉnh.
 
----
 
 ## Hiển thị bài đăng tùy chỉnh trên trang chủ
 
@@ -41,7 +39,6 @@ $homepageEvents = new WP_Query(array(
 - **`posts_per_page`**: Xác định số lượng bài đăng cần hiển thị.
 - **`post_type`**: Chỉ định loại bài đăng cần truy vấn (ví dụ: `event`).
 
----
 
 ### 2. Hiển thị bài đăng
 Sau khi tạo truy vấn, chúng ta cần sử dụng **vòng lặp WordPress** để hiển thị nội dung bài đăng.
@@ -69,7 +66,6 @@ wp_reset_postdata(); // Dọn dẹp sau khi sử dụng truy vấn tùy chỉnh
 - **`have_posts()` và `the_post()`**: Kiểm tra và lấy dữ liệu bài đăng từ truy vấn tùy chỉnh.
 - **`wp_reset_postdata()`**: Dọn dẹp dữ liệu sau khi sử dụng truy vấn tùy chỉnh để tránh xung đột với truy vấn mặc định.
 
----
 
 ## Tạo mẫu cho bài đăng tùy chỉnh
 
@@ -94,7 +90,6 @@ Mẫu riêng giúp chúng ta kiểm soát cách hiển thị nội dung của t�
 - **`get_post_type_archive_link()`**: Hàm này trả về liên kết đến màn hình lưu trữ của loại bài đăng tùy chỉnh.
 - **HTML và CSS**: Kết hợp với các lớp CSS để định dạng giao diện.
 
----
 
 ## Tạo mẫu lưu trữ cho bài đăng tùy chỉnh
 
@@ -131,7 +126,6 @@ Mẫu lưu trữ giúp hiển thị danh sách tất cả các bài đăng thu�
 - **`have_posts()` và `the_post()`**: Hiển thị danh sách bài đăng từ loại bài đăng tùy chỉnh.
 - **HTML và CSS**: Kết hợp với các lớp CSS để định dạng giao diện.
 
----
 
 ## Tổng kết
 

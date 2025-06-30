@@ -7,7 +7,6 @@
 -   Làm quen với các khái niệm quan trọng trong MongoDB.
 -   Chuẩn bị môi trường để làm việc với MongoDB.
 
----
 
 ## Giới thiệu MongoDB
 
@@ -15,7 +14,6 @@
 
 MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết kế để lưu trữ dữ liệu dưới dạng JSON-like (BSON). Nó được sử dụng rộng rãi trong các ứng dụng hiện đại nhờ khả năng mở rộng linh hoạt và hiệu năng cao.
 
----
 
 ### Tại sao nên sử dụng MongoDB?
 
@@ -25,7 +23,6 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 -   **Dữ liệu dạng JSON-like:** Dễ dàng tích hợp với các ứng dụng JavaScript/Node.js.
 -   **Cộng đồng lớn:** Được hỗ trợ bởi cộng đồng và có nhiều tài liệu hướng dẫn.
 
----
 
 ### Khi nào nên chọn NoSQL?
 
@@ -34,7 +31,6 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 -   Khi cần xử lý dữ liệu lớn hoặc real-time.
 -   Khi không cần mối quan hệ phức tạp giữa các dữ liệu.
 
----
 
 ### Sự khác nhau giữa NoSQL và SQL
 
@@ -47,7 +43,6 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 | **Khả năng mở rộng**  | Theo chiều dọc (vertical scaling)      | Theo chiều ngang (horizontal scaling)   |
 | **Ứng dụng phổ biến** | Hệ thống tài chính, ERP, CRM           | Ứng dụng web, IoT, big data, real-time  |
 
----
 
 ### Các khái niệm cơ bản trong MongoDB
 
@@ -82,7 +77,6 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 - Là định dạng nhị phân của JSON, được MongoDB sử dụng để lưu trữ dữ liệu.
 - Hỗ trợ nhiều kiểu dữ liệu hơn JSON, như `Date`, `ObjectId`.
 
----
 
 ## Cài đặt MongoDB
 
@@ -95,7 +89,6 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
     mongod --version
     ```
 
----
 
 ### Sử dụng MongoDB Atlas (Cloud)
 
@@ -103,14 +96,12 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 2. Tạo một cluster miễn phí.
 3. Kết nối cluster với ứng dụng bằng URI (ví dụ: `mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority`).
 
----
 
 ### Cài đặt MongoDB Compass (GUI)
 
 - MongoDB Compass là công cụ GUI giúp quản lý và truy vấn dữ liệu MongoDB dễ dàng.
 - Tải về tại [https://www.mongodb.com/products/compass](https://www.mongodb.com/products/compass).
 
----
 
 ## Giới thiệu về Mongoose
 
@@ -118,7 +109,6 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 
 Mongoose là một thư viện Node.js giúp làm việc với MongoDB dễ dàng hơn. Nó cung cấp một lớp trừu tượng (abstraction layer) để tương tác với MongoDB, cho phép bạn định nghĩa schema, thực hiện các thao tác CRUD, và quản lý dữ liệu một cách hiệu quả.
 
----
 
 ### Tại sao sử dụng Mongoose?
 
@@ -136,7 +126,6 @@ const postSchema = new mongoose.Schema({
 const Post = mongoose.model("Post", postSchema);
 ```
 
----
 
 #### Validation
 Mongoose hỗ trợ kiểm tra dữ liệu trước khi lưu vào cơ sở dữ liệu, đảm bảo dữ liệu luôn hợp lệ.
@@ -150,7 +139,6 @@ const postSchema = new mongoose.Schema({
 });
 ```
 
----
 
 #### Query mạnh mẽ
 Mongoose cung cấp các phương thức truy vấn linh hoạt như `find`, `findById`, `findOne`, và hỗ trợ các bộ lọc phức tạp.
@@ -161,7 +149,6 @@ Mongoose cung cấp các phương thức truy vấn linh hoạt như `find`, `fi
 const posts = await Post.find({ title: /Node.js/i }); // Tìm bài viết có tiêu đề chứa "Node.js"
 ```
 
----
 
 #### Middleware
 Middleware trong Mongoose cho phép bạn thực hiện các logic trước hoặc sau khi thao tác với dữ liệu, như mã hóa mật khẩu trước khi lưu.
@@ -175,7 +162,6 @@ postSchema.pre("save", function (next) {
 });
 ```
 
----
 
 ## Cài đặt Mongoose và kết nối DB
 
@@ -187,7 +173,6 @@ Cài đặt Mongoose bằng lệnh:
 pnpm i mongoose
 ```
 
----
 
 ### Kết nối Mongoose với MongoDB
 
@@ -213,7 +198,6 @@ const connectDB = async () => {
 export default connectDB;
 ```
 
----
 
 ### Sử dụng kết nối trong ứng dụng chính
 
@@ -236,7 +220,6 @@ app.listen(process.env.PORT, () => {
 });
 ```
 
----
 
 ## Thực hành
 
@@ -411,7 +394,6 @@ router.use("/posts", routePost);
 export default router;
 ```
 
----
 
 ## Kết luận
 

@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em thực hiện một vài cập nhật nhỏ liên quan đến đoạn trích và liên kết sự kiện trong WordPress. Đây sẽ là một bài học rất nhanh, nhưng rất hữu ích. Nào, cùng bắt đầu nhé!
 
----
 
 ## Lý thuyết về đoạn trích và liên kết trong WordPress
 
@@ -14,7 +13,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em thực hiện một v
 ### Liên kết động trong WordPress
 Liên kết động sử dụng các hàm như `get_post_type_archive_link()` hoặc `site_url()` để tạo liên kết tự động dựa trên cấu trúc của website. Điều này giúp đảm bảo rằng liên kết sẽ hoạt động chính xác ngay cả khi URL của website thay đổi.
 
----
 
 ## Cập nhật đoạn trích
 
@@ -37,13 +35,11 @@ if (has_excerpt()) {
 - **`get_the_excerpt()`**: Lấy đoạn trích thủ công của bài đăng.
 - **`wp_trim_words()`**: Cắt ngắn nội dung bài đăng thành một số lượng từ nhất định, giúp hiển thị nội dung ngắn gọn.
 
----
 
 ### 2. Kết quả
 - Nếu bài đăng có đoạn trích thủ công, đoạn trích sẽ được hiển thị.
 - Nếu không, 18 từ đầu tiên của nội dung bài đăng sẽ được hiển thị.
 
----
 
 ## Cập nhật liên kết sự kiện
 
@@ -58,12 +54,10 @@ if (has_excerpt()) {
 ### Tại sao cần viết như vậy?
 - **`get_post_type_archive_link()`**: Hàm này trả về URL của màn hình lưu trữ cho loại bài đăng tùy chỉnh. Điều này giúp liên kết luôn chính xác ngay cả khi cấu trúc URL của website thay đổi.
 
----
 
 ### 2. Kết quả
 - Khi nhấn vào nút, người dùng sẽ được chuyển đến trang lưu trữ sự kiện.
 
----
 
 ## Sửa liên kết sự kiện trong điều hướng tiêu đề
 
@@ -84,13 +78,11 @@ if (has_excerpt()) {
 - **`get_post_type()`**: Hàm này trả về loại bài đăng hiện tại. Nếu loại bài đăng là `event`, liên kết sự kiện sẽ được thêm lớp `current-menu-item`.
 - **`current-menu-item`**: Lớp CSS này giúp làm nổi bật liên kết sự kiện khi người dùng đang ở trang sự kiện, bài đăng sự kiện cá nhân, hoặc màn hình lưu trữ liên quan đến sự kiện.
 
----
 
 ### 2. Kết quả
 - Liên kết sự kiện sẽ hoạt động và chuyển đến trang lưu trữ sự kiện.
 - Khi người dùng đang ở trang sự kiện, bài đăng sự kiện cá nhân, hoặc màn hình lưu trữ liên quan đến sự kiện, liên kết sự kiện sẽ sáng lên màu vàng để chỉ định trang hiện tại.
 
----
 
 ## Tổng kết
 

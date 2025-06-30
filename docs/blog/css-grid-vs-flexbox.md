@@ -4,7 +4,6 @@ description: So sánh hai kỹ thuật layout phổ biến nhất trong CSS và 
 date: 2023-10-10
 author: Đội ngũ Polytuts
 tags: ["css", "layout", "flexbox", "grid"]
----
 
 # CSS Grid vs Flexbox: Khi nào nên dùng cái nào?
 
@@ -255,7 +254,6 @@ Không có câu trả lời đúng hay sai tuyệt đối khi lựa chọn giữ
 
 Hiểu rõ cả hai và biết khi nào sử dụng cái nào sẽ giúp bạn tạo ra các layout web hiệu quả và dễ bảo trì hơn.
 
----
 
 <div class="post-navigation">
   <div class="prev-post">

@@ -1,8 +1,7 @@
-# Bảo mật với table prefix trong WordPress: Hướng dẫn từ Thầy Đạt
+# Bảo mật với table prefix trong WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách bảo vệ website WordPress bằng cách thay đổi **table prefix**. Đây là một bước quan trọng để tăng cường bảo mật, đặc biệt nếu website của các em được cài đặt trước khi WordPress áp dụng các cải tiến bảo mật mới. Nào, cùng tìm hiểu nhé!
 
----
 
 ## Table prefix là gì?
 
@@ -14,7 +13,6 @@ Table prefix là tiền tố được sử dụng cho các bảng trong cơ sở
 ### Nguy cơ từ table prefix mặc định
 Nếu website của các em sử dụng table prefix mặc định `wp_`, hacker có thể dễ dàng đoán cấu trúc cơ sở dữ liệu và thực hiện các cuộc tấn công SQL injection.
 
----
 
 ## Cách thay đổi table prefix
 
@@ -29,7 +27,6 @@ Nếu website của các em đã được cài đặt và vẫn sử dụng `wp_
 1. Cài đặt và kích hoạt plugin.
 2. Sử dụng tính năng thay đổi table prefix trong plugin để bảo mật cơ sở dữ liệu.
 
----
 
 ## Lời khuyên
 
@@ -37,7 +34,6 @@ Nếu website của các em đã được cài đặt và vẫn sử dụng `wp_
 - **Sử dụng table prefix ngẫu nhiên** khi cài đặt WordPress.
 - **Thay đổi table prefix** bằng plugin bảo mật nếu website đã được cài đặt trước đó.
 
----
 
 ## Tóm tắt nhanh
 
@@ -45,6 +41,5 @@ Nếu website của các em đã được cài đặt và vẫn sử dụng `wp_
 - **Mặc định `wp_`** dễ bị hacker khai thác.
 - **Thay đổi table prefix** khi cài đặt hoặc sử dụng plugin bảo mật như All In One Security Plugin.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về cách bảo mật cơ sở dữ liệu WordPress. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công!

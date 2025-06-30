@@ -4,7 +4,6 @@ Xin chào tất cả mọi người!
 
 Trong bài học này, chúng ta sẽ thực hiện một số chỉnh sửa và cải tiến nhanh chóng cho chủ đề của mình. Bài học này sẽ giúp bạn làm cho trang web của mình trở nên thân thiện hơn với người dùng và tối ưu hóa cho các thiết bị di động. Hãy cùng bắt đầu!
 
----
 
 ## Lý thuyết về tối ưu hóa chủ đề WordPress
 
@@ -19,13 +18,11 @@ Chủ đề WordPress là phần giao diện của website, và việc tối ưu
 - **Ngôn ngữ và bộ ký tự**: Xác định ngôn ngữ và bộ ký tự để hỗ trợ đa ngôn ngữ và hiển thị chính xác.
 - **Lớp cho thẻ body**: Thêm các lớp CSS động để tùy chỉnh giao diện.
 
----
 
 ## Giới thiệu về bài giảng
 
 Trong bài học này, chúng ta sẽ thực hiện một số chỉnh sửa và cải tiến nhanh chóng cho chủ đề của mình. Mục tiêu là làm cho trang web của bạn trở nên thân thiện hơn với người dùng và tối ưu hóa cho các thiết bị di động.
 
----
 
 ## Tối ưu hóa trang web cho thiết bị di động
 
@@ -43,7 +40,6 @@ Trong bài học này, chúng ta sẽ thực hiện một số chỉnh sửa và
 ### Tại sao cần viết như vậy?
 - **`meta viewport`**: Thẻ này giúp trình duyệt điều chỉnh kích thước và tỷ lệ của trang web để hiển thị tốt trên thiết bị di động. Nếu không có thẻ này, website có thể hiển thị không đúng trên màn hình nhỏ.
 
----
 
 ## Thiết lập ngôn ngữ cho trang web
 
@@ -57,7 +53,6 @@ Trong bài học này, chúng ta sẽ thực hiện một số chỉnh sửa và
 ### Tại sao cần viết như vậy?
 - **`language_attributes()`**: Hàm này tự động thêm thuộc tính ngôn ngữ (ví dụ: `lang="en-US"`) vào thẻ `<html>`, giúp trình duyệt và công cụ tìm kiếm hiểu ngôn ngữ của website.
 
----
 
 ## Thiết lập bộ ký tự cho trang web
 
@@ -72,7 +67,6 @@ Trong bài học này, chúng ta sẽ thực hiện một số chỉnh sửa và
 ### Tại sao cần viết như vậy?
 - **`bloginfo('charset')`**: Hàm này trả về bộ ký tự được cấu hình trong WordPress (thường là UTF-8), đảm bảo nội dung hiển thị chính xác trên mọi trình duyệt.
 
----
 
 ## Thêm lớp cho thẻ body
 
@@ -86,7 +80,6 @@ Trong bài học này, chúng ta sẽ thực hiện một số chỉnh sửa và
 ### Tại sao cần viết như vậy?
 - **`body_class()`**: Hàm này tự động thêm các lớp CSS vào thẻ `<body>` dựa trên ngữ cảnh hiện tại (ví dụ: loại trang, danh mục, hoặc bài viết). Điều này giúp bạn dễ dàng tùy chỉnh giao diện bằng CSS.
 
----
 
 ## Bài tập
 
@@ -96,7 +89,6 @@ Trong bài học này, chúng ta sẽ thực hiện một số chỉnh sửa và
 2. **Thêm thẻ meta viewport**:
     - Thêm thẻ meta viewport vào tệp `header.php` và kiểm tra kết quả trên các thiết bị di động.
 
----
 
 ## Hướng dẫn cách làm
 
@@ -107,7 +99,6 @@ Trong bài học này, chúng ta sẽ thực hiện một số chỉnh sửa và
 - Nhấp vào biểu tượng thiết bị di động ở góc trên bên trái của cửa sổ Developer Tools.
 - Chọn các thiết bị di động khác nhau từ menu thả xuống và kiểm tra trang web của bạn.
 
----
 
 ### Thêm thẻ meta viewport
 
@@ -122,7 +113,6 @@ Trong bài học này, chúng ta sẽ thực hiện một số chỉnh sửa và
 
 3. Lưu tệp và kiểm tra trang web của bạn trên các thiết bị di động.
 
----
 
 ## Tổng kết
 

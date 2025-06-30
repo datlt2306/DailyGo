@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng **trường tùy chỉnh** trong WordPress. Bạn có thể tự hỏi trường tùy chỉnh là gì? Hãy đi sâu vào một ví dụ để chúng ta có thể trả lời câu hỏi đó một cách hữu cơ.
 
----
 
 ## Lý thuyết về trường tùy chỉnh
 
@@ -16,7 +15,6 @@ Trong một bài học trước, chúng ta đã viết mã trên trang chủ đ�
 
 Ví dụ, với sự kiện **Ngày thơ**, chúng ta cần một trường hoàn toàn mới để chọn ngày mà sự kiện sẽ diễn ra. Đây chính là lúc **trường tùy chỉnh** phát huy tác dụng. Trường tùy chỉnh cho phép chúng ta thêm thông tin bổ sung vào bài đăng, chẳng hạn như ngày diễn ra sự kiện. Nào, cùng bắt đầu nhé!
 
----
 
 ## Kích hoạt trường tùy chỉnh
 
@@ -48,7 +46,6 @@ add_action('init', 'university_post_types');
 ### Tại sao cần viết như vậy?
 - **`supports`**: Thuộc tính này xác định các tính năng mà loại bài đăng hỗ trợ, chẳng hạn như tiêu đề, nội dung, đoạn trích, và trường tùy chỉnh.
 
----
 
 ## Cài đặt plugin Advanced Custom Fields
 
@@ -60,7 +57,6 @@ Mặc dù WordPress hỗ trợ trường tùy chỉnh mặc định, nhưng giao
 - Tìm kiếm plugin **Advanced Custom Fields**.
 - Nhấn **Install Now** và sau đó **Activate**.
 
----
 
 ## Tạo trường tùy chỉnh
 
@@ -83,7 +79,6 @@ Mặc dù WordPress hỗ trợ trường tùy chỉnh mặc định, nhưng giao
 ### 4. Lưu nhóm trường
 - Nhấn **Publish** để lưu nhóm trường.
 
----
 
 ## Hiển thị trường tùy chỉnh trên giao diện người dùng
 
@@ -119,12 +114,10 @@ wp_reset_postdata();
 - **`get_field()`**: Hàm này lấy dữ liệu từ trường tùy chỉnh được tạo bởi plugin ACF.
 - **`DateTime`**: Chuyển đổi dữ liệu ngày thành đối tượng DateTime để định dạng ngày tháng dễ dàng hơn.
 
----
 
 ### 2. Kết quả
 - Ngày diễn ra sự kiện sẽ hiển thị động trên giao diện người dùng.
 
----
 
 ## Tổng kết
 

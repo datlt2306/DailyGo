@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo **Custom Post Type** trong WordPress. Đây là một tính năng mạnh mẽ giúp chúng ta mở rộng khả năng của WordPress, cho phép tạo các loại nội dung mới như sự kiện, chương trình, giáo sư, và khu học xá. Nào, cùng bắt đầu nhé!
 
----
 
 ## Lý thuyết về Custom Post Type
 
@@ -25,7 +24,6 @@ Trong WordPress, **Post Type** là một loại nội dung. Mặc định, WordP
 - **Mở rộng khả năng**: Tạo các loại nội dung tùy chỉnh để đáp ứng nhu cầu cụ thể.
 - **Thân thiện với người dùng**: Hiển thị nội dung một cách rõ ràng và dễ điều hướng.
 
----
 
 ## Mục lục
 
@@ -36,7 +34,6 @@ Trong WordPress, **Post Type** là một loại nội dung. Mặc định, WordP
 5. [Sử dụng plugin "Must-Use" để bảo vệ loại bài đăng](#sử-dụng-plugin-must-use-để-bảo-vệ-loại-bài-đăng)
 6. [Tổng kết](#tổng-kết)
 
----
 
 ## Tạo Custom Post Type
 
@@ -68,12 +65,10 @@ add_action('init', 'university_post_types');
 - **`labels`**: Tùy chỉnh các nhãn hiển thị trong giao diện quản trị viên.
 - **`menu_icon`**: Thêm biểu tượng cho loại bài đăng trong thanh bên của WordPress Admin.
 
----
 
 ### 2. Kết quả
 - Sau khi lưu tệp, loại bài đăng **Sự kiện** sẽ xuất hiện trong thanh bên của WordPress Admin.
 
----
 
 ## Cấu hình Custom Post Type
 
@@ -87,7 +82,6 @@ add_action('init', 'university_post_types');
 - Sử dụng tham số `menu_icon` để thêm biểu tượng cho loại bài đăng.
 - Truy cập [Dashicons](https://developer.wordpress.org/resource/dashicons/) để chọn biểu tượng.
 
----
 
 ## Sử dụng plugin "Must-Use" để bảo vệ loại bài đăng
 
@@ -121,12 +115,10 @@ add_action('init', 'university_post_types');
 ### Tại sao cần làm như vậy?
 - **Must-Use Plugins**: Đây là loại plugin đặc biệt luôn được kích hoạt, ngay cả khi chủ đề hoặc plugin khác bị thay đổi. Điều này giúp bảo vệ loại bài đăng tùy chỉnh khỏi bị vô tình xóa.
 
----
 
 ### 3. Kết quả
 - Loại bài đăng **Sự kiện** sẽ luôn được kích hoạt, ngay cả khi chủ đề hoặc plugin khác bị thay đổi.
 
----
 
 ## Tổng kết
 

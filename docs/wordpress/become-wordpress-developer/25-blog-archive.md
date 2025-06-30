@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập trang lưu trữ blog trong WordPress. Trang lưu trữ giúp hiển thị các bài đăng blog theo danh mục, tác giả, hoặc ngày tháng. Đây là một phần quan trọng để tổ chức nội dung trên website. Nào, cùng bắt đầu nhé!
 
----
 
 ## Lý thuyết về trang lưu trữ blog
 
@@ -16,7 +15,6 @@ Trang lưu trữ blog trong WordPress là một trang đặc biệt hiển thị
 - **Thân thiện với SEO**: Tăng khả năng hiển thị nội dung trên công cụ tìm kiếm.
 - **Cải thiện trải nghiệm người dùng**: Giúp người dùng tìm kiếm nội dung theo danh mục hoặc tác giả một cách dễ dàng.
 
----
 
 ## Tạo tệp `archive.php`
 
@@ -65,7 +63,6 @@ Trang lưu trữ blog trong WordPress là một trang đặc biệt hiển thị
 - **`the_archive_description()`**: Hiển thị mô tả lưu trữ (nếu có).
 - **`the_excerpt()`**: Hiển thị đoạn trích ngắn của bài viết, giúp người dùng xem trước nội dung.
 
----
 
 ## Hiển thị tiêu đề lưu trữ
 
@@ -78,7 +75,6 @@ Trang lưu trữ blog trong WordPress là một trang đặc biệt hiển thị
 ### 2. Kết quả
 - Tiêu đề lưu trữ sẽ thay đổi động dựa trên loại lưu trữ.
 
----
 
 ## Hiển thị mô tả lưu trữ
 
@@ -94,7 +90,6 @@ Trang lưu trữ blog trong WordPress là một trang đặc biệt hiển thị
 ### Tại sao cần làm như vậy?
 - **Mô tả lưu trữ**: Cung cấp thông tin bổ sung về danh mục hoặc tác giả, giúp người dùng hiểu rõ hơn về nội dung.
 
----
 
 ## Tổng kết
 

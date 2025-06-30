@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em thực hiện một vài chỉnh sửa nhỏ liên quan đến phần blog trên website WordPress của mình. Đây sẽ là một bài học rất nhanh, nhưng rất hữu ích. Nào, cùng bắt đầu nhé!
 
----
 
 ## Lý thuyết về liên kết và trạng thái menu trong WordPress
 
@@ -14,7 +13,6 @@ Liên kết (Links) trong WordPress thường được sử dụng để điều
 ### Trạng thái menu hiện tại
 Trạng thái menu hiện tại (Current Menu Item) là một lớp CSS được thêm vào liên kết để chỉ định rằng người dùng đang ở trang liên quan. Điều này giúp cải thiện trải nghiệm người dùng bằng cách làm nổi bật menu hiện tại.
 
----
 
 ## Cập nhật nút "Xem tất cả các bài đăng trên blog"
 
@@ -30,12 +28,10 @@ Trạng thái menu hiện tại (Current Menu Item) là một lớp CSS được
 ### Tại sao cần viết như vậy?
 - **`site_url()`**: Hàm này trả về URL của website, giúp tạo liên kết động đến trang blog. Điều này đảm bảo rằng liên kết sẽ hoạt động chính xác ngay cả khi URL của website thay đổi.
 
----
 
 ### 2. Kết quả
 - Khi nhấn vào nút, người dùng sẽ được chuyển đến trang danh sách blog.
 
----
 
 ## Sửa liên kết blog trong điều hướng tiêu đề
 
@@ -57,13 +53,11 @@ Trạng thái menu hiện tại (Current Menu Item) là một lớp CSS được
 - **`get_post_type()`**: Hàm này trả về loại bài đăng hiện tại. Nếu loại bài đăng là `post`, liên kết blog sẽ được thêm lớp `current-menu-item`.
 - **`current-menu-item`**: Lớp CSS này giúp làm nổi bật liên kết blog khi người dùng đang ở trang blog, bài đăng blog cá nhân, hoặc màn hình lưu trữ liên quan đến blog.
 
----
 
 ### 2. Kết quả
 - Liên kết blog sẽ hoạt động và chuyển đến trang danh sách blog.
 - Khi người dùng đang ở trang blog, bài đăng blog cá nhân, hoặc màn hình lưu trữ liên quan đến blog, liên kết blog sẽ sáng lên màu vàng để chỉ định trang hiện tại.
 
----
 
 ## Tổng kết
 

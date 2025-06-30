@@ -2,7 +2,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng **Dashboard** của plugin **All In One Security** để quản lý và thiết lập các biện pháp bảo mật cho website WordPress. Đây là nơi các em có thể theo dõi điểm bảo mật, trạng thái các tính năng, và thực hiện các thay đổi cần thiết. Nào, cùng bắt đầu nhé!
 
----
 
 ## Các tab trên Dashboard
 
@@ -20,7 +19,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng **D
 ### 4. **Debugging**
 - Cung cấp thông tin kỹ thuật về WordPress để hỗ trợ xử lý lỗi.
 
----
 
 ## Các tính năng quan trọng trên Dashboard
 
@@ -32,7 +30,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng **D
   2. Chọn **Enable Maintenance Mode**.
   3. Lưu cài đặt.
 
----
 
 ### 2. **Critical Feature Status**
 #### Thay đổi tên người dùng admin
@@ -75,7 +72,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng **D
   1. Vào **Hidden WP Meta Information**.
   2. Kích hoạt tính năng và lưu cài đặt.
 
----
 
 ## Lưu ý về tính năng nâng cao
 
@@ -84,7 +80,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng **D
 - **Cảnh báo**: Có thể gây xung đột với server hoặc plugin.
 - **Lời khuyên**: Chỉ kích hoạt sau khi website chạy ổn định và đã sao lưu cài đặt.
 
----
 
 ## Tóm tắt nhanh
 
@@ -92,6 +87,5 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng **D
 - **Kích hoạt các tính năng cơ bản** như thay đổi tên admin, login lockout, và ẩn meta thông tin.
 - **Cẩn thận với tính năng nâng cao** như đổi URL trang đăng nhập.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em sử dụng Dashboard của plugin **All In One Security** một cách hiệu quả. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công! 🎉

@@ -1,8 +1,7 @@
-# Checklist bảo mật WordPress: Hướng dẫn từ Thầy Đạt
+# Checklist bảo mật WordPress: 
 
 Chào các em, hôm nay thầy sẽ chia sẻ với các em một checklist đầy đủ để bảo mật website WordPress của mình. Đây là danh sách các bước quan trọng mà thầy thường áp dụng cho các website của thầy. Các em hãy đi qua toàn bộ danh sách này và chọn những biện pháp phù hợp với nhu cầu của mình nhé!
 
----
 
 ## Kiểm tra ban đầu và sao lưu
 
@@ -19,7 +18,6 @@ Chào các em, hôm nay thầy sẽ chia sẻ với các em một checklist đ�
 - [ ] Sao lưu file **wp-config.php**.
 - [ ] Vào tab **WP Version Info** và chọn **Remove WP Generator Meta** để ẩn thông tin phiên bản WordPress.
 
----
 
 ## Thiết lập bảo mật
 
@@ -64,7 +62,6 @@ Chào các em, hôm nay thầy sẽ chia sẻ với các em một checklist đ�
 - [ ] Vào tab **404 Detection**, cân nhắc kích hoạt **404 IP Detection**.
 - [ ] Vào tab **Honeypot**, kích hoạt **Honeypot on Login Page**. Nếu cho phép đăng ký, kích hoạt **Honeypot on Registration Page**.
 
----
 
 ## Ngăn chặn SPAM
 
@@ -78,14 +75,12 @@ Chào các em, hôm nay thầy sẽ chia sẻ với các em một checklist đ�
 - [ ] Kích hoạt **Auto Block of SPAM Comment IPs**.
 - [ ] Đặt số lượng tối thiểu cho **Minimum Number of SPAM Comments** (ví dụ: 3).
 
----
 
 ## Menu Tools
 
 ### Tab Password Tool
 - [ ] Kiểm tra độ mạnh của mật khẩu và thay đổi nếu mật khẩu quá yếu.
 
----
 
 ## Tóm tắt nhanh
 
@@ -94,6 +89,5 @@ Chào các em, hôm nay thầy sẽ chia sẻ với các em một checklist đ�
 - **Ngăn chặn SPAM**: Phát hiện và xử lý bình luận spam hiệu quả.
 - **Kiểm tra mật khẩu**: Đảm bảo mật khẩu đủ mạnh để bảo vệ tài khoản.
 
----
 
 Hy vọng checklist này giúp các em dễ dàng thực hiện các bước bảo mật WordPress. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành

@@ -1,4 +1,4 @@
-# Bảo mật file `wp-config.php` trong WordPress: Hướng dẫn từ Thầy Đạt
+# Bảo mật file `wp-config.php` trong WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách bảo vệ file `wp-config.php` – một trong những file quan trọng nhất của WordPress. File này chứa thông tin nhạy cảm như:
 - **Tên cơ sở dữ liệu**.
@@ -8,7 +8,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách bảo vệ file
 
 Nếu hacker truy cập được file này, họ có thể phá hoại website của các em. Vì vậy, việc bảo mật file `wp-config.php` là rất quan trọng. Nào, cùng tìm hiểu nhé!
 
----
 
 ## Các cách bảo vệ file `wp-config.php`
 
@@ -32,14 +31,12 @@ Một cách hiệu quả hơn là sử dụng file `.htaccess` để chặn truy
 
 > **Lưu ý:** Nếu không thấy file `.htaccess`, có thể nó đang bị ẩn. Các em cần bật hiển thị file ẩn trong FTP hoặc hệ điều hành.
 
----
 
 ## Có nên bảo vệ file `wp-config.php`?
 
 ### Lời khuyên của thầy
 Thầy nghĩ rằng các biện pháp bảo mật khác mà chúng ta sẽ thiết lập trong khóa học này sẽ đủ để bảo vệ file `wp-config.php`. Tuy nhiên, nếu các em muốn tăng cường bảo mật, việc thêm đoạn mã vào file `.htaccess` là một lựa chọn tốt.
 
----
 
 ## Tóm tắt nhanh
 
@@ -47,6 +44,5 @@ Thầy nghĩ rằng các biện pháp bảo mật khác mà chúng ta sẽ thi�
 - **Di chuyển file** hoặc sử dụng `.htaccess` để chặn truy cập là hai cách phổ biến.
 - **Thêm mã vào `.htaccess`** để bảo vệ file khỏi bị truy cập trực tiếp.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về cách bảo mật file `wp-config.php`. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công! 🎉

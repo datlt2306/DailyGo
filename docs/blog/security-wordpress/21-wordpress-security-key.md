@@ -1,8 +1,7 @@
-# Tìm hiểu về WordPress Security Keys: Hướng dẫn từ Thầy Đạt
+# Tìm hiểu về WordPress Security Keys: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em về **WordPress Security Keys** – một tính năng bảo mật quan trọng giúp mã hóa thông tin cookie và bảo vệ dữ liệu của website. Đây là một phần không thể thiếu trong file cấu hình `wp-config.php`. Nào, cùng tìm hiểu nhé!
 
----
 
 ## WordPress Security Keys là gì?
 
@@ -17,7 +16,6 @@ WordPress Security Keys là các chuỗi ký tự ngẫu nhiên được sử d�
 - Mã hóa thông tin quan trọng như mật khẩu.
 - Tăng cường bảo mật, khiến hacker khó truy cập dữ liệu.
 
----
 
 ## Cách thiết lập WordPress Security Keys
 
@@ -40,7 +38,6 @@ Nếu các em cài đặt WordPress thủ công qua FTP, các em cần tự tạ
 3. Truy cập trang tạo khóa bảo mật của WordPress: [https://api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/).
 4. Sao chép các khóa được tạo và dán vào file `wp-config.php`, thay thế đoạn `put your unique phrase here`.
 
----
 
 ## Lưu ý quan trọng
 
@@ -48,7 +45,6 @@ Nếu các em cài đặt WordPress thủ công qua FTP, các em cần tự tạ
 - **Luôn sử dụng khóa bảo mật**: Dù cài đặt tự động hay thủ công, các khóa này giúp tăng cường bảo mật cho website.
 - **Mã hóa mật khẩu**: Trong cơ sở dữ liệu MySQL, mật khẩu của các em sẽ được lưu dưới dạng chuỗi mã hóa, khiến hacker khó truy cập.
 
----
 
 ## Tóm tắt nhanh
 
@@ -56,6 +52,5 @@ Nếu các em cài đặt WordPress thủ công qua FTP, các em cần tự tạ
 - **Cài đặt tự động**: Các khóa được tạo sẵn, không cần thao tác thêm.
 - **Cài đặt thủ công**: Tạo khóa tại [https://api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/) và thêm vào file `wp-config.php`.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về WordPress Security Keys và cách thiết lập chúng. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công! 🎉

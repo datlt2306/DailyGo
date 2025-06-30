@@ -1,8 +1,7 @@
-# Bảo mật khi thêm người dùng mới vào WordPress: Hướng dẫn từ Thầy Đạt
+# Bảo mật khi thêm người dùng mới vào WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách bảo mật khi thêm người dùng mới vào website WordPress. Đây là một phần rất quan trọng để bảo vệ website của các em khỏi những rủi ro không đáng có. Nào, cùng bắt đầu nhé!
 
----
 
 ## Tắt tính năng "Anyone Can Register"
 
@@ -17,7 +16,6 @@ Nếu các em là quản trị viên duy nhất của website, hãy đảm bảo
 
 > **Mẹo nhỏ:** Nếu các em muốn tạo một website thành viên hoặc cho phép người dùng đăng ký, hãy sử dụng plugin chuyên dụng như **Wishlist Member** để đảm bảo tính bảo mật và linh hoạt.
 
----
 
 ## Hiểu về các vai trò người dùng trong WordPress
 
@@ -33,7 +31,6 @@ WordPress cung cấp các vai trò người dùng khác nhau, mỗi vai trò có
 
 > **Lưu ý:** Hãy luôn phân quyền tối thiểu cần thiết cho người dùng. Đừng cấp quyền cao hơn chỉ vì "có thể cần trong tương lai". Nếu cần, các em có thể thay đổi vai trò sau.
 
----
 
 ## Thêm người dùng mới vào WordPress
 
@@ -51,7 +48,6 @@ WordPress cung cấp các vai trò người dùng khác nhau, mỗi vai trò có
 
 > **Cảnh báo:** Không cho phép người dùng thay đổi mật khẩu thành mật khẩu yếu. Nếu họ không thích mật khẩu dài, hãy khuyên họ sử dụng trình quản lý mật khẩu như **RoboForm** hoặc **1Password**.
 
----
 
 ## Tóm tắt nhanh
 
@@ -60,6 +56,5 @@ WordPress cung cấp các vai trò người dùng khác nhau, mỗi vai trò có
 - **Thêm người dùng mới**: Sử dụng mật khẩu mạnh và vai trò phù hợp.
 - **Bảo mật mật khẩu**: Không cho phép người dùng sử dụng mật khẩu yếu.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về cách quản lý người dùng trong WordPress một cách an toàn. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành

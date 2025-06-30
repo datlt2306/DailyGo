@@ -2,7 +2,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng các cài đặt chống brute force trong plugin **All In One Security**. Đây là nơi các em có thể bảo vệ trang đăng nhập khỏi các cuộc tấn công brute force bằng cách sử dụng cookie, captcha, whitelist IP, và các biện pháp khác. Nào, cùng bắt đầu nhé!
 
----
 
 ## Các cài đặt chính
 
@@ -15,7 +14,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
 
 > **Lưu ý**: Đây là tính năng trung cấp, cần kiểm tra kỹ sau khi kích hoạt.
 
----
 
 ### 2. **Cookie-Based Brute Force Protection**
 - **Chức năng**: Sử dụng cookie để bảo vệ trang đăng nhập.
@@ -26,7 +24,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
 
 > **Lưu ý**: Nếu bị khóa, chỉnh sửa file `wp-config.php` để vô hiệu hóa tính năng.
 
----
 
 ### 3. **Captcha Settings**
 - **Chức năng**: Thêm captcha vào các trang đăng nhập, đăng ký, và khôi phục mật khẩu.
@@ -35,13 +32,11 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
   2. Nhập site key và secret key từ Google.
   3. Chọn các trang cần kích hoạt captcha và lưu cài đặt.
 
----
 
 ### 4. **Login Whitelist**
 - **Chức năng**: Chỉ cho phép các IP trong danh sách được đăng nhập.
 - **Lưu ý**: Không khuyến nghị sử dụng nếu IP của các em thay đổi thường xuyên.
 
----
 
 ### 5. **404 Detection**
 - **Chức năng**: Khóa IP nếu phát hiện nhiều yêu cầu 404 từ cùng một địa chỉ.
@@ -52,7 +47,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
 
 > **Lưu ý**: Đây là tính năng trung cấp, cần kiểm tra kỹ sau khi kích hoạt.
 
----
 
 ### 6. **Honeypot**
 - **Chức năng**: Thêm trường ẩn trên trang đăng nhập và đăng ký để phát hiện robot.
@@ -60,7 +54,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
   1. Kích hoạt honeypot cho trang đăng nhập hoặc đăng ký.
   2. Lưu cài đặt.
 
----
 
 ## Lời khuyên
 
@@ -68,7 +61,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
 - **Kiểm tra kỹ**: Sau khi kích hoạt các tính năng trung cấp, theo dõi website để đảm bảo không có vấn đề.
 - **Xuất cài đặt định kỳ**: Lưu cài đặt bảo mật để dễ dàng khôi phục khi cần.
 
----
 
 ## Tóm tắt nhanh
 
@@ -78,6 +70,5 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
 - **Honeypot**: Phát hiện robot qua trường ẩn.
 - **404 Detection**: Khóa IP với nhiều yêu cầu 404.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về cách sử dụng các cài đặt chống brute force trong plugin **All In One Security**. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công!

@@ -1,4 +1,4 @@
-# Tổng quan về Request/Response và Middleware cơ bản trong Express
+# Request/Response và Middleware cơ bản trong Express
 
 ## Mục tiêu
 
@@ -7,7 +7,6 @@
 -   Thực hành viết các endpoint đơn giản.
 -   Làm quen với middleware cơ bản, chuẩn bị cho việc sử dụng phương thức POST.
 
----
 
 ## Tổng quan về Request và Response trong Express
 
@@ -27,14 +26,12 @@ Response là thông tin mà server trả về cho client. Trong Express, đối 
 -   **`res.send(data)`**: Trả về dữ liệu dạng text hoặc HTML.
 -   **`res.status(code)`**: Thiết lập mã trạng thái HTTP (ví dụ: 200, 404, 500...), giúp client biết trạng thái của yêu cầu.
 
----
 
 ### Ví dụ minh họa
 
-**src/routers/index.js**
 
-```js
-// filepath: src/routers/index.js
+::: code-group
+```javascript [src/routers/index.js]
 import { Router } from "express";
 
 const router = Router();
@@ -54,10 +51,7 @@ router.get("/posts/:id", (req, res) => {
 export default router;
 ```
 
-**src/app.js**
-
-```js
-// filepath: src/app.js
+```javascript [src/app.js]
 import express from "express";
 import dotenv from "dotenv";
 import router from "./routers";
@@ -71,8 +65,7 @@ app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
 ```
-
----
+:::
 
 ## Bài thực hành nhỏ
 
@@ -82,11 +75,8 @@ app.listen(process.env.PORT || 3000, () => {
 2. Tạo endpoint `GET /api/sum` nhận hai số từ query string (`a` và `b`) và trả về tổng của chúng.
 
 ### Gợi ý
-
-**src/routers/index.js**
-
-```js
-// filepath: src/routers/index.js
+::: code-group
+```javascript [src/routers/index.js]
 // ...existing code...
 
 // GET /greet?name=Ken
@@ -102,8 +92,8 @@ router.get("/sum", (req, res) => {
     res.json({ sum: a + b }); // Trả về tổng của 'a' và 'b'
 });
 ```
+:::
 
----
 
 ## Middleware cơ bản trong Express
 
@@ -139,16 +129,15 @@ Middleware là các hàm trung gian trong Express, được sử dụng để x�
     app.use(express.static("public"));
     ```
 
----
 
 ### Sử dụng `express.json()` để xử lý dữ liệu JSON
 
 Khi client gửi dữ liệu JSON trong body của request (ví dụ: với phương thức POST), cần sử dụng middleware `express.json()` để Express tự động parse dữ liệu JSON thành đối tượng JavaScript.
 
 #### Ví dụ:
+::: code-group
+```javascript [src/app.js]
 
-```js
-// filepath: src/app.js
 app.use(express.json()); // Middleware để parse JSON
 
 app.post("/api/posts", (req, res) => {
@@ -156,10 +145,9 @@ app.post("/api/posts", (req, res) => {
     res.json({ title, content, message: "Dữ liệu đã được xử lý" }); // Trả về JSON với dữ liệu đã xử lý
 });
 ```
-
+:::
 > **Lưu ý:** Nếu không sử dụng `express.json()`, `req.body` sẽ là `undefined`.
 
----
 
 ## Kết luận
 

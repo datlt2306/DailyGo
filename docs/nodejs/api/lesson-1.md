@@ -11,7 +11,6 @@ Khóa học này sẽ giúp các em:
 -   Tích hợp các tính năng bảo mật như xác thực JWT, mã hóa mật khẩu.
 -   Tối ưu hiệu năng và tổ chức code khoa học, dễ mở rộng.
 
----
 
 ## Giới thiệu Node.js
 
@@ -27,7 +26,6 @@ Node.js là một nền tảng (runtime) giúp chạy JavaScript ở phía serve
 -   **Được các công ty lớn sử dụng**: Netflix, LinkedIn, Uber, và nhiều công ty khác đã áp dụng Node.js để xây dựng hệ thống của họ.
 -   **Dễ học**: Nếu đã biết JavaScript, việc học Node.js sẽ rất dễ dàng. Ngoài ra, nhu cầu tuyển dụng Node.js rất cao với mức lương hấp dẫn.
 
----
 
 ### So sánh Node.js với PHP
 
@@ -40,9 +38,8 @@ Node.js là một nền tảng (runtime) giúp chạy JavaScript ở phía serve
 | Học tập           | Dễ nếu đã biết JS             | Dễ bắt đầu cho web            |
 | Ứng dụng phổ biến | API, chat, game, microservice | Website, CMS (WordPress...)   |
 
-Tóm lại, Node.js rất phù hợp cho các ứng dụng hiện đại, cần tốc độ và khả năng mở rộng, còn PHP vẫn mạnh ở mảng web truyền thống, blog, CMS.
+>Tóm lại, Node.js rất phù hợp cho các ứng dụng hiện đại, cần tốc độ và khả năng mở rộng, còn PHP vẫn mạnh ở mảng web truyền thống, blog, CMS.
 
----
 
 ### Khi nào nên chọn Node.js?
 
@@ -51,7 +48,6 @@ Tóm lại, Node.js rất phù hợp cho các ứng dụng hiện đại, cần 
 -   Khi cần tốc độ phát triển nhanh, nhiều thư viện hỗ trợ.
 -   Khi muốn xây dựng hệ thống có khả năng mở rộng và hiệu năng cao.
 
----
 
 ## Chuẩn bị cho khóa học Node.js
 
@@ -62,7 +58,6 @@ Tóm lại, Node.js rất phù hợp cho các ứng dụng hiện đại, cần 
 -   **Networking và HTTP**: Hiểu cách giao tiếp giữa client và server qua giao thức HTTP.
 -   **Cơ sở dữ liệu**: Biết cách làm việc với cơ sở dữ liệu như MongoDB hoặc MySQL.
 
----
 
 ## Thiết lập môi trường
 
@@ -78,7 +73,6 @@ Thầy khuyên dùng `pnpm` thay cho `npm` vì tốc độ cài đặt nhanh và
 npm i -g pnpm
 ```
 
----
 
 ### 3. Khởi tạo dự án Node.js
 
@@ -104,7 +98,6 @@ npm i -g pnpm
     -   `dotenv`: Giúp quản lý các biến môi trường, bảo mật thông tin nhạy cảm.
     -   `morgan`: Hỗ trợ ghi log các request, rất tiện khi debug.
 
----
 
 ### 4. Cài đặt Babel cho dự án
 
@@ -128,7 +121,6 @@ Sau đó, tạo file `.babelrc` ở thư mục gốc với nội dung:
 
 Nhờ vậy, các em có thể dùng cú pháp import/export, async/await... mà không lo Node.js chưa hỗ trợ.
 
----
 
 ### 5. Cấu hình package.json
 
@@ -142,7 +134,6 @@ Thêm script để chạy dự án:
 
 Script này giúp các em chỉ cần chạy `pnpm run dev` là server sẽ tự động khởi động bằng Babel, đồng thời nodemon sẽ theo dõi mọi thay đổi trong mã nguồn và tự động restart server.
 
----
 
 ### 6. Thiết lập cấu trúc thư mục
 
@@ -158,7 +149,6 @@ src/
 └── .gitignore              # Định nghĩa các file/thư mục cần bỏ qua khi đẩy lên Git
 ```
 
----
 
 ### 7. Cấu hình biến môi trường
 
@@ -170,61 +160,91 @@ PORT=8000
 
 Nhờ vậy, khi muốn đổi port, các em chỉ cần sửa file này mà không phải động vào code.
 
----
 
 ### 8. Viết mã nguồn khởi tạo app
 
-**src/app.js**
-
-```js
-// filepath: src/app.js
+::: code-group
+```javascript [src/app.js]
 import express from "express";
 import dotenv from "dotenv";
-import router from "./routers";
 
 dotenv.config();
 const app = express();
-
-app.use("/api", router);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
 ```
+:::
 
----
 
-### 9. Cấu hình router
+### 9. Router là gì?
 
-**src/routers/index.js**
+Router trong Express là một công cụ giúp bạn nhóm các endpoint API liên quan lại với nhau. Nó giống như một "nhánh" trong cây route của ứng dụng, giúp tổ chức code khoa học hơn.
 
-```js
-// filepath: src/routers/index.js
-import { Router } from "express";
-import postsRouter from "./posts";
+#### Tạo router cơ bản
 
-const router = Router();
-router.use("/posts", postsRouter);
+Để tạo một router, bạn sử dụng `Router()` từ thư viện Express. Ví dụ:
 
-export default router;
-```
-
-**src/routers/posts.js**
-
-```js
-// filepath: src/routers/posts.js
+::: code-group
+```javascript [src/routers/posts.js]
 import { Router } from "express";
 
-const router = Router();
+const postsRouter = Router();
 
-router.get("/", (req, res) => {
+postsRouter.get("/", (req, res) => {
     res.json({ message: "Danh sách bài viết" });
 });
 
-export default router;
-```
+postsRouter.post("/", (req, res) => {
+    res.json({ message: "Thêm bài viết mới" });
+});
 
----
+export default postsRouter;
+```
+:::
+Trong ví dụ trên:
+- `Router()` tạo một đối tượng router mới.
+- `postsRouter.get()` định nghĩa một endpoint với phương thức HTTP GET.
+- `postsRouter.post()` định nghĩa một endpoint với phương thức HTTP POST.
+- `res.json()` gửi phản hồi dạng JSON về cho client.
+
+#### Tích hợp router vào ứng dụng
+
+Sau khi tạo router, bạn cần tích hợp nó vào ứng dụng chính bằng `app.use()`:
+
+::: code-group
+```javascript [src/app.js]
+import express from "express";
+import postsRouter from "./routers/posts";
+
+const app = express();
+
+app.use("/api/posts", postsRouter);
+
+app.listen(8000, () => {
+    console.log("Server is running on port 8000");
+});
+```
+:::
+Trong ví dụ trên:
+- `app.use("/api/posts", postsRouter)` gắn router `postsRouter` vào đường dẫn `/api/posts`.
+- Khi client gửi yêu cầu đến `/api/posts`, router `postsRouter` sẽ xử lý.
+
+#### Lợi ích của việc sử dụng router
+
+- **Tổ chức code tốt hơn**: Bạn có thể chia các endpoint theo chức năng (ví dụ: bài viết, người dùng, đơn hàng).
+- **Dễ bảo trì**: Khi cần sửa đổi hoặc thêm endpoint, bạn chỉ cần làm việc với file router tương ứng.
+- **Khả năng mở rộng**: Dễ dàng thêm các router mới mà không làm phức tạp ứng dụng chính.
+
+#### Ví dụ thực tế
+
+Giả sử bạn đang xây dựng một ứng dụng ecommerce. Bạn có thể tạo các router như sau:
+- `productsRouter`: Quản lý các endpoint liên quan đến sản phẩm.
+- `usersRouter`: Quản lý các endpoint liên quan đến người dùng.
+- `ordersRouter`: Quản lý các endpoint liên quan đến đơn hàng.
+
+Nhờ việc sử dụng router, ứng dụng của bạn sẽ trở nên khoa học và dễ quản lý hơn.
 
 ### 10. Chạy thử dự án
 
@@ -236,7 +256,6 @@ pnpm run dev
 
 Nếu thấy dòng "Server is running..." hiện ra, nghĩa là server đã hoạt động.
 
----
 
 ## Kiểm tra API với Postman
 
@@ -251,7 +270,6 @@ Nếu thấy dòng "Server is running..." hiện ra, nghĩa là server đã ho�
    }
    ```
 
----
 
 ## Kết luận
 

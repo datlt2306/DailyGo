@@ -1,8 +1,7 @@
-# Thiết lập đầu trang và chân trang toàn cục: Hướng dẫn từ Thầy Đạt
+# Thiết lập đầu trang và chân trang toàn cục: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập **đầu trang (header)** và **chân trang (footer)** toàn cục trong WordPress. Đây là một bước quan trọng để đảm bảo rằng các phần tiêu đề và chân trang xuất hiện đồng nhất trên mọi trang của website. Nào, cùng bắt đầu nhé!
 
----
 
 ## Mục tiêu của bài học
 
@@ -10,7 +9,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập *
 - Tải tệp CSS để định dạng giao diện.
 - Thêm thanh menu quản trị màu đen ở đầu trang.
 
----
 
 ## Lý thuyết về đầu trang và chân trang
 
@@ -22,7 +20,6 @@ Trong WordPress, **header.php** và **footer.php** là các tệp mẫu (templat
 - **Dễ quản lý**: Khi cần thay đổi nội dung đầu trang hoặc chân trang, chỉ cần sửa trong một tệp duy nhất.
 - **Tích hợp với WordPress**: Các hàm như `wp_head()` và `wp_footer()` giúp WordPress tự động thêm các tài nguyên cần thiết (CSS, JavaScript, v.v.) vào website.
 
----
 
 ## Tạo đầu trang và chân trang
 
@@ -85,7 +82,6 @@ Trong WordPress, **header.php** và **footer.php** là các tệp mẫu (templat
 ### Tại sao viết như vậy?
 - **`get_header()` và `get_footer()`**: Đây là các hàm WordPress dùng để gọi nội dung từ các tệp `header.php` và `footer.php`. Chúng giúp giảm thiểu việc lặp lại mã trong các tệp mẫu.
 
----
 
 ## Tải tệp CSS
 
@@ -126,7 +122,6 @@ footer {
 - **`wp_enqueue_style()`**: Hàm này giúp WordPress tải tệp CSS một cách chính xác và tránh xung đột với các plugin hoặc chủ đề khác.
 - **`get_stylesheet_uri()`**: Trả về đường dẫn đến tệp `style.css` trong thư mục chủ đề.
 
----
 
 ## Thêm thanh menu quản trị
 
@@ -139,7 +134,6 @@ footer {
 ### Tại sao cần `wp_footer()`?
 - Hàm này cho phép WordPress thêm các tài nguyên cần thiết vào cuối trang, bao gồm thanh menu quản trị màu đen khi người dùng đăng nhập.
 
----
 
 ## Tóm tắt nhanh
 
@@ -147,6 +141,5 @@ footer {
 - **Tệp `functions.php`**: Tải tệp CSS để định dạng giao diện.
 - **Thanh menu quản trị**: Sử dụng `wp_footer()` để hiển thị thanh menu quản trị.
 
----
 
 Hy vọng bài viết này giúp các em thiết lập đầu trang và chân trang toàn cục một cách dễ dàng. Trong bài học tiếp theo, chúng ta sẽ bắt đầu thiết kế giao diện đồ họa cho chủ đề của mình. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi!

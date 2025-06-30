@@ -2,7 +2,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng các cài đặt scanner trong plugin **All In One Security** để phát hiện thay đổi file và bảo vệ website khỏi mã độc. Nào, cùng bắt đầu nhé!
 
----
 
 ## Các cài đặt chính
 
@@ -19,19 +18,16 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
 
 > **Lưu ý**: Tính năng này giúp phát hiện các thay đổi bất thường, thường xảy ra khi hacker chèn mã độc vào file.
 
----
 
 ### 2. **Malware Scan**
 - **Chức năng**: Quét mã độc trên website.
 - **Lưu ý**: Tính năng này chỉ khả dụng trong phiên bản **Premium** của plugin.
 
----
 
 ## Tóm tắt nhanh
 
 - **File Change Detection**: Quét và theo dõi thay đổi file để phát hiện mã độc.
 - **Malware Scan**: Tính năng quét mã độc chỉ khả dụng trong phiên bản Premium.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về cách sử dụng các cài đặt scanner trong plugin **All In One Security**. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành

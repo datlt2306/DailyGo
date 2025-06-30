@@ -5,7 +5,6 @@ date: 2023-10-18
 author: Đội ngũ Polytuts
 tags: ["javascript", "tips", "beginner"]
 ---
-
 # 10 thủ thuật JavaScript cho người mới bắt đầu
 
 <div class="blog-post-meta">
@@ -224,7 +223,6 @@ Sau khi nắm vững những thủ thuật cơ bản này, bạn có thể tiế
 
 Hãy nhớ rằng: cách tốt nhất để học JavaScript là thực hành mỗi ngày!
 
----
 
 <div class="post-navigation">
   <div class="prev-post">

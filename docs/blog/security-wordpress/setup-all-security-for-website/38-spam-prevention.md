@@ -2,7 +2,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng các cài đặt ngăn chặn spam trong plugin **All In One Security**. Đây là nơi các em có thể bảo vệ website khỏi các bình luận spam và quản lý IP của các spammer. Nào, cùng bắt đầu nhé!
 
----
 
 ## Các cài đặt chính
 
@@ -13,7 +12,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
   2. Kích hoạt tính năng **Detect Spam Bots Posting Comments**.
   3. Lưu cài đặt.
 
----
 
 ### 2. **Use Cookies to Detect Comment Spam**
 - **Chức năng**: Sử dụng cookie để phát hiện spam bot.
@@ -22,7 +20,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
   1. Kích hoạt tính năng **Use Cookies to Detect Comment Spam**.
   2. Lưu cài đặt.
 
----
 
 ### 3. **Comment Processing**
 - **Chức năng**: Xử lý các bình luận spam.
@@ -31,7 +28,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
   - **Move to Spam Folder**: Di chuyển bình luận spam vào thư mục spam để kiểm tra trước khi xóa.
   - **Trash Spam Comments After 14 Days**: Tự động xóa các bình luận spam sau 14 ngày.
 
----
 
 ### 4. **Comment Spam IP Monitoring**
 - **Chức năng**: Theo dõi IP của các spammer.
@@ -41,7 +37,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
   3. Đặt số lượng bình luận spam tối thiểu (ví dụ: 3) để tự động chặn IP.
   4. Lưu cài đặt.
 
----
 
 ## Tóm tắt nhanh
 
@@ -50,6 +45,5 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng cá
 - **Xử lý bình luận spam**: Chọn xóa ngay hoặc di chuyển vào thư mục spam.
 - **Theo dõi IP spammer**: Tự động chặn IP sau một số lượng bình luận spam.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về cách sử dụng các cài đặt ngăn chặn spam trong plugin **All In One Security**. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công!

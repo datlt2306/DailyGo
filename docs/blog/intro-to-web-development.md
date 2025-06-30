@@ -5,7 +5,6 @@ date: 2023-10-25
 author: Đội ngũ Polytuts
 tags: ["web development", "frontend", "backend", "beginner"]
 ---
-
 # Giới thiệu về phát triển web năm 2023
 
 <div class="blog-post-meta">
@@ -145,7 +144,6 @@ Phát triển web là một hành trình thú vị và đầy thử thách. Bằ
 
 Hãy nhớ rằng thực hành là chìa khóa. Xây dựng dự án, đóng góp vào mã nguồn mở, và không ngừng cải thiện kỹ năng của bạn sẽ giúp bạn phát triển nhanh chóng trong lĩnh vực này.
 
----
 
 <div class="post-navigation">
   <div class="prev-post">

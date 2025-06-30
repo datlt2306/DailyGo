@@ -1,8 +1,7 @@
-# Quyền file và thư mục trong WordPress: Hướng dẫn từ Thầy Đạt
+# Quyền file và thư mục trong WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em về quyền file và thư mục trong WordPress. Đây là một phần quan trọng để bảo vệ website của các em khỏi các nguy cơ bảo mật. Nào, cùng tìm hiểu nhé!
 
----
 
 ## Quyền file và thư mục là gì?
 
@@ -15,7 +14,6 @@ Quyền file và thư mục xác định ai có thể:
 ### Tầm quan trọng
 Thiết lập quyền đúng cách giúp bảo vệ website khỏi việc bị truy cập trái phép hoặc bị thay đổi bởi hacker.
 
----
 
 ## Quyền được khuyến nghị
 
@@ -33,7 +31,6 @@ Thiết lập quyền đúng cách giúp bảo vệ website khỏi việc bị t
 
 > **Lưu ý:** Dù sử dụng 755/644 hay 750/640, cả hai đều đảm bảo bảo mật tốt cho website.
 
----
 
 ## Có cần thiết lập quyền thủ công?
 
@@ -43,7 +40,6 @@ Nếu các em cài đặt WordPress bằng công cụ như **Softaculous**, quy�
 ### Sử dụng plugin bảo mật
 Trong khóa học này, thầy sẽ hướng dẫn các em sử dụng **All In One Security Plugin**. Plugin này sẽ tự động kiểm tra và sửa các quyền file và thư mục nếu cần thiết.
 
----
 
 ## Tóm tắt nhanh
 
@@ -53,6 +49,5 @@ Trong khóa học này, thầy sẽ hướng dẫn các em sử dụng **All In 
 - **Không cần thiết lập thủ công** nếu cài đặt WordPress đúng cách.
 - **Sử dụng plugin bảo mật** để kiểm tra và sửa quyền file nếu cần.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về quyền file và thư mục trong WordPress. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành

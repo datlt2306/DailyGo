@@ -2,7 +2,6 @@
 
 Trong bài viết này, chúng ta sẽ tìm hiểu về các hàm xử lý mảng phổ biến trong JavaScript. Các hàm này giúp chúng ta thao tác với mảng một cách dễ dàng và hiệu quả.
 
----
 
 
 ## 1. `map()`
@@ -18,7 +17,6 @@ const squaredNumbers = numbers.map((num) => num * num);
 console.log(squaredNumbers); // [1, 4, 9, 16, 25]
 ```
 
----
 
 ## 2. `filter()`
 
@@ -33,7 +31,6 @@ const evenNumbers = numbers.filter((num) => num % 2 === 0);
 console.log(evenNumbers); // [2, 4]
 ```
 
----
 
 ## 3. `reduce()`
 
@@ -48,7 +45,6 @@ const sum = numbers.reduce((acc, num) => acc + num, 0);
 console.log(sum); // 15
 ```
 
----
 
 ## 4. `forEach()`
 
@@ -68,7 +64,6 @@ numbers.forEach((num) => console.log(num));
 // 5
 ```
 
----
 
 ## 5. `find()`
 
@@ -83,7 +78,6 @@ const firstEven = numbers.find((num) => num % 2 === 0);
 console.log(firstEven); // 2
 ```
 
----
 
 ## 6. `some()` và `every()`
 
@@ -103,7 +97,6 @@ const allPositive = numbers.every((num) => num > 0);
 console.log(allPositive); // true
 ```
 
----
 
 ## 7. Todo List CRUD với mảng
 
@@ -133,7 +126,6 @@ Trước khi bắt đầu viết code cho bài tập Todo List, hãy thực hi�
    - **Cập nhật trạng thái công việc**: Viết hàm để thay đổi giá trị `completed` của một công việc dựa trên `id`.
    - **Xóa công việc**: Viết hàm để loại bỏ một công việc khỏi mảng dựa trên `id`.
 
----
 ### Ví dụ:
 
 ```javascript
@@ -197,7 +189,6 @@ Danh sách công việc: [
 ]
 ```
 
----
 
 ## Giao diện Todo List
 
@@ -268,7 +259,6 @@ Trước khi bắt đầu viết logic cho Todo List, chúng ta cần tạo mộ
 </html>
 ```
 
----
 
 ### JavaScript:
 
@@ -327,7 +317,6 @@ document.getElementById("add-todo-btn").addEventListener("click", () => {
 });
 ```
 
----
 
 ## Kết luận
 

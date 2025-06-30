@@ -9,7 +9,6 @@ Xây dựng hệ thống quản lý sách cho một thư viện nhỏ, bao gồm
 - Ghi nhận việc mượn/trả sách.
 - Tìm kiếm sách.
 
----
 
 ## 2. Phân Tích Yêu Cầu
 
@@ -23,7 +22,6 @@ Xây dựng hệ thống quản lý sách cho một thư viện nhỏ, bao gồm
 - **Admin**: Quản lý sách, xem tất cả lịch sử mượn sách, cập nhật trạng thái trả sách.
 - **User**: Tìm kiếm sách, xem lịch sử mượn sách của mình, tạo phiếu mượn sách.
 
----
 
 ## 3. Thiết Kế Cơ Sở Dữ Liệu
 
@@ -65,7 +63,6 @@ Xây dựng hệ thống quản lý sách cho một thư viện nhỏ, bao gồm
 }
 ```
 
----
 
 ## 4. Thiết Kế API
 
@@ -92,7 +89,6 @@ Xây dựng hệ thống quản lý sách cho một thư viện nhỏ, bao gồm
 #### Tìm Kiếm Sách
 - **GET /books/search**: Tìm kiếm sách theo tên, thể loại, hoặc tác giả.
 
----
 
 ## 5. Lập Kế Hoạch Phát Triển
 
@@ -109,7 +105,6 @@ Xây dựng hệ thống quản lý sách cho một thư viện nhỏ, bao gồm
 - Cải thiện hiệu suất truy vấn.
 - Thêm tính năng báo cáo và thống kê.
 
----
 
 ## 6. Lưu Ý Khi Triển Khai
 
@@ -117,7 +112,6 @@ Xây dựng hệ thống quản lý sách cho một thư viện nhỏ, bao gồm
 - **Hiệu suất**: Sử dụng index cho các trường thường xuyên tìm kiếm (ví dụ: tên sách, tác giả).
 - **Kiểm thử**: Viết test cho các API quan trọng.
 
----
 
 ## 7. Kết Luận
 

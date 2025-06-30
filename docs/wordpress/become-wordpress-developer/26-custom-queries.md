@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em về **truy vấn tùy chỉnh** trong WordPress. Đây là một khái niệm quan trọng giúp chúng ta kiểm soát nội dung hiển thị trên website. Truy vấn tùy chỉnh cho phép chúng ta tải bất kỳ nội dung nào, ở bất kỳ đâu, bất kể URL hiện tại. Nào, cùng bắt đầu nhé!
 
----
 
 ## Lý thuyết về truy vấn tùy chỉnh
 
@@ -23,7 +22,6 @@ Truy vấn tùy chỉnh sử dụng lớp `WP_Query` để tạo các truy vấn
 - Hiển thị bài đăng từ một danh mục cụ thể.
 - Hiển thị bài đăng theo thứ tự tùy chỉnh.
 
----
 
 
 ## Truy vấn mặc định của WordPress
@@ -38,7 +36,6 @@ Truy vấn tùy chỉnh sử dụng lớp `WP_Query` để tạo các truy vấn
 - Không thể tùy chỉnh nội dung hiển thị theo nhu cầu cụ thể.
 - Để giải quyết vấn đề này, chúng ta cần sử dụng **truy vấn tùy chỉnh**.
 
----
 
 ## Tạo truy vấn tùy chỉnh
 
@@ -57,7 +54,6 @@ $custom_query = new WP_Query(array(
 - **`WP_Query`**: Đây là lớp mạnh mẽ trong WordPress, cho phép bạn tạo các truy vấn tùy chỉnh để lấy nội dung theo tiêu chí cụ thể.
 - **`posts_per_page`**: Xác định số lượng bài đăng cần hiển thị trên mỗi trang.
 
----
 
 ### 2. Các tham số phổ biến
 - **`posts_per_page`**: Số lượng bài đăng trên mỗi trang.
@@ -66,7 +62,6 @@ $custom_query = new WP_Query(array(
 - **`orderby`**: Sắp xếp bài đăng theo tiêu chí (ví dụ: `date`, `title`).
 - **`order`**: Thứ tự sắp xếp (`ASC` hoặc `DESC`).
 
----
 
 ## Hiển thị nội dung với truy vấn tùy chỉnh
 
@@ -93,7 +88,6 @@ wp_reset_postdata(); // Dọn dẹp sau khi sử dụng truy vấn tùy chỉnh
 - **`the_post()`**: Lấy dữ liệu của bài đăng hiện tại trong truy vấn.
 - **`wp_reset_postdata()`**: Dọn dẹp dữ liệu sau khi sử dụng truy vấn tùy chỉnh để tránh xung đột với truy vấn mặc định.
 
----
 
 ### 2. Kết hợp với HTML
 - Sử dụng cấu trúc HTML để định dạng nội dung:
@@ -117,7 +111,6 @@ wp_reset_postdata(); // Dọn dẹp sau khi sử dụng truy vấn tùy chỉnh
 - **HTML và CSS**: Kết hợp với các lớp CSS như `headline`, `metabox`, và `btn` để định dạng giao diện.
 - **`the_permalink()` và `the_title()`**: Hiển thị liên kết và tiêu đề bài đăng.
 
----
 
 ## Tổng kết
 

@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tiếp tục xây dựng phần blog trên website WordPress của mình. Trong bài học trước, chúng ta đã tạo trang danh sách blog. Bây giờ, chúng ta sẽ thêm tính năng phân trang và cải thiện giao diện của các bài đăng blog cá nhân. Nào, cùng bắt đầu nhé!
 
----
 
 ## Lý thuyết về phân trang và giao diện bài đăng blog
 
@@ -19,7 +18,6 @@ Phân trang (Pagination) là một tính năng giúp chia nội dung thành nhi�
 ### Giao diện bài đăng blog cá nhân
 Giao diện bài đăng blog cá nhân là nơi hiển thị chi tiết nội dung của một bài viết. Nó bao gồm tiêu đề, thông tin tác giả, ngày đăng, danh mục, và nội dung bài viết.
 
----
 
 ## Thêm tính năng phân trang
 
@@ -31,7 +29,6 @@ Giao diện bài đăng blog cá nhân là nơi hiển thị chi tiết nội du
 ### Tại sao cần làm như vậy?
 - **Blog pages show at most**: Cài đặt này xác định số lượng bài đăng được hiển thị trên mỗi trang blog. Việc giới hạn số lượng bài đăng giúp phân trang hoạt động hiệu quả.
 
----
 
 ### 2. Thêm liên kết phân trang
 - Mở tệp `index.php` trong thư mục chủ đề.
@@ -48,7 +45,6 @@ echo paginate_links(); // Hiển thị liên kết phân trang
 ### Tại sao cần viết như vậy?
 - **`paginate_links()`**: Hàm này tự động tạo các liên kết phân trang dựa trên số lượng bài đăng và cài đặt trong WordPress. Nó giúp người dùng dễ dàng chuyển đổi giữa các trang.
 
----
 
 ## Cải thiện giao diện bài đăng blog cá nhân
 
@@ -78,7 +74,6 @@ echo paginate_links(); // Hiển thị liên kết phân trang
 - **`get_the_category_list()`**: Hiển thị danh sách các danh mục mà bài đăng thuộc về.
 - **`the_content()`**: Hiển thị nội dung đầy đủ của bài đăng.
 
----
 
 ## Tổng kết
 

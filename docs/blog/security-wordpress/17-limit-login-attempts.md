@@ -1,8 +1,7 @@
-# Bảo mật chống tấn công brute force trong WordPress: Hướng dẫn từ Thầy Đạt
+# Bảo mật chống tấn công brute force trong WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách bảo vệ website WordPress khỏi tấn công brute force. Đây là một hình thức tấn công phổ biến mà hacker sử dụng để cố gắng truy cập vào website của các em. Nào, cùng tìm hiểu nhé!
 
----
 
 ## Tấn công brute force là gì?
 
@@ -16,7 +15,6 @@ Theo một nghiên cứu của **Wordfence**, trong vòng 16 giờ, đã có:
 
 > **Lưu ý:** Đây là một hình thức tấn công cơ bản nhưng rất phổ biến.
 
----
 
 ## Cách chống tấn công brute force
 
@@ -34,7 +32,6 @@ Một cách hiệu quả để ngăn chặn brute force là giới hạn số l�
 2. **Cài đặt plugin khi cài WordPress**:
    - Nếu các em sử dụng công cụ như **Softaculous** để cài WordPress, công cụ này có thể tự động cài đặt plugin giới hạn đăng nhập.
 
----
 
 ## Sử dụng plugin bảo mật toàn diện
 
@@ -45,7 +42,6 @@ Thay vì cài đặt riêng lẻ plugin giới hạn đăng nhập, các em có 
 - Đợi đến khi các em thiết lập plugin bảo mật toàn diện để tích hợp tính năng giới hạn đăng nhập.
 - Plugin này sẽ giúp các em quản lý bảo mật một cách dễ dàng và hiệu quả.
 
----
 
 ## Tóm tắt nhanh
 
@@ -53,6 +49,5 @@ Thay vì cài đặt riêng lẻ plugin giới hạn đăng nhập, các em có 
 - **Giới hạn số lần đăng nhập** để chặn IP sau một số lần thất bại.
 - **Sử dụng plugin bảo mật toàn diện** như All In One Security Plugin để bảo vệ website toàn diện.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em bảo vệ website WordPress khỏi tấn công brute force. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công! 🎉

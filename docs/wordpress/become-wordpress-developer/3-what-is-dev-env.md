@@ -1,8 +1,7 @@
-# Thiết lập môi trường phát triển WordPress: Hướng dẫn từ Thầy Đạt
+# Thiết lập môi trường phát triển WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập môi trường phát triển WordPress cục bộ trên máy tính cá nhân. Đây là bước đầu tiên để các em bắt đầu hành trình trở thành nhà phát triển WordPress. Nào, cùng bắt đầu nhé!
 
----
 
 ## Môi trường phát triển là gì?
 
@@ -15,7 +14,6 @@ Làm việc cục bộ nghĩa là các em sẽ cài đặt WordPress trực ti�
 - Lưu các thay đổi ngay lập tức mà không cần tải lên máy chủ.
 - Chỉ đẩy các tệp lên máy chủ khi trang web đã hoàn thiện.
 
----
 
 ## Cài đặt WordPress cục bộ
 
@@ -50,7 +48,6 @@ Thầy khuyên các em sử dụng **Local by Flywheel** vì nó dễ sử dụn
    - Nhấn **Start Site** ở góc trên cùng bên phải.
    - Nhấn **View Site** để xem trang web WordPress cục bộ của bạn.
 
----
 
 ## Quản lý tệp WordPress
 
@@ -63,7 +60,6 @@ Thầy khuyên các em sử dụng **Local by Flywheel** vì nó dễ sử dụn
   - **themes**: Chứa các chủ đề đã cài đặt.
   - Trong khóa học này, chúng ta sẽ tạo một thư mục mới tại đây để phát triển chủ đề tùy chỉnh.
 
----
 
 ## Tóm tắt nhanh
 
@@ -72,6 +68,5 @@ Thầy khuyên các em sử dụng **Local by Flywheel** vì nó dễ sử dụn
 - **Công cụ đề xuất**: Sử dụng Local by Flywheel để cài đặt dễ dàng.
 - **Quản lý tệp**: Tìm hiểu vị trí và cấu trúc tệp WordPress trên máy tính.
 
----
 
 Hy vọng bài viết này giúp các em thiết lập môi trường phát triển WordPress một cách dễ dàng. Trong bài học tiếp theo, chúng ta sẽ bắt đầu tìm hiểu về PHP, ngôn ngữ cốt lõi của WordPress. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu viết mã ngay

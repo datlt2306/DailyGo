@@ -2,7 +2,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách kích hoạt **xác thực hai yếu tố (two-factor authentication)** để tăng cường bảo mật cho website WordPress. Đây là một tính năng mạnh mẽ giúp bảo vệ tài khoản khỏi các cuộc tấn công. Nào, cùng bắt đầu nhé!
 
----
 
 ## Cài đặt xác thực hai yếu tố
 
@@ -20,7 +19,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách kích hoạt **
 
 > **Lưu ý:** Nhấn **Save Changes** sau khi thực hiện các thay đổi.
 
----
 
 ### 2. **Cài đặt cá nhân**
 - Vào **WP Security** > **Two Factor Authentication**.
@@ -30,7 +28,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách kích hoạt **
   - Sử dụng ứng dụng như **Google Authenticator** trên điện thoại để quét mã QR.
   - Ứng dụng sẽ liên kết với website và hiển thị mã OTP (One-Time Password).
 
----
 
 ## Quy trình đăng nhập với xác thực hai yếu tố
 
@@ -39,14 +36,12 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách kích hoạt **
 3. Nhập mã OTP từ ứng dụng trên điện thoại.
 4. Nhấn **Enter** để truy cập dashboard.
 
----
 
 ## Tắt xác thực hai yếu tố
 
 - Vào **WP Security** > **Two Factor Authentication**.
 - Nhấn **Disable** và lưu cài đặt.
 
----
 
 ## Tóm tắt nhanh
 
@@ -55,6 +50,5 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách kích hoạt **
 - **Quy trình đăng nhập**: Nhập mã OTP từ ứng dụng để truy cập.
 - **Tắt xác thực**: Có thể vô hiệu hóa khi cần.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về cách kích hoạt xác thực hai yếu tố trong plugin **All In One Security**. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công!

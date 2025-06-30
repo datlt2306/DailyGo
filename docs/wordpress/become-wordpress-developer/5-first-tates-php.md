@@ -1,4 +1,4 @@
-# Làm quen với PHP trong WordPress: Hướng dẫn từ Thầy Đạt
+# Làm quen với PHP trong WordPress: 
 
 ## Giới thiệu
 
@@ -10,7 +10,6 @@ PHP (Hypertext Preprocessor) là một ngôn ngữ lập trình phía máy chủ
 - **Xử lý logic**: Tạo điều kiện, vòng lặp, và các thao tác phức tạp.
 - **Kết hợp với HTML**: Hiển thị nội dung động trên giao diện người dùng.
 
----
 
 ## Mục tiêu bài học
 
@@ -18,7 +17,6 @@ PHP (Hypertext Preprocessor) là một ngôn ngữ lập trình phía máy chủ
 - Hiểu cách PHP hoạt động trong WordPress.
 - Tạo một tệp PHP thử nghiệm để thực hành.
 
----
 
 ## Thiết lập môi trường làm việc
 
@@ -33,7 +31,6 @@ Thầy khuyên các em sử dụng **Visual Studio Code** – một trình soạ
 2. Tải xuống và cài đặt từ [code.visualstudio.com](https://code.visualstudio.com).
 3. Mở Visual Studio Code và tạo một tệp mới.
 
----
 
 ## Tạo tệp PHP thử nghiệm
 
@@ -52,7 +49,6 @@ echo "Hello, WordPress!";
 - Mở trình duyệt và truy cập URL của trang web cục bộ, thêm `/test.php` vào cuối.
 - Ví dụ: `http://localhost/test.php`.
 
----
 
 ## Làm quen với cú pháp PHP
 
@@ -85,13 +81,11 @@ $name = "Thầy Đạt";
 ```
 - **Giải thích**: Biến `$name` lưu trữ giá trị `"Thầy Đạt"` và được sử dụng để hiển thị nội dung động.
 
----
 
 ## Xóa tệp thử nghiệm
 
 Sau khi hoàn thành bài học, các em có thể xóa tệp `test.php` để giữ cho thư mục WordPress gọn gàng. Nếu muốn giữ lại để tham khảo, cũng không sao.
 
----
 
 ## Tóm tắt nhanh
 
@@ -100,6 +94,5 @@ Sau khi hoàn thành bài học, các em có thể xóa tệp `test.php` để g
 - **Tệp thử nghiệm**: Tạo tệp PHP để thực hành cú pháp cơ bản.
 - **Xóa tệp**: Dọn dẹp thư mục sau khi hoàn thành bài học.
 
----
 
 Hy vọng bài viết này giúp các em làm quen với PHP một cách dễ dàng. Trong bài học tiếp theo, chúng ta sẽ bắt đầu viết mã để tạo chủ đề WordPress tùy chỉnh. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi! 🎉

@@ -2,7 +2,6 @@
 title: Blog | Polytuts Learning
 description: Bài viết và cập nhật mới nhất về lập trình web, JavaScript, React, Node.js và hơn thế nữa
 ---
-
 # Blog
 
 Chào mừng bạn đến với blog của Polytuts! Đây là nơi chúng tôi chia sẻ các bài viết, hướng dẫn, mẹo và thông tin mới nhất về lập trình web.

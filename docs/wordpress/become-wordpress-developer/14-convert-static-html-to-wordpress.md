@@ -6,7 +6,6 @@ Chào mừng bạn đã trở lại!
 
 Trong bài học này, chúng ta sẽ học cách chuyển đổi một trang HTML và CSS tĩnh thành một chủ đề WordPress sống động. Đến thời điểm này của khóa học, chủ đề và trang web WordPress mà chúng tôi đang làm việc không có phong cách hoặc thiết kế nào cho nó. Điều này không thực tế lắm phải không? Vì vậy, chúng ta cần thêm thiết kế và hướng nghệ thuật vào chủ đề của chúng ta.
 
----
 
 ## Lý thuyết về chuyển đổi HTML tĩnh sang WordPress
 
@@ -29,13 +28,11 @@ https://github.com/learnwebcode/university-static
 
 Tại đây, bạn chỉ cần sử dụng nút "Clone or download" và chọn "Download ZIP". Sau khi tải xuống và giải nén tệp ZIP, bạn sẽ có một thư mục có tên là `university-static-master`.
 
----
 
 ## 2. Xem trước HTML tĩnh
 
 Trước tiên, hãy xem trước tệp HTML đã được lập chỉ mục trong trình duyệt web của bạn. Mở tệp `index.html` từ thư mục `university-static-master` trong trình duyệt của bạn. Bạn sẽ thấy một trang HTML tĩnh không có PHP và hoàn toàn không liên quan gì đến WordPress.
 
----
 
 ## 3. Chuyển HTML tĩnh sang chủ đề WordPress
 
@@ -92,7 +89,6 @@ Tệp `index.php` là tệp mẫu chính của WordPress. Chúng ta sẽ sử d�
 <?php get_footer(); ?> <!-- Gọi tệp footer.php -->
 ```
 
----
 
 ## 4. Tích hợp CSS và JavaScript
 
@@ -116,7 +112,6 @@ add_action('wp_enqueue_scripts', 'university_files'); // Kích hoạt hàm unive
 - **`wp_enqueue_script()`**: Hàm này giúp tải tệp JavaScript vào website.
 - **`add_action()`**: Kích hoạt các hàm trên tại thời điểm WordPress tải tài nguyên.
 
----
 
 ## Bài tập
 
@@ -124,7 +119,6 @@ add_action('wp_enqueue_scripts', 'university_files'); // Kích hoạt hàm unive
 2. Bao gồm các tệp này trong tệp `index.php` của bạn bằng cách sử dụng các hàm `get_header()` và `get_footer()`.
 3. Tạo tệp `functions.php` và thêm mã để tải các tệp CSS và JavaScript.
 
----
 
 ## Tổng kết
 

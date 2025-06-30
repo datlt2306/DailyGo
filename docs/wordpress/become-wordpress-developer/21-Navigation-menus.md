@@ -4,7 +4,6 @@ Chào mừng bạn đã trở lại!
 
 Trong bài học này, chúng ta sẽ tìm hiểu cách thiết lập menu điều hướng động mà bạn có thể kiểm soát từ bên trong quản trị viên WordPress. Hãy đi sâu vào và để tôi cho bạn thấy những gì tôi đang đề cập đến.
 
----
 
 ## Lý thuyết về menu điều hướng động trong WordPress
 
@@ -16,13 +15,11 @@ Menu điều hướng động trong WordPress là một danh sách các liên k�
 - **Tùy chỉnh linh hoạt**: Menu có thể được gán vào nhiều vị trí khác nhau như header, footer, hoặc sidebar.
 - **Thân thiện với người dùng**: Giúp người dùng dễ dàng điều hướng giữa các phần của website.
 
----
 
 ## Giới thiệu về bài giảng
 
 Trong bài học này, chúng ta sẽ học cách thiết lập menu điều hướng động trong WordPress. Điều này sẽ giúp bạn dễ dàng kiểm soát và cập nhật menu từ giao diện quản trị viên mà không cần chỉnh sửa mã nguồn.
 
----
 
 ## Đăng ký vị trí menu trong WordPress
 
@@ -47,7 +44,6 @@ add_action('after_setup_theme', 'university_features');
 - **`register_nav_menus()`**: Hàm này đăng ký các vị trí menu để bạn có thể gán menu từ giao diện quản trị viên.
 - **`after_setup_theme`**: Hook này đảm bảo rằng các vị trí menu được đăng ký khi chủ đề được kích hoạt.
 
----
 
 ## Tạo menu trong quản trị viên WordPress
 
@@ -60,7 +56,6 @@ add_action('after_setup_theme', 'university_features');
 ### Tại sao cần làm như vậy?
 - Giao diện quản trị viên giúp bạn dễ dàng thêm, xóa, hoặc sắp xếp các liên kết mà không cần chỉnh sửa mã nguồn.
 
----
 
 ## Xuất menu động trong tệp mẫu
 
@@ -109,7 +104,6 @@ add_action('after_setup_theme', 'university_features');
 - **`wp_nav_menu()`**: Hàm này hiển thị menu dựa trên vị trí đã đăng ký.
 - **`menu_class`**: Thêm lớp CSS để tùy chỉnh giao diện menu.
 
----
 
 ## Bài tập
 
@@ -120,7 +114,6 @@ add_action('after_setup_theme', 'university_features');
 2. **Tùy chỉnh menu**:
     - Thêm CSS để tùy chỉnh giao diện của menu động.
 
----
 
 ## Hướng dẫn cách làm
 
@@ -140,7 +133,6 @@ register_nav_menus(array(
 3. Truy cập vào **Appearance > Menus** và tạo một menu mới.
 4. Gán menu này vào vị trí `"Sidebar Menu Location"`.
 
----
 
 ### Tùy chỉnh menu
 
@@ -172,7 +164,6 @@ register_nav_menus(array(
 
 3. Lưu tệp và làm mới trang web của bạn để xem các thay đổi.
 
----
 
 ## Tổng kết
 

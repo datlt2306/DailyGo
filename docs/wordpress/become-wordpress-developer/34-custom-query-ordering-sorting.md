@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách kiểm soát cách thức sắp xếp và lọc bài đăng trong WordPress bằng **truy vấn tùy chỉnh**. Truy vấn tùy chỉnh là một công cụ mạnh mẽ giúp chúng ta kiểm soát cách dữ liệu được truy vấn từ cơ sở dữ liệu và hiển thị trên giao diện người dùng.
 
----
 
 ## Lý thuyết về sắp xếp và lọc bài đăng
 
@@ -17,7 +16,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách kiểm soát c�
 - **`order`**: Xác định thứ tự sắp xếp (`ASC` hoặc `DESC`).
 - **`meta_query`**: Cho phép lọc bài đăng dựa trên giá trị của trường tùy chỉnh.
 
----
 
 ## Mục lục
 
@@ -25,7 +23,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách kiểm soát c�
 2. [Lọc bài đăng theo trường tùy chỉnh](#lọc-bài-đăng-theo-trường-tùy-chỉnh)
 3. [Tổng kết](#tổng-kết)
 
----
 
 ## Sắp xếp bài đăng
 
@@ -47,7 +44,6 @@ $homepageEvents = new WP_Query(array(
 - **`orderby`**: Sắp xếp bài đăng theo tiêu chí cụ thể, ở đây là tiêu đề (`title`).
 - **`order`**: Xác định thứ tự sắp xếp, `ASC` là tăng dần và `DESC` là giảm dần.
 
----
 
 ### 2. Sắp xếp ngẫu nhiên
 - Thay đổi giá trị `orderby` thành `rand` để sắp xếp ngẫu nhiên:
@@ -65,7 +61,6 @@ $homepageEvents = new WP_Query(array(
 ### Tại sao cần viết như vậy?
 - **`rand`**: Giá trị này giúp sắp xếp bài đăng theo thứ tự ngẫu nhiên, tạo sự đa dạng cho nội dung hiển thị.
 
----
 
 ### 3. Sắp xếp theo ngày diễn ra sự kiện
 - Sử dụng trường tùy chỉnh `event_date` để sắp xếp bài đăng:
@@ -86,7 +81,6 @@ $homepageEvents = new WP_Query(array(
 - **`meta_value_num`**: Sắp xếp bài đăng dựa trên giá trị số của trường tùy chỉnh.
 - **`meta_key`**: Xác định trường tùy chỉnh cần sử dụng để sắp xếp, ở đây là `event_date`.
 
----
 
 ## Lọc bài đăng theo trường tùy chỉnh
 
@@ -119,12 +113,10 @@ $homepageEvents = new WP_Query(array(
 - **`compare`**: Xác định điều kiện so sánh, ở đây là `>=` (lớn hơn hoặc bằng).
 - **`type`**: Xác định kiểu dữ liệu của trường tùy chỉnh, ở đây là `NUMERIC`.
 
----
 
 ### 2. Kết quả
 - Các sự kiện trong quá khứ sẽ bị loại bỏ khỏi danh sách hiển thị.
 
----
 
 ## Tổng kết
 

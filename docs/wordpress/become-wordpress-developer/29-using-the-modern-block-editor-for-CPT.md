@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách sử dụng **trình chỉnh sửa khối hiện đại** cho loại bài đăng tùy chỉnh trong WordPress. Trình chỉnh sửa khối (Block Editor) là một công cụ mạnh mẽ giúp các em tạo nội dung trực quan hơn, dễ dàng hơn, và tích hợp tốt hơn với các tính năng hiện đại của WordPress.
 
----
 
 ## Lý thuyết về trình chỉnh sửa khối
 
@@ -19,7 +18,6 @@ Trình chỉnh sửa khối (Block Editor), còn được gọi là Gutenberg, l
 ### Mặc định của loại bài đăng tùy chỉnh
 Theo mặc định, các loại bài đăng tùy chỉnh sẽ sử dụng trình chỉnh sửa cổ điển. Tuy nhiên, chúng ta có thể kích hoạt trình chỉnh sửa khối bằng cách thêm thuộc tính `show_in_rest` khi đăng ký loại bài đăng.
 
----
 
 ## Cập nhật mã đăng ký loại bài đăng tùy chỉnh
 
@@ -51,7 +49,6 @@ add_action('init', 'university_post_types');
 - **`show_in_rest`**: Thuộc tính này kích hoạt REST API cho loại bài đăng, cho phép trình chỉnh sửa khối hoạt động.
 - **REST API**: Là nền tảng của trình chỉnh sửa khối, giúp WordPress giao tiếp với các công nghệ hiện đại.
 
----
 
 ## Kiểm tra trình chỉnh sửa khối
 
@@ -64,7 +61,6 @@ add_action('init', 'university_post_types');
 - **Hỗ trợ các khối nội dung hiện đại**: Tích hợp tốt với các tính năng như hình ảnh, video, và biểu mẫu.
 - **Tích hợp REST API**: Cho phép sử dụng các công nghệ hiện đại để mở rộng tính năng.
 
----
 
 ## Tổng kết
 

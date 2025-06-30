@@ -4,7 +4,6 @@ Chào mừng bạn đã trở lại!
 
 Trong bài học này, chúng ta sẽ tiếp tục học cách chuyển đổi một trang HTML và CSS tĩnh thành một chủ đề WordPress sống động. Đến thời điểm này của khóa học, chủ đề và trang web WordPress mà chúng tôi đang làm việc không có phong cách hoặc thiết kế nào cho nó. Điều này không thực tế lắm phải không? Vì vậy, chúng ta cần thêm thiết kế và hướng nghệ thuật vào chủ đề của chúng ta.
 
----
 
 ## Lý thuyết về chuyển đổi HTML tĩnh sang WordPress
 
@@ -17,7 +16,6 @@ HTML tĩnh chỉ phù hợp với các trang web đơn giản, không có khả 
 ### Các tệp mẫu (Template Files) trong WordPress
 WordPress sử dụng các tệp mẫu như `header.php`, `footer.php`, và `index.php` để xây dựng giao diện website. Các tệp này giúp bạn tổ chức mã HTML và PHP một cách rõ ràng và dễ quản lý.
 
----
 
 ## 1. Bắt đầu với tiêu đề
 
@@ -64,7 +62,6 @@ Mở tệp `header.php` trong thư mục chủ đề WordPress của bạn và d
 ### Tại sao cần viết như vậy?
 - **`wp_head()`**: Hàm này cho phép WordPress tự động thêm các tài nguyên như CSS, JavaScript, và meta tags vào phần `<head>` của trang.
 
----
 
 ## 2. Chuyển phần chân trang
 
@@ -93,7 +90,6 @@ Mở tệp `footer.php` trong thư mục chủ đề WordPress của bạn và d
 ### Tại sao cần viết như vậy?
 - **`wp_footer()`**: Hàm này cho phép WordPress thêm các tài nguyên như JavaScript vào cuối trang, đảm bảo website hoạt động đúng cách.
 
----
 
 ## 3. Tích hợp CSS và JavaScript
 
@@ -118,7 +114,6 @@ add_action('wp_enqueue_scripts', 'university_files'); // Kích hoạt hàm unive
 - **`wp_enqueue_script()`**: Hàm này giúp tải tệp JavaScript vào website.
 - **`add_action()`**: Kích hoạt các hàm trên tại thời điểm WordPress tải tài nguyên.
 
----
 
 ## 4. Chuyển hình ảnh và các tệp khác
 
@@ -139,7 +134,6 @@ Cập nhật đường dẫn hình ảnh trong tệp `index.php` để sử dụ
 ### Tại sao cần viết như vậy?
 - **`get_template_directory_uri()`**: Hàm này trả về đường dẫn đến thư mục chủ đề, giúp bạn dễ dàng quản lý các tài nguyên như hình ảnh.
 
----
 
 ## Bài tập
 
@@ -148,7 +142,6 @@ Cập nhật đường dẫn hình ảnh trong tệp `index.php` để sử dụ
 3. Tạo tệp `functions.php` và thêm mã để tải các tệp CSS và JavaScript.
 4. Cập nhật đường dẫn hình ảnh trong tệp `index.php` để sử dụng hàm `get_template_directory_uri()`.
 
----
 
 ## Tổng kết
 

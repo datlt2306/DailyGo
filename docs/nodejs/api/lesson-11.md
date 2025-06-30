@@ -4,13 +4,11 @@
 
 `populate` là một tính năng của Mongoose giúp bạn tự động thay thế các đường dẫn được chỉ định trong document bằng các document từ collection khác. Điều này rất hữu ích khi làm việc với các mối quan hệ giữa các collection.
 
----
 
 ## Tại Sao Cần Populate?
 
 Khi sử dụng tham chiếu giữa các collection, bạn thường cần truy xuất dữ liệu từ nhiều collection để hiển thị thông tin đầy đủ. `populate` giúp bạn làm điều này một cách dễ dàng mà không cần viết nhiều truy vấn phức tạp.
 
----
 
 ## Ví Dụ Trực Quan
 
@@ -38,7 +36,6 @@ Giả sử bạn có hai collection: **Person** và **Story**.
 }
 ```
 
----
 
 ### 2. Định Nghĩa Schema Trong Mongoose
 
@@ -65,7 +62,6 @@ const storySchema = new Schema({
 module.exports = mongoose.model('Story', storySchema);
 ```
 
----
 
 ### 3. Sử Dụng Populate
 
@@ -91,7 +87,6 @@ async function getStoryWithFans(storyId) {
 getStoryWithFans('STORY001');
 ```
 
----
 
 ### 4. Kết Quả
 
@@ -113,7 +108,6 @@ Khi sử dụng `populate`, kết quả sẽ tự động bao gồm thông tin t
 }
 ```
 
----
 
 ## Các Tính Năng Nâng Cao
 
@@ -142,14 +136,12 @@ const story = await Story.findById('STORY001').populate({
 });
 ```
 
----
 
 ## Lưu Ý
 
 - **Hiệu suất**: `populate` có thể làm chậm truy vấn nếu dữ liệu liên quan quá lớn. Hãy sử dụng nó một cách hợp lý.
 - **Không Có Document Liên Quan**: Nếu không có document liên quan, giá trị sẽ là `null` hoặc `[]`.
 
----
 
 ## Tóm Lại
 
@@ -157,7 +149,6 @@ const story = await Story.findById('STORY001').populate({
 
 Chúc các bạn học tốt và áp dụng thành công nhé!
 
----
 
 # Bài Tập: Sử Dụng Populate Trong Dự Án Bán Hàng
 
@@ -168,7 +159,6 @@ Bạn sẽ thiết kế một hệ thống quản lý đơn hàng cho một webs
 - **Product**: Lưu thông tin sản phẩm.
 - **Order**: Lưu thông tin đơn hàng, bao gồm khách hàng và danh sách sản phẩm.
 
----
 
 ## Yêu Cầu
 
@@ -176,7 +166,6 @@ Bạn sẽ thiết kế một hệ thống quản lý đơn hàng cho một webs
 2. Sử dụng `populate` để truy xuất thông tin khách hàng và danh sách sản phẩm trong đơn hàng.
 3. Viết code để thêm dữ liệu mẫu và truy xuất thông tin đơn hàng.
 
----
 
 ## Hướng Dẫn
 
@@ -212,7 +201,6 @@ const orderSchema = new Schema({
 module.exports = mongoose.model('Order', orderSchema);
 ```
 
----
 
 ### 2. Thêm Dữ Liệu Mẫu
 
@@ -243,7 +231,6 @@ async function addSampleData() {
 addSampleData();
 ```
 
----
 
 ### 3. Truy Xuất Thông Tin Đơn Hàng
 
@@ -273,7 +260,6 @@ async function getOrderDetails(orderId) {
 getOrderDetails('ORDER_ID'); // Replace 'ORDER_ID' with the actual order ID
 ```
 
----
 
 ## Kết Quả Mong Đợi
 
@@ -288,7 +274,6 @@ Products:
 Total: $1550
 ```
 
----
 
 ## Bài Tập Thêm
 

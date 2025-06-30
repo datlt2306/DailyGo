@@ -1,8 +1,7 @@
-# Tìm hiểu về Xml-rpc trong WordPress: Hướng dẫn từ Thầy Đạt
+# Tìm hiểu về Xml-rpc trong WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em về **Xml-rpc** – một công nghệ giúp các ứng dụng phần mềm giao tiếp với WordPress. Đây là một tính năng mạnh mẽ nhưng cũng tiềm ẩn nguy cơ bảo mật nếu không được quản lý đúng cách. Nào, cùng tìm hiểu nhé!
 
----
 
 ## Xml-rpc là gì?
 
@@ -20,7 +19,6 @@ Một số ứng dụng và plugin phổ biến sử dụng Xml-rpc:
 - **UpdraftPlus**: Công cụ sao lưu dữ liệu.
 - Các plugin tự động đăng bài lên mạng xã hội.
 
----
 
 ## Xml-rpc có nên được bật hay tắt?
 
@@ -35,7 +33,6 @@ Xml-rpc đã từng bị lợi dụng trong:
 
 > **Lưu ý:** Các plugin bảo mật như **All In One Security Plugin** có thể phát hiện và ngăn chặn các cuộc tấn công này.
 
----
 
 ## Lời khuyên
 
@@ -43,7 +40,6 @@ Xml-rpc đã từng bị lợi dụng trong:
 - **Chỉ tắt Xml-rpc** nếu các em chắc chắn rằng không có ứng dụng hoặc plugin nào cần sử dụng nó.
 - **Sử dụng plugin bảo mật** để bảo vệ website khỏi các cuộc tấn công liên quan đến Xml-rpc.
 
----
 
 ## Tóm tắt nhanh
 
@@ -52,6 +48,5 @@ Xml-rpc đã từng bị lợi dụng trong:
 - **Tắt Xml-rpc** chỉ khi các em chắc chắn không cần sử dụng nó.
 - **Sử dụng plugin bảo mật** để ngăn chặn các nguy cơ liên quan đến Xml-rpc.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em hiểu rõ hơn về Xml-rpc và cách quản lý nó trong WordPress. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em

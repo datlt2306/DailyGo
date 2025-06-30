@@ -4,7 +4,6 @@ Chào mừng bạn đã trở lại!
 
 Hãy tạm dừng dự án của chúng ta để trả lời một trong những câu hỏi phổ biến nhất về PHP: Tại sao một số hàm cần được `echo` trong khi các hàm khác thì không? Để hiểu rõ hơn, chúng ta sẽ cùng viết một vài hàm PHP và khám phá sự khác biệt này.
 
----
 
 ## Lý thuyết về echo và return trong PHP
 
@@ -18,13 +17,11 @@ Hãy tạm dừng dự án của chúng ta để trả lời một trong những
 - **Hàm sử dụng echo**: Các hàm này thường được thiết kế để hiển thị nội dung trực tiếp, ví dụ như `the_title()` trong WordPress.
 - **Hàm sử dụng return**: Các hàm này trả về giá trị để bạn có thể xử lý hoặc hiển thị sau, ví dụ như `get_the_title()` trong WordPress.
 
----
 
 ## Giới thiệu về bài giảng
 
 Trong bài học này, chúng ta sẽ tìm hiểu lý do tại sao một số hàm PHP cần được echo trong khi các hàm khác thì không. Chúng ta sẽ viết một vài hàm đơn giản để minh họa sự khác biệt này và sau đó áp dụng chúng vào WordPress.
 
----
 
 ## Viết các hàm PHP cơ bản
 
@@ -48,7 +45,6 @@ echo doubleMe(5); // Kết quả: 10
 ### Tại sao cần viết như vậy?
 - **`return`**: Giá trị được trả về từ hàm có thể được sử dụng trong các phép tính khác hoặc lưu trữ trong biến trước khi hiển thị.
 
----
 
 ### Hàm cần echo
 
@@ -69,7 +65,6 @@ doubleMe(5); // Kết quả: 10
 ### Tại sao cần viết như vậy?
 - **`echo`**: Giá trị được hiển thị ngay lập tức mà không cần xử lý thêm.
 
----
 
 ## Sử dụng hàm trong WordPress
 
@@ -95,7 +90,6 @@ echo $title; // Hiển thị tiêu đề bài viết
 - Nếu hàm bắt đầu bằng "get", nó sẽ **return** giá trị.
 - Nếu hàm bắt đầu bằng "the", nó sẽ **echo** giá trị.
 
----
 
 ## Bài tập
 
@@ -106,7 +100,6 @@ echo $title; // Hiển thị tiêu đề bài viết
 2. **Sử dụng hàm trong WordPress**:
     - Sử dụng hàm `get_the_ID()` để lấy ID bài viết và echo kết quả.
 
----
 
 ## Hướng dẫn cách làm
 
@@ -139,7 +132,6 @@ echo $id; // Hiển thị ID bài viết
 ?>
 ```
 
----
 
 ## Tổng kết
 

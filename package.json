@@ -24,6 +24,7 @@
         "vue": "^3.3.13"
     },
     "dependencies": {
+        "vitepress-theme-api": "^0.1.7",
         "vitest": "^3.1.4"
     }
 }

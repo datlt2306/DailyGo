@@ -3,7 +3,6 @@
 ## 🎯 Mục tiêu
 Thiết lập một chuẩn chung giúp sinh viên triển khai dự án MVP đúng hướng, có tổ chức, dễ teamwork và dễ mở rộng sau này.
 
----
 
 ## I. 📌 Giai đoạn khởi động
 
@@ -41,7 +40,6 @@ Xây dựng hệ thống API cho phép người dùng đặt vé xem phim tại 
 | Tìm kiếm phim theo tên, thể loại, thời gian | ✅ | ✅ | ✅ |
 | Cập nhật thông tin cá nhân | ❌ | ✅ | ✅ |
 
----
 
 ## II. 🏗️ Thiết kế hệ thống
 
@@ -77,7 +75,6 @@ Booking {
 }
 ```
 
----
 
 ## III. 🔐 Xác thực & Phân quyền
 
@@ -111,7 +108,6 @@ const roleMiddleware = (roles) => {
 | GET /bookings/me | ❌ | ✅ | ❌ |
 | GET /admin/bookings | ❌ | ❌ | ✅ |
 
----
 
 ## IV. 📁 Cấu trúc thư mục Backend (Node.js - Express)
 ```
@@ -126,7 +122,6 @@ const roleMiddleware = (roles) => {
 ├── .env
 ```
 
----
 
 ## V. 🧪 Kiểm thử & Tài liệu
 
@@ -139,14 +134,12 @@ const roleMiddleware = (roles) => {
 - Swagger / Postman Collection: mô tả API
 - ERD: sơ đồ database bằng draw.io/dbdiagram.io
 
----
 
 ## VI. 🧹 Quy ước nhóm
 - Commit theo chuẩn `feat/fix/chore`
 - Viết mã rõ ràng, dùng ESLint nếu có
 - Tổ chức họp nhóm đầu mỗi sprint, phân task qua Trello/ClickUp
 
----
 
 ## VII. 🏁 Kết thúc MVP
 - ✅ Có thể đăng ký, đăng nhập, đặt vé thành công

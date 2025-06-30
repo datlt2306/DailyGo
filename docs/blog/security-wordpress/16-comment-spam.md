@@ -1,8 +1,7 @@
-# Bảo mật khi quản lý bình luận trong WordPress: Hướng dẫn từ Thầy Đạt
+# Bảo mật khi quản lý bình luận trong WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách quản lý bình luận trên WordPress một cách an toàn. Bình luận là một phần quan trọng giúp website của các em tương tác với người dùng, nhưng nếu không cẩn thận, nó cũng có thể trở thành lỗ hổng bảo mật. Nào, cùng tìm hiểu nhé!
 
----
 
 ## Tại sao cần cẩn thận với bình luận?
 
@@ -14,7 +13,6 @@ Trong các phiên bản WordPress cũ (3.9 đến 4.2), hacker có thể sử d�
 
 > **Lưu ý:** Dù WordPress đã cải thiện bảo mật, các em vẫn cần cẩn thận vì nguy cơ này có thể xuất hiện lại trong tương lai.
 
----
 
 ## Cách thiết lập duyệt bình luận thủ công
 
@@ -30,7 +28,6 @@ Nếu các em không duyệt bình luận thủ công, hacker có thể lợi d�
 
 > **Mẹo nhỏ:** Luôn duyệt thủ công tất cả bình luận để đảm bảo an toàn.
 
----
 
 ## Quản lý liên kết trong bình luận
 
@@ -41,7 +38,6 @@ Người dùng có thể để lại liên kết trong bình luận hoặc trong
 - **Sử dụng nofollow**: WordPress tự động thêm thẻ `nofollow` vào các liên kết trong bình luận. Đừng sử dụng plugin cho phép loại bỏ thẻ này.
 - **Xóa liên kết không cần thiết**: Nếu bình luận hữu ích nhưng chứa liên kết không đáng tin, các em có thể chỉnh sửa bình luận để xóa liên kết.
 
----
 
 ## Chỉ duyệt bình luận chất lượng
 
@@ -57,7 +53,6 @@ Người dùng có thể để lại liên kết trong bình luận hoặc trong
 
 > **Lời khuyên:** Sử dụng plugin lọc spam như **Akismet** để giảm thiểu bình luận spam.
 
----
 
 ## Tóm tắt nhanh
 
@@ -66,6 +61,5 @@ Người dùng có thể để lại liên kết trong bình luận hoặc trong
 - **Chỉ duyệt bình luận chất lượng** và liên quan đến nội dung bài viết.
 - **Sử dụng plugin lọc spam** như Akismet để hỗ trợ.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em quản lý bình luận trên WordPress một cách an toàn. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công!

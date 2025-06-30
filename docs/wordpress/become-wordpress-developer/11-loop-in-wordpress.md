@@ -1,14 +1,12 @@
-# Vòng lặp nổi tiếng trong WordPress: Hướng dẫn từ Thầy Đạt
+# Vòng lặp nổi tiếng trong WordPress: 
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em về **vòng lặp WordPress** – một khái niệm cực kỳ quan trọng và là trung tâm của mọi thứ trong WordPress. Vòng lặp giúp chúng ta hiển thị nội dung như bài đăng, trang, và nhiều hơn nữa. Nào, cùng bắt đầu nhé!
 
----
 
 ## Mục tiêu của bài học
 
 Trên trang chủ của website, chúng ta sẽ xuất các bài đăng blog gần đây nhất. Để làm điều này, chúng ta sẽ sử dụng vòng lặp WordPress.
 
----
 
 ## Lý thuyết về vòng lặp WordPress
 
@@ -18,7 +16,6 @@ Vòng lặp (The Loop) trong WordPress là một cơ chế giúp chúng ta truy 
 ### Tại sao cần vòng lặp?
 Trong WordPress, nội dung được lưu trữ trong cơ sở dữ liệu. Để hiển thị nội dung này trên giao diện người dùng, chúng ta cần một cách để truy xuất và hiển thị từng bài đăng hoặc trang. Vòng lặp giúp chúng ta làm điều này một cách dễ dàng và hiệu quả.
 
----
 
 ## Chuẩn bị nội dung
 
@@ -28,7 +25,6 @@ Trong WordPress, nội dung được lưu trữ trong cơ sở dữ liệu. Đ�
 - Tạo ít nhất 3 bài đăng với nội dung giả (Lorem Ipsum).
 - Xuất bản các bài đăng để chúng ta có nội dung để làm việc.
 
----
 
 ## Sử dụng vòng lặp WordPress
 
@@ -59,7 +55,6 @@ if (have_posts()) {
 - **`the_title()`**: Hiển thị tiêu đề của bài đăng.
 - **`the_content()`**: Hiển thị nội dung của bài đăng.
 
----
 
 ## Thêm liên kết vào tiêu đề
 
@@ -72,7 +67,6 @@ if (have_posts()) {
 ### Tại sao cần liên kết?
 - **`the_permalink()`**: Hàm này tạo URL dẫn đến trang chi tiết của bài đăng. Việc biến tiêu đề thành liên kết giúp người dùng dễ dàng truy cập nội dung chi tiết.
 
----
 
 ## Hiển thị nội dung chi tiết
 
@@ -96,7 +90,6 @@ if (have_posts()) {
 ### Tại sao cần tệp `single.php`?
 - Tệp này kiểm soát cách hiển thị nội dung chi tiết của một bài đăng. Nó giúp tách biệt giao diện trang chủ và trang chi tiết.
 
----
 
 ## Hiển thị nội dung trang
 
@@ -110,7 +103,6 @@ if (have_posts()) {
 ### Tại sao cần tệp `page.php`?
 - Tệp này kiểm soát cách hiển thị nội dung của các trang (Pages). Nó giúp phân biệt giữa bài đăng (Posts) và trang (Pages).
 
----
 
 ## Tóm tắt nhanh
 
@@ -118,6 +110,5 @@ if (have_posts()) {
 - **Tiêu đề liên kết**: Sử dụng `the_permalink()` để tạo liên kết cho tiêu đề.
 - **Tệp `single.php` và `page.php`**: Kiểm soát cách hiển thị nội dung bài đăng và trang.
 
----
 
 Hy vọng bài viết này giúp các em hiểu rõ hơn về vòng lặp WordPress. Trong bài học tiếp theo, chúng ta sẽ học cách tạo header và footer toàn cục cho website. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay!

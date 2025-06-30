@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách chỉnh sửa **truy vấn mặc định** trong WordPress. Truy vấn mặc định là những truy vấn mà WordPress tự động thực hiện dựa trên URL hiện tại. Ví dụ, khi chúng ta truy cập vào màn hình lưu trữ của loại bài đăng tùy chỉnh, WordPress sẽ tự động truy vấn tất cả các bài đăng thuộc loại bài đăng đó.
 
----
 
 ## Lý thuyết về truy vấn mặc định
 
@@ -17,7 +16,6 @@ Truy vấn mặc định trong WordPress là các truy vấn tự động đư�
 - **Tùy chỉnh nội dung hiển thị**: Đôi khi chúng ta cần hiển thị nội dung theo cách khác với mặc định của WordPress, chẳng hạn như sắp xếp bài đăng theo trường tùy chỉnh hoặc loại bỏ các bài đăng không phù hợp.
 - **Tối ưu hóa trải nghiệm người dùng**: Chỉnh sửa truy vấn giúp hiển thị nội dung phù hợp hơn với nhu cầu của người dùng.
 
----
 
 ## Chỉnh sửa truy vấn mặc định
 
@@ -32,7 +30,6 @@ Chúng ta sẽ sử dụng hook `pre_get_posts` để chỉnh sửa truy vấn m
 - Sắp xếp các sự kiện theo ngày diễn ra.
 - Loại bỏ các sự kiện đã diễn ra trong quá khứ.
 
----
 
 ## Ứng dụng vào màn hình lưu trữ sự kiện
 
@@ -68,7 +65,6 @@ add_action('pre_get_posts', 'university_adjust_queries');
 - **`meta_query`**: Lọc các sự kiện để chỉ hiển thị những sự kiện có ngày diễn ra từ hôm nay trở đi.
 - **`meta_key` và `meta_value_num`**: Sắp xếp bài đăng dựa trên giá trị của trường tùy chỉnh `event_date`.
 
----
 
 ## Tổng kết
 

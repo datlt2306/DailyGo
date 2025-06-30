@@ -4,7 +4,6 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em cách thiết lập trang danh sách blog trên website WordPress của mình. Đây là một bước quan trọng để hiển thị các bài đăng blog gần đây nhất trên một trang riêng biệt. Nào, cùng bắt đầu nhé!
 
----
 
 ## Lý thuyết về trang danh sách blog
 
@@ -16,7 +15,6 @@ Trang danh sách blog trong WordPress là một trang đặc biệt hiển thị
 - **Tăng tương tác**: Giúp người dùng dễ dàng khám phá các bài viết cũ hơn.
 - **SEO tốt hơn**: Tăng khả năng hiển thị nội dung trên công cụ tìm kiếm.
 
----
 
 ## Tạo trang chủ và trang blog
 
@@ -30,7 +28,6 @@ Trang danh sách blog trong WordPress là một trang đặc biệt hiển thị
 - Đặt tên trang là **Blog** và để trống nội dung.
 - Nhấn **Publish** để lưu trang.
 
----
 
 ## Cấu hình trang blog trong WordPress
 
@@ -44,7 +41,6 @@ Trang danh sách blog trong WordPress là một trang đặc biệt hiển thị
 - **Trang tĩnh**: Cho phép bạn tách biệt nội dung trang chủ và danh sách blog.
 - **Posts page**: Xác định trang nào sẽ hiển thị danh sách các bài đăng blog.
 
----
 
 ## Tạo mẫu trang blog
 
@@ -93,7 +89,6 @@ Trang danh sách blog trong WordPress là một trang đặc biệt hiển thị
 - **`the_excerpt()`**: Hiển thị đoạn trích ngắn của bài viết.
 - **`the_author_posts_link()` và `the_time()`**: Hiển thị thông tin tác giả và ngày đăng bài.
 
----
 
 ## Hiển thị bài đăng blog
 
@@ -103,7 +98,6 @@ Trang danh sách blog trong WordPress là một trang đặc biệt hiển thị
 ### 2. Tùy chỉnh giao diện
 - Sử dụng các lớp CSS như `headline`, `metabox`, và `btn` để định dạng giao diện.
 
----
 
 ## Tổng kết
 

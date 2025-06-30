@@ -1,8 +1,7 @@
-# Bảo mật khi sử dụng plugin trong WordPress: Hướng dẫn từ Thầy Đạt
+# Bảo mật khi sử dụng plugin trong WordPress: 
 
 Chào các em, hôm nay thầy sẽ chia sẻ với các em cách sử dụng plugin trong WordPress một cách an toàn. Plugin là công cụ mạnh mẽ giúp website của các em thêm nhiều tính năng, nhưng nếu không cẩn thận, chúng cũng có thể trở thành lỗ hổng bảo mật. Nào, cùng tìm hiểu nhé!
 
----
 
 ## Chỉ sử dụng plugin từ nguồn đáng tin cậy
 
@@ -18,7 +17,6 @@ Nguồn đáng tin cậy nhất để tìm plugin chính là **WordPress Plugin 
 
 > **Mẹo nhỏ:** Các plugin trong kho này đều đã được kiểm tra, nên các em có thể yên tâm sử dụng.
 
----
 
 ## Tránh sử dụng plugin có liên kết ngược
 
@@ -30,7 +28,6 @@ Một số plugin có thể thêm liên kết ngược (backlink) đến website
 
 > **Lời khuyên:** Chỉ sử dụng plugin không chứa liên kết ngược hoặc mua plugin từ nhà cung cấp uy tín.
 
----
 
 ## Sử dụng ít plugin nhất có thể
 
@@ -45,7 +42,6 @@ Một số plugin có thể thêm liên kết ngược (backlink) đến website
 
 > **Lưu ý:** Nếu plugin không được cập nhật trong hơn 2 năm, hãy cân nhắc thay thế.
 
----
 
 ## Xóa plugin không sử dụng
 
@@ -57,7 +53,6 @@ Ngay cả khi plugin bị tắt, nó vẫn có thể trở thành lỗ hổng b�
 2. Tìm plugin đã tắt.
 3. Nhấn **Delete** để xóa hoàn toàn plugin khỏi website.
 
----
 
 ## Tóm tắt nhanh
 
@@ -66,6 +61,5 @@ Ngay cả khi plugin bị tắt, nó vẫn có thể trở thành lỗ hổng b�
 - **Sử dụng ít plugin nhất có thể** và đảm bảo chúng được cập nhật thường xuyên.
 - **Xóa plugin không sử dụng** để giảm nguy cơ bảo mật.
 
----
 
 Hy vọng bài hướng dẫn này giúp các em quản lý plugin trong WordPress một cách an toàn. Nếu có thắc mắc, các em cứ hỏi thầy nhé! Chúc các em thành công! 🎉
