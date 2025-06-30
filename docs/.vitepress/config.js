@@ -8,6 +8,7 @@ export default {
             { text: "JavaScript", link: "/javascript/" },
             // { text: "React", link: "/react/" },
             { text: "Node.js", link: "/nodejs/" },
+            { text: "Wordpress", link: "/wordpress/" },
             // { text: "MongoDB", link: "/mongodb/" },
             { text: "Blog", link: "/blog/" }, // Added blog link to main navigation
             // { text: "NextJs", link: "/nextjs/" }, // Added blog link to main navigation
@@ -176,7 +177,50 @@ export default {
                     ],
                 },
             ],
-
+            "/wordpress/": [
+                {
+                    text: "Giới thiệu",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "1. Lộ trình học Wordpress",
+                            link: "/wordpress/become-wordpress-developer/1-road-map",
+                        },
+                        {
+                            text: "2. Chào mừng đến với khóa học Wordpress",
+                            link: "/wordpress/become-wordpress-developer/2-welcome-to-the-course",
+                        },
+                        {
+                            text: "3. Môi trường phát triển",
+                            link: "/wordpress/become-wordpress-developer/3-what-is-dev-env",
+                        },
+                        {
+                            text: "5. Làm quen với PHP",
+                            link: "/wordpress/become-wordpress-developer/5-first-tates-php",
+                        },
+                        {
+                            text: "8. Tạo một theme mới",
+                            link: "/wordpress/become-wordpress-developer/8-create-a-new-theme",
+                        },
+                        {
+                            text: "9. PHP Function",
+                            link: "/wordpress/become-wordpress-developer/9-php-function",
+                        },
+                        {
+                            text: "10. PHP Array",
+                            link: "/wordpress/become-wordpress-developer/10-php-array",
+                        },
+                        {
+                            text: "11. Loops trong wordpress",
+                            link: "/wordpress/become-wordpress-developer/11-loops-in-wordpress",
+                        },
+                        {
+                            text: "12. Header & Footer",
+                            link: "/wordpress/become-wordpress-developer/12-header-footer",
+                        },
+                    ],
+                },
+            ],
             "/blog/": [
                 {
                     text: "Blog Posts",

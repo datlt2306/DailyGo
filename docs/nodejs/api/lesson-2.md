@@ -12,16 +12,17 @@
 
 ### Request (Yêu cầu)
 
-Request là thông tin mà client gửi lên server. Trong Express, đối tượng này là `req`.
-
+::: info
+***Request*** là thông tin mà client gửi lên server. Trong Express, đối tượng này là `req`.
+:::
 -   **`req.body`**: Chứa dữ liệu gửi từ client, thường dùng với các phương thức như POST hoặc PUT. Ví dụ, khi client gửi một biểu mẫu, dữ liệu sẽ nằm trong `req.body`.
 -   **`req.params`**: Chứa các tham số động trên URL. Ví dụ: `/posts/:id` sẽ cho phép lấy giá trị `id` từ URL.
 -   **`req.query`**: Chứa các tham số truy vấn trên URL. Ví dụ: `/posts?search=abc` sẽ cho phép lấy giá trị `search` từ URL.
 
 ### Response (Phản hồi)
-
-Response là thông tin mà server trả về cho client. Trong Express, đối tượng này là `res`.
-
+::: info
+***Response*** là thông tin mà server trả về cho client. Trong Express, đối tượng này là `res`.
+:::
 -   **`res.json(data)`**: Trả về dữ liệu dạng JSON, thường dùng cho API.
 -   **`res.send(data)`**: Trả về dữ liệu dạng text hoặc HTML.
 -   **`res.status(code)`**: Thiết lập mã trạng thái HTTP (ví dụ: 200, 404, 500...), giúp client biết trạng thái của yêu cầu.

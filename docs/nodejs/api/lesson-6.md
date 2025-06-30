@@ -21,7 +21,7 @@ Joi là một thư viện JavaScript mạnh mẽ, giúp chúng ta kiểm tra d�
 -   **Hỗ trợ validate nâng cao:** Bao gồm validate điều kiện, validate lồng nhau (nested objects), và validate mảng.
 
 ### Ví dụ cơ bản:
-
+:::code-group
 ```javascript
 import Joi from "joi"; // Import thư viện Joi để sử dụng cho việc validate
 
@@ -44,6 +44,7 @@ if (error) {
     console.log("Dữ liệu hợp lệ:", value); // Nếu dữ liệu hợp lệ, in dữ liệu đã được validate
 }
 ```
+:::
 
 Các em thấy không, Joi giúp chúng ta kiểm tra dữ liệu rất dễ dàng và rõ ràng. Bây giờ, chúng ta sẽ áp dụng Joi vào thực tế nhé!
 
@@ -112,8 +113,8 @@ Middleware này sẽ giúp chúng ta kiểm tra dữ liệu đầu vào dựa tr
 
 **src/middleware/validateRequest.js**
 
-```javascript
-// filepath: /FPL-WEB503/src/middleware/validateRequest.js
+:::code-group
+```javascript [src/middleware/validateRequest.js]
 import Joi from "joi";
 
 export const validateRequest = (schema, target = "body") => {
@@ -135,7 +136,7 @@ export const validateRequest = (schema, target = "body") => {
     };
 };
 ```
-
+:::
 #### Tách schema validate vào file riêng
 
 Để code gọn gàng và dễ bảo trì, chúng ta sẽ tách `createProductSchema` và `updateProductSchema` vào một file riêng.

@@ -4,7 +4,7 @@ description: So sánh hai kỹ thuật layout phổ biến nhất trong CSS và 
 date: 2023-10-10
 author: Đội ngũ Polytuts
 tags: ["css", "layout", "flexbox", "grid"]
-
+---
 # CSS Grid vs Flexbox: Khi nào nên dùng cái nào?
 
 <div class="blog-post-meta">

@@ -1,9 +1,3 @@
---- 
-title: Lộ trình khóa học WordPress năm 2025
-description: Khóa học WordPress năm 2025 sẽ giúp bạn trở thành nhà phát triển WordPress chuyên nghiệp, từ việc phát triển chủ đề, plugin đến triển khai website. Bài viết này sẽ cung cấp cho bạn cái nhìn tổng quan về lộ trình học tập và các mục tiêu của khóa học.
-slug: /wordpress/become-wordpress-developer/road-map
----
-
 # Lộ trình khóa học WordPress năm 2025: 
 
 Chào các em, chào mừng các em đến với khóa học WordPress năm 2025! Trong bài viết này, thầy sẽ cung cấp cho các em một bức tranh tổng quan về những gì các em sẽ học trong khóa học này, cũng như các con đường khác nhau mà các em có thể chọn để phát triển kỹ năng của mình. Nào, cùng bắt đầu nhé!

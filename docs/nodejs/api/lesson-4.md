@@ -176,10 +176,9 @@ pnpm i mongoose
 
 ### Kết nối Mongoose với MongoDB
 
-**src/database.js**
+:::code-group
+```javascript [src/database/index.js]
 
-```javascript
-// filepath: src/database.js
 import mongoose from "mongoose";
 
 const connectDB = async () => {
@@ -197,14 +196,13 @@ const connectDB = async () => {
 
 export default connectDB;
 ```
-
+:::
 
 ### Sử dụng kết nối trong ứng dụng chính
 
-**src/app.js**
+:::code-group
+```javascript [src/app.js]
 
-```javascript
-// filepath: src/app.js
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./database";
@@ -219,7 +217,7 @@ app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
 ```
-
+:::
 
 ## Thực hành
 
@@ -253,11 +251,9 @@ app.listen(process.env.PORT, () => {
     - Sử dụng Postman hoặc công cụ tương tự để kiểm tra các endpoint CRUD.
 
 ### Tạo model cho bài viết
+:::code-group
+```javascript [src/models/Post.j]
 
-**src/models/Post.js**
-
-```javascript
-// filepath: /Users/ken/Folders/Projects/polytuts-5/src/models/Post.js
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema(
@@ -272,14 +268,12 @@ const Post = mongoose.model("Post", postSchema);
 
 export default Post;
 ```
-
+:::
 ### Tách Controller để quản lý logic
 
-**src/controllers/postController.js**
-
-```javascript
-// filepath: /Users/ken/Folders/Projects/polytuts-5/src/controllers/postController.js
-import Post from "../models/Post";
+:::code-group
+```javascript [src/controllers/post.controller.js]
+import Post from "../models/post.model";
 
 // Lấy danh sách bài viết
 export const getPosts = async (req, res) => {
@@ -341,13 +335,10 @@ export const deletePost = async (req, res) => {
     }
 };
 ```
-
+:::
 ### Sử dụng Controller trong Router
-
-**src/routers/posts.js**
-
-```javascript
-// filepath: /Users/ken/Folders/Projects/polytuts-5/src/routers/posts.js
+:::code-group
+```javascript [src/routers/posts.js]
 import { Router } from "express";
 import {
     getPosts,
@@ -355,7 +346,7 @@ import {
     createPost,
     updatePost,
     deletePost,
-} from "../controllers/postController";
+} from "../controllers/post.controller";
 
 const routePost = Router();
 
@@ -376,13 +367,12 @@ routePost.delete("/:id", deletePost);
 
 export default routePost;
 ```
-
+:::
 ### Import router vào file `routers/index.js`
 
-**src/routers/index.js**
+:::code-group
+```javascript [src/routers/index.js]
 
-```javascript
-// filepath: /Users/ken/Folders/Projects/polytuts-5/src/routers/index.js
 import { Router } from "express";
 import routePost from "./posts";
 
@@ -393,7 +383,7 @@ router.use("/posts", routePost);
 
 export default router;
 ```
-
+:::
 
 ## Kết luận
 
