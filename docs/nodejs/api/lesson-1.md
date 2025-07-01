@@ -148,8 +148,23 @@ src/
 ├── .env                    # Lưu thông tin biến môi trường
 └── .gitignore              # Định nghĩa các file/thư mục cần bỏ qua khi đẩy lên Git
 ```
+### 6.1. Cấu hình `.gitignore`
 
-### 6.1. Cài đặt Git và đẩy dự án lên GitHub
+Tạo file `.gitignore` ở thư mục gốc để bỏ qua các file/thư mục không cần thiết khi đẩy lên Git. Nội dung file có thể như sau:
+
+```
+node_modules/
+.env
+dist/
+```
+
+- `node_modules/`: Thư mục chứa các thư viện cài đặt, không cần đẩy lên Git vì có thể cài lại bằng `pnpm install`.
+- `.env`: File chứa thông tin nhạy cảm như biến môi trường, không nên công khai.
+- `dist/`: Thư mục chứa mã nguồn đã build (nếu có), thường được tạo lại khi build dự án.
+
+Nhờ `.gitignore`, bạn có thể giữ repo sạch sẽ và bảo mật thông tin nhạy cảm.
+
+### 6.2. Cài đặt Git và đẩy dự án lên GitHub
 
 #### 1. Cài đặt Git
 
@@ -212,21 +227,6 @@ git push -u origin main
 
 Sau khi hoàn tất, bạn có thể kiểm tra repository trên GitHub để xem các file đã được đẩy lên.
 
-### 6.2. Cấu hình `.gitignore`
-
-Tạo file `.gitignore` ở thư mục gốc để bỏ qua các file/thư mục không cần thiết khi đẩy lên Git. Nội dung file có thể như sau:
-
-```
-node_modules/
-.env
-dist/
-```
-
-- `node_modules/`: Thư mục chứa các thư viện cài đặt, không cần đẩy lên Git vì có thể cài lại bằng `pnpm install`.
-- `.env`: File chứa thông tin nhạy cảm như biến môi trường, không nên công khai.
-- `dist/`: Thư mục chứa mã nguồn đã build (nếu có), thường được tạo lại khi build dự án.
-
-Nhờ `.gitignore`, bạn có thể giữ repo sạch sẽ và bảo mật thông tin nhạy cảm.
 
 
 ### 7. Cấu hình biến môi trường
