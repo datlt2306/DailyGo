@@ -149,6 +149,85 @@ src/
 └── .gitignore              # Định nghĩa các file/thư mục cần bỏ qua khi đẩy lên Git
 ```
 
+### 6.1. Cài đặt Git và đẩy dự án lên GitHub
+
+#### 1. Cài đặt Git
+
+Nếu máy chưa có Git, hãy tải về và cài đặt từ [https://git-scm.com/](https://git-scm.com/).  
+Sau khi cài đặt, kiểm tra bằng lệnh:
+
+```bash
+git --version
+```
+
+Nếu thấy phiên bản Git hiện ra, nghĩa là Git đã được cài đặt thành công.
+
+#### 2. Khởi tạo Git trong dự án
+
+Di chuyển vào thư mục dự án và chạy lệnh:
+
+```bash
+git init
+```
+
+Lệnh này sẽ khởi tạo một repository Git trong thư mục hiện tại.
+
+#### 3. Tạo repository trên GitHub
+
+- Truy cập [https://github.com/](https://github.com/) và đăng nhập.
+- Nhấn nút **New Repository** để tạo một repository mới.
+- Điền tên repository, ví dụ: `nodejs-ecommerce-api`.
+- Nhấn **Create Repository**.
+
+#### 4. Kết nối dự án với GitHub
+
+Thêm URL của repository GitHub vào dự án:
+
+```bash
+git remote add origin https://github.com/<username>/nodejs-ecommerce-api.git
+```
+
+Thay `<username>` bằng tên tài khoản GitHub của bạn.
+
+#### 5. Đẩy dự án lên GitHub
+
+Thêm tất cả các file vào Git:
+
+```bash
+git add .
+```
+
+Commit các thay đổi:
+
+```bash
+git commit -m "Initial commit"
+```
+
+Đẩy dự án lên GitHub:
+
+```bash
+git branch -M main
+git push -u origin main
+```
+
+Sau khi hoàn tất, bạn có thể kiểm tra repository trên GitHub để xem các file đã được đẩy lên.
+
+### 6.2. Cấu hình `.gitignore`
+
+Tạo file `.gitignore` ở thư mục gốc để bỏ qua các file/thư mục không cần thiết khi đẩy lên Git. Nội dung file có thể như sau:
+
+```
+node_modules/
+.env
+dist/
+```
+
+- `node_modules/`: Thư mục chứa các thư viện cài đặt, không cần đẩy lên Git vì có thể cài lại bằng `pnpm install`.
+- `.env`: File chứa thông tin nhạy cảm như biến môi trường, không nên công khai.
+- `dist/`: Thư mục chứa mã nguồn đã build (nếu có), thường được tạo lại khi build dự án.
+
+Nhờ `.gitignore`, bạn có thể giữ repo sạch sẽ và bảo mật thông tin nhạy cảm.
+
 
 ### 7. Cấu hình biến môi trường
 
@@ -187,7 +266,7 @@ Router trong Express là một công cụ giúp bạn nhóm các endpoint API li
 Để tạo một router, bạn sử dụng `Router()` từ thư viện Express. Ví dụ:
 
 ::: code-group
-```javascript [src/routers/posts.js]
+```javascript{3,5,9} [src/routers/posts.js]
 import { Router } from "express";
 
 const postsRouter = Router();
@@ -214,7 +293,7 @@ Trong ví dụ trên:
 Sau khi tạo router, bạn cần tích hợp nó vào ứng dụng chính bằng `app.use()`:
 
 ::: code-group
-```javascript [src/app.js]
+```javascript{2,6} [src/app.js]
 import express from "express";
 import postsRouter from "./routers/posts";
 
