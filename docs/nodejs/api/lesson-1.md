@@ -234,7 +234,7 @@ Nhờ `.gitignore`, bạn có thể giữ repo sạch sẽ và bảo mật thôn
 Tạo file `.env` với nội dung:
 
 ```env
-PORT=8000
+PORT=3000
 ```
 
 Nhờ vậy, khi muốn đổi port, các em chỉ cần sửa file này mà không phải động vào code.
