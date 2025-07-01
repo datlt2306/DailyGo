@@ -148,7 +148,16 @@ src/
 ├── .env                    # Lưu thông tin biến môi trường
 └── .gitignore              # Định nghĩa các file/thư mục cần bỏ qua khi đẩy lên Git
 ```
-### 6.1. Cấu hình `.gitignore`
+### 6.1. Cấu hình biến môi trường
+
+Tạo file `.env` với nội dung:
+
+```env
+PORT=3000
+```
+
+Nhờ vậy, khi muốn đổi port, các em chỉ cần sửa file này mà không phải động vào code.
+### 6.2. Cấu hình `.gitignore`
 
 Tạo file `.gitignore` ở thư mục gốc để bỏ qua các file/thư mục không cần thiết khi đẩy lên Git. Nội dung file có thể như sau:
 
@@ -164,7 +173,7 @@ dist/
 
 Nhờ `.gitignore`, bạn có thể giữ repo sạch sẽ và bảo mật thông tin nhạy cảm.
 
-### 6.2. Cài đặt Git và đẩy dự án lên GitHub
+### 6.3. Cài đặt Git và đẩy dự án lên GitHub
 
 #### 1. Cài đặt Git
 
@@ -228,19 +237,7 @@ git push -u origin main
 Sau khi hoàn tất, bạn có thể kiểm tra repository trên GitHub để xem các file đã được đẩy lên.
 
 
-
-### 7. Cấu hình biến môi trường
-
-Tạo file `.env` với nội dung:
-
-```env
-PORT=3000
-```
-
-Nhờ vậy, khi muốn đổi port, các em chỉ cần sửa file này mà không phải động vào code.
-
-
-### 8. Viết mã nguồn khởi tạo app
+### 7. Viết mã nguồn khởi tạo app
 
 ::: code-group
 ```javascript [src/app.js]
@@ -257,7 +254,7 @@ app.listen(process.env.PORT, () => {
 :::
 
 
-### 9. Router là gì?
+### 8. Router là gì?
 
 Router trong Express là một công cụ giúp bạn nhóm các endpoint API liên quan lại với nhau. Nó giống như một "nhánh" trong cây route của ứng dụng, giúp tổ chức code khoa học hơn.
 
@@ -325,7 +322,7 @@ Giả sử bạn đang xây dựng một ứng dụng ecommerce. Bạn có thể
 
 Nhờ việc sử dụng router, ứng dụng của bạn sẽ trở nên khoa học và dễ quản lý hơn.
 
-### 10. Chạy thử dự án
+### 9. Chạy thử dự án
 
 Chạy lệnh:
 
