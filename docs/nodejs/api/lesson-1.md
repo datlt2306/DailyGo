@@ -246,15 +246,26 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
+const port = process.env.PORT || 3000;
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
 ```
 :::
 
+### 8. Chạy thử dự án
 
-### 8. Router là gì?
+Chạy lệnh:
+
+```bash
+pnpm run dev
+```
+
+Nếu thấy dòng "Server is running on port ..." hiện ra, nghĩa là server đã hoạt động.
+
+
+### 9. Router là gì?
 
 Router trong Express là một công cụ giúp bạn nhóm các endpoint API liên quan lại với nhau. Nó giống như một "nhánh" trong cây route của ứng dụng, giúp tổ chức code khoa học hơn.
 
@@ -295,11 +306,12 @@ import express from "express";
 import postsRouter from "./routers/posts";
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use("/api/posts", postsRouter);
 
-app.listen(8000, () => {
-    console.log("Server is running on port 8000");
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
 ```
 :::
@@ -322,22 +334,13 @@ Giả sử bạn đang xây dựng một ứng dụng ecommerce. Bạn có thể
 
 Nhờ việc sử dụng router, ứng dụng của bạn sẽ trở nên khoa học và dễ quản lý hơn.
 
-### 9. Chạy thử dự án
-
-Chạy lệnh:
-
-```bash
-pnpm run dev
-```
-
-Nếu thấy dòng "Server is running..." hiện ra, nghĩa là server đã hoạt động.
 
 
 ## Kiểm tra API với Postman
 
 1. Mở Postman (hoặc Insomnia, hoặc bất cứ công cụ nào các em thích).
 2. Tạo một request mới với phương thức **GET**.
-3. Nhập URL: `http://localhost:8000/api/posts`
+3. Nhập URL: `http://localhost:3000/api/posts`
 4. Nhấn **Send**.
 5. Nếu thành công, các em sẽ thấy kết quả:
    ```json
