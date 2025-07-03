@@ -35,32 +35,32 @@
 ```javascript [src/routers/index.js]
 import { Router } from "express";
 
-const router = Router();
+const postRouter = Router();
 
 // GET /hello?name=Teo
-router.get("/hello", (req, res) => {
+postRouter.get("/hello", (req, res) => {
     const name = req.query.name || "bạn"; // Lấy giá trị 'name' từ query string
     res.json({ message: `Xin chào, ${name}!` }); // Trả về JSON với lời chào
 });
 
 // GET /posts/:id
-router.get("/posts/:id", (req, res) => {
+postRouter.get("/:id", (req, res) => {
     const id = req.params.id; // Lấy giá trị 'id' từ URL
     res.json({ id, message: "Chi tiết bài viết" }); // Trả về JSON với thông tin bài viết
 });
 
-export default router;
+export default postRouter;
 ```
 
 ```javascript [src/app.js]
 import express from "express";
 import dotenv from "dotenv";
-import router from "./routers";
+import postRouter from "./routers/posts";
 
 dotenv.config();
 const app = express();
 
-app.use("/api", router); // Định nghĩa route chính bắt đầu bằng /api
+app.use("/api/posts", /postRouter); // Định nghĩa route chính bắt đầu bằng /api
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is running on port ${process.env.PORT || 3000}`);
