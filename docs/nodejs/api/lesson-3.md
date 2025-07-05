@@ -51,7 +51,7 @@ let posts = [
 ```javascript [src/routers/posts.js]
 import express from "express";
 
-const router = express.Router();
+const postRouter = express.Router();
 
 let posts = [
     { id: 1, title: "Bài viết 1", content: "Nội dung bài viết 1" },
@@ -59,19 +59,19 @@ let posts = [
 ];
 
 // GET /api/posts - Lấy danh sách bài viết
-router.get("/", (req, res) => {
+postRouter.get("/", (req, res) => {
     res.json(posts);
 });
 
 // GET /api/posts/:id - Lấy chi tiết bài viết
-router.get("/:id", (req, res) => {
+postRouter.get("/:id", (req, res) => {
     const post = posts.find((p) => p.id === parseInt(req.params.id));
     if (!post) return res.status(404).json({ error: "Post not found" });
     res.json(post);
 });
 
 // POST /api/posts - Thêm bài viết mới
-router.post("/", (req, res) => {
+postRouter.post("/", (req, res) => {
     const { title, content } = req.body;
     const newPost = { id: Date.now(), title, content };
     posts.push(newPost);
@@ -79,7 +79,7 @@ router.post("/", (req, res) => {
 });
 
 // PUT /api/posts/:id - Cập nhật bài viết
-router.put("/:id", (req, res) => {
+postRouter.put("/:id", (req, res) => {
     const post = posts.find((p) => p.id === parseInt(req.params.id));
     if (!post) return res.status(404).json({ error: "Post not found" });
 
@@ -91,7 +91,7 @@ router.put("/:id", (req, res) => {
 });
 
 // DELETE /api/posts/:id - Xóa bài viết
-router.delete("/:id", (req, res) => {
+postRouter.delete("/:id", (req, res) => {
     const index = posts.findIndex((p) => p.id === parseInt(req.params.id));
     if (index === -1) return res.status(404).json({ error: "Post not found" });
 
