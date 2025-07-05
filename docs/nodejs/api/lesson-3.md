@@ -65,7 +65,7 @@ router.get("/", (req, res) => {
 
 // GET /api/posts/:id - Lấy chi tiết bài viết
 router.get("/:id", (req, res) => {
-    const post = posts.find((p) => p.id == req.params.id);
+    const post = posts.find((p) => p.id === parseInt(req.params.id));
     if (!post) return res.status(404).json({ error: "Post not found" });
     res.json(post);
 });
@@ -80,7 +80,7 @@ router.post("/", (req, res) => {
 
 // PUT /api/posts/:id - Cập nhật bài viết
 router.put("/:id", (req, res) => {
-    const post = posts.find((p) => p.id == req.params.id);
+    const post = posts.find((p) => p.id === parseInt(req.params.id));
     if (!post) return res.status(404).json({ error: "Post not found" });
 
     const { title, content } = req.body;
@@ -92,7 +92,7 @@ router.put("/:id", (req, res) => {
 
 // DELETE /api/posts/:id - Xóa bài viết
 router.delete("/:id", (req, res) => {
-    const index = posts.findIndex((p) => p.id == req.params.id);
+    const index = posts.findIndex((p) => p.id === parseInt(req.params.id));
     if (index === -1) return res.status(404).json({ error: "Post not found" });
 
     posts.splice(index, 1);
