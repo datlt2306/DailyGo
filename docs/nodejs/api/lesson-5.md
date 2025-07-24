@@ -22,10 +22,9 @@
         - `slug` (String, duy nhất, viết thường).
         - `description` (String, bắt buộc).
         - `price` (Number, bắt buộc, không âm).
-        - `discountPrice` (Number, không âm).
+        - `salePrice` (Number, không âm).
         - `images` (Array of Strings).
         - `stock` (Number, bắt buộc, không âm, mặc định là 0).
-        - `sku` (String, bắt buộc, duy nhất).
         - `status` (Enum: `draft`, `published`, `archived`, mặc định là `draft`).
         - `featured` (Boolean, mặc định là `false`).
         - `ratings` (Number, từ 0 đến 5, làm tròn đến 1 chữ số thập phân).
@@ -95,7 +94,7 @@ const productSchema = new mongoose.Schema(
             required: [true, "Giá sản phẩm là bắt buộc"],
             min: [0, "Giá sản phẩm không được âm"],
         },
-        discountPrice: {
+        salePrice: {
             type: Number,
             min: [0, "Giá khuyến mãi không được âm"],
         },
@@ -105,12 +104,6 @@ const productSchema = new mongoose.Schema(
             required: [true, "Số lượng tồn kho là bắt buộc"],
             min: [0, "Số lượng tồn kho không được âm"],
             default: 0,
-        },
-        sku: {
-            type: String,
-            required: [true, "SKU sản phẩm là bắt buộc"],
-            unique: true,
-            trim: true,
         },
         status: {
             type: String,
@@ -166,7 +159,7 @@ Trước khi bắt tay vào viết code cho controller, chúng ta cần xác đ�
 ### 3.3. Thêm sản phẩm mới (`POST /api/products`)
 
 1. **Nhận dữ liệu từ client**:  
-   - Các trường cần nhận: `name`, `slug`, `description`, `price`, `discountPrice`, `images`, `stock`, `sku`, `status`, `featured`, `ratings`.
+   - Các trường cần nhận: `name`, `slug`, `description`, `price`, `salePrice`, `images`, `stock`,  `status`, `featured`, `ratings`.
 2. **Kiểm tra dữ liệu đầu vào**:  
    - Đảm bảo các trường bắt buộc đều có giá trị.
    - Kiểm tra các ràng buộc như `price >= 0`, `stock >= 0`, `ratings` từ 0 đến 5.
@@ -339,10 +332,9 @@ Dưới đây là một số dữ liệu mẫu để kiểm tra API:
   "slug": "laptop-dell-xps-13",
   "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
   "price": 35000,
-  "discountPrice": 32000,
+  "salePrice": 32000,
   "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
   "stock": 10,
-  "sku": "DELL-XPS-13",
   "status": "published",
   "featured": true,
   "ratings": 4.5
@@ -358,10 +350,9 @@ Dưới đây là một số dữ liệu mẫu để kiểm tra API:
   "slug": "laptop-dell-xps-13",
   "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
   "price": 35000,
-  "discountPrice": 32000,
+  "salePrice": 32000,
   "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
   "stock": 10,
-  "sku": "DELL-XPS-13",
   "status": "published",
   "featured": true,
   "ratings": 4.5,
@@ -412,10 +403,9 @@ Dưới đây là một số dữ liệu mẫu để kiểm tra API:
   "slug": "laptop-dell-xps-13",
   "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
   "price": 35000,
-  "discountPrice": 32000,
+  "salePrice": 32000,
   "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
   "stock": 10,
-  "sku": "DELL-XPS-13",
   "status": "published",
   "featured": true,
   "ratings": 4.5,
@@ -447,10 +437,9 @@ Dưới đây là một số dữ liệu mẫu để kiểm tra API:
   "slug": "laptop-dell-xps-13",
   "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
   "price": 34000,
-  "discountPrice": 32000,
+  "salePrice": 32000,
   "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
   "stock": 15,
-  "sku": "DELL-XPS-13",
   "status": "published",
   "featured": true,
   "ratings": 4.5,
