@@ -276,9 +276,9 @@ import Post from "../models/post.model";
 export const getPosts = async (req, res) => {
     try {
         const posts = await Post.find();
-        res.json(posts);
+        return res.json(posts);
     } catch (err) {
-        res.status(500).json({ error: "Lỗi server", message: err.message });
+        return res.status(500).json({ error: "Lỗi server", message: err.message });
     }
 };
 
@@ -287,21 +287,19 @@ export const getPostById = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
         if (!post) return res.status(404).json({ error: "Không tìm thấy bài viết" });
-        res.json(post);
+        return res.json(post);
     } catch (err) {
-        res.status(500).json({ error: "Lỗi server", message: err.message });
+        return res.status(500).json({ error: "Lỗi server", message: err.message });
     }
 };
 
 // Thêm bài viết mới
 export const createPost = async (req, res) => {
     try {
-        const { title, content } = req.body;
-        const newPost = new Post({ title, content });
-        await newPost.save();
-        res.status(201).json(newPost);
+        const newPost = await Post.create(req.body);
+        return res.status(201).json(newPost);
     } catch (err) {
-        res.status(400).json({ error: "Lỗi khi thêm bài viết", message: err.message });
+        return res.status(400).json({ error: "Lỗi khi thêm bài viết", message: err.message });
     }
 };
 
@@ -311,13 +309,13 @@ export const updatePost = async (req, res) => {
         const { title, content } = req.body;
         const post = await Post.findByIdAndUpdate(
             req.params.id,
-            { title, content },
+            req.body,
             { new: true, runValidators: true }
         );
         if (!post) return res.status(404).json({ error: "Không tìm thấy bài viết" });
-        res.json(post);
+        return res.json(post);
     } catch (err) {
-        res.status(400).json({ error: "Lỗi khi cập nhật bài viết", message: err.message });
+        return res.status(400).json({ error: "Lỗi khi cập nhật bài viết", message: err.message });
     }
 };
 
@@ -326,16 +324,16 @@ export const deletePost = async (req, res) => {
     try {
         const post = await Post.findByIdAndDelete(req.params.id);
         if (!post) return res.status(404).json({ error: "Không tìm thấy bài viết" });
-        res.json({ success: true });
+        return res.json({ success: true });
     } catch (err) {
-        res.status(500).json({ error: "Lỗi server", message: err.message });
+        return res.status(500).json({ error: "Lỗi server", message: err.message });
     }
 };
 ```
 :::
 ### Sử dụng Controller trong Router
 :::code-group
-```javascript [src/routers/posts.js]
+```javascript [src/routers/post.router.js]
 import { Router } from "express";
 import {
     getPosts,
@@ -371,7 +369,7 @@ export default routePost;
 ```javascript [src/routers/index.js]
 
 import { Router } from "express";
-import routePost from "./posts";
+import routePost from "./post.router";
 
 const router = Router();
 
