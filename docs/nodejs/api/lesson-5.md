@@ -11,9 +11,9 @@
 1. **Tạo cấu trúc thư mục**
 
     - Tạo các thư mục `models`, `controllers`, và `routers` trong thư mục `src`.
-    - Tạo file `Product.js` trong thư mục `models` để định nghĩa schema và model cho sản phẩm.
-    - Tạo file `productController.js` trong thư mục `controllers` để xử lý logic CRUD.
-    - Tạo file `products.js` trong thư mục `routers` để định nghĩa các endpoint API.
+    - Tạo file `product.model.js` trong thư mục `models` để định nghĩa schema và model cho sản phẩm.
+    - Tạo file `product.controller.js` trong thư mục `controllers` để xử lý logic CRUD.
+    - Tạo file `product.router.js` trong thư mục `routers` để định nghĩa các endpoint API.
 
 2. **Định nghĩa schema và model cho sản phẩm**
 
@@ -46,7 +46,7 @@
 
 5. **Tích hợp router vào ứng dụng chính**
 
-    - Import router từ `src/routers/products.js` vào `src/routers/index.js`.
+    - Import router từ `src/routers/product.router.js` vào `src/routers/index.js`.
     - Gắn router vào đường dẫn `/products`.
 
 6. **Kiểm tra API**
@@ -59,17 +59,17 @@
 ```
 src/
 ├── models/
-│   └── Product.js          # Định nghĩa schema và model cho sản phẩm
+│   └── product.model.js          # Định nghĩa schema và model cho sản phẩm
 ├── controllers/
-│   └── productController.js # Xử lý logic CRUD cho sản phẩm
+│   └── product.controller.js # Xử lý logic CRUD cho sản phẩm
 ├── routers/
-│   └── products.js         # Định nghĩa các endpoint API cho sản phẩm
+│   └── product.router.js         # Định nghĩa các endpoint API cho sản phẩm
 └── app.js                  # Tệp chính khởi chạy ứng dụng
 ```
 
 ### Định nghĩa Schema và Model
 :::code-group
-```javascript [models/Product.js]
+```javascript [models/product.model.js]
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
@@ -200,8 +200,8 @@ Sau khi xác định rõ các bước cần làm, chúng ta sẽ viết code cho
 
 :::code-group
 
-```javascript [controllers/productController.js]
-import Product from "../models/Product";
+```javascript [controllers/product.controller.js]
+import Product from "../models/product.model";
 
 // Lấy danh sách sản phẩm
 export const getProducts = async (req, res) => {
@@ -209,7 +209,7 @@ export const getProducts = async (req, res) => {
         const products = await Product.find();
         res.json(products);
     } catch (err) {
-        res.status(500).json({ error: "Lỗi server", message: err.message });
+        return res.status(500).json({ error: "Lỗi server", message: err.message });
     }
 };
 
@@ -217,21 +217,20 @@ export const getProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
-        if (!product) return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
+        if (!product) return return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
         res.json(product);
     } catch (err) {
-        res.status(500).json({ error: "Lỗi server", message: err.message });
+        return res.status(500).json({ error: "Lỗi server", message: err.message });
     }
 };
 
 // Thêm sản phẩm mới
 export const createProduct = async (req, res) => {
     try {
-        const newProduct = new Product(req.body);
-        await newProduct.save();
-        res.status(201).json(newProduct);
+        const newProduct = await Product.create(req.body);
+        return res.status(201).json(newProduct);
     } catch (err) {
-        res.status(400).json({ error: "Lỗi khi thêm sản phẩm", message: err.message });
+        return res.status(400).json({ error: "Lỗi khi thêm sản phẩm", message: err.message });
     }
 };
 
@@ -242,10 +241,10 @@ export const updateProduct = async (req, res) => {
             new: true,
             runValidators: true,
         });
-        if (!product) return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
+        if (!product) return return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
         res.json(product);
     } catch (err) {
-        res.status(400).json({ error: "Lỗi khi cập nhật sản phẩm", message: err.message });
+        return res.status(400).json({ error: "Lỗi khi cập nhật sản phẩm", message: err.message });
     }
 };
 
@@ -253,10 +252,10 @@ export const updateProduct = async (req, res) => {
 export const deleteProduct = async (req, res) => {
     try {
         const product = await Product.findByIdAndDelete(req.params.id);
-        if (!product) return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
+        if (!product) return return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
         res.json({ success: true });
     } catch (err) {
-        res.status(500).json({ error: "Lỗi server", message: err.message });
+        return res.status(500).json({ error: "Lỗi server", message: err.message });
     }
 };
 ```
@@ -264,7 +263,7 @@ export const deleteProduct = async (req, res) => {
 ### Sử dụng Controller trong Router
 
 :::code-group
-```javascript [routers/products.js]
+```javascript [routers/products.router.js]
 import { Router } from "express";
 import {
     getProducts,
@@ -299,7 +298,7 @@ export default routeProduct;
 Để sử dụng các router đã tạo, bạn cần import chúng vào file `routers/index.js` và cấu hình như sau:
 
 :::code-group
-```javascript routers/index.js
+```javascript [routers/index.js]
 import { Router } from "express";
 import routePost from "./posts";
 import routeProduct from "./products";
