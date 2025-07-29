@@ -63,6 +63,7 @@ src/
 ├── controllers/
 │   └── product.controller.js # Xử lý logic CRUD cho sản phẩm
 ├── routers/
+    └── index.js               # Tệp chính định nghĩa các router
 │   └── product.router.js         # Định nghĩa các endpoint API cho sản phẩm
 └── app.js                  # Tệp chính khởi chạy ứng dụng
 ```
