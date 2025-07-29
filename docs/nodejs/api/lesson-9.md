@@ -10,8 +10,8 @@ Hôm nay, Thầy sẽ hướng dẫn các em cách kiểm tra quyền trong API 
 
 Middleware này sẽ xác thực JWT từ header của yêu cầu. Nếu token hợp lệ, middleware sẽ giải mã và gắn thông tin người dùng vào `req.user`.
 
-```javascript
-// filepath: src/middlewares/authMiddleware.js
+::: code-group
+```javascript [src/middlewares/auth.middleware.js]
 import jwt from "jsonwebtoken";
 
 export const verifyJWT = (req, res, next) => {
@@ -27,6 +27,7 @@ export const verifyJWT = (req, res, next) => {
   }
 };
 ```
+:::
 
 > **Giải thích**:  
 > - `req.headers.authorization`: Lấy token từ header `Authorization`.  
@@ -38,8 +39,8 @@ export const verifyJWT = (req, res, next) => {
 
 Middleware này sẽ kiểm tra vai trò của người dùng. Chỉ cho phép người dùng có vai trò phù hợp truy cập endpoint.
 
-```javascript
-// filepath: src/middlewares/authMiddleware.js
+::: code-group
+```javascript [src/middlewares/auth.middleware.js]
 export const restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
@@ -49,6 +50,7 @@ export const restrictTo = (...roles) => {
   };
 };
 ```
+:::
 
 > **Giải thích**:  
 > - `roles`: Danh sách các vai trò được phép truy cập.  
@@ -60,8 +62,8 @@ export const restrictTo = (...roles) => {
 
 Sau khi viết xong middleware, chúng ta sẽ tích hợp chúng vào API sản phẩm. Các route như tạo, cập nhật, và xóa sản phẩm sẽ yêu cầu quyền admin hoặc staff.
 
-```javascript
-// filepath: src/routes/product.js
+::: code-group
+```javascript [src/routes/product.router.js]
 import express from "express";
 import {
   getAllProducts,
@@ -93,7 +95,7 @@ productRouter.post("/", validateRequest(createProductSchema), createProduct);
 productRouter.patch("/:id", validateRequest(updateProductSchema), updateProduct);
 productRouter.delete("/:id", deleteProduct);
 ```
-
+:::
 > **Giải thích**:  
 > - `productRouter.use(verifyJWT)`: Tất cả các route sau dòng này yêu cầu xác thực JWT.  
 > - `productRouter.use(restrictTo("admin", "staff"))`: Chỉ cho phép admin và staff truy cập các route sau dòng này.  
