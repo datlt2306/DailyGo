@@ -69,7 +69,7 @@ Mongoose cũng hỗ trợ validate dữ liệu, nhưng nó chỉ hoạt động 
 1. **Thiết lập cấu trúc thư mục**
 
     - Tạo thư mục `middleware` và `validation` trong `src`.
-    - Tạo file `validateRequest.js` (middleware) và `productValidation.js` (schema Joi).
+    - Tạo file `validateRequest.js` (middleware) và `product.validation.js` (schema Joi).
 
 2. **Định nghĩa middleware validate dữ liệu**
 
@@ -97,13 +97,13 @@ Mongoose cũng hỗ trợ validate dữ liệu, nhưng nó chỉ hoạt động 
 ```
 src/
 ├── controllers/
-│   └── productController.js   # Xử lý logic CRUD cho sản phẩm
+│   └── product.controller.js   # Xử lý logic CRUD cho sản phẩm
 ├── middleware/
 │   └── validateRequest.js     # Middleware validate dữ liệu đầu vào
 ├── routers/
-│   └── products.js            # Định nghĩa các endpoint API cho sản phẩm
+│   └── product.router.js            # Định nghĩa các endpoint API cho sản phẩm
 ├── validation/
-│   └── productValidation.js   # Định nghĩa schema validate bằng Joi
+│   └── product.validation.js   # Định nghĩa schema validate bằng Joi
 └── app.js                     # Tệp chính khởi chạy ứng dụng
 ```
 
@@ -142,7 +142,7 @@ export const validateRequest = (schema, target = "body") => {
 Để code gọn gàng và dễ bảo trì, chúng ta sẽ tách `createProductSchema` và `updateProductSchema` vào một file riêng.
 
 :::code-group
-```javascript [validation/productValidation.js]
+```javascript [validation/product.validation.js]
 import Joi from "joi";
 
 // Schema tạo sản phẩm mới
@@ -189,11 +189,11 @@ export const updateProductSchema = createProductSchema.fork(
 Cập nhật router để sử dụng `createProductSchema` và `updateProductSchema`.
 
 :::code-group
-```javascript [routers/products.js]
+```javascript [routers/product.router.js]
 import { Router } from "express";
 import { validateRequest } from "../middleware/validateRequest";
-import { createProductSchema, updateProductSchema } from "../validation/productValidation";
-import { createProduct, updateProduct } from "../controllers/productController";
+import { createProductSchema, updateProductSchema } from "../validation/product.validation";
+import { createProduct, updateProduct } from "../controllers/product.controller";
 
 const router = Router();
 
@@ -235,7 +235,7 @@ export const validateRequest = (schema, target = "body") => {
 };
 ```
 
-```javascript [/validation/product.js]
+```javascript [/validation/product.validation.js]
 import Joi from "joi";
 
 // Schema tạo sản phẩm mới
@@ -276,11 +276,11 @@ export const updateProductSchema = createProductSchema.fork(
 );
 ```
 
-```javascript [/routers/products.js]
+```javascript [/routers/product.router.js]
 import { Router } from "express";
 import { validateRequest } from "../middleware/validateRequest";
-import { createProductSchema, updateProductSchema } from "../validation/productValidation";
-import { createProduct, updateProduct } from "../controllers/productController";
+import { createProductSchema, updateProductSchema } from "../validation/product.validation";
+import { createProduct, updateProduct } from "../controllers/product.controller";
 
 const router = Router();
 
