@@ -218,7 +218,7 @@ export const getProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
-        if (!product) return return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
+        if (!product) return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
         res.json(product);
     } catch (err) {
         return res.status(500).json({ error: "Lỗi server", message: err.message });
@@ -242,7 +242,7 @@ export const updateProduct = async (req, res) => {
             new: true,
             runValidators: true,
         });
-        if (!product) return return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
+        if (!product) return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
         res.json(product);
     } catch (err) {
         return res.status(400).json({ error: "Lỗi khi cập nhật sản phẩm", message: err.message });
@@ -253,7 +253,7 @@ export const updateProduct = async (req, res) => {
 export const deleteProduct = async (req, res) => {
     try {
         const product = await Product.findByIdAndDelete(req.params.id);
-        if (!product) return return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
+        if (!product) return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
         res.json({ success: true });
     } catch (err) {
         return res.status(500).json({ error: "Lỗi server", message: err.message });
@@ -272,7 +272,7 @@ import {
     createProduct,
     updateProduct,
     deleteProduct,
-} from "../controllers/productController";
+} from "../controllers/product.controller";
 
 const routeProduct = Router();
 

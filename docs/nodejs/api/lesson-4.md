@@ -249,7 +249,7 @@ app.listen(process.env.PORT, () => {
 
 ### Tạo model cho bài viết
 :::code-group
-```javascript [src/models/Post.j]
+```javascript [src/models/post.model.js]
 
 import mongoose from "mongoose";
 
@@ -310,7 +310,7 @@ export const updatePost = async (req, res) => {
         const post = await Post.findByIdAndUpdate(
             req.params.id,
             req.body,
-            { new: true, runValidators: true }
+            { new: true }
         );
         if (!post) return res.status(404).json({ error: "Không tìm thấy bài viết" });
         return res.json(post);
