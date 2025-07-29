@@ -10,7 +10,7 @@ Hôm nay, Thầy sẽ hướng dẫn các em cách xây dựng chức năng **Đ
 
 ::: code-group
 
-```javascript [src/models/userModel.js]
+```javascript [src/models/user.model.js]
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
@@ -105,9 +105,9 @@ Trước khi bắt tay vào viết code cho controller, chúng ta cần xác đ�
    - Nếu thành công, trả về thông báo `User registered successfully`.
    - Nếu có lỗi, trả về thông báo lỗi chi tiết.
 ::: code-group
-```javascript [src/controllers/authController.js]
+```javascript [src/controllers/auth.controller.js]
 import bcrypt from "bcryptjs";
-import { User } from "../models/userModel.js";
+import { User } from "../models/user.model.js";
 
 export const signup = async (req, res) => {
   const { name, email, password, phone, role } = req.body;
@@ -144,10 +144,10 @@ export const signup = async (req, res) => {
    - Nếu thành công, trả về token JWT.
    - Nếu có lỗi, trả về thông báo lỗi chi tiết.
 ::: code-group
-```javascript [src/controllers/authController.js]
+```javascript [src/controllers/auth.controller.js]
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { User } from "../models/userModel.js";
+import { User } from "../models/user.model.js";
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -181,7 +181,7 @@ export const login = async (req, res) => {
    - Nếu không tìm thấy thông tin người dùng, trả về lỗi 404.
 
 ::: code-group
-```javascript [src/controllers/authController.js]
+```javascript [src/controllers/auth.controller.js]
 export const getMe = async (req, res) => {
   try {
     // Lấy user từ middleware auth
@@ -206,8 +206,8 @@ Dưới đây là file router để định nghĩa các route liên quan đến 
 ::: code-group
 ```javascript [src/routers/auth.js]
 import express from "express";
-import { signup, login, getMe } from "../controllers/authController.js";
-import { verifyJWT } from "../middlewares/authMiddleware.js";
+import { signup, login, getMe } from "../controllers/auth.controller";
+import { verifyJWT } from "../middlewares/auth.middleware";
 
 const router = express.Router();
 
@@ -259,7 +259,7 @@ export const validateRequest = (schema, target = "body") => {
 Dưới đây là các schema được định nghĩa bằng Joi để kiểm tra dữ liệu đầu vào cho các API `signup` và `signin`.
 
 ::: code-group
-```javascript [src/validation/authValidation.js]
+```javascript [src/validation/auth.validation.js]
 import Joi from "joi";
 
 // Schema cho Signup
@@ -316,10 +316,10 @@ Cập nhật router để sử dụng middleware `validateRequest` với các sc
 ::: code-group
 ```javascript [src/routers/auth.js]
 import express from "express";
-import { signup, login, getMe } from "../controllers/authController.js";
-import { validateRequest } from "../middlewares/validateRequest.js";
-import { signupSchema, signinSchema } from "../validation/authValidation.js";
-import { verifyJWT } from "../middlewares/authMiddleware.js";
+import { signup, login, getMe } from "../controllers/auth.controller";
+import { validateRequest } from "../middlewares/validateRequest";
+import { signupSchema, signinSchema } from "../validation/auth.validation";
+import { verifyJWT } from "../middlewares/auth.middleware";
 
 const router = express.Router();
 
@@ -342,10 +342,10 @@ export default router;
 Dưới đây là tổng hợp các file code đã sử dụng trong bài học này.
 
 ::: code-group
-```javascript [src/controllers/authController.js]
+```javascript [src/controllers/auth.controller.js]
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { User } from "../models/userModel.js";
+import { User } from "../models/user.model";
 
 // Đăng ký tài khoản
 export const signup = async (req, res) => {
@@ -391,10 +391,10 @@ export const getMe = async (req, res) => {
 
 ```javascript [src/routers/auth.js]
 import express from "express";
-import { signup, login, getMe } from "../controllers/authController.js";
-import { validateRequest } from "../middlewares/validateRequest.js";
-import { signupSchema, signinSchema } from "../validation/authValidation.js";
-import { verifyJWT } from "../middlewares/authMiddleware.js";
+import { signup, login, getMe } from "../controllers/auth.controller";
+import { validateRequest } from "../middlewares/validateRequest";
+import { signupSchema, signinSchema } from "../validation/auth.validation";
+import { verifyJWT } from "../middlewares/auth.middleware";
 
 const router = express.Router();
 
@@ -433,7 +433,7 @@ export const validateRequest = (schema, target = "body") => {
 };
 ```
 
-```javascript [src/validation/authValidation.js]
+```javascript [src/validation/auth.validation.js]
 import Joi from "joi";
 
 // Schema cho Signup
