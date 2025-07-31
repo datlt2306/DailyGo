@@ -218,6 +218,14 @@ export default {
                             text: "12. Header & Footer",
                             link: "/wordpress/become-wordpress-developer/12-header-footer",
                         },
+                        {
+                            text: "13. Chuyển đổi giao diện HTML thành giao diện WordPress",
+                            link: "/wordpress/become-wordpress-developer/14-convert-static-html-to-wordpress",
+                        },
+                        {
+                            text: "14. Trang con bên trong một website",
+                            link: "/wordpress/become-wordpress-developer/16-interior-page",
+                        },
                     ],
                 },
             ],

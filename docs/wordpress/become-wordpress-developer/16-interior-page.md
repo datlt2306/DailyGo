@@ -1,22 +1,15 @@
 # Thiết Lập Trang mới Trong WordPress
 
-Chào mừng bạn đã trở lại!
+Hello em!
 
 Trong bài học này, chúng ta sẽ cùng nhau thiết lập một trang trong WordPress. Điều này sẽ giúp chúng ta tạo ra các trang như "Giới thiệu", "Chính sách bảo mật" với giao diện đẹp mắt và nhất quán.
 
-
-## Lý thuyết về trang trong WordPress
-
+## Giới thiệu về trang (Page)
 ### Trang (Page) là gì?
 Trong WordPress, **Page** là một loại nội dung tĩnh, thường được sử dụng để hiển thị các thông tin không thay đổi thường xuyên, như "Giới thiệu", "Liên hệ", hoặc "Chính sách bảo mật". Khác với **Post**, các trang không được tổ chức theo danh mục hoặc thẻ.
 
-### Tại sao cần tạo mẫu trang (Page Template)?
-Mẫu trang giúp bạn kiểm soát giao diện và cách hiển thị nội dung của các trang. Bằng cách sử dụng tệp `page.php`, bạn có thể tùy chỉnh giao diện của tất cả các trang trong website.
-
-
-## Giới thiệu về bài giảng
-
-Trong bài học này, chúng ta sẽ thiết lập một trang. Điều này có nghĩa là khi ai đó nhấp vào một trang chung chung như "Giới thiệu" hoặc "Chính sách bảo mật", chúng ta sẽ có một mẫu trang đẹp mắt để hiển thị nội dung đó.
+### Tại sao cần tạo trang mẫu (Page Template)?
+Page Template giúp em kiểm soát giao diện và cách hiển thị nội dung của các trang. Bằng cách sử dụng tệp `page.php`, em có thể tùy chỉnh giao diện của tất cả các trang trong website.
 
 
 ## Bắt đầu thiết lập trang
@@ -38,7 +31,7 @@ Trong bài học này, chúng ta sẽ thiết lập một trang. Điều này c�
 
 ### Tích hợp HTML vào tệp `page.php`
 
-1. Mở tệp `page.php` trong thư mục chủ đề WordPress của bạn.
+1. Mở tệp `page.php` trong thư mục chủ đề WordPress của em.
 2. Xóa nội dung thử nghiệm và dán mã HTML đã sao chép vào giữa vòng lặp `while`.
 
 ```php
@@ -59,7 +52,7 @@ while ( have_posts() ) {
 <?php get_footer(); ?>
 ```
 
-### Tại sao cần viết như vậy?
+### Giải thích
 - **`get_header()` và `get_footer()`**: Gọi nội dung từ các tệp `header.php` và `footer.php` để đảm bảo tính nhất quán.
 - **`while (have_posts())`**: Vòng lặp WordPress để kiểm tra và hiển thị nội dung của trang hiện tại.
 - **`the_post()`**: Lấy dữ liệu của trang hiện tại.
@@ -81,7 +74,7 @@ while ( have_posts() ) {
 </div>
 ```
 
-### Tại sao cần viết như vậy?
+### Giải thích
 - **`the_title()`**: Hiển thị tiêu đề của trang hiện tại.
 - **`the_content()`**: Hiển thị nội dung của trang hiện tại.
 
@@ -124,8 +117,8 @@ while ( have_posts() ) {
 </style>
 ```
 
-### Tại sao cần viết như vậy?
-- **`get_theme_file_uri()`**: Hàm này trả về đường dẫn đến tệp trong thư mục chủ đề, giúp bạn dễ dàng quản lý các tài nguyên như hình ảnh.
+### Giải thích
+- **`get_theme_file_uri()`**: Hàm này trả về đường dẫn đến tệp trong thư mục chủ đề, giúp em dễ dàng quản lý các tài nguyên như hình ảnh.
 
 
 ### Thêm liên kết điều hướng
@@ -138,10 +131,10 @@ while ( have_posts() ) {
 <a href="<?php echo site_url('/chinh-sach-bao-mat'); ?>">Chính sách bảo mật</a>
 ```
 
-### Tại sao cần viết như vậy?
-- **`site_url()`**: Hàm này trả về URL của website, giúp bạn tạo liên kết nội bộ một cách dễ dàng.
+### Giải thích
+- **`site_url()`**: Hàm này trả về URL của website, giúp em tạo liên kết nội bộ một cách dễ dàng.
 
 
 ## Tổng kết
 
-Trong bài học này, chúng ta đã học cách thiết lập một trang trong WordPress. Chúng ta đã tạo các trang mới, tích hợp mã HTML từ mẫu tĩnh và thay thế nội dung tĩnh bằng nội dung động. Hãy thực hành các bài tập để nắm vững kiến thức này. Chúc các bạn học vui vẻ và thành công!
+Trong bài học này, chúng ta đã học cách thiết lập một trang trong WordPress. Chúng ta đã tạo các trang mới, tích hợp mã HTML từ mẫu tĩnh và thay thế nội dung tĩnh bằng nội dung động. Hãy thực hành các bài tập để nắm vững kiến thức này. Chúc các em học vui vẻ và thành công!
