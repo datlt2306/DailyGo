@@ -32,7 +32,7 @@
 
 
 ::: code-group
-```javascript [src/routers/index.js]
+```javascript [src/routers/posts.js]
 import { Router } from "express";
 
 const postRouter = Router();
@@ -60,7 +60,7 @@ import postRouter from "./routers/posts";
 dotenv.config();
 const app = express();
 
-app.use("/api/posts", /postRouter); // Định nghĩa route chính bắt đầu bằng /api
+app.use("/api/posts", postRouter); // Định nghĩa route chính bắt đầu bằng /api
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is running on port ${process.env.PORT || 3000}`);
@@ -72,8 +72,8 @@ app.listen(process.env.PORT || 3000, () => {
 
 ### Yêu cầu
 
-1. Tạo endpoint `GET /api/greet` trả về lời chào với tên từ query string (ví dụ: `/api/greet?name=Ken`).
-2. Tạo endpoint `GET /api/sum` nhận hai số từ query string (`a` và `b`) và trả về tổng của chúng.
+1. Tạo endpoint `GET /api/posts/greet` trả về lời chào với tên từ query string (ví dụ: `/api/posts/greet?name=Ken`).
+2. Tạo endpoint `GET /api/posts/sum` nhận hai số từ query string (`a` và `b`) và trả về tổng của chúng.
 
 ### Gợi ý
 ::: code-group
