@@ -77,17 +77,17 @@ app.listen(process.env.PORT || 3000, () => {
 
 ### Gợi ý
 ::: code-group
-```javascript [src/routers/index.js]
+```javascript [src/routers/posts.js]
 // ...existing code...
 
 // GET /greet?name=Ken
-router.get("/greet", (req, res) => {
+postRouter.get("/greet", (req, res) => {
     const name = req.query.name || "bạn"; // Lấy giá trị 'name' từ query string
     res.json({ message: `Xin chào, ${name}!` }); // Trả về JSON với lời chào
 });
 
 // GET /sum?a=5&b=10
-router.get("/sum", (req, res) => {
+postRouter.get("/sum", (req, res) => {
     const a = parseInt(req.query.a, 10) || 0; // Lấy giá trị 'a' từ query string
     const b = parseInt(req.query.b, 10) || 0; // Lấy giá trị 'b' từ query string
     res.json({ sum: a + b }); // Trả về tổng của 'a' và 'b'
