@@ -1,5 +1,8 @@
 # Thực hành CRUD với mảng dữ liệu giả trong Node.js/Express
 
+> **Bài trước:** [Lesson 2: Request/Response và Middleware](./lesson-2.md)  
+> **Bài tiếp theo:** [Lesson 4: Giới thiệu MongoDB và Mongoose](./lesson-4.md)
+
 ## Mục tiêu
 
 -   Hiểu rõ cách thực hiện các thao tác CRUD (Create, Read, Update, Delete) với dữ liệu giả.
@@ -48,6 +51,7 @@ let posts = [
 ### Khởi tạo router
 
 ::: code-group
+
 ```javascript [src/routers/posts.js]
 import express from "express";
 
@@ -99,15 +103,16 @@ postRouter.delete("/:id", (req, res) => {
     res.json({ success: true });
 });
 
-export default router;
+export default postRouter;
 ```
+
 :::
 
 ### Tích hợp router vào ứng dụng
 
 ::: code-group
-```javascript [src/app.js]
 
+```javascript [src/app.js]
 import express from "express";
 import dotenv from "dotenv";
 import postsRouter from "./routers/posts";
@@ -122,6 +127,7 @@ app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
 ```
+
 :::
 
 ## Bài tập nâng cao
@@ -165,6 +171,21 @@ app.listen(process.env.PORT, () => {
         }
     });
     ```
+
+## Use Case thực tế: RESTful API Design
+
+Trong thực tế, các API thường tuân theo chuẩn RESTful:
+
+-   **GET**: Lấy dữ liệu (không thay đổi server state)
+-   **POST**: Tạo mới resource
+-   **PUT**: Cập nhật toàn bộ resource
+-   **PATCH**: Cập nhật một phần resource
+-   **DELETE**: Xóa resource
+
+Ví dụ thực tế: API GitHub, Twitter API đều sử dụng RESTful pattern này.
+
+**Bài tiếp theo:** [Lesson 4: Giới thiệu MongoDB và Mongoose](./lesson-4.md) - Chuyển từ in-memory data sang database thực sự
+
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

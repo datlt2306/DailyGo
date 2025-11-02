@@ -1,5 +1,8 @@
 # Middleware validate dữ liệu đầu vào trong Express
 
+> **Bài trước:** [Lesson 5: Xây dựng CRUD API sản phẩm](./lesson-5.md)  
+> **Bài tiếp theo:** [Lesson 7: Authentication và Authorization](./lesson-7.md)
+
 Chào các em! 👋 Hôm nay chúng ta sẽ cùng nhau tìm hiểu cách viết middleware để validate dữ liệu đầu vào trong Express. Đây là một kỹ năng rất quan trọng khi xây dựng API, giúp đảm bảo dữ liệu gửi lên từ client luôn hợp lệ và giảm thiểu lỗi trong ứng dụng.
 
 ## Mục tiêu
@@ -295,9 +298,68 @@ export default router;
 
 :::
 
-## 5. Kết luận
+## 4. Giải thích về abortEarly và stripUnknown
+
+### `abortEarly: false`
+- Mặc định Joi sẽ dừng ngay khi gặp lỗi đầu tiên
+- Với `abortEarly: false`, Joi sẽ kiểm tra tất cả các trường và trả về danh sách đầy đủ các lỗi
+- Hữu ích khi muốn hiển thị tất cả lỗi validation cho user một lúc
+
+**Ví dụ:**
+```javascript
+// abortEarly: true (mặc định)
+// Input: { name: "", price: -1 }
+// Output: ["Tên sản phẩm không được để trống"]
+
+// abortEarly: false
+// Input: { name: "", price: -1 }
+// Output: ["Tên sản phẩm không được để trống", "Giá sản phẩm không được âm"]
+```
+
+### `stripUnknown: true`
+- Loại bỏ các trường không được định nghĩa trong schema
+- Bảo mật: Ngăn chặn mass assignment attacks
+- Giữ database sạch sẽ: Chỉ lưu các trường được phép
+
+**Ví dụ:**
+```javascript
+// Input: { name: "Product", price: 100, isAdmin: true, maliciousField: "hack" }
+// Output (sau stripUnknown): { name: "Product", price: 100 }
+// Các trường isAdmin và maliciousField bị loại bỏ
+```
+
+## 5. Bài tập thực hành
+
+### Bài tập: Tạo Validation Schema cho User Model
+
+Tạo validation schema cho model User với các trường:
+- `name`: String, required, min 2 ký tự, max 50 ký tự
+- `email`: Email hợp lệ, required
+- `password`: String, required, min 6 ký tự, pattern phải có ít nhất 1 chữ hoa, 1 chữ thường, 1 số
+- `phone`: String, pattern 10 chữ số
+- `age`: Number, min 18, max 100
+
+**File:** `src/validation/user.validation.js`
+
+**Yêu cầu:**
+- Tạo `signupSchema` và `updateUserSchema`
+- `updateUserSchema` có tất cả trường optional
+- Sử dụng custom messages tiếng Việt
+
+## 6. Use Case thực tế: Input Validation Best Practices
+
+Trong thực tế, validation rất quan trọng:
+- **Security**: Ngăn chặn SQL injection, XSS attacks
+- **Data Quality**: Đảm bảo dữ liệu đúng format trước khi lưu database
+- **User Experience**: Trả về lỗi rõ ràng, giúp user sửa lỗi nhanh chóng
+
+Ví dụ thực tế: Khi đăng ký tài khoản, nếu không validate email format, có thể lưu email sai vào database.
+
+## 7. Kết luận
 
 Các em thấy không, việc sử dụng Joi giúp chúng ta kiểm tra dữ liệu đầu vào một cách dễ dàng và hiệu quả. Hãy nhớ rằng, việc validate dữ liệu là rất quan trọng để đảm bảo ứng dụng của chúng ta hoạt động ổn định và an toàn.
+
+**Bài tiếp theo:** [Lesson 7: Authentication và Authorization](./lesson-7.md) - Học về bảo mật và phân quyền
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀

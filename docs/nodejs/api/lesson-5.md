@@ -1,5 +1,8 @@
 # Xây dựng CRUD API sản phẩm
 
+> **Bài trước:** [Lesson 4: Giới thiệu MongoDB và Mongoose](./lesson-4.md)  
+> **Bài tiếp theo:** [Lesson 6: Middleware validate dữ liệu đầu vào](./lesson-6.md)
+
 ## Mục tiêu
 
 -   Thực hành xây dựng API CRUD sản phẩm đầy đủ với MongoDB và Mongoose.
@@ -61,16 +64,18 @@ src/
 ├── models/
 │   └── product.model.js          # Định nghĩa schema và model cho sản phẩm
 ├── controllers/
-│   └── product.controller.js # Xử lý logic CRUD cho sản phẩm
+│   └── product.controller.js     # Xử lý logic CRUD cho sản phẩm
 ├── routers/
-    └── index.js               # Tệp chính định nghĩa các router
+│   ├── index.js                  # Tệp chính định nghĩa các router
 │   └── product.router.js         # Định nghĩa các endpoint API cho sản phẩm
-└── app.js                  # Tệp chính khởi chạy ứng dụng
+└── app.js                        # Tệp chính khởi chạy ứng dụng
 ```
 
 ### Định nghĩa Schema và Model
+
 :::code-group
-```javascript [models/product.model.js]
+
+```javascript [src/models/product.model.js]
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
@@ -130,6 +135,7 @@ const Product = mongoose.model("Product", productSchema);
 
 export default Product;
 ```
+
 :::
 
 ## 3. Các bước cần làm trước khi viết Controller
@@ -138,62 +144,58 @@ Trước khi bắt tay vào viết code cho controller, chúng ta cần xác đ�
 
 ### 3.1. Lấy danh sách sản phẩm (`GET /api/products`)
 
-1. **Kết nối cơ sở dữ liệu**:  
-   - Sử dụng model `Product` để truy vấn danh sách sản phẩm.
-2. **Xử lý kết quả**:  
-   - Nếu có sản phẩm, trả về danh sách sản phẩm.
-   - Nếu xảy ra lỗi, trả về lỗi server.
-
+1. **Kết nối cơ sở dữ liệu**:
+    - Sử dụng model `Product` để truy vấn danh sách sản phẩm.
+2. **Xử lý kết quả**:
+    - Nếu có sản phẩm, trả về danh sách sản phẩm.
+    - Nếu xảy ra lỗi, trả về lỗi server.
 
 ### 3.2. Lấy chi tiết sản phẩm (`GET /api/products/:id`)
 
-1. **Nhận `id` từ URL**:  
-   - Lấy `id` từ `req.params`.
-2. **Tìm sản phẩm trong cơ sở dữ liệu**:  
-   - Sử dụng `Product.findById` để tìm sản phẩm theo `id`.
-3. **Xử lý kết quả**:  
-   - Nếu tìm thấy sản phẩm, trả về thông tin sản phẩm.
-   - Nếu không tìm thấy, trả về lỗi `404 Not Found`.
-   - Nếu xảy ra lỗi, trả về lỗi server.
-
+1. **Nhận `id` từ URL**:
+    - Lấy `id` từ `req.params`.
+2. **Tìm sản phẩm trong cơ sở dữ liệu**:
+    - Sử dụng `Product.findById` để tìm sản phẩm theo `id`.
+3. **Xử lý kết quả**:
+    - Nếu tìm thấy sản phẩm, trả về thông tin sản phẩm.
+    - Nếu không tìm thấy, trả về lỗi `404 Not Found`.
+    - Nếu xảy ra lỗi, trả về lỗi server.
 
 ### 3.3. Thêm sản phẩm mới (`POST /api/products`)
 
-1. **Nhận dữ liệu từ client**:  
-   - Các trường cần nhận: `name`, `slug`, `description`, `price`, `salePrice`, `images`, `stock`,  `status`, `featured`, `ratings`.
-2. **Kiểm tra dữ liệu đầu vào**:  
-   - Đảm bảo các trường bắt buộc đều có giá trị.
-   - Kiểm tra các ràng buộc như `price >= 0`, `stock >= 0`, `ratings` từ 0 đến 5.
-3. **Lưu sản phẩm vào cơ sở dữ liệu**:  
-   - Sử dụng model `Product` để lưu thông tin sản phẩm.
-4. **Trả về phản hồi**:  
-   - Nếu thành công, trả về thông tin sản phẩm vừa thêm.
-   - Nếu có lỗi, trả về thông báo lỗi chi tiết.
-
+1. **Nhận dữ liệu từ client**:
+    - Các trường cần nhận: `name`, `slug`, `description`, `price`, `salePrice`, `images`, `stock`, `status`, `featured`, `ratings`.
+2. **Kiểm tra dữ liệu đầu vào**:
+    - Đảm bảo các trường bắt buộc đều có giá trị.
+    - Kiểm tra các ràng buộc như `price >= 0`, `stock >= 0`, `ratings` từ 0 đến 5.
+3. **Lưu sản phẩm vào cơ sở dữ liệu**:
+    - Sử dụng model `Product` để lưu thông tin sản phẩm.
+4. **Trả về phản hồi**:
+    - Nếu thành công, trả về thông tin sản phẩm vừa thêm.
+    - Nếu có lỗi, trả về thông báo lỗi chi tiết.
 
 ### 3.4. Cập nhật sản phẩm (`PUT /api/products/:id`)
 
-1. **Nhận `id` từ URL và dữ liệu từ client**:  
-   - Lấy `id` từ `req.params` và dữ liệu cập nhật từ `req.body`.
-2. **Tìm và cập nhật sản phẩm trong cơ sở dữ liệu**:  
-   - Sử dụng `Product.findByIdAndUpdate` để cập nhật sản phẩm theo `id`.
-   - Đảm bảo chạy các validator khi cập nhật.
-3. **Xử lý kết quả**:  
-   - Nếu cập nhật thành công, trả về thông tin sản phẩm đã cập nhật.
-   - Nếu không tìm thấy sản phẩm, trả về lỗi `404 Not Found`.
-   - Nếu xảy ra lỗi, trả về thông báo lỗi chi tiết.
+1. **Nhận `id` từ URL và dữ liệu từ client**:
+    - Lấy `id` từ `req.params` và dữ liệu cập nhật từ `req.body`.
+2. **Tìm và cập nhật sản phẩm trong cơ sở dữ liệu**:
+    - Sử dụng `Product.findByIdAndUpdate` để cập nhật sản phẩm theo `id`.
+    - Đảm bảo chạy các validator khi cập nhật.
+3. **Xử lý kết quả**:
+    - Nếu cập nhật thành công, trả về thông tin sản phẩm đã cập nhật.
+    - Nếu không tìm thấy sản phẩm, trả về lỗi `404 Not Found`.
+    - Nếu xảy ra lỗi, trả về thông báo lỗi chi tiết.
 
 ### 3.5. Xóa sản phẩm (`DELETE /api/products/:id`)
 
-1. **Nhận `id` từ URL**:  
-   - Lấy `id` từ `req.params`.
-2. **Tìm và xóa sản phẩm trong cơ sở dữ liệu**:  
-   - Sử dụng `Product.findByIdAndDelete` để xóa sản phẩm theo `id`.
-3. **Xử lý kết quả**:  
-   - Nếu xóa thành công, trả về thông báo thành công.
-   - Nếu không tìm thấy sản phẩm, trả về lỗi `404 Not Found`.
-   - Nếu xảy ra lỗi, trả về lỗi server.
-
+1. **Nhận `id` từ URL**:
+    - Lấy `id` từ `req.params`.
+2. **Tìm và xóa sản phẩm trong cơ sở dữ liệu**:
+    - Sử dụng `Product.findByIdAndDelete` để xóa sản phẩm theo `id`.
+3. **Xử lý kết quả**:
+    - Nếu xóa thành công, trả về thông báo thành công.
+    - Nếu không tìm thấy sản phẩm, trả về lỗi `404 Not Found`.
+    - Nếu xảy ra lỗi, trả về lỗi server.
 
 ## 4. Tách Controller để quản lý logic
 
@@ -201,14 +203,56 @@ Sau khi xác định rõ các bước cần làm, chúng ta sẽ viết code cho
 
 :::code-group
 
-```javascript [controllers/product.controller.js]
+```javascript [src/controllers/product.controller.js]
 import Product from "../models/product.model";
 
-// Lấy danh sách sản phẩm
+// Lấy danh sách sản phẩm với pagination, filtering và sorting
 export const getProducts = async (req, res) => {
     try {
-        const products = await Product.find();
-        res.json(products);
+        const {
+            page = 1,
+            limit = 10,
+            status,
+            featured,
+            minPrice,
+            maxPrice,
+            sort = "-createdAt", // Mặc định sắp xếp theo ngày tạo mới nhất
+        } = req.query;
+
+        // Xây dựng query filter
+        const filter = {};
+        if (status) filter.status = status;
+        if (featured !== undefined) filter.featured = featured === "true";
+        if (minPrice || maxPrice) {
+            filter.price = {};
+            if (minPrice) filter.price.$gte = Number(minPrice);
+            if (maxPrice) filter.price.$lte = Number(maxPrice);
+        }
+
+        // Tính toán pagination
+        const skip = (Number(page) - 1) * Number(limit);
+
+        // Thực hiện query với pagination và sorting
+        const products = await Product.find(filter).sort(sort).skip(skip).limit(Number(limit));
+
+        // Đếm tổng số sản phẩm phù hợp với filter
+        const total = await Product.countDocuments(filter);
+
+        // Tính toán thông tin pagination
+        const totalPages = Math.ceil(total / Number(limit));
+
+        res.json({
+            success: true,
+            data: products,
+            pagination: {
+                currentPage: Number(page),
+                totalPages,
+                totalItems: total,
+                itemsPerPage: Number(limit),
+                hasNextPage: Number(page) < totalPages,
+                hasPreviousPage: Number(page) > 1,
+            },
+        });
     } catch (err) {
         return res.status(500).json({ error: "Lỗi server", message: err.message });
     }
@@ -260,11 +304,14 @@ export const deleteProduct = async (req, res) => {
     }
 };
 ```
+
 :::
+
 ### Sử dụng Controller trong Router
 
 :::code-group
-```javascript [routers/products.router.js]
+
+```javascript [src/routers/product.router.js]
 import { Router } from "express";
 import {
     getProducts,
@@ -293,16 +340,19 @@ routeProduct.delete("/:id", deleteProduct);
 
 export default routeProduct;
 ```
+
 :::
-### Import router vào file `routers/index.js`
+
+### Import router vào file `src/routers/index.js`
 
 Để sử dụng các router đã tạo, bạn cần import chúng vào file `routers/index.js` và cấu hình như sau:
 
 :::code-group
-```javascript [routers/index.js]
+
+```javascript [src/routers/index.js]
 import { Router } from "express";
-import routePost from "./posts";
-import routeProduct from "./products";
+import routePost from "./post.router";
+import routeProduct from "./product.router";
 
 const router = Router();
 
@@ -314,6 +364,7 @@ router.use("/products", routeProduct);
 
 export default router;
 ```
+
 :::
 
 ## 4. Test API với Postman và Dữ liệu Fake
@@ -324,149 +375,220 @@ Dưới đây là một số dữ liệu mẫu để kiểm tra API:
 
 #### Thêm sản phẩm mới (`POST /api/products`)
 
-- **Body** (JSON):
+-   **Body** (JSON):
 
 ```json
 {
-  "name": "Laptop Dell XPS 13",
-  "slug": "laptop-dell-xps-13",
-  "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
-  "price": 35000,
-  "salePrice": 32000,
-  "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
-  "stock": 10,
-  "status": "published",
-  "featured": true,
-  "ratings": 4.5
+    "name": "Laptop Dell XPS 13",
+    "slug": "laptop-dell-xps-13",
+    "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
+    "price": 35000,
+    "salePrice": 32000,
+    "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
+    "stock": 10,
+    "status": "published",
+    "featured": true,
+    "ratings": 4.5
 }
 ```
 
-- **Kết quả**:
+-   **Kết quả**:
 
 ```json
 {
-  "_id": "64f1a2b3c4d5e6f7g8h9i0j1",
-  "name": "Laptop Dell XPS 13",
-  "slug": "laptop-dell-xps-13",
-  "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
-  "price": 35000,
-  "salePrice": 32000,
-  "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
-  "stock": 10,
-  "status": "published",
-  "featured": true,
-  "ratings": 4.5,
-  "createdAt": "2023-09-01T12:00:00.000Z",
-  "updatedAt": "2023-09-01T12:00:00.000Z"
-}
-```
-
-
-#### Lấy danh sách sản phẩm (`GET /api/products`)
-
-- **Kết quả**:
-
-```json
-[
-  {
     "_id": "64f1a2b3c4d5e6f7g8h9i0j1",
     "name": "Laptop Dell XPS 13",
     "slug": "laptop-dell-xps-13",
+    "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
     "price": 35000,
+    "salePrice": 32000,
+    "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
     "stock": 10,
     "status": "published",
-    "ratings": 4.5
-  },
-  {
-    "_id": "64f1a2b3c4d5e6f7g8h9i0j2",
-    "name": "iPhone 14 Pro Max",
-    "slug": "iphone-14-pro-max",
-    "price": 45000,
-    "stock": 5,
-    "status": "published",
-    "ratings": 4.8
-  }
+    "featured": true,
+    "ratings": 4.5,
+    "createdAt": "2023-09-01T12:00:00.000Z",
+    "updatedAt": "2023-09-01T12:00:00.000Z"
+}
+```
+
+#### Lấy danh sách sản phẩm (`GET /api/products`)
+
+-   **Kết quả**:
+
+```json
+[
+    {
+        "_id": "64f1a2b3c4d5e6f7g8h9i0j1",
+        "name": "Laptop Dell XPS 13",
+        "slug": "laptop-dell-xps-13",
+        "price": 35000,
+        "stock": 10,
+        "status": "published",
+        "ratings": 4.5
+    },
+    {
+        "_id": "64f1a2b3c4d5e6f7g8h9i0j2",
+        "name": "iPhone 14 Pro Max",
+        "slug": "iphone-14-pro-max",
+        "price": 45000,
+        "stock": 5,
+        "status": "published",
+        "ratings": 4.8
+    }
 ]
 ```
 
-
 #### Lấy chi tiết sản phẩm (`GET /api/products/:id`)
 
-- **URL**: `http://localhost:3000/api/products/64f1a2b3c4d5e6f7g8h9i0j1`
+-   **URL**: `http://localhost:3000/api/products/64f1a2b3c4d5e6f7g8h9i0j1`
 
-- **Kết quả**:
+-   **Kết quả**:
 
 ```json
 {
-  "_id": "64f1a2b3c4d5e6f7g8h9i0j1",
-  "name": "Laptop Dell XPS 13",
-  "slug": "laptop-dell-xps-13",
-  "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
-  "price": 35000,
-  "salePrice": 32000,
-  "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
-  "stock": 10,
-  "status": "published",
-  "featured": true,
-  "ratings": 4.5,
-  "createdAt": "2023-09-01T12:00:00.000Z",
-  "updatedAt": "2023-09-01T12:00:00.000Z"
+    "_id": "64f1a2b3c4d5e6f7g8h9i0j1",
+    "name": "Laptop Dell XPS 13",
+    "slug": "laptop-dell-xps-13",
+    "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
+    "price": 35000,
+    "salePrice": 32000,
+    "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
+    "stock": 10,
+    "status": "published",
+    "featured": true,
+    "ratings": 4.5,
+    "createdAt": "2023-09-01T12:00:00.000Z",
+    "updatedAt": "2023-09-01T12:00:00.000Z"
 }
 ```
-
 
 #### Cập nhật sản phẩm (`PUT /api/products/:id`)
 
-- **URL**: `http://localhost:3000/api/products/64f1a2b3c4d5e6f7g8h9i0j1`
+-   **URL**: `http://localhost:3000/api/products/64f1a2b3c4d5e6f7g8h9i0j1`
 
-- **Body** (JSON):
-
-```json
-{
-  "price": 34000,
-  "stock": 15
-}
-```
-
-- **Kết quả**:
+-   **Body** (JSON):
 
 ```json
 {
-  "_id": "64f1a2b3c4d5e6f7g8h9i0j1",
-  "name": "Laptop Dell XPS 13",
-  "slug": "laptop-dell-xps-13",
-  "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
-  "price": 34000,
-  "salePrice": 32000,
-  "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
-  "stock": 15,
-  "status": "published",
-  "featured": true,
-  "ratings": 4.5,
-  "createdAt": "2023-09-01T12:00:00.000Z",
-  "updatedAt": "2023-09-01T12:30:00.000Z"
+    "price": 34000,
+    "stock": 15
 }
 ```
 
+-   **Kết quả**:
+
+```json
+{
+    "_id": "64f1a2b3c4d5e6f7g8h9i0j1",
+    "name": "Laptop Dell XPS 13",
+    "slug": "laptop-dell-xps-13",
+    "description": "Laptop cao cấp với thiết kế mỏng nhẹ.",
+    "price": 34000,
+    "salePrice": 32000,
+    "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
+    "stock": 15,
+    "status": "published",
+    "featured": true,
+    "ratings": 4.5,
+    "createdAt": "2023-09-01T12:00:00.000Z",
+    "updatedAt": "2023-09-01T12:30:00.000Z"
+}
+```
 
 #### Xóa sản phẩm (`DELETE /api/products/:id`)
 
-- **URL**: `http://localhost:3000/api/products/64f1a2b3c4d5e6f7g8h9i0j1`
+-   **URL**: `http://localhost:3000/api/products/64f1a2b3c4d5e6f7g8h9i0j1`
 
-- **Kết quả**:
+-   **Kết quả**:
 
 ```json
 {
-  "success": true
+    "success": true
 }
 ```
 
+## 5. Pagination, Filtering và Sorting
 
-## 5. Tóm tắt
+### 5.1. Pagination
 
-- **Dữ liệu Fake**: Sử dụng các mẫu JSON để kiểm tra các endpoint CRUD.
-- **Test Postman**: Kiểm tra các endpoint `/api/products` với các phương thức `GET`, `POST`, `PUT`, và `DELETE`.
-- **Kết quả**: Đảm bảo API hoạt động đúng với các yêu cầu CRUD.
+Pagination giúp chia nhỏ kết quả thành các trang, đặc biệt hữu ích khi có nhiều sản phẩm. API `GET /api/products` đã được cập nhật để hỗ trợ pagination:
+
+**Query Parameters:**
+
+-   `page`: Số trang (mặc định: 1)
+-   `limit`: Số sản phẩm mỗi trang (mặc định: 10)
+
+**Ví dụ:**
+
+```
+GET /api/products?page=1&limit=5
+```
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "data": [...],
+  "pagination": {
+    "currentPage": 1,
+    "totalPages": 5,
+    "totalItems": 50,
+    "itemsPerPage": 5,
+    "hasNextPage": true,
+    "hasPreviousPage": false
+  }
+}
+```
+
+### 5.2. Filtering
+
+Lọc sản phẩm theo các tiêu chí:
+
+-   `status`: Lọc theo trạng thái (`draft`, `published`, `archived`)
+-   `featured`: Lọc sản phẩm nổi bật (`true`/`false`)
+-   `minPrice`: Giá tối thiểu
+-   `maxPrice`: Giá tối đa
+
+**Ví dụ:**
+
+```
+GET /api/products?status=published&featured=true&minPrice=10000&maxPrice=50000
+```
+
+### 5.3. Sorting
+
+Sắp xếp sản phẩm theo các trường:
+
+-   `sort`: Trường sắp xếp (thêm `-` để sắp xếp giảm dần)
+    -   `price`: Sắp xếp theo giá
+    -   `-price`: Sắp xếp theo giá giảm dần
+    -   `createdAt`: Sắp xếp theo ngày tạo (cũ nhất trước)
+    -   `-createdAt`: Sắp xếp theo ngày tạo (mới nhất trước)
+
+**Ví dụ:**
+
+```
+GET /api/products?sort=-price&page=1&limit=10
+```
+
+### 5.4. Kết hợp các tính năng
+
+Bạn có thể kết hợp pagination, filtering và sorting:
+
+```
+GET /api/products?status=published&minPrice=20000&maxPrice=100000&sort=-createdAt&page=2&limit=20
+```
+
+## 6. Tóm tắt
+
+-   **CRUD Operations**: Đầy đủ các thao tác Create, Read, Update, Delete
+-   **Pagination**: Chia nhỏ kết quả thành các trang
+-   **Filtering**: Lọc sản phẩm theo nhiều tiêu chí
+-   **Sorting**: Sắp xếp kết quả theo các trường khác nhau
+-   **Dữ liệu Fake**: Sử dụng các mẫu JSON để kiểm tra các endpoint CRUD
+-   **Test Postman**: Kiểm tra các endpoint `/api/products` với các phương thức và query parameters
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀

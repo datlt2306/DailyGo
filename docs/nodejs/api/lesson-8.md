@@ -1,5 +1,8 @@
 # 🛠️ Hướng dẫn Đăng ký, Đăng nhập với JWT
 
+> **Bài trước:** [Lesson 7: Authentication và Authorization](./lesson-7.md)  
+> **Bài tiếp theo:** [Lesson 9: Kiểm tra Quyền trong API Sản phẩm](./lesson-9.md)
+
 Chào các em!  
 Hôm nay, Thầy sẽ hướng dẫn các em cách xây dựng chức năng **Đăng ký**, **Đăng nhập** với **JWT** (JSON Web Token). Chúng ta sẽ đi theo flow chuẩn: **Model → Controller → Middleware Validate → Router**. Bắt đầu thôi nào!
 
@@ -145,7 +148,7 @@ export const signup = async (req, res) => {
    - Nếu có lỗi, trả về thông báo lỗi chi tiết.
 ::: code-group
 ```javascript [src/controllers/auth.controller.js]
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js";
 
@@ -161,8 +164,12 @@ export const login = async (req, res) => {
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) return res.status(401).json({ message: "Invalid credentials" });
 
-    // Tạo JWT
-    const token = jwt.sign({ email: user.email, role: user.role }, "yourSecretKey", { expiresIn: "1h" });
+    // Tạo JWT - Sử dụng environment variable
+    const token = jwt.sign(
+      { email: user.email, role: user.role },
+      process.env.JWT_SECRET || "yourSecretKey",
+      { expiresIn: "1h" }
+    );
 
     res.json({ token });
   } catch (err) {
@@ -170,6 +177,11 @@ export const login = async (req, res) => {
   }
 };
 ```
+
+> **Lưu ý:** Đảm bảo đã thêm `JWT_SECRET` vào file `.env`:
+> ```env
+> JWT_SECRET=your_super_secret_key_here_minimum_32_characters
+> ```
 
 :::
 ### 2.3. Lấy thông tin người dùng hiện tại (`getMe`)
@@ -343,7 +355,7 @@ Dưới đây là tổng hợp các file code đã sử dụng trong bài học 
 
 ::: code-group
 ```javascript [src/controllers/auth.controller.js]
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model";
 
@@ -371,7 +383,11 @@ export const login = async (req, res) => {
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) return res.status(401).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ email: user.email, role: user.role }, "yourSecretKey", { expiresIn: "1h" });
+    const token = jwt.sign(
+      { email: user.email, role: user.role },
+      process.env.JWT_SECRET || "yourSecretKey",
+      { expiresIn: "1h" }
+    );
     res.json({ token });
   } catch (err) {
     res.status(400).json({ message: "Error logging in", error: err.message });
@@ -488,11 +504,25 @@ export const signinSchema = Joi.object({
 :::
 
 
-## 8. Kết luận
+## 8. Use Case thực tế: Authentication Flow trong Production
+
+Trong thực tế, các ứng dụng production thường có:
+
+1. **Refresh Token**: Token dài hạn để lấy access token mới
+2. **Token Rotation**: Thay đổi token định kỳ để tăng bảo mật
+3. **Rate Limiting**: Giới hạn số lần đăng nhập sai để chống brute force
+4. **Email Verification**: Xác thực email trước khi cho phép đăng nhập
+5. **Password Reset**: Quên mật khẩu với token tạm thời
+
+Ví dụ thực tế: Khi bạn đăng nhập vào Facebook, họ sử dụng JWT token, và nếu bạn quên mật khẩu, họ gửi email với reset token.
+
+## 9. Kết luận
 
 Qua bài học này, các em đã được hướng dẫn cách xây dựng chức năng **Đăng ký**, **Đăng nhập**, và **Lấy thông tin người dùng hiện tại** với **JWT**. Chúng ta đã đi qua các bước từ định nghĩa **Model**, viết **Controller**, đến thiết lập **Router**. Đây là một quy trình chuẩn để xây dựng các API bảo mật và hiệu quả.
 
 Hãy áp dụng những kiến thức này vào các dự án thực tế của mình. Nếu có bất kỳ thắc mắc nào, đừng ngần ngại đặt câu hỏi nhé!
+
+**Bài tiếp theo:** [Lesson 9: Kiểm tra Quyền trong API Sản phẩm](./lesson-9.md) - Học cách bảo vệ API với middleware
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀

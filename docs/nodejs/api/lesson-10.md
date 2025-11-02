@@ -1,5 +1,8 @@
 # Thiết Kế Schema MongoDB: Cách Tổ Chức Cơ Sở Dữ Liệu
 
+> **Bài trước:** [Lesson 9: Kiểm tra Quyền trong API Sản phẩm](./lesson-9.md)  
+> **Bài tiếp theo:** [Lesson 11: Hiểu Về Populate Trong MongoDB](./lesson-11.md)
+
 Chào các bạn sinh viên thân yêu! Hôm nay chúng ta sẽ cùng nhau khám phá một chủ đề cực kỳ thú vị: **Làm thế nào để thiết kế schema cơ sở dữ liệu trong MongoDB?**
 
 Đây là câu hỏi đầu tiên mà bất kỳ ai cũng phải đối mặt khi bắt đầu một dự án với MongoDB. Và câu trả lời là: **Tùy vào từng trường hợp!**
@@ -276,6 +279,46 @@ Không nên lưu như sau, vì mảng lớn sẽ phình to và khó cập nhật
   likedByUserIds: [ObjectId] // ref: 'User'
 }
 ```
+
+## Bài tập thực hành: Thiết Kế Schema Cho Hệ Thống Blog
+
+Thiết kế schema cho hệ thống blog với các yêu cầu sau:
+
+**Collections cần có:**
+1. **Posts**: Bài viết (title, content, author, comments, tags, publishedAt)
+2. **Users**: Người dùng (name, email, role)
+3. **Comments**: Bình luận (content, postId, userId, createdAt)
+
+**Yêu cầu:**
+- Quyết định xem nên embed hay reference cho comments
+- Thiết kế quan hệ giữa Posts và Users
+- Thiết kế quan hệ giữa Comments với Posts và Users
+- Giải thích lý do chọn embedded vs referenced
+
+**Gợi ý:**
+- Comments có thể rất nhiều (100+ comments/post) → Nên dùng reference
+- Author của post luôn cần hiển thị → Có thể embed basic info hoặc reference
+- Tags của post ít thay đổi và thường hiển thị cùng → Có thể embed
+
+## Use Case thực tế: Schema Design trong E-commerce
+
+Trong thực tế, một hệ thống e-commerce thường có:
+
+**Products Schema:**
+- Embed: Categories (vì thường hiển thị cùng), images array
+- Reference: Reviews (vì có thể rất nhiều), Orders
+
+**Orders Schema:**
+- Embed: Shipping address (gắn chặt với order đó)
+- Reference: User (dùng lại ở nhiều nơi), Products (cần query riêng)
+
+**Users Schema:**
+- Embed: Default shipping address (ít, thường hiển thị cùng)
+- Reference: Orders (có thể rất nhiều)
+
+Ví dụ thực tế: Shopify, WooCommerce đều sử dụng pattern này.
+
+**Bài tiếp theo:** [Lesson 11: Hiểu Về Populate Trong MongoDB](./lesson-11.md) - Học cách lấy dữ liệu từ các collection liên quan
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀

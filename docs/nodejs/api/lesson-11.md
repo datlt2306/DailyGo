@@ -1,5 +1,8 @@
 # Bài 11: Hiểu Về Populate Trong MongoDB
 
+> **Bài trước:** [Lesson 10: Thiết Kế Schema MongoDB](./lesson-10.md)  
+> **Bài tiếp theo:** Không có (Đây là bài cuối cùng)
+
 ## Khái Niệm
 
 `populate` là một tính năng của Mongoose giúp bạn tự động thay thế các đường dẫn được chỉ định trong document bằng các document từ collection khác. Điều này rất hữu ích khi làm việc với các mối quan hệ giữa các collection.
@@ -39,9 +42,9 @@ Giả sử bạn có hai collection: **Person** và **Story**.
 
 ### 2. Định Nghĩa Schema Trong Mongoose
 
-```javascript
-// filepath: /path/to/models/Person.js
-const mongoose = require('mongoose');
+::: code-group
+```javascript [src/models/Person.js]
+import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const personSchema = new Schema({
@@ -50,39 +53,48 @@ const personSchema = new Schema({
   stories: [{ type: Schema.Types.ObjectId, ref: 'Story' }]
 });
 
-module.exports = mongoose.model('Person', personSchema);
+const Person = mongoose.model('Person', personSchema);
+export default Person;
+```
 
-// filepath: /path/to/models/Story.js
+```javascript [src/models/Story.js]
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
+
 const storySchema = new Schema({
   title: String,
   author: { type: Schema.Types.ObjectId, ref: 'Person' },
   fans: [{ type: Schema.Types.ObjectId, ref: 'Person' }]
 });
 
-module.exports = mongoose.model('Story', storySchema);
+const Story = mongoose.model('Story', storySchema);
+export default Story;
 ```
+:::
 
 
 ### 3. Sử Dụng Populate
 
 #### Truy xuất thông tin tác giả của một câu chuyện:
 ```javascript
-const Story = require('./models/Story');
+import Story from './models/Story.js';
 
-async function getStoryWithAuthor(storyId) {
+const getStoryWithAuthor = async (storyId) => {
   const story = await Story.findById(storyId).populate('author');
   console.log(`The author is ${story.author.name}`);
-}
+};
 
 getStoryWithAuthor('STORY001');
 ```
 
 #### Truy xuất danh sách người hâm mộ của một câu chuyện:
 ```javascript
-async function getStoryWithFans(storyId) {
+import Story from './models/Story.js';
+
+const getStoryWithFans = async (storyId) => {
   const story = await Story.findById(storyId).populate('fans');
   story.fans.forEach(fan => console.log(`Fan: ${fan.name}`));
-}
+};
 
 getStoryWithFans('STORY001');
 ```
@@ -114,6 +126,8 @@ Khi sử dụng `populate`, kết quả sẽ tự động bao gồm thông tin t
 ### Chọn Trường
 Bạn có thể chỉ định các trường cần truy xuất từ collection liên quan:
 ```javascript
+import Story from './models/Story.js';
+
 const story = await Story.findById('STORY001').populate('author', 'name age');
 console.log(`Author: ${story.author.name}, Age: ${story.author.age}`);
 ```
@@ -121,6 +135,8 @@ console.log(`Author: ${story.author.name}, Age: ${story.author.age}`);
 ### Populate Nhiều Đường Dẫn
 Bạn có thể populate nhiều đường dẫn cùng lúc:
 ```javascript
+import Story from './models/Story.js';
+
 const story = await Story.findById('STORY001')
   .populate('author')
   .populate('fans');
@@ -129,6 +145,8 @@ const story = await Story.findById('STORY001')
 ### Điều Kiện Truy Vấn
 Bạn có thể thêm điều kiện truy vấn khi populate:
 ```javascript
+import Story from './models/Story.js';
+
 const story = await Story.findById('STORY001').populate({
   path: 'fans',
   match: { age: { $gte: 21 } },
@@ -139,8 +157,9 @@ const story = await Story.findById('STORY001').populate({
 
 ## Lưu Ý
 
-- **Hiệu suất**: `populate` có thể làm chậm truy vấn nếu dữ liệu liên quan quá lớn. Hãy sử dụng nó một cách hợp lý.
+- **Hiệu suất**: `populate` có thể làm chậm truy vấn nếu dữ liệu liên quan quá lớn. Hãy sử dụng nó một cách hợp lý. Tránh populate quá nhiều documents cùng lúc (ví dụ: populate 1000+ documents).
 - **Không Có Document Liên Quan**: Nếu không có document liên quan, giá trị sẽ là `null` hoặc `[]`.
+- **Nested Populate**: Bạn có thể populate nhiều cấp bằng cách sử dụng nested populate (ví dụ: `.populate('author').populate('author.friends')`), nhưng cần cẩn thận về performance.
 
 
 ## Tóm Lại
@@ -171,9 +190,9 @@ Bạn sẽ thiết kế một hệ thống quản lý đơn hàng cho một webs
 
 ### 1. Định Nghĩa Schema
 
-```javascript
-// filepath: /path/to/models/User.js
-const mongoose = require('mongoose');
+::: code-group
+```javascript [src/models/User.js]
+import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -181,52 +200,72 @@ const userSchema = new Schema({
   email: String,
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+export default User;
+```
 
-// filepath: /path/to/models/Product.js
+```javascript [src/models/Product.js]
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
+
 const productSchema = new Schema({
   name: String,
   price: Number,
 });
 
-module.exports = mongoose.model('Product', productSchema);
+const Product = mongoose.model('Product', productSchema);
+export default Product;
+```
 
-// filepath: /path/to/models/Order.js
+```javascript [src/models/Order.js]
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
+
 const orderSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
   total: Number,
 });
 
-module.exports = mongoose.model('Order', orderSchema);
+const Order = mongoose.model('Order', orderSchema);
+export default Order;
 ```
+:::
 
 
 ### 2. Thêm Dữ Liệu Mẫu
 
 ```javascript
-// filepath: /path/to/scripts/addSampleData.js
-const mongoose = require('mongoose');
-const User = require('./models/User');
-const Product = require('./models/Product');
-const Order = require('./models/Order');
+// filepath: src/scripts/addSampleData.js
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import User from '../models/User.js';
+import Product from '../models/Product.js';
+import Order from '../models/Order.js';
 
-async function addSampleData() {
-  await mongoose.connect('mongodb://localhost:27017/populateExample');
+dotenv.config();
 
-  const user = await User.create({ name: 'Nguyễn Văn A', email: 'nguyenvana@example.com' });
-  const product1 = await Product.create({ name: 'Laptop', price: 1500 });
-  const product2 = await Product.create({ name: 'Mouse', price: 50 });
+const addSampleData = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
 
-  const order = await Order.create({
-    user: user._id,
-    products: [product1._id, product2._id],
-    total: 1550,
-  });
+    const user = await User.create({ name: 'Nguyễn Văn A', email: 'nguyenvana@example.com' });
+    const product1 = await Product.create({ name: 'Laptop', price: 1500 });
+    const product2 = await Product.create({ name: 'Mouse', price: 50 });
 
-  console.log('Sample data added successfully!');
-  await mongoose.disconnect();
-}
+    const order = await Order.create({
+      user: user._id,
+      products: [product1._id, product2._id],
+      total: 1550,
+    });
+
+    console.log('Sample data added successfully!');
+    await mongoose.disconnect();
+  } catch (error) {
+    console.error('Error adding sample data:', error);
+    process.exit(1);
+  }
+};
 
 addSampleData();
 ```
@@ -235,29 +274,42 @@ addSampleData();
 ### 3. Truy Xuất Thông Tin Đơn Hàng
 
 ```javascript
-// filepath: /path/to/scripts/getOrderDetails.js
-const mongoose = require('mongoose');
-const Order = require('./models/Order');
+// filepath: src/scripts/getOrderDetails.js
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import Order from '../models/Order.js';
 
-async function getOrderDetails(orderId) {
-  await mongoose.connect('mongodb://localhost:27017/populateExample');
+dotenv.config();
 
-  const order = await Order.findById(orderId)
-    .populate('user', 'name email')
-    .populate('products', 'name price');
+const getOrderDetails = async (orderId) => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
 
-  console.log('Order Details:');
-  console.log(`Customer: ${order.user.name} (${order.user.email})`);
-  console.log('Products:');
-  order.products.forEach(product => {
-    console.log(`- ${product.name}: $${product.price}`);
-  });
-  console.log(`Total: $${order.total}`);
+    const order = await Order.findById(orderId)
+      .populate('user', 'name email')
+      .populate('products', 'name price');
 
-  await mongoose.disconnect();
-}
+    if (!order) {
+      console.log('Order not found');
+      return;
+    }
 
-getOrderDetails('ORDER_ID'); // Replace 'ORDER_ID' with the actual order ID
+    console.log('Order Details:');
+    console.log(`Customer: ${order.user.name} (${order.user.email})`);
+    console.log('Products:');
+    order.products.forEach(product => {
+      console.log(`- ${product.name}: $${product.price}`);
+    });
+    console.log(`Total: $${order.total}`);
+
+    await mongoose.disconnect();
+  } catch (error) {
+    console.error('Error fetching order details:', error);
+    process.exit(1);
+  }
+};
+
+// Sử dụng: getOrderDetails('ORDER_ID'); // Thay 'ORDER_ID' bằng ID thực tế
 ```
 
 
@@ -281,7 +333,39 @@ Total: $1550
 2. Sử dụng `populate` để chỉ truy xuất các trường cần thiết từ **User** và **Product**.
 3. Viết code để cập nhật danh sách sản phẩm trong một đơn hàng.
 
-Chúc bạn học tốt và áp dụng thành công!
+## Use Case thực tế: Khi Nào Dùng Populate?
+
+**Nên dùng Populate:**
+- Hiển thị thông tin user khi xem order details
+- Hiển thị thông tin product trong order items
+- Hiển thị author của blog post
+- Relationship 1-1 hoặc 1-nhiều (nhỏ)
+
+**Không nên dùng Populate:**
+- Khi cần populate quá nhiều documents (1000+) → Dùng aggregation pipeline
+- Khi dữ liệu thường xuyên thay đổi → Nên embed hoặc query riêng
+- Khi chỉ cần một vài trường → Dùng select để giảm dữ liệu
+
+**Ví dụ thực tế:** 
+- Amazon: Hiển thị product info trong order → Populate tốt
+- Facebook: Hiển thị tất cả friends (có thể hàng ngàn) → Không populate, dùng pagination và query riêng
+
+## Tổng kết khóa học
+
+Qua 11 bài học, các em đã học được:
+1. ✅ Thiết lập dự án Node.js/Express với Babel và pnpm
+2. ✅ Làm việc với Request/Response và Middleware
+3. ✅ Xây dựng CRUD API với in-memory data
+4. ✅ Kết nối MongoDB và sử dụng Mongoose
+5. ✅ Xây dựng CRUD API với database thực
+6. ✅ Validate dữ liệu đầu vào với Joi
+7. ✅ Hiểu về Authentication và Authorization
+8. ✅ Xây dựng hệ thống đăng ký/đăng nhập với JWT
+9. ✅ Bảo vệ API với middleware và role-based access
+10. ✅ Thiết kế schema MongoDB hiệu quả
+11. ✅ Sử dụng populate để query dữ liệu liên quan
+
+Chúc các em áp dụng thành công những kiến thức này vào dự án thực tế!
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀

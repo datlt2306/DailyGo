@@ -1,5 +1,8 @@
 # 🛡️ Hướng dẫn Kiểm tra Quyền trong API Sản phẩm
 
+> **Bài trước:** [Lesson 8: Đăng ký, Đăng nhập với JWT](./lesson-8.md)  
+> **Bài tiếp theo:** [Lesson 10: Thiết kế Schema MongoDB](./lesson-10.md)
+
 Chào các em!  
 Hôm nay, Thầy sẽ hướng dẫn các em cách kiểm tra quyền trong API sản phẩm. Chúng ta sẽ viết middleware để xác thực JWT và kiểm tra quyền dựa trên vai trò người dùng. Sau đó, tích hợp middleware này vào API sản phẩm. Bắt đầu thôi nào!
 
@@ -13,13 +16,16 @@ Middleware này sẽ xác thực JWT từ header của yêu cầu. Nếu token h
 ::: code-group
 ```javascript [src/middlewares/auth.middleware.js]
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const verifyJWT = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.status(401).json({ message: "Access Denied" });
 
   try {
-    const decoded = jwt.verify(token, "yourSecretKey");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || "yourSecretKey");
     req.user = decoded;
     next();
   } catch (err) {
@@ -27,6 +33,8 @@ export const verifyJWT = (req, res, next) => {
   }
 };
 ```
+
+> **Lưu ý:** Đảm bảo file `.env` có biến `JWT_SECRET`. Middleware này sử dụng cùng secret key với controller để verify token.
 :::
 
 > **Giải thích**:  
@@ -75,7 +83,7 @@ import {
 } from "../controllers/productController.js";
 import { validateRequest } from "../middlewares/validateRequest.js";
 import { createProductSchema, updateProductSchema } from "../schemas/productSchemas.js";
-import { verifyJWT, restrictTo } from "../middlewares/authMiddleware.js";
+import { verifyJWT, restrictTo } from "../middlewares/auth.middleware.js";
 
 export const productRouter = express.Router();
 
@@ -96,9 +104,29 @@ productRouter.patch("/:id", validateRequest(updateProductSchema), updateProduct)
 productRouter.delete("/:id", deleteProduct);
 ```
 :::
+### Middleware Chain Flow
+
+```mermaid
+graph TD
+    A[Request đến /api/products] --> B{Route nào?}
+    B -->|GET /| C[Không cần auth - Trả về products]
+    B -->|GET /:id| D[Không cần auth - Trả về product]
+    B -->|POST /| E[verifyJWT Middleware]
+    B -->|PUT /:id| E
+    B -->|DELETE /:id| E
+    E --> F{Token hợp lệ?}
+    F -->|Không| G[401 Unauthorized]
+    F -->|Có| H[restrictTo Middleware]
+    H --> I{Role hợp lệ?}
+    I -->|Không| J[403 Forbidden]
+    I -->|Có - admin/staff| K[Controller xử lý]
+    K --> L[200/201 Success]
+```
+
 > **Giải thích**:  
 > - `productRouter.use(verifyJWT)`: Tất cả các route sau dòng này yêu cầu xác thực JWT.  
-> - `productRouter.use(restrictTo("admin", "staff"))`: Chỉ cho phép admin và staff truy cập các route sau dòng này.  
+> - `productRouter.use(restrictTo("admin", "staff"))`: Chỉ cho phép admin và staff truy cập các route sau dòng này.
+> - **Quan trọng**: Thứ tự middleware rất quan trọng! `verifyJWT` phải chạy trước `restrictTo` vì `restrictTo` cần `req.user` từ `verifyJWT`.  
 
 
 ## 3. Test API với Postman
@@ -174,12 +202,50 @@ productRouter.delete("/:id", deleteProduct);
 ```
 
 
-## 4. Tóm tắt
+## 4. Phân biệt 401 vs 403
+
+**401 Unauthorized:**
+- Token không tồn tại hoặc không hợp lệ
+- Chưa đăng nhập hoặc token hết hạn
+- Response: `{ message: "Access Denied" }` hoặc `{ message: "Invalid Token" }`
+
+**403 Forbidden:**
+- Token hợp lệ nhưng không đủ quyền
+- Ví dụ: User `customer` cố gắng tạo sản phẩm (chỉ admin/staff mới được)
+- Response: `{ message: "Access Denied" }`
+
+**Ví dụ:**
+```javascript
+// 401: Không có token hoặc token sai
+GET /api/products
+Headers: { Authorization: "Bearer invalid_token" }
+→ 401 Unauthorized
+
+// 403: Token hợp lệ nhưng role không đủ
+POST /api/products
+Headers: { Authorization: "Bearer valid_token_customer" }
+→ 403 Forbidden (vì customer không có quyền tạo product)
+```
+
+## 5. Use Case thực tế: Role-Based Access Control (RBAC)
+
+Trong thực tế, các hệ thống lớn thường có nhiều role và quyền:
+- **Super Admin**: Toàn quyền hệ thống
+- **Admin**: Quản lý sản phẩm, đơn hàng, users
+- **Staff**: Quản lý đơn hàng, sản phẩm (không quản lý users)
+- **Customer**: Chỉ xem và mua hàng
+
+Ví dụ thực tế: Amazon, Shopify đều sử dụng RBAC để phân quyền.
+
+## 6. Tóm tắt
 
 - **Middleware `verifyJWT`**: Xác thực JWT và gắn thông tin người dùng vào `req.user`.
 - **Middleware `restrictTo`**: Kiểm tra quyền dựa trên vai trò người dùng.
 - **Tích hợp Middleware**: Sử dụng `verifyJWT` và `restrictTo` trong API sản phẩm để bảo vệ các route quan trọng.
 - **Test Postman**: Kiểm tra các endpoint với token JWT và vai trò phù hợp.
+- **401 vs 403**: Phân biệt lỗi xác thực và lỗi phân quyền.
+
+**Bài tiếp theo:** [Lesson 10: Thiết kế Schema MongoDB](./lesson-10.md) - Học cách thiết kế database schema hiệu quả
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀

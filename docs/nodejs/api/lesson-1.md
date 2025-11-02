@@ -11,7 +11,6 @@ Khóa học này sẽ giúp các em:
 -   Tích hợp các tính năng bảo mật như xác thực JWT, mã hóa mật khẩu.
 -   Tối ưu hiệu năng và tổ chức code khoa học, dễ mở rộng.
 
-
 ## Giới thiệu Node.js
 
 ### Node.js là gì?
@@ -26,7 +25,6 @@ Node.js là một nền tảng (runtime) giúp chạy JavaScript ở phía serve
 -   **Được các công ty lớn sử dụng**: Netflix, LinkedIn, Uber, và nhiều công ty khác đã áp dụng Node.js để xây dựng hệ thống của họ.
 -   **Dễ học**: Nếu đã biết JavaScript, việc học Node.js sẽ rất dễ dàng. Ngoài ra, nhu cầu tuyển dụng Node.js rất cao với mức lương hấp dẫn.
 
-
 ### So sánh Node.js với PHP
 
 | Tiêu chí          | Node.js                       | PHP                           |
@@ -38,8 +36,7 @@ Node.js là một nền tảng (runtime) giúp chạy JavaScript ở phía serve
 | Học tập           | Dễ nếu đã biết JS             | Dễ bắt đầu cho web            |
 | Ứng dụng phổ biến | API, chat, game, microservice | Website, CMS (WordPress...)   |
 
->Tóm lại, Node.js rất phù hợp cho các ứng dụng hiện đại, cần tốc độ và khả năng mở rộng, còn PHP vẫn mạnh ở mảng web truyền thống, blog, CMS.
-
+> Tóm lại, Node.js rất phù hợp cho các ứng dụng hiện đại, cần tốc độ và khả năng mở rộng, còn PHP vẫn mạnh ở mảng web truyền thống, blog, CMS.
 
 ### Khi nào nên chọn Node.js?
 
@@ -48,16 +45,15 @@ Node.js là một nền tảng (runtime) giúp chạy JavaScript ở phía serve
 -   Khi cần tốc độ phát triển nhanh, nhiều thư viện hỗ trợ.
 -   Khi muốn xây dựng hệ thống có khả năng mở rộng và hiệu năng cao.
 
-
 ## Chuẩn bị cho khóa học Node.js
 
 ### Kiến thức cần có
 
 Để học Node.js hiệu quả, bạn nên có kiến thức cơ bản về:
+
 -   **JavaScript ES6+**: Hiểu các khái niệm như `let`, `const`, `arrow function`, `async/await`.
 -   **Networking và HTTP**: Hiểu cách giao tiếp giữa client và server qua giao thức HTTP.
 -   **Cơ sở dữ liệu**: Biết cách làm việc với cơ sở dữ liệu như MongoDB hoặc MySQL.
-
 
 ## Thiết lập môi trường
 
@@ -72,7 +68,6 @@ Thầy khuyên dùng `pnpm` thay cho `npm` vì tốc độ cài đặt nhanh và
 ```bash
 npm i -g pnpm
 ```
-
 
 ### 3. Khởi tạo dự án Node.js
 
@@ -98,7 +93,6 @@ npm i -g pnpm
     -   `dotenv`: Giúp quản lý các biến môi trường, bảo mật thông tin nhạy cảm.
     -   `morgan`: Hỗ trợ ghi log các request, rất tiện khi debug.
 
-
 ### 4. Cài đặt Babel cho dự án
 
 Để code hiện đại hơn, các em cần Babel – công cụ chuyển đổi mã JavaScript mới về dạng mà Node.js hiểu được.  
@@ -121,7 +115,6 @@ Sau đó, tạo file `.babelrc` ở thư mục gốc với nội dung:
 
 Nhờ vậy, các em có thể dùng cú pháp import/export, async/await... mà không lo Node.js chưa hỗ trợ.
 
-
 ### 5. Cấu hình package.json
 
 Thêm script để chạy dự án:
@@ -133,7 +126,6 @@ Thêm script để chạy dự án:
 ```
 
 Script này giúp các em chỉ cần chạy `pnpm run dev` là server sẽ tự động khởi động bằng Babel, đồng thời nodemon sẽ theo dõi mọi thay đổi trong mã nguồn và tự động restart server.
-
 
 ### 6. Thiết lập cấu trúc thư mục
 
@@ -148,6 +140,7 @@ src/
 ├── .env                    # Lưu thông tin biến môi trường
 └── .gitignore              # Định nghĩa các file/thư mục cần bỏ qua khi đẩy lên Git
 ```
+
 ### 6.1. Cấu hình biến môi trường
 
 Tạo file `.env` với nội dung:
@@ -157,6 +150,7 @@ PORT=3000
 ```
 
 Nhờ vậy, khi muốn đổi port, các em chỉ cần sửa file này mà không phải động vào code.
+
 ### 6.2. Cấu hình `.gitignore`
 
 Tạo file `.gitignore` ở thư mục gốc để bỏ qua các file/thư mục không cần thiết khi đẩy lên Git. Nội dung file có thể như sau:
@@ -167,9 +161,9 @@ node_modules/
 dist/
 ```
 
-- `node_modules/`: Thư mục chứa các thư viện cài đặt, không cần đẩy lên Git vì có thể cài lại bằng `pnpm install`.
-- `.env`: File chứa thông tin nhạy cảm như biến môi trường, không nên công khai.
-- `dist/`: Thư mục chứa mã nguồn đã build (nếu có), thường được tạo lại khi build dự án.
+-   `node_modules/`: Thư mục chứa các thư viện cài đặt, không cần đẩy lên Git vì có thể cài lại bằng `pnpm install`.
+-   `.env`: File chứa thông tin nhạy cảm như biến môi trường, không nên công khai.
+-   `dist/`: Thư mục chứa mã nguồn đã build (nếu có), thường được tạo lại khi build dự án.
 
 Nhờ `.gitignore`, bạn có thể giữ repo sạch sẽ và bảo mật thông tin nhạy cảm.
 
@@ -198,10 +192,10 @@ Lệnh này sẽ khởi tạo một repository Git trong thư mục hiện tại
 
 #### 3. Tạo repository trên GitHub
 
-- Truy cập [https://github.com/](https://github.com/) và đăng nhập.
-- Nhấn nút **New Repository** để tạo một repository mới.
-- Điền tên repository, ví dụ: `nodejs-ecommerce-api`.
-- Nhấn **Create Repository**.
+-   Truy cập [https://github.com/](https://github.com/) và đăng nhập.
+-   Nhấn nút **New Repository** để tạo một repository mới.
+-   Điền tên repository, ví dụ: `nodejs-ecommerce-api`.
+-   Nhấn **Create Repository**.
 
 #### 4. Kết nối dự án với GitHub
 
@@ -236,10 +230,10 @@ git push -u origin main
 
 Sau khi hoàn tất, bạn có thể kiểm tra repository trên GitHub để xem các file đã được đẩy lên.
 
-
 ### 7. Viết mã nguồn khởi tạo app
 
 ::: code-group
+
 ```javascript [src/app.js]
 import express from "express";
 import dotenv from "dotenv";
@@ -252,6 +246,7 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 ```
+
 :::
 
 ### 8. Chạy thử dự án
@@ -264,7 +259,6 @@ pnpm run dev
 
 Nếu thấy dòng "Server is running on port ..." hiện ra, nghĩa là server đã hoạt động.
 
-
 ### 9. Router là gì?
 
 Router trong Express là một công cụ giúp bạn nhóm các endpoint API liên quan lại với nhau. Nó giống như một "nhánh" trong cây route của ứng dụng, giúp tổ chức code khoa học hơn.
@@ -274,6 +268,7 @@ Router trong Express là một công cụ giúp bạn nhóm các endpoint API li
 Để tạo một router, bạn sử dụng `Router()` từ thư viện Express. Ví dụ:
 
 ::: code-group
+
 ```javascript{3,5,9} [src/routers/posts.js]
 import { Router } from "express";
 
@@ -289,18 +284,21 @@ postsRouter.post("/", (req, res) => {
 
 export default postsRouter;
 ```
+
 :::
 Trong ví dụ trên:
-- `Router()` tạo một đối tượng router mới.
-- `postsRouter.get()` định nghĩa một endpoint với phương thức HTTP GET.
-- `postsRouter.post()` định nghĩa một endpoint với phương thức HTTP POST.
-- `res.json()` gửi phản hồi dạng JSON về cho client.
+
+-   `Router()` tạo một đối tượng router mới.
+-   `postsRouter.get()` định nghĩa một endpoint với phương thức HTTP GET.
+-   `postsRouter.post()` định nghĩa một endpoint với phương thức HTTP POST.
+-   `res.json()` gửi phản hồi dạng JSON về cho client.
 
 #### Tích hợp router vào ứng dụng
 
 Sau khi tạo router, bạn cần tích hợp nó vào ứng dụng chính bằng `app.use()`:
 
 ::: code-group
+
 ```javascript{2,6} [src/app.js]
 import express from "express";
 import postsRouter from "./routers/posts";
@@ -314,27 +312,28 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 ```
+
 :::
 Trong ví dụ trên:
-- `app.use("/api/posts", postsRouter)` gắn router `postsRouter` vào đường dẫn `/api/posts`.
-- Khi client gửi yêu cầu đến `/api/posts`, router `postsRouter` sẽ xử lý.
+
+-   `app.use("/api/posts", postsRouter)` gắn router `postsRouter` vào đường dẫn `/api/posts`.
+-   Khi client gửi yêu cầu đến `/api/posts`, router `postsRouter` sẽ xử lý.
 
 #### Lợi ích của việc sử dụng router
 
-- **Tổ chức code tốt hơn**: Bạn có thể chia các endpoint theo chức năng (ví dụ: bài viết, người dùng, đơn hàng).
-- **Dễ bảo trì**: Khi cần sửa đổi hoặc thêm endpoint, bạn chỉ cần làm việc với file router tương ứng.
-- **Khả năng mở rộng**: Dễ dàng thêm các router mới mà không làm phức tạp ứng dụng chính.
+-   **Tổ chức code tốt hơn**: Bạn có thể chia các endpoint theo chức năng (ví dụ: bài viết, người dùng, đơn hàng).
+-   **Dễ bảo trì**: Khi cần sửa đổi hoặc thêm endpoint, bạn chỉ cần làm việc với file router tương ứng.
+-   **Khả năng mở rộng**: Dễ dàng thêm các router mới mà không làm phức tạp ứng dụng chính.
 
 #### Ví dụ thực tế
 
 Giả sử bạn đang xây dựng một ứng dụng ecommerce. Bạn có thể tạo các router như sau:
-- `productsRouter`: Quản lý các endpoint liên quan đến sản phẩm.
-- `usersRouter`: Quản lý các endpoint liên quan đến người dùng.
-- `ordersRouter`: Quản lý các endpoint liên quan đến đơn hàng.
+
+-   `productsRouter`: Quản lý các endpoint liên quan đến sản phẩm.
+-   `usersRouter`: Quản lý các endpoint liên quan đến người dùng.
+-   `ordersRouter`: Quản lý các endpoint liên quan đến đơn hàng.
 
 Nhờ việc sử dụng router, ứng dụng của bạn sẽ trở nên khoa học và dễ quản lý hơn.
-
-
 
 ## Kiểm tra API với Postman
 
@@ -343,19 +342,85 @@ Nhờ việc sử dụng router, ứng dụng của bạn sẽ trở nên khoa h
 3. Nhập URL: `http://localhost:3000/api/posts`
 4. Nhấn **Send**.
 5. Nếu thành công, các em sẽ thấy kết quả:
-   ```json
-   {
-       "message": "Danh sách bài viết"
-   }
-   ```
+    ```json
+    {
+        "message": "Danh sách bài viết"
+    }
+    ```
 
+## Bài tập thực hành
+
+### Bài tập 1: Tạo Router cho Users
+
+Tạo một router mới cho quản lý người dùng với 3 endpoint cơ bản:
+
+**Yêu cầu:**
+
+1. Tạo file `src/routers/users.js`
+2. Tạo router với 3 endpoint:
+    - `GET /api/users` - Trả về danh sách người dùng (tạm thời trả về mảng rỗng)
+    - `GET /api/users/:id` - Trả về thông tin một người dùng (tạm thời trả về thông báo)
+    - `POST /api/users` - Tạo người dùng mới (tạm thời trả về dữ liệu nhận được)
+
+**Gợi ý:**
+
+```javascript
+// src/routers/users.js
+import { Router } from "express";
+
+const usersRouter = Router();
+
+usersRouter.get("/", (req, res) => {
+    res.json([]);
+});
+
+usersRouter.get("/:id", (req, res) => {
+    res.json({ message: `Thông tin người dùng ID: ${req.params.id}` });
+});
+
+usersRouter.post("/", (req, res) => {
+    res.json({ message: "Tạo người dùng mới", data: req.body });
+});
+
+export default usersRouter;
+```
+
+3. Tích hợp router vào `src/app.js`:
+
+```javascript
+import usersRouter from "./routers/users";
+app.use("/api/users", usersRouter);
+```
+
+4. Test bằng Postman:
+    - `GET http://localhost:3000/api/users`
+    - `GET http://localhost:3000/api/users/123`
+    - `POST http://localhost:3000/api/users` (với body JSON: `{"name": "Test"}`)
+
+### Bài tập 2: Tìm hiểu về Error Handling
+
+Thêm error handling cơ bản vào router posts:
+
+-   Nếu có lỗi xảy ra, trả về status 500 và thông báo lỗi
+
+## Use Case thực tế: E-commerce API
+
+Trong thực tế, một API e-commerce thường có các module sau:
+
+-   **Products API**: Quản lý sản phẩm (thêm, sửa, xóa, tìm kiếm)
+-   **Users API**: Quản lý người dùng (đăng ký, đăng nhập, profile)
+-   **Orders API**: Quản lý đơn hàng (tạo đơn, xem lịch sử)
+-   **Cart API**: Quản lý giỏ hàng (thêm, xóa, cập nhật)
+
+Với kiến thức từ bài này, các em đã có nền tảng để xây dựng từng module trên!
 
 ## Kết luận
 
 Qua bài này, các em không chỉ biết cách tạo một dự án Node.js/Express mà còn hiểu rõ ý nghĩa của từng bước.  
 Hãy luôn tự hỏi "vì sao mình làm như vậy", vì hiểu bản chất sẽ giúp các em tiến xa hơn rất nhiều!
 
+**Bài tiếp theo:** [Lesson 2: Request/Response và Middleware](./lesson-2.md) - Học cách làm việc với request/response và middleware trong Express
+
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀  
 — **Thầy Đạt 🧡**
-

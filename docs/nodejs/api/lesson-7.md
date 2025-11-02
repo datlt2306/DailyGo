@@ -1,5 +1,8 @@
 # 🛡️ Authentication và Authorization trong Node.js
 
+> **Bài trước:** [Lesson 6: Middleware validate dữ liệu đầu vào](./lesson-6.md)  
+> **Bài tiếp theo:** [Lesson 8: Đăng ký, Đăng nhập với JWT](./lesson-8.md)
+
 Authentication (xác thực) và Authorization (ủy quyền) là hai khái niệm cốt lõi trong bảo mật ứng dụng. Trong bài này, chúng ta sẽ tìm hiểu:
 
 1. Authentication và Authorization là gì?
@@ -90,9 +93,27 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
 ### Cách hoạt động của JWT:
 
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+    participant Database
+
+    Client->>Server: POST /api/auth/login (email, password)
+    Server->>Database: Kiểm tra email/password
+    Database-->>Server: User data
+    Server->>Server: Tạo JWT token
+    Server-->>Client: Trả về JWT token
+    Client->>Client: Lưu token (localStorage/cookie)
+    Client->>Server: GET /api/protected (Header: Bearer token)
+    Server->>Server: Verify JWT token
+    Server-->>Client: Trả về dữ liệu protected
+```
+
+**Quy trình chi tiết:**
 1. Người dùng đăng nhập và máy chủ tạo một JWT chứa thông tin người dùng.
 2. JWT được gửi về trình duyệt và lưu trữ (trong cookie hoặc localStorage).
-3. Trình duyệt gửi JWT trong các yêu cầu tiếp theo.
+3. Trình duyệt gửi JWT trong các yêu cầu tiếp theo (trong header `Authorization: Bearer <token>`).
 4. Máy chủ xác minh JWT để xác thực người dùng.
 
 
@@ -101,29 +122,44 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 #### Tạo JWT:
 
 ```javascript
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const user = { id: 1, role: 'admin' };
-const secretKey = 'yourSecretKey';
+const secretKey = process.env.JWT_SECRET || 'yourSecretKey'; // Sử dụng environment variable
 
 // Tạo token
 const token = jwt.sign(user, secretKey, { expiresIn: '1h' });
 console.log('JWT:', token);
 ```
 
+> **Lưu ý quan trọng:** Luôn sử dụng environment variable cho JWT secret key. Thêm vào file `.env`:
+> ```env
+> JWT_SECRET=your_super_secret_key_here
+> ```
+
 #### Xác thực JWT:
 
 ```javascript
-function authenticateToken(req, res, next) {
-  const token = req.headers['authorization'];
-  if (!token) return res.status(401).send('Access Denied');
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
-  jwt.verify(token, 'yourSecretKey', (err, user) => {
-    if (err) return res.status(403).send('Invalid Token');
+dotenv.config();
+
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]; // Lấy token từ "Bearer <token>"
+  
+  if (!token) return res.status(401).json({ message: 'Access Denied' });
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ message: 'Invalid Token' });
     req.user = user;
     next();
   });
-}
+};
 ```
 
 
@@ -189,6 +225,8 @@ Hãy tưởng tượng một sinh viên đến trường và gửi xe. Ông bả
 - **Session-based Authentication** phù hợp cho các ứng dụng nhỏ hoặc nội bộ, nơi máy chủ có thể quản lý tất cả các phiên.
 - **Cookie-based Authentication** đơn giản và dễ triển khai, nhưng cần bảo vệ cookie cẩn thận.
 - **JWT-based Authentication** là lựa chọn tốt cho các hệ thống phân tán hoặc microservices, nhưng cần cân nhắc về bảo mật và quản lý vòng đời token.
+
+**Bài tiếp theo:** [Lesson 8: Đăng ký, Đăng nhập với JWT](./lesson-8.md) - Áp dụng JWT vào dự án thực tế
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀
