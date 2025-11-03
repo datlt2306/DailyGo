@@ -6,7 +6,7 @@ export default {
             { text: "Trang chủ", link: "/" },
             // { text: "HTML/CSS", link: "/html-css/" },
             { text: "JavaScript", link: "/javascript/" },
-            // { text: "React", link: "/react/" },
+            { text: "React", link: "/react/" },
             { text: "Node.js", link: "/nodejs/" },
             { text: "Wordpress", link: "/wordpress/" },
             // { text: "MongoDB", link: "/mongodb/" },
@@ -92,24 +92,51 @@ export default {
                     ],
                 },
             ],
-            // "/react/": [
-            //     {
-            //         text: "Chapter 1: React Fundamentals",
-            //         collapsed: false,
-            //         items: [
-            //             { text: "1.1 Giới thiệu về React", link: "/react/" },
-            //             { text: "1.2 React Components", link: "/react/components" },
-            //         ],
-            //     },
-            //     {
-            //         text: "Chapter 2: React State & Props",
-            //         collapsed: false,
-            //         items: [
-            //             { text: "2.1 Component State", link: "/react/state" },
-            //             { text: "2.2 Props & PropTypes", link: "/react/props" },
-            //         ],
-            //     },
-            // ],
+            "/react/": [
+                {
+                    text: "Khóa học ReactJS 16 buổi",
+                    collapsed: false,
+                    items: [
+                        { text: "Giới thiệu khóa học", link: "/react/" },
+                        { text: "Tổng quan 16 buổi", link: "/react/course-overview" },
+                        { text: "Dự án cuối khóa", link: "/react/final-project" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 1: Nền tảng React (Buổi 1-6)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 1: React là gì? Vite Setup & JSX", link: "/react/lesson-1" },
+                        { text: "Buổi 2: Component & Props", link: "/react/lesson-2" },
+                        { text: "Buổi 3: State & Event Handling", link: "/react/lesson-3" },
+                        { text: "Buổi 4: Conditional Rendering", link: "/react/lesson-4" },
+                        { text: "Buổi 5: List & Key", link: "/react/lesson-5" },
+                        { text: "Buổi 6: Đánh giá giữa kỳ 1", link: "/react/lesson-6" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 2: Hooks & Forms (Buổi 7-11)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 7: useState & useEffect", link: "/react/lesson-7" },
+                        { text: "Buổi 8: useRef & Custom Hooks", link: "/react/lesson-8" },
+                        { text: "Buổi 9: Form & Controlled Components", link: "/react/lesson-9" },
+                        { text: "Buổi 10: Routing với React Router", link: "/react/lesson-10" },
+                        { text: "Buổi 11: Đánh giá giữa kỳ 2", link: "/react/lesson-11" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 3: API & Project (Buổi 12-16)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 12: Axios & JSON-Server", link: "/react/lesson-12" },
+                        { text: "Buổi 13: CRUD Operations", link: "/react/lesson-13" },
+                        { text: "Buổi 14: Context API & Organization", link: "/react/lesson-14" },
+                        { text: "Buổi 15: Styling & Responsive", link: "/react/lesson-15" },
+                        { text: "Buổi 16: Project Presentation", link: "/react/lesson-16" },
+                    ],
+                },
+            ],
             "/nodejs/": [
                 {
                     text: "Phần 1: Node.js cơ bản",
