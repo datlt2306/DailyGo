@@ -97,7 +97,6 @@ export default {
                     text: "Khóa học ReactJS 16 buổi",
                     collapsed: false,
                     items: [
-                        { text: "Giới thiệu khóa học", link: "/react/" },
                         { text: "Tổng quan 16 buổi", link: "/react/course-overview" },
                         { text: "Dự án cuối khóa", link: "/react/final-project" },
                     ],
