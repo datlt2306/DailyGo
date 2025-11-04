@@ -149,9 +149,7 @@ Xep loai: Kha
 ======================
 ```
 
-**Bài 3:** Viết chương trình in logo hoặc hình vẽ ASCII art đơn giản (ví dụ: ngôi nhà, cây thông...)
-
-**Bài 4:** Viết chương trình in thông tin cá nhân của bạn (họ tên, tuổi, quê quán, sở thích)
+**Bài 3:** Viết chương trình in thông tin cá nhân của bạn (họ tên, tuổi, quê quán, sở thích)
 
 ### Bài tập nâng cao
 
