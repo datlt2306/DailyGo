@@ -149,7 +149,7 @@ git checkout -b release/v1.0.0 v1.0.0
         ```
         
         ## Full Changelog
-        See [CHANGELOG.md](CHANGELOG.md)
+        See CHANGELOG.md
         ```
 4.   Đính kèm file (nếu có):
     -   Source code (zip, tar.gz)
