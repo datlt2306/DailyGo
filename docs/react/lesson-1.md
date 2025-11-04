@@ -150,8 +150,9 @@ return <div>{userInput}</div>; // Hiển thị dưới dạng text
 
 **Component** là các khối xây dựng độc lập, có thể tái sử dụng của React.
 
-```javascript
-// App.jsx
+::: code-group
+
+```javascript [App.jsx]
 function App() {
     const greeting = "Chào mừng đến với React!";
 
@@ -166,8 +167,7 @@ function App() {
 export default App;
 ```
 
-```javascript
-// main.jsx
+```javascript [main.jsx]
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
@@ -179,14 +179,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
+:::
+
 ## 💡 Ví dụ minh họa
 
 ### Demo 1: Component đơn giản
 
 **Mục tiêu**: Tạo component hiển thị thông tin cá nhân
 
-```javascript
-// Profile.jsx
+```javascript [Profile.jsx]
 function Profile() {
     const name = "Nguyễn Văn A";
     const studentId = "SV001";
@@ -215,8 +216,7 @@ export default Profile;
 
 **Mục tiêu**: Hiển thị kết quả tính toán
 
-```javascript
-// Calculator.jsx
+```javascript [Calculator.jsx]
 function Calculator() {
     const a = 10;
     const b = 20;
@@ -249,8 +249,7 @@ export default Calculator;
 
 **Yêu cầu**: Tạo component `StudentCard` hiển thị thông tin của bạn
 
-```javascript
-// StudentCard.jsx
+```javascript [StudentCard.jsx]
 function StudentCard() {
     // TODO: Thêm thông tin của bạn
     const name = "Nhập tên của bạn";
@@ -278,8 +277,7 @@ export default StudentCard;
 
 **Yêu cầu**: Tạo component `StudentList` hiển thị 3 bạn trong lớp
 
-```javascript
-// StudentList.jsx
+```javascript [StudentList.jsx]
 function StudentList() {
     const students = ["Nguyễn Văn A", "Trần Thị B", "Lê Văn C"];
 
@@ -295,55 +293,6 @@ export default StudentList;
 ```
 
 **Gợi ý**: Dùng `.map()` để render từng item
-
----
-
-## ✅ Quiz kiểm tra nhanh (5 câu)
-
-### Câu 1
-
-React là gì?
-
--   A. Framework để build backend
--   B. Library để build UI ✅
--   C. Database management system
--   D. CSS preprocessor
-
-### Câu 2
-
-JSX cho phép:
-
--   A. Viết JavaScript trong HTML
--   B. Viết HTML trong JavaScript ✅
--   C. Viết CSS trong JavaScript
--   D. Viết Python trong JavaScript
-
-### Câu 3
-
-Trong JSX, thuộc tính `class` của HTML viết thành:
-
--   A. `class`
--   B. `className` ✅
--   C. `classname`
--   D. `Class`
-
-### Câu 4
-
-Để render biến `name` trong JSX, ta viết:
-
--   A. `{name}` ✅
--   B. `${name}`
--   C. `{{name}}`
--   D. `(name)`
-
-### Câu 5
-
-Công cụ build nào được sử dụng trong khóa học?
-
--   A. Webpack
--   B. Create React App
--   C. Vite ✅
--   D. Parcel
 
 ---
 
@@ -363,7 +312,6 @@ Công cụ build nào được sử dụng trong khóa học?
 -   [ ] Hiểu được JSX syntax
 -   [ ] Tạo được component đầu tiên
 -   [ ] Hoàn thành Lab 1 & Lab 2
--   [ ] Làm đúng 4/5 câu quiz
 
 ### Chuẩn bị buổi 2
 

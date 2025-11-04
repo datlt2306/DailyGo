@@ -14,8 +14,9 @@
 
 **Khi nào dùng**: Khi cần share state giữa nhiều components sâu trong tree.
 
-```javascript
-// ThemeContext.jsx
+::: code-group
+
+```javascript [ThemeContext.jsx]
 import { createContext, useContext, useState } from 'react';
 
 const ThemeContext = createContext();
@@ -43,10 +44,7 @@ export function useTheme() {
 }
 ```
 
-### 2. Sử dụng Context
-
-```javascript
-// App.jsx
+```javascript [App.jsx]
 function App() {
     return (
         <ThemeProvider>
@@ -56,8 +54,9 @@ function App() {
         </ThemeProvider>
     );
 }
+```
 
-// Header.jsx
+```javascript [Header.jsx]
 function Header() {
     const { theme, toggleTheme } = useTheme();
     
@@ -68,6 +67,8 @@ function Header() {
     );
 }
 ```
+
+:::
 
 ### 3. Folder Organization
 
@@ -114,22 +115,6 @@ User authentication state.
 
 ### Lab 3: Tour Context
 Global tour state management.
-
----
-
-## ✅ Quiz (5 câu)
-
-1. Context API dùng để:
-   - A. Replace Redux
-   - B. Share state giữa components ✅
-   - C. Manage routes
-   - D. Style components
-
-2. createContext() tạo:
-   - A. Component
-   - B. Context object ✅
-   - C. Hook
-   - D. State
 
 ---
 

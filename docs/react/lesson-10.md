@@ -108,21 +108,5 @@ Active states và breadcrumbs.
 
 ---
 
-## ✅ Quiz (5 câu)
-
-1. Component nào bọc tất cả routes?
-   - A. Router
-   - B. BrowserRouter ✅
-   - C. Routes
-   - D. Route
-
-2. useNavigate dùng để:
-   - A. Truyền params
-   - B. Navigate programmatically ✅
-   - C. Get current path
-   - D. Render links
-
----
-
 **Xem**: [React Router Docs](https://reactrouter.com/)
 

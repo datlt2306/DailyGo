@@ -41,13 +41,15 @@ const Welcome = () => <h1>Chào mừng đến với React!</h1>;
 
 **Export** để chia sẻ component, **Import** để sử dụng component từ file khác.
 
-```javascript
-// components/Button.jsx
+::: code-group
+
+```javascript [components/Button.jsx]
 export function Button() {
     return <button>Click me</button>;
 }
+```
 
-// App.jsx
+```javascript [App.jsx]
 import { Button } from './components/Button';
 
 function App() {
@@ -55,17 +57,23 @@ function App() {
 }
 ```
 
-```javascript
-// components/Button.jsx
+:::
+
+::: code-group
+
+```javascript [components/Button.jsx]
 function Button() {
     return <button>Click me</button>;
 }
 
 export default Button; // Export mặc định
+```
 
-// App.jsx
+```javascript [App.jsx]
 import Button from './components/Button'; // Import mặc định
 ```
+
+:::
 
 ### 3. Props là gì?
 
@@ -218,8 +226,9 @@ src/
 
 ### Demo 1: Card Component đơn giản
 
-```javascript
-// components/ProductCard.jsx
+::: code-group
+
+```javascript [components/ProductCard.jsx]
 function ProductCard({ name, price, image }) {
     return (
         <div className="product-card">
@@ -233,8 +242,7 @@ function ProductCard({ name, price, image }) {
 export default ProductCard;
 ```
 
-```javascript
-// App.jsx
+```javascript [App.jsx]
 import ProductCard from './components/ProductCard';
 
 function App() {
@@ -261,10 +269,13 @@ function App() {
 export default App;
 ```
 
+:::
+
 ### Demo 2: Component với children
 
-```javascript
-// components/Layout.jsx
+::: code-group
+
+```javascript [components/Layout.jsx]
 function Layout({ header, sidebar, children }) {
     return (
         <div className="layout">
@@ -280,8 +291,7 @@ function Layout({ header, sidebar, children }) {
 export default Layout;
 ```
 
-```javascript
-// App.jsx
+```javascript [App.jsx]
 import Layout from './components/Layout';
 
 function App() {
@@ -298,14 +308,15 @@ function App() {
 export default App;
 ```
 
+:::
+
 ## 🧪 Bài tập Lab
 
 ### Lab 1: User Card Component (30 phút)
 
 **Yêu cầu**: Tạo component `UserCard` hiển thị thông tin user
 
-```javascript
-// components/UserCard.jsx
+```javascript [components/UserCard.jsx]
 function UserCard({ user }) {
     // TODO: Hiển thị thông tin user
     // - Avatar (hình tròn, border)
@@ -336,8 +347,7 @@ const users = [
 
 **Yêu cầu**: Tạo hệ thống hiển thị bài học
 
-```javascript
-// components/LessonCard.jsx
+```javascript [components/LessonCard.jsx]
 function LessonCard({ title, duration, difficulty, content }) {
     // TODO: Hiển thị:
     // - Tiêu đề bài học (large)
@@ -377,15 +387,14 @@ const lessons = [
 
 **Yêu cầu**: Tạo component Button có nhiều variant
 
-```javascript
-// components/Button.jsx
+```javascript [components/Button.jsx]
 function Button({ children, variant = 'primary', size = 'medium' }) {
     // TODO: Tạo các variant:
     // - primary (nền xanh, chữ trắng)
     // - secondary (nền xám, chữ đen)
     // - danger (nền đỏ, chữ trắng)
     // - success (nền xanh lá, chữ trắng)
-    // 
+    //
     // Tạo các size:
     // - small (padding nhỏ)
     // - medium (padding vừa)
@@ -411,45 +420,6 @@ export default Button;
 
 ---
 
-## ✅ Quiz kiểm tra nhanh (5 câu)
-
-### Câu 1
-Props được dùng để:
-- A. Thay đổi state trong component
-- B. Truyền dữ liệu từ component cha xuống component con ✅
-- C. Lưu trữ dữ liệu toàn cục
-- D. Thực hiện side effects
-
-### Câu 2
-Props có thể thay đổi được không?
-- A. Có thể
-- B. Không thể ✅
-- C. Chỉ khi sử dụng useEffect
-- D. Chỉ khi là children
-
-### Câu 3
-Props `children` là:
-- A. Tên component con
-- B. Nội dung bên trong component ✅
-- C. Tên thuộc tính
-- D. Function xử lý sự kiện
-
-### Câu 4
-Để set default props cho `color = 'blue'`:
-- A. `props.color = 'blue'`
-- B. `function Button({ color = 'blue' })` ✅
-- C. `Button.color = 'blue'`
-- D. `export default color = 'blue'`
-
-### Câu 5
-Export default khác với named export như thế nào?
-- A. Export default có thể import với tên khác ✅
-- B. Named export nhanh hơn
-- C. Export default không hoạt động
-- D. Không có sự khác biệt
-
----
-
 ## 📝 Tổng kết
 
 ### Điểm chính
@@ -467,7 +437,6 @@ Export default khác với named export như thế nào?
 - [ ] Tạo được component có props
 - [ ] Sử dụng được children props
 - [ ] Hoàn thành Lab 1, 2, 3
-- [ ] Làm đúng 4/5 câu quiz
 
 ### Chuẩn bị buổi 3
 

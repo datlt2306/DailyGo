@@ -233,21 +233,5 @@ Star rating component.
 
 ---
 
-## ✅ Quiz (5 câu)
-
-1. Controlled component là:
-   - A. Component có value từ state ✅
-   - B. Component không có value
-   - C. Component tự động
-   - D. Form tự submit
-
-2. Validate form nên làm ở:
-   - A. onSubmit ✅
-   - B. onLoad
-   - C. onMount
-   - D. Không cần
-
----
-
 **Xem**: [React Docs - Forms](https://react.dev/reference/react-dom/components/input)
 

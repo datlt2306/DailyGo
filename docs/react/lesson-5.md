@@ -517,45 +517,6 @@ export default NotificationList;
 
 ---
 
-## ✅ Quiz kiểm tra nhanh (5 câu)
-
-### Câu 1
-Để render danh sách trong React, ta dùng:
-- A. `forEach()`
-- B. `map()` ✅
-- C. `filter()`
-- D. `reduce()`
-
-### Câu 2
-Key prop dùng để:
-- A. Styling elements
-- B. Xác định element nào thay đổi ✅
-- C. Chỉ địa chỉ URL
-- D. Quản lý state
-
-### Câu 3
-Key nên là:
-- A. Luôn dùng index
-- B. Unique và stable ✅
-- C. Math.random()
-- D. Không quan trọng
-
-### Câu 4
-Khi danh sách thay đổi thường xuyên, nên dùng key là:
-- A. Index
-- B. ID hoặc unique value ✅
-- C. Math.random()
-- D. Không cần key
-
-### Câu 5
-Để filter danh sách, ta dùng:
-- A. `map()`
-- B. `filter()` ✅
-- C. `forEach()`
-- D. `reduce()`
-
----
-
 ## 📝 Tổng kết
 
 ### Điểm chính
@@ -572,7 +533,6 @@ Khi danh sách thay đổi thường xuyên, nên dùng key là:
 - [ ] Dùng key prop đúng
 - [ ] Filter được danh sách
 - [ ] Hoàn thành Lab 1, 2, 3
-- [ ] Làm đúng 4/5 câu quiz
 
 ### Chuẩn bị Đánh giá giữa kỳ 1
 

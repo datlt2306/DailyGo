@@ -141,15 +141,5 @@ Like, favorite với instant feedback.
 
 ---
 
-## ✅ Quiz (5 câu)
-
-1. CRUD viết tắt của:
-   - A. Create, Read, Update, Delete ✅
-   - B. Create, Render, Update, Delete
-   - C. Config, Read, Update, Deploy
-   - D. Connect, Run, Update, Debug
-
----
-
 **Xem**: [JSON-Server](https://github.com/typicode/json-server)
 

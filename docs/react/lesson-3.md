@@ -496,45 +496,6 @@ export default RegisterForm;
 
 ---
 
-## ✅ Quiz kiểm tra nhanh (5 câu)
-
-### Câu 1
-State khác Props ở điểm nào?
-- A. State có thể thay đổi, Props không ✅
-- B. Props có thể thay đổi, State không
-- C. Không có sự khác biệt
-- D. Chỉ sử dụng được 1 trong 2
-
-### Câu 2
-Câu lệnh khai báo useState đúng là:
-- A. `const [value] = useState(0)`
-- B. `const [value, setValue] = useState(0)` ✅
-- C. `const value = useState(0)`
-- D. `useState([value, setValue], 0)`
-
-### Câu 3
-Cập nhật state đúng cách:
-- A. `state = state + 1`
-- B. `setState(state + 1)` ✅
-- C. `this.setState(state + 1)`
-- D. `updateState(state + 1)`
-
-### Câu 4
-Event handler trong React dùng:
-- A. `onclick`
-- B. `onClick` ✅
-- C. `on-click`
-- D. `on_click`
-
-### Câu 5
-Ngăn reload trang trong form submit:
-- A. `e.stopPropagation()`
-- B. `e.preventDefault()` ✅
-- C. `return false`
-- D. `e.cancelDefault()`
-
----
-
 ## 📝 Tổng kết
 
 ### Điểm chính
@@ -551,7 +512,6 @@ Ngăn reload trang trong form submit:
 - [ ] Sử dụng được useState
 - [ ] Xử lý được onClick, onChange, onSubmit
 - [ ] Hoàn thành Lab 1, 2, 3, 4
-- [ ] Làm đúng 4/5 câu quiz
 
 ### Chuẩn bị buổi 4
 

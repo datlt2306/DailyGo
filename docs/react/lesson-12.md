@@ -18,8 +18,7 @@ npm install axios json-server
 
 #### Start JSON-Server
 
-```json
-// db.json
+```json [db.json]
 {
   "tours": [
     {
@@ -126,22 +125,6 @@ Full Create, Read, Update, Delete operations.
 
 ### Lab 3: Error Handling
 Hiển thị error messages và retry logic.
-
----
-
-## ✅ Quiz (5 câu)
-
-1. Axios là gì?
-   - A. State management
-   - B. HTTP client ✅
-   - C. Routing
-   - D. CSS framework
-
-2. JSON-Server dùng để:
-   - A. Mock API ✅
-   - B. Database real
-   - C. Authentication
-   - D. File upload
 
 ---
 

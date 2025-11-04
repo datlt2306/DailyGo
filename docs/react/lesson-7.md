@@ -469,45 +469,6 @@ export default OnlineStatus;
 
 ---
 
-## ✅ Quiz kiểm tra nhanh (5 câu)
-
-### Câu 1
-useEffect với empty array [] chạy khi nào?
-- A. Mỗi lần render
-- B. 1 lần khi component mount ✅
-- C. Không bao giờ
-- D. Khi state thay đổi
-
-### Câu 2
-Cleanup function trong useEffect return:
-- A. void
-- B. Một function ✅
-- C. undefined
-- D. Promise
-
-### Câu 3
-Khi nào nên dùng functional update với setState?
-- A. Khi update dựa trên giá trị cũ ✅
-- B. Luôn luôn
-- C. Chỉ với arrays
-- D. Không bao giờ
-
-### Câu 4
-useEffect dependencies array là gì?
-- A. Danh sách state cần track
-- B. Danh sách values khi thay đổi sẽ re-run effect ✅
-- C. Danh sách functions
-- D. Không quan trọng
-
-### Câu 5
-Thiếu dependency trong useEffect sẽ:
-- A. Warning từ linter ✅
-- B. Compile error
-- C. Không ảnh hưởng gì
-- D. Bug nghiêm trọng
-
----
-
 ## 📝 Tổng kết
 
 ### Điểm chính
@@ -525,7 +486,6 @@ Thiếu dependency trong useEffect sẽ:
 - [ ] Hiểu dependency array
 - [ ] Implement cleanup functions
 - [ ] Hoàn thành Lab 1, 2, 3
-- [ ] Làm đúng 4/5 câu quiz
 
 ### Chuẩn bị buổi 8
 

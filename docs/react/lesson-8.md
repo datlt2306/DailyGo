@@ -150,27 +150,5 @@ Tạo hook debounce value sau N milliseconds.
 
 ---
 
-## ✅ Quiz (5 câu)
-
-1. useRef khác useState ở điểm nào?
-   - A. Gây re-render
-   - B. Không gây re-render ✅
-   - C. Không lưu được giá trị
-   - D. Chỉ dùng cho DOM
-
-2. Custom Hook phải bắt đầu bằng chữ gì?
-   - A. use ✅
-   - B. get
-   - C. create
-   - D. useComponent
-
-3. useRef return:
-   - A. Object với property current ✅
-   - B. Array
-   - C. String
-   - D. Number
-
----
-
 **Xem**: [React Docs - useRef](https://react.dev/reference/react/useRef)
 

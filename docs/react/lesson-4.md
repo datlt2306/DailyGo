@@ -403,45 +403,6 @@ export default ActionCard;
 
 ---
 
-## ✅ Quiz kiểm tra nhanh (5 câu)
-
-### Câu 1
-Operator nào dùng cho conditional rendering với 1 điều kiện?
-- A. `||`
-- B. `&&` ✅
-- C. `??`
-- D. `!`
-
-### Câu 2
-Ternary operator dùng cho:
-- A. Nhiều điều kiện phức tạp
-- B. 2 trường hợp rõ ràng ✅
-- C. Không có điều kiện
-- D. Async operations
-
-### Câu 3
-Trường hợp nào nên dùng if/else thay vì ternary?
-- A. Logic đơn giản
-- B. Nhiều điều kiện phức tạp ✅
-- C. Chỉ có 1 điều kiện
-- D. Không bao giờ
-
-### Câu 4
-Để không render gì, ta return:
-- A. `false`
-- B. `undefined`
-- C. `null` ✅
-- D. `0`
-
-### Câu 5
-Early return pattern giúp:
-- A. Code phức tạp hơn
-- B. Giảm nesting, dễ đọc ✅
-- C. Tăng tốc độ
-- D. Giảm memory
-
----
-
 ## 📝 Tổng kết
 
 ### Điểm chính
@@ -459,7 +420,6 @@ Early return pattern giúp:
 - [ ] Sử dụng được ternary operator
 - [ ] Áp dụng if/else với JSX
 - [ ] Hoàn thành Lab 1, 2, 3, 4
-- [ ] Làm đúng 4/5 câu quiz
 
 ### Chuẩn bị buổi 5
 

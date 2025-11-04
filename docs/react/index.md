@@ -1,8 +1,3 @@
----
-layout: page
-title: ReactJS cơ bản đến nâng cao
----
-
 # ReactJS cơ bản đến nâng cao
 
 Chào mừng bạn đến với khóa học **ReactJS cơ bản đến nâng cao sử dụng Vite**!
@@ -95,12 +90,12 @@ Mục tiêu: Kết nối API, CRUD operations, Context API, và xây dựng ứn
 
 ### Thành phần điểm
 
-| Phần                   | Tỷ trọng | Mô tả                      |
-| ---------------------- | -------- | -------------------------- |
-| **Lab tập buổi**       | 20%      | Bài tập thực hành mỗi buổi |
-| **Đánh giá giữa kỳ 1** | 20%      | Kiểm tra Tuần 3            |
-| **Đánh giá giữa kỳ 2** | 20%      | Kiểm tra Tuần 5            |
-| **Project cuối khóa**  | 40%      | Dự án nhóm                 |
+| Phần                     | Tỷ trọng | Mô tả                      |
+| ------------------------ | -------- | -------------------------- |
+| **Lab tập buổi**         | 20%      | Bài tập thực hành mỗi buổi |
+| **Đánh giá giai đoạn 1** | 20%      | Kiểm tra Tuần 3            |
+| **Đánh giá giai đoạn 2** | 20%      | Kiểm tra Tuần 5            |
+| **Project cuối khóa**    | 40%      | Dự án nhóm                 |
 
 ### Tiêu chí đạt
 
@@ -134,7 +129,7 @@ Mục tiêu: Kết nối API, CRUD operations, Context API, và xây dựng ứn
 
 ### Mỗi buổi học
 
-1. **Warm-up** (10 phút): Quiz nhanh hoặc review buổi trước
+1. **Warm-up** (10 phút): Review buổi trước
 2. **Lý thuyết** (30 phút): Giải thích khái niệm mới
 3. **Code demo** (20 phút): Ví dụ minh họa
 4. **Lab tập** (50 phút): Thực hành với hướng dẫn

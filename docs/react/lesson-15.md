@@ -17,8 +17,7 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
-```js
-// tailwind.config.js
+```js [tailwind.config.js]
 module.exports = {
     content: ['./index.html', './src/**/*.{js,jsx}'],
     theme: {
@@ -82,22 +81,6 @@ Mobile-first responsive design.
 
 ### Lab 3: Dark Mode
 Dark/Light theme toggle.
-
----
-
-## ✅ Quiz (5 câu)
-
-1. TailwindCSS là gì?
-   - A. CSS framework ✅
-   - B. JavaScript library
-   - C. Build tool
-   - D. State management
-
-2. Responsive breakpoints trong Tailwind:
-   - A. sm, md, lg, xl ✅
-   - B. xs, sm, md, lg
-   - C. mobile, tablet, desktop
-   - D. 1, 2, 3, 4
 
 ---
 
