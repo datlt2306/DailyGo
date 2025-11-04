@@ -26,7 +26,7 @@ Khi cần thực hiện một công việc lặp đi lặp lại:
 ### 2. Cấu trúc vòng lặp for
 
 **Cú pháp:**
-```cpp
+```c
 for (khoi_tao; dieu_kien; buoc_nhay) {
     // Các câu lệnh cần lặp
 }
@@ -39,7 +39,7 @@ for (khoi_tao; dieu_kien; buoc_nhay) {
 4. **Thân vòng lặp:** Các câu lệnh được thực hiện
 
 **Ví dụ cơ bản:**
-```cpp
+```c
 for (int i = 1; i <= 10; i++) {
     cout << i << " ";
 }
@@ -59,28 +59,28 @@ for (int i = 1; i <= 10; i++) {
 ### 3. Các dạng vòng lặp for
 
 **a) Đếm tăng:**
-```cpp
+```c
 for (int i = 1; i <= 10; i++) {
     cout << i << " ";
 }
 ```
 
 **b) Đếm giảm:**
-```cpp
+```c
 for (int i = 10; i >= 1; i--) {
     cout << i << " ";
 }
 ```
 
 **c) Đếm cách khoảng:**
-```cpp
+```c
 for (int i = 0; i <= 100; i += 5) {
     cout << i << " ";  // 0, 5, 10, 15, ..., 100
 }
 ```
 
 **d) Biến đếm kiểu khác:**
-```cpp
+```c
 for (char c = 'A'; c <= 'Z'; c++) {
     cout << c << " ";  // A, B, C, ..., Z
 }
@@ -89,7 +89,7 @@ for (char c = 'A'; c <= 'Z'; c++) {
 ### 4. Lệnh break và continue
 
 **`break`:** Thoát khỏi vòng lặp ngay lập tức
-```cpp
+```c
 for (int i = 1; i <= 10; i++) {
     if (i == 5) {
         break;  // Thoát khi i = 5
@@ -100,7 +100,7 @@ for (int i = 1; i <= 10; i++) {
 ```
 
 **`continue`:** Bỏ qua phần còn lại của vòng lặp, tiếp tục lần lặp tiếp theo
-```cpp
+```c
 for (int i = 1; i <= 10; i++) {
     if (i % 2 == 0) {
         continue;  // Bỏ qua số chẵn
@@ -112,7 +112,7 @@ for (int i = 1; i <= 10; i++) {
 
 ### 5. Vòng lặp for vô hạn
 
-```cpp
+```c
 for (;;) {
     // Vòng lặp vô hạn (cần break để thoát)
 }
@@ -124,9 +124,8 @@ for (;;) {
 
 ### Ví dụ 1: In các số từ 1 đến n
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -145,9 +144,8 @@ int main() {
 
 ### Ví dụ 2: Tính tổng các số từ 1 đến n
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -168,9 +166,8 @@ int main() {
 
 ### Ví dụ 3: Tính giai thừa n!
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -194,9 +191,8 @@ int main() {
 
 ### Ví dụ 4: In bảng cửu chương
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -215,9 +211,8 @@ int main() {
 
 ### Ví dụ 5: Đếm số chẵn, số lẻ trong khoảng
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int a, b;
@@ -243,9 +238,8 @@ int main() {
 
 ### Ví dụ 6: Tính tổng các số chẵn từ 1 đến n
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -266,9 +260,8 @@ int main() {
 
 ### Ví dụ 7: Kiểm tra số nguyên tố
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -300,9 +293,8 @@ int main() {
 
 ### Ví dụ 8: Tìm số lớn nhất trong n số
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;

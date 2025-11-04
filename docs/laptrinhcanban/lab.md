@@ -80,10 +80,9 @@ Chon chuc nang (1-7):
 
 ## 📝 Gợi ý cấu trúc code
 
-```cpp
-#include <iostream>
+```c
+#include <stdio.h>
 #include <cmath>  // Cho hàm pow và sqrt
-using namespace std;
 
 int main() {
     int luaChon;

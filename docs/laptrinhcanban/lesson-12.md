@@ -16,13 +16,13 @@ Sau buổi học này, sinh viên sẽ:
 
 **Mảng hai chiều** giống như bảng với các dòng và cột.
 
-```cpp
+```c
 int maTran[3][4];  // 3 dòng, 4 cột
 ```
 
 ### 2. Truy cập phần tử
 
-```cpp
+```c
 maTran[i][j];  // Phần tử ở dòng i, cột j
 ```
 
@@ -32,9 +32,8 @@ maTran[i][j];  // Phần tử ở dòng i, cột j
 
 ### Ví dụ: Nhập, hiển thị và tính tổng ma trận
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int m, n, maTran[100][100];

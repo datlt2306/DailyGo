@@ -28,7 +28,7 @@ Sau buổi học này, sinh viên sẽ:
 - `%` chỉ dùng cho số nguyên
 
 **Ví dụ:**
-```cpp
+```c
 int a = 17 / 5;   // a = 3 (phần nguyên)
 int b = 17 % 5;   // b = 2 (phần dư)
 float c = 17.0 / 5.0;  // c = 3.4 (chia thực)
@@ -47,7 +47,7 @@ float c = 17.0 / 5.0;  // c = 3.4 (chia thực)
 
 ### 3. Toán tử tăng/giảm (Increment/Decrement)
 
-```cpp
+```c
 int a = 5;
 
 a++;    // Tăng a lên 1 → a = 6
@@ -57,7 +57,7 @@ a--;    // Giảm a đi 1 → a = 6
 ```
 
 **Sự khác biệt giữa `a++` và `++a`:**
-```cpp
+```c
 int a = 5;
 int b = a++;  // b = 5, a = 6 (gán trước, tăng sau)
 
@@ -117,7 +117,7 @@ int d = ++c;  // d = 6, c = 6 (tăng trước, gán sau)
 9. `=` - Gán (ưu tiên thấp nhất)
 
 **Ví dụ:**
-```cpp
+```c
 int ketQua = 5 + 3 * 2;        // ketQua = 11 (nhân trước)
 int ketQua2 = (5 + 3) * 2;     // ketQua2 = 16 (ngoặc trước)
 bool check = (5 > 3) && (4 < 6); // check = true
@@ -129,9 +129,8 @@ bool check = (5 > 3) && (4 < 6); // check = true
 
 ### Ví dụ 1: Tính toán số học cơ bản
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int a = 17, b = 5;
@@ -159,9 +158,8 @@ a % b = 2
 
 ### Ví dụ 2: Toán tử gán
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int x = 10;
@@ -186,9 +184,8 @@ int main() {
 
 ### Ví dụ 3: Toán tử tăng/giảm
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int a = 5;
@@ -206,9 +203,8 @@ int main() {
 
 ### Ví dụ 4: Toán tử so sánh và logic
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int diem = 8;
@@ -235,9 +231,8 @@ int main() {
 
 ### Ví dụ 5: Tính tiền điện theo bậc thang
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int soDien;
@@ -277,9 +272,8 @@ int main() {
 
 ### Ví dụ 6: Kiểm tra số chẵn/lẻ và chia hết
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int so;

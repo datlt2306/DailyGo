@@ -4,8 +4,8 @@
 
 Sau buổi học này, sinh viên sẽ:
 - Hiểu khái niệm biến và cách khai báo biến
-- Nắm được các kiểu dữ liệu cơ bản trong C++
-- Biết cách nhập dữ liệu từ bàn phím bằng `cin`
+- Nắm được các kiểu dữ liệu cơ bản trong C
+- Biết cách nhập dữ liệu từ bàn phím bằng `scanf`
 - Sử dụng biến để lưu trữ và tính toán
 - Áp dụng vào các bài toán thực tế (tính điểm, tiền điện...)
 
@@ -25,16 +25,16 @@ Sau buổi học này, sinh viên sẽ:
 ### 2. Khai báo biến
 
 **Cú pháp:**
-```cpp
+```c
 kieu_du_lieu ten_bien;
 kieu_du_lieu ten_bien = gia_tri_khoi_tao;
 ```
 
 **Ví dụ:**
-```cpp
+```c
 int tuoi;
 int tuoi = 20;
-string hoTen = "Nguyen Van A";
+char hoTen[100] = "Nguyen Van A";
 ```
 
 ### 3. Các kiểu dữ liệu cơ bản
@@ -45,28 +45,30 @@ string hoTen = "Nguyen Van A";
 | `float` | 4 bytes | ±3.4×10³⁸ | `float diem = 8.5;` |
 | `double` | 8 bytes | ±1.7×10³⁰⁸ | `double tien = 1500000.5;` |
 | `char` | 1 byte | -128 đến 127 hoặc ký tự | `char kyTu = 'A';` |
-| `string` | Thay đổi | Chuỗi ký tự | `string ten = "Nam";` |
-| `bool` | 1 byte | `true` hoặc `false` | `bool laSinhVien = true;` |
+| `char[]` | Thay đổi | Chuỗi ký tự | `char ten[50] = "Nam";` |
+| `bool` (_Bool) | 1 byte | `1` hoặc `0` | `_Bool laSinhVien = 1;` |
 
-**Lưu ý:** Với `string`, cần `#include <string>`
+**Lưu ý:** Với chuỗi ký tự, dùng mảng `char` (ví dụ: `char ten[100];`)
 
-### 4. Nhập dữ liệu với `cin`
+### 4. Nhập dữ liệu với `scanf`
 
 **Cú pháp:**
-```cpp
-cin >> ten_bien;
+```c
+scanf("%d", &ten_bien);  // Với số nguyên
+scanf("%f", &ten_bien);  // Với số thực
+scanf("%s", ten_bien);   // Với chuỗi (không có khoảng trắng)
 ```
 
 **Ví dụ:**
-```cpp
+```c
 int tuoi;
-cin >> tuoi;  // Nhập tuổi từ bàn phím
+scanf("%d", &tuoi);  // Nhập tuổi từ bàn phím
 ```
 
-### 5. Xuất dữ liệu với `cout`
+### 5. Xuất dữ liệu với `printf`
 
-```cpp
-cout << "Tuoi cua ban la: " << tuoi << endl;
+```c
+printf("Tuoi cua ban la: %d\n", tuoi);
 ```
 
 ---
@@ -75,54 +77,51 @@ cout << "Tuoi cua ban la: " << tuoi << endl;
 
 ### Ví dụ 1: Nhập và xuất thông tin cá nhân
 
-```cpp
-#include <iostream>
-#include <string>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
-    string hoTen;
+    char hoTen[100];
     int tuoi;
     float chieuCao;
     
-    cout << "Nhap ho ten: ";
-    cin >> hoTen;
+    printf("Nhap ho ten: ");
+    scanf("%s", hoTen);
     
-    cout << "Nhap tuoi: ";
-    cin >> tuoi;
+    printf("Nhap tuoi: ");
+    scanf("%d", &tuoi);
     
-    cout << "Nhap chieu cao (m): ";
-    cin >> chieuCao;
+    printf("Nhap chieu cao (m): ");
+    scanf("%f", &chieuCao);
     
-    cout << "\n=== THONG TIN ===" << endl;
-    cout << "Ho ten: " << hoTen << endl;
-    cout << "Tuoi: " << tuoi << endl;
-    cout << "Chieu cao: " << chieuCao << " m" << endl;
+    printf("\n=== THONG TIN ===\n");
+    printf("Ho ten: %s\n", hoTen);
+    printf("Tuoi: %d\n", tuoi);
+    printf("Chieu cao: %.2f m\n", chieuCao);
     
     return 0;
 }
 ```
 
-**Lưu ý:** `cin >> hoTen;` chỉ đọc được một từ. Để đọc cả dòng, dùng `getline(cin, hoTen);`
+**Lưu ý:** `scanf("%s", hoTen);` chỉ đọc được một từ. Để đọc cả dòng, dùng `fgets(hoTen, sizeof(hoTen), stdin);`
 
 ### Ví dụ 2: Tính tổng hai số
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int so1, so2, tong;
     
-    cout << "Nhap so thu nhat: ";
-    cin >> so1;
+    printf("Nhap so thu nhat: ");
+    scanf("%d", &so1);
     
-    cout << "Nhap so thu hai: ";
-    cin >> so2;
+    printf("Nhap so thu hai: ");
+    scanf("%d", &so2);
     
     tong = so1 + so2;
     
-    cout << "Tong cua " << so1 << " va " << so2 << " la: " << tong << endl;
+    printf("Tong cua %d va %d la: %d\n", so1, so2, tong);
     
     return 0;
 }
@@ -130,27 +129,26 @@ int main() {
 
 ### Ví dụ 3: Tính điểm trung bình 3 môn
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     float diemToan, diemLy, diemHoa;
     float diemTrungBinh;
     
-    cout << "=== TINH DIEM TRUNG BINH ===" << endl;
-    cout << "Nhap diem Toan: ";
-    cin >> diemToan;
+    printf("=== TINH DIEM TRUNG BINH ===\n");
+    printf("Nhap diem Toan: ");
+    scanf("%f", &diemToan);
     
-    cout << "Nhap diem Ly: ";
-    cin >> diemLy;
+    printf("Nhap diem Ly: ");
+    scanf("%f", &diemLy);
     
-    cout << "Nhap diem Hoa: ";
-    cin >> diemHoa;
+    printf("Nhap diem Hoa: ");
+    scanf("%f", &diemHoa);
     
     diemTrungBinh = (diemToan + diemLy + diemHoa) / 3.0;
     
-    cout << "\nDiem trung binh 3 mon: " << diemTrungBinh << endl;
+    printf("\nDiem trung binh 3 mon: %.2f\n", diemTrungBinh);
     
     return 0;
 }
@@ -158,19 +156,18 @@ int main() {
 
 ### Ví dụ 4: Đổi đơn vị (Celsius sang Fahrenheit)
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     float doC, doF;
     
-    cout << "Nhap nhiet do (do C): ";
-    cin >> doC;
+    printf("Nhap nhiet do (do C): ");
+    scanf("%f", &doC);
     
     doF = (doC * 9.0 / 5.0) + 32;
     
-    cout << doC << " do C = " << doF << " do F" << endl;
+    printf("%.2f do C = %.2f do F\n", doC, doF);
     
     return 0;
 }
@@ -178,24 +175,23 @@ int main() {
 
 ### Ví dụ 5: Tính tiền điện (đơn giản)
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int soDien;  // Số điện tiêu thụ (kWh)
     float tienDien;
     const int GIA_DIEN = 2000;  // Giá điện: 2000 VND/kWh
     
-    cout << "Nhap so dien tieu thu (kWh): ";
-    cin >> soDien;
+    printf("Nhap so dien tieu thu (kWh): ");
+    scanf("%d", &soDien);
     
     tienDien = soDien * GIA_DIEN;
     
-    cout << "\n=== HOA DON TIEN DIEN ===" << endl;
-    cout << "So dien tieu thu: " << soDien << " kWh" << endl;
-    cout << "Gia dien: " << GIA_DIEN << " VND/kWh" << endl;
-    cout << "Tong tien phai tra: " << tienDien << " VND" << endl;
+    printf("\n=== HOA DON TIEN DIEN ===\n");
+    printf("So dien tieu thu: %d kWh\n", soDien);
+    printf("Gia dien: %d VND/kWh\n", GIA_DIEN);
+    printf("Tong tien phai tra: %.0f VND\n", tienDien);
     
     return 0;
 }
@@ -255,25 +251,25 @@ Nhập số km, tính tổng tiền.
 2. **Chọn kiểu dữ liệu phù hợp:**
    - Số nguyên → `int`
    - Số thập phân → `float` hoặc `double`
-   - Chuỗi ký tự → `string`
+   - Chuỗi ký tự → `char[]` (mảng ký tự)
 3. **Khởi tạo giá trị ban đầu cho biến** (nếu cần)
-4. **Với `string`, nhớ `#include <string>`**
-5. **Đọc cả dòng:** Dùng `getline(cin, tenBien);` thay vì `cin >> tenBien;`
+4. **Với chuỗi ký tự, dùng mảng `char`** (ví dụ: `char hoTen[100];`)
+5. **Đọc cả dòng:** Dùng `fgets(tenBien, sizeof(tenBien), stdin);` thay vì `scanf`
 
 **Ví dụ đọc cả dòng:**
-```cpp
-#include <iostream>
-#include <string>
-using namespace std;
+```c
+#include <stdio.h>
+#include <string.h>
 
 int main() {
-    string hoTen;
+    char hoTen[100];
     
-    cout << "Nhap ho ten (day du): ";
-    cin.ignore();  // Xóa ký tự thừa trong bộ đệm
-    getline(cin, hoTen);
+    printf("Nhap ho ten (day du): ");
+    fgets(hoTen, sizeof(hoTen), stdin);
+    // Xóa ký tự xuống dòng cuối chuỗi
+    hoTen[strcspn(hoTen, "\n")] = 0;
     
-    cout << "Ho ten: " << hoTen << endl;
+    printf("Ho ten: %s\n", hoTen);
     
     return 0;
 }
@@ -299,8 +295,8 @@ int main() {
 ## 🎯 Tóm tắt
 
 - ✅ Đã học cách khai báo và sử dụng biến
-- ✅ Biết các kiểu dữ liệu cơ bản: `int`, `float`, `double`, `char`, `string`, `bool`
-- ✅ Sử dụng `cin` để nhập dữ liệu từ bàn phím
+- ✅ Biết các kiểu dữ liệu cơ bản: `int`, `float`, `double`, `char`, `char[]`, `_Bool`
+- ✅ Sử dụng `scanf` để nhập dữ liệu từ bàn phím
 - ✅ Kết hợp nhập/xuất và tính toán để giải bài toán thực tế
 
 **Bài tiếp theo:** [Buổi 3: Toán tử và biểu thức](./lesson-3.md)

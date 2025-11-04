@@ -35,7 +35,7 @@ Sau buổi học này, sinh viên sẽ:
 
 **Cú pháp:**
 
-```cpp
+```c
 kieu_tra_ve ten_ham(danh_sach_tham_so) {
     // Các câu lệnh
     return gia_tri;  // Nếu có giá trị trả về
@@ -52,7 +52,7 @@ kieu_tra_ve ten_ham(danh_sach_tham_so) {
 
 ### 3. Hàm không có tham số và không trả về giá trị
 
-```cpp
+```c
 void inMenu() {
     cout << "=== MENU ===" << endl;
     cout << "1. Tinh tong" << endl;
@@ -63,7 +63,7 @@ void inMenu() {
 
 ### 4. Hàm có tham số nhưng không trả về giá trị
 
-```cpp
+```c
 void inChao(string ten) {
     cout << "Xin chao, " << ten << "!" << endl;
 }
@@ -71,7 +71,7 @@ void inChao(string ten) {
 
 ### 5. Hàm có tham số và trả về giá trị
 
-```cpp
+```c
 int tinhTong(int a, int b) {
     int ketQua = a + b;
     return ketQua;
@@ -80,7 +80,7 @@ int tinhTong(int a, int b) {
 
 ### 6. Hàm không có tham số nhưng trả về giá trị
 
-```cpp
+```c
 int nhapSo() {
     int n;
     cout << "Nhap so: ";
@@ -93,13 +93,13 @@ int nhapSo() {
 
 **Khai báo hàm (Function Declaration/Prototype):**
 
-```cpp
+```c
 int tinhTong(int a, int b);  // Chỉ khai báo, không có thân hàm
 ```
 
 **Định nghĩa hàm (Function Definition):**
 
-```cpp
+```c
 int tinhTong(int a, int b) {
     return a + b;
 }
@@ -113,9 +113,8 @@ int tinhTong(int a, int b) {
 
 ### Ví dụ 1: Hàm tính tổng
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 // Định nghĩa hàm
 int tinhTong(int a, int b) {
@@ -133,9 +132,8 @@ int main() {
 
 ### Ví dụ 2: Hàm in menu
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 void inMenu() {
     cout << "\n=== MENU ===" << endl;
@@ -153,9 +151,8 @@ int main() {
 
 ### Ví dụ 3: Hàm kiểm tra số chẵn
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 bool laSoChan(int n) {
     if (n % 2 == 0) {
@@ -183,9 +180,8 @@ int main() {
 
 ### Ví dụ 4: Hàm tìm số lớn nhất
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int timMax(int a, int b, int c) {
     int max = a;
@@ -208,9 +204,8 @@ int main() {
 
 ### Ví dụ 5: Hàm tính giai thừa
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 long long tinhGiaiThua(int n) {
     long long ketQua = 1;
@@ -233,9 +228,8 @@ int main() {
 
 ### Ví dụ 6: Hàm kiểm tra số nguyên tố
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 bool laSoNguyenTo(int n) {
     if (n < 2) return false;
@@ -265,9 +259,8 @@ int main() {
 
 ### Ví dụ 7: Hàm tính lũy thừa
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 long long tinhLuyThua(int coSo, int soMu) {
     long long ketQua = 1;
@@ -292,9 +285,8 @@ int main() {
 
 ### Ví dụ 8: Chương trình sử dụng nhiều hàm
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 // Khai báo hàm
 void inMenu();
@@ -352,9 +344,8 @@ int tinhTich(int a, int b) {
 
 ### Ví dụ 9: Hàm vẽ hình tam giác
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 void veTamGiac(int n) {
     for (int i = 1; i <= n; i++) {
@@ -378,9 +369,8 @@ int main() {
 
 ### Ví dụ 10: Hàm tính tổng các chữ số
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int tinhTongChuSo(int n) {
     int tong = 0;

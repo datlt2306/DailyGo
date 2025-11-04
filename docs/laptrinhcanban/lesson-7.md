@@ -18,7 +18,7 @@ Sau buổi học này, sinh viên sẽ:
 **Vòng lặp lồng nhau** là vòng lặp bên trong một vòng lặp khác.
 
 **Cú pháp cơ bản:**
-```cpp
+```c
 for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= m; j++) {
         // Các câu lệnh
@@ -33,7 +33,7 @@ for (int i = 1; i <= n; i++) {
 
 ### 2. Ví dụ cơ bản
 
-```cpp
+```c
 for (int i = 1; i <= 3; i++) {
     for (int j = 1; j <= 2; j++) {
         cout << "i=" << i << ", j=" << j << endl;
@@ -64,9 +64,8 @@ i=3, j=2
 
 ### Ví dụ 1: Hình vuông sao
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -96,9 +95,8 @@ int main() {
 
 ### Ví dụ 2: Tam giác vuông
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -128,9 +126,8 @@ int main() {
 
 ### Ví dụ 3: Tam giác rỗng
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -155,9 +152,8 @@ int main() {
 
 ### Ví dụ 4: Tam giác số
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -187,9 +183,8 @@ int main() {
 
 ### Ví dụ 5: Hình thoi (kim cương)
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -227,9 +222,8 @@ int main() {
 
 ### Ví dụ 6: Bảng cửu chương đầy đủ
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     cout << "BANG CUU CHUONG:" << endl;
@@ -247,9 +241,8 @@ int main() {
 
 ### Ví dụ 7: Nhập và hiển thị ma trận
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int m, n;
@@ -285,9 +278,8 @@ int main() {
 
 ### Ví dụ 8: Tìm số nguyên tố trong khoảng
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int a, b;
@@ -322,9 +314,8 @@ int main() {
 
 ### Ví dụ 9: Tìm tất cả ước số của một số
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -346,10 +337,9 @@ int main() {
 
 ### Ví dụ 10: In bảng điểm sinh viên
 
-```cpp
-#include <iostream>
+```c
+#include <stdio.h>
 #include <iomanip>
-using namespace std;
 
 int main() {
     int n;

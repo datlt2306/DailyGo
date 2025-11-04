@@ -16,7 +16,7 @@ Sau buổi học này, sinh viên sẽ:
 ### 1. Vòng lặp while
 
 **Cú pháp:**
-```cpp
+```c
 while (dieu_kien) {
     // Các câu lệnh cần lặp
 }
@@ -29,7 +29,7 @@ while (dieu_kien) {
 - Có thể không chạy lần nào nếu điều kiện sai ngay từ đầu
 
 **Ví dụ:**
-```cpp
+```c
 int i = 1;
 while (i <= 10) {
     cout << i << " ";
@@ -41,7 +41,7 @@ while (i <= 10) {
 ### 2. Vòng lặp do-while
 
 **Cú pháp:**
-```cpp
+```c
 do {
     // Các câu lệnh cần lặp
 } while (dieu_kien);
@@ -53,7 +53,7 @@ do {
 - Thích hợp cho menu, xác nhận người dùng...
 
 **Ví dụ:**
-```cpp
+```c
 int i = 1;
 do {
     cout << i << " ";
@@ -73,7 +73,7 @@ do {
 
 ### 4. Vòng lặp while vô hạn
 
-```cpp
+```c
 while (true) {
     // Vòng lặp vô hạn (cần break để thoát)
 }
@@ -89,9 +89,8 @@ Tương tự như trong vòng lặp `for`, `break` và `continue` cũng hoạt �
 
 ### Ví dụ 1: Đếm số lần chia hết cho 2
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n, dem = 0;
@@ -114,9 +113,8 @@ int main() {
 
 ### Ví dụ 2: Menu lặp lại với do-while
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int luaChon;
@@ -151,9 +149,8 @@ int main() {
 
 ### Ví dụ 3: Tính tổng đến khi nhập 0
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int so, tong = 0;
@@ -176,9 +173,8 @@ int main() {
 
 ### Ví dụ 4: Đoán số với do-while
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int soBiMat = 42;
@@ -208,9 +204,8 @@ int main() {
 
 ### Ví dụ 5: Kiểm tra nhập hợp lệ
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int tuoi;
@@ -233,9 +228,8 @@ int main() {
 
 ### Ví dụ 6: Tính tổng các chữ số
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n, tong = 0;
@@ -258,9 +252,8 @@ int main() {
 
 ### Ví dụ 7: Đảo ngược số
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n, soDao = 0;
@@ -281,9 +274,8 @@ int main() {
 
 ### Ví dụ 8: Kiểm tra số đối xứng (palindrome)
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n, banDau, soDao = 0;
@@ -311,9 +303,8 @@ int main() {
 
 ### Ví dụ 9: Tính lũy thừa với while
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int a, n;

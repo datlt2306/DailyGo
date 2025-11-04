@@ -15,7 +15,7 @@ Sau buổi học này, sinh viên sẽ:
 
 ### 1. Chuỗi ký tự (string)
 
-```cpp
+```c
 #include <string>
 
 string ten = "Nguyen Van A";
@@ -26,7 +26,7 @@ cout << ten.length();  // Độ dài chuỗi
 
 **Khai báo:**
 
-```cpp
+```c
 struct SinhVien {
     string hoTen;
     int tuoi;
@@ -36,7 +36,7 @@ struct SinhVien {
 
 **Sử dụng:**
 
-```cpp
+```c
 SinhVien sv;
 sv.hoTen = "Nguyen Van A";
 sv.tuoi = 20;
@@ -49,10 +49,9 @@ sv.diem = 8.5;
 
 ### Ví dụ: Quản lý sinh viên với struct
 
-```cpp
-#include <iostream>
+```c
+#include <stdio.h>
 #include <string>
-using namespace std;
 
 struct SinhVien {
     string hoTen;

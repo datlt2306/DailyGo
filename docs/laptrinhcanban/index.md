@@ -1,11 +1,11 @@
-# Nhập môn Lập trình C++
+# Nhập môn Lập trình C
 
 ## 📚 Tổng quan khóa học
 
 **Thời lượng:** 14 buổi học (3 giờ/buổi)  
 **Đối tượng:** Sinh viên năm nhất chưa biết lập trình  
 **Phương pháp:** 20% Lý thuyết - 80% Thực hành  
-**Ngôn ngữ:** C++ (chuẩn C++11 trở lên)
+**Ngôn ngữ:** C (chuẩn C99 trở lên)
 
 ---
 
@@ -14,7 +14,7 @@
 Sau khi hoàn thành khóa học, sinh viên sẽ:
 
 ✅ Hiểu được tư duy lập trình và cách giải quyết vấn đề bằng máy tính  
-✅ Thành thạo cú pháp cơ bản của ngôn ngữ C++  
+✅ Thành thạo cú pháp cơ bản của ngôn ngữ C  
 ✅ Sử dụng thành thạo: biến, kiểu dữ liệu, toán tử, cấu trúc điều kiện, vòng lặp  
 ✅ Viết và sử dụng hàm có tham số và giá trị trả về  
 ✅ Làm việc với mảng một chiều và hai chiều  
@@ -29,7 +29,7 @@ Sau khi hoàn thành khóa học, sinh viên sẽ:
 
 ### Phần 1: Nền tảng (Buổi 1-4)
 
--   **Buổi 1:** Làm quen với C++ & Chương trình đầu tiên
+-   **Buổi 1:** Làm quen với C & Chương trình đầu tiên
 -   **Buổi 2:** Biến, kiểu dữ liệu và nhập xuất
 -   **Buổi 3:** Toán tử và biểu thức
 -   **Buổi 4:** Cấu trúc điều kiện (if-else, switch)
@@ -83,21 +83,21 @@ Mỗi buổi học gồm:
 
 ## 🛠️ Công cụ cần thiết
 
--   **Trình soạn thảo:** Code::Blocks, Dev-C++, Visual Studio Code, hoặc bất kỳ IDE nào hỗ trợ C++
+-   **Trình soạn thảo:** Code::Blocks, Dev-C++, Visual Studio Code, hoặc bất kỳ IDE nào hỗ trợ C
 -   **Compiler:** MinGW (Windows), GCC (Linux/Mac)
--   **Tài liệu tham khảo:** [cppreference.com](https://cppreference.com)
+-   **Tài liệu tham khảo:** [cppreference.com/c](https://en.cppreference.com/w/c)
 
 ---
 
 ## 📚 Tài liệu tham khảo
 
-1. "Programming: Principles and Practice Using C++" - Bjarne Stroustrup
-2. "C++ Primer" - Stanley B. Lippman
-3. [cplusplus.com](http://www.cplusplus.com)
-4. [cppreference.com](https://cppreference.com)
+1. "The C Programming Language" - Dennis Ritchie & Brian Kernighan
+2. "C Programming: A Modern Approach" - K.N. King
+3. [cplusplus.com/c](http://www.cplusplus.com/reference/clibrary/)
+4. [cppreference.com/c](https://en.cppreference.com/w/c)
 
 ---
 
 ## 🚀 Bắt đầu học
 
-👉 [Buổi 1: Làm quen với C++ & Chương trình đầu tiên](./lesson-1.md)
+👉 [Buổi 1: Làm quen với C & Chương trình đầu tiên](./lesson-1.md)

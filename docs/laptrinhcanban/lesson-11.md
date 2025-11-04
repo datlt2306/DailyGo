@@ -25,14 +25,14 @@ Sau buổi học này, sinh viên sẽ:
 
 ### 2. Khai báo mảng
 
-```cpp
+```c
 int mang[10];  // Mảng 10 phần tử kiểu int
 float diem[30];  // Mảng điểm của 30 sinh viên
 ```
 
 ### 3. Khởi tạo mảng
 
-```cpp
+```c
 int mang[5] = {1, 2, 3, 4, 5};
 int mang2[] = {10, 20, 30};  // Tự động xác định kích thước
 ```
@@ -49,9 +49,8 @@ int mang2[] = {10, 20, 30};  // Tự động xác định kích thước
 
 ### Ví dụ 1: Nhập và in mảng
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n;
@@ -78,9 +77,8 @@ int main() {
 
 ### Ví dụ 2: Tìm số lớn nhất trong mảng
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n, mang[100];
@@ -107,9 +105,8 @@ int main() {
 
 ### Ví dụ 3: Tính tổng và trung bình
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int n, mang[100];

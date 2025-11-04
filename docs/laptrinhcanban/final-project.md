@@ -1,4 +1,4 @@
-# 🎓 Project cuối kỳ - Nhập môn Lập trình C++
+# 🎓 Project cuối kỳ - Nhập môn Lập trình C
 
 **Thời gian:** 2-3 tuần  
 **Hệ số điểm:** 50%  
@@ -41,21 +41,21 @@
 
 #### Cấu trúc dữ liệu gợi ý:
 
-```cpp
+```c
 struct Sach {
-    string maSach;
-    string tenSach;
-    string tacGia;
+    char maSach[20];
+    char tenSach[100];
+    char tacGia[50];
     int namXuatBan;
     int soLuong;
     int soLuongMuon;
 };
 
 struct MuonTra {
-    string maSach;
-    string nguoiMuon;
-    string ngayMuon;
-    string ngayTra;
+    char maSach[20];
+    char nguoiMuon[50];
+    char ngayMuon[20];
+    char ngayTra[20];
 };
 ```
 
@@ -95,17 +95,17 @@ struct MuonTra {
 
 #### Cấu trúc dữ liệu gợi ý:
 
-```cpp
+```c
 struct SinhVien {
-    string mssv;
-    string hoTen;
-    string ngaySinh;
-    string lop;
+    char mssv[20];
+    char hoTen[50];
+    char ngaySinh[20];
+    char lop[20];
     float diemToan;
     float diemLy;
     float diemHoa;
     float diemTrungBinh;
-    string xepLoai;
+    char xepLoai[20];
 };
 ```
 
@@ -171,7 +171,7 @@ struct SinhVien {
 - ✅ Hiển thị kết quả đẹp, dễ đọc
 
 ### 4. Báo cáo:
-- ✅ File code nguồn (.cpp)
+- ✅ File code nguồn (.c)
 - ✅ Tài liệu mô tả chức năng (README.md hoặc file Word)
 - ✅ Demo chương trình (video hoặc screenshots)
 
@@ -209,7 +209,7 @@ struct SinhVien {
 ## 🎯 Đầu ra mong muốn
 
 Sau khi hoàn thành project, sinh viên sẽ:
-- ✅ Thành thạo viết chương trình C++ hoàn chỉnh
+- ✅ Thành thạo viết chương trình C hoàn chỉnh
 - ✅ Biết tổ chức code với hàm, struct
 - ✅ Xử lý dữ liệu với mảng, file
 - ✅ Áp dụng tư duy thuật toán để giải quyết vấn đề

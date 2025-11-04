@@ -22,7 +22,7 @@ Sau buổi học này, sinh viên sẽ:
 
 ### 2. Ví dụ: Tính giai thừa
 
-```cpp
+```c
 long long giaiThua(int n) {
     if (n <= 1) return 1;  // Base case
     return n * giaiThua(n - 1);  // Recursive case

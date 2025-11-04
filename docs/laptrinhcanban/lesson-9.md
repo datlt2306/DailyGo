@@ -23,7 +23,7 @@ Sau buổi học này, sinh viên sẽ:
 
 **Ví dụ:**
 
-```cpp
+```c
 void tangGiaTri(int x) {
     x++;  // Chỉ tăng trong hàm, không ảnh hưởng biến gốc
 }

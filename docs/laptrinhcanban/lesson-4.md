@@ -25,14 +25,14 @@ Trong thực tế, chúng ta thường xuyên gặp các quyết định:
 ### 2. Câu lệnh if
 
 **Cú pháp:**
-```cpp
+```c
 if (dieu_kien) {
     // Các câu lệnh thực hiện nếu điều kiện đúng
 }
 ```
 
 **Ví dụ:**
-```cpp
+```c
 int diem = 8;
 if (diem >= 5) {
     cout << "Ban da dau!" << endl;
@@ -42,7 +42,7 @@ if (diem >= 5) {
 ### 3. Câu lệnh if-else
 
 **Cú pháp:**
-```cpp
+```c
 if (dieu_kien) {
     // Các câu lệnh nếu điều kiện đúng
 } else {
@@ -51,7 +51,7 @@ if (dieu_kien) {
 ```
 
 **Ví dụ:**
-```cpp
+```c
 int diem = 4;
 if (diem >= 5) {
     cout << "Ban da dau!" << endl;
@@ -63,7 +63,7 @@ if (diem >= 5) {
 ### 4. Câu lệnh if-else if-else (nhiều điều kiện)
 
 **Cú pháp:**
-```cpp
+```c
 if (dieu_kien_1) {
     // Xử lý điều kiện 1
 } else if (dieu_kien_2) {
@@ -76,7 +76,7 @@ if (dieu_kien_1) {
 ```
 
 **Ví dụ:**
-```cpp
+```c
 int diem = 7;
 if (diem >= 9) {
     cout << "Xuat sac!" << endl;
@@ -94,7 +94,7 @@ if (diem >= 9) {
 ### 5. Câu lệnh switch-case
 
 **Cú pháp:**
-```cpp
+```c
 switch (bien) {
     case gia_tri_1:
         // Xử lý khi bien == gia_tri_1
@@ -114,7 +114,7 @@ switch (bien) {
 - `default` là trường hợp mặc định (tương tự `else`)
 
 **Ví dụ:**
-```cpp
+```c
 int luaChon;
 cout << "Chon mon (1-4): ";
 cin >> luaChon;
@@ -140,7 +140,7 @@ switch (luaChon) {
 
 ### 6. If lồng nhau (Nested if)
 
-```cpp
+```c
 if (dieu_kien_1) {
     if (dieu_kien_2) {
         // Xử lý khi cả 2 điều kiện đều đúng
@@ -149,7 +149,7 @@ if (dieu_kien_1) {
 ```
 
 **Ví dụ:**
-```cpp
+```c
 int tuoi = 20;
 bool coBangLai = true;
 
@@ -170,9 +170,8 @@ if (tuoi >= 18) {
 
 ### Ví dụ 1: Xếp loại điểm số
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     float diem;
@@ -198,9 +197,8 @@ int main() {
 
 ### Ví dụ 2: Tính tiền vé xe buýt theo độ tuổi
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int tuoi;
@@ -224,9 +222,8 @@ int main() {
 
 ### Ví dụ 3: Menu lựa chọn với switch
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int luaChon;
@@ -263,9 +260,8 @@ int main() {
 
 ### Ví dụ 4: Kiểm tra năm nhuận
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int nam;
@@ -287,9 +283,8 @@ int main() {
 
 ### Ví dụ 5: Giải phương trình bậc nhất ax + b = 0
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     float a, b;
@@ -317,9 +312,8 @@ int main() {
 
 ### Ví dụ 6: Tính tiền điện theo bậc thang (nâng cao)
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     int soDien;
@@ -344,9 +338,8 @@ int main() {
 
 ### Ví dụ 7: Kiểm tra tam giác
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
     float a, b, c;

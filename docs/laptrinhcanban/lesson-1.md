@@ -1,13 +1,13 @@
-# Buổi 1: Làm quen với C++ & Chương trình đầu tiên
+# Buổi 1: Làm quen với C & Chương trình đầu tiên
 
 ## 🎯 Mục tiêu học tập
 
 Sau buổi học này, sinh viên sẽ:
 
 -   Hiểu lập trình là gì và tại sao cần học lập trình
--   Biết cách cài đặt và sử dụng môi trường lập trình C++
--   Viết được chương trình C++ đầu tiên
--   Hiểu cấu trúc cơ bản của một chương trình C++
+-   Biết cách cài đặt và sử dụng môi trường lập trình C
+-   Viết được chương trình C đầu tiên
+-   Hiểu cấu trúc cơ bản của một chương trình C
 -   Biết cách biên dịch và chạy chương trình
 
 ---
@@ -23,11 +23,11 @@ Sau buổi học này, sinh viên sẽ:
 -   Tính tiền điện: Nhập số điện → Tính tiền → Hiển thị kết quả
 -   Quản lý điểm sinh viên: Nhập điểm → Tính trung bình → Xếp loại
 
-### 2. Tại sao học C++?
+### 2. Tại sao học C?
 
 -   ✅ Ngôn ngữ mạnh mẽ, hiệu năng cao
--   ✅ Nền tảng tốt để học các ngôn ngữ khác (Java, C#, Python...)
--   ✅ Được sử dụng rộng rãi trong: game, hệ thống, IoT...
+-   ✅ Nền tảng tốt để học các ngôn ngữ khác (C++, Java, C#, Python...)
+-   ✅ Được sử dụng rộng rãi trong: hệ điều hành, hệ thống nhúng, IoT...
 -   ✅ Giúp hiểu sâu về cách máy tính hoạt động
 
 ### 3. Cài đặt môi trường
@@ -40,13 +40,12 @@ Sau buổi học này, sinh viên sẽ:
 
 **Linux/Mac:**
 
--   Cài đặt GCC: `sudo apt install g++` (Linux) hoặc `brew install gcc` (Mac)
+-   Cài đặt GCC: `sudo apt install gcc` (Linux) hoặc `brew install gcc` (Mac)
 
-### 4. Cấu trúc chương trình C++ cơ bản
+### 4. Cấu trúc chương trình C cơ bản
 
-```cpp
-#include <iostream>  // Thư viện nhập/xuất chuẩn
-using namespace std; // Sử dụng không gian tên std
+```c
+#include <stdio.h>   // Thư viện nhập/xuất chuẩn
 
 int main() {         // Hàm chính - điểm bắt đầu chương trình
     // Code của bạn ở đây
@@ -57,8 +56,7 @@ int main() {         // Hàm chính - điểm bắt đầu chương trình
 
 **Giải thích:**
 
--   `#include <iostream>`: Đưa thư viện vào chương trình để dùng `cout`, `cin`
--   `using namespace std`: Không cần gõ `std::` trước `cout`, `cin`
+-   `#include <stdio.h>`: Đưa thư viện vào chương trình để dùng `printf`, `scanf`
 -   `int main()`: Hàm chính, chương trình bắt đầu từ đây
 -   `return 0`: Trả về 0 để báo chương trình chạy thành công
 
@@ -68,13 +66,12 @@ int main() {         // Hàm chính - điểm bắt đầu chương trình
 
 ### Ví dụ 1: Chương trình "Hello World"
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
-    cout << "Xin chao, toi la sinh vien lap trinh!" << endl;
-    cout << "Day la chuong trinh C++ dau tien cua toi." << endl;
+    printf("Xin chao, toi la sinh vien lap trinh!\n");
+    printf("Day la chuong trinh C dau tien cua toi.\n");
 
     return 0;
 }
@@ -84,29 +81,27 @@ int main() {
 
 ```
 Xin chao, toi la sinh vien lap trinh!
-Day la chuong trinh C++ dau tien cua toi.
+Day la chuong trinh C dau tien cua toi.
 ```
 
 **Giải thích:**
 
--   `cout`: Xuất dữ liệu ra màn hình
--   `<<`: Toán tử đưa dữ liệu vào `cout`
--   `endl`: Xuống dòng mới (tương đương `\n`)
+-   `printf`: Xuất dữ liệu ra màn hình
+-   `\n`: Xuống dòng mới
 
 ### Ví dụ 2: In thông tin cá nhân
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
-    cout << "================================" << endl;
-    cout << "   THONG TIN SINH VIEN" << endl;
-    cout << "================================" << endl;
-    cout << "Ho ten: Nguyen Van A" << endl;
-    cout << "MSSV: B1234567" << endl;
-    cout << "Lop: CNTT K01" << endl;
-    cout << "================================" << endl;
+    printf("================================\n");
+    printf("   THONG TIN SINH VIEN\n");
+    printf("================================\n");
+    printf("Ho ten: Nguyen Van A\n");
+    printf("MSSV: B1234567\n");
+    printf("Lop: CNTT K01\n");
+    printf("================================\n");
 
     return 0;
 }
@@ -114,16 +109,15 @@ int main() {
 
 ### Ví dụ 3: In hình vẽ đơn giản
 
-```cpp
-#include <iostream>
-using namespace std;
+```c
+#include <stdio.h>
 
 int main() {
-    cout << "    *" << endl;
-    cout << "   ***" << endl;
-    cout << "  *****" << endl;
-    cout << " *******" << endl;
-    cout << "*********" << endl;
+    printf("    *\n");
+    printf("   ***\n");
+    printf("  *****\n");
+    printf(" *******\n");
+    printf("*********\n");
 
     return 0;
 }
@@ -138,8 +132,8 @@ int main() {
 **Bài 1:** Viết chương trình in ra màn hình 5 dòng sau:
 
 ```
-Toi dang hoc lap trinh C++
-Buoi 1: Lam quen voi C++
+Toi dang hoc lap trinh C
+Buoi 1: Lam quen voi C
 Ngay mai toi se gioi lap trinh!
 ```
 
@@ -149,7 +143,7 @@ Ngay mai toi se gioi lap trinh!
 ======================
 BANG DIEM SINH VIEN
 ======================
-Mon: Lap trinh C++
+Mon: Lap trinh C
 Diem: 8.5
 Xep loai: Kha
 ======================
@@ -199,17 +193,17 @@ Mon Tue Wed Thu Fri Sat Sun
 
 ## ✅ Kiểm tra kiến thức
 
-1. Hàm nào là điểm bắt đầu của chương trình C++?
-2. `cout` dùng để làm gì?
-3. `#include <iostream>` có tác dụng gì?
+1. Hàm nào là điểm bắt đầu của chương trình C?
+2. `printf` dùng để làm gì?
+3. `#include <stdio.h>` có tác dụng gì?
 4. Tại sao cần `return 0;` trong hàm `main()`?
 
 ---
 
 ## 🎯 Tóm tắt
 
--   ✅ Đã học cấu trúc cơ bản của chương trình C++
--   ✅ Biết cách sử dụng `cout` để in dữ liệu ra màn hình
--   ✅ Viết được chương trình C++ đơn giản đầu tiên
+-   ✅ Đã học cấu trúc cơ bản của chương trình C
+-   ✅ Biết cách sử dụng `printf` để in dữ liệu ra màn hình
+-   ✅ Viết được chương trình C đơn giản đầu tiên
 
 **Bài tiếp theo:** [Buổi 2: Biến, kiểu dữ liệu và nhập xuất](./lesson-2.md)

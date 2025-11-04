@@ -15,7 +15,7 @@ Sau buổi học này, sinh viên sẽ:
 
 ### 1. Đọc file (ifstream)
 
-```cpp
+```c
 #include <fstream>
 
 ifstream file("input.txt");
@@ -28,7 +28,7 @@ file.close();
 
 ### 2. Ghi file (ofstream)
 
-```cpp
+```c
 #include <fstream>
 
 ofstream file("output.txt");
@@ -42,10 +42,9 @@ file.close();
 
 ### Ví dụ: Đọc và ghi file
 
-```cpp
-#include <iostream>
+```c
+#include <stdio.h>
 #include <fstream>
-using namespace std;
 
 int main() {
     // Ghi file
