@@ -17,24 +17,26 @@
 **Tag** là cách đánh dấu một commit cụ thể, thường dùng để đánh dấu version của phần mềm.
 
 **Ví dụ minh họa:**
+
 -   Version 1.0.0 của website
 -   Version 2.5.3 của ứng dụng
 -   Release v2024.01.15
 
 **So sánh Tag vs Branch:**
 
-| Tag                              | Branch                           |
-| -------------------------------- | -------------------------------- |
-| Đánh dấu một điểm cố định          | Có thể di chuyển, phát triển      |
-| Không thay đổi sau khi tạo          | Thay đổi khi commit mới          |
-| Dùng để release version           | Dùng để phát triển tính năng      |
-| `git tag v1.0.0`                  | `git branch feature/new`         |
+| Tag                        | Branch                       |
+| -------------------------- | ---------------------------- |
+| Đánh dấu một điểm cố định  | Có thể di chuyển, phát triển |
+| Không thay đổi sau khi tạo | Thay đổi khi commit mới      |
+| Dùng để release version    | Dùng để phát triển tính năng |
+| `git tag v1.0.0`           | `git branch feature/new`     |
 
 ### Tại sao cần Tag?
 
 #### 1. **Đánh dấu version**
 
 **Ví dụ thực tế:**
+
 -   Website version 1.0.0 - Release đầu tiên
 -   Website version 1.1.0 - Thêm tính năng mới
 -   Website version 2.0.0 - Thay đổi lớn, breaking changes
@@ -42,6 +44,7 @@
 #### 2. **Deploy version cụ thể**
 
 **Ví dụ:** Production đang chạy version 1.5.0, muốn rollback về 1.4.0:
+
 ```bash
 git checkout v1.4.0
 # Deploy code version 1.4.0
@@ -62,11 +65,13 @@ git checkout v1.4.0
 -   **PATCH** (0.0.1): Sửa lỗi, không thay đổi API
 
 **Ví dụ:**
+
 -   `1.0.0` → `1.1.0`: Thêm tính năng mới
 -   `1.1.0` → `1.1.1`: Sửa lỗi
 -   `1.1.1` → `2.0.0`: Breaking changes
 
 **Pre-release versions:**
+
 -   `1.0.0-alpha.1`: Alpha version (đang test)
 -   `1.0.0-beta.1`: Beta version (gần release)
 -   `1.0.0-rc.1`: Release candidate (sẵn sàng release)
@@ -87,6 +92,7 @@ git tag -a v1.0.0 abc1234 -m "Release version 1.0.0"
 ```
 
 **So sánh:**
+
 -   **Lightweight tag:** Chỉ là pointer đến commit
 -   **Annotated tag:** Có metadata (người tạo, ngày, message)
 
@@ -128,35 +134,45 @@ git checkout -b release/v1.0.0 v1.0.0
 
 **Trên GitHub web:**
 
-1.   Vào repository → Releases → "Draft a new release"
-2.   Chọn tag (hoặc tạo tag mới):
+1.  Vào repository → Releases → "Draft a new release"
+2.  Chọn tag (hoặc tạo tag mới):
+
+
     -   Tag: `v1.0.0`
     -   Target: `main` (branch)
-3.   Điền thông tin:
+
+3.  Điền thông tin:
+
+
     -   **Title:** "Version 1.0.0 - First Release"
-    -   **Description:** 
+    -   **Description:**
         ```markdown
         ## What's New
         - ✅ Initial release
         - ✅ User authentication
         - ✅ Product listing
         - ✅ Shopping cart
-        
+
         ## Installation
         ```bash
         npm install
         npm start
         ```
-        
+
         ## Full Changelog
         See CHANGELOG.md
         ```
-4.   Đính kèm file (nếu có):
+
+4.  Đính kèm file (nếu có):
+
+
     -   Source code (zip, tar.gz)
     -   Binary files
-5.   Click "Publish release"
+
+5.  Click "Publish release"
 
 **Hoặc dùng GitHub CLI:**
+
 ```bash
 gh release create v1.0.0 \
   --title "Version 1.0.0" \
@@ -217,13 +233,16 @@ npm run release
 
 **Bài tập 1: Tạo tag và release đầu tiên**
 
-1.   Tạo repository với ít nhất 3 commit
-2.   Tạo tag `v1.0.0` cho commit mới nhất
-3.   Push tag lên GitHub
-4.   Tạo Release trên GitHub với:
+1.  Tạo repository với ít nhất 3 commit
+2.  Tạo tag `v1.0.0` cho commit mới nhất
+3.  Push tag lên GitHub
+4.  Tạo Release trên GitHub với:
+
+
     -   Title: "Version 1.0.0"
     -   Description: Mô tả các tính năng chính
-5.   Download release và xác nhận
+
+5.  Download release và xác nhận
 
 **Mục tiêu:** Hoàn thành quy trình tạo release
 
@@ -233,12 +252,13 @@ npm run release
 
 Tạo một dự án và thực hiện:
 
-1.   **Version 1.0.0:** Release đầu tiên
-2.   **Version 1.1.0:** Thêm tính năng mới
-3.   **Version 1.1.1:** Sửa lỗi
-4.   **Version 2.0.0:** Breaking changes
+1.  **Version 1.0.0:** Release đầu tiên
+2.  **Version 1.1.0:** Thêm tính năng mới
+3.  **Version 1.1.1:** Sửa lỗi
+4.  **Version 2.0.0:** Breaking changes
 
 **Yêu cầu:**
+
 -   Mỗi version có tag và release trên GitHub
 -   Mỗi release có changelog rõ ràng
 -   Sử dụng semantic versioning đúng
@@ -253,6 +273,7 @@ Tạo một dự án và thực hiện:
 **Vấn đề:** Tag chỉ có local, không có trên GitHub
 
 **Giải pháp:**
+
 ```bash
 # Push tag cụ thể
 git push origin v1.0.0
@@ -266,6 +287,7 @@ git push origin --tags
 **Vấn đề:** Tạo tag nhưng commit đã có tag rồi
 
 **Giải pháp:**
+
 ```bash
 # Xóa tag local
 git tag -d v1.0.0
@@ -281,6 +303,7 @@ git push origin v1.0.0
 ### 3. **Không biết version nào đang chạy trên production**
 
 **Giải pháp:**
+
 -   Luôn tag khi deploy
 -   Ghi lại version trong file config
 -   Tạo endpoint `/api/version` trả về version hiện tại
@@ -288,11 +311,13 @@ git push origin v1.0.0
 ### 4. **Version không tuân theo SemVer**
 
 **Nguyên tắc:**
+
 -   MAJOR: Breaking changes
 -   MINOR: Tính năng mới, backward compatible
 -   PATCH: Sửa lỗi
 
 **Ví dụ:**
+
 -   ✅ `1.0.0` → `1.1.0`: Thêm API endpoint mới (không ảnh hưởng API cũ)
 -   ✅ `1.1.0` → `1.1.1`: Sửa bug
 -   ✅ `1.1.1` → `2.0.0`: Thay đổi API endpoint (breaking)
@@ -300,12 +325,14 @@ git push origin v1.0.0
 ### 5. **Release notes quá ngắn hoặc không có**
 
 **Giải pháp:** Luôn viết release notes với:
+
 -   What's new (tính năng mới)
 -   Bug fixes (lỗi đã sửa)
 -   Breaking changes (nếu có)
 -   Migration guide (nếu có)
 
 **Áp dụng vào làm việc nhóm:**
+
 -   **Quy ước versioning:** Team thống nhất dùng SemVer
 -   **Release process:** Có checklist rõ ràng trước khi release
 -   **Changelog:** Luôn cập nhật changelog cho mỗi release
@@ -316,4 +343,3 @@ git push origin v1.0.0
 **Kết luận:** Tag và Release giúp bạn quản lý version code một cách chuyên nghiệp. Semantic Versioning giúp users hiểu được mức độ thay đổi giữa các version!
 
 **Bài tiếp theo:** [15. Mini Project](./15-mini-project.md) - Dự án cuối khóa: Làm việc nhóm theo GitHub Flow
-
