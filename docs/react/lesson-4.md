@@ -42,11 +42,17 @@ function Notification({ message }) {
 ```javascript
 // ❌ SAI - Số 0 sẽ bị ẩn
 const count = 0;
-{count && <p>Số: {count}</p>}
+{
+    count && <p>Số: {count}</p>;
+}
 
 // ✅ ĐÚNG - Dùng comparison
-{count > 0 && <p>Số: {count}</p>}
-{count !== 0 && <p>Số: {count}</p>}
+{
+    count > 0 && <p>Số: {count}</p>;
+}
+{
+    count !== 0 && <p>Số: {count}</p>;
+}
 ```
 
 #### Ví dụ thực tế
@@ -63,27 +69,19 @@ function UserProfile({ user }) {
 }
 ```
 
-### 3. Ternary Operator (?:)
+### 3. Ternary Operator ( ?: )
 
 Dùng khi **có 2 trường hợp** rõ ràng.
 
 ```javascript
 function Greeting({ user }) {
-    return (
-        <div>
-            {user ? <h1>Xin chào {user.name}!</h1> : <h1>Xin chào Khách!</h1>}
-        </div>
-    );
+    return <div>{user ? <h1>Xin chào {user.name}!</h1> : <h1>Xin chào Khách!</h1>}</div>;
 }
 ```
 
 ```javascript
 function Button({ isSubmitting }) {
-    return (
-        <button disabled={isSubmitting}>
-            {isSubmitting ? 'Đang xử lý...' : 'Gửi'}
-        </button>
-    );
+    return <button disabled={isSubmitting}>{isSubmitting ? "Đang xử lý..." : "Gửi"}</button>;
 }
 ```
 
@@ -92,14 +90,20 @@ function Button({ isSubmitting }) {
 ```javascript
 function StatusBadge({ status }) {
     return (
-        <span className={
-            status === 'active' ? 'badge-success' :
-            status === 'pending' ? 'badge-warning' :
-            'badge-error'
-        }>
-            {status === 'active' ? 'Hoạt động' :
-             status === 'pending' ? 'Chờ duyệt' :
-             'Ngừng hoạt động'}
+        <span
+            className={
+                status === "active"
+                    ? "badge-success"
+                    : status === "pending"
+                    ? "badge-warning"
+                    : "badge-error"
+            }
+        >
+            {status === "active"
+                ? "Hoạt động"
+                : status === "pending"
+                ? "Chờ duyệt"
+                : "Ngừng hoạt động"}
         </span>
     );
 }
@@ -116,15 +120,15 @@ function Content({ user }) {
     if (user.isLoading) {
         return <div>Đang tải...</div>;
     }
-    
+
     if (user.error) {
         return <div>Lỗi: {user.error}</div>;
     }
-    
+
     if (user.data.length === 0) {
         return <div>Không có dữ liệu</div>;
     }
-    
+
     return <div>Dữ liệu: {user.data}</div>;
 }
 ```
@@ -134,7 +138,7 @@ function LoginButton({ isLoggedIn, user }) {
     if (!isLoggedIn) {
         return <button>Đăng nhập</button>;
     }
-    
+
     return (
         <div>
             <span>Xin chào {user.name}</span>
@@ -153,12 +157,8 @@ function Modal({ isOpen, children }) {
     if (!isOpen) {
         return null; // Không render
     }
-    
-    return (
-        <div className="modal">
-            {children}
-        </div>
-    );
+
+    return <div className="modal">{children}</div>;
 }
 ```
 
@@ -171,7 +171,7 @@ function ProductCard({ product }) {
     // Guard clauses
     if (!product) return null;
     if (product.isDeleted) return null;
-    
+
     return (
         <div className="product-card">
             <h3>{product.name}</h3>
@@ -190,18 +190,18 @@ function DataDisplay({ data, isLoading, error }) {
     if (isLoading) {
         return <div className="loading">Đang tải dữ liệu...</div>;
     }
-    
+
     if (error) {
         return <div className="error">Lỗi: {error.message}</div>;
     }
-    
+
     if (!data || data.length === 0) {
         return <div className="empty">Không có dữ liệu</div>;
     }
-    
+
     return (
         <div>
-            {data.map(item => (
+            {data.map((item) => (
                 <div key={item.id}>{item.name}</div>
             ))}
         </div>
@@ -219,23 +219,17 @@ function UserCard({ user }) {
         <div className="user-card">
             <img src={user.avatar} alt={user.name} />
             <h3>{user.name}</h3>
-            
+
             {/* Conditional badges */}
-            {user.isAdmin && (
-                <span className="badge admin">Admin</span>
-            )}
-            {user.isPremium && (
-                <span className="badge premium">Premium</span>
-            )}
-            {user.isVerified && (
-                <span className="badge verified">✓ Verified</span>
-            )}
-            
+            {user.isAdmin && <span className="badge admin">Admin</span>}
+            {user.isPremium && <span className="badge premium">Premium</span>}
+            {user.isVerified && <span className="badge verified">✓ Verified</span>}
+
             {/* Status */}
             <span className={`status ${user.status}`}>
-                {user.status === 'online' && '🟢 Trực tuyến'}
-                {user.status === 'offline' && '⚫ Ngoại tuyến'}
-                {user.status === 'away' && '🟡 Vắng mặt'}
+                {user.status === "online" && "🟢 Trực tuyến"}
+                {user.status === "offline" && "⚫ Ngoại tuyến"}
+                {user.status === "away" && "🟡 Vắng mặt"}
             </span>
         </div>
     );
@@ -250,28 +244,20 @@ export default UserCard;
 function ProductCard({ product }) {
     const isOutOfStock = product.stock === 0;
     const isLowStock = product.stock > 0 && product.stock < 10;
-    
+
     return (
         <div className="product-card">
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p className="price">{product.price} đ</p>
-            
+
             {/* Stock status */}
-            {isOutOfStock && (
-                <p className="stock out">Hết hàng</p>
-            )}
-            {isLowStock && (
-                <p className="stock low">Sắp hết: {product.stock} sản phẩm</p>
-            )}
-            {product.stock >= 10 && (
-                <p className="stock available">Còn hàng</p>
-            )}
-            
+            {isOutOfStock && <p className="stock out">Hết hàng</p>}
+            {isLowStock && <p className="stock low">Sắp hết: {product.stock} sản phẩm</p>}
+            {product.stock >= 10 && <p className="stock available">Còn hàng</p>}
+
             {/* Button */}
-            <button disabled={isOutOfStock}>
-                {isOutOfStock ? 'Hết hàng' : 'Thêm vào giỏ'}
-            </button>
+            <button disabled={isOutOfStock}>{isOutOfStock ? "Hết hàng" : "Thêm vào giỏ"}</button>
         </div>
     );
 }
@@ -288,8 +274,8 @@ export default ProductCard;
 ```javascript
 function LoginSection() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState({ name: 'Nguyễn Văn A' });
-    
+    const [user, setUser] = useState({ name: "Nguyễn Văn A" });
+
     return (
         <div>
             {/* TODO: Hiển thị Login form nếu chưa đăng nhập */}
@@ -302,8 +288,9 @@ export default LoginSection;
 ```
 
 **Kết quả mong đợi**:
-- Chưa đăng nhập: Form login với input + button
-- Đã đăng nhập: "Xin chào [tên]" + button Logout
+
+-   Chưa đăng nhập: Form login với input + button
+-   Đã đăng nhập: "Xin chào [tên]" + button Logout
 
 ### Lab 2: Rating Stars (25 phút)
 
@@ -312,13 +299,11 @@ export default LoginSection;
 ```javascript
 function RatingDisplay({ rating, showLabel = true }) {
     // rating từ 0-5
-    
+
     return (
         <div className="rating">
             {/* TODO: Hiển thị label nếu showLabel */}
-            {/* TODO: Render đúng số sao vàng */} ⭐
-            {/* TODO: Render số sao xám còn lại */} ☆
-            {/* TODO: Hiển thị text "Chưa đánh giá" nếu rating = 0 */}
+            {/* TODO: Render đúng số sao vàng */} ⭐{/* TODO: Render số sao xám còn lại */} ☆{/* TODO: Hiển thị text "Chưa đánh giá" nếu rating = 0 */}
         </div>
     );
 }
@@ -327,6 +312,7 @@ export default RatingDisplay;
 ```
 
 **Test cases**:
+
 ```javascript
 <RatingDisplay rating={0} />      // "Chưa đánh giá"
 <RatingDisplay rating={3} />      // ⭐⭐⭐☆☆ (3 sao)
@@ -341,7 +327,7 @@ export default RatingDisplay;
 ```javascript
 function Alert({ type, message, showIcon = true }) {
     // type: 'success', 'error', 'warning', 'info'
-    
+
     return (
         <div className={`alert alert-${type}`}>
             {/* TODO: Hiển thị icon nếu showIcon = true */}
@@ -355,10 +341,11 @@ export default Alert;
 ```
 
 **Variants**:
-- `success`: ✅ message màu xanh
-- `error`: ❌ message màu đỏ
-- `warning`: ⚠️ message màu cam
-- `info`: ℹ️ message màu xanh dương
+
+-   `success`: ✅ message màu xanh
+-   `error`: ❌ message màu đỏ
+-   `warning`: ⚠️ message màu cam
+-   `info`: ℹ️ message màu xanh dương
 
 ### Lab 4: Card with Actions (25 phút)
 
@@ -367,19 +354,19 @@ export default Alert;
 ```javascript
 function ActionCard({ item, currentUser }) {
     // currentUser.role: 'admin', 'editor', 'viewer'
-    
+
     return (
         <div className="card">
             <h3>{item.title}</h3>
             <p>{item.description}</p>
-            
+
             <div className="actions">
                 {/* TODO: Luôn hiển thị View button */}
-                
+
                 {/* TODO: Chỉ admin và editor được Edit */}
-                
+
                 {/* TODO: Chỉ admin được Delete */}
-                
+
                 {/* TODO: Hiển thị "Bạn không có quyền" nếu viewer */}
             </div>
         </div>
@@ -390,6 +377,7 @@ export default ActionCard;
 ```
 
 **Test cases**:
+
 ```javascript
 <ActionCard item={item} currentUser={{ role: 'admin' }} />
 // View, Edit, Delete
@@ -407,28 +395,28 @@ export default ActionCard;
 
 ### Điểm chính
 
-- ✅ `&&` cho điều kiện đơn giản
-- ✅ `?:` cho 2 trường hợp
-- ✅ `if/else` cho logic phức tạp
-- ✅ `return null` để không render
-- ✅ Early return giảm nesting
+-   ✅ `&&` cho điều kiện đơn giản
+-   ✅ `?:` cho 2 trường hợp
+-   ✅ `if/else` cho logic phức tạp
+-   ✅ `return null` để không render
+-   ✅ Early return giảm nesting
 
 ### Checklist buổi 4
 
-- [ ] Hiểu conditional rendering
-- [ ] Sử dụng được && operator
-- [ ] Sử dụng được ternary operator
-- [ ] Áp dụng if/else với JSX
-- [ ] Hoàn thành Lab 1, 2, 3, 4
+-   [ ] Hiểu conditional rendering
+-   [ ] Sử dụng được && operator
+-   [ ] Sử dụng được ternary operator
+-   [ ] Áp dụng if/else với JSX
+-   [ ] Hoàn thành Lab 1, 2, 3, 4
 
 ### Chuẩn bị buổi 5
 
 📚 Đọc trước:
-- Render lists trong React
-- Key prop
-- map, filter, reduce với React
+
+-   Render lists trong React
+-   Key prop
+-   map, filter, reduce với React
 
 ---
 
 **Xem thêm**: [React Documentation - Conditional Rendering](https://react.dev/learn/conditional-rendering)
-

@@ -23,7 +23,7 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$14 = _sfc_main$14.setup;
 _sfc_main$14.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue");
   return _sfc_setup$14 ? _sfc_setup$14(props, ctx) : void 0;
 };
 function deserializeFunctions(r) {
@@ -1535,7 +1535,7 @@ const _sfc_main$13 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
       if (_ctx.show) {
-        _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPBackdrop" }, _attrs))} data-v-a8e0cb85></div>`);
+        _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPBackdrop" }, _attrs))} data-v-a0f83f1c></div>`);
       } else {
         _push(`<!---->`);
       }
@@ -1545,10 +1545,10 @@ const _sfc_main$13 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$13 = _sfc_main$13.setup;
 _sfc_main$13.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPBackdrop.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPBackdrop.vue");
   return _sfc_setup$13 ? _sfc_setup$13(props, ctx) : void 0;
 };
-const VPBackdrop = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__scopeId", "data-v-a8e0cb85"]]);
+const VPBackdrop = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__scopeId", "data-v-a0f83f1c"]]);
 const useData = useData$1;
 function throttleAndDebounce(fn, delay) {
   let timeoutId;
@@ -1600,17 +1600,17 @@ const _sfc_main$12 = /* @__PURE__ */ defineComponent({
     const { currentLang } = useLangs();
     return (_ctx, _push, _parent, _attrs) => {
       var _a, _b, _c, _d, _e;
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "NotFound" }, _attrs))} data-v-980f8768><p class="code" data-v-980f8768>${ssrInterpolate(((_a = unref(theme2).notFound) == null ? void 0 : _a.code) ?? "404")}</p><h1 class="title" data-v-980f8768>${ssrInterpolate(((_b = unref(theme2).notFound) == null ? void 0 : _b.title) ?? "PAGE NOT FOUND")}</h1><div class="divider" data-v-980f8768></div><blockquote class="quote" data-v-980f8768>${ssrInterpolate(((_c = unref(theme2).notFound) == null ? void 0 : _c.quote) ?? "But if you don't change your direction, and if you keep looking, you may end up where you are heading.")}</blockquote><div class="action" data-v-980f8768><a class="link"${ssrRenderAttr("href", unref(withBase)(unref(currentLang).link))}${ssrRenderAttr("aria-label", ((_d = unref(theme2).notFound) == null ? void 0 : _d.linkLabel) ?? "go to home")} data-v-980f8768>${ssrInterpolate(((_e = unref(theme2).notFound) == null ? void 0 : _e.linkText) ?? "Take me home")}</a></div></div>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "NotFound" }, _attrs))} data-v-fb045d49><p class="code" data-v-fb045d49>${ssrInterpolate(((_a = unref(theme2).notFound) == null ? void 0 : _a.code) ?? "404")}</p><h1 class="title" data-v-fb045d49>${ssrInterpolate(((_b = unref(theme2).notFound) == null ? void 0 : _b.title) ?? "PAGE NOT FOUND")}</h1><div class="divider" data-v-fb045d49></div><blockquote class="quote" data-v-fb045d49>${ssrInterpolate(((_c = unref(theme2).notFound) == null ? void 0 : _c.quote) ?? "But if you don't change your direction, and if you keep looking, you may end up where you are heading.")}</blockquote><div class="action" data-v-fb045d49><a class="link"${ssrRenderAttr("href", unref(withBase)(unref(currentLang).link))}${ssrRenderAttr("aria-label", ((_d = unref(theme2).notFound) == null ? void 0 : _d.linkLabel) ?? "go to home")} data-v-fb045d49>${ssrInterpolate(((_e = unref(theme2).notFound) == null ? void 0 : _e.linkText) ?? "Take me home")}</a></div></div>`);
     };
   }
 });
 const _sfc_setup$12 = _sfc_main$12.setup;
 _sfc_main$12.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/NotFound.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/NotFound.vue");
   return _sfc_setup$12 ? _sfc_setup$12(props, ctx) : void 0;
 };
-const NotFound = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__scopeId", "data-v-980f8768"]]);
+const NotFound = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__scopeId", "data-v-fb045d49"]]);
 function getSidebar(_sidebar, path) {
   if (Array.isArray(_sidebar))
     return addBase(_sidebar);
@@ -1965,9 +1965,9 @@ const _sfc_main$11 = /* @__PURE__ */ defineComponent({
       const _component_VPDocOutlineItem = resolveComponent("VPDocOutlineItem", true);
       _push(`<ul${ssrRenderAttrs(mergeProps({
         class: ["VPDocOutlineItem", _ctx.root ? "root" : "nested"]
-      }, _attrs))} data-v-8ad2173c><!--[-->`);
+      }, _attrs))} data-v-9c940513><!--[-->`);
       ssrRenderList(_ctx.headers, ({ children, link: link2, title }) => {
-        _push(`<li data-v-8ad2173c><a class="outline-link"${ssrRenderAttr("href", link2)}${ssrRenderAttr("title", title)} data-v-8ad2173c>${ssrInterpolate(title)}</a>`);
+        _push(`<li data-v-9c940513><a class="outline-link"${ssrRenderAttr("href", link2)}${ssrRenderAttr("title", title)} data-v-9c940513>${ssrInterpolate(title)}</a>`);
         if (children == null ? void 0 : children.length) {
           _push(ssrRenderComponent(_component_VPDocOutlineItem, { headers: children }, null, _parent));
         } else {
@@ -1982,10 +1982,10 @@ const _sfc_main$11 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$11 = _sfc_main$11.setup;
 _sfc_main$11.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPDocOutlineItem.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPDocOutlineItem.vue");
   return _sfc_setup$11 ? _sfc_setup$11(props, ctx) : void 0;
 };
-const VPDocOutlineItem = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-8ad2173c"]]);
+const VPDocOutlineItem = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-9c940513"]]);
 const _sfc_main$10 = /* @__PURE__ */ defineComponent({
   __name: "VPDocAsideOutline",
   __ssrInlineRender: true,
@@ -2004,7 +2004,7 @@ const _sfc_main$10 = /* @__PURE__ */ defineComponent({
         class: ["VPDocAsideOutline", { "has-outline": headers.value.length > 0 }],
         ref_key: "container",
         ref: container
-      }, _attrs))} data-v-8dd03f0a><div class="content" data-v-8dd03f0a><div class="outline-marker" data-v-8dd03f0a></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-8dd03f0a>${ssrInterpolate(unref(resolveTitle)(unref(theme2)))}</div>`);
+      }, _attrs))} data-v-3476b91f><div class="content" data-v-3476b91f><div class="outline-marker" data-v-3476b91f></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-3476b91f>${ssrInterpolate(unref(resolveTitle)(unref(theme2)))}</div>`);
       _push(ssrRenderComponent(VPDocOutlineItem, {
         headers: headers.value,
         root: true
@@ -2016,10 +2016,10 @@ const _sfc_main$10 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$10 = _sfc_main$10.setup;
 _sfc_main$10.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideOutline.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideOutline.vue");
   return _sfc_setup$10 ? _sfc_setup$10(props, ctx) : void 0;
 };
-const VPDocAsideOutline = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__scopeId", "data-v-8dd03f0a"]]);
+const VPDocAsideOutline = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__scopeId", "data-v-3476b91f"]]);
 const _sfc_main$$ = /* @__PURE__ */ defineComponent({
   __name: "VPDocAsideCarbonAds",
   __ssrInlineRender: true,
@@ -2038,7 +2038,7 @@ const _sfc_main$$ = /* @__PURE__ */ defineComponent({
 const _sfc_setup$$ = _sfc_main$$.setup;
 _sfc_main$$.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideCarbonAds.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideCarbonAds.vue");
   return _sfc_setup$$ ? _sfc_setup$$(props, ctx) : void 0;
 };
 const _sfc_main$_ = /* @__PURE__ */ defineComponent({
@@ -2047,12 +2047,12 @@ const _sfc_main$_ = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const { theme: theme2 } = useData();
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPDocAside" }, _attrs))} data-v-248629f8>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPDocAside" }, _attrs))} data-v-379d636b>`);
       ssrRenderSlot(_ctx.$slots, "aside-top", {}, null, _push, _parent);
       ssrRenderSlot(_ctx.$slots, "aside-outline-before", {}, null, _push, _parent);
       _push(ssrRenderComponent(VPDocAsideOutline, null, null, _parent));
       ssrRenderSlot(_ctx.$slots, "aside-outline-after", {}, null, _push, _parent);
-      _push(`<div class="spacer" data-v-248629f8></div>`);
+      _push(`<div class="spacer" data-v-379d636b></div>`);
       ssrRenderSlot(_ctx.$slots, "aside-ads-before", {}, null, _push, _parent);
       if (unref(theme2).carbonAds) {
         _push(ssrRenderComponent(_sfc_main$$, {
@@ -2070,10 +2070,10 @@ const _sfc_main$_ = /* @__PURE__ */ defineComponent({
 const _sfc_setup$_ = _sfc_main$_.setup;
 _sfc_main$_.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPDocAside.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPDocAside.vue");
   return _sfc_setup$_ ? _sfc_setup$_(props, ctx) : void 0;
 };
-const VPDocAside = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-248629f8"]]);
+const VPDocAside = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-379d636b"]]);
 function useEditLink() {
   const { theme: theme2, page } = useData();
   return computed(() => {
@@ -2162,7 +2162,7 @@ const _sfc_main$Z = /* @__PURE__ */ defineComponent({
 const _sfc_setup$Z = _sfc_main$Z.setup;
 _sfc_main$Z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPLink.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPLink.vue");
   return _sfc_setup$Z ? _sfc_setup$Z(props, ctx) : void 0;
 };
 const _sfc_main$Y = /* @__PURE__ */ defineComponent({
@@ -2189,17 +2189,17 @@ const _sfc_main$Y = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _push, _parent, _attrs) => {
       var _a;
-      _push(`<p${ssrRenderAttrs(mergeProps({ class: "VPLastUpdated" }, _attrs))} data-v-83c8f904>${ssrInterpolate(((_a = unref(theme2).lastUpdated) == null ? void 0 : _a.text) || unref(theme2).lastUpdatedText || "Last updated")}: <time${ssrRenderAttr("datetime", isoDatetime.value)} data-v-83c8f904>${ssrInterpolate(datetime.value)}</time></p>`);
+      _push(`<p${ssrRenderAttrs(mergeProps({ class: "VPLastUpdated" }, _attrs))} data-v-67ff7ddb>${ssrInterpolate(((_a = unref(theme2).lastUpdated) == null ? void 0 : _a.text) || unref(theme2).lastUpdatedText || "Last updated")}: <time${ssrRenderAttr("datetime", isoDatetime.value)} data-v-67ff7ddb>${ssrInterpolate(datetime.value)}</time></p>`);
     };
   }
 });
 const _sfc_setup$Y = _sfc_main$Y.setup;
 _sfc_main$Y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue");
   return _sfc_setup$Y ? _sfc_setup$Y(props, ctx) : void 0;
 };
-const VPDocFooterLastUpdated = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__scopeId", "data-v-83c8f904"]]);
+const VPDocFooterLastUpdated = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__scopeId", "data-v-67ff7ddb"]]);
 const _sfc_main$X = /* @__PURE__ */ defineComponent({
   __name: "VPDocFooter",
   __ssrInlineRender: true,
@@ -2217,12 +2217,12 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       var _a, _b, _c, _d;
       if (showFooter.value) {
-        _push(`<footer${ssrRenderAttrs(mergeProps({ class: "VPDocFooter" }, _attrs))} data-v-b020f1d3>`);
+        _push(`<footer${ssrRenderAttrs(mergeProps({ class: "VPDocFooter" }, _attrs))} data-v-433d609d>`);
         ssrRenderSlot(_ctx.$slots, "doc-footer-before", {}, null, _push, _parent);
         if (hasEditLink.value || hasLastUpdated.value) {
-          _push(`<div class="edit-info" data-v-b020f1d3>`);
+          _push(`<div class="edit-info" data-v-433d609d>`);
           if (hasEditLink.value) {
-            _push(`<div class="edit-link" data-v-b020f1d3>`);
+            _push(`<div class="edit-link" data-v-433d609d>`);
             _push(ssrRenderComponent(_sfc_main$Z, {
               class: "edit-link-button",
               href: unref(editLink).url,
@@ -2230,7 +2230,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
             }, {
               default: withCtx((_, _push2, _parent2, _scopeId) => {
                 if (_push2) {
-                  _push2(`<span class="vpi-square-pen edit-link-icon" data-v-b020f1d3${_scopeId}></span> ${ssrInterpolate(unref(editLink).text)}`);
+                  _push2(`<span class="vpi-square-pen edit-link-icon" data-v-433d609d${_scopeId}></span> ${ssrInterpolate(unref(editLink).text)}`);
                 } else {
                   return [
                     createVNode("span", { class: "vpi-square-pen edit-link-icon" }),
@@ -2245,7 +2245,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
             _push(`<!---->`);
           }
           if (hasLastUpdated.value) {
-            _push(`<div class="last-updated" data-v-b020f1d3>`);
+            _push(`<div class="last-updated" data-v-433d609d>`);
             _push(ssrRenderComponent(VPDocFooterLastUpdated, null, null, _parent));
             _push(`</div>`);
           } else {
@@ -2256,7 +2256,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
           _push(`<!---->`);
         }
         if (((_a = unref(control).prev) == null ? void 0 : _a.link) || ((_b = unref(control).next) == null ? void 0 : _b.link)) {
-          _push(`<nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-b020f1d3><span class="visually-hidden" id="doc-footer-aria-label" data-v-b020f1d3>Pager</span><div class="pager" data-v-b020f1d3>`);
+          _push(`<nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-433d609d><span class="visually-hidden" id="doc-footer-aria-label" data-v-433d609d>Pager</span><div class="pager" data-v-433d609d>`);
           if ((_c = unref(control).prev) == null ? void 0 : _c.link) {
             _push(ssrRenderComponent(_sfc_main$Z, {
               class: "pager-link prev",
@@ -2265,7 +2265,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
               default: withCtx((_, _push2, _parent2, _scopeId) => {
                 var _a2, _b2;
                 if (_push2) {
-                  _push2(`<span class="desc" data-v-b020f1d3${_scopeId}>${((_a2 = unref(theme2).docFooter) == null ? void 0 : _a2.prev) || "Previous page"}</span><span class="title" data-v-b020f1d3${_scopeId}>${unref(control).prev.text ?? ""}</span>`);
+                  _push2(`<span class="desc" data-v-433d609d${_scopeId}>${((_a2 = unref(theme2).docFooter) == null ? void 0 : _a2.prev) || "Previous page"}</span><span class="title" data-v-433d609d${_scopeId}>${unref(control).prev.text ?? ""}</span>`);
                 } else {
                   return [
                     createVNode("span", {
@@ -2284,7 +2284,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
           } else {
             _push(`<!---->`);
           }
-          _push(`</div><div class="pager" data-v-b020f1d3>`);
+          _push(`</div><div class="pager" data-v-433d609d>`);
           if ((_d = unref(control).next) == null ? void 0 : _d.link) {
             _push(ssrRenderComponent(_sfc_main$Z, {
               class: "pager-link next",
@@ -2293,7 +2293,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
               default: withCtx((_, _push2, _parent2, _scopeId) => {
                 var _a2, _b2;
                 if (_push2) {
-                  _push2(`<span class="desc" data-v-b020f1d3${_scopeId}>${((_a2 = unref(theme2).docFooter) == null ? void 0 : _a2.next) || "Next page"}</span><span class="title" data-v-b020f1d3${_scopeId}>${unref(control).next.text ?? ""}</span>`);
+                  _push2(`<span class="desc" data-v-433d609d${_scopeId}>${((_a2 = unref(theme2).docFooter) == null ? void 0 : _a2.next) || "Next page"}</span><span class="title" data-v-433d609d${_scopeId}>${unref(control).next.text ?? ""}</span>`);
                 } else {
                   return [
                     createVNode("span", {
@@ -2326,10 +2326,10 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
 const _sfc_setup$X = _sfc_main$X.setup;
 _sfc_main$X.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPDocFooter.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPDocFooter.vue");
   return _sfc_setup$X ? _sfc_setup$X(props, ctx) : void 0;
 };
-const VPDocFooter = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-b020f1d3"]]);
+const VPDocFooter = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-433d609d"]]);
 const _sfc_main$W = /* @__PURE__ */ defineComponent({
   __name: "VPDoc",
   __ssrInlineRender: true,
@@ -2344,11 +2344,11 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
       const _component_Content = resolveComponent("Content");
       _push(`<div${ssrRenderAttrs(mergeProps({
         class: ["VPDoc", { "has-sidebar": unref(hasSidebar), "has-aside": unref(hasAside) }]
-      }, _attrs))} data-v-0365160b>`);
+      }, _attrs))} data-v-d7ba8f30>`);
       ssrRenderSlot(_ctx.$slots, "doc-top", {}, null, _push, _parent);
-      _push(`<div class="container" data-v-0365160b>`);
+      _push(`<div class="container" data-v-d7ba8f30>`);
       if (unref(hasAside)) {
-        _push(`<div class="${ssrRenderClass([{ "left-aside": unref(leftAside) }, "aside"])}" data-v-0365160b><div class="aside-curtain" data-v-0365160b></div><div class="aside-container" data-v-0365160b><div class="aside-content" data-v-0365160b>`);
+        _push(`<div class="${ssrRenderClass([{ "left-aside": unref(leftAside) }, "aside"])}" data-v-d7ba8f30><div class="aside-curtain" data-v-d7ba8f30></div><div class="aside-container" data-v-d7ba8f30><div class="aside-content" data-v-d7ba8f30>`);
         _push(ssrRenderComponent(VPDocAside, null, {
           "aside-top": withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
@@ -2410,9 +2410,9 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
       } else {
         _push(`<!---->`);
       }
-      _push(`<div class="content" data-v-0365160b><div class="content-container" data-v-0365160b>`);
+      _push(`<div class="content" data-v-d7ba8f30><div class="content-container" data-v-d7ba8f30>`);
       ssrRenderSlot(_ctx.$slots, "doc-before", {}, null, _push, _parent);
-      _push(`<main class="main" data-v-0365160b>`);
+      _push(`<main class="main" data-v-d7ba8f30>`);
       _push(ssrRenderComponent(_component_Content, {
         class: ["vp-doc", [
           pageName.value,
@@ -2442,10 +2442,10 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
 const _sfc_setup$W = _sfc_main$W.setup;
 _sfc_main$W.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPDoc.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPDoc.vue");
   return _sfc_setup$W ? _sfc_setup$W(props, ctx) : void 0;
 };
-const VPDoc = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["__scopeId", "data-v-0365160b"]]);
+const VPDoc = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["__scopeId", "data-v-d7ba8f30"]]);
 const _sfc_main$V = /* @__PURE__ */ defineComponent({
   __name: "VPButton",
   __ssrInlineRender: true,
@@ -2490,10 +2490,10 @@ const _sfc_main$V = /* @__PURE__ */ defineComponent({
 const _sfc_setup$V = _sfc_main$V.setup;
 _sfc_main$V.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPButton.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPButton.vue");
   return _sfc_setup$V ? _sfc_setup$V(props, ctx) : void 0;
 };
-const VPButton = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__scopeId", "data-v-3e72deef"]]);
+const VPButton = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__scopeId", "data-v-4a4d4aa3"]]);
 const _sfc_main$U = /* @__PURE__ */ defineComponent({
   ...{ inheritAttrs: false },
   __name: "VPImage",
@@ -2511,7 +2511,7 @@ const _sfc_main$U = /* @__PURE__ */ defineComponent({
           _push(`<img${ssrRenderAttrs(mergeProps({ class: "VPImage" }, typeof _ctx.image === "string" ? _ctx.$attrs : { ..._ctx.image, ..._ctx.$attrs }, {
             src: unref(withBase)(typeof _ctx.image === "string" ? _ctx.image : _ctx.image.src),
             alt: _ctx.alt ?? (typeof _ctx.image === "string" ? "" : _ctx.image.alt || "")
-          }))} data-v-48f5f59e>`);
+          }))} data-v-6f192a0c>`);
         } else {
           _push(`<!--[-->`);
           _push(ssrRenderComponent(_component_VPImage, mergeProps({
@@ -2536,10 +2536,10 @@ const _sfc_main$U = /* @__PURE__ */ defineComponent({
 const _sfc_setup$U = _sfc_main$U.setup;
 _sfc_main$U.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPImage.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPImage.vue");
   return _sfc_setup$U ? _sfc_setup$U(props, ctx) : void 0;
 };
-const VPImage = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__scopeId", "data-v-48f5f59e"]]);
+const VPImage = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__scopeId", "data-v-6f192a0c"]]);
 const _sfc_main$T = /* @__PURE__ */ defineComponent({
   __name: "VPHero",
   __ssrInlineRender: true,
@@ -2555,32 +2555,32 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({
         class: ["VPHero", { "has-image": _ctx.image || unref(heroImageSlotExists) }]
-      }, _attrs))} data-v-1abfb821><div class="container" data-v-1abfb821><div class="main" data-v-1abfb821>`);
+      }, _attrs))} data-v-9fb7a866><div class="container" data-v-9fb7a866><div class="main" data-v-9fb7a866>`);
       ssrRenderSlot(_ctx.$slots, "home-hero-info-before", {}, null, _push, _parent);
       ssrRenderSlot(_ctx.$slots, "home-hero-info", {}, () => {
-        _push(`<h1 class="heading" data-v-1abfb821>`);
+        _push(`<h1 class="heading" data-v-9fb7a866>`);
         if (_ctx.name) {
-          _push(`<span class="name clip" data-v-1abfb821>${_ctx.name ?? ""}</span>`);
+          _push(`<span class="name clip" data-v-9fb7a866>${_ctx.name ?? ""}</span>`);
         } else {
           _push(`<!---->`);
         }
         if (_ctx.text) {
-          _push(`<span class="text" data-v-1abfb821>${_ctx.text ?? ""}</span>`);
+          _push(`<span class="text" data-v-9fb7a866>${_ctx.text ?? ""}</span>`);
         } else {
           _push(`<!---->`);
         }
         _push(`</h1>`);
         if (_ctx.tagline) {
-          _push(`<p class="tagline" data-v-1abfb821>${_ctx.tagline ?? ""}</p>`);
+          _push(`<p class="tagline" data-v-9fb7a866>${_ctx.tagline ?? ""}</p>`);
         } else {
           _push(`<!---->`);
         }
       }, _push, _parent);
       ssrRenderSlot(_ctx.$slots, "home-hero-info-after", {}, null, _push, _parent);
       if (_ctx.actions) {
-        _push(`<div class="actions" data-v-1abfb821><!--[-->`);
+        _push(`<div class="actions" data-v-9fb7a866><!--[-->`);
         ssrRenderList(_ctx.actions, (action) => {
-          _push(`<div class="action" data-v-1abfb821>`);
+          _push(`<div class="action" data-v-9fb7a866>`);
           _push(ssrRenderComponent(VPButton, {
             tag: "a",
             size: "medium",
@@ -2599,7 +2599,7 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
       ssrRenderSlot(_ctx.$slots, "home-hero-actions-after", {}, null, _push, _parent);
       _push(`</div>`);
       if (_ctx.image || unref(heroImageSlotExists)) {
-        _push(`<div class="image" data-v-1abfb821><div class="image-container" data-v-1abfb821><div class="image-bg" data-v-1abfb821></div>`);
+        _push(`<div class="image" data-v-9fb7a866><div class="image-container" data-v-9fb7a866><div class="image-bg" data-v-9fb7a866></div>`);
         ssrRenderSlot(_ctx.$slots, "home-hero-image", {}, () => {
           if (_ctx.image) {
             _push(ssrRenderComponent(VPImage, {
@@ -2621,10 +2621,10 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
 const _sfc_setup$T = _sfc_main$T.setup;
 _sfc_main$T.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPHero.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPHero.vue");
   return _sfc_setup$T ? _sfc_setup$T(props, ctx) : void 0;
 };
-const VPHero = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__scopeId", "data-v-1abfb821"]]);
+const VPHero = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__scopeId", "data-v-9fb7a866"]]);
 const _sfc_main$S = /* @__PURE__ */ defineComponent({
   __name: "VPHomeHero",
   __ssrInlineRender: true,
@@ -2696,7 +2696,7 @@ const _sfc_main$S = /* @__PURE__ */ defineComponent({
 const _sfc_setup$S = _sfc_main$S.setup;
 _sfc_main$S.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPHomeHero.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPHomeHero.vue");
   return _sfc_setup$S ? _sfc_setup$S(props, ctx) : void 0;
 };
 const _sfc_main$R = /* @__PURE__ */ defineComponent({
@@ -2723,9 +2723,9 @@ const _sfc_main$R = /* @__PURE__ */ defineComponent({
       }, _attrs), {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<article class="box" data-v-8f3bd6cd${_scopeId}>`);
+            _push2(`<article class="box" data-v-3a767e52${_scopeId}>`);
             if (typeof _ctx.icon === "object" && _ctx.icon.wrap) {
-              _push2(`<div class="icon" data-v-8f3bd6cd${_scopeId}>`);
+              _push2(`<div class="icon" data-v-3a767e52${_scopeId}>`);
               _push2(ssrRenderComponent(VPImage, {
                 image: _ctx.icon,
                 alt: _ctx.icon.alt,
@@ -2741,18 +2741,18 @@ const _sfc_main$R = /* @__PURE__ */ defineComponent({
                 width: _ctx.icon.width || 48
               }, null, _parent2, _scopeId));
             } else if (_ctx.icon) {
-              _push2(`<div class="icon" data-v-8f3bd6cd${_scopeId}>${_ctx.icon ?? ""}</div>`);
+              _push2(`<div class="icon" data-v-3a767e52${_scopeId}>${_ctx.icon ?? ""}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<h2 class="title" data-v-8f3bd6cd${_scopeId}>${_ctx.title ?? ""}</h2>`);
+            _push2(`<h2 class="title" data-v-3a767e52${_scopeId}>${_ctx.title ?? ""}</h2>`);
             if (_ctx.details) {
-              _push2(`<p class="details" data-v-8f3bd6cd${_scopeId}>${_ctx.details ?? ""}</p>`);
+              _push2(`<p class="details" data-v-3a767e52${_scopeId}>${_ctx.details ?? ""}</p>`);
             } else {
               _push2(`<!---->`);
             }
             if (_ctx.linkText) {
-              _push2(`<div class="link-text" data-v-8f3bd6cd${_scopeId}><p class="link-text-value" data-v-8f3bd6cd${_scopeId}>${ssrInterpolate(_ctx.linkText)} <span class="vpi-arrow-right link-text-icon" data-v-8f3bd6cd${_scopeId}></span></p></div>`);
+              _push2(`<div class="link-text" data-v-3a767e52${_scopeId}><p class="link-text-value" data-v-3a767e52${_scopeId}>${ssrInterpolate(_ctx.linkText)} <span class="vpi-arrow-right link-text-icon" data-v-3a767e52${_scopeId}></span></p></div>`);
             } else {
               _push2(`<!---->`);
             }
@@ -2811,10 +2811,10 @@ const _sfc_main$R = /* @__PURE__ */ defineComponent({
 const _sfc_setup$R = _sfc_main$R.setup;
 _sfc_main$R.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPFeature.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPFeature.vue");
   return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
 };
-const VPFeature = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__scopeId", "data-v-8f3bd6cd"]]);
+const VPFeature = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__scopeId", "data-v-3a767e52"]]);
 const _sfc_main$Q = /* @__PURE__ */ defineComponent({
   __name: "VPFeatures",
   __ssrInlineRender: true,
@@ -2839,9 +2839,9 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _push, _parent, _attrs) => {
       if (_ctx.features) {
-        _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPFeatures" }, _attrs))} data-v-c258e9c9><div class="container" data-v-c258e9c9><div class="items" data-v-c258e9c9><!--[-->`);
+        _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPFeatures" }, _attrs))} data-v-1fb84d4e><div class="container" data-v-1fb84d4e><div class="items" data-v-1fb84d4e><!--[-->`);
         ssrRenderList(_ctx.features, (feature) => {
-          _push(`<div class="${ssrRenderClass([[grid.value], "item"])}" data-v-c258e9c9>`);
+          _push(`<div class="${ssrRenderClass([[grid.value], "item"])}" data-v-1fb84d4e>`);
           _push(ssrRenderComponent(VPFeature, {
             icon: feature.icon,
             title: feature.title,
@@ -2863,10 +2863,10 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
 const _sfc_setup$Q = _sfc_main$Q.setup;
 _sfc_main$Q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPFeatures.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPFeatures.vue");
   return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
 };
-const VPFeatures = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__scopeId", "data-v-c258e9c9"]]);
+const VPFeatures = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__scopeId", "data-v-1fb84d4e"]]);
 const _sfc_main$P = /* @__PURE__ */ defineComponent({
   __name: "VPHomeFeatures",
   __ssrInlineRender: true,
@@ -2887,7 +2887,7 @@ const _sfc_main$P = /* @__PURE__ */ defineComponent({
 const _sfc_setup$P = _sfc_main$P.setup;
 _sfc_main$P.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPHomeFeatures.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPHomeFeatures.vue");
   return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
 };
 const _sfc_main$O = /* @__PURE__ */ defineComponent({
@@ -2902,7 +2902,7 @@ const _sfc_main$O = /* @__PURE__ */ defineComponent({
       _push(`<div${ssrRenderAttrs(mergeProps({
         class: "vp-doc container",
         style: unref(vw) ? { "--vp-offset": `calc(50% - ${unref(vw) / 2}px)` } : {}
-      }, _attrs))} data-v-d3f50a17>`);
+      }, _attrs))} data-v-90afe434>`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       _push(`</div>`);
     };
@@ -2911,10 +2911,10 @@ const _sfc_main$O = /* @__PURE__ */ defineComponent({
 const _sfc_setup$O = _sfc_main$O.setup;
 _sfc_main$O.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPHomeContent.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPHomeContent.vue");
   return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
 };
-const VPHomeContent = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__scopeId", "data-v-d3f50a17"]]);
+const VPHomeContent = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__scopeId", "data-v-90afe434"]]);
 const _sfc_main$N = /* @__PURE__ */ defineComponent({
   __name: "VPHome",
   __ssrInlineRender: true,
@@ -2926,7 +2926,7 @@ const _sfc_main$N = /* @__PURE__ */ defineComponent({
         class: ["VPHome", {
           "external-link-icon-enabled": unref(theme2).externalLinkIcon
         }]
-      }, _attrs))} data-v-e6ea40a6>`);
+      }, _attrs))} data-v-415331a6>`);
       ssrRenderSlot(_ctx.$slots, "home-hero-before", {}, null, _push, _parent);
       _push(ssrRenderComponent(_sfc_main$S, null, {
         "home-hero-info-before": withCtx((_, _push2, _parent2, _scopeId) => {
@@ -3003,10 +3003,10 @@ const _sfc_main$N = /* @__PURE__ */ defineComponent({
 const _sfc_setup$N = _sfc_main$N.setup;
 _sfc_main$N.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPHome.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPHome.vue");
   return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
 };
-const VPHome = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-e6ea40a6"]]);
+const VPHome = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-415331a6"]]);
 const _sfc_main$M = {};
 function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs) {
   const _component_Content = resolveComponent("Content");
@@ -3019,7 +3019,7 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs) {
 const _sfc_setup$M = _sfc_main$M.setup;
 _sfc_main$M.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPPage.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPPage.vue");
   return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
 };
 const VPPage = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["ssrRender", _sfc_ssrRender$1]]);
@@ -3036,7 +3036,7 @@ const _sfc_main$L = /* @__PURE__ */ defineComponent({
           "is-home": unref(frontmatter).layout === "home"
         }],
         id: "VPContent"
-      }, _attrs))} data-v-0baf0560>`);
+      }, _attrs))} data-v-9d9c847b>`);
       if (unref(page).isNotFound) {
         ssrRenderSlot(_ctx.$slots, "not-found", {}, () => {
           _push(ssrRenderComponent(NotFound, null, null, _parent));
@@ -3261,10 +3261,10 @@ const _sfc_main$L = /* @__PURE__ */ defineComponent({
 const _sfc_setup$L = _sfc_main$L.setup;
 _sfc_main$L.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPContent.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPContent.vue");
   return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
 };
-const VPContent = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-0baf0560"]]);
+const VPContent = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-9d9c847b"]]);
 const _sfc_main$K = /* @__PURE__ */ defineComponent({
   __name: "VPFooter",
   __ssrInlineRender: true,
@@ -3275,14 +3275,14 @@ const _sfc_main$K = /* @__PURE__ */ defineComponent({
       if (unref(theme2).footer && unref(frontmatter).footer !== false) {
         _push(`<footer${ssrRenderAttrs(mergeProps({
           class: ["VPFooter", { "has-sidebar": unref(hasSidebar) }]
-        }, _attrs))} data-v-8ff92635><div class="container" data-v-8ff92635>`);
+        }, _attrs))} data-v-5ce971b5><div class="container" data-v-5ce971b5>`);
         if (unref(theme2).footer.message) {
-          _push(`<p class="message" data-v-8ff92635>${unref(theme2).footer.message ?? ""}</p>`);
+          _push(`<p class="message" data-v-5ce971b5>${unref(theme2).footer.message ?? ""}</p>`);
         } else {
           _push(`<!---->`);
         }
         if (unref(theme2).footer.copyright) {
-          _push(`<p class="copyright" data-v-8ff92635>${unref(theme2).footer.copyright ?? ""}</p>`);
+          _push(`<p class="copyright" data-v-5ce971b5>${unref(theme2).footer.copyright ?? ""}</p>`);
         } else {
           _push(`<!---->`);
         }
@@ -3296,10 +3296,10 @@ const _sfc_main$K = /* @__PURE__ */ defineComponent({
 const _sfc_setup$K = _sfc_main$K.setup;
 _sfc_main$K.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPFooter.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPFooter.vue");
   return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
 };
-const VPFooter = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-8ff92635"]]);
+const VPFooter = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-5ce971b5"]]);
 function useLocalNav() {
   const { theme: theme2, frontmatter } = useData();
   const headers = shallowRef([]);
@@ -3352,14 +3352,14 @@ const _sfc_main$J = /* @__PURE__ */ defineComponent({
         style: { "--vp-vh": vh.value + "px" },
         ref_key: "main",
         ref: main
-      }, _attrs))} data-v-2de65859>`);
+      }, _attrs))} data-v-90876441>`);
       if (_ctx.headers.length > 0) {
-        _push(`<button class="${ssrRenderClass({ open: open.value })}" data-v-2de65859><span class="menu-text" data-v-2de65859>${ssrInterpolate(unref(resolveTitle)(unref(theme2)))}</span><span class="vpi-chevron-right icon" data-v-2de65859></span></button>`);
+        _push(`<button class="${ssrRenderClass({ open: open.value })}" data-v-90876441><span class="menu-text" data-v-90876441>${ssrInterpolate(unref(resolveTitle)(unref(theme2)))}</span><span class="vpi-chevron-right icon" data-v-90876441></span></button>`);
       } else {
-        _push(`<button data-v-2de65859>${ssrInterpolate(unref(theme2).returnToTopLabel || "Return to top")}</button>`);
+        _push(`<button data-v-90876441>${ssrInterpolate(unref(theme2).returnToTopLabel || "Return to top")}</button>`);
       }
       if (open.value) {
-        _push(`<div class="items" data-v-2de65859><div class="header" data-v-2de65859><a class="top-link" href="#" data-v-2de65859>${ssrInterpolate(unref(theme2).returnToTopLabel || "Return to top")}</a></div><div class="outline" data-v-2de65859>`);
+        _push(`<div class="items" data-v-90876441><div class="header" data-v-90876441><a class="top-link" href="#" data-v-90876441>${ssrInterpolate(unref(theme2).returnToTopLabel || "Return to top")}</a></div><div class="outline" data-v-90876441>`);
         _push(ssrRenderComponent(VPDocOutlineItem, { headers: _ctx.headers }, null, _parent));
         _push(`</div></div>`);
       } else {
@@ -3372,10 +3372,10 @@ const _sfc_main$J = /* @__PURE__ */ defineComponent({
 const _sfc_setup$J = _sfc_main$J.setup;
 _sfc_main$J.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPLocalNavOutlineDropdown.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPLocalNavOutlineDropdown.vue");
   return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
 };
-const VPLocalNavOutlineDropdown = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__scopeId", "data-v-2de65859"]]);
+const VPLocalNavOutlineDropdown = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__scopeId", "data-v-90876441"]]);
 const _sfc_main$I = /* @__PURE__ */ defineComponent({
   __name: "VPLocalNav",
   __ssrInlineRender: true,
@@ -3415,9 +3415,9 @@ const _sfc_main$I = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _push, _parent, _attrs) => {
       if (unref(frontmatter).layout !== "home" && (!emptyAndNoSidebar.value || unref(y) >= navHeight.value)) {
-        _push(`<div${ssrRenderAttrs(mergeProps({ class: classes.value }, _attrs))} data-v-6c714cfc><div class="container" data-v-6c714cfc>`);
+        _push(`<div${ssrRenderAttrs(mergeProps({ class: classes.value }, _attrs))} data-v-dc6afa06><div class="container" data-v-dc6afa06>`);
         if (unref(hasSidebar)) {
-          _push(`<button class="menu"${ssrRenderAttr("aria-expanded", _ctx.open)} aria-controls="VPSidebarNav" data-v-6c714cfc><span class="vpi-align-left menu-icon" data-v-6c714cfc></span><span class="menu-text" data-v-6c714cfc>${ssrInterpolate(unref(theme2).sidebarMenuLabel || "Menu")}</span></button>`);
+          _push(`<button class="menu"${ssrRenderAttr("aria-expanded", _ctx.open)} aria-controls="VPSidebarNav" data-v-dc6afa06><span class="vpi-align-left menu-icon" data-v-dc6afa06></span><span class="menu-text" data-v-dc6afa06>${ssrInterpolate(unref(theme2).sidebarMenuLabel || "Menu")}</span></button>`);
         } else {
           _push(`<!---->`);
         }
@@ -3435,10 +3435,10 @@ const _sfc_main$I = /* @__PURE__ */ defineComponent({
 const _sfc_setup$I = _sfc_main$I.setup;
 _sfc_main$I.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPLocalNav.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPLocalNav.vue");
   return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
 };
-const VPLocalNav = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-6c714cfc"]]);
+const VPLocalNav = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-dc6afa06"]]);
 function useNav() {
   const isScreenOpen = ref(false);
   function openScreen() {
@@ -3470,9 +3470,9 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
     class: "VPSwitch",
     type: "button",
     role: "switch"
-  }, _attrs))} data-v-75b51e22><span class="check" data-v-75b51e22>`);
+  }, _attrs))} data-v-e40c8fca><span class="check" data-v-e40c8fca>`);
   if (_ctx.$slots.default) {
-    _push(`<span class="icon" data-v-75b51e22>`);
+    _push(`<span class="icon" data-v-e40c8fca>`);
     ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
     _push(`</span>`);
   } else {
@@ -3483,10 +3483,10 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
 const _sfc_setup$H = _sfc_main$H.setup;
 _sfc_main$H.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSwitch.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSwitch.vue");
   return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
 };
-const VPSwitch = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-75b51e22"]]);
+const VPSwitch = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-e40c8fca"]]);
 const _sfc_main$G = /* @__PURE__ */ defineComponent({
   __name: "VPSwitchAppearance",
   __ssrInlineRender: true,
@@ -3508,7 +3508,7 @@ const _sfc_main$G = /* @__PURE__ */ defineComponent({
       }, _attrs), {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span class="vpi-sun sun" data-v-ff50d74d${_scopeId}></span><span class="vpi-moon moon" data-v-ff50d74d${_scopeId}></span>`);
+            _push2(`<span class="vpi-sun sun" data-v-824d3a32${_scopeId}></span><span class="vpi-moon moon" data-v-824d3a32${_scopeId}></span>`);
           } else {
             return [
               createVNode("span", { class: "vpi-sun sun" }),
@@ -3524,10 +3524,10 @@ const _sfc_main$G = /* @__PURE__ */ defineComponent({
 const _sfc_setup$G = _sfc_main$G.setup;
 _sfc_main$G.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSwitchAppearance.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSwitchAppearance.vue");
   return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
 };
-const VPSwitchAppearance = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-ff50d74d"]]);
+const VPSwitchAppearance = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-824d3a32"]]);
 const _sfc_main$F = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarAppearance",
   __ssrInlineRender: true,
@@ -3535,7 +3535,7 @@ const _sfc_main$F = /* @__PURE__ */ defineComponent({
     const { site } = useData();
     return (_ctx, _push, _parent, _attrs) => {
       if (unref(site).appearance && unref(site).appearance !== "force-dark" && unref(site).appearance !== "force-auto") {
-        _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPNavBarAppearance" }, _attrs))} data-v-71f1d83a>`);
+        _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPNavBarAppearance" }, _attrs))} data-v-3740cec5>`);
         _push(ssrRenderComponent(VPSwitchAppearance, null, null, _parent));
         _push(`</div>`);
       } else {
@@ -3547,10 +3547,10 @@ const _sfc_main$F = /* @__PURE__ */ defineComponent({
 const _sfc_setup$F = _sfc_main$F.setup;
 _sfc_main$F.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarAppearance.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarAppearance.vue");
   return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
 };
-const VPNavBarAppearance = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__scopeId", "data-v-71f1d83a"]]);
+const VPNavBarAppearance = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__scopeId", "data-v-3740cec5"]]);
 const focusedElement = ref();
 let active = false;
 let listeners = 0;
@@ -3599,7 +3599,7 @@ const _sfc_main$E = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const { page } = useData();
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPMenuLink" }, _attrs))} data-v-63ccd5da>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPMenuLink" }, _attrs))} data-v-5b785c95>`);
       _push(ssrRenderComponent(_sfc_main$Z, {
         class: {
           active: unref(isActive)(
@@ -3615,7 +3615,7 @@ const _sfc_main$E = /* @__PURE__ */ defineComponent({
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-63ccd5da${_scopeId}>${_ctx.item.text ?? ""}</span>`);
+            _push2(`<span data-v-5b785c95${_scopeId}>${_ctx.item.text ?? ""}</span>`);
           } else {
             return [
               createVNode("span", {
@@ -3633,10 +3633,10 @@ const _sfc_main$E = /* @__PURE__ */ defineComponent({
 const _sfc_setup$E = _sfc_main$E.setup;
 _sfc_main$E.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPMenuLink.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPMenuLink.vue");
   return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
 };
-const VPMenuLink = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-63ccd5da"]]);
+const VPMenuLink = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-5b785c95"]]);
 const _sfc_main$D = /* @__PURE__ */ defineComponent({
   __name: "VPMenuGroup",
   __ssrInlineRender: true,
@@ -3646,9 +3646,9 @@ const _sfc_main$D = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPMenuGroup" }, _attrs))} data-v-e6b1dc4a>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPMenuGroup" }, _attrs))} data-v-f11ab8ae>`);
       if (_ctx.text) {
-        _push(`<p class="title" data-v-e6b1dc4a>${ssrInterpolate(_ctx.text)}</p>`);
+        _push(`<p class="title" data-v-f11ab8ae>${ssrInterpolate(_ctx.text)}</p>`);
       } else {
         _push(`<!---->`);
       }
@@ -3669,10 +3669,10 @@ const _sfc_main$D = /* @__PURE__ */ defineComponent({
 const _sfc_setup$D = _sfc_main$D.setup;
 _sfc_main$D.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPMenuGroup.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPMenuGroup.vue");
   return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
 };
-const VPMenuGroup = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__scopeId", "data-v-e6b1dc4a"]]);
+const VPMenuGroup = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__scopeId", "data-v-f11ab8ae"]]);
 const _sfc_main$C = /* @__PURE__ */ defineComponent({
   __name: "VPMenu",
   __ssrInlineRender: true,
@@ -3681,9 +3681,9 @@ const _sfc_main$C = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPMenu" }, _attrs))} data-v-a2706770>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPMenu" }, _attrs))} data-v-6b491126>`);
       if (_ctx.items) {
-        _push(`<div class="items" data-v-a2706770><!--[-->`);
+        _push(`<div class="items" data-v-6b491126><!--[-->`);
         ssrRenderList(_ctx.items, (item) => {
           _push(`<!--[-->`);
           if ("link" in item) {
@@ -3710,10 +3710,10 @@ const _sfc_main$C = /* @__PURE__ */ defineComponent({
 const _sfc_setup$C = _sfc_main$C.setup;
 _sfc_main$C.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPMenu.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPMenu.vue");
   return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
 };
-const VPMenu = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-a2706770"]]);
+const VPMenu = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-6b491126"]]);
 const _sfc_main$B = /* @__PURE__ */ defineComponent({
   __name: "VPFlyout",
   __ssrInlineRender: true,
@@ -3735,24 +3735,24 @@ const _sfc_main$B = /* @__PURE__ */ defineComponent({
         class: "VPFlyout",
         ref_key: "el",
         ref: el
-      }, _attrs))} data-v-6bb752a1><button type="button" class="button" aria-haspopup="true"${ssrRenderAttr("aria-expanded", open.value)}${ssrRenderAttr("aria-label", _ctx.label)} data-v-6bb752a1>`);
+      }, _attrs))} data-v-3b97523f><button type="button" class="button" aria-haspopup="true"${ssrRenderAttr("aria-expanded", open.value)}${ssrRenderAttr("aria-label", _ctx.label)} data-v-3b97523f>`);
       if (_ctx.button || _ctx.icon) {
-        _push(`<span class="text" data-v-6bb752a1>`);
+        _push(`<span class="text" data-v-3b97523f>`);
         if (_ctx.icon) {
-          _push(`<span class="${ssrRenderClass([_ctx.icon, "option-icon"])}" data-v-6bb752a1></span>`);
+          _push(`<span class="${ssrRenderClass([_ctx.icon, "option-icon"])}" data-v-3b97523f></span>`);
         } else {
           _push(`<!---->`);
         }
         if (_ctx.button) {
-          _push(`<span data-v-6bb752a1>${_ctx.button ?? ""}</span>`);
+          _push(`<span data-v-3b97523f>${_ctx.button ?? ""}</span>`);
         } else {
           _push(`<!---->`);
         }
-        _push(`<span class="vpi-chevron-down text-icon" data-v-6bb752a1></span></span>`);
+        _push(`<span class="vpi-chevron-down text-icon" data-v-3b97523f></span></span>`);
       } else {
-        _push(`<span class="vpi-more-horizontal icon" data-v-6bb752a1></span>`);
+        _push(`<span class="vpi-more-horizontal icon" data-v-3b97523f></span>`);
       }
-      _push(`</button><div class="menu" data-v-6bb752a1>`);
+      _push(`</button><div class="menu" data-v-3b97523f>`);
       _push(ssrRenderComponent(VPMenu, { items: _ctx.items }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -3772,10 +3772,10 @@ const _sfc_main$B = /* @__PURE__ */ defineComponent({
 const _sfc_setup$B = _sfc_main$B.setup;
 _sfc_main$B.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPFlyout.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPFlyout.vue");
   return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
 };
-const VPFlyout = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-6bb752a1"]]);
+const VPFlyout = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-3b97523f"]]);
 const _sfc_main$A = /* @__PURE__ */ defineComponent({
   __name: "VPSocialLink",
   __ssrInlineRender: true,
@@ -3815,17 +3815,17 @@ const _sfc_main$A = /* @__PURE__ */ defineComponent({
         "aria-label": _ctx.ariaLabel ?? (typeof _ctx.icon === "string" ? _ctx.icon : ""),
         target: "_blank",
         rel: "noopener"
-      }, _attrs))} data-v-9f6a387c>${svg.value ?? ""}</a>`);
+      }, _attrs))} data-v-a5783aa0>${svg.value ?? ""}</a>`);
     };
   }
 });
 const _sfc_setup$A = _sfc_main$A.setup;
 _sfc_main$A.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSocialLink.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSocialLink.vue");
   return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
-const VPSocialLink = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-9f6a387c"]]);
+const VPSocialLink = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-a5783aa0"]]);
 const _sfc_main$z = /* @__PURE__ */ defineComponent({
   __name: "VPSocialLinks",
   __ssrInlineRender: true,
@@ -3834,7 +3834,7 @@ const _sfc_main$z = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPSocialLinks" }, _attrs))} data-v-bafda038><!--[-->`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPSocialLinks" }, _attrs))} data-v-86767710><!--[-->`);
       ssrRenderList(_ctx.links, ({ link: link2, icon, ariaLabel }) => {
         _push(ssrRenderComponent(VPSocialLink, {
           key: link2,
@@ -3850,10 +3850,10 @@ const _sfc_main$z = /* @__PURE__ */ defineComponent({
 const _sfc_setup$z = _sfc_main$z.setup;
 _sfc_main$z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSocialLinks.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSocialLinks.vue");
   return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
-const VPSocialLinks = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-bafda038"]]);
+const VPSocialLinks = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-86767710"]]);
 const _sfc_main$y = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarExtra",
   __ssrInlineRender: true,
@@ -3872,7 +3872,7 @@ const _sfc_main$y = /* @__PURE__ */ defineComponent({
           default: withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
               if (unref(localeLinks).length && unref(currentLang).label) {
-                _push2(`<div class="group translations" data-v-75af55a4${_scopeId}><p class="trans-title" data-v-75af55a4${_scopeId}>${ssrInterpolate(unref(currentLang).label)}</p><!--[-->`);
+                _push2(`<div class="group translations" data-v-2f17a938${_scopeId}><p class="trans-title" data-v-2f17a938${_scopeId}>${ssrInterpolate(unref(currentLang).label)}</p><!--[-->`);
                 ssrRenderList(unref(localeLinks), (locale) => {
                   _push2(ssrRenderComponent(VPMenuLink, { item: locale }, null, _parent2, _scopeId));
                 });
@@ -3881,14 +3881,14 @@ const _sfc_main$y = /* @__PURE__ */ defineComponent({
                 _push2(`<!---->`);
               }
               if (unref(site).appearance && unref(site).appearance !== "force-dark" && unref(site).appearance !== "force-auto") {
-                _push2(`<div class="group" data-v-75af55a4${_scopeId}><div class="item appearance" data-v-75af55a4${_scopeId}><p class="label" data-v-75af55a4${_scopeId}>${ssrInterpolate(unref(theme2).darkModeSwitchLabel || "Appearance")}</p><div class="appearance-action" data-v-75af55a4${_scopeId}>`);
+                _push2(`<div class="group" data-v-2f17a938${_scopeId}><div class="item appearance" data-v-2f17a938${_scopeId}><p class="label" data-v-2f17a938${_scopeId}>${ssrInterpolate(unref(theme2).darkModeSwitchLabel || "Appearance")}</p><div class="appearance-action" data-v-2f17a938${_scopeId}>`);
                 _push2(ssrRenderComponent(VPSwitchAppearance, null, null, _parent2, _scopeId));
                 _push2(`</div></div></div>`);
               } else {
                 _push2(`<!---->`);
               }
               if (unref(theme2).socialLinks) {
-                _push2(`<div class="group" data-v-75af55a4${_scopeId}><div class="item social-links" data-v-75af55a4${_scopeId}>`);
+                _push2(`<div class="group" data-v-2f17a938${_scopeId}><div class="item social-links" data-v-2f17a938${_scopeId}>`);
                 _push2(ssrRenderComponent(VPSocialLinks, {
                   class: "social-links-list",
                   links: unref(theme2).socialLinks
@@ -3947,10 +3947,10 @@ const _sfc_main$y = /* @__PURE__ */ defineComponent({
 const _sfc_setup$y = _sfc_main$y.setup;
 _sfc_main$y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarExtra.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarExtra.vue");
   return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
-const VPNavBarExtra = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-75af55a4"]]);
+const VPNavBarExtra = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-2f17a938"]]);
 const _sfc_main$x = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarHamburger",
   __ssrInlineRender: true,
@@ -3966,17 +3966,17 @@ const _sfc_main$x = /* @__PURE__ */ defineComponent({
         "aria-label": "mobile navigation",
         "aria-expanded": _ctx.active,
         "aria-controls": "VPNavScreen"
-      }, _attrs))} data-v-c26f8ae9><span class="container" data-v-c26f8ae9><span class="top" data-v-c26f8ae9></span><span class="middle" data-v-c26f8ae9></span><span class="bottom" data-v-c26f8ae9></span></span></button>`);
+      }, _attrs))} data-v-f82bcbac><span class="container" data-v-f82bcbac><span class="top" data-v-f82bcbac></span><span class="middle" data-v-f82bcbac></span><span class="bottom" data-v-f82bcbac></span></span></button>`);
     };
   }
 });
 const _sfc_setup$x = _sfc_main$x.setup;
 _sfc_main$x.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarHamburger.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarHamburger.vue");
   return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-const VPNavBarHamburger = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-c26f8ae9"]]);
+const VPNavBarHamburger = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-f82bcbac"]]);
 const _sfc_main$w = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarMenuLink",
   __ssrInlineRender: true,
@@ -4003,7 +4003,7 @@ const _sfc_main$w = /* @__PURE__ */ defineComponent({
       }, _attrs), {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-fd4b60cd${_scopeId}>${_ctx.item.text ?? ""}</span>`);
+            _push2(`<span data-v-f614a34b${_scopeId}>${_ctx.item.text ?? ""}</span>`);
           } else {
             return [
               createVNode("span", {
@@ -4020,10 +4020,10 @@ const _sfc_main$w = /* @__PURE__ */ defineComponent({
 const _sfc_setup$w = _sfc_main$w.setup;
 _sfc_main$w.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarMenuLink.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarMenuLink.vue");
   return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
-const VPNavBarMenuLink = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-fd4b60cd"]]);
+const VPNavBarMenuLink = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-f614a34b"]]);
 const _sfc_main$v = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarMenuGroup",
   __ssrInlineRender: true,
@@ -4060,7 +4060,7 @@ const _sfc_main$v = /* @__PURE__ */ defineComponent({
 const _sfc_setup$v = _sfc_main$v.setup;
 _sfc_main$v.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarMenuGroup.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarMenuGroup.vue");
   return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
 const _sfc_main$u = /* @__PURE__ */ defineComponent({
@@ -4073,7 +4073,7 @@ const _sfc_main$u = /* @__PURE__ */ defineComponent({
         _push(`<nav${ssrRenderAttrs(mergeProps({
           "aria-labelledby": "main-nav-aria-label",
           class: "VPNavBarMenu"
-        }, _attrs))} data-v-97e17fc4><span id="main-nav-aria-label" class="visually-hidden" data-v-97e17fc4> Main Navigation </span><!--[-->`);
+        }, _attrs))} data-v-554fcef2><span id="main-nav-aria-label" class="visually-hidden" data-v-554fcef2> Main Navigation </span><!--[-->`);
         ssrRenderList(unref(theme2).nav, (item) => {
           _push(`<!--[-->`);
           if ("link" in item) {
@@ -4095,10 +4095,10 @@ const _sfc_main$u = /* @__PURE__ */ defineComponent({
 const _sfc_setup$u = _sfc_main$u.setup;
 _sfc_main$u.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarMenu.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarMenu.vue");
   return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
 };
-const VPNavBarMenu = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-97e17fc4"]]);
+const VPNavBarMenu = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-554fcef2"]]);
 function createSearchTranslate(defaultTranslations) {
   const { localeIndex, theme: theme2 } = useData();
   function translate(key) {
@@ -4163,14 +4163,14 @@ const _sfc_main$t = /* @__PURE__ */ defineComponent({
 const _sfc_setup$t = _sfc_main$t.setup;
 _sfc_main$t.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarSearchButton.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarSearchButton.vue");
   return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
 const _sfc_main$s = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarSearch",
   __ssrInlineRender: true,
   setup(__props) {
-    const VPLocalSearchBox = defineAsyncComponent(() => import("./VPLocalSearchBox.Cejo2rXe.js"));
+    const VPLocalSearchBox = defineAsyncComponent(() => import("./VPLocalSearchBox.C0L4dKwM.js"));
     const VPAlgoliaSearchBox = () => null;
     const { theme: theme2 } = useData();
     const loaded = ref(false);
@@ -4263,7 +4263,7 @@ const _sfc_main$s = /* @__PURE__ */ defineComponent({
 const _sfc_setup$s = _sfc_main$s.setup;
 _sfc_main$s.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarSearch.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarSearch.vue");
   return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
 const _sfc_main$r = /* @__PURE__ */ defineComponent({
@@ -4286,10 +4286,10 @@ const _sfc_main$r = /* @__PURE__ */ defineComponent({
 const _sfc_setup$r = _sfc_main$r.setup;
 _sfc_main$r.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarSocialLinks.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarSocialLinks.vue");
   return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-const VPNavBarSocialLinks = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-dc597910"]]);
+const VPNavBarSocialLinks = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-09703c49"]]);
 const _sfc_main$q = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarTitle",
   __ssrInlineRender: true,
@@ -4318,7 +4318,7 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({
         class: ["VPNavBarTitle", { "has-sidebar": unref(hasSidebar) }]
-      }, _attrs))} data-v-f7ad8cd0><a class="title"${ssrRenderAttr("href", link2.value ?? unref(normalizeLink$1)(unref(currentLang).link))}${ssrRenderAttr("rel", rel.value)}${ssrRenderAttr("target", target.value)} data-v-f7ad8cd0>`);
+      }, _attrs))} data-v-16ba5b82><a class="title"${ssrRenderAttr("href", link2.value ?? unref(normalizeLink$1)(unref(currentLang).link))}${ssrRenderAttr("rel", rel.value)}${ssrRenderAttr("target", target.value)} data-v-16ba5b82>`);
       ssrRenderSlot(_ctx.$slots, "nav-bar-title-before", {}, null, _push, _parent);
       if (unref(theme2).logo) {
         _push(ssrRenderComponent(VPImage, {
@@ -4329,9 +4329,9 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
         _push(`<!---->`);
       }
       if (unref(theme2).siteTitle) {
-        _push(`<span data-v-f7ad8cd0>${unref(theme2).siteTitle ?? ""}</span>`);
+        _push(`<span data-v-16ba5b82>${unref(theme2).siteTitle ?? ""}</span>`);
       } else if (unref(theme2).siteTitle === void 0) {
-        _push(`<span data-v-f7ad8cd0>${ssrInterpolate(unref(site).title)}</span>`);
+        _push(`<span data-v-16ba5b82>${ssrInterpolate(unref(site).title)}</span>`);
       } else {
         _push(`<!---->`);
       }
@@ -4343,10 +4343,10 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
 const _sfc_setup$q = _sfc_main$q.setup;
 _sfc_main$q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarTitle.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarTitle.vue");
   return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
-const VPNavBarTitle = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-f7ad8cd0"]]);
+const VPNavBarTitle = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-16ba5b82"]]);
 const _sfc_main$p = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarTranslations",
   __ssrInlineRender: true,
@@ -4362,7 +4362,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
         }, _attrs), {
           default: withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
-              _push2(`<div class="items" data-v-bb3bd573${_scopeId}><p class="title" data-v-bb3bd573${_scopeId}>${ssrInterpolate(unref(currentLang).label)}</p><!--[-->`);
+              _push2(`<div class="items" data-v-d77f3d8b${_scopeId}><p class="title" data-v-d77f3d8b${_scopeId}>${ssrInterpolate(unref(currentLang).label)}</p><!--[-->`);
               ssrRenderList(unref(localeLinks), (locale) => {
                 _push2(ssrRenderComponent(VPMenuLink, { item: locale }, null, _parent2, _scopeId));
               });
@@ -4392,10 +4392,10 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
 const _sfc_setup$p = _sfc_main$p.setup;
 _sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBarTranslations.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBarTranslations.vue");
   return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
-const VPNavBarTranslations = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-bb3bd573"]]);
+const VPNavBarTranslations = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-d77f3d8b"]]);
 const _sfc_main$o = /* @__PURE__ */ defineComponent({
   __name: "VPNavBar",
   __ssrInlineRender: true,
@@ -4420,7 +4420,7 @@ const _sfc_main$o = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({
         class: ["VPNavBar", classes.value]
-      }, _attrs))} data-v-fa0e5200><div class="wrapper" data-v-fa0e5200><div class="container" data-v-fa0e5200><div class="title" data-v-fa0e5200>`);
+      }, _attrs))} data-v-fb399272><div class="wrapper" data-v-fb399272><div class="container" data-v-fb399272><div class="title" data-v-fb399272>`);
       _push(ssrRenderComponent(VPNavBarTitle, null, {
         "nav-bar-title-before": withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -4442,7 +4442,7 @@ const _sfc_main$o = /* @__PURE__ */ defineComponent({
         }),
         _: 3
       }, _parent));
-      _push(`</div><div class="content" data-v-fa0e5200><div class="content-body" data-v-fa0e5200>`);
+      _push(`</div><div class="content" data-v-fb399272><div class="content-body" data-v-fb399272>`);
       ssrRenderSlot(_ctx.$slots, "nav-bar-content-before", {}, null, _push, _parent);
       _push(ssrRenderComponent(_sfc_main$s, { class: "search" }, null, _parent));
       _push(ssrRenderComponent(VPNavBarMenu, { class: "menu" }, null, _parent));
@@ -4456,17 +4456,17 @@ const _sfc_main$o = /* @__PURE__ */ defineComponent({
         active: _ctx.isScreenOpen,
         onClick: ($event) => _ctx.$emit("toggle-screen")
       }, null, _parent));
-      _push(`</div></div></div></div><div class="divider" data-v-fa0e5200><div class="divider-line" data-v-fa0e5200></div></div></div>`);
+      _push(`</div></div></div></div><div class="divider" data-v-fb399272><div class="divider-line" data-v-fb399272></div></div></div>`);
     };
   }
 });
 const _sfc_setup$o = _sfc_main$o.setup;
 _sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavBar.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavBar.vue");
   return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
-const VPNavBar = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-fa0e5200"]]);
+const VPNavBar = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-fb399272"]]);
 const _sfc_main$n = /* @__PURE__ */ defineComponent({
   __name: "VPNavScreenAppearance",
   __ssrInlineRender: true,
@@ -4474,7 +4474,7 @@ const _sfc_main$n = /* @__PURE__ */ defineComponent({
     const { site, theme: theme2 } = useData();
     return (_ctx, _push, _parent, _attrs) => {
       if (unref(site).appearance && unref(site).appearance !== "force-dark" && unref(site).appearance !== "force-auto") {
-        _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPNavScreenAppearance" }, _attrs))} data-v-b1a9bf5a><p class="text" data-v-b1a9bf5a>${ssrInterpolate(unref(theme2).darkModeSwitchLabel || "Appearance")}</p>`);
+        _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPNavScreenAppearance" }, _attrs))} data-v-69547fe8><p class="text" data-v-69547fe8>${ssrInterpolate(unref(theme2).darkModeSwitchLabel || "Appearance")}</p>`);
         _push(ssrRenderComponent(VPSwitchAppearance, null, null, _parent));
         _push(`</div>`);
       } else {
@@ -4486,10 +4486,10 @@ const _sfc_main$n = /* @__PURE__ */ defineComponent({
 const _sfc_setup$n = _sfc_main$n.setup;
 _sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenAppearance.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenAppearance.vue");
   return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const VPNavScreenAppearance = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-b1a9bf5a"]]);
+const VPNavScreenAppearance = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-69547fe8"]]);
 const _sfc_main$m = /* @__PURE__ */ defineComponent({
   __name: "VPNavScreenMenuLink",
   __ssrInlineRender: true,
@@ -4509,7 +4509,7 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
       }, _attrs), {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-d0c6efee${_scopeId}>${_ctx.item.text ?? ""}</span>`);
+            _push2(`<span data-v-5a335f30${_scopeId}>${_ctx.item.text ?? ""}</span>`);
           } else {
             return [
               createVNode("span", {
@@ -4526,10 +4526,10 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
 const _sfc_setup$m = _sfc_main$m.setup;
 _sfc_main$m.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuLink.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuLink.vue");
   return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
 };
-const VPNavScreenMenuLink = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-d0c6efee"]]);
+const VPNavScreenMenuLink = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-5a335f30"]]);
 const _sfc_main$l = /* @__PURE__ */ defineComponent({
   __name: "VPNavScreenMenuGroupLink",
   __ssrInlineRender: true,
@@ -4549,7 +4549,7 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
       }, _attrs), {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-d292308c${_scopeId}>${_ctx.item.text ?? ""}</span>`);
+            _push2(`<span data-v-9d575afe${_scopeId}>${_ctx.item.text ?? ""}</span>`);
           } else {
             return [
               createVNode("span", {
@@ -4566,10 +4566,10 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
 const _sfc_setup$l = _sfc_main$l.setup;
 _sfc_main$l.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuGroupLink.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuGroupLink.vue");
   return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-const VPNavScreenMenuGroupLink = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-d292308c"]]);
+const VPNavScreenMenuGroupLink = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-9d575afe"]]);
 const _sfc_main$k = /* @__PURE__ */ defineComponent({
   __name: "VPNavScreenMenuGroupSection",
   __ssrInlineRender: true,
@@ -4579,9 +4579,9 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPNavScreenMenuGroupSection" }, _attrs))} data-v-ffd2e645>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "VPNavScreenMenuGroupSection" }, _attrs))} data-v-51df1b0a>`);
       if (_ctx.text) {
-        _push(`<p class="title" data-v-ffd2e645>${ssrInterpolate(_ctx.text)}</p>`);
+        _push(`<p class="title" data-v-51df1b0a>${ssrInterpolate(_ctx.text)}</p>`);
       } else {
         _push(`<!---->`);
       }
@@ -4599,10 +4599,10 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
 const _sfc_setup$k = _sfc_main$k.setup;
 _sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuGroupSection.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuGroupSection.vue");
   return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
-const VPNavScreenMenuGroupSection = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-ffd2e645"]]);
+const VPNavScreenMenuGroupSection = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-51df1b0a"]]);
 const _sfc_main$j = /* @__PURE__ */ defineComponent({
   __name: "VPNavScreenMenuGroup",
   __ssrInlineRender: true,
@@ -4619,19 +4619,19 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({
         class: ["VPNavScreenMenuGroup", { open: isOpen.value }]
-      }, _attrs))} data-v-3f4d77e5><button class="button"${ssrRenderAttr("aria-controls", groupId.value)}${ssrRenderAttr("aria-expanded", isOpen.value)} data-v-3f4d77e5><span class="button-text" data-v-3f4d77e5>${_ctx.text ?? ""}</span><span class="vpi-plus button-icon" data-v-3f4d77e5></span></button><div${ssrRenderAttr("id", groupId.value)} class="items" data-v-3f4d77e5><!--[-->`);
+      }, _attrs))} data-v-a1219785><button class="button"${ssrRenderAttr("aria-controls", groupId.value)}${ssrRenderAttr("aria-expanded", isOpen.value)} data-v-a1219785><span class="button-text" data-v-a1219785>${_ctx.text ?? ""}</span><span class="vpi-plus button-icon" data-v-a1219785></span></button><div${ssrRenderAttr("id", groupId.value)} class="items" data-v-a1219785><!--[-->`);
       ssrRenderList(_ctx.items, (item) => {
         _push(`<!--[-->`);
         if ("link" in item) {
-          _push(`<div class="item" data-v-3f4d77e5>`);
+          _push(`<div class="item" data-v-a1219785>`);
           _push(ssrRenderComponent(VPNavScreenMenuGroupLink, { item }, null, _parent));
           _push(`</div>`);
         } else if ("component" in item) {
-          _push(`<div class="item" data-v-3f4d77e5>`);
+          _push(`<div class="item" data-v-a1219785>`);
           ssrRenderVNode(_push, createVNode(resolveDynamicComponent(item.component), mergeProps({ ref_for: true }, item.props, { "screen-menu": "" }), null), _parent);
           _push(`</div>`);
         } else {
-          _push(`<div class="group" data-v-3f4d77e5>`);
+          _push(`<div class="group" data-v-a1219785>`);
           _push(ssrRenderComponent(VPNavScreenMenuGroupSection, {
             text: item.text,
             items: item.items
@@ -4647,10 +4647,10 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
 const _sfc_setup$j = _sfc_main$j.setup;
 _sfc_main$j.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuGroup.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuGroup.vue");
   return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
-const VPNavScreenMenuGroup = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-3f4d77e5"]]);
+const VPNavScreenMenuGroup = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-a1219785"]]);
 const _sfc_main$i = /* @__PURE__ */ defineComponent({
   __name: "VPNavScreenMenu",
   __ssrInlineRender: true,
@@ -4683,7 +4683,7 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
 const _sfc_setup$i = _sfc_main$i.setup;
 _sfc_main$i.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenu.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenu.vue");
   return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
 const _sfc_main$h = /* @__PURE__ */ defineComponent({
@@ -4706,7 +4706,7 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
 const _sfc_setup$h = _sfc_main$h.setup;
 _sfc_main$h.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenSocialLinks.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenSocialLinks.vue");
   return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
 const _sfc_main$g = /* @__PURE__ */ defineComponent({
@@ -4719,9 +4719,9 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
       if (unref(localeLinks).length && unref(currentLang).label) {
         _push(`<div${ssrRenderAttrs(mergeProps({
           class: ["VPNavScreenTranslations", { open: isOpen.value }]
-        }, _attrs))} data-v-973f9f2f><button class="title" data-v-973f9f2f><span class="vpi-languages icon lang" data-v-973f9f2f></span> ${ssrInterpolate(unref(currentLang).label)} <span class="vpi-chevron-down icon chevron" data-v-973f9f2f></span></button><ul class="list" data-v-973f9f2f><!--[-->`);
+        }, _attrs))} data-v-180b51e0><button class="title" data-v-180b51e0><span class="vpi-languages icon lang" data-v-180b51e0></span> ${ssrInterpolate(unref(currentLang).label)} <span class="vpi-chevron-down icon chevron" data-v-180b51e0></span></button><ul class="list" data-v-180b51e0><!--[-->`);
         ssrRenderList(unref(localeLinks), (locale) => {
-          _push(`<li class="item" data-v-973f9f2f>`);
+          _push(`<li class="item" data-v-180b51e0>`);
           _push(ssrRenderComponent(_sfc_main$Z, {
             class: "link",
             href: locale.link
@@ -4749,10 +4749,10 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
 const _sfc_setup$g = _sfc_main$g.setup;
 _sfc_main$g.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenTranslations.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenTranslations.vue");
   return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const VPNavScreenTranslations = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-973f9f2f"]]);
+const VPNavScreenTranslations = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-180b51e0"]]);
 const _sfc_main$f = /* @__PURE__ */ defineComponent({
   __name: "VPNavScreen",
   __ssrInlineRender: true,
@@ -4769,7 +4769,7 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
           ref_key: "screen",
           ref: screen,
           id: "VPNavScreen"
-        }, _attrs))} data-v-17e1f3a2><div class="container" data-v-17e1f3a2>`);
+        }, _attrs))} data-v-437eca30><div class="container" data-v-437eca30>`);
         ssrRenderSlot(_ctx.$slots, "nav-screen-content-before", {}, null, _push, _parent);
         _push(ssrRenderComponent(_sfc_main$i, { class: "menu" }, null, _parent));
         _push(ssrRenderComponent(VPNavScreenTranslations, { class: "translations" }, null, _parent));
@@ -4786,10 +4786,10 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
 const _sfc_setup$f = _sfc_main$f.setup;
 _sfc_main$f.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNavScreen.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNavScreen.vue");
   return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
-const VPNavScreen = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-17e1f3a2"]]);
+const VPNavScreen = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-437eca30"]]);
 const _sfc_main$e = /* @__PURE__ */ defineComponent({
   __name: "VPNav",
   __ssrInlineRender: true,
@@ -4807,7 +4807,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _push, _parent, _attrs) => {
       if (hasNavbar.value) {
-        _push(`<header${ssrRenderAttrs(mergeProps({ class: "VPNav" }, _attrs))} data-v-b7b62d40>`);
+        _push(`<header${ssrRenderAttrs(mergeProps({ class: "VPNav" }, _attrs))} data-v-7f2710cf>`);
         _push(ssrRenderComponent(VPNavBar, {
           "is-screen-open": unref(isScreenOpen),
           onToggleScreen: unref(toggleScreen)
@@ -4881,10 +4881,10 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
 const _sfc_setup$e = _sfc_main$e.setup;
 _sfc_main$e.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPNav.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPNav.vue");
   return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
-const VPNav = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-b7b62d40"]]);
+const VPNav = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-7f2710cf"]]);
 const _sfc_main$d = /* @__PURE__ */ defineComponent({
   __name: "VPSidebarItem",
   __ssrInlineRender: true,
@@ -4934,7 +4934,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             if (_ctx.item.text) {
-              _push2(`<div class="item"${ssrRenderAttr("role", itemRole.value)}${ssrRenderAttr("tabindex", _ctx.item.items && 0)} data-v-ed409b02${_scopeId}><div class="indicator" data-v-ed409b02${_scopeId}></div>`);
+              _push2(`<div class="item"${ssrRenderAttr("role", itemRole.value)}${ssrRenderAttr("tabindex", _ctx.item.items && 0)} data-v-5c721878${_scopeId}><div class="indicator" data-v-5c721878${_scopeId}></div>`);
               if (_ctx.item.link) {
                 _push2(ssrRenderComponent(_sfc_main$Z, {
                   tag: linkTag.value,
@@ -4961,7 +4961,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                 ssrRenderVNode(_push2, createVNode(resolveDynamicComponent(textTag.value), { class: "text" }, null), _parent2, _scopeId);
               }
               if (_ctx.item.collapsed != null && _ctx.item.items && _ctx.item.items.length) {
-                _push2(`<div class="caret" role="button" aria-label="toggle section" tabindex="0" data-v-ed409b02${_scopeId}><span class="vpi-chevron-right caret-icon" data-v-ed409b02${_scopeId}></span></div>`);
+                _push2(`<div class="caret" role="button" aria-label="toggle section" tabindex="0" data-v-5c721878${_scopeId}><span class="vpi-chevron-right caret-icon" data-v-5c721878${_scopeId}></span></div>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -4970,7 +4970,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
               _push2(`<!---->`);
             }
             if (_ctx.item.items && _ctx.item.items.length) {
-              _push2(`<div class="items" data-v-ed409b02${_scopeId}>`);
+              _push2(`<div class="items" data-v-5c721878${_scopeId}>`);
               if (_ctx.depth < 5) {
                 _push2(`<!--[-->`);
                 ssrRenderList(_ctx.item.items, (i) => {
@@ -5056,10 +5056,10 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
 const _sfc_setup$d = _sfc_main$d.setup;
 _sfc_main$d.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSidebarItem.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSidebarItem.vue");
   return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
-const VPSidebarItem = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-ed409b02"]]);
+const VPSidebarItem = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-5c721878"]]);
 const _sfc_main$c = /* @__PURE__ */ defineComponent({
   __name: "VPSidebarGroup",
   __ssrInlineRender: true,
@@ -5084,7 +5084,7 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       ssrRenderList(_ctx.items, (item) => {
-        _push(`<div class="${ssrRenderClass([{ "no-transition": disableTransition.value }, "group"])}" data-v-ae332943>`);
+        _push(`<div class="${ssrRenderClass([{ "no-transition": disableTransition.value }, "group"])}" data-v-5d40c286>`);
         _push(ssrRenderComponent(VPSidebarItem, {
           item,
           depth: 0
@@ -5098,10 +5098,10 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
 const _sfc_setup$c = _sfc_main$c.setup;
 _sfc_main$c.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSidebarGroup.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSidebarGroup.vue");
   return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
-const VPSidebarGroup = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-ae332943"]]);
+const VPSidebarGroup = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-5d40c286"]]);
 const _sfc_main$b = /* @__PURE__ */ defineComponent({
   __name: "VPSidebar",
   __ssrInlineRender: true,
@@ -5138,7 +5138,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
           class: ["VPSidebar", { open: _ctx.open }],
           ref_key: "navEl",
           ref: navEl
-        }, _attrs))} data-v-f466ed65><div class="curtain" data-v-f466ed65></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-f466ed65><span class="visually-hidden" id="sidebar-aria-label" data-v-f466ed65> Sidebar Navigation </span>`);
+        }, _attrs))} data-v-725b99f7><div class="curtain" data-v-725b99f7></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-725b99f7><span class="visually-hidden" id="sidebar-aria-label" data-v-725b99f7> Sidebar Navigation </span>`);
         ssrRenderSlot(_ctx.$slots, "sidebar-nav-before", {}, null, _push, _parent);
         _push(ssrRenderComponent(VPSidebarGroup, {
           items: unref(sidebarGroups),
@@ -5155,10 +5155,10 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
 const _sfc_setup$b = _sfc_main$b.setup;
 _sfc_main$b.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSidebar.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSidebar.vue");
   return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-const VPSidebar = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-f466ed65"]]);
+const VPSidebar = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-725b99f7"]]);
 const _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "VPSkipLink",
   __ssrInlineRender: true,
@@ -5168,17 +5168,17 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     const backToTop = ref();
     watch(() => route.path, () => backToTop.value.focus());
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<!--[--><span tabindex="-1" data-v-74261265></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-74261265>${ssrInterpolate(unref(theme2).skipToContentLabel || "Skip to content")}</a><!--]-->`);
+      _push(`<!--[--><span tabindex="-1" data-v-cedf19f8></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-cedf19f8>${ssrInterpolate(unref(theme2).skipToContentLabel || "Skip to content")}</a><!--]-->`);
     };
   }
 });
 const _sfc_setup$a = _sfc_main$a.setup;
 _sfc_main$a.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSkipLink.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSkipLink.vue");
   return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
-const VPSkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-74261265"]]);
+const VPSkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-cedf19f8"]]);
 const _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "Layout",
   __ssrInlineRender: true,
@@ -5200,7 +5200,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       if (unref(frontmatter).layout !== false) {
         _push(`<div${ssrRenderAttrs(mergeProps({
           class: ["Layout", unref(frontmatter).pageClass]
-        }, _attrs))} data-v-0a44d5bd>`);
+        }, _attrs))} data-v-632f4ee0>`);
         ssrRenderSlot(_ctx.$slots, "layout-top", {}, null, _push, _parent);
         _push(ssrRenderComponent(VPSkipLink, null, null, _parent));
         _push(ssrRenderComponent(VPBackdrop, {
@@ -5512,10 +5512,10 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$9 = _sfc_main$9.setup;
 _sfc_main$9.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/Layout.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/Layout.vue");
   return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const Layout = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-0a44d5bd"]]);
+const Layout = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-632f4ee0"]]);
 const GridSettings = {
   xmini: [[0, 2]],
   mini: [],
@@ -5623,7 +5623,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$8 = _sfc_main$8.setup;
 _sfc_main$8.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSponsorsGrid.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSponsorsGrid.vue");
   return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
 const _sfc_main$7 = /* @__PURE__ */ defineComponent({
@@ -5672,7 +5672,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$7 = _sfc_main$7.setup;
 _sfc_main$7.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPSponsors.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPSponsors.vue");
   return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
 const _sfc_main$6 = /* @__PURE__ */ defineComponent({
@@ -5699,7 +5699,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$6 = _sfc_main$6.setup;
 _sfc_main$6.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideSponsors.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideSponsors.vue");
   return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
 };
 const _sfc_main$5 = /* @__PURE__ */ defineComponent({
@@ -5713,17 +5713,17 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({ class: "VPHomeSponsors" }, _attrs))} data-v-615bc4c4><div class="container" data-v-615bc4c4><div class="header" data-v-615bc4c4><div class="love" data-v-615bc4c4><span class="vpi-heart icon" data-v-615bc4c4></span></div>`);
+      _push(`<section${ssrRenderAttrs(mergeProps({ class: "VPHomeSponsors" }, _attrs))} data-v-a503dcda><div class="container" data-v-a503dcda><div class="header" data-v-a503dcda><div class="love" data-v-a503dcda><span class="vpi-heart icon" data-v-a503dcda></span></div>`);
       if (_ctx.message) {
-        _push(`<h2 class="message" data-v-615bc4c4>${ssrInterpolate(_ctx.message)}</h2>`);
+        _push(`<h2 class="message" data-v-a503dcda>${ssrInterpolate(_ctx.message)}</h2>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><div class="sponsors" data-v-615bc4c4>`);
+      _push(`</div><div class="sponsors" data-v-a503dcda>`);
       _push(ssrRenderComponent(_sfc_main$7, { data: _ctx.data }, null, _parent));
       _push(`</div>`);
       if (_ctx.actionLink) {
-        _push(`<div class="action" data-v-615bc4c4>`);
+        _push(`<div class="action" data-v-a503dcda>`);
         _push(ssrRenderComponent(VPButton, {
           theme: "sponsor",
           text: _ctx.actionText,
@@ -5740,7 +5740,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$5 = _sfc_main$5.setup;
 _sfc_main$5.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPHomeSponsors.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPHomeSponsors.vue");
   return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
 const _sfc_main$4 = /* @__PURE__ */ defineComponent({
@@ -5754,16 +5754,16 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<article${ssrRenderAttrs(mergeProps({
         class: ["VPTeamMembersItem", [_ctx.size]]
-      }, _attrs))} data-v-9e141ce5><div class="profile" data-v-9e141ce5><figure class="avatar" data-v-9e141ce5><img class="avatar-img"${ssrRenderAttr("src", _ctx.member.avatar)}${ssrRenderAttr("alt", _ctx.member.name)} data-v-9e141ce5></figure><div class="data" data-v-9e141ce5><h1 class="name" data-v-9e141ce5>${ssrInterpolate(_ctx.member.name)}</h1>`);
+      }, _attrs))} data-v-267e5709><div class="profile" data-v-267e5709><figure class="avatar" data-v-267e5709><img class="avatar-img"${ssrRenderAttr("src", _ctx.member.avatar)}${ssrRenderAttr("alt", _ctx.member.name)} data-v-267e5709></figure><div class="data" data-v-267e5709><h1 class="name" data-v-267e5709>${ssrInterpolate(_ctx.member.name)}</h1>`);
       if (_ctx.member.title || _ctx.member.org) {
-        _push(`<p class="affiliation" data-v-9e141ce5>`);
+        _push(`<p class="affiliation" data-v-267e5709>`);
         if (_ctx.member.title) {
-          _push(`<span class="title" data-v-9e141ce5>${ssrInterpolate(_ctx.member.title)}</span>`);
+          _push(`<span class="title" data-v-267e5709>${ssrInterpolate(_ctx.member.title)}</span>`);
         } else {
           _push(`<!---->`);
         }
         if (_ctx.member.title && _ctx.member.org) {
-          _push(`<span class="at" data-v-9e141ce5> @ </span>`);
+          _push(`<span class="at" data-v-267e5709> @ </span>`);
         } else {
           _push(`<!---->`);
         }
@@ -5792,12 +5792,12 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         _push(`<!---->`);
       }
       if (_ctx.member.desc) {
-        _push(`<p class="desc" data-v-9e141ce5>${_ctx.member.desc ?? ""}</p>`);
+        _push(`<p class="desc" data-v-267e5709>${_ctx.member.desc ?? ""}</p>`);
       } else {
         _push(`<!---->`);
       }
       if (_ctx.member.links) {
-        _push(`<div class="links" data-v-9e141ce5>`);
+        _push(`<div class="links" data-v-267e5709>`);
         _push(ssrRenderComponent(VPSocialLinks, {
           links: _ctx.member.links
         }, null, _parent));
@@ -5807,7 +5807,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       }
       _push(`</div></div>`);
       if (_ctx.member.sponsor) {
-        _push(`<div class="sp" data-v-9e141ce5>`);
+        _push(`<div class="sp" data-v-267e5709>`);
         _push(ssrRenderComponent(_sfc_main$Z, {
           class: "sp-link",
           href: _ctx.member.sponsor,
@@ -5815,7 +5815,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         }, {
           default: withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
-              _push2(`<span class="vpi-heart sp-icon" data-v-9e141ce5${_scopeId}></span> ${ssrInterpolate(_ctx.member.actionText || "Sponsor")}`);
+              _push2(`<span class="vpi-heart sp-icon" data-v-267e5709${_scopeId}></span> ${ssrInterpolate(_ctx.member.actionText || "Sponsor")}`);
             } else {
               return [
                 createVNode("span", { class: "vpi-heart sp-icon" }),
@@ -5836,10 +5836,10 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$4 = _sfc_main$4.setup;
 _sfc_main$4.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembersItem.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembersItem.vue");
   return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
-const VPTeamMembersItem = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-9e141ce5"]]);
+const VPTeamMembersItem = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-267e5709"]]);
 const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "VPTeamMembers",
   __ssrInlineRender: true,
@@ -5853,9 +5853,9 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({
         class: ["VPTeamMembers", classes.value]
-      }, _attrs))} data-v-4de2c4c2><div class="container" data-v-4de2c4c2><!--[-->`);
+      }, _attrs))} data-v-8ac8e2e6><div class="container" data-v-8ac8e2e6><!--[-->`);
       ssrRenderList(_ctx.members, (member) => {
-        _push(`<div class="item" data-v-4de2c4c2>`);
+        _push(`<div class="item" data-v-8ac8e2e6>`);
         _push(ssrRenderComponent(VPTeamMembersItem, {
           size: _ctx.size,
           member
@@ -5869,28 +5869,28 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
 const _sfc_setup$3 = _sfc_main$3.setup;
 _sfc_main$3.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembers.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembers.vue");
   return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
 const _sfc_main$2 = {};
 const _sfc_setup$2 = _sfc_main$2.setup;
 _sfc_main$2.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPTeamPage.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPTeamPage.vue");
   return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
 const _sfc_main$1 = {};
 const _sfc_setup$1 = _sfc_main$1.setup;
 _sfc_main$1.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageSection.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageSection.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
 const _sfc_main = {};
 const _sfc_setup = _sfc_main.setup;
 _sfc_main.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_postcss@8.5.3_search-insights@2.17.3/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageTitle.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("../node_modules/.pnpm/vitepress@1.6.3_@algolia+client-search@5.23.4_@types+react@18.3.26_postcss@8.5.3_react-_b5e9cdae056584db38e8b78d2646e6e9/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageTitle.vue");
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
 const theme = {
