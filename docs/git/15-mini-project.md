@@ -1,7 +1,7 @@
 # Mini Project: Làm việc nhóm theo GitHub Flow
 
-> **Bài trước:** [14. Tag và Release](./14-git-tag-release.md)  
-> **Bài tiếp theo:** Không có (Đây là bài cuối cùng)
+> **Bài trước:** [14. Tag và phát hành phiên bản](./14-git-tag-release.md)  
+> **Bài tiếp theo:** [16. Resolve Conflict trong Teamwork](./16-resolving-conflicts-teamwork.md) (Bài bổ sung chuyên sâu)
 
 ## 🎯 Mục tiêu học tập
 
@@ -16,22 +16,23 @@
 
 Qua 14 bài học, bạn đã học được:
 
-1.   ✅ Git cơ bản: init, add, commit, log
-2.   ✅ Working directory và staging area
-3.   ✅ Branch và merge
-4.   ✅ GitHub: clone, fork, push, pull
-5.   ✅ GitHub Flow workflow
-6.   ✅ Pull Request và review code
-7.   ✅ Commit message best practices
-8.   ✅ Git nâng cao: stash, revert, reset, cherry-pick
-9.   ✅ Xử lý lỗi thường gặp
-10.  ✅ Tag và release version
+1.  ✅ Git cơ bản: init, add, commit, log
+2.  ✅ Working directory và staging area
+3.  ✅ Branch và merge
+4.  ✅ GitHub: clone, fork, push, pull
+5.  ✅ GitHub Flow workflow
+6.  ✅ Pull Request và review code
+7.  ✅ Commit message best practices
+8.  ✅ Git nâng cao: stash, revert, reset, cherry-pick
+9.  ✅ Xử lý lỗi thường gặp
+10. ✅ Tag và release version
 
 ### Dự án cuối khóa
 
 **Mục tiêu:** Tạo một website portfolio đơn giản với team 2-3 người
 
 **Yêu cầu:**
+
 -   Áp dụng đầy đủ GitHub Flow
 -   Mỗi người làm một component
 -   Có ít nhất 3 Pull Request
@@ -110,7 +111,7 @@ git push -u origin feature/header
 
 # Tạo Pull Request trên GitHub
 # Title: "feat: Thêm header component"
-# Description: 
+# Description:
 # - Thêm header với navigation menu
 # - Responsive trên mobile
 # - Links đến các section chính
@@ -169,7 +170,7 @@ Có một số điểm cần xem xét:
 
 1. ✅ Code structure tốt
 2. 💡 Có thể thêm email contact vào footer không?
-3. 💡 Social links nên mở tab mới (target="_blank")
+3. 💡 Social links nên mở tab mới (target="\_blank")
 
 Ngoài ra, có thể thêm một số styling cơ bản không?
 
@@ -192,10 +193,10 @@ git push origin feature/footer
 
 **Người 1 approve và merge:**
 
-1.   Xem lại code mới
-2.   Approve PR
-3.   Merge PR (Create a merge commit)
-4.   Xóa branch `feature/footer`
+1.  Xem lại code mới
+2.  Approve PR
+3.  Merge PR (Create a merge commit)
+4.  Xóa branch `feature/footer`
 
 ### Hoàn thiện và Release
 
@@ -219,9 +220,9 @@ git push origin v1.0.0
 # Description:
 # ## What's New
 # - ✅ Header component with navigation
-# - ✅ Footer component with social links  
+# - ✅ Footer component with social links
 # - ✅ About section
-# 
+#
 # ## Contributors
 # - @nguoi1 (Header)
 # - @nguoi2 (Footer)
@@ -236,29 +237,39 @@ git push origin v1.0.0
 
 **Yêu cầu:**
 
-1.   **Setup (Người 1):**
+1.  **Setup (Người 1):**
+
+
     -   Tạo repository trên GitHub
     -   Khởi tạo cấu trúc cơ bản
     -   Thêm README.md với mô tả dự án
     -   Thêm .gitignore
 
-2.   **Phát triển (Mỗi người 1 component):**
+2.  **Phát triển (Mỗi người 1 component):**
+
+
     -   Component 1: Header/Navigation
     -   Component 2: Footer
     -   Component 3: About/Contact section
     -   Mỗi component là 1 Pull Request
 
-3.   **Review:**
+3.  **Review:**
+
+
     -   Mỗi PR phải có ít nhất 1 người review
     -   Reviewer comment ít nhất 2 điểm
     -   Author reply và sửa (nếu cần)
 
-4.   **Merge và Release:**
+4.  **Merge và Release:**
+
+
     -   Merge tất cả PR vào main
     -   Tạo tag v1.0.0
     -   Tạo Release trên GitHub với changelog
 
-5.   **Documentation:**
+5.  **Documentation:**
+
+
     -   Tạo file `PROJECT_SUMMARY.md`:
         -   Tổng hợp các PR đã tạo
         -   Screenshot của website
@@ -267,15 +278,16 @@ git push origin v1.0.0
 
 **Tiêu chí đánh giá:**
 
-| Tiêu chí              | Điểm | Yêu cầu                                          |
-| --------------------- | ---- | ------------------------------------------------ |
-| **GitHub Flow**       | 25   | Đúng quy trình, không commit trực tiếp vào main |
-| **Pull Request**      | 25   | PR có description đầy đủ, title rõ ràng          |
-| **Code Review**       | 25   | Có review, comment, và sửa code                 |
-| **Commit Message**    | 15   | Đúng chuẩn Conventional Commits                 |
-| **Release**           | 10   | Có tag v1.0.0 và release trên GitHub             |
+| Tiêu chí           | Điểm | Yêu cầu                                         |
+| ------------------ | ---- | ----------------------------------------------- |
+| **GitHub Flow**    | 25   | Đúng quy trình, không commit trực tiếp vào main |
+| **Pull Request**   | 25   | PR có description đầy đủ, title rõ ràng         |
+| **Code Review**    | 25   | Có review, comment, và sửa code                 |
+| **Commit Message** | 15   | Đúng chuẩn Conventional Commits                 |
+| **Release**        | 10   | Có tag v1.0.0 và release trên GitHub            |
 
 **Bonus:**
+
 -   Có CI/CD pipeline (+5)
 -   Có automated tests (+5)
 -   Có documentation đầy đủ (+5)
@@ -296,12 +308,12 @@ git push origin v1.0.0
 
 ### Best Practices tổng hợp
 
-1.   **Luôn pull trước khi push**
-2.   **Không commit trực tiếp vào main**
-3.   **PR nhỏ, dễ review**
-4.   **Commit message rõ ràng**
-5.   **Review code kỹ trước khi approve**
-6.   **Giao tiếp với team khi có vấn đề**
+1.  **Luôn pull trước khi push**
+2.  **Không commit trực tiếp vào main**
+3.  **PR nhỏ, dễ review**
+4.  **Commit message rõ ràng**
+5.  **Review code kỹ trước khi approve**
+6.  **Giao tiếp với team khi có vấn đề**
 
 ### Kết quả mong đợi
 
@@ -317,17 +329,19 @@ Sau khi hoàn thành dự án, bạn sẽ có:
 
 **Sau khóa học này, bạn có thể:**
 
-1.   **Học Git Flow:** Quy trình phức tạp hơn cho dự án lớn
-2.   **GitHub Actions:** Tự động hóa CI/CD
-3.   **Advanced Git:** Interactive rebase, submodules
-4.   **Contributing to Open Source:** Contribute vào các dự án lớn
+1.  **Học Git Flow:** Quy trình phức tạp hơn cho dự án lớn
+2.  **GitHub Actions:** Tự động hóa CI/CD
+3.  **Advanced Git:** Interactive rebase, submodules
+4.  **Contributing to Open Source:** Contribute vào các dự án lớn
 
 **Tài nguyên:**
+
 -   [Git Documentation](https://git-scm.com/doc)
 -   [GitHub Guides](https://guides.github.com/)
 -   [Atlassian Git Tutorials](https://www.atlassian.com/git/tutorials)
 
 **Áp dụng vào làm việc nhóm:**
+
 -   **Communication:** Luôn giao tiếp rõ ràng với team
 -   **Documentation:** Ghi lại quy trình và best practices
 -   **Code Review:** Coi code review là cơ hội học hỏi
@@ -338,4 +352,3 @@ Sau khi hoàn thành dự án, bạn sẽ có:
 **Kết luận:** Chúc mừng bạn đã hoàn thành khóa học Git & GitHub! Với kiến thức này, bạn đã sẵn sàng làm việc nhóm chuyên nghiệp trên bất kỳ dự án nào. Hãy tiếp tục thực hành và áp dụng vào các dự án thực tế!
 
 **Kết thúc khóa học!** 🎉
-

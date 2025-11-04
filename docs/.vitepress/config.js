@@ -9,6 +9,9 @@ export default {
             { text: "React", link: "/react/" },
             { text: "Node.js", link: "/nodejs/" },
             { text: "Wordpress", link: "/wordpress/" },
+            { text: "Git & GitHub", link: "/git/" },
+            { text: "Dự án 1", link: "/pro1014/" },
+            { text: "Lập trình Cơ bản", link: "/laptrinhcanban/" },
             // { text: "MongoDB", link: "/mongodb/" },
             { text: "Blog", link: "/blog/" }, // Added blog link to main navigation
             // { text: "NextJs", link: "/nextjs/" }, // Added blog link to main navigation
@@ -252,6 +255,222 @@ export default {
                             text: "14. Trang con bên trong một website",
                             link: "/wordpress/become-wordpress-developer/16-interior-page",
                         },
+                    ],
+                },
+            ],
+            "/laptrinhcanban/": [
+                {
+                    text: "Tổng quan",
+                    collapsed: false,
+                    items: [{ text: "Giới thiệu khóa học", link: "/laptrinhcanban/" }],
+                },
+                {
+                    text: "Phần 1: Nền tảng ",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "Buổi 1: Làm quen với C & Chương trình đầu tiên",
+                            link: "/laptrinhcanban/lesson-1",
+                        },
+                        {
+                            text: "Buổi 2: Biến, kiểu dữ liệu và nhập xuất",
+                            link: "/laptrinhcanban/lesson-2",
+                        },
+                        { text: "Buổi 3: Toán tử và biểu thức", link: "/laptrinhcanban/lesson-3" },
+                        { text: "Buổi 4: Cấu trúc điều kiện", link: "/laptrinhcanban/lesson-4" },
+                        { text: "Lab kiểm tra: Máy tính đơn giản", link: "/laptrinhcanban/lab" },
+                    ],
+                },
+                {
+                    text: "Phần 2: Vòng lặp và thuật toán",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 5: Vòng lặp for", link: "/laptrinhcanban/lesson-5" },
+                        {
+                            text: "Buổi 6: Vòng lặp while và do-while",
+                            link: "/laptrinhcanban/lesson-6",
+                        },
+                        {
+                            text: "Buổi 7: Vòng lặp lồng nhau và bài toán thực tế",
+                            link: "/laptrinhcanban/lesson-7",
+                        },
+                    ],
+                },
+                {
+                    text: "Phần 3: Hàm và cấu trúc",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 8: Hàm cơ bản", link: "/laptrinhcanban/lesson-8" },
+                        {
+                            text: "Buổi 9: Tham số, giá trị trả về và phạm vi biến",
+                            link: "/laptrinhcanban/lesson-9",
+                        },
+                        { text: "Buổi 10: Đệ quy cơ bản", link: "/laptrinhcanban/lesson-10" },
+                    ],
+                },
+                {
+                    text: "Phần 4: Cấu trúc dữ liệu",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 11: Mảng một chiều", link: "/laptrinhcanban/lesson-11" },
+                        {
+                            text: "Buổi 12: Mảng hai chiều và ứng dụng",
+                            link: "/laptrinhcanban/lesson-12",
+                        },
+                        {
+                            text: "Buổi 13: Chuỗi ký tự và cấu trúc (struct)",
+                            link: "/laptrinhcanban/lesson-13",
+                        },
+                    ],
+                },
+                {
+                    text: "Phần 5: Dự án và tổng kết",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "Buổi 14: Đọc/ghi file và tổng kết",
+                            link: "/laptrinhcanban/lesson-14",
+                        },
+                        { text: "Project cuối kỳ", link: "/laptrinhcanban/final-project" },
+                    ],
+                },
+            ],
+            "/git/": [
+                {
+                    text: "Tổng quan",
+                    collapsed: false,
+                    items: [{ text: "Giới thiệu khóa học", link: "/git/" }],
+                },
+                {
+                    text: "Phần 1: Git Cơ bản",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "01. Giới thiệu về Git và Version Control",
+                            link: "/git/01-intro-to-git",
+                        },
+                        { text: "02. Cài đặt & cấu hình Git", link: "/git/02-install-config" },
+                        { text: "03. Các lệnh Git cơ bản", link: "/git/03-git-basic-commands" },
+                        {
+                            text: "04. Working Directory và Staging Area",
+                            link: "/git/04-working-directory",
+                        },
+                    ],
+                },
+                {
+                    text: "Phần 2: Branch và Merge",
+                    collapsed: false,
+                    items: [
+                        { text: "05. Làm việc với Branch", link: "/git/05-git-branching" },
+                        { text: "06. Merge và Rebase", link: "/git/06-merge-vs-rebase" },
+                    ],
+                },
+                {
+                    text: "Phần 3: GitHub",
+                    collapsed: false,
+                    items: [
+                        { text: "07. Giới thiệu GitHub", link: "/git/07-github-intro" },
+                        { text: "08. Làm việc nhóm với GitHub", link: "/git/08-collaboration" },
+                    ],
+                },
+                {
+                    text: "Phần 4: GitHub Flow",
+                    collapsed: false,
+                    items: [
+                        { text: "09. GitHub Flow", link: "/git/09-github-flow" },
+                        { text: "10. Pull Request và Review Code", link: "/git/10-pull-request" },
+                    ],
+                },
+                {
+                    text: "Phần 5: Best Practices)",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "11. Commit Message Best Practices",
+                            link: "/git/11-commit-best-practices",
+                        },
+                        { text: "12. Git Nâng cao", link: "/git/12-git-advanced" },
+                    ],
+                },
+                {
+                    text: "Phần 6: Nâng cao và Thực hành",
+                    collapsed: false,
+                    items: [
+                        { text: "13. Lỗi thường gặp và khắc phục", link: "/git/13-common-errors" },
+                        { text: "14. Tag và phát hành phiên bản", link: "/git/14-git-tag-release" },
+                        { text: "15. Mini Project", link: "/git/15-mini-project" },
+                        {
+                            text: "16. Resolve Conflict trong Teamwork",
+                            link: "/git/16-resolving-conflicts-teamwork",
+                        },
+                    ],
+                },
+            ],
+            "/pro1014/": [
+                {
+                    text: "Tổng quan",
+                    collapsed: false,
+                    items: [{ text: "Giới thiệu môn học", link: "/pro1014/" }],
+                },
+                {
+                    text: "TUẦN 1 – KHỞI ĐỘNG & PHÂN TÍCH ĐỀ TÀI",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "Buổi 1: Giới thiệu đề tài & chia nhóm",
+                            link: "/pro1014/lesson-1",
+                        },
+                        {
+                            text: "Buổi 2: Phân tích chức năng (Use Case)",
+                            link: "/pro1014/lesson-2",
+                        },
+                        {
+                            text: "Buổi 3: Viết Project Specification (Spec)",
+                            link: "/pro1014/lesson-3",
+                        },
+                    ],
+                },
+                {
+                    text: "TUẦN 2 – THIẾT KẾ DỮ LIỆU & TEAMWORK",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 4: Thiết kế dữ liệu (ERD)", link: "/pro1014/lesson-4" },
+                        { text: "Buổi 5: Duyệt Spec & ERD", link: "/pro1014/lesson-5" },
+                        { text: "Buổi 6: Giới thiệu Git & teamwork", link: "/pro1014/lesson-6" },
+                    ],
+                },
+                {
+                    text: "TUẦN 3 – TRIỂN KHAI GIAI ĐOẠN 1",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 7: Lập kế hoạch triển khai", link: "/pro1014/lesson-7" },
+                        { text: "Buổi 8: Theo dõi tiến độ lần 1", link: "/pro1014/lesson-8" },
+                        { text: "Buổi 9: Review 1 (Giữa kỳ)", link: "/pro1014/lesson-9" },
+                    ],
+                },
+                {
+                    text: "TUẦN 4 – TRIỂN KHAI GIAI ĐOẠN 2",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 10: Phát triển nâng cao", link: "/pro1014/lesson-10" },
+                        { text: "Buổi 11: Theo dõi tiến độ lần 2", link: "/pro1014/lesson-11" },
+                        { text: "Buổi 12: Chuẩn bị demo hoàn chỉnh", link: "/pro1014/lesson-12" },
+                    ],
+                },
+                {
+                    text: "TUẦN 5 – HOÀN THIỆN & TỔNG DUYỆT",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 13: Hướng dẫn thuyết trình", link: "/pro1014/lesson-13" },
+                        { text: "Buổi 14: Tổng duyệt", link: "/pro1014/lesson-14" },
+                    ],
+                },
+                {
+                    text: "TUẦN 6 – BẢO VỆ & TỔNG KẾT",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 15: Tổng duyệt nhóm yếu", link: "/pro1014/lesson-15" },
+                        { text: "Buổi 16: Báo cáo chính thức", link: "/pro1014/lesson-16" },
                     ],
                 },
             ],
