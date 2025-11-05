@@ -51,11 +51,11 @@ Các em sẽ được chia thành các nhóm, mỗi nhóm phụ trách một mod
 
 ### 🗓 TUẦN 2 – THIẾT KẾ DỮ LIỆU & QUẢN LÝ DỰ ÁN
 
-| Buổi   | Nội dung                                 | File                         |
-| ------ | ---------------------------------------- | ---------------------------- |
-| Buổi 4 | Thiết kế dữ liệu (ERD)                   | [lesson-4.md](./lesson-4.md) |
-| Buổi 5 | Thiết kế database nâng cao & chuẩn hóa    | [lesson-5.md](./lesson-5.md) |
-| Buổi 6 | Giới thiệu Git & teamwork                | [lesson-6.md](./lesson-6.md) |
+| Buổi   | Nội dung                               | File                         |
+| ------ | -------------------------------------- | ---------------------------- |
+| Buổi 4 | Thiết kế dữ liệu (ERD)                 | [lesson-4.md](./lesson-4.md) |
+| Buổi 5 | Thiết kế database nâng cao & chuẩn hóa | [lesson-5.md](./lesson-5.md) |
+| Buổi 6 | Giới thiệu Git & teamwork              | [lesson-6.md](./lesson-6.md) |
 
 **Kết thúc tuần 2:** Có Spec + ERD hoàn chỉnh. Tạo repo GitHub và có kế hoạch triển khai chi tiết.
 
