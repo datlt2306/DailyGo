@@ -11,13 +11,13 @@
 
 ## 📋 Nội dung chính trên lớp
 
-### 1. Giới thiệu Project Specification (15 phút)
+### 1. Giới thiệu Project Specification
 
 -   Spec là gì? Tại sao cần Spec?
 -   Vai trò của Spec trong quy trình phát triển
 -   Mối liên hệ: Use Case → Spec → ERD → Code
 
-### 2. Cấu trúc SPEC rút gọn (30 phút)
+### 2. Cấu trúc SPEC rút gọn
 
 Giảng viên trình bày cấu trúc Spec module:
 
@@ -29,7 +29,7 @@ Giảng viên trình bày cấu trúc Spec module:
 5. Yêu cầu phi chức năng (nếu có)
 ```
 
-### 3. Hướng dẫn chi tiết từng phần (30 phút)
+### 3. Hướng dẫn chi tiết từng phần
 
 #### **Phần 1: Giới thiệu module & mục tiêu**
 
@@ -62,7 +62,7 @@ Giảng viên trình bày cấu trúc Spec module:
 -   Có thể dùng text hoặc sơ đồ đơn giản
 -   Ví dụ: "Khách hàng đặt tour → Admin duyệt → Khách hàng thanh toán → Hoàn tất"
 
-### 4. Hướng dẫn sử dụng bảng phân quyền khi viết Spec (10 phút)
+### 4. Hướng dẫn sử dụng bảng phân quyền khi viết Spec
 
 **Cách sử dụng bảng phân quyền từ Buổi 2:**
 
@@ -85,7 +85,7 @@ Giảng viên trình bày cấu trúc Spec module:
     - Xem cột "Phân quyền" để biết Actor nào sử dụng chức năng nào
     - Ghi vào phần "Người dùng của module"
 
-### 5. Ví dụ Spec mẫu (15 phút)
+### 5. Ví dụ Spec mẫu
 
 Giảng viên trình bày 1–2 trang Spec mẫu của module Booking dựa trên bảng phân quyền. Xem phần "Ví dụ Spec hoàn chỉnh" bên dưới để tham khảo.
 

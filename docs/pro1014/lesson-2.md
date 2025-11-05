@@ -12,7 +12,7 @@
 
 ## 📋 Nội dung chính trên lớp
 
-### 1. Giới thiệu Use Case (20 phút)
+### 1. Giới thiệu Use Case
 
 #### **1.1. Use Case là gì?**
 
@@ -936,15 +936,15 @@ Chọn **3 Use Case quan trọng nhất** và viết chi tiết theo format đ�
 -   Khách hàng có thể xem lại booking bằng mã đặt tour
 ```
 
-### Bài tập 3: Review và cải thiện (20 phút)
+### Bài tập 3: Review và cải thiện
 
-1. **Đổi Use Case cho nhóm khác review** (10 phút)
+1. **Đổi Use Case cho nhóm khác review**
 
     - Nhóm A review Use Case của Nhóm B
     - Nhóm B review Use Case của Nhóm A
     - Ghi chú: Use Case có dễ hiểu không? Logic có đúng không? Còn thiếu gì?
 
-2. **Chỉnh sửa theo feedback** (10 phút)
+2. **Chỉnh sửa theo feedback**
     - Đọc lại feedback
     - Chỉnh sửa Use Case
     - Hoàn thiện file

@@ -11,13 +11,13 @@
 
 ## 📋 Nội dung chính trên lớp
 
-### 1. Giới thiệu đề tài (30 phút)
+### 1. Giới thiệu đề tài
 
 -   Giảng viên trình bày tổng quan về dự án
 -   Giải thích hệ thống mô phỏng hoạt động của doanh nghiệp lữ hành
 -   Nêu các chức năng cốt lõi của hệ thống
 
-### 2. Cấu trúc hệ thống (20 phút)
+### 2. Cấu trúc hệ thống
 
 Giảng viên giải thích các module gợi ý:
 
@@ -27,7 +27,7 @@ Giảng viên giải thích các module gợi ý:
 -   **Hướng dẫn viên & Lịch làm việc**: Quản lý hướng dẫn viên, phân công lịch
 -   **Quản trị hệ thống / Báo cáo**: Dashboard, thống kê doanh thu, quản lý user
 
-### 3. Chia nhóm và phân vai (20 phút)
+### 3. Chia nhóm và phân vai
 
 -   Chia nhóm (3–5 sinh viên/nhóm)
 -   Phân vai trò:
@@ -36,7 +36,7 @@ Giảng viên giải thích các module gợi ý:
     -   🧪 **Tester**: Kiểm thử, tìm lỗi
     -   📝 **Documenter**: Viết tài liệu, báo cáo
 
-### 4. Thảo luận nhóm (20 phút)
+### 4. Thảo luận nhóm
 
 -   Các nhóm thảo luận và chọn module phụ trách
 -   Đặt câu hỏi với giảng viên về module đã chọn
