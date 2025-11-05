@@ -42,7 +42,6 @@
 
 Một Use Case text thường gồm các phần:
 
-```markdown
 **Tên Use Case**: [Tên ngắn gọn, rõ ràng]  
 **Actor**: [Ai sử dụng - User/Admin/Staff]  
 **Mô tả**: [Mô tả ngắn gọn mục đích]  
@@ -59,13 +58,11 @@ Một Use Case text thường gồm các phần:
 **Luồng ngoại lệ (Exception Flow):** [Xử lý lỗi, validation]
 
 **Điều kiện kết thúc (Postcondition):** [Kết quả sau khi hoàn thành]
-```
 
 #### **1.4. Ví dụ Use Case đơn giản**
 
 **Ví dụ cơ bản: Rút tiền tại ATM**
 
-```markdown
 **Tên Use Case**: Rút tiền tại ATM
 **Actor**: Khách hàng
 **Mô tả**: Khách hàng rút tiền từ tài khoản qua máy ATM
@@ -82,7 +79,6 @@ Một Use Case text thường gồm các phần:
 8. Máy trả tiền và thẻ
    **Luồng ngoại lệ**: Nếu PIN sai, máy yêu cầu nhập lại (tối đa 3 lần)
    **Điều kiện kết thúc**: Khách hàng nhận được tiền, số dư tài khoản giảm
-```
 
 ### 2. Hướng dẫn viết Use Case text chi tiết
 
@@ -131,7 +127,6 @@ Một Use Case text thường gồm các phần:
 
 **Ví dụ tốt:**
 
-```markdown
 1. Khách hàng mở trang web tour du lịch
 2. Khách hàng tìm kiếm tour theo điểm đến "Đà Lạt"
 3. Hệ thống hiển thị danh sách tour Đà Lạt
@@ -142,13 +137,10 @@ Một Use Case text thường gồm các phần:
 8. Khách hàng chọn phương thức thanh toán: Chuyển khoản
 9. Khách hàng click nút "Xác nhận đặt tour"
 10. Hệ thống lưu thông tin booking và gửi email xác nhận
-```
 
 **Ví dụ không tốt:**
 
-```
 1. Khách hàng đặt tour
-```
 
 (Quá chung chung, không chi tiết)
 
@@ -164,7 +156,6 @@ Một Use Case text thường gồm các phần:
 
 **Format:**
 
-```markdown
 **Luồng phụ A1: Khách hàng đã đăng nhập**
 
 -   Bước 5: Hệ thống tự động điền thông tin khách hàng
@@ -175,7 +166,6 @@ Một Use Case text thường gồm các phần:
 -   Bước 8: Khách hàng chọn "Thanh toán bằng thẻ"
 -   Bước 8a: Khách hàng nhập thông tin thẻ
 -   Bước 8b: Hệ thống xử lý thanh toán
-```
 
 #### **2.5. Bước 5: Viết Luồng ngoại lệ (Exception Flow)**
 
@@ -189,23 +179,22 @@ Một Use Case text thường gồm các phần:
 
 **Format:**
 
-```
 **Luồng ngoại lệ E1: Tour đã hết chỗ**
-- Bước 6a: Hệ thống kiểm tra số chỗ còn lại
-- Bước 6b: Nếu hết chỗ, hiển thị thông báo "Tour đã hết chỗ"
-- Bước 6c: Quay lại bước 5 để chọn tour khác
+
+-   Bước 6a: Hệ thống kiểm tra số chỗ còn lại
+-   Bước 6b: Nếu hết chỗ, hiển thị thông báo "Tour đã hết chỗ"
+-   Bước 6c: Quay lại bước 5 để chọn tour khác
 
 **Luồng ngoại lệ E2: Thông tin không hợp lệ**
-- Bước 7a: Hệ thống kiểm tra định dạng email
-- Bước 7b: Nếu email sai, hiển thị lỗi "Email không hợp lệ"
-- Bước 7c: Yêu cầu nhập lại email
-```
+
+-   Bước 7a: Hệ thống kiểm tra định dạng email
+-   Bước 7b: Nếu email sai, hiển thị lỗi "Email không hợp lệ"
+-   Bước 7c: Yêu cầu nhập lại email
 
 ### 3. Ví dụ cụ thể - Chi tiết
 
 #### **3.1. Ví dụ 1: Module Booking - Đặt tour trực tuyến**
 
-```markdown
 **Tên Use Case**: Đặt tour trực tuyến
 **Actor**: Khách hàng (User)
 **Mô tả**: Khách hàng tìm kiếm, chọn và đặt tour qua website
@@ -298,11 +287,9 @@ Một Use Case text thường gồm các phần:
 -   Booking được lưu vào database với trạng thái "Chờ xác nhận" hoặc "Đã thanh toán"
 -   Khách hàng nhận được email xác nhận
 -   Hệ thống cập nhật số chỗ còn lại của tour
-```
 
 #### **3.2. Ví dụ 2: Module Admin - Quản lý tình trạng booking**
 
-```markdown
 **Tên Use Case**: Quản lý tình trạng booking
 **Actor**: Điều hành tour - ADMIN
 **Mô tả**: Admin theo dõi, cập nhật trạng thái booking từ "Chờ xác nhận" → "Đã cọc" → "Hoàn tất" hoặc "Hủy", lưu lịch sử thay đổi
@@ -428,7 +415,6 @@ Một Use Case text thường gồm các phần:
 -   Khách hàng nhận được email thông báo (nếu chuyển sang "Hoàn tất" hoặc "Hủy")
 -   Số chỗ còn lại của tour được cập nhật (nếu hủy)
 -   Nếu hủy và đã thanh toán, hệ thống xử lý hoàn tiền
-```
 
 ### 4. Thực hành nhóm - Hướng dẫn chi tiết
 
@@ -769,7 +755,6 @@ Chọn **3 Use Case quan trọng nhất** và viết chi tiết theo format đ�
 
 **Format:**
 
-```markdown
 ## Use Case [STT]: [Tên Use Case]
 
 **Actor**: [Tên Actor]
@@ -803,11 +788,9 @@ Chọn **3 Use Case quan trọng nhất** và viết chi tiết theo format đ�
 
 -   [Kết quả 1]
 -   [Kết quả 2]
-```
 
 #### **Ví dụ hoàn chỉnh:**
 
-```markdown
 ## Use Case 1: Đặt tour trực tuyến
 
 **Actor**: Khách hàng (User)
@@ -937,7 +920,6 @@ Chọn **3 Use Case quan trọng nhất** và viết chi tiết theo format đ�
 -   Khách hàng nhận được email xác nhận với mã đặt tour
 -   Hệ thống cập nhật số chỗ còn lại của tour (nếu có)
 -   Khách hàng có thể xem lại booking bằng mã đặt tour
-```
 
 ### Bài tập 3: Review và cải thiện
 
