@@ -87,7 +87,7 @@ Giảng viên trình bày cấu trúc Spec module:
 
 ### 5. Ví dụ Spec mẫu (15 phút)
 
-Giảng viên trình bày 1–2 trang Spec mẫu của module Booking dựa trên bảng phân quyền
+Giảng viên trình bày 1–2 trang Spec mẫu của module Booking dựa trên bảng phân quyền. Xem phần "Ví dụ Spec hoàn chỉnh" bên dưới để tham khảo.
 
 ---
 
@@ -126,19 +126,33 @@ Giảng viên trình bày 1–2 trang Spec mẫu của module Booking dựa trê
 1. **CRUD** (Create, Read, Update, Delete):
 
     - Thêm, xem, sửa, xóa dữ liệu
+    - Ví dụ: Thêm tour mới, Sửa thông tin tour, Xóa tour, Xem danh sách tour
 
 2. **Tìm kiếm & Lọc**:
 
     - Tìm kiếm theo từ khóa
     - Lọc theo điều kiện (giá, ngày, điểm đến…)
+    - Ví dụ: Tìm kiếm tour theo từ khóa "Đà Lạt", Lọc tour theo giá từ 2-5 triệu
 
 3. **Báo cáo & Thống kê**:
 
     - Xuất báo cáo doanh thu
     - Thống kê số lượng booking theo tháng
+    - Ví dụ: Báo cáo doanh thu, chi phí, lợi nhuận theo tour (STT 30)
 
-4. **Tích hợp**:
+4. **Quản lý trạng thái**:
+
+    - Cập nhật trạng thái của các đối tượng
+    - Ví dụ: Quản lý tình trạng booking (STT 10): Chờ xác nhận → Đã cọc → Hoàn tất → Hủy
+
+5. **Tích hợp**:
+
     - Kết nối với module khác (Booking ↔ Tour ↔ User)
+    - Ví dụ: Module Booking cần tích hợp với Module Tour để lấy thông tin tour, với Module User để lấy thông tin khách hàng
+
+6. **Xuất file & In ấn**:
+    - Tạo và xuất file PDF, Excel
+    - Ví dụ: Xuất báo giá/hợp đồng/hóa đơn (STT 11), In danh sách đoàn (STT 16)
 
 ---
 
@@ -173,7 +187,7 @@ Dựa trên bảng phân quyền, các chức năng có "Yêu cầu: Bắt buộ
 
 **Ví dụ: Module Booking (Nhóm 2: Bán tour và đặt chỗ)**
 
--   **Tạo booking mới (STT 9 - Bắt buộc)**
+-   **Tạo booking mới**
 
     -   Mô tả: Nhân viên/khách đặt tour cho khách lẻ hoặc đoàn
     -   Input: Thông tin khách hàng, tour, số lượng người, ngày đi
@@ -235,9 +249,11 @@ Mô tả luồng hoạt động chính (dựa trên Use Case đã viết ở Bu�
 
 #### **5. Yêu cầu phi chức năng (nếu có)**
 
--   Giao diện responsive
--   Hỗ trợ đa ngôn ngữ (nếu có)
--   Bảo mật thông tin khách hàng
+-   **Giao diện**: Responsive, dễ sử dụng
+-   **Bảo mật**: Phân quyền theo Actor, mã hóa thông tin nhạy cảm
+-   **Hiệu năng**: Tải trang nhanh, xử lý dữ liệu lớn
+-   **Đa ngôn ngữ**: Hỗ trợ tiếng Việt, tiếng Anh (nếu có - STT 38)
+-   **Mobile**: Giao diện tối ưu cho mobile (nếu có - STT 34)
 
 ### Yêu cầu format
 
@@ -251,6 +267,196 @@ Mô tả luồng hoạt động chính (dựa trên Use Case đã viết ở Bu�
 ### Deadline
 
 Nộp trước buổi 4 (gửi qua email hoặc LMS)
+
+**Format nộp:**
+
+-   File Word: `[Tên nhóm]_Spec_Module_[Tên module].docx`
+-   Hoặc PDF: `[Tên nhóm]_Spec_Module_[Tên module].pdf`
+
+**Lưu ý:** Tên file phải rõ ràng, ví dụ: `Nhom1_Spec_Module_Booking.docx`
+
+### Ví dụ Spec hoàn chỉnh - Module Booking
+
+**Dưới đây là ví dụ Spec mẫu cho Module Booking (tham khảo):**
+
+---
+
+## PROJECT SPECIFICATION - MODULE BOOKING
+
+**Tên nhóm:** [Tên nhóm]  
+**Module:** Booking và Quản lý đặt chỗ  
+**Ngày nộp:** [Ngày]
+
+---
+
+### 1. Giới thiệu module & mục tiêu
+
+**Tên module:** Module Booking và Quản lý đặt chỗ
+
+**Mục tiêu:**
+Module Booking hỗ trợ quản lý toàn bộ quy trình đặt tour của khách hàng, từ khi tạo booking đến khi hoàn tất tour. Module này giúp nhân viên và Admin theo dõi, cập nhật trạng thái booking, quản lý lịch sử giao dịch và tạo các tài liệu liên quan (báo giá, hợp đồng, hóa đơn).
+
+**Phạm vi module:**
+
+-   Bao gồm: Tạo booking, quản lý trạng thái booking, xuất báo giá/hợp đồng/hóa đơn, lưu lịch sử giao dịch
+-   Không bao gồm: Thanh toán online (thuộc module Payment), Quản lý tour (thuộc module Tour)
+
+---
+
+### 2. Người dùng của module
+
+| Actor                  | Quyền hạn                                                                                       | Ghi chú        |
+| ---------------------- | ----------------------------------------------------------------------------------------------- | -------------- |
+| Điều hành tour - ADMIN | Quản lý toàn bộ module Booking: Tạo booking, cập nhật trạng thái, xuất báo giá/hợp đồng/hóa đơn | Quyền cao nhất |
+| Khách hàng (User)      | Xem tour, đặt tour online, xem lịch sử booking (nếu có cổng khách hàng)                         | Quyền hạn chế  |
+
+---
+
+### 3. Tính năng chi tiết
+
+#### 3.1. Tính năng Bắt buộc
+
+**3.1.1. Tạo booking mới (STT 9 - Bắt buộc)**
+
+-   **Mô tả:** Nhân viên/khách đặt tour cho khách lẻ hoặc đoàn, nhập thông tin, hệ thống tự động kiểm tra chỗ trống
+-   **Actor:** Điều hành tour - ADMIN, Khách hàng (User)
+-   **Input:**
+    -   Thông tin tour (tour ID hoặc chọn tour)
+    -   Số lượng người (người lớn, trẻ em, em bé)
+    -   Ngày khởi hành mong muốn
+    -   Thông tin khách hàng (họ tên, email, SĐT, địa chỉ)
+    -   Ghi chú đặc biệt (nếu có)
+-   **Xử lý:**
+    -   Hệ thống kiểm tra số chỗ còn lại của tour
+    -   Tính toán giá tour (theo số lượng người, loại tour)
+    -   Tạo mã booking duy nhất
+    -   Lưu booking vào database với trạng thái "Chờ xác nhận"
+-   **Output:**
+    -   Booking được tạo thành công
+    -   Hiển thị mã booking
+    -   Gửi email xác nhận đến khách hàng
+
+**3.1.2. Quản lý tình trạng booking (STT 10 - Bắt buộc)**
+
+-   **Mô tả:** Theo dõi, cập nhật trạng thái booking: Chờ xác nhận → Đã cọc → Hoàn tất → Hủy. Lưu lịch sử thay đổi
+-   **Actor:** Điều hành tour - ADMIN
+-   **Input:**
+    -   Booking ID
+    -   Trạng thái mới (Đã cọc, Hoàn tất, Hủy)
+    -   Lý do hủy (nếu hủy)
+    -   Số tiền đã cọc (nếu chuyển sang "Đã cọc")
+-   **Xử lý:**
+    -   Kiểm tra trạng thái hiện tại
+    -   Validate: Không thể chuyển từ "Hoàn tất" về "Chờ xác nhận"
+    -   Lưu lịch sử thay đổi (trạng thái cũ → mới, ngày giờ, người thực hiện)
+    -   Cập nhật trạng thái booking
+    -   Nếu hủy: Cập nhật số chỗ còn lại của tour, xử lý hoàn tiền (nếu đã thanh toán)
+-   **Output:**
+    -   Trạng thái booking được cập nhật
+    -   Gửi email thông báo đến khách hàng
+    -   Lịch sử thay đổi được lưu lại
+
+#### 3.2. Tính năng Mở rộng
+
+**3.2.1. Xuất báo giá/hợp đồng/hóa đơn (STT 11 - Mở rộng)**
+
+-   **Mô tả:** Tự động tạo báo giá, hợp đồng, hóa đơn từ booking
+-   **Actor:** Điều hành tour - ADMIN
+-   **Input:** Booking ID, Loại file (báo giá/hợp đồng/hóa đơn)
+-   **Xử lý:** Tạo file PDF theo mẫu có sẵn, điền thông tin từ booking
+-   **Output:** File PDF có thể tải về, gửi email, in
+
+**3.2.2. Lưu lịch sử giao dịch nội bộ (STT 12 - Mở rộng)**
+
+-   **Mô tả:** Ghi nhận toàn bộ booking, giao dịch, thanh toán vào hồ sơ khách hàng
+-   **Actor:** Hệ thống (tự động)
+-   **Input:** Dữ liệu booking, giao dịch, thanh toán
+-   **Xử lý:** Lưu vào database, liên kết với hồ sơ khách hàng
+-   **Output:** Có thể tra cứu lịch sử giao dịch của từng khách hàng
+
+---
+
+### 4. Luồng nghiệp vụ (Workflow)
+
+**Luồng chính của Module Booking:**
+
+```
+1. Tạo booking mới
+   ├─ Khách hàng/Nhân viên nhập thông tin
+   ├─ Hệ thống kiểm tra chỗ trống
+   └─ Booking được tạo với trạng thái "Chờ xác nhận"
+
+2. Admin xem và quản lý booking
+   ├─ Xem danh sách booking (có thể lọc theo trạng thái)
+   ├─ Xem chi tiết booking
+   └─ Cập nhật trạng thái:
+       ├─ "Chờ xác nhận" → "Đã cọc" (khi khách đặt cọc)
+       ├─ "Đã cọc" → "Hoàn tất" (sau khi tour hoàn thành)
+       └─ "Hủy" (nếu hủy đơn)
+
+3. (Mở rộng) Xuất tài liệu
+   ├─ Từ booking, Admin chọn loại file cần xuất
+   ├─ Hệ thống tạo file PDF
+   └─ Tải về hoặc gửi email cho khách hàng
+```
+
+**Luồng tích hợp với module khác:**
+
+-   **Module Tour:** Lấy thông tin tour (tên, giá, số chỗ còn lại)
+-   **Module User:** Lấy thông tin khách hàng (nếu đã đăng nhập)
+-   **Module Payment:** Xử lý thanh toán (nếu có)
+
+---
+
+### 5. Yêu cầu phi chức năng
+
+-   **Giao diện:** Responsive, dễ sử dụng, phù hợp với màn hình desktop và tablet
+-   **Bảo mật:** Phân quyền rõ ràng, chỉ Admin mới có thể cập nhật trạng thái booking
+-   **Hiệu năng:** Tải danh sách booking nhanh, hỗ trợ phân trang khi có nhiều booking
+-   **Bảo mật dữ liệu:** Mã hóa thông tin khách hàng, không lộ thông tin nhạy cảm
+
+---
+
+### Gợi ý Spec cho các module khác
+
+#### Module Quản lý Tour (Nhóm 1: Quản lý tour và sản phẩm du lịch)
+
+**Chức năng bắt buộc:**
+
+-   Danh mục tour (STT 2)
+-   Thông tin chi tiết tour (STT 3)
+
+**Chức năng mở rộng:**
+
+-   Quản lý phiên bản tour (STT 4)
+-   Tạo nhanh báo giá tour (STT 5)
+-   Gắn mã QR/đường dẫn đặt tour (STT 6)
+-   Clone tour (STT 7)
+
+#### Module Điều hành Tour (Nhóm 3: Quản lý & điều hành tour)
+
+**Chức năng bắt buộc:**
+
+-   Quản lý danh sách nhân sự HDV (STT 14)
+-   Quản lý lịch khởi hành & phân bổ nhân sự (STT 15)
+-   Danh sách khách theo tour (STT 16)
+-   Ghi chú đặc biệt (STT 17)
+
+**Chức năng mở rộng:**
+
+-   Theo dõi chi phí thực tế (STT 18)
+-   Nhật ký tour (STT 19)
+-   Quản lý phản hồi đánh giá (STT 20)
+
+#### Module Vận hành Tour cho HDV (Nhóm 8)
+
+**Chức năng bắt buộc (dành cho HDV):**
+
+-   Xem lịch trình tour (STT 40)
+-   Xem danh sách khách (STT 41)
+-   Cập nhật nhật ký tour (STT 42)
+-   Check-in khách (STT 43)
+-   Cập nhật yêu cầu đặc biệt (STT 44)
 
 ---
 

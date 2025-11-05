@@ -39,30 +39,36 @@
 
 Một Use Case text thường gồm các phần:
 
-```
-**Tên Use Case**: [Tên ngắn gọn, rõ ràng]
-**Actor**: [Ai sử dụng - User/Admin/Staff]
-**Mô tả**: [Mô tả ngắn gọn mục đích]
+```markdown
+**Tên Use Case**: [Tên ngắn gọn, rõ ràng]  
+**Actor**: [Ai sử dụng - User/Admin/Staff]  
+**Mô tả**: [Mô tả ngắn gọn mục đích]  
 **Điều kiện tiên quyết (Precondition)**: [Điều kiện cần có trước khi thực hiện]
-**Luồng chính (Main Flow)**:
+
+**Luồng chính (Main Flow):**
+
 1. Bước 1...
 2. Bước 2...
-...
-**Luồng phụ (Alternative Flow)**: [Các trường hợp thay thế]
-**Luồng ngoại lệ (Exception Flow)**: [Xử lý lỗi, validation]
-**Điều kiện kết thúc (Postcondition)**: [Kết quả sau khi hoàn thành]
+   ...
+
+**Luồng phụ (Alternative Flow):** [Các trường hợp thay thế]
+
+**Luồng ngoại lệ (Exception Flow):** [Xử lý lỗi, validation]
+
+**Điều kiện kết thúc (Postcondition):** [Kết quả sau khi hoàn thành]
 ```
 
 #### **1.4. Ví dụ Use Case đơn giản**
 
 **Ví dụ cơ bản: Rút tiền tại ATM**
 
-```
+```markdown
 **Tên Use Case**: Rút tiền tại ATM
 **Actor**: Khách hàng
 **Mô tả**: Khách hàng rút tiền từ tài khoản qua máy ATM
 **Điều kiện tiên quyết**: Khách hàng có thẻ ATM và có tiền trong tài khoản
 **Luồng chính**:
+
 1. Khách hàng đưa thẻ vào máy ATM
 2. Máy yêu cầu nhập mã PIN
 3. Khách hàng nhập mã PIN
@@ -71,8 +77,8 @@ Một Use Case text thường gồm các phần:
 6. Khách hàng nhập số tiền
 7. Máy kiểm tra số dư
 8. Máy trả tiền và thẻ
-**Luồng ngoại lệ**: Nếu PIN sai, máy yêu cầu nhập lại (tối đa 3 lần)
-**Điều kiện kết thúc**: Khách hàng nhận được tiền, số dư tài khoản giảm
+   **Luồng ngoại lệ**: Nếu PIN sai, máy yêu cầu nhập lại (tối đa 3 lần)
+   **Điều kiện kết thúc**: Khách hàng nhận được tiền, số dư tài khoản giảm
 ```
 
 ### 2. Hướng dẫn viết Use Case text chi tiết
@@ -122,7 +128,7 @@ Một Use Case text thường gồm các phần:
 
 **Ví dụ tốt:**
 
-```
+```markdown
 1. Khách hàng mở trang web tour du lịch
 2. Khách hàng tìm kiếm tour theo điểm đến "Đà Lạt"
 3. Hệ thống hiển thị danh sách tour Đà Lạt
@@ -155,15 +161,17 @@ Một Use Case text thường gồm các phần:
 
 **Format:**
 
-```
+```markdown
 **Luồng phụ A1: Khách hàng đã đăng nhập**
-- Bước 5: Hệ thống tự động điền thông tin khách hàng
-- Bước 7: Bỏ qua (không cần nhập thông tin)
+
+-   Bước 5: Hệ thống tự động điền thông tin khách hàng
+-   Bước 7: Bỏ qua (không cần nhập thông tin)
 
 **Luồng phụ A2: Thanh toán bằng thẻ**
-- Bước 8: Khách hàng chọn "Thanh toán bằng thẻ"
-- Bước 8a: Khách hàng nhập thông tin thẻ
-- Bước 8b: Hệ thống xử lý thanh toán
+
+-   Bước 8: Khách hàng chọn "Thanh toán bằng thẻ"
+-   Bước 8a: Khách hàng nhập thông tin thẻ
+-   Bước 8b: Hệ thống xử lý thanh toán
 ```
 
 #### **2.5. Bước 5: Viết Luồng ngoại lệ (Exception Flow)**
@@ -194,37 +202,39 @@ Một Use Case text thường gồm các phần:
 
 #### **3.1. Ví dụ 1: Module Booking - Đặt tour trực tuyến**
 
-```
+```markdown
 **Tên Use Case**: Đặt tour trực tuyến
 **Actor**: Khách hàng (User)
 **Mô tả**: Khách hàng tìm kiếm, chọn và đặt tour qua website
 **Điều kiện tiên quyết**:
-- Khách hàng có kết nối internet
-- Hệ thống đang hoạt động bình thường
-- Có tour sẵn sàng để đặt
+
+-   Khách hàng có kết nối internet
+-   Hệ thống đang hoạt động bình thường
+-   Có tour sẵn sàng để đặt
 
 **Luồng chính**:
+
 1. Khách hàng truy cập trang chủ website tour du lịch
 2. Khách hàng tìm kiếm tour bằng cách:
-   - Nhập từ khóa (ví dụ: "Đà Lạt") vào ô tìm kiếm, HOẶC
-   - Chọn điểm đến từ menu, HOẶC
-   - Dùng bộ lọc (giá, thời gian, loại tour)
+    - Nhập từ khóa (ví dụ: "Đà Lạt") vào ô tìm kiếm, HOẶC
+    - Chọn điểm đến từ menu, HOẶC
+    - Dùng bộ lọc (giá, thời gian, loại tour)
 3. Hệ thống hiển thị danh sách tour phù hợp
 4. Khách hàng xem chi tiết tour (giá, lịch trình, đánh giá)
 5. Khách hàng chọn tour muốn đặt và click "Đặt tour"
 6. Khách hàng nhập thông tin:
-   - Số lượng người tham gia
-   - Ngày khởi hành mong muốn
-   - Ghi chú đặc biệt (nếu có)
+    - Số lượng người tham gia
+    - Ngày khởi hành mong muốn
+    - Ghi chú đặc biệt (nếu có)
 7. Hệ thống kiểm tra:
-   - Số chỗ còn lại
-   - Giá tour (có thể thay đổi theo mùa)
+    - Số chỗ còn lại
+    - Giá tour (có thể thay đổi theo mùa)
 8. Hệ thống hiển thị tổng tiền và yêu cầu nhập thông tin cá nhân
 9. Khách hàng nhập thông tin:
-   - Họ và tên
-   - Email
-   - Số điện thoại
-   - Địa chỉ (nếu cần)
+    - Họ và tên
+    - Email
+    - Số điện thoại
+    - Địa chỉ (nếu cần)
 10. Khách hàng chọn phương thức thanh toán:
     - Chuyển khoản ngân hàng, HOẶC
     - Thanh toán trực tuyến (thẻ), HOẶC
@@ -240,87 +250,96 @@ Một Use Case text thường gồm các phần:
 **Luồng phụ**:
 
 **A1: Khách hàng đã đăng nhập**
-- Bước 9: Hệ thống tự động điền thông tin từ tài khoản
-- Khách hàng chỉ cần kiểm tra và xác nhận
+
+-   Bước 9: Hệ thống tự động điền thông tin từ tài khoản
+-   Khách hàng chỉ cần kiểm tra và xác nhận
 
 **A2: Khách hàng muốn thanh toán ngay**
-- Bước 10: Khách hàng chọn "Thanh toán trực tuyến"
-- Bước 10a: Hệ thống chuyển đến trang thanh toán
-- Bước 10b: Khách hàng nhập thông tin thẻ
-- Bước 10c: Hệ thống xử lý thanh toán
-- Bước 12: Nếu thanh toán thành công, booking được xác nhận ngay
+
+-   Bước 10: Khách hàng chọn "Thanh toán trực tuyến"
+-   Bước 10a: Hệ thống chuyển đến trang thanh toán
+-   Bước 10b: Khách hàng nhập thông tin thẻ
+-   Bước 10c: Hệ thống xử lý thanh toán
+-   Bước 12: Nếu thanh toán thành công, booking được xác nhận ngay
 
 **Luồng ngoại lệ**:
 
 **E1: Không tìm thấy tour**
-- Bước 3: Nếu không có tour phù hợp
-- Bước 3a: Hệ thống hiển thị "Không tìm thấy tour"
-- Bước 3b: Khách hàng có thể thay đổi từ khóa tìm kiếm hoặc liên hệ hỗ trợ
+
+-   Bước 3: Nếu không có tour phù hợp
+-   Bước 3a: Hệ thống hiển thị "Không tìm thấy tour"
+-   Bước 3b: Khách hàng có thể thay đổi từ khóa tìm kiếm hoặc liên hệ hỗ trợ
 
 **E2: Tour đã hết chỗ**
-- Bước 7a: Hệ thống kiểm tra số chỗ còn lại
-- Bước 7b: Nếu số người đặt > số chỗ còn lại
-- Bước 7c: Hiển thị thông báo "Tour chỉ còn X chỗ, vui lòng điều chỉnh số lượng"
-- Bước 7d: Khách hàng điều chỉnh số lượng hoặc chọn tour khác
+
+-   Bước 7a: Hệ thống kiểm tra số chỗ còn lại
+-   Bước 7b: Nếu số người đặt > số chỗ còn lại
+-   Bước 7c: Hiển thị thông báo "Tour chỉ còn X chỗ, vui lòng điều chỉnh số lượng"
+-   Bước 7d: Khách hàng điều chỉnh số lượng hoặc chọn tour khác
 
 **E3: Thông tin không hợp lệ**
-- Bước 9a: Hệ thống validate thông tin
-- Bước 9b: Nếu email không đúng định dạng → Hiển thị lỗi "Email không hợp lệ"
-- Bước 9c: Nếu số điện thoại không đúng → Hiển thị lỗi "Số điện thoại không hợp lệ"
-- Bước 9d: Khách hàng sửa lại thông tin
+
+-   Bước 9a: Hệ thống validate thông tin
+-   Bước 9b: Nếu email không đúng định dạng → Hiển thị lỗi "Email không hợp lệ"
+-   Bước 9c: Nếu số điện thoại không đúng → Hiển thị lỗi "Số điện thoại không hợp lệ"
+-   Bước 9d: Khách hàng sửa lại thông tin
 
 **E4: Thanh toán thất bại**
-- Bước 10c: Nếu thanh toán không thành công
-- Bước 10d: Hiển thị thông báo "Thanh toán thất bại, vui lòng thử lại"
-- Bước 10e: Booking được lưu với trạng thái "Chờ thanh toán"
+
+-   Bước 10c: Nếu thanh toán không thành công
+-   Bước 10d: Hiển thị thông báo "Thanh toán thất bại, vui lòng thử lại"
+-   Bước 10e: Booking được lưu với trạng thái "Chờ thanh toán"
 
 **Điều kiện kết thúc**:
-- Booking được lưu vào database với trạng thái "Chờ xác nhận" hoặc "Đã thanh toán"
-- Khách hàng nhận được email xác nhận
-- Hệ thống cập nhật số chỗ còn lại của tour
+
+-   Booking được lưu vào database với trạng thái "Chờ xác nhận" hoặc "Đã thanh toán"
+-   Khách hàng nhận được email xác nhận
+-   Hệ thống cập nhật số chỗ còn lại của tour
 ```
 
 #### **3.2. Ví dụ 2: Module Admin - Quản lý tình trạng booking**
 
-```
+```markdown
 **Tên Use Case**: Quản lý tình trạng booking
 **Actor**: Điều hành tour - ADMIN
 **Mô tả**: Admin theo dõi, cập nhật trạng thái booking từ "Chờ xác nhận" → "Đã cọc" → "Hoàn tất" hoặc "Hủy", lưu lịch sử thay đổi
 **Điều kiện tiên quyết**:
-- Admin đã đăng nhập hệ thống
-- Có quyền "Quản lý booking"
-- Có booking trong hệ thống
+
+-   Admin đã đăng nhập hệ thống
+-   Có quyền "Quản lý booking"
+-   Có booking trong hệ thống
 
 **Luồng chính**:
+
 1. Admin đăng nhập vào hệ thống quản trị
 2. Admin click vào menu "Quản lý Booking" hoặc "Điều hành tour"
 3. Hệ thống hiển thị danh sách tất cả booking với các cột:
-   - Mã đặt tour (Booking ID)
-   - Tên khách hàng/Đoàn
-   - Tên tour
-   - Ngày đặt
-   - Số lượng người
-   - Tổng tiền
-   - Trạng thái hiện tại
+    - Mã đặt tour (Booking ID)
+    - Tên khách hàng/Đoàn
+    - Tên tour
+    - Ngày đặt
+    - Số lượng người
+    - Tổng tiền
+    - Trạng thái hiện tại
 4. Admin có thể lọc theo trạng thái:
-   - Chờ xác nhận
-   - Đã cọc
-   - Hoàn tất
-   - Hủy
+    - Chờ xác nhận
+    - Đã cọc
+    - Hoàn tất
+    - Hủy
 5. Admin click vào một booking để xem chi tiết
 6. Hệ thống hiển thị thông tin chi tiết booking:
-   - Thông tin khách hàng (họ tên, email, SĐT, địa chỉ)
-   - Thông tin tour (tên, ngày đi, số người, giá)
-   - Thông tin thanh toán (phương thức, số tiền đã thanh toán, còn nợ)
-   - Ghi chú đặc biệt (nếu có)
-   - Lịch sử thay đổi trạng thái
+    - Thông tin khách hàng (họ tên, email, SĐT, địa chỉ)
+    - Thông tin tour (tên, ngày đi, số người, giá)
+    - Thông tin thanh toán (phương thức, số tiền đã thanh toán, còn nợ)
+    - Ghi chú đặc biệt (nếu có)
+    - Lịch sử thay đổi trạng thái
 7. Admin xem trạng thái hiện tại và quyết định cập nhật
 8. Admin click nút "Cập nhật trạng thái"
 9. Hệ thống hiển thị danh sách trạng thái có thể chọn:
-   - Chờ xác nhận
-   - Đã cọc
-   - Hoàn tất
-   - Hủy
+    - Chờ xác nhận
+    - Đã cọc
+    - Hoàn tất
+    - Hủy
 10. Admin chọn trạng thái mới
 11. Nếu chọn "Đã cọc":
     - Hệ thống yêu cầu nhập số tiền đã cọc
@@ -348,56 +367,64 @@ Một Use Case text thường gồm các phần:
 **Luồng phụ**:
 
 **A1: Cập nhật nhiều booking cùng lúc**
-- Bước 5: Admin chọn nhiều booking (checkbox)
-- Bước 8: Admin click "Cập nhật trạng thái hàng loạt"
-- Bước 10: Admin chọn trạng thái mới cho tất cả
-- Hệ thống cập nhật và lưu lịch sử cho từng booking
+
+-   Bước 5: Admin chọn nhiều booking (checkbox)
+-   Bước 8: Admin click "Cập nhật trạng thái hàng loạt"
+-   Bước 10: Admin chọn trạng thái mới cho tất cả
+-   Hệ thống cập nhật và lưu lịch sử cho từng booking
 
 **A2: Tìm kiếm booking**
-- Bước 3: Admin có thể tìm kiếm booking theo:
-  - Mã đặt tour
-  - Tên khách hàng
-  - Tên tour
-  - Ngày đặt
-  - Trạng thái
-  - Số điện thoại
+
+-   Bước 3: Admin có thể tìm kiếm booking theo:
+    -   Mã đặt tour
+    -   Tên khách hàng
+    -   Tên tour
+    -   Ngày đặt
+    -   Trạng thái
+    -   Số điện thoại
 
 **A3: Xem lịch sử thay đổi chi tiết**
-- Bước 6: Admin click tab "Lịch sử thay đổi"
-- Hệ thống hiển thị bảng lịch sử:
-  - Trạng thái cũ → Trạng thái mới
-  - Ngày giờ thay đổi
-  - Người thực hiện
-  - Ghi chú/Lý do (nếu có)
+
+-   Bước 6: Admin click tab "Lịch sử thay đổi"
+-   Hệ thống hiển thị bảng lịch sử:
+    -   Trạng thái cũ → Trạng thái mới
+    -   Ngày giờ thay đổi
+    -   Người thực hiện
+    -   Ghi chú/Lý do (nếu có)
 
 **Luồng ngoại lệ**:
 
 **E1: Không có quyền cập nhật**
-- Bước 8: Nếu Admin không có quyền cập nhật trạng thái này
-- Bước 8a: Hệ thống hiển thị lỗi "Bạn không có quyền cập nhật trạng thái này"
-- Bước 8b: Liên hệ Admin cấp cao để được cấp quyền
+
+-   Bước 8: Nếu Admin không có quyền cập nhật trạng thái này
+-   Bước 8a: Hệ thống hiển thị lỗi "Bạn không có quyền cập nhật trạng thái này"
+-   Bước 8b: Liên hệ Admin cấp cao để được cấp quyền
 
 **E2: Booking đã ở trạng thái đó**
-- Bước 10: Nếu booking đã ở trạng thái được chọn
-- Bước 10a: Hệ thống hiển thị cảnh báo "Booking đã ở trạng thái này"
-- Bước 10b: Admin có thể hủy hoặc chọn trạng thái khác
+
+-   Bước 10: Nếu booking đã ở trạng thái được chọn
+-   Bước 10a: Hệ thống hiển thị cảnh báo "Booking đã ở trạng thái này"
+-   Bước 10b: Admin có thể hủy hoặc chọn trạng thái khác
 
 **E3: Cập nhật trạng thái không hợp lệ**
-- Bước 10: Ví dụ: Chuyển từ "Hoàn tất" sang "Chờ xác nhận" (không hợp lệ)
-- Bước 10a: Hệ thống hiển thị cảnh báo "Không thể chuyển từ trạng thái này sang trạng thái khác"
-- Bước 10b: Hệ thống gợi ý các trạng thái hợp lệ
+
+-   Bước 10: Ví dụ: Chuyển từ "Hoàn tất" sang "Chờ xác nhận" (không hợp lệ)
+-   Bước 10a: Hệ thống hiển thị cảnh báo "Không thể chuyển từ trạng thái này sang trạng thái khác"
+-   Bước 10b: Hệ thống gợi ý các trạng thái hợp lệ
 
 **E4: Lỗi lưu lịch sử**
-- Bước 11-13: Nếu lưu lịch sử thất bại
-- Hệ thống vẫn cập nhật trạng thái nhưng ghi log lỗi
-- Thông báo Admin kiểm tra lại lịch sử
+
+-   Bước 11-13: Nếu lưu lịch sử thất bại
+-   Hệ thống vẫn cập nhật trạng thái nhưng ghi log lỗi
+-   Thông báo Admin kiểm tra lại lịch sử
 
 **Điều kiện kết thúc**:
-- Booking được cập nhật trạng thái mới
-- Lịch sử thay đổi được lưu lại đầy đủ (trạng thái cũ → mới, ngày giờ, người thực hiện)
-- Khách hàng nhận được email thông báo (nếu chuyển sang "Hoàn tất" hoặc "Hủy")
-- Số chỗ còn lại của tour được cập nhật (nếu hủy)
-- Nếu hủy và đã thanh toán, hệ thống xử lý hoàn tiền
+
+-   Booking được cập nhật trạng thái mới
+-   Lịch sử thay đổi được lưu lại đầy đủ (trạng thái cũ → mới, ngày giờ, người thực hiện)
+-   Khách hàng nhận được email thông báo (nếu chuyển sang "Hoàn tất" hoặc "Hủy")
+-   Số chỗ còn lại của tour được cập nhật (nếu hủy)
+-   Nếu hủy và đã thanh toán, hệ thống xử lý hoàn tiền
 ```
 
 ### 4. Thực hành nhóm - Hướng dẫn chi tiết
