@@ -435,7 +435,10 @@ export default {
                     collapsed: false,
                     items: [
                         { text: "Buổi 4: Thiết kế dữ liệu (ERD)", link: "/pro1014/lesson-4" },
-                        { text: "Buổi 5: Thiết kế database nâng cao & chuẩn hóa", link: "/pro1014/lesson-5" },
+                        {
+                            text: "Buổi 5: Thiết kế database nâng cao & chuẩn hóa",
+                            link: "/pro1014/lesson-5",
+                        },
                         { text: "Buổi 6: Giới thiệu Git & teamwork", link: "/pro1014/lesson-6" },
                     ],
                 },
