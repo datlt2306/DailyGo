@@ -280,84 +280,124 @@ Một Use Case text thường gồm các phần:
 - Hệ thống cập nhật số chỗ còn lại của tour
 ```
 
-#### **3.2. Ví dụ 2: Module Admin - Duyệt đơn đặt tour**
+#### **3.2. Ví dụ 2: Module Admin - Quản lý tình trạng booking** (Dựa trên STT 10)
 
 ```
-**Tên Use Case**: Duyệt đơn đặt tour
-**Actor**: Quản trị viên (Admin)
-**Mô tả**: Admin xem, kiểm tra và duyệt/từ chối các đơn đặt tour từ khách hàng
+**Tên Use Case**: Quản lý tình trạng booking
+**Actor**: Điều hành tour - ADMIN
+**Mô tả**: Admin theo dõi, cập nhật trạng thái booking từ "Chờ xác nhận" → "Đã cọc" → "Hoàn tất" hoặc "Hủy", lưu lịch sử thay đổi
 **Điều kiện tiên quyết**:
 - Admin đã đăng nhập hệ thống
-- Có quyền "Duyệt booking"
-- Có đơn đặt tour chờ duyệt
+- Có quyền "Quản lý booking"
+- Có booking trong hệ thống
 
 **Luồng chính**:
 1. Admin đăng nhập vào hệ thống quản trị
-2. Admin click vào menu "Quản lý Booking"
-3. Hệ thống hiển thị danh sách tất cả booking
-4. Admin chọn tab "Chờ duyệt" để xem các đơn chờ duyệt
-5. Hệ thống hiển thị danh sách đơn chờ duyệt với thông tin:
-   - Mã đặt tour
-   - Tên khách hàng
+2. Admin click vào menu "Quản lý Booking" hoặc "Điều hành tour"
+3. Hệ thống hiển thị danh sách tất cả booking với các cột:
+   - Mã đặt tour (Booking ID)
+   - Tên khách hàng/Đoàn
    - Tên tour
    - Ngày đặt
+   - Số lượng người
    - Tổng tiền
-6. Admin click vào một đơn để xem chi tiết
-7. Hệ thống hiển thị thông tin chi tiết:
-   - Thông tin khách hàng (họ tên, email, SĐT)
-   - Thông tin tour (tên, ngày đi, số người)
-   - Thông tin thanh toán (phương thức, trạng thái)
-   - Ghi chú (nếu có)
-8. Admin kiểm tra và xác nhận:
-   - Thông tin khách hàng có hợp lệ không
-   - Tour còn chỗ không
-   - Thanh toán đã hoàn tất chưa
-9. Admin quyết định:
-   - Click "Duyệt" nếu đơn hợp lệ, HOẶC
-   - Click "Từ chối" nếu đơn không hợp lệ
-10. Nếu Admin click "Duyệt":
-    - Hệ thống cập nhật trạng thái booking: "Chờ duyệt" → "Đã duyệt"
-    - Hệ thống gửi email xác nhận đến khách hàng
+   - Trạng thái hiện tại
+4. Admin có thể lọc theo trạng thái:
+   - Chờ xác nhận
+   - Đã cọc
+   - Hoàn tất
+   - Hủy
+5. Admin click vào một booking để xem chi tiết
+6. Hệ thống hiển thị thông tin chi tiết booking:
+   - Thông tin khách hàng (họ tên, email, SĐT, địa chỉ)
+   - Thông tin tour (tên, ngày đi, số người, giá)
+   - Thông tin thanh toán (phương thức, số tiền đã thanh toán, còn nợ)
+   - Ghi chú đặc biệt (nếu có)
+   - Lịch sử thay đổi trạng thái
+7. Admin xem trạng thái hiện tại và quyết định cập nhật
+8. Admin click nút "Cập nhật trạng thái"
+9. Hệ thống hiển thị danh sách trạng thái có thể chọn:
+   - Chờ xác nhận
+   - Đã cọc
+   - Hoàn tất
+   - Hủy
+10. Admin chọn trạng thái mới
+11. Nếu chọn "Đã cọc":
+    - Hệ thống yêu cầu nhập số tiền đã cọc
+    - Admin nhập số tiền đã cọc
+    - Hệ thống cập nhật: Trạng thái → "Đã cọc", Ghi nhận thanh toán
+    - Hệ thống lưu lịch sử: "Chuyển từ 'Chờ xác nhận' sang 'Đã cọc' - [Ngày giờ] - [Tên Admin]"
+12. Nếu chọn "Hoàn tất":
+    - Hệ thống kiểm tra thanh toán đã đủ chưa
+    - Nếu đủ: Cập nhật trạng thái → "Hoàn tất"
+    - Nếu chưa đủ: Cảnh báo "Còn nợ [số tiền], vẫn cập nhật trạng thái?"
+    - Admin xác nhận
+    - Hệ thống lưu lịch sử: "Chuyển sang 'Hoàn tất' - [Ngày giờ] - [Tên Admin]"
+    - Hệ thống gửi email thông báo đến khách hàng
+13. Nếu chọn "Hủy":
+    - Hệ thống yêu cầu nhập lý do hủy
+    - Admin nhập lý do hủy (bắt buộc)
+    - Hệ thống cập nhật: Trạng thái → "Hủy"
+    - Hệ thống lưu lịch sử: "Chuyển sang 'Hủy' - Lý do: [lý do] - [Ngày giờ] - [Tên Admin]"
+    - Hệ thống gửi email thông báo hủy đến khách hàng
+    - Nếu đã thanh toán, hệ thống tự động hoàn tiền (theo chính sách)
     - Hệ thống cập nhật số chỗ còn lại của tour
-    - Hiển thị thông báo "Duyệt đơn thành công"
-11. Nếu Admin click "Từ chối":
-    - Hệ thống yêu cầu nhập lý do từ chối
-    - Admin nhập lý do từ chối
-    - Hệ thống cập nhật trạng thái: "Chờ duyệt" → "Đã từ chối"
-    - Hệ thống gửi email thông báo từ chối đến khách hàng
-    - Nếu đã thanh toán, hệ thống tự động hoàn tiền
-    - Hiển thị thông báo "Từ chối đơn thành công"
+14. Hệ thống hiển thị thông báo "Cập nhật trạng thái thành công"
+15. Admin có thể xem lại lịch sử thay đổi trạng thái trong phần "Lịch sử"
 
 **Luồng phụ**:
 
-**A1: Duyệt nhiều đơn cùng lúc**
-- Bước 6: Admin chọn nhiều đơn (checkbox)
-- Bước 9: Admin click "Duyệt tất cả"
-- Hệ thống duyệt tất cả đơn đã chọn
+**A1: Cập nhật nhiều booking cùng lúc**
+- Bước 5: Admin chọn nhiều booking (checkbox)
+- Bước 8: Admin click "Cập nhật trạng thái hàng loạt"
+- Bước 10: Admin chọn trạng thái mới cho tất cả
+- Hệ thống cập nhật và lưu lịch sử cho từng booking
 
-**A2: Tìm kiếm đơn**
-- Bước 4: Admin có thể tìm kiếm đơn theo:
+**A2: Tìm kiếm booking**
+- Bước 3: Admin có thể tìm kiếm booking theo:
   - Mã đặt tour
   - Tên khách hàng
   - Tên tour
   - Ngày đặt
+  - Trạng thái
+  - Số điện thoại
+
+**A3: Xem lịch sử thay đổi chi tiết**
+- Bước 6: Admin click tab "Lịch sử thay đổi"
+- Hệ thống hiển thị bảng lịch sử:
+  - Trạng thái cũ → Trạng thái mới
+  - Ngày giờ thay đổi
+  - Người thực hiện
+  - Ghi chú/Lý do (nếu có)
 
 **Luồng ngoại lệ**:
 
-**E1: Tour đã hết chỗ**
-- Bước 8: Nếu tour đã hết chỗ sau khi khách đặt
-- Bước 8a: Hệ thống hiển thị cảnh báo "Tour đã hết chỗ"
-- Bước 9: Admin phải từ chối đơn hoặc liên hệ khách để đổi tour
+**E1: Không có quyền cập nhật**
+- Bước 8: Nếu Admin không có quyền cập nhật trạng thái này
+- Bước 8a: Hệ thống hiển thị lỗi "Bạn không có quyền cập nhật trạng thái này"
+- Bước 8b: Liên hệ Admin cấp cao để được cấp quyền
 
-**E2: Thanh toán chưa hoàn tất**
-- Bước 8: Nếu thanh toán chưa hoàn tất
-- Bước 8a: Hệ thống hiển thị cảnh báo "Chưa thanh toán"
-- Bước 9: Admin có thể duyệt (nếu chấp nhận thanh toán sau) hoặc từ chối
+**E2: Booking đã ở trạng thái đó**
+- Bước 10: Nếu booking đã ở trạng thái được chọn
+- Bước 10a: Hệ thống hiển thị cảnh báo "Booking đã ở trạng thái này"
+- Bước 10b: Admin có thể hủy hoặc chọn trạng thái khác
+
+**E3: Cập nhật trạng thái không hợp lệ**
+- Bước 10: Ví dụ: Chuyển từ "Hoàn tất" sang "Chờ xác nhận" (không hợp lệ)
+- Bước 10a: Hệ thống hiển thị cảnh báo "Không thể chuyển từ trạng thái này sang trạng thái khác"
+- Bước 10b: Hệ thống gợi ý các trạng thái hợp lệ
+
+**E4: Lỗi lưu lịch sử**
+- Bước 11-13: Nếu lưu lịch sử thất bại
+- Hệ thống vẫn cập nhật trạng thái nhưng ghi log lỗi
+- Thông báo Admin kiểm tra lại lịch sử
 
 **Điều kiện kết thúc**:
 - Booking được cập nhật trạng thái mới
-- Khách hàng nhận được email thông báo
-- Số chỗ còn lại của tour được cập nhật (nếu duyệt)
+- Lịch sử thay đổi được lưu lại đầy đủ (trạng thái cũ → mới, ngày giờ, người thực hiện)
+- Khách hàng nhận được email thông báo (nếu chuyển sang "Hoàn tất" hoặc "Hủy")
+- Số chỗ còn lại của tour được cập nhật (nếu hủy)
+- Nếu hủy và đã thanh toán, hệ thống xử lý hoàn tiền
 ```
 
 ### 4. Thực hành nhóm - Hướng dẫn chi tiết
@@ -486,58 +526,165 @@ Trước khi hoàn thành, kiểm tra:
 -   Use Case con kế thừa từ Use Case cha
 -   Ví dụ: "Thanh toán bằng thẻ" và "Thanh toán chuyển khoản" kế thừa từ "Thanh toán"
 
-### Gợi ý Use Case cho các module
+### Phân tích chức năng hệ thống theo bảng phân quyền
 
-#### Module Tour & Lịch trình
+Dưới đây là bảng phân tích chi tiết các chức năng của hệ thống quản lý tour du lịch, được phân loại theo nhóm chức năng và phân quyền:
 
-**Cho User:**
+#### 1. Nhóm: Quản lý tour và sản phẩm du lịch
 
--   Xem danh sách tour
--   Tìm kiếm tour (theo từ khóa, điểm đến, giá)
--   Xem chi tiết tour
--   Lọc tour (theo giá, ngày, điểm đến)
--   Xem đánh giá tour
+| STT |       Phân quyền       | Chức năng                     | Mô tả                                                                                                | Yêu cầu  |
+| :-: | :--------------------: | :---------------------------- | :--------------------------------------------------------------------------------------------------- | :------- |
+|  2  | Điều hành tour - ADMIN | Danh mục tour                 | Quản lý, phân loại các loại tour: Tour trong nước, Tour quốc tế, Tour theo yêu cầu (customized tour) | Bắt buộc |
+|  3  | Điều hành tour - ADMIN | Thông tin chi tiết tour       | Lưu trữ đầy đủ: lịch trình, hình ảnh, giá, chính sách, nhà cung cấp                                  | Bắt buộc |
+|  4  | Điều hành tour - ADMIN | Quản lý phiên bản tour        | Tạo và quản lý phiên bản tour theo mùa, khuyến mãi, đặc biệt                                         | Mở rộng  |
+|  5  | Điều hành tour - ADMIN | Tạo nhanh báo giá tour        | Tạo báo giá cho khách chỉ bằng vài thao tác, xuất file, gửi email/zalo                               | Mở rộng  |
+|  6  | Điều hành tour - ADMIN | Gắn mã QR/đường dẫn đặt tour  | Mỗi tour có mã QR/đường dẫn riêng để khách đặt tour online                                           | Mở rộng  |
+|  7  | Điều hành tour - ADMIN | Clone tour cũ để tạo tour mới | Sao chép tour đã có để tạo tour mới nhanh chóng                                                      | Mở rộng  |
+
+#### 2. Nhóm: Bán tour và đặt chỗ
+
+| STT |       Phân quyền       | Chức năng                       | Mô tả                                                                                                | Yêu cầu  |
+| :-: | :--------------------: | :------------------------------ | :--------------------------------------------------------------------------------------------------- | :------- |
+|  9  | Điều hành tour - ADMIN | Tạo booking mới (khách lẻ/đoàn) | Nhân viên/khách đặt tour cho khách lẻ hoặc đoàn, nhập thông tin, hệ thống tự động kiểm tra chỗ trống | Bắt buộc |
+| 10  | Điều hành tour - ADMIN | Quản lý tình trạng booking      | Theo dõi, cập nhật trạng thái: Chờ xác nhận, Đã cọc, Hoàn tất, Hủy. Lưu lịch sử thay đổi             | Bắt buộc |
+| 11  | Điều hành tour - ADMIN | Xuất báo giá/hợp đồng/hóa đơn   | Tự động tạo báo giá, hợp đồng, hóa đơn (VAT, hóa đơn điện tử), tải PDF, gửi email, in                | Mở rộng  |
+| 12  | Điều hành tour - ADMIN | Lưu lịch sử giao dịch nội bộ    | Ghi nhận toàn bộ booking, giao dịch, thanh toán vào hồ sơ khách hàng để tra cứu, chăm sóc            | Mở rộng  |
+
+#### 3. Nhóm: Quản lý & điều hành tour
+
+| STT |       Phân quyền       | Chức năng                                                          | Mô tả                                                                                             | Yêu cầu  |
+| :-: | :--------------------: | :----------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :------- |
+| 14  | Điều hành tour - ADMIN | Quản lý danh sách nhân sự (HDV)                                    | Lưu hồ sơ HDV: thông tin cá nhân, chứng chỉ, ngôn ngữ, kinh nghiệm, đánh giá, phân loại theo nhóm | Bắt buộc |
+| 15  | Điều hành tour - ADMIN | Quản lý lịch khởi hành & phân bổ nhân sự, dịch vụ                  | Lập kế hoạch lịch khởi hành, phân bổ HDV/tài xế, đặt xe/khách sạn/vé, tự động gửi thông báo       | Bắt buộc |
+| 16  | Điều hành tour - ADMIN | Danh sách khách theo tour, in danh sách đoàn, check-in, phân phòng | Quản lý thông tin khách, in danh sách đoàn, check-in, phân bổ phòng khách sạn                     | Bắt buộc |
+| 17  | Điều hành tour - ADMIN | Ghi chú đặc biệt                                                   | Ghi nhận yêu cầu cá nhân: ăn chay, bệnh lý, yêu cầu riêng, tự động cảnh báo cho HDV               | Bắt buộc |
+| 18  | Điều hành tour - ADMIN | Theo dõi chi phí thực tế từng tour so với dự toán                  | Lưu dự toán, ghi nhận chi phí thực tế, so sánh, cảnh báo vượt ngưỡng, báo cáo lãi/lỗ              | Mở rộng  |
+| 19  | Điều hành tour - ADMIN | Nhật ký tour                                                       | Ghi nhận sự cố, phản hồi khách, đánh giá HDV, hỗ trợ rút kinh nghiệm                              | Mở rộng  |
+| 20  | Điều hành tour - ADMIN | Quản lý phản hồi đánh giá                                          | Thu thập, lưu trữ, phân loại phản hồi về tour/dịch vụ/nhà cung cấp, xuất báo cáo                  | Mở rộng  |
+
+#### 4. Nhóm: Quản lý đối tác, nhà cung cấp
+
+| STT |       Phân quyền       | Chức năng                                                           | Mô tả                                                                                         | Yêu cầu |
+| :-: | :--------------------: | :------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- | :------ |
+| 22  | Điều hành tour - ADMIN | Quản lý nhà cung cấp dịch vụ                                        | Lưu trữ danh sách: khách sạn, nhà hàng, vận chuyển, vé, visa, bảo hiểm với thông tin chi tiết | Mở rộng |
+| 23  | Điều hành tour - ADMIN | Hợp đồng, báo giá, công nợ, lịch sử thanh toán                      | Lưu hợp đồng, báo giá, so sánh giá, theo dõi công nợ, lịch sử thanh toán với nhà cung cấp     | Mở rộng |
+| 24  | Điều hành tour - ADMIN | Đánh giá chất lượng, quản lý thời hạn hợp đồng, nhắc hạn thanh toán | Ghi nhận đánh giá, theo dõi thời hạn hợp đồng, tự động nhắc lịch thanh toán                   | Mở rộng |
+
+#### 5. Nhóm: Quản lý tài chính liên quan tour
+
+| STT |       Phân quyền       | Chức năng                       | Mô tả                                                     | Yêu cầu |
+| :-: | :--------------------: | :------------------------------ | :-------------------------------------------------------- | :------ |
+| 26  | Điều hành tour - ADMIN | Theo dõi thu – chi từng tour    | Ghi nhận toàn bộ khoản thu/chi, đối chiếu với dự toán     | Mở rộng |
+| 27  | Điều hành tour - ADMIN | Công nợ khách hàng/nhà cung cấp | Theo dõi công nợ, hỗ trợ nhắc hạn thu nợ/trả nợ           | Mở rộng |
+| 28  | Điều hành tour - ADMIN | Báo cáo lãi lỗ từng tour        | Tổng hợp doanh thu, chi phí, tính lợi nhuận, xuất báo cáo | Mở rộng |
+
+#### 6. Nhóm: Báo cáo vận hành tour
+
+| STT |       Phân quyền       | Chức năng                               | Mô tả                                                                 | Yêu cầu  |
+| :-: | :--------------------: | :-------------------------------------- | :-------------------------------------------------------------------- | :------- |
+| 30  | Điều hành tour - ADMIN | Doanh thu, chi phí, lợi nhuận theo tour | Báo cáo tổng hợp và so sánh hiệu quả các tour                         | Bắt buộc |
+| 31  | Điều hành tour - ADMIN | Tỷ lệ chuyển đổi booking                | Thống kê số liên hệ/tư vấn so với booking thành công                  | Mở rộng  |
+| 32  | Điều hành tour - ADMIN | Báo cáo tổng quan                       | Dashboard hiển thị số liệu tổng hợp, KPI, lọc, xuất file theo vai trò | Mở rộng  |
+
+#### 7. Nhóm: Các tiện ích hỗ trợ vận hành tour
+
+| STT |       Phân quyền       | Chức năng         | Mô tả                                                                      | Yêu cầu |
+| :-: | :--------------------: | :---------------- | :------------------------------------------------------------------------- | :------ |
+| 34  | Điều hành tour - ADMIN | Giao diện mobile  | Ứng dụng/web tối ưu mobile để truy cập, cập nhật mọi lúc mọi nơi           | Mở rộng |
+| 35  | Điều hành tour - ADMIN | Chat nội bộ       | Tạo nhóm chat theo tour/phòng ban, trao đổi, chia sẻ file, lưu lịch sử     | Mở rộng |
+| 36  | Điều hành tour - ADMIN | Cổng khách hàng   | Khách đăng nhập xem lịch trình, hóa đơn, thanh toán online, nhận thông báo | Mở rộng |
+| 37  | Điều hành tour - ADMIN | Cổng nhà cung cấp | Nhà cung cấp đăng nhập gửi báo giá, xác nhận booking, xem công nợ          | Mở rộng |
+| 38  | Điều hành tour - ADMIN | Đa ngôn ngữ       | Hỗ trợ chuyển đổi ngôn ngữ giao diện (Việt, Anh, Trung...)                 | Mở rộng |
+
+#### 8. Nhóm: Vận hành tour (dành cho HDV)
+
+| STT |      Phân quyền      | Chức năng                                            | Mô tả                                                                          | Yêu cầu  |
+| :-: | :------------------: | :--------------------------------------------------- | :----------------------------------------------------------------------------- | :------- |
+| 40  | Hướng dẫn viên (HDV) | Xem lịch trình tour và lịch làm việc                 | HDV xem chi tiết tour được phân công: thời gian, địa điểm, hoạt động, nhiệm vụ | Bắt buộc |
+| 41  | Hướng dẫn viên (HDV) | Xem danh sách khách trong đoàn                       | Truy cập thông tin khách: họ tên, liên hệ, nhóm, ghi chú đặc biệt              | Bắt buộc |
+| 42  | Hướng dẫn viên (HDV) | Xem/thêm/cập nhật nhật ký tour                       | Ghi lại diễn biến: sự kiện, sự cố, cách xử lý, phản hồi khách, ảnh             | Bắt buộc |
+| 43  | Hướng dẫn viên (HDV) | Xác nhận check-in, điểm danh khách                   | Đánh dấu khách đã đến/đủ, cập nhật trạng thái từng thành viên                  | Bắt buộc |
+| 44  | Hướng dẫn viên (HDV) | Cập nhật các yêu cầu đặc biệt                        | Ghi nhận, cập nhật nhu cầu riêng của khách để chuẩn bị phục vụ                 | Bắt buộc |
+| 45  | Hướng dẫn viên (HDV) | Gửi phản hồi đánh giá về tour, dịch vụ, nhà cung cấp | HDV gửi ý kiến về chất lượng dịch vụ sau mỗi chuyến đi                         | Mở rộng  |
+
+### Hướng dẫn sử dụng bảng phân quyền để xác định Use Case
+
+**Cách sử dụng bảng phân quyền:**
+
+1. **Xác định module của nhóm bạn:**
+
+    - Xem lại 8 nhóm chức năng trong bảng
+    - Xác định nhóm nào thuộc module của nhóm bạn
+
+2. **Liệt kê chức năng bắt buộc:**
+
+    - Tìm các chức năng có "Yêu cầu: Bắt buộc"
+    - Đây là các Use Case ưu tiên cao, phải làm trước
+
+3. **Liệt kê chức năng mở rộng:**
+
+    - Tìm các chức năng có "Yêu cầu: Mở rộng"
+    - Có thể làm sau nếu có thời gian
+
+4. **Xác định Actor:**
+
+    - Xem cột "Phân quyền": Điều hành tour - ADMIN, Hướng dẫn viên (HDV)
+    - Mỗi Actor sẽ có các Use Case riêng
+
+5. **Chuyển đổi chức năng thành Use Case:**
+    - Mỗi chức năng trong bảng = 1 Use Case tiềm năng
+    - Đặt tên Use Case dựa trên "Chức năng" và "Mô tả"
+    - Ví dụ: "Quản lý tình trạng booking" → Use Case: "Cập nhật trạng thái booking"
+
+**Ví dụ:**
+
+-   Nhóm làm Module Booking → Xem nhóm 2: "Bán tour và đặt chỗ"
+-   Chọn các chức năng bắt buộc: STT 9, 10
+-   Chọn các chức năng mở rộng (nếu có thời gian): STT 11, 12
+-   Viết Use Case chi tiết cho từng chức năng
+
+### Gợi ý Use Case dựa trên bảng phân quyền
+
+Dựa vào bảng phân quyền trên, các nhóm có thể xác định Use Case cho module của mình:
+
+#### Module Quản lý Tour (Bắt buộc)
 
 **Cho Admin:**
 
--   Thêm tour mới
--   Sửa thông tin tour
--   Xóa tour
--   Quản lý lịch trình tour (thêm/sửa/xóa lịch trình)
--   Cập nhật giá tour
--   Cập nhật số chỗ còn lại
+-   **Quản lý danh mục tour** (STT 2) - Use Case: "Phân loại tour"
+-   **Quản lý thông tin chi tiết tour** (STT 3) - Use Case: "Thêm/sửa thông tin tour"
+-   **Quản lý phiên bản tour** (STT 4) - Use Case: "Tạo phiên bản tour mới"
+-   **Clone tour** (STT 7) - Use Case: "Sao chép tour để tạo tour mới"
 
-#### Module Booking & Thanh toán
-
-**Cho User:**
-
--   Đặt tour trực tuyến
--   Xem lịch sử đặt tour
--   Hủy đơn đặt tour
--   Thanh toán đơn đặt tour
--   Tải hóa đơn
+#### Module Booking (Bắt buộc)
 
 **Cho Admin:**
 
--   Duyệt đơn đặt tour
--   Từ chối đơn đặt tour
--   Xem danh sách booking
--   Tìm kiếm booking
--   Thống kê booking theo tháng/năm
+-   **Tạo booking mới** (STT 9) - Use Case: "Đặt tour cho khách lẻ/đoàn"
+-   **Quản lý tình trạng booking** (STT 10) - Use Case: "Cập nhật trạng thái booking"
+-   **Xuất báo giá/hợp đồng/hóa đơn** (STT 11) - Use Case: "Tạo và xuất báo giá"
 
-#### Module Khách hàng & Đánh giá
+#### Module Điều hành Tour (Bắt buộc)
 
-**Cho User:**
+**Cho Admin:**
 
--   Đăng ký tài khoản
--   Đăng nhập
--   Đăng xuất
--   Xem thông tin cá nhân
--   Cập nhật thông tin cá nhân
--   Đổi mật khẩu
--   Đánh giá tour (sau khi đi tour)
--   Xem đánh giá tour
--   Báo cáo đánh giá không phù hợp
+-   **Quản lý nhân sự HDV** (STT 14) - Use Case: "Thêm/sửa thông tin HDV"
+-   **Quản lý lịch khởi hành** (STT 15) - Use Case: "Lập lịch khởi hành và phân bổ nhân sự"
+-   **Quản lý danh sách khách** (STT 16) - Use Case: "Quản lý danh sách khách và phân phòng"
+-   **Ghi chú đặc biệt** (STT 17) - Use Case: "Ghi nhận yêu cầu đặc biệt của khách"
+
+**Cho HDV:**
+
+-   **Xem lịch trình tour** (STT 40) - Use Case: "Xem lịch trình tour được phân công"
+-   **Xem danh sách khách** (STT 41) - Use Case: "Xem thông tin khách trong đoàn"
+-   **Cập nhật nhật ký tour** (STT 42) - Use Case: "Ghi nhật ký tour"
+-   **Check-in khách** (STT 43) - Use Case: "Điểm danh khách tại điểm tập trung"
+
+#### Module Báo cáo (Bắt buộc)
+
+**Cho Admin:**
+
+-   **Báo cáo doanh thu, chi phí, lợi nhuận** (STT 30) - Use Case: "Xem báo cáo tài chính tour"
 
 ### Mẹo viết Use Case tốt
 
