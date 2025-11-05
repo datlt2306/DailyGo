@@ -435,7 +435,7 @@ export default {
                     collapsed: false,
                     items: [
                         { text: "Buổi 4: Thiết kế dữ liệu (ERD)", link: "/pro1014/lesson-4" },
-                        { text: "Buổi 5: Duyệt Spec & ERD", link: "/pro1014/lesson-5" },
+                        { text: "Buổi 5: Thiết kế database nâng cao & chuẩn hóa", link: "/pro1014/lesson-5" },
                         { text: "Buổi 6: Giới thiệu Git & teamwork", link: "/pro1014/lesson-6" },
                     ],
                 },
@@ -445,32 +445,6 @@ export default {
                     items: [
                         { text: "Buổi 7: Lập kế hoạch triển khai", link: "/pro1014/lesson-7" },
                         { text: "Buổi 8: Theo dõi tiến độ lần 1", link: "/pro1014/lesson-8" },
-                        { text: "Buổi 9: Review 1 (Giữa kỳ)", link: "/pro1014/lesson-9" },
-                    ],
-                },
-                {
-                    text: "TUẦN 4 – TRIỂN KHAI GIAI ĐOẠN 2",
-                    collapsed: false,
-                    items: [
-                        { text: "Buổi 10: Phát triển nâng cao", link: "/pro1014/lesson-10" },
-                        { text: "Buổi 11: Theo dõi tiến độ lần 2", link: "/pro1014/lesson-11" },
-                        { text: "Buổi 12: Chuẩn bị demo hoàn chỉnh", link: "/pro1014/lesson-12" },
-                    ],
-                },
-                {
-                    text: "TUẦN 5 – HOÀN THIỆN & TỔNG DUYỆT",
-                    collapsed: false,
-                    items: [
-                        { text: "Buổi 13: Hướng dẫn thuyết trình", link: "/pro1014/lesson-13" },
-                        { text: "Buổi 14: Tổng duyệt", link: "/pro1014/lesson-14" },
-                    ],
-                },
-                {
-                    text: "TUẦN 6 – BẢO VỆ & TỔNG KẾT",
-                    collapsed: false,
-                    items: [
-                        { text: "Buổi 15: Tổng duyệt nhóm yếu", link: "/pro1014/lesson-15" },
-                        { text: "Buổi 16: Báo cáo chính thức", link: "/pro1014/lesson-16" },
                     ],
                 },
             ],
