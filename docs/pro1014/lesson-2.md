@@ -3,23 +3,38 @@
 > **Bài trước:** [Buổi 1: Giới thiệu đề tài & chia nhóm](./lesson-1.md)  
 > **Bài tiếp theo:** [Buổi 3: Viết Project Specification (Spec)](./lesson-3.md)
 
+Xin chào các em! 🎉
+
+Hôm nay chúng ta sẽ học một kỹ năng rất quan trọng trong phát triển phần mềm: **viết Use Case**! Đây là bước đầu tiên để các em hiểu rõ hệ thống cần làm gì trước khi bắt đầu code.
+
 ## 🎯 Mục tiêu học tập
 
--   Hiểu khái niệm Use Case và cách viết Use Case text
--   Phân tích được các chức năng chính của module phụ trách
--   Liệt kê đầy đủ Use Case cho module
--   Biết cách mô tả luồng nghiệp vụ bằng Use Case
--   Thực hành viết Use Case cho module cụ thể
+Sau buổi học hôm nay, các em sẽ:
+
+-   ✅ Hiểu khái niệm Use Case và cách viết Use Case text
+-   ✅ Phân tích được các chức năng chính của module phụ trách
+-   ✅ Liệt kê đầy đủ Use Case cho module (ít nhất 5 Use Case)
+-   ✅ Biết cách mô tả luồng nghiệp vụ bằng Use Case
+-   ✅ Viết được 3 Use Case chi tiết cho module của nhóm
 
 ---
 
-## 📋 Nội dung chính trên lớp
+## 📋 Nội dung chính
 
-### 1. Giới thiệu Use Case
+### 1. Use Case là gì? Tại sao cần Use Case?
 
 #### **1.1. Use Case là gì?**
 
-**Use Case** là một kỹ thuật phân tích và mô tả yêu cầu hệ thống, thể hiện cách người dùng (Actor) tương tác với hệ thống để hoàn thành một mục tiêu cụ thể.
+Các em thử tưởng tượng: Khi các em muốn mua một chiếc điện thoại, các em sẽ nói với người bán những gì? "Tôi muốn một chiếc điện thoại có thể gọi, nhắn tin, chụp ảnh..." Đúng không? 😊
+
+**Use Case** cũng tương tự như vậy! Đây là cách mô tả **người dùng (Actor) muốn làm gì với hệ thống** một cách rõ ràng, dễ hiểu.
+
+**Đặc điểm của Use Case:**
+
+-   ✅ Mô tả từ góc nhìn người dùng (user perspective) - Người dùng làm gì, hệ thống phản ứng ra sao
+-   ✅ Tập trung vào "Làm gì" thay vì "Làm thế nào" - Không quan tâm code, chỉ quan tâm chức năng
+-   ✅ Dễ hiểu, dễ truyền đạt cho người không chuyên kỹ thuật
+-   ✅ Làm cơ sở để viết Spec và thiết kế hệ thống sau này
 
 **Đặc điểm của Use Case:**
 
@@ -30,13 +45,21 @@
 
 #### **1.2. Tại sao cần Use Case?**
 
-**Lợi ích:**
+Thầy biết có em sẽ nghĩ: "Sao phải viết Use Case? Cứ code luôn không được sao?" 😅
 
-1. **Làm rõ yêu cầu**: Giúp hiểu rõ hệ thống cần làm gì
-2. **Giao tiếp hiệu quả**: Trao đổi giữa các thành viên nhóm dễ dàng hơn
-3. **Tránh thiếu sót**: Đảm bảo không bỏ sót chức năng quan trọng
-4. **Làm cơ sở thiết kế**: Dùng để thiết kế database, code sau này
-5. **Kiểm thử**: Dùng để viết test case
+Thực ra, viết Use Case giúp các em:
+
+1. **Làm rõ yêu cầu**: Giúp hiểu rõ hệ thống cần làm gì trước khi code. Đừng để code xong rồi mới phát hiện "Ồ, mình quên chức năng này!"
+
+2. **Giao tiếp hiệu quả**: Trao đổi giữa các thành viên nhóm dễ dàng hơn. Ai cũng hiểu rõ chức năng cần làm.
+
+3. **Tránh thiếu sót**: Đảm bảo không bỏ sót chức năng quan trọng. Có danh sách Use Case rõ ràng, các em sẽ biết cần làm những gì.
+
+4. **Làm cơ sở thiết kế**: Dùng để viết Spec (Buổi 3), thiết kế ERD (Buổi 4), và code sau này.
+
+5. **Kiểm thử**: Dùng để viết test case. Mỗi Use Case = 1 test case!
+
+**Tóm lại:** Viết Use Case giúp các em code đúng, code đủ, và code nhanh hơn! 💪
 
 #### **1.3. Cấu trúc Use Case text cơ bản**
 
@@ -63,26 +86,38 @@ Một Use Case text thường gồm các phần:
 
 #### **1.4. Ví dụ Use Case đơn giản**
 
-**Ví dụ cơ bản: Rút tiền tại ATM**
+Để các em dễ hiểu hơn, thầy sẽ cho một ví dụ quen thuộc: **Rút tiền tại ATM**
+
+Các em có ai đã từng rút tiền tại ATM chưa? 😊 Hãy thử nghĩ xem các bước làm như thế nào?
+
+**Ví dụ Use Case: Rút tiền tại ATM**
 
 ```markdown
 **Tên Use Case**: Rút tiền tại ATM
 **Actor**: Khách hàng
 **Mô tả**: Khách hàng rút tiền từ tài khoản qua máy ATM
 **Điều kiện tiên quyết**: Khách hàng có thẻ ATM và có tiền trong tài khoản
+
 **Luồng chính**:
 
 1. Khách hàng đưa thẻ vào máy ATM
 2. Máy yêu cầu nhập mã PIN
 3. Khách hàng nhập mã PIN
-4. Máy hiển thị menu
+4. Máy hiển thị menu các chức năng
 5. Khách hàng chọn "Rút tiền"
-6. Khách hàng nhập số tiền
-7. Máy kiểm tra số dư
-8. Máy trả tiền và thẻ
-   **Luồng ngoại lệ**: Nếu PIN sai, máy yêu cầu nhập lại (tối đa 3 lần)
-   **Điều kiện kết thúc**: Khách hàng nhận được tiền, số dư tài khoản giảm
+6. Khách hàng nhập số tiền muốn rút
+7. Máy kiểm tra số dư tài khoản
+8. Máy trả tiền và thẻ cho khách hàng
+
+**Luồng ngoại lệ**:
+
+-   Nếu PIN sai, máy yêu cầu nhập lại (tối đa 3 lần)
+-   Nếu số dư không đủ, máy hiển thị thông báo "Số dư không đủ"
+
+**Điều kiện kết thúc**: Khách hàng nhận được tiền, số dư tài khoản giảm
 ```
+
+Các em thấy không? Use Case rất đơn giản, chỉ là mô tả các bước người dùng làm gì với hệ thống! 😊
 
 ### 2. Hướng dẫn viết Use Case text chi tiết
 
@@ -729,11 +764,13 @@ Dựa vào bảng phân quyền trên, các nhóm có thể xác định Use Cas
 
 ## 📘 Bài tập nhóm
 
+Các em đã hiểu Use Case rồi phải không? Bây giờ hãy thực hành viết Use Case cho module của nhóm các em nhé! 💪
+
 ### Bài tập 1: Liệt kê Use Case cho module
 
 #### **Yêu cầu:**
 
-Tạo file **Word hoặc Markdown** với nội dung:
+Các em tạo file **Word hoặc Markdown** với nội dung sau:
 
 1. **Thông tin module**
 
@@ -954,16 +991,20 @@ Chọn **3 Use Case quan trọng nhất** và viết chi tiết theo format đ�
 
 ### Deadline
 
-Nộp trước buổi 3 (gửi qua email hoặc LMS)
+**Nộp trước buổi 3** (gửi qua email hoặc LMS)
 
 **Format nộp:**
 
--   File Word: `[Tên nhóm]_UseCase_Module_[Tên module].docx`
--   Hoặc Markdown: `[Tên nhóm]_UseCase_Module_[Tên module].md`
+-   Tạo thư mục `usecase` trong repo (nếu có) hoặc gửi file
+-   Đặt tên file: `[Tên nhóm]_UseCase_Module_[Tên module].docx`
+
+**Lưu ý:** Đừng quên deadline nhé! Use Case này sẽ rất quan trọng cho buổi tiếp theo! 😊
 
 ---
 
 ## 📦 Kết quả mong đợi sau buổi học
+
+Sau buổi học hôm nay, các em sẽ:
 
 -   ✅ Hiểu được khái niệm Use Case và vai trò trong phát triển phần mềm
 -   ✅ Biết cách xác định Actor và Use Case
@@ -974,4 +1015,20 @@ Nộp trước buổi 3 (gửi qua email hoặc LMS)
 
 ---
 
-**📌 Lưu ý:** Buổi tiếp theo sẽ học cách viết Project Specification dựa trên Use Case. Các nhóm nhớ hoàn thành Use Case đầy đủ và chi tiết để dùng làm tài liệu tham khảo khi viết Spec!
+## 💡 Tips hữu ích từ thầy
+
+1. **Đừng viết quá phức tạp**: Use Case nên dễ hiểu, đừng dùng thuật ngữ khó. Nếu bà của các em đọc mà hiểu được thì tốt rồi! 😊
+
+2. **Viết từng bước cụ thể**: Đừng viết chung chung như "Khách hàng đặt tour". Hãy viết chi tiết: "Khách hàng click vào tour → Chọn số lượng người → Nhập thông tin → Click xác nhận"
+
+3. **Nghĩ đến các trường hợp lỗi**: Đừng quên Luồng ngoại lệ! Ví dụ: "Nếu tour hết chỗ thì sao?", "Nếu email không hợp lệ thì sao?"
+
+4. **Tham khảo website thực tế**: Các em có thể xem các website tour du lịch như Booking.com, Agoda để có ý tưởng về chức năng
+
+5. **Đổi Use Case cho nhóm khác review**: Sau khi viết xong, đổi cho nhóm khác đọc để nhận feedback. Đây là cách tốt nhất để cải thiện!
+
+---
+
+**📌 Lưu ý:** Buổi tiếp theo chúng ta sẽ học cách viết Project Specification dựa trên Use Case. Các nhóm nhớ hoàn thành Use Case đầy đủ và chi tiết để dùng làm tài liệu tham khảo khi viết Spec nhé!
+
+Chúc các em học tốt! 🎉

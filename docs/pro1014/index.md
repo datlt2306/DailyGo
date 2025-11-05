@@ -1,16 +1,23 @@
 # 📘 DỰ ÁN 1 – LẬP TRÌNH WEB
 
+Xin chào các em! 🎉
+
+Đây là môn học dự án đầu tiên trong chương trình của các em. Môn học này sẽ giúp các em áp dụng những kiến thức đã học vào thực tế, xây dựng một hệ thống website hoàn chỉnh!
+
 ## 🎯 Mục tiêu môn học
 
-Sinh viên xây dựng một hệ thống website **"Quản lý Tour Du lịch"** (HTML/CSS/PHP/MySQL), theo quy trình:
+Trong môn học này, các em sẽ:
 
--   Phân tích → Viết Spec → Thiết kế → Xây dựng → Kiểm thử → Báo cáo
+-   ✅ Xây dựng một hệ thống website **"Quản lý Tour Du lịch"** bằng HTML/CSS/PHP/MySQL
+-   ✅ Học cách làm việc nhóm chuyên nghiệp với Git/GitHub
+-   ✅ Trải nghiệm quy trình phát triển phần mềm thực tế: Phân tích → Viết Spec → Thiết kế → Xây dựng → Kiểm thử → Báo cáo
+-   ✅ Rèn luyện kỹ năng thuyết trình và bảo vệ dự án
 
-Giảng viên đóng vai trò **người hướng dẫn & phản biện**.
+**Thầy sẽ đóng vai trò người hướng dẫn và phản biện**, luôn sẵn sàng hỗ trợ các em trong suốt quá trình làm dự án!
 
-### Hệ thống mô phỏng
+### Hệ thống các em sẽ xây dựng
 
-Hệ thống mô phỏng hoạt động của một **doanh nghiệp lữ hành** gồm các chức năng:
+Hệ thống mô phỏng hoạt động của một **doanh nghiệp lữ hành** với các chức năng:
 
 -   ✅ Quản lý danh sách tour, khách hàng, hướng dẫn viên, lịch trình
 -   ✅ Đặt tour trực tuyến
@@ -18,15 +25,17 @@ Hệ thống mô phỏng hoạt động của một **doanh nghiệp lữ hành*
 
 ### Module gợi ý
 
-1. **Tour & Lịch trình**
-2. **Booking & Thanh toán**
-3. **Khách hàng & Đánh giá**
-4. **Hướng dẫn viên & Lịch làm việc**
-5. **Quản trị hệ thống / Báo cáo**
+Các em sẽ được chia thành các nhóm, mỗi nhóm phụ trách một module:
+
+1. **Tour & Lịch trình** - Quản lý thông tin tour, lịch trình chi tiết
+2. **Booking & Thanh toán** - Xử lý đặt tour, thanh toán
+3. **Khách hàng & Đánh giá** - Quản lý thông tin khách hàng, nhận đánh giá
+4. **Hướng dẫn viên & Lịch làm việc** - Quản lý HDV, phân công lịch
+5. **Quản trị hệ thống / Báo cáo** - Dashboard, thống kê, quản lý user
 
 ---
 
-## 📅 Lộ trình 16 buổi học (6 tuần, 3 buổi/tuần)
+## 📅 Lộ trình 15 buổi học (5 tuần, 3 buổi/tuần)
 
 ### 🗓 TUẦN 1 – KHỞI ĐỘNG & PHÂN TÍCH ĐỀ TÀI
 
@@ -40,125 +49,118 @@ Hệ thống mô phỏng hoạt động của một **doanh nghiệp lữ hành*
 
 ---
 
-### 🗓 TUẦN 2 – THIẾT KẾ DỮ LIỆU & TEAMWORK
+### 🗓 TUẦN 2 – THIẾT KẾ DỮ LIỆU & QUẢN LÝ DỰ ÁN
 
-| Buổi   | Nội dung                  | File                         |
-| ------ | ------------------------- | ---------------------------- |
-| Buổi 4 | Thiết kế dữ liệu (ERD)    | [lesson-4.md](./lesson-4.md) |
-| Buổi 5 | Duyệt Spec & ERD          | [lesson-5.md](./lesson-5.md) |
-| Buổi 6 | Giới thiệu Git & teamwork | [lesson-6.md](./lesson-6.md) |
+| Buổi   | Nội dung                                 | File                         |
+| ------ | ---------------------------------------- | ---------------------------- |
+| Buổi 4 | Thiết kế dữ liệu (ERD)                   | [lesson-4.md](./lesson-4.md) |
+| Buổi 5 | Quản lý dự án với ClickUp & Lập kế hoạch | [lesson-5.md](./lesson-5.md) |
+| Buổi 6 | Giới thiệu Git & teamwork                | [lesson-6.md](./lesson-6.md) |
 
-**Kết thúc tuần 2:** Có Spec + ERD hoàn chỉnh. Tạo repo GitHub hoạt động.
+**Kết thúc tuần 2:** Có Spec + ERD hoàn chỉnh. Tạo repo GitHub và có kế hoạch triển khai chi tiết.
 
 ---
 
 ### 🗓 TUẦN 3 – TRIỂN KHAI GIAI ĐOẠN 1
 
-| Buổi   | Nội dung                | File                         |
-| ------ | ----------------------- | ---------------------------- |
-| Buổi 7 | Lập kế hoạch triển khai | [lesson-7.md](./lesson-7.md) |
-| Buổi 8 | Theo dõi tiến độ lần 1  | [lesson-8.md](./lesson-8.md) |
-| Buổi 9 | Review 1 (Giữa kỳ)      | [lesson-9.md](./lesson-9.md) |
+| Buổi   | Nội dung               | File                         |
+| ------ | ---------------------- | ---------------------------- |
+| Buổi 7 | Theo dõi tiến độ lần 1 | [lesson-7.md](./lesson-7.md) |
+| Buổi 8 | Review 1 (Giữa kỳ)     | [lesson-8.md](./lesson-8.md) |
+| Buổi 9 | Phát triển nâng cao    | [lesson-9.md](./lesson-9.md) |
 
-**Kết thúc tuần 3:** Có web chạy cơ bản, ít nhất 1 module hoạt động.
+**Kết thúc tuần 3:** Có web chạy cơ bản, ít nhất 1 module hoạt động. Nhận được feedback từ thầy để cải thiện.
 
 ---
 
-### 🗓 TUẦN 4 – TRIỂN KHAI GIAI ĐOẠN 2
+### 🗓 TUẦN 4 – TRIỂN KHAI GIAI ĐOẠN 2 & CHUẨN BỊ DEMO
 
 | Buổi    | Nội dung                 | File                           |
 | ------- | ------------------------ | ------------------------------ |
-| Buổi 10 | Phát triển nâng cao      | [lesson-10.md](./lesson-10.md) |
-| Buổi 11 | Theo dõi tiến độ lần 2   | [lesson-11.md](./lesson-11.md) |
-| Buổi 12 | Chuẩn bị demo hoàn chỉnh | [lesson-12.md](./lesson-12.md) |
+| Buổi 10 | Theo dõi tiến độ lần 2   | [lesson-10.md](./lesson-10.md) |
+| Buổi 11 | Chuẩn bị demo hoàn chỉnh | [lesson-11.md](./lesson-11.md) |
+| Buổi 12 | Hướng dẫn thuyết trình   | [lesson-12.md](./lesson-12.md) |
 
 **Kết thúc tuần 4:** Web chạy ≥80% chức năng, có video demo và slide nháp.
 
 ---
 
-### 🗓 TUẦN 5 – HOÀN THIỆN & TỔNG DUYỆT
-
-| Buổi    | Nội dung               | File                           |
-| ------- | ---------------------- | ------------------------------ |
-| Buổi 13 | Hướng dẫn thuyết trình | [lesson-13.md](./lesson-13.md) |
-| Buổi 14 | Tổng duyệt             | [lesson-14.md](./lesson-14.md) |
-
-**Kết thúc tuần 5:** Hoàn thiện sản phẩm, luyện báo cáo.
-
----
-
-### 🗓 TUẦN 6 – BẢO VỆ & TỔNG KẾT
+### 🗓 TUẦN 5 – HOÀN THIỆN & BÁO CÁO
 
 | Buổi    | Nội dung            | File                           |
 | ------- | ------------------- | ------------------------------ |
-| Buổi 15 | Tổng duyệt nhóm yếu | [lesson-15.md](./lesson-15.md) |
-| Buổi 16 | Báo cáo chính thức  | [lesson-16.md](./lesson-16.md) |
+| Buổi 13 | Tổng duyệt & Hỗ trợ | [lesson-13.md](./lesson-13.md) |
+| Buổi 14 | Tổng duyệt lần cuối | [lesson-14.md](./lesson-14.md) |
+| Buổi 15 | Báo cáo chính thức  | [lesson-15.md](./lesson-15.md) |
 
-**Kết thúc tuần 6:** Báo cáo và phản biện sản phẩm.
+**Kết thúc tuần 5:** Hoàn thiện sản phẩm, báo cáo và phản biện sản phẩm.
 
 ---
 
 ## 🧮 Cơ cấu chấm điểm theo giai đoạn
 
+Thầy sẽ chấm điểm các em theo 3 giai đoạn:
+
 ### Giai đoạn 1: Phân tích & Thiết kế (25%)
 
--   **Spec module** (15%)
--   **ERD** (10%)
+-   **Spec module** (15%) - Tài liệu mô tả module chi tiết
+-   **ERD** (10%) - Sơ đồ thiết kế database
 
 ### Giai đoạn 2: Triển khai & Teamwork (30%)
 
--   **Website chạy được** (20%)
--   **GitHub teamwork** (10%)
+-   **Website chạy được** (20%) - Code hoạt động, có chức năng cơ bản
+-   **GitHub teamwork** (10%) - Làm việc nhóm với Git, commit đều đặn
 
 ### Giai đoạn 3: Hoàn thiện & Báo cáo (45%)
 
--   **Website hoàn chỉnh** (25%)
--   **Teamwork & Commit log** (10%)
--   **Thuyết trình & Báo cáo** (10%)
+-   **Website hoàn chỉnh** (25%) - Chức năng đầy đủ, code quality tốt
+-   **Teamwork & Commit log** (10%) - Hoạt động nhóm, lịch sử commit
+-   **Thuyết trình & Báo cáo** (10%) - Slide đẹp, thuyết trình tốt
 
-### 💡 Lưu ý
+### 💡 Lưu ý quan trọng
 
--   Các nhóm yếu có thể **nộp lại bản chỉnh sửa** (document/report) trong tuần 6 để cải thiện điểm giai đoạn 2.
--   Giảng viên có thể chia nhỏ điểm trong từng giai đoạn theo tỉ lệ phù hợp.
-
----
-
-## 📚 Tài liệu hỗ trợ giảng viên
-
-### 📘 File cần chuẩn bị
-
-1. **Mẫu Spec module du lịch** – SV điền trực tiếp
-2. **Bảng theo dõi tiến độ nhóm (Excel)** – tick mỗi tuần
-3. **Mẫu chấm điểm báo cáo** – 4 tiêu chí rõ ràng
-
-### 🎯 4 tiêu chí chấm báo cáo
-
-1. **Nội dung & Logic** (30%)
-2. **Giao diện & Trải nghiệm** (25%)
-3. **Code quality & Best practices** (25%)
-4. **Thuyết trình & Tài liệu** (20%)
+-   Các nhóm yếu có thể **nộp lại bản chỉnh sửa** (document/report) trong tuần 5 để cải thiện điểm giai đoạn 1 và 2.
+-   Thầy sẽ chấm điểm công bằng dựa trên nỗ lực và tiến độ của các em.
 
 ---
 
 ## 👥 Cấu trúc nhóm
 
-Mỗi nhóm gồm **3–5 sinh viên**, phân vai:
+Mỗi nhóm gồm **3–5 sinh viên**, các em sẽ tự phân vai:
 
--   👨‍💼 **Leader**: Quản lý tiến độ, phân công công việc
+-   👨‍💼 **Leader**: Quản lý tiến độ, phân công công việc, đảm bảo deadline
 -   💻 **Developer**: Viết code, triển khai chức năng
--   🧪 **Tester**: Kiểm thử, tìm lỗi
--   📝 **Documenter**: Viết tài liệu, báo cáo
+-   🧪 **Tester**: Kiểm thử, tìm lỗi, đảm bảo chất lượng
+-   📝 **Documenter**: Viết tài liệu, báo cáo, slide
+
+**Lưu ý:** Mỗi người có thể đảm nhiệm nhiều vai trò, không nhất thiết phải tách biệt hoàn toàn!
 
 ---
 
 ## 🔗 Tài nguyên hỗ trợ
 
--   [GitHub Guides](https://guides.github.com/)
--   [PHP Documentation](https://www.php.net/docs.php)
--   [MySQL Documentation](https://dev.mysql.com/doc/)
--   [Bootstrap Templates](https://colorlib.com/wp/free-html-css-website-templates/)
--   [BootstrapMade Templates](https://bootstrapmade.com/)
+Thầy đã chuẩn bị một số tài liệu hữu ích cho các em:
+
+-   [GitHub Guides](https://guides.github.com/) - Hướng dẫn sử dụng GitHub
+-   [PHP Documentation](https://www.php.net/docs.php) - Tài liệu PHP chính thức
+-   [MySQL Documentation](https://dev.mysql.com/doc/) - Tài liệu MySQL
+-   [Bootstrap Templates](https://colorlib.com/wp/free-html-css-website-templates/) - Template HTML/CSS miễn phí
+-   [BootstrapMade Templates](https://bootstrapmade.com/) - Template đẹp và chuyên nghiệp
 
 ---
 
-**Chúc các bạn hoàn thành tốt dự án! 🚀**
+## 💪 Lời khuyên từ thầy
+
+Các em thân mến! Dự án này có thể sẽ khó khăn, nhưng thầy tin rằng các em sẽ làm được! Hãy nhớ:
+
+-   ✅ **Đừng ngại hỏi**: Thầy và TA luôn sẵn sàng hỗ trợ các em
+-   ✅ **Làm việc nhóm tốt**: Giao tiếp thường xuyên, hỗ trợ lẫn nhau
+-   ✅ **Commit thường xuyên**: Đừng đợi đến phút cuối mới commit code
+-   ✅ **Bắt đầu sớm**: Đừng để đến tuần cuối mới bắt đầu code
+-   ✅ **Tận hưởng quá trình**: Đây là cơ hội để các em học hỏi và phát triển!
+
+**Chúc các em học tốt và hoàn thành dự án xuất sắc! 🚀**
+
+---
+
+**📌 Lưu ý:** Các em hãy đọc kỹ từng bài học và làm đầy đủ bài tập. Nếu có thắc mắc, đừng ngại hỏi thầy nhé! 😊

@@ -1,328 +1,574 @@
-# Buổi 6 – Giới thiệu Git & teamwork
+# Buổi 5 – Quản lý dự án với ClickUp & Lập kế hoạch triển khai
 
-> **Bài trước:** [Buổi 5: Duyệt Spec & ERD](./lesson-5.md)  
-> **Bài tiếp theo:** [Buổi 7: Lập kế hoạch triển khai](./lesson-7.md)
+> **Bài trước:** [Buổi 4: Thiết kế dữ liệu (ERD)](./lesson-4.md)  
+> **Bài tiếp theo:** [Buổi 6: Giới thiệu Git & teamwork](./lesson-6.md)
+
+Xin chào các em! 🎉
+
+Hôm nay chúng ta sẽ học một kỹ năng cực kỳ quan trọng trong làm việc nhóm: **quản lý dự án với ClickUp** và **lập kế hoạch triển khai**. Đây là những kỹ năng mà các em sẽ dùng suốt đời khi đi làm, nên thầy mong các em chú ý nhé!
 
 ## 🎯 Mục tiêu học tập
 
--   Hiểu khái niệm Git và GitHub
--   Biết cách sử dụng các lệnh Git cơ bản: clone, add, commit, push, pull
--   Hiểu cách làm việc nhóm với Git: branch, merge, conflict
--   Tạo được repo GitHub và commit code đầu tiên
--   Nắm được quy tắc đặt tên commit và issue
+Sau buổi học này, các em sẽ:
+
+-   ✅ Hiểu cách sử dụng ClickUp để quản lý dự án nhóm
+-   ✅ Biết cách tạo Workspace, List, và Task trong ClickUp
+-   ✅ Nắm được cách tạo task chuẩn với đầy đủ thông tin
+-   ✅ Biết cách phân công công việc và theo dõi tiến độ
+-   ✅ Lập được kế hoạch triển khai module chi tiết với timeline rõ ràng
+-   ✅ Ước lượng được thời gian và phân công công việc hợp lý
 
 ---
 
-## 📋 Nội dung chính trên lớp
+## 📋 Nội dung chính
 
-### 1. Giới thiệu Git & GitHub (20 phút)
+### 1. ClickUp là gì? Tại sao lại cần ClickUp? (10 phút)
 
-#### **Git là gì?**
+Chắc các em đã từng gặp tình huống này: "Ồ, mình quên mất việc này rồi!" hoặc "Ai làm task này nhỉ?" 😅
 
--   Hệ thống quản lý phiên bản phân tán (Version Control System)
--   Giúp theo dõi thay đổi code, làm việc nhóm hiệu quả
--   Cho phép quay lại phiên bản cũ nếu có lỗi
+**ClickUp** là công cụ quản lý dự án giúp các em:
 
-#### **GitHub là gì?**
+-   ✅ **Tổ chức công việc**: Biết ai làm gì, khi nào xong
+-   ✅ **Tránh bỏ sót**: Có danh sách đầy đủ các công việc cần làm
+-   ✅ **Theo dõi tiến độ**: Biết dự án đang ở đâu
+-   ✅ **Giao tiếp hiệu quả**: Trao đổi, comment trực tiếp trên task
+-   ✅ **Làm việc chuyên nghiệp**: Giống như môi trường doanh nghiệp thực tế
 
--   Nền tảng lưu trữ code trên cloud
--   Hỗ trợ collaboration, code review, issue tracking
--   Miễn phí cho public repo
+**ClickUp miễn phí** cho nhóm nhỏ, đủ dùng cho dự án môn học của các em. Các em vào [clickup.com](https://clickup.com) đăng ký tài khoản miễn phí nhé!
 
-#### **Tại sao cần Git cho dự án?**
+### 2. Cấu trúc ClickUp: Workspace → List → Task (10 phút)
 
--   ✅ Theo dõi tiến độ từng thành viên
--   ✅ Tránh mất code
--   ✅ Làm việc nhóm không bị conflict
--   ✅ Giảng viên dễ dàng review code
-
-### 2. Cài đặt và cấu hình Git (10 phút)
-
-#### **Cài đặt Git:**
-
--   Windows: Tải Git for Windows
--   Mac: `brew install git` hoặc tải từ website
--   Linux: `sudo apt install git`
-
-#### **Cấu hình Git:**
-
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-```
-
-### 3. Các lệnh Git cơ bản (25 phút)
-
-#### **Lệnh cơ bản:**
-
-**1. Khởi tạo repo:**
-
-```bash
-git init                    # Tạo repo local
-git remote add origin [URL] # Kết nối với GitHub
-```
-
-**2. Thêm và commit:**
-
-```bash
-git add .                   # Thêm tất cả file thay đổi
-git add [file]              # Thêm file cụ thể
-git commit -m "message"     # Commit với message
-git push origin main        # Đẩy code lên GitHub
-```
-
-**3. Lấy code mới nhất:**
-
-```bash
-git pull origin main        # Lấy code từ GitHub về
-```
-
-**4. Xem trạng thái:**
-
-```bash
-git status                  # Xem file đã thay đổi
-git log                     # Xem lịch sử commit
-```
-
-### 4. Làm việc nhóm với Git (20 phút)
-
-#### **Branch (Nhánh):**
-
--   Mỗi thành viên làm việc trên branch riêng
--   Tránh conflict khi làm việc đồng thời
-
-**Các lệnh branch:**
-
-```bash
-git branch                  # Xem danh sách branch
-git branch [tên-branch]     # Tạo branch mới
-git checkout [tên-branch]   # Chuyển sang branch
-git merge [tên-branch]      # Gộp branch vào branch hiện tại
-```
-
-#### **Quy trình làm việc nhóm:**
-
-1. Clone repo về máy
-2. Tạo branch riêng: `git checkout -b feature/my-feature`
-3. Làm việc trên branch đó
-4. Commit và push lên branch riêng
-5. Tạo Pull Request để merge vào main
-
-### 5. Quy tắc đặt tên commit và issue (15 phút)
-
-#### **Format commit message (Conventional Commits):**
+ClickUp có cấu trúc rất đơn giản:
 
 ```
-[type]: [mô tả ngắn gọn]
-
-[body - mô tả chi tiết nếu cần]
+Workspace (Không gian làm việc)
+  └── List (Danh sách/Dự án)
+        └── Task (Công việc cụ thể)
+            └── Subtask (Công việc con)
 ```
 
-**Các type:**
+**Giải thích:**
 
--   `feat`: Tính năng mới
--   `fix`: Sửa lỗi
--   `docs`: Cập nhật tài liệu
--   `style`: Format code (không ảnh hưởng logic)
--   `refactor`: Refactor code
--   `test`: Thêm test
--   `chore`: Công việc khác (setup, config)
+-   **Workspace**: Cấp cao nhất, chứa tất cả dự án. Ví dụ: Workspace cho lớp học của các em
+-   **List**: Một dự án cụ thể hoặc nhóm các task liên quan. Ví dụ: "Module Booking", "Module Tour"
+-   **Task**: Công việc cụ thể cần làm. Ví dụ: "FE - Booking - Tạo form đặt tour"
+-   **Subtask**: Các bước nhỏ để hoàn thành task. Ví dụ: "Thiết kế UI form", "Validate dữ liệu"
 
-**Ví dụ:**
+**Ví dụ cấu trúc cho dự án Tour du lịch:**
 
 ```
-feat: thêm chức năng đặt tour
-
-- Thêm form đặt tour
-- Validate thông tin khách hàng
-- Lưu booking vào database
+Workspace: "Hệ thống Quản lý Tour Du lịch"
+  ├── List: "Module Booking"
+  │    ├── Task: "FE - Booking - Tạo form đặt tour"
+  │    ├── Task: "BE - Booking - API tạo booking mới"
+  │    ├── Task: "DB - Booking - Thiết kế bảng bookings"
+  │    └── Task: "TEST - Booking - Kiểm thử đặt tour"
+  │
+  ├── List: "Module Tour"
+  │    ├── Task: "FE - Tour - Giao diện danh sách tour"
+  │    └── Task: "BE - Tour - API quản lý tour"
+  │
+  └── List: "Tính năng Mở rộng"
+       ├── Task: "FE - Booking - Xuất báo giá PDF"
+       └── Task: "FE - Tour - Gắn mã QR đặt tour"
 ```
 
-#### **Quy tắc đặt tên issue:**
+### 3. Rules đặt tên Task chuẩn (20 phút)
 
--   Format: `[Module] - [Mô tả ngắn]`
--   Ví dụ: `[Booking] - Thêm chức năng hủy đơn đặt tour`
--   Gán label: `bug`, `feature`, `enhancement`
+#### **3.1. Tại sao phải đặt tên task chuẩn?**
 
----
+Các em thử tưởng tượng: nếu task có tên là "Đăng ký" hoặc "Booking", các em có biết chính xác cần làm gì không? 😵
 
-## 🧠 Kiến thức trọng tâm / Giải thích
+Đặt tên task rõ ràng, thống nhất giúp:
 
-### Git Workflow cơ bản
+-   ✅ **Quản lý công việc dễ hơn**: Dễ tìm kiếm, lọc task theo loại công việc hoặc module
+-   ✅ **Thầy theo dõi tiến độ nhanh chóng**: Dễ dàng kiểm tra và chấm điểm
+-   ✅ **Nhóm làm việc chuyên nghiệp**: Như môi trường doanh nghiệp thực tế
 
-```
-Working Directory → Staging Area → Local Repository → Remote Repository (GitHub)
-     (làm việc)      (git add)      (git commit)        (git push)
-```
+#### **3.2. Công thức đặt tên Task chuẩn**
 
-### Các trạng thái file trong Git
-
-1. **Untracked**: File mới, chưa được Git theo dõi
-2. **Modified**: File đã thay đổi, chưa add
-3. **Staged**: File đã add, sẵn sàng commit
-4. **Committed**: File đã commit
-
-### Branch strategy cho dự án
-
-#### **Mô hình đơn giản:**
-
--   `main`: Code chính, ổn định
--   `develop`: Code đang phát triển
--   `feature/[tên-feature]`: Branch cho từng tính năng
-
-#### **Ví dụ:**
+**Công thức "thần thánh":**
 
 ```
-main
-  └── develop
-       ├── feature/booking
-       ├── feature/tour-management
-       └── feature/user-profile
+[Loại công việc] - [Chức năng/Module] - [Nội dung chính]
 ```
 
-### Xử lý conflict (xung đột)
+**Nguyên tắc:**
 
-Khi 2 người cùng sửa 1 file và merge lại:
+-   Tên task nên rõ ràng, cụ thể, không mơ hồ
+-   Dùng viết tắt chuẩn hóa cho loại công việc
+-   Bắt đầu bằng động từ hành động (Tạo, Xử lý, Thiết kế...)
 
-1. Git báo conflict
-2. Mở file, tìm dòng `<<<<<<<`, `=======`, `>>>>>>>`
-3. Chọn code cần giữ, xóa các marker
-4. Add và commit lại
+**Ví dụ tốt ✅:**
 
----
+| Ví dụ                                 | Giải thích                    |
+| ------------------------------------- | ----------------------------- |
+| FE - Booking - Tạo form đặt tour      | Frontend tạo form đặt tour    |
+| BE - Booking - API tạo booking mới    | Backend xử lý API tạo booking |
+| DB - Booking - Thiết kế bảng bookings | Thiết kế database cho booking |
+| TEST - Booking - Kiểm thử đặt tour    | Kiểm thử module booking       |
+| DOC - Báo cáo tiến độ tuần 2          | Ghi chép tài liệu và tiến độ  |
 
-## 📘 Bài tập
+**Ví dụ không nên dùng ❌:**
 
-### Tạo repo GitHub public + commit đầu tiên
+-   ❌ "Đăng ký" → Quá mơ hồ, không biết là frontend hay backend
+-   ❌ "UI sản phẩm" → Không biết sản phẩm nào, làm gì
+-   ❌ "Tìm kiếm" → Tìm kiếm gì? Ở đâu?
+-   ❌ "Booking" → Chỉ là tên module, không biết làm gì
 
-#### **Yêu cầu:**
+#### **3.3. Danh sách viết tắt chuẩn hóa**
 
-1. **Tạo repo trên GitHub:**
+Các em hãy học thuộc bảng này để đặt tên task cho chuẩn nhé:
 
-    - Tên repo: `[tên-nhóm]-tour-management` (ví dụ: `team1-tour-management`)
-    - Public repo
-    - Thêm README.md khi tạo
+| Viết tắt | Ý nghĩa                  |
+| -------- | ------------------------ |
+| FE       | Frontend                 |
+| BE       | Backend                  |
+| DB       | Cơ sở dữ liệu (Database) |
+| UI       | Thiết kế giao diện       |
+| TEST     | Kiểm thử (Testing)       |
+| DOC      | Tài liệu                 |
+| MEET     | Họp nhóm / Giao tiếp     |
 
-2. **Clone repo về máy:**
+#### **3.4. Các thành phần khác của Task**
 
-    ```bash
-    git clone [URL-repo]
-    cd [tên-repo]
-    ```
+Một task chuẩn cần có đầy đủ các thông tin sau:
 
-3. **Tạo cấu trúc thư mục:**
+**Mô tả (Description):**
 
-    ```
-    [tên-repo]/
-    ├── README.md
-    ├── docs/
-    │   ├── Spec_Module_[Tên module].pdf
-    │   └── ERD_Module_[Tên module].pdf
-    ├── src/
-    │   ├── css/
-    │   ├── js/
-    │   └── images/
-    └── database/
-        └── schema.sql
-    ```
+-   **Mục đích**: Task này làm gì? Tại sao cần làm?
+-   **Yêu cầu**: Cần làm những gì cụ thể?
+-   **Acceptance Criteria**: Làm thế nào biết task hoàn thành?
+-   **Tham chiếu**: Link đến Spec, Use Case, ERD (nếu có)
 
-4. **Commit đầu tiên:**
+**Assignee (Người thực hiện):**
 
-    - Thêm README.md với thông tin nhóm, module
-    - Thêm folder docs với Spec và ERD
-    - Commit với message: `docs: thêm spec và ERD module`
+-   Chọn thành viên nhóm phụ trách task này
+-   Có thể assign nhiều người nếu là task lớn
 
-5. **Push lên GitHub:**
-    ```bash
-    git add .
-    git commit -m "docs: thêm spec và ERD module"
-    git push origin main
-    ```
+**Status (Trạng thái):**
 
-#### **Nội dung README.md:**
+-   **To Do**: Chưa bắt đầu
+-   **In Progress**: Đang làm
+-   **In Review**: Đang review
+-   **Done**: Hoàn thành
+
+**Priority (Ưu tiên):**
+
+-   **Urgent**: Khẩn cấp, ảnh hưởng nhiều
+-   **High**: Quan trọng, cần làm sớm
+-   **Normal**: Bình thường
+-   **Low**: Có thể làm sau
+
+**Labels (Nhãn):**
+
+-   Phân loại task: `backend`, `frontend`, `database`, `bug`, `feature`
+-   Module: `booking`, `tour`, `user`
+-   Loại: `bắt buộc`, `mở rộng`
+-   Tuần: `Week1`, `Week2`, `Week3`... (nếu cần)
+
+**Due Date (Hạn chót):**
+
+-   Đặt deadline rõ ràng
+-   Có thể đặt cho cả task và subtask
+
+**Checklist (Danh sách kiểm tra):**
+
+-   Liệt kê các bước nhỏ để hoàn thành task
+-   Đánh dấu khi hoàn thành từng bước
+
+#### **3.5. Ví dụ Task chuẩn**
+
+Đây là một task mẫu mà các em nên tham khảo:
 
 ```markdown
-# [Tên Module] - Tour Management System
+# Task: FE - Booking - Tạo form đặt tour cho khách hàng
 
-## Thông tin nhóm
+## Mục đích
 
--   Tên nhóm: [Tên nhóm]
--   Thành viên:
-    -   [Tên] - [Vai trò]
-    -   [Tên] - [Vai trò]
+Cho phép khách hàng đặt tour qua website, nhập thông tin và submit booking.
 
-## Module phụ trách
+## Yêu cầu
 
-[Tên module]
+-   Tạo form HTML với các trường: Tour, số lượng người, ngày đi, thông tin khách hàng
+-   Validate dữ liệu đầu vào (email, SĐT, số lượng người)
+-   Xử lý submit form và lưu vào database
+-   Hiển thị thông báo thành công sau khi đặt tour
 
-## Mô tả
+## Acceptance Criteria
 
-[Mô tả ngắn gọn về module]
+-   [ ] Form hiển thị đúng các trường cần thiết
+-   [ ] Validation hoạt động đúng (email format, SĐT format, số lượng > 0)
+-   [ ] Dữ liệu được lưu vào bảng `bookings` và `customers` trong database
+-   [ ] Hiển thị thông báo "Đặt tour thành công" với mã booking
+-   [ ] Gửi email xác nhận đến khách hàng (nếu có tích hợp email)
 
-## Tài liệu
+## Tham chiếu
 
--   Spec: `docs/Spec_Module_[Tên module].pdf`
--   ERD: `docs/ERD_Module_[Tên module].pdf`
+-   Spec: Phần 3.1.1 - Tạo booking mới (STT 9)
+-   Use Case: "Đặt tour trực tuyến" (Buổi 2)
+-   ERD: Bảng `bookings`, `customers`
+
+## Checklist
+
+-   [ ] Thiết kế UI form (HTML/CSS)
+-   [ ] Tạo file PHP xử lý form
+-   [ ] Viết validation cho các trường
+-   [ ] Kết nối database và insert dữ liệu
+-   [ ] Test form với các trường hợp khác nhau
+-   [ ] Code review
 ```
+
+### 4. Thực hành: Tạo Task trong ClickUp (20 phút)
+
+Bây giờ các em hãy làm theo các bước sau:
+
+#### **Bước 1: Đọc lại Spec**
+
+-   Xem phần "Tính năng chi tiết" trong Spec của nhóm
+-   Xác định các chức năng cần làm
+-   Phân loại theo Module và loại (Bắt buộc, Mở rộng)
+
+#### **Bước 2: Chuyển đổi chức năng thành Task**
+
+-   Mỗi chức năng trong Spec → 1 Task chính
+-   Đặt tên Task theo công thức: `[Loại] - [Module] - [Nội dung]`
+-   Mỗi phần của chức năng → 1 Subtask
+
+#### **Bước 3: Tạo cấu trúc trong ClickUp**
+
+-   Tạo Workspace với tên: `[Tên nhóm] - Module [Tên module]`
+-   Tạo List cho từng Module (ví dụ: "Module Booking", "Module Tour")
+-   Hoặc tạo List cho từng nhóm chức năng (ví dụ: "Tính năng Bắt buộc", "Tính năng Mở rộng", "Bug", "Testing")
+
+#### **Bước 4: Tạo Task trong ClickUp**
+
+-   Tạo Task cho từng chức năng theo công thức đã học
+-   Điền đầy đủ thông tin:
+    -   Tên Task (theo công thức chuẩn)
+    -   Mô tả (Mục đích, Yêu cầu, Acceptance Criteria)
+    -   Assignee (phân công thành viên)
+    -   Priority (Ưu tiên)
+    -   Labels (Module, Loại công việc, Loại: Bắt buộc/Mở rộng)
+    -   Due Date (hạn chót)
+    -   Checklist (các bước nhỏ)
+
+**Ví dụ: Từ Spec Module Booking**
+
+```
+List: "Module Booking"
+  ├── Task: "FE - Booking - Tạo form đặt tour"
+  │    Labels: Frontend, Bắt buộc
+  │    ├── Subtask: "Thiết kế UI form"
+  │    ├── Subtask: "Validate dữ liệu đầu vào"
+  │    ├── Subtask: "Xử lý submit và lưu database"
+  │    └── Subtask: "Gửi email xác nhận"
+  │
+  ├── Task: "BE - Booking - API tạo booking mới"
+  │    Labels: Backend, Bắt buộc
+  │    ├── Subtask: "Tạo endpoint API"
+  │    ├── Subtask: "Validate request"
+  │    └── Subtask: "Lưu vào database"
+  │
+  ├── Task: "FE - Booking - Giao diện danh sách booking"
+  │    Labels: Frontend, Bắt buộc
+  │    ├── Subtask: "Thiết kế UI danh sách"
+  │    ├── Subtask: "Xử lý cập nhật trạng thái"
+  │    └── Subtask: "Lưu lịch sử thay đổi"
+  │
+  └── Task: "TEST - Booking - Kiểm thử đặt tour"
+       Labels: Testing, Bắt buộc
+```
+
+### 5. Lập kế hoạch triển khai module (40 phút)
+
+Đây là phần quan trọng nhất! Sau khi có các task trong ClickUp, các em cần lập kế hoạch triển khai chi tiết.
+
+#### **5.1. Tại sao cần lập kế hoạch?**
+
+Các em có biết câu nói này không: "Thất bại trong lập kế hoạch là lập kế hoạch cho thất bại" 😊
+
+Lập kế hoạch giúp các em:
+
+-   ✅ Biết rõ cần làm gì, khi nào xong
+-   ✅ Phân công công việc hợp lý cho từng thành viên
+-   ✅ Tránh tình trạng "nước đến chân mới nhảy"
+-   ✅ Ước lượng được thời gian cần thiết
+-   ✅ Xác định được phụ thuộc giữa các task
+
+#### **5.2. Phân tích module thành các task**
+
+Các em hãy làm theo các bước sau:
+
+**Bước 1: Liệt kê tất cả chức năng** từ Spec
+
+**Bước 2: Chia nhỏ mỗi chức năng** thành các task cụ thể
+
+**Bước 3: Ước lượng thời gian** cho mỗi task
+
+**Bước 4: Xác định phụ thuộc** giữa các task (task nào phải làm trước, task nào làm sau)
+
+**Ví dụ: Module Booking - Chức năng "Đặt tour trực tuyến"**
+
+Chia thành các task:
+
+| Task   | Mô tả                               | Thời gian (giờ) | Phụ thuộc      |
+| ------ | ----------------------------------- | --------------- | -------------- |
+| Task 1 | Tạo database schema (booking table) | 2               | -              |
+| Task 2 | Tạo form đặt tour (HTML/CSS)        | 4               | Task 1         |
+| Task 3 | Validate form (JavaScript)          | 2               | Task 2         |
+| Task 4 | Xử lý submit form (PHP)             | 4               | Task 1, Task 2 |
+| Task 5 | Lưu booking vào database            | 2               | Task 4         |
+| Task 6 | Gửi email xác nhận                  | 3               | Task 5         |
+| Task 7 | Test chức năng đặt tour             | 2               | Task 6         |
+
+**Tổng: ~19 giờ**
+
+**Lưu ý về ước lượng thời gian:**
+
+Các em ước lượng thời gian theo công thức đơn giản:
+
+```
+Thời gian ước lượng = Thời gian lý tưởng × 1.5 (buffer)
+```
+
+Ví dụ: Nếu em nghĩ task này mất 2 giờ, thì ước lượng là 2 × 1.5 = 3 giờ.
+
+**Yếu tố ảnh hưởng:**
+
+-   Độ phức tạp của task
+-   Kinh nghiệm của người làm
+-   Rủi ro (bug, thay đổi yêu cầu)
+
+#### **5.3. Phân công công việc**
+
+**Nguyên tắc phân công:**
+
+-   Dựa trên vai trò: Developer làm code, Tester làm test, Documenter làm tài liệu
+-   Dựa trên kỹ năng: Frontend giỏi → làm HTML/CSS/JS, Backend giỏi → làm PHP
+-   Cân bằng khối lượng: Không để 1 người làm quá nhiều
+
+**Ví dụ phân công:**
+
+| Task                     | Assignee     | Thời gian | Deadline | Priority |
+| ------------------------ | ------------ | --------- | -------- | -------- |
+| Tạo database schema      | Nguyễn Văn A | 2 giờ     | Tuần 3   | High     |
+| Form đặt tour (HTML/CSS) | Trần Thị B   | 4 giờ     | Tuần 3   | High     |
+| Validate form (JS)       | Trần Thị B   | 2 giờ     | Tuần 3   | High     |
+| Xử lý submit (PHP)       | Nguyễn Văn A | 4 giờ     | Tuần 3   | High     |
+| Lưu vào database         | Nguyễn Văn A | 2 giờ     | Tuần 3   | High     |
+| Gửi email xác nhận       | Lê Văn C     | 3 giờ     | Tuần 3   | Normal   |
+| Test                     | Phạm Thị D   | 2 giờ     | Tuần 4   | High     |
+
+**Ưu tiên task:**
+
+-   **High Priority (Cao)**: Task quan trọng, ảnh hưởng đến chức năng chính
+-   **Medium Priority (Trung bình)**: Task quan trọng nhưng không cấp thiết
+-   **Low Priority (Thấp)**: Task có thể làm sau
+
+#### **5.4. Tạo timeline tổng thể**
+
+Sau khi phân công xong, các em hãy tạo timeline tổng thể:
+
+**Timeline 3 tuần (ví dụ):**
+
+**Tuần 3 (Tuần này):**
+
+-   Setup môi trường (XAMPP, database)
+-   Tạo database schema
+-   Xây dựng giao diện cơ bản
+-   **Kết quả mong đợi**: Database và giao diện chạy được (~30% hoàn thành)
+
+**Tuần 4:**
+
+-   Hoàn thiện chức năng chính
+-   Tích hợp module
+-   Test và sửa lỗi
+-   **Kết quả mong đợi**: ≥80% chức năng hoạt động (~80% hoàn thành)
+
+**Tuần 5–6:**
+
+-   Hoàn thiện tính năng nâng cao
+-   Chuẩn bị demo và báo cáo
+-   **Kết quả mong đợi**: 100% chức năng (~100% hoàn thành)
+
+### 6. Theo dõi tiến độ trong ClickUp (10 phút)
+
+ClickUp có nhiều tính năng để theo dõi tiến độ:
+
+-   **Dashboard**: Xem tổng quan tiến độ dự án
+-   **Views**: Board view, List view, Calendar view
+-   **Reports**: Báo cáo tiến độ, thời gian làm việc
+-   **Notifications**: Thông báo khi có thay đổi
+
+Các em nhớ cập nhật Status của task thường xuyên nhé! (To Do → In Progress → Done)
+
+---
+
+## 📘 Bài tập nhóm
+
+### Yêu cầu 1: Tạo ClickUp Workspace và Task (Nộp trước buổi 6)
+
+**Các em cần làm:**
+
+1. **Tạo Workspace cho nhóm**
+
+    - Tạo Workspace với tên: `[Tên nhóm] - Module [Tên module]`
+    - Thêm các thành viên nhóm vào Workspace
+
+2. **Tạo cấu trúc List**
+
+    - Tạo List theo Module (ví dụ: "Module Booking", "Module Tour")
+    - Hoặc tạo List theo chức năng (ví dụ: "Tính năng Bắt buộc", "Tính năng Mở rộng", "Bug", "Testing")
+
+3. **Tạo Task từ Spec**
+
+    - Chuyển đổi các chức năng trong Spec thành Task
+    - Đặt tên Task theo công thức: `[Loại] - [Module] - [Nội dung]`
+    - Mỗi Task phải có đầy đủ:
+        - Tên Task rõ ràng (theo công thức chuẩn)
+        - Mô tả (Mục đích, Yêu cầu, Acceptance Criteria)
+        - Assignee (phân công thành viên)
+        - Priority (Ưu tiên)
+        - Labels (Module, Loại công việc, Loại: Bắt buộc/Mở rộng)
+        - Due Date (hạn chót)
+        - Checklist (các bước nhỏ)
+
+4. **Tạo ít nhất 5 Task từ chức năng "Bắt buộc"**
+
+**Format nộp:**
+
+-   Nộp screenshot Dashboard của Workspace
+-   Screenshot 2-3 Task mẫu (đầy đủ thông tin)
+-   Link ClickUp (nếu có thể share)
+
+**Hoặc:**
+
+Tạo file Word/PDF mô tả:
+
+-   Cấu trúc Workspace/List
+-   Danh sách Task đã tạo (tên task, assignee, priority)
+-   Ví dụ 1-2 Task chi tiết (mô tả đầy đủ)
+
+### Yêu cầu 2: Lập kế hoạch triển khai (Nộp trước buổi 6)
+
+**Các em cần tạo file Excel hoặc Google Sheets** với nội dung:
+
+#### **Sheet 1: Danh sách Task**
+
+| STT | Task                | Mô tả                     | Assignee     | Thời gian (giờ) | Deadline | Priority | Status       | Ghi chú |
+| --- | ------------------- | ------------------------- | ------------ | --------------- | -------- | -------- | ------------ | ------- |
+| 1   | Tạo database schema | Tạo bảng booking, payment | Nguyễn Văn A | 2               | Tuần 3   | High     | Chưa bắt đầu |         |
+| 2   | Form đặt tour       | HTML/CSS form đặt tour    | Trần Thị B   | 4               | Tuần 3   | High     | Chưa bắt đầu |         |
+| ... | ...                 | ...                       | ...          | ...             | ...      | ...      | ...          | ...     |
+
+**Cột Status:**
+
+-   Chưa bắt đầu
+-   Đang làm
+-   Hoàn thành
+-   Blocked (bị chặn)
+
+#### **Sheet 2: Timeline tổng thể**
+
+| Tuần     | Công việc chính                   | Kết quả mong đợi                | % Hoàn thành |
+| -------- | --------------------------------- | ------------------------------- | ------------ |
+| Tuần 3   | Setup, Database, Giao diện cơ bản | Database và giao diện chạy được | 30%          |
+| Tuần 4   | Chức năng chính, Tích hợp         | ≥80% chức năng hoạt động        | 80%          |
+| Tuần 5–6 | Hoàn thiện, Demo, Báo cáo         | 100% chức năng                  | 100%         |
+
+#### **Sheet 3: Phân công chi tiết theo thành viên**
+
+| Thành viên   | Vai trò                | Task được giao          | Tổng thời gian (giờ) |
+| ------------ | ---------------------- | ----------------------- | -------------------- |
+| Nguyễn Văn A | Developer (Backend)    | Tạo database, Xử lý PHP | 15                   |
+| Trần Thị B   | Developer (Frontend)   | HTML/CSS, JavaScript    | 12                   |
+| Lê Văn C     | Developer (Full-stack) | Tích hợp, Email         | 10                   |
+| Phạm Thị D   | Tester                 | Test tất cả chức năng   | 8                    |
+
+**Yêu cầu format:**
+
+-   ✅ File Excel hoặc Google Sheets
+-   ✅ Có ít nhất 3 sheet như trên
+-   ✅ Cập nhật Status hàng tuần
+-   ✅ Tính tổng thời gian và % hoàn thành
 
 ### Deadline
 
-Nộp link repo GitHub trước buổi 7
+**Nộp trước buổi 6** (gửi qua email hoặc LMS)
 
 ---
 
 ## 📦 Kết quả mong đợi sau buổi học
 
--   ✅ Hiểu được cách sử dụng Git cơ bản
--   ✅ Tạo được repo GitHub và commit code đầu tiên
--   ✅ Nắm được quy tắc đặt tên commit và issue
--   ✅ Biết cách làm việc nhóm với branch
--   ✅ Sẵn sàng bắt đầu code ở tuần 3
+Sau buổi học này, các em sẽ:
+
+-   ✅ Có ClickUp Workspace cho nhóm
+-   ✅ Tạo được cấu trúc List phù hợp (theo Module hoặc chức năng)
+-   ✅ Tạo được ít nhất 5 Task từ Spec với đầy đủ thông tin
+-   ✅ Có kế hoạch triển khai chi tiết với timeline rõ ràng
+-   ✅ Phân công công việc cụ thể cho từng thành viên
+-   ✅ Ước lượng được thời gian cho từng task
+-   ✅ Biết cách phân công và theo dõi tiến độ
 
 ---
 
-## 💬 Gợi ý giảng viên
+## 💡 Tips hữu ích
 
-### ⏱ Thời lượng gợi ý
+1. **Chia nhỏ task**: Task càng nhỏ, càng dễ quản lý và ước lượng. Một task nên hoàn thành trong 1-3 ngày.
 
--   Giới thiệu Git & GitHub: 20 phút
--   Cài đặt: 10 phút
--   Lệnh cơ bản: 25 phút
--   Làm việc nhóm: 20 phút
--   Quy tắc đặt tên: 15 phút
--   Tổng: ~90 phút
+2. **Ước lượng thời gian**: Thời gian thực tế thường nhiều hơn ước lượng. Hãy nhân với 1.5 để có buffer.
 
-### 💡 Tips hướng dẫn
+3. **Cập nhật Status thường xuyên**: Đừng quên cập nhật Status của task trong ClickUp để nhóm biết tiến độ.
 
-1. **Thực hành trực tiếp**: Cho sinh viên thực hành ngay trên máy
-2. **Giải thích rõ conflict**: Nhiều sinh viên gặp vấn đề với conflict
-3. **Khuyến khích commit thường xuyên**: Commit nhỏ, thường xuyên tốt hơn commit lớn
-4. **Gợi ý tool**: GitHub Desktop cho người mới bắt đầu (dễ dùng hơn command line)
+4. **Xác định phụ thuộc**: Nhớ xác định task nào phụ thuộc task nào để tránh bị block.
 
-### 🔍 Câu hỏi thường gặp
-
--   **Q: "Em không cài được Git trên máy, phải làm sao?"**
-
-    -   A: Có thể dùng GitHub Desktop hoặc hỏi giảng viên/TA để được hỗ trợ.
-
--   **Q: "Nếu em commit nhầm, có thể sửa không?"**
-
-    -   A: Có thể dùng `git commit --amend` hoặc `git reset` (cẩn thận với reset).
-
--   **Q: "Em và bạn cùng sửa 1 file, bị conflict, phải làm sao?"**
-    -   A: Git sẽ báo conflict, mở file và sửa thủ công, sau đó commit lại.
-
-### 📝 Checklist đánh giá repo
-
-Giảng viên có thể check repo của từng nhóm:
-
--   [ ] Repo public, dễ truy cập
--   [ ] Có README.md với thông tin đầy đủ
--   [ ] Có folder docs với Spec và ERD
--   [ ] Cấu trúc thư mục hợp lý
--   [ ] Commit message đúng format
--   [ ] Ít nhất 1 commit thành công
+5. **Giao tiếp trên ClickUp**: Dùng comment trên task để trao đổi, thay vì chat riêng.
 
 ---
 
-**📌 Lưu ý:** Tuần 3 sẽ bắt đầu code. Các nhóm nhớ hoàn thành setup Git và repo GitHub!
+## 🔍 Câu hỏi thường gặp
+
+**Q: "ClickUp có miễn phí không?"**
+
+A: Có, ClickUp có gói miễn phí với đầy đủ tính năng cơ bản cho nhóm nhỏ. Đủ dùng cho dự án môn học của các em.
+
+**Q: "Tại sao phải đặt tên task theo công thức [Loại] - [Module] - [Nội dung]?"**
+
+A: Giúp quản lý công việc dễ hơn, thầy theo dõi tiến độ nhanh chóng, và nhóm làm việc chuyên nghiệp như môi trường doanh nghiệp. Dễ tìm kiếm, lọc task theo loại công việc hoặc module.
+
+**Q: "Nên tổ chức List theo Module hay theo chức năng?"**
+
+A: Tùy vào quy mô dự án. Với dự án nhỏ, nên tổ chức theo Module (ví dụ: "Module Booking", "Module Tour") để dễ quản lý. Với dự án lớn hơn, có thể tổ chức theo chức năng (ví dụ: "Tính năng Bắt buộc", "Tính năng Mở rộng") hoặc kết hợp cả hai.
+
+**Q: "Task nên lớn hay nhỏ?"**
+
+A: Task nên vừa phải, có thể hoàn thành trong 1-3 ngày. Nếu task quá lớn, nên chia thành nhiều subtask hoặc chia nhỏ thành nhiều task.
+
+**Q: "Làm sao để ước lượng thời gian chính xác?"**
+
+A: Dựa vào kinh nghiệm và độ phức tạp. Nếu không chắc, ước lượng rộng hơn một chút (nhân với 1.5). Đừng lo lắng, ước lượng sẽ tốt hơn khi các em có nhiều kinh nghiệm.
+
+**Q: "Nếu task bị trễ deadline, phải làm sao?"**
+
+A: Báo cáo với Leader và thầy ngay. Có thể điều chỉnh lại kế hoạch. Quan trọng là giao tiếp sớm, đừng để đến phút cuối mới báo.
+
+**Q: "Một người có thể làm nhiều task cùng lúc không?"**
+
+A: Nên tập trung vào 1–2 task để đảm bảo chất lượng. Không nên làm quá nhiều task cùng lúc, dễ bị "cháy" đó các em 😅
+
+**Q: "Có cần tạo Task cho việc setup môi trường không?"**
+
+A: Có, nên tạo Task cho các công việc setup ban đầu: tạo database, cấu trúc folder, setup môi trường dev. Ví dụ: "BE - Setup - Tạo database và cấu trúc folder"
+
+**Q: "Làm sao biết Task đã hoàn thành?"**
+
+A: Dựa vào Acceptance Criteria. Nếu tất cả các điều kiện đã đạt, có thể đánh dấu Done.
+
+---
+
+**📌 Lưu ý quan trọng:**
+
+Các em nhớ hoàn thành bài tập trước buổi 6 nhé! Buổi tiếp theo chúng ta sẽ học Git và teamwork. Sau khi có kế hoạch rồi, các em sẽ bắt đầu code ngay thôi! 💪
+
+Chúc các em học tốt! 🎉

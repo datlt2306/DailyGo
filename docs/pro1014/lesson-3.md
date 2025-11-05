@@ -3,22 +3,43 @@
 > **Bài trước:** [Buổi 2: Phân tích chức năng (Use Case)](./lesson-2.md)  
 > **Bài tiếp theo:** [Buổi 4: Thiết kế dữ liệu (ERD)](./lesson-4.md)
 
+Xin chào các em! 🎉
+
+Hôm nay chúng ta sẽ học cách viết **Project Specification (Spec)** - một tài liệu rất quan trọng trong phát triển phần mềm! Nếu Use Case là "người dùng muốn gì", thì Spec là "hệ thống sẽ làm gì" - góc nhìn kỹ thuật hơn một chút! 😊
+
 ## 🎯 Mục tiêu học tập
 
--   Hiểu cấu trúc và nội dung của tài liệu Project Specification
--   Biết cách viết Spec module chi tiết, rõ ràng
--   Hoàn thành Spec module (2–3 trang) để chuẩn bị thiết kế ERD
--   Nắm được các phần quan trọng: người dùng, chức năng, luồng nghiệp vụ
+Sau buổi học hôm nay, các em sẽ:
+
+-   ✅ Hiểu cấu trúc và nội dung của tài liệu Project Specification
+-   ✅ Biết cách viết Spec module chi tiết, rõ ràng
+-   ✅ Hoàn thành Spec module (2–3 trang) để chuẩn bị thiết kế ERD
+-   ✅ Nắm được các phần quan trọng: người dùng, chức năng, luồng nghiệp vụ
+-   ✅ Biết cách sử dụng Use Case và bảng phân quyền để viết Spec
 
 ---
 
-## 📋 Nội dung chính trên lớp
+## 📋 Nội dung chính
 
-### 1. Giới thiệu Project Specification
+### 1. Project Specification là gì? Tại sao cần Spec?
 
--   Spec là gì? Tại sao cần Spec?
--   Vai trò của Spec trong quy trình phát triển
--   Mối liên hệ: Use Case → Spec → ERD → Code
+Các em đã viết Use Case ở buổi 2 rồi phải không? Use Case mô tả "người dùng làm gì" từ góc nhìn người dùng. Bây giờ, **Spec** sẽ mô tả "hệ thống làm gì" từ góc nhìn kỹ thuật! 😊
+
+#### **Spec là gì?**
+
+**Spec (Project Specification)** là tài liệu mô tả chi tiết về module sẽ được xây dựng, bao gồm:
+
+-   Chức năng cụ thể (Input, Xử lý, Output)
+-   Người dùng và quyền hạn
+-   Luồng nghiệp vụ
+-   Yêu cầu kỹ thuật
+
+#### **Tại sao cần Spec?**
+
+-   ✅ Làm rõ yêu cầu trước khi code (tránh làm sai, làm thiếu)
+-   ✅ Đồng bộ hiểu biết giữa các thành viên nhóm
+-   ✅ Làm cơ sở để thiết kế database (ERD) - buổi tiếp theo
+-   ✅ Giảng viên dễ dàng review và góp ý
 
 ### 2. Cấu trúc SPEC rút gọn
 
@@ -45,19 +66,27 @@ Giảng viên trình bày cấu trúc Spec module:
 -   Liệt kê các Actor và quyền hạn (dựa trên cột "Phân quyền" trong bảng phân quyền):
     -   **Điều hành tour - ADMIN**: Quản lý toàn bộ module, có quyền cao nhất
     -   **Hướng dẫn viên (HDV)**: Xem thông tin tour được phân công, cập nhật nhật ký tour
-    -   **Khách hàng (User)**: Xem tour, đặt tour (nếu module có phần dành cho khách hàng)
+    -   **Khách hàng (Customer)**: Xem tour, đặt tour (nếu module có phần dành cho khách hàng)
 
 #### **Phần 3: Tính năng chi tiết**
 
 -   Liệt kê từng chức năng dựa trên:
     -   **Bảng phân quyền** (Buổi 2): Xem các chức năng trong nhóm chức năng của module
-    -   **Use Case** đã viết (Buổi 2): Chi tiết từng chức năng
+    -   **Use Case** đã viết (Buổi 2): Tham chiếu Use Case, chuyển đổi sang góc nhìn kỹ thuật
 -   Phân loại theo:
     -   **Bắt buộc**: Chức năng phải có (Yêu cầu: Bắt buộc trong bảng phân quyền)
     -   **Mở rộng**: Chức năng có thể làm sau (Yêu cầu: Mở rộng trong bảng phân quyền)
--   Mô tả rõ: Input, Output, Xử lý
+-   **Mô tả theo góc nhìn kỹ thuật:**
+    -   **Input:** Dữ liệu đầu vào (các trường, tham số)
+    -   **Xử lý:** Logic xử lý chính (validate, tính toán, lưu trữ)
+    -   **Output:** Kết quả đầu ra (dữ liệu trả về, thông báo, file)
+    -   **Tham chiếu Use Case:** Nếu đã có Use Case chi tiết ở Buổi 2, thêm note: "Chi tiết luồng nghiệp vụ xem Use Case [Tên] (Buổi 2)"
 -   Ví dụ:
-    -   "Thêm tour mới (STT 3 - Bắt buộc): Admin nhập thông tin tour (lịch trình, hình ảnh, giá, chính sách, nhà cung cấp) → Lưu vào database → Hiển thị thông báo thành công"
+    -   "Thêm tour mới (STT 3 - Bắt buộc):
+        -   Input: Thông tin tour (lịch trình, hình ảnh, giá, chính sách, nhà cung cấp)
+        -   Xử lý: Validate dữ liệu, lưu vào database
+        -   Output: Tour được tạo, hiển thị thông báo thành công
+        -   Tham chiếu Use Case: Chi tiết luồng nghiệp vụ xem Use Case 'Thêm tour mới' (Buổi 2)"
 
 #### **Phần 4: Luồng nghiệp vụ (Workflow)**
 
@@ -115,14 +144,45 @@ Giảng viên trình bày 1–2 trang Spec mẫu của module Booking dựa trê
 ### Mối liên hệ Use Case → Spec → Bảng phân quyền
 
 -   **Bảng phân quyền** (Buổi 2): Liệt kê tất cả chức năng hệ thống, phân loại theo Actor và mức độ ưu tiên
--   **Use Case** (Buổi 2): Mô tả TỪNG chức năng cụ thể với luồng chi tiết
--   **Spec** (Buổi 3): Tổng hợp TẤT CẢ chức năng của module, bổ sung thêm người dùng, workflow, yêu cầu
+-   **Use Case** (Buổi 2): Mô tả TỪNG chức năng cụ thể với luồng chi tiết (góc nhìn người dùng)
+-   **Spec** (Buổi 3): Tổng hợp TẤT CẢ chức năng của module (góc nhìn kỹ thuật), bổ sung thêm người dùng, workflow, yêu cầu
+
+### Sự khác biệt giữa Use Case và Spec
+
+Các em có thể thắc mắc: "Sao lại phải viết cả Use Case và Spec? Có khác nhau không?" 😊
+
+Thực ra, chúng **khác nhau** và **bổ sung cho nhau** đấy!
+
+**Use Case (Buổi 2) - Góc nhìn người dùng:**
+
+-   **Tập trung vào:** Actor làm gì, hệ thống phản ứng ra sao
+-   **Mô tả:** Luồng tương tác từng bước (Main Flow, Alternative Flow, Exception Flow)
+-   **Ngôn ngữ:** Dễ hiểu, gần với ngôn ngữ nghiệp vụ
+-   **Mục đích:** Hiểu rõ nghiệp vụ, giao tiếp với người dùng
+-   **Ví dụ:** "Khách hàng nhập thông tin → Hệ thống kiểm tra → Hệ thống hiển thị kết quả"
+
+**Spec (Buổi 3) - Góc nhìn kỹ thuật:**
+
+-   **Tập trung vào:** Input gì, xử lý ra sao, Output gì
+-   **Mô tả:** Dữ liệu đầu vào, logic xử lý, kết quả đầu ra
+-   **Ngôn ngữ:** Kỹ thuật hơn, tập trung vào dữ liệu và xử lý
+-   **Mục đích:** Thiết kế database, code, tích hợp module
+-   **Ví dụ:** "Input: Tour ID, số lượng người, thông tin khách hàng → Xử lý: Validate, kiểm tra chỗ, tính giá → Output: Booking record, email xác nhận"
+
+**Tóm lại:** Use Case = "Người dùng muốn gì", Spec = "Hệ thống làm thế nào"! 😊
+
+**Lưu ý quan trọng:**
+
+-   Use Case và Spec **bổ sung cho nhau**, không thay thế
+-   Use Case đã viết ở Buổi 2 → Trong Spec chỉ cần **tham chiếu** (không lặp lại toàn bộ luồng)
+-   Spec tập trung vào **Input/Xử lý/Output** cho các chức năng đã có Use Case
+-   Spec viết đầy đủ cho các chức năng **chưa có Use Case** (từ bảng phân quyền)
 
 **Quy trình viết Spec:**
 
 1. Xem lại **bảng phân quyền** (Buổi 2) → Xác định module của nhóm thuộc nhóm chức năng nào
-2. Xem lại **Use Case** đã viết (Buổi 2) → Tổng hợp các Use Case thành Spec
-3. Viết **Spec** (Buổi 3) → Liệt kê đầy đủ chức năng, người dùng, workflow
+2. Xem lại **Use Case** đã viết (Buổi 2) → Tham chiếu các Use Case này, chuyển đổi sang góc nhìn kỹ thuật (Input/Xử lý/Output)
+3. Viết **Spec** (Buổi 3) → Liệt kê đầy đủ chức năng với Input/Xử lý/Output, bổ sung người dùng, workflow, yêu cầu
 
 ### Phân biệt các loại chức năng
 
@@ -323,6 +383,7 @@ Module Booking hỗ trợ quản lý toàn bộ quy trình đặt tour của kh�
 
 -   **Mô tả:** Nhân viên/khách đặt tour cho khách lẻ hoặc đoàn, nhập thông tin, hệ thống tự động kiểm tra chỗ trống
 -   **Actor:** Điều hành tour - ADMIN, Khách hàng (User)
+-   **Tham chiếu Use Case:** Chi tiết luồng nghiệp vụ xem Use Case "Đặt tour trực tuyến" (Buổi 2)
 -   **Input:**
     -   Thông tin tour (tour ID hoặc chọn tour)
     -   Số lượng người (người lớn, trẻ em, em bé)
@@ -330,34 +391,41 @@ Module Booking hỗ trợ quản lý toàn bộ quy trình đặt tour của kh�
     -   Thông tin khách hàng (họ tên, email, SĐT, địa chỉ)
     -   Ghi chú đặc biệt (nếu có)
 -   **Xử lý:**
-    -   Hệ thống kiểm tra số chỗ còn lại của tour
-    -   Tính toán giá tour (theo số lượng người, loại tour)
-    -   Tạo mã booking duy nhất
+    -   Validate dữ liệu đầu vào (email, SĐT, số lượng người)
+    -   Kiểm tra số chỗ còn lại của tour
+    -   Tính toán giá tour (theo số lượng người, loại tour, mùa)
+    -   Tạo mã booking duy nhất (format: BK-YYYYMMDD-XXX)
     -   Lưu booking vào database với trạng thái "Chờ xác nhận"
 -   **Output:**
-    -   Booking được tạo thành công
-    -   Hiển thị mã booking
-    -   Gửi email xác nhận đến khách hàng
+    -   Booking record được tạo trong database
+    -   Mã booking (Booking ID)
+    -   Email xác nhận gửi đến khách hàng
+    -   Thông báo thành công hiển thị trên giao diện
 
 **3.1.2. Quản lý tình trạng booking (STT 10 - Bắt buộc)**
 
 -   **Mô tả:** Theo dõi, cập nhật trạng thái booking: Chờ xác nhận → Đã cọc → Hoàn tất → Hủy. Lưu lịch sử thay đổi
 -   **Actor:** Điều hành tour - ADMIN
+-   **Tham chiếu Use Case:** Chi tiết luồng nghiệp vụ xem Use Case "Quản lý tình trạng booking" (Buổi 2)
 -   **Input:**
     -   Booking ID
     -   Trạng thái mới (Đã cọc, Hoàn tất, Hủy)
-    -   Lý do hủy (nếu hủy)
+    -   Lý do hủy (nếu hủy) - bắt buộc nếu chọn "Hủy"
     -   Số tiền đã cọc (nếu chuyển sang "Đã cọc")
 -   **Xử lý:**
+    -   Validate Booking ID tồn tại
     -   Kiểm tra trạng thái hiện tại
-    -   Validate: Không thể chuyển từ "Hoàn tất" về "Chờ xác nhận"
-    -   Lưu lịch sử thay đổi (trạng thái cũ → mới, ngày giờ, người thực hiện)
-    -   Cập nhật trạng thái booking
-    -   Nếu hủy: Cập nhật số chỗ còn lại của tour, xử lý hoàn tiền (nếu đã thanh toán)
+    -   Validate luồng trạng thái: Không cho phép chuyển từ "Hoàn tất" về "Chờ xác nhận"
+    -   Lưu lịch sử thay đổi vào bảng `booking_history` (trạng thái cũ, trạng thái mới, ngày giờ, user_id)
+    -   Cập nhật trạng thái booking trong bảng `bookings`
+    -   Nếu hủy:
+        -   Cập nhật số chỗ còn lại của tour (tăng số chỗ)
+        -   Xử lý hoàn tiền (nếu đã thanh toán) - tích hợp với module Payment
 -   **Output:**
-    -   Trạng thái booking được cập nhật
-    -   Gửi email thông báo đến khách hàng
-    -   Lịch sử thay đổi được lưu lại
+    -   Booking record được cập nhật trong database
+    -   Booking history record được tạo
+    -   Email thông báo gửi đến khách hàng
+    -   Thông báo thành công hiển thị trên giao diện
 
 #### 3.2. Tính năng Mở rộng
 
@@ -365,17 +433,37 @@ Module Booking hỗ trợ quản lý toàn bộ quy trình đặt tour của kh�
 
 -   **Mô tả:** Tự động tạo báo giá, hợp đồng, hóa đơn từ booking
 -   **Actor:** Điều hành tour - ADMIN
--   **Input:** Booking ID, Loại file (báo giá/hợp đồng/hóa đơn)
--   **Xử lý:** Tạo file PDF theo mẫu có sẵn, điền thông tin từ booking
--   **Output:** File PDF có thể tải về, gửi email, in
+-   **Input:**
+    -   Booking ID
+    -   Loại file cần xuất (báo giá/hợp đồng/hóa đơn)
+    -   Template file (nếu có nhiều mẫu)
+-   **Xử lý:**
+    -   Lấy thông tin booking từ database
+    -   Lấy thông tin tour, khách hàng liên quan
+    -   Tạo file PDF theo template có sẵn
+    -   Điền thông tin tự động (tên khách, tour, giá, ngày...)
+    -   Lưu file vào thư mục hoặc database
+-   **Output:**
+    -   File PDF được tạo
+    -   Link tải file hoặc gửi email
+    -   Thông báo thành công
 
 **3.2.2. Lưu lịch sử giao dịch nội bộ (STT 12 - Mở rộng)**
 
 -   **Mô tả:** Ghi nhận toàn bộ booking, giao dịch, thanh toán vào hồ sơ khách hàng
 -   **Actor:** Hệ thống (tự động)
--   **Input:** Dữ liệu booking, giao dịch, thanh toán
--   **Xử lý:** Lưu vào database, liên kết với hồ sơ khách hàng
--   **Output:** Có thể tra cứu lịch sử giao dịch của từng khách hàng
+-   **Input:**
+    -   Dữ liệu booking (booking_id, customer_id, tour_id, amount, status)
+    -   Dữ liệu giao dịch thanh toán (nếu có)
+    -   Dữ liệu tương tác (email, phone call, note)
+-   **Xử lý:**
+    -   Lưu vào bảng `customer_transaction_history`
+    -   Liên kết với hồ sơ khách hàng (customer_id)
+    -   Phân loại theo loại giao dịch (booking, payment, interaction)
+    -   Tự động cập nhật khi có booking/giao dịch mới
+-   **Output:**
+    -   Transaction history record được tạo
+    -   Có thể tra cứu lịch sử giao dịch của từng khách hàng qua API hoặc giao diện
 
 ---
 
@@ -486,25 +574,46 @@ Module Booking hỗ trợ quản lý toàn bộ quy trình đặt tour của kh�
 
 ### 💡 Tips hướng dẫn
 
-1. **Nhắc nhở sử dụng bảng phân quyền và Use Case**:
+1. **Sử dụng bảng phân quyền và Use Case**:
 
     - Xem lại bảng phân quyền (Buổi 2) để xác định module thuộc nhóm chức năng nào
-    - Xem lại Use Case đã viết (Buổi 2) để tổng hợp thành Spec
+    - Xem lại Use Case đã viết (Buổi 2) → **Tham chiếu Use Case**, chuyển đổi sang góc nhìn kỹ thuật (Input/Xử lý/Output)
     - Ưu tiên các chức năng "Bắt buộc" trước, "Mở rộng" sau
 
-2. **Khuyến khích chi tiết**: Spec càng chi tiết, thiết kế ERD và code càng dễ
+2. **Hiểu rõ sự khác biệt Use Case và Spec**:
 
-3. **Gợi ý tham khảo**: Có thể tham khảo các website tour du lịch thực tế để có ý tưởng
+    - **Use Case (Buổi 2)**: Mô tả luồng nghiệp vụ từng bước (Actor làm gì, hệ thống phản ứng ra sao)
+    - **Spec (Buổi 3)**: Tập trung vào Input/Xử lý/Output (dữ liệu, logic, kết quả)
+    - **Không lặp lại**: Nếu đã có Use Case chi tiết, chỉ cần tham chiếu và mô tả Input/Xử lý/Output
 
-4. **Lưu ý về tích hợp**: Nhắc nhở các nhóm nghĩ đến phần tích hợp với module khác (ví dụ: Module Booking cần tích hợp với Module Tour để lấy thông tin tour)
+3. **Viết Spec theo góc nhìn kỹ thuật**:
 
-5. **Phân loại tính năng**: Rõ ràng giữa tính năng "Bắt buộc" và "Mở rộng" để dễ ưu tiên khi code
+    - Tập trung vào **Input** (dữ liệu đầu vào, các trường, tham số)
+    - Tập trung vào **Xử lý** (validate, tính toán, logic nghiệp vụ, lưu database)
+    - Tập trung vào **Output** (dữ liệu trả về, thông báo, file, email)
+    - Có thể đề cập đến tên bảng database (ví dụ: `bookings`, `booking_history`)
+
+4. **Gợi ý tham khảo**: Có thể tham khảo các website tour du lịch thực tế để có ý tưởng về chức năng
+
+5. **Lưu ý về tích hợp**: Nhắc nhở các nhóm nghĩ đến phần tích hợp với module khác (ví dụ: Module Booking cần tích hợp với Module Tour để lấy thông tin tour, với Module Payment để xử lý thanh toán)
+
+6. **Phân loại tính năng**: Rõ ràng giữa tính năng "Bắt buộc" và "Mở rộng" để dễ ưu tiên khi code
 
 ### 🔍 Câu hỏi thường gặp
 
 -   **Q: "Spec và Use Case khác nhau như thế nào?"**
 
-    -   A: Use Case mô tả TỪNG chức năng với luồng chi tiết (Buổi 2), Spec TỔNG HỢP tất cả chức năng của module và bổ sung thêm người dùng, workflow, yêu cầu.
+    -   A:
+        -   **Use Case (Buổi 2)**: Mô tả TỪNG chức năng với luồng chi tiết từ góc nhìn người dùng (Actor làm gì, hệ thống phản ứng ra sao). Ví dụ: "Khách hàng nhập thông tin → Hệ thống kiểm tra → Hệ thống hiển thị kết quả"
+        -   **Spec (Buổi 3)**: TỔNG HỢP tất cả chức năng của module từ góc nhìn kỹ thuật (Input/Xử lý/Output). Ví dụ: "Input: Tour ID, số lượng người → Xử lý: Validate, kiểm tra chỗ, tính giá → Output: Booking record, email xác nhận"
+        -   **Lưu ý**: Nếu đã có Use Case chi tiết ở Buổi 2, trong Spec chỉ cần tham chiếu và mô tả Input/Xử lý/Output, không cần lặp lại toàn bộ luồng.
+
+-   **Q: "Có cần viết lại toàn bộ luồng từ Use Case vào Spec không?"**
+
+    -   A: **Không cần**. Nếu đã có Use Case chi tiết ở Buổi 2, trong Spec chỉ cần:
+        -   Thêm note: "Chi tiết luồng nghiệp vụ xem Use Case [Tên] (Buổi 2)"
+        -   Mô tả Input/Xử lý/Output (góc nhìn kỹ thuật)
+        -   Tập trung vào dữ liệu, logic xử lý, kết quả
 
 -   **Q: "Làm sao biết module của nhóm có những chức năng gì?"**
 
@@ -516,7 +625,11 @@ Module Booking hỗ trợ quản lý toàn bộ quy trình đặt tour của kh�
 
 -   **Q: "Spec có cần quá chi tiết về kỹ thuật không?"**
 
-    -   A: Không cần quá chi tiết về code, nhưng cần rõ về chức năng (Input, Output, Xử lý) và luồng nghiệp vụ.
+    -   A: Không cần quá chi tiết về code (ví dụ: không cần viết function, class), nhưng cần rõ về:
+        -   **Input**: Dữ liệu đầu vào (các trường, tham số)
+        -   **Xử lý**: Logic xử lý chính (validate, tính toán, lưu database)
+        -   **Output**: Kết quả đầu ra (dữ liệu, thông báo, file)
+        -   Có thể đề cập đến tên bảng database (ví dụ: `bookings`, `booking_history`) để hỗ trợ thiết kế ERD
 
 -   **Q: "Nhóm em có thể thay đổi Spec sau này không?"**
     -   A: Có thể, nhưng phải thông báo với giảng viên. Tốt nhất là suy nghĩ kỹ trước khi viết Spec, dựa trên bảng phân quyền và Use Case đã viết.
@@ -531,8 +644,9 @@ Giảng viên có thể dùng checklist này khi review Spec:
 -   [ ] Liệt kê đủ các tính năng (≥5 tính năng, ưu tiên "Bắt buộc")
 -   [ ] Mô tả rõ người dùng và quyền hạn (dựa trên bảng phân quyền)
 -   [ ] Phân loại rõ tính năng "Bắt buộc" và "Mở rộng"
--   [ ] Mỗi tính năng có mô tả Input, Output, Xử lý
--   [ ] Luồng nghiệp vụ logic và rõ ràng (dựa trên Use Case đã viết)
+-   [ ] Mỗi tính năng có mô tả Input, Output, Xử lý (góc nhìn kỹ thuật)
+-   [ ] Các tính năng đã có Use Case ở Buổi 2 có tham chiếu đến Use Case (không lặp lại toàn bộ luồng)
+-   [ ] Luồng nghiệp vụ logic và rõ ràng (tổng hợp từ Use Case đã viết)
 -   [ ] Spec phù hợp với bảng phân quyền (module thuộc đúng nhóm chức năng)
 
 **Format:**
@@ -543,4 +657,8 @@ Giảng viên có thể dùng checklist này khi review Spec:
 
 ---
 
-**📌 Lưu ý:** Tuần 2 sẽ học thiết kế ERD. Các nhóm nhớ nộp Spec đúng deadline để giảng viên kịp review!
+---
+
+**📌 Lưu ý:** Tuần 2 sẽ học thiết kế ERD (Buổi 4). Các nhóm nhớ nộp Spec đúng deadline để thầy kịp review nhé!
+
+Chúc các em học tốt! 🎉

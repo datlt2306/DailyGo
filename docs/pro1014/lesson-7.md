@@ -1,212 +1,350 @@
-# Buổi 7 – Lập kế hoạch triển khai
+# Buổi 6 – Giới thiệu Git & teamwork
 
-> **Bài trước:** [Buổi 6: Giới thiệu Git & teamwork](./lesson-6.md)  
-> **Bài tiếp theo:** [Buổi 8: Theo dõi tiến độ lần 1](./lesson-8.md)
+> **Bài trước:** [Buổi 5: Quản lý dự án với ClickUp & Lập kế hoạch triển khai](./lesson-5.md)  
+> **Bài tiếp theo:** [Buổi 7: Theo dõi tiến độ lần 1](./lesson-7.md)
+
+Xin chào các em! 🎉
+
+Hôm nay chúng ta sẽ học một công cụ cực kỳ quan trọng trong làm việc nhóm: **Git và GitHub**! Đây là công cụ mà các em sẽ dùng suốt đời khi đi làm, nên hãy học kỹ nhé! 😊
 
 ## 🎯 Mục tiêu học tập
 
-- Biết cách lập kế hoạch triển khai module chi tiết
-- Phân công công việc rõ ràng cho từng thành viên
-- Xác định được timeline và deadline cho từng phần
-- Hiểu cách ước lượng thời gian và độ phức tạp
+Sau buổi học hôm nay, các em sẽ:
+
+-   ✅ Hiểu khái niệm Git và GitHub
+-   ✅ Biết cách sử dụng các lệnh Git cơ bản: clone, add, commit, push, pull
+-   ✅ Hiểu cách làm việc nhóm với Git: branch, merge, conflict
+-   ✅ Tạo được repo GitHub và commit code đầu tiên
+-   ✅ Nắm được quy tắc đặt tên commit và issue
 
 ---
 
-## 📋 Nội dung chính trên lớp
+## 📋 Nội dung chính
 
-### 1. Giới thiệu lập kế hoạch triển khai (15 phút)
-- Tại sao cần lập kế hoạch?
-- Các thành phần của kế hoạch: Task, Timeline, Assignee, Priority
-- Ví dụ kế hoạch triển khai module đơn giản
+### 1. Git là gì? GitHub là gì? Tại sao lại cần?
 
-### 2. Phân tích module thành các task (30 phút)
+Các em có bao giờ gặp tình huống này không: "Ồ, code của mình bị mất rồi!" hoặc "Code của mình và bạn bị trùng nhau, không biết dùng cái nào!" 😅
 
-#### **Các bước phân tích:**
-1. **Liệt kê tất cả chức năng** từ Spec
-2. **Chia nhỏ mỗi chức năng** thành các task cụ thể
-3. **Ước lượng thời gian** cho mỗi task
-4. **Xác định phụ thuộc** giữa các task
+Đó chính là lý do tại sao chúng ta cần **Git**!
 
-#### **Ví dụ: Module Booking**
+#### **Git là gì?**
 
-**Chức năng: Đặt tour trực tuyến**
+**Git** là một hệ thống quản lý phiên bản (Version Control System) giúp:
 
-Chia thành các task:
-- Task 1: Tạo database schema (booking table) - 2 giờ
-- Task 2: Tạo form đặt tour (HTML/CSS) - 4 giờ
-- Task 3: Validate form (JavaScript) - 2 giờ
-- Task 4: Xử lý submit form (PHP) - 4 giờ
-- Task 5: Lưu booking vào database - 2 giờ
-- Task 6: Gửi email xác nhận - 3 giờ
-- Task 7: Test chức năng đặt tour - 2 giờ
+-   ✅ Theo dõi mọi thay đổi trong code
+-   ✅ Làm việc nhóm hiệu quả (không bị conflict)
+-   ✅ Quay lại phiên bản cũ nếu có lỗi (như "Undo" nhưng mạnh hơn nhiều!)
+-   ✅ Xem ai đã sửa gì, khi nào sửa
 
-**Tổng: ~19 giờ**
+**Ví dụ:** Nếu em code xong nhưng bị lỗi, có thể quay lại code cũ chỉ bằng 1 lệnh! 😊
 
-### 3. Phân công công việc (20 phút)
+#### **GitHub là gì?**
 
-#### **Nguyên tắc phân công:**
-- Dựa trên vai trò: Developer làm code, Tester làm test, Documenter làm tài liệu
-- Dựa trên kỹ năng: Frontend giỏi → làm HTML/CSS/JS, Backend giỏi → làm PHP
-- Cân bằng khối lượng: Không để 1 người làm quá nhiều
+**GitHub** là nền tảng lưu trữ code trên cloud, như "Google Drive" cho code:
 
-#### **Ví dụ phân công:**
+-   ✅ Lưu trữ code trên internet (không lo mất code)
+-   ✅ Làm việc nhóm dễ dàng (ai cũng có thể xem và sửa)
+-   ✅ Hỗ trợ code review, issue tracking
+-   ✅ **Miễn phí** cho public repo (đủ dùng cho dự án môn học)
 
-| Task | Assignee | Thời gian | Deadline |
-|------|----------|-----------|----------|
-| Tạo database schema | Developer A | 2 giờ | Tuần 3 |
-| Form đặt tour (HTML/CSS) | Developer B | 4 giờ | Tuần 3 |
-| Validate form (JS) | Developer B | 2 giờ | Tuần 3 |
-| Xử lý submit (PHP) | Developer A | 4 giờ | Tuần 3 |
-| Lưu vào database | Developer A | 2 giờ | Tuần 3 |
-| Gửi email xác nhận | Developer C | 3 giờ | Tuần 3 |
-| Test | Tester | 2 giờ | Tuần 3 |
+#### **Tại sao cần Git cho dự án?**
 
-### 4. Tạo timeline tổng thể (15 phút)
+-   ✅ Theo dõi tiến độ từng thành viên (ai commit gì, khi nào)
+-   ✅ Tránh mất code (code được lưu trên GitHub)
+-   ✅ Làm việc nhóm không bị conflict (mỗi người làm trên branch riêng)
+-   ✅ Thầy dễ dàng review code (xem code trực tiếp trên GitHub)
 
-#### **Timeline 3 tuần:**
+### 2. Cài đặt và cấu hình Git (10 phút)
 
-**Tuần 3 (Tuần này):**
-- Setup môi trường (XAMPP, database)
-- Tạo database schema
-- Xây dựng giao diện cơ bản
+#### **Cài đặt Git:**
 
-**Tuần 4:**
-- Hoàn thiện chức năng chính
-- Tích hợp module
-- Test và sửa lỗi
+-   Windows: Tải Git for Windows
+-   Mac: `brew install git` hoặc tải từ website
+-   Linux: `sudo apt install git`
 
-**Tuần 5–6:**
-- Hoàn thiện tính năng nâng cao
-- Chuẩn bị demo và báo cáo
+#### **Cấu hình Git:**
 
-### 5. Giảng viên duyệt kế hoạch từng nhóm (10 phút)
-- Giảng viên review kế hoạch
-- Góp ý về timeline và phân công
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+### 3. Các lệnh Git cơ bản (25 phút)
+
+#### **Lệnh cơ bản:**
+
+**1. Khởi tạo repo:**
+
+```bash
+git init                    # Tạo repo local
+git remote add origin [URL] # Kết nối với GitHub
+```
+
+**2. Thêm và commit:**
+
+```bash
+git add .                   # Thêm tất cả file thay đổi
+git add [file]              # Thêm file cụ thể
+git commit -m "message"     # Commit với message
+git push origin main        # Đẩy code lên GitHub
+```
+
+**3. Lấy code mới nhất:**
+
+```bash
+git pull origin main        # Lấy code từ GitHub về
+```
+
+**4. Xem trạng thái:**
+
+```bash
+git status                  # Xem file đã thay đổi
+git log                     # Xem lịch sử commit
+```
+
+### 4. Làm việc nhóm với Git (20 phút)
+
+#### **Branch (Nhánh):**
+
+-   Mỗi thành viên làm việc trên branch riêng
+-   Tránh conflict khi làm việc đồng thời
+
+**Các lệnh branch:**
+
+```bash
+git branch                  # Xem danh sách branch
+git branch [tên-branch]     # Tạo branch mới
+git checkout [tên-branch]   # Chuyển sang branch
+git merge [tên-branch]      # Gộp branch vào branch hiện tại
+```
+
+#### **Quy trình làm việc nhóm:**
+
+1. Clone repo về máy
+2. Tạo branch riêng: `git checkout -b feature/my-feature`
+3. Làm việc trên branch đó
+4. Commit và push lên branch riêng
+5. Tạo Pull Request để merge vào main
+
+### 5. Quy tắc đặt tên commit và issue (15 phút)
+
+#### **Format commit message (Conventional Commits):**
+
+```
+[type]: [mô tả ngắn gọn]
+
+[body - mô tả chi tiết nếu cần]
+```
+
+**Các type:**
+
+-   `feat`: Tính năng mới
+-   `fix`: Sửa lỗi
+-   `docs`: Cập nhật tài liệu
+-   `style`: Format code (không ảnh hưởng logic)
+-   `refactor`: Refactor code
+-   `test`: Thêm test
+-   `chore`: Công việc khác (setup, config)
+
+**Ví dụ:**
+
+```
+feat: thêm chức năng đặt tour
+
+- Thêm form đặt tour
+- Validate thông tin khách hàng
+- Lưu booking vào database
+```
+
+#### **Quy tắc đặt tên issue:**
+
+-   Format: `[Module] - [Mô tả ngắn]`
+-   Ví dụ: `[Booking] - Thêm chức năng hủy đơn đặt tour`
+-   Gán label: `bug`, `feature`, `enhancement`
 
 ---
 
 ## 🧠 Kiến thức trọng tâm / Giải thích
 
-### Ước lượng thời gian
+### Git Workflow cơ bản
 
-**Công thức đơn giản:**
 ```
-Thời gian ước lượng = Thời gian lý tưởng × 1.5 (buffer)
+Working Directory → Staging Area → Local Repository → Remote Repository (GitHub)
+     (làm việc)      (git add)      (git commit)        (git push)
 ```
 
-**Yếu tố ảnh hưởng:**
-- Độ phức tạp của task
-- Kinh nghiệm của người làm
-- Rủi ro (bug, thay đổi yêu cầu)
+### Các trạng thái file trong Git
 
-### Ưu tiên task
+1. **Untracked**: File mới, chưa được Git theo dõi
+2. **Modified**: File đã thay đổi, chưa add
+3. **Staged**: File đã add, sẵn sàng commit
+4. **Committed**: File đã commit
 
-1. **High Priority (Cao)**: Task quan trọng, ảnh hưởng đến chức năng chính
-2. **Medium Priority (Trung bình)**: Task quan trọng nhưng không cấp thiết
-3. **Low Priority (Thấp)**: Task có thể làm sau
+### Branch strategy cho dự án
 
-### Phụ thuộc giữa task
+#### **Mô hình đơn giản:**
 
-- **Task A phụ thuộc Task B**: Phải hoàn thành B trước mới làm được A
-- Ví dụ: "Xử lý submit form" phụ thuộc "Tạo database schema"
+-   `main`: Code chính, ổn định
+-   `develop`: Code đang phát triển
+-   `feature/[tên-feature]`: Branch cho từng tính năng
+
+#### **Ví dụ:**
+
+```
+main
+  └── develop
+       ├── feature/booking
+       ├── feature/tour-management
+       └── feature/user-profile
+```
+
+### Xử lý conflict (xung đột)
+
+Khi 2 người cùng sửa 1 file và merge lại:
+
+1. Git báo conflict
+2. Mở file, tìm dòng `<<<<<<<`, `=======`, `>>>>>>>`
+3. Chọn code cần giữ, xóa các marker
+4. Add và commit lại
 
 ---
 
-## 📘 Bài tập nhóm
+## 📘 Bài tập
 
-### Nộp bảng phân công & tiến độ
+### Tạo repo GitHub public + commit đầu tiên
 
-Tạo file **Excel hoặc Google Sheets** với nội dung:
+#### **Yêu cầu:**
 
-#### **Sheet 1: Danh sách Task**
+1. **Tạo repo trên GitHub:**
 
-| STT | Task | Mô tả | Assignee | Thời gian (giờ) | Deadline | Priority | Status | Ghi chú |
-|-----|------|-------|----------|-----------------|----------|----------|--------|---------|
-| 1 | Tạo database schema | Tạo bảng booking, payment | Nguyễn Văn A | 2 | Tuần 3 | High | Chưa bắt đầu | |
-| 2 | Form đặt tour | HTML/CSS form đặt tour | Trần Thị B | 4 | Tuần 3 | High | Chưa bắt đầu | |
-| ... | ... | ... | ... | ... | ... | ... | ... | ... |
+    - Tên repo: `[tên-nhóm]-tour-management` (ví dụ: `team1-tour-management`)
+    - Public repo
+    - Thêm README.md khi tạo
 
-**Cột Status:**
-- Chưa bắt đầu
-- Đang làm
-- Hoàn thành
-- Blocked (bị chặn)
+2. **Clone repo về máy:**
 
-#### **Sheet 2: Timeline tổng thể**
+    ```bash
+    git clone [URL-repo]
+    cd [tên-repo]
+    ```
 
-| Tuần | Công việc chính | Kết quả mong đợi | % Hoàn thành |
-|------|-----------------|------------------|--------------|
-| Tuần 3 | Setup, Database, Giao diện cơ bản | Database và giao diện chạy được | 30% |
-| Tuần 4 | Chức năng chính, Tích hợp | ≥80% chức năng hoạt động | 80% |
-| Tuần 5–6 | Hoàn thiện, Demo, Báo cáo | 100% chức năng | 100% |
+3. **Tạo cấu trúc thư mục:**
 
-#### **Sheet 3: Phân công chi tiết theo thành viên**
+    ```
+    [tên-repo]/
+    ├── README.md
+    ├── docs/
+    │   ├── Spec_Module_[Tên module].pdf
+    │   └── ERD_Module_[Tên module].pdf
+    ├── src/
+    │   ├── css/
+    │   ├── js/
+    │   └── images/
+    └── database/
+        └── schema.sql
+    ```
 
-| Thành viên | Vai trò | Task được giao | Tổng thời gian (giờ) |
-|------------|---------|----------------|---------------------|
-| Nguyễn Văn A | Developer (Backend) | Tạo database, Xử lý PHP | 15 |
-| Trần Thị B | Developer (Frontend) | HTML/CSS, JavaScript | 12 |
-| Lê Văn C | Developer (Full-stack) | Tích hợp, Email | 10 |
-| Phạm Thị D | Tester | Test tất cả chức năng | 8 |
+4. **Commit đầu tiên:**
 
-### Yêu cầu format
+    - Thêm README.md với thông tin nhóm, module
+    - Thêm folder docs với Spec và ERD
+    - Commit với message: `docs: thêm spec và ERD module`
 
-- ✅ File Excel hoặc Google Sheets
-- ✅ Có ít nhất 3 sheet như trên
-- ✅ Cập nhật Status hàng tuần
-- ✅ Tính tổng thời gian và % hoàn thành
+5. **Push lên GitHub:**
+    ```bash
+    git add .
+    git commit -m "docs: thêm spec và ERD module"
+    git push origin main
+    ```
+
+#### **Nội dung README.md:**
+
+```markdown
+# [Tên Module] - Tour Management System
+
+## Thông tin nhóm
+
+-   Tên nhóm: [Tên nhóm]
+-   Thành viên:
+    -   [Tên] - [Vai trò]
+    -   [Tên] - [Vai trò]
+
+## Module phụ trách
+
+[Tên module]
+
+## Mô tả
+
+[Mô tả ngắn gọn về module]
+
+## Tài liệu
+
+-   Spec: `docs/Spec_Module_[Tên module].pdf`
+-   ERD: `docs/ERD_Module_[Tên module].pdf`
+```
 
 ### Deadline
-Nộp trước buổi 8 (gửi qua email hoặc LMS)
+
+Nộp link repo GitHub trước buổi 7
 
 ---
 
 ## 📦 Kết quả mong đợi sau buổi học
 
-- ✅ Có kế hoạch triển khai chi tiết với timeline rõ ràng
-- ✅ Phân công công việc cụ thể cho từng thành viên
-- ✅ Ước lượng được thời gian cho từng task
-- ✅ Bắt đầu code từ buổi này
+-   ✅ Hiểu được cách sử dụng Git cơ bản
+-   ✅ Tạo được repo GitHub và commit code đầu tiên
+-   ✅ Nắm được quy tắc đặt tên commit và issue
+-   ✅ Biết cách làm việc nhóm với branch
+-   ✅ Sẵn sàng bắt đầu code ở tuần 3
 
 ---
 
 ## 💬 Gợi ý giảng viên
 
 ### ⏱ Thời lượng gợi ý
-- Giới thiệu: 15 phút
-- Phân tích task: 30 phút
-- Phân công: 20 phút
-- Timeline: 15 phút
-- Duyệt kế hoạch: 10 phút
-- Tổng: ~90 phút
+
+-   Giới thiệu Git & GitHub: 20 phút
+-   Cài đặt: 10 phút
+-   Lệnh cơ bản: 25 phút
+-   Làm việc nhóm: 20 phút
+-   Quy tắc đặt tên: 15 phút
+-   Tổng: ~90 phút
 
 ### 💡 Tips hướng dẫn
-1. **Khuyến khích chia nhỏ task**: Task càng nhỏ, càng dễ quản lý và ước lượng
-2. **Nhắc nhở về buffer**: Thời gian thực tế thường nhiều hơn ước lượng
-3. **Gợi ý công cụ**: Có thể dùng Trello, Asana, hoặc GitHub Projects để quản lý task
-4. **Lưu ý về phụ thuộc**: Nhắc nhở các nhóm xác định phụ thuộc để tránh block
+
+1. **Thực hành trực tiếp**: Cho sinh viên thực hành ngay trên máy
+2. **Giải thích rõ conflict**: Nhiều sinh viên gặp vấn đề với conflict
+3. **Khuyến khích commit thường xuyên**: Commit nhỏ, thường xuyên tốt hơn commit lớn
+4. **Gợi ý tool**: GitHub Desktop cho người mới bắt đầu (dễ dùng hơn command line)
 
 ### 🔍 Câu hỏi thường gặp
-- **Q: "Làm sao để ước lượng thời gian chính xác?"**
-  - A: Dựa vào kinh nghiệm và độ phức tạp. Nếu không chắc, ước lượng rộng hơn một chút.
 
-- **Q: "Nếu task bị trễ deadline, phải làm sao?"**
-  - A: Báo cáo với Leader và giảng viên ngay. Có thể điều chỉnh lại kế hoạch.
+-   **Q: "Em không cài được Git trên máy, phải làm sao?"**
 
-- **Q: "Một người có thể làm nhiều task cùng lúc không?"**
-  - A: Nên tập trung vào 1–2 task để đảm bảo chất lượng. Không nên làm quá nhiều task cùng lúc.
+    -   A: Có thể dùng GitHub Desktop hoặc hỏi giảng viên/TA để được hỗ trợ.
 
-### 📝 Checklist đánh giá kế hoạch
+-   **Q: "Nếu em commit nhầm, có thể sửa không?"**
 
-Giảng viên có thể dùng checklist này:
+    -   A: Có thể dùng `git commit --amend` hoặc `git reset` (cẩn thận với reset).
 
-- [ ] Có đủ các task cần thiết (≥10 task)
-- [ ] Mỗi task có mô tả rõ ràng
-- [ ] Phân công đều cho các thành viên
-- [ ] Timeline hợp lý và khả thi
-- [ ] Có ưu tiên và phụ thuộc giữa task
-- [ ] Tổng thời gian không quá nhiều so với thời gian có
+-   **Q: "Em và bạn cùng sửa 1 file, bị conflict, phải làm sao?"**
+    -   A: Git sẽ báo conflict, mở file và sửa thủ công, sau đó commit lại.
+
+### 📝 Checklist đánh giá repo
+
+Giảng viên có thể check repo của từng nhóm:
+
+-   [ ] Repo public, dễ truy cập
+-   [ ] Có README.md với thông tin đầy đủ
+-   [ ] Có folder docs với Spec và ERD
+-   [ ] Cấu trúc thư mục hợp lý
+-   [ ] Commit message đúng format
+-   [ ] Ít nhất 1 commit thành công
 
 ---
 
-**📌 Lưu ý:** Bắt đầu code từ buổi này. Các nhóm nhớ cập nhật Status task hàng tuần!
+---
+
+**📌 Lưu ý:** Tuần 3 sẽ bắt đầu code! Các nhóm nhớ hoàn thành setup Git và repo GitHub trước buổi 7 nhé!
+
+Chúc các em học tốt! 🎉
