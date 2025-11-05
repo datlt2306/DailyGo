@@ -1,5 +1,8 @@
 # Buổi 3 – Viết Project Specification (Spec)
 
+> **Bài trước:** [Buổi 2: Phân tích chức năng (Use Case)](./lesson-2.md)  
+> **Bài tiếp theo:** [Buổi 4: Thiết kế dữ liệu (ERD)](./lesson-4.md)
+
 ## 🎯 Mục tiêu học tập
 
 -   Hiểu cấu trúc và nội dung của tài liệu Project Specification

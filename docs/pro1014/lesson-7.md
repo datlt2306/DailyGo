@@ -1,5 +1,8 @@
 # Buổi 7 – Lập kế hoạch triển khai
 
+> **Bài trước:** [Buổi 6: Giới thiệu Git & teamwork](./lesson-6.md)  
+> **Bài tiếp theo:** [Buổi 8: Theo dõi tiến độ lần 1](./lesson-8.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Biết cách lập kế hoạch triển khai module chi tiết

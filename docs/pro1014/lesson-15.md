@@ -1,5 +1,8 @@
 # Buổi 15 – Tổng duyệt nhóm yếu
 
+> **Bài trước:** [Buổi 14: Tổng duyệt](./lesson-14.md)  
+> **Bài tiếp theo:** [Buổi 16: Báo cáo chính thức](./lesson-16.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Hỗ trợ các nhóm yếu hoàn thiện module

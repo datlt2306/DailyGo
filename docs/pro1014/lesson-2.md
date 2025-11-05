@@ -1,5 +1,8 @@
 # Buổi 2 – Phân tích chức năng (Use Case)
 
+> **Bài trước:** [Buổi 1: Giới thiệu đề tài & chia nhóm](./lesson-1.md)  
+> **Bài tiếp theo:** [Buổi 3: Viết Project Specification (Spec)](./lesson-3.md)
+
 ## 🎯 Mục tiêu học tập
 
 -   Hiểu khái niệm Use Case và cách viết Use Case text

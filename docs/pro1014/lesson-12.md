@@ -1,5 +1,8 @@
 # Buổi 12 – Chuẩn bị demo hoàn chỉnh
 
+> **Bài trước:** [Buổi 11: Theo dõi tiến độ lần 2](./lesson-11.md)  
+> **Bài tiếp theo:** [Buổi 13: Hướng dẫn thuyết trình](./lesson-13.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Hoàn thiện slide thuyết trình

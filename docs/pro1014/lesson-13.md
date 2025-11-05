@@ -1,5 +1,8 @@
 # Buổi 13 – Hướng dẫn thuyết trình
 
+> **Bài trước:** [Buổi 12: Chuẩn bị demo hoàn chỉnh](./lesson-12.md)  
+> **Bài tiếp theo:** [Buổi 14: Tổng duyệt](./lesson-14.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Chia vai trình bày cho từng thành viên

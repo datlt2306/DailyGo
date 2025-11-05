@@ -1,5 +1,8 @@
 # Buổi 1 – Giới thiệu đề tài & chia nhóm
 
+> **Bài trước:** [Giới thiệu môn học](./index.md)  
+> **Bài tiếp theo:** [Buổi 2: Phân tích chức năng (Use Case)](./lesson-2.md)
+
 ## 🎯 Mục tiêu học tập
 
 -   Hiểu rõ đề tài "Hệ thống Quản lý Tour Du lịch"

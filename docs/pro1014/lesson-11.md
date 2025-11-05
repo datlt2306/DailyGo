@@ -1,5 +1,8 @@
 # Buổi 11 – Theo dõi tiến độ lần 2
 
+> **Bài trước:** [Buổi 10: Phát triển nâng cao](./lesson-10.md)  
+> **Bài tiếp theo:** [Buổi 12: Chuẩn bị demo hoàn chỉnh](./lesson-12.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Đánh giá tiến độ tuần 4

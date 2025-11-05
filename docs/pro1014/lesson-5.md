@@ -1,5 +1,8 @@
 # Buổi 5 – Duyệt Spec & ERD
 
+> **Bài trước:** [Buổi 4: Thiết kế dữ liệu (ERD)](./lesson-4.md)  
+> **Bài tiếp theo:** [Buổi 6: Giới thiệu Git & teamwork](./lesson-6.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Nhận được feedback từ giảng viên về Spec và ERD

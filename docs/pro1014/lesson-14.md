@@ -1,5 +1,8 @@
 # Buổi 14 – Tổng duyệt
 
+> **Bài trước:** [Buổi 13: Hướng dẫn thuyết trình](./lesson-13.md)  
+> **Bài tiếp theo:** [Buổi 15: Tổng duyệt nhóm yếu](./lesson-15.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Demo module như bảo vệ thật (10 phút/nhóm)

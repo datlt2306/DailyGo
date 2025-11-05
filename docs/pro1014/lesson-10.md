@@ -1,5 +1,8 @@
 # Buổi 10 – Phát triển nâng cao
 
+> **Bài trước:** [Buổi 9: Review 1 (Giữa kỳ)](./lesson-9.md)  
+> **Bài tiếp theo:** [Buổi 11: Theo dõi tiến độ lần 2](./lesson-11.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Hoàn thiện các chức năng cơ bản còn thiếu

@@ -1,5 +1,8 @@
 # Buổi 4 – Thiết kế dữ liệu (ERD)
 
+> **Bài trước:** [Buổi 3: Viết Project Specification (Spec)](./lesson-3.md)  
+> **Bài tiếp theo:** [Buổi 5: Duyệt Spec & ERD](./lesson-5.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Hiểu khái niệm ERD (Entity Relationship Diagram) và vai trò trong thiết kế database

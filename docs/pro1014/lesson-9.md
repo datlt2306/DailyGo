@@ -1,5 +1,8 @@
 # Buổi 9 – Review 1 (Giữa kỳ)
 
+> **Bài trước:** [Buổi 8: Theo dõi tiến độ lần 1](./lesson-8.md)  
+> **Bài tiếp theo:** [Buổi 10: Phát triển nâng cao](./lesson-10.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Đánh giá tổng thể tiến độ và chất lượng code

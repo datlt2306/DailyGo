@@ -1,5 +1,8 @@
 # Buổi 8 – Theo dõi tiến độ lần 1
 
+> **Bài trước:** [Buổi 7: Lập kế hoạch triển khai](./lesson-7.md)  
+> **Bài tiếp theo:** [Buổi 9: Review 1 (Giữa kỳ)](./lesson-9.md)
+
 ## 🎯 Mục tiêu học tập
 
 - Đánh giá tiến độ thực tế so với kế hoạch

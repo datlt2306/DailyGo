@@ -1,12 +1,15 @@
 # Buổi 6 – Giới thiệu Git & teamwork
 
+> **Bài trước:** [Buổi 5: Duyệt Spec & ERD](./lesson-5.md)  
+> **Bài tiếp theo:** [Buổi 7: Lập kế hoạch triển khai](./lesson-7.md)
+
 ## 🎯 Mục tiêu học tập
 
-- Hiểu khái niệm Git và GitHub
-- Biết cách sử dụng các lệnh Git cơ bản: clone, add, commit, push, pull
-- Hiểu cách làm việc nhóm với Git: branch, merge, conflict
-- Tạo được repo GitHub và commit code đầu tiên
-- Nắm được quy tắc đặt tên commit và issue
+-   Hiểu khái niệm Git và GitHub
+-   Biết cách sử dụng các lệnh Git cơ bản: clone, add, commit, push, pull
+-   Hiểu cách làm việc nhóm với Git: branch, merge, conflict
+-   Tạo được repo GitHub và commit code đầu tiên
+-   Nắm được quy tắc đặt tên commit và issue
 
 ---
 
@@ -15,29 +18,34 @@
 ### 1. Giới thiệu Git & GitHub (20 phút)
 
 #### **Git là gì?**
-- Hệ thống quản lý phiên bản phân tán (Version Control System)
-- Giúp theo dõi thay đổi code, làm việc nhóm hiệu quả
-- Cho phép quay lại phiên bản cũ nếu có lỗi
+
+-   Hệ thống quản lý phiên bản phân tán (Version Control System)
+-   Giúp theo dõi thay đổi code, làm việc nhóm hiệu quả
+-   Cho phép quay lại phiên bản cũ nếu có lỗi
 
 #### **GitHub là gì?**
-- Nền tảng lưu trữ code trên cloud
-- Hỗ trợ collaboration, code review, issue tracking
-- Miễn phí cho public repo
+
+-   Nền tảng lưu trữ code trên cloud
+-   Hỗ trợ collaboration, code review, issue tracking
+-   Miễn phí cho public repo
 
 #### **Tại sao cần Git cho dự án?**
-- ✅ Theo dõi tiến độ từng thành viên
-- ✅ Tránh mất code
-- ✅ Làm việc nhóm không bị conflict
-- ✅ Giảng viên dễ dàng review code
+
+-   ✅ Theo dõi tiến độ từng thành viên
+-   ✅ Tránh mất code
+-   ✅ Làm việc nhóm không bị conflict
+-   ✅ Giảng viên dễ dàng review code
 
 ### 2. Cài đặt và cấu hình Git (10 phút)
 
 #### **Cài đặt Git:**
-- Windows: Tải Git for Windows
-- Mac: `brew install git` hoặc tải từ website
-- Linux: `sudo apt install git`
+
+-   Windows: Tải Git for Windows
+-   Mac: `brew install git` hoặc tải từ website
+-   Linux: `sudo apt install git`
 
 #### **Cấu hình Git:**
+
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
@@ -48,12 +56,14 @@ git config --global user.email "your.email@example.com"
 #### **Lệnh cơ bản:**
 
 **1. Khởi tạo repo:**
+
 ```bash
 git init                    # Tạo repo local
 git remote add origin [URL] # Kết nối với GitHub
 ```
 
 **2. Thêm và commit:**
+
 ```bash
 git add .                   # Thêm tất cả file thay đổi
 git add [file]              # Thêm file cụ thể
@@ -62,11 +72,13 @@ git push origin main        # Đẩy code lên GitHub
 ```
 
 **3. Lấy code mới nhất:**
+
 ```bash
 git pull origin main        # Lấy code từ GitHub về
 ```
 
 **4. Xem trạng thái:**
+
 ```bash
 git status                  # Xem file đã thay đổi
 git log                     # Xem lịch sử commit
@@ -75,10 +87,12 @@ git log                     # Xem lịch sử commit
 ### 4. Làm việc nhóm với Git (20 phút)
 
 #### **Branch (Nhánh):**
-- Mỗi thành viên làm việc trên branch riêng
-- Tránh conflict khi làm việc đồng thời
+
+-   Mỗi thành viên làm việc trên branch riêng
+-   Tránh conflict khi làm việc đồng thời
 
 **Các lệnh branch:**
+
 ```bash
 git branch                  # Xem danh sách branch
 git branch [tên-branch]     # Tạo branch mới
@@ -87,6 +101,7 @@ git merge [tên-branch]      # Gộp branch vào branch hiện tại
 ```
 
 #### **Quy trình làm việc nhóm:**
+
 1. Clone repo về máy
 2. Tạo branch riêng: `git checkout -b feature/my-feature`
 3. Làm việc trên branch đó
@@ -96,6 +111,7 @@ git merge [tên-branch]      # Gộp branch vào branch hiện tại
 ### 5. Quy tắc đặt tên commit và issue (15 phút)
 
 #### **Format commit message (Conventional Commits):**
+
 ```
 [type]: [mô tả ngắn gọn]
 
@@ -103,15 +119,17 @@ git merge [tên-branch]      # Gộp branch vào branch hiện tại
 ```
 
 **Các type:**
-- `feat`: Tính năng mới
-- `fix`: Sửa lỗi
-- `docs`: Cập nhật tài liệu
-- `style`: Format code (không ảnh hưởng logic)
-- `refactor`: Refactor code
-- `test`: Thêm test
-- `chore`: Công việc khác (setup, config)
+
+-   `feat`: Tính năng mới
+-   `fix`: Sửa lỗi
+-   `docs`: Cập nhật tài liệu
+-   `style`: Format code (không ảnh hưởng logic)
+-   `refactor`: Refactor code
+-   `test`: Thêm test
+-   `chore`: Công việc khác (setup, config)
 
 **Ví dụ:**
+
 ```
 feat: thêm chức năng đặt tour
 
@@ -121,9 +139,10 @@ feat: thêm chức năng đặt tour
 ```
 
 #### **Quy tắc đặt tên issue:**
-- Format: `[Module] - [Mô tả ngắn]`
-- Ví dụ: `[Booking] - Thêm chức năng hủy đơn đặt tour`
-- Gán label: `bug`, `feature`, `enhancement`
+
+-   Format: `[Module] - [Mô tả ngắn]`
+-   Ví dụ: `[Booking] - Thêm chức năng hủy đơn đặt tour`
+-   Gán label: `bug`, `feature`, `enhancement`
 
 ---
 
@@ -146,11 +165,13 @@ Working Directory → Staging Area → Local Repository → Remote Repository (G
 ### Branch strategy cho dự án
 
 #### **Mô hình đơn giản:**
-- `main`: Code chính, ổn định
-- `develop`: Code đang phát triển
-- `feature/[tên-feature]`: Branch cho từng tính năng
+
+-   `main`: Code chính, ổn định
+-   `develop`: Code đang phát triển
+-   `feature/[tên-feature]`: Branch cho từng tính năng
 
 #### **Ví dụ:**
+
 ```
 main
   └── develop
@@ -162,6 +183,7 @@ main
 ### Xử lý conflict (xung đột)
 
 Khi 2 người cùng sửa 1 file và merge lại:
+
 1. Git báo conflict
 2. Mở file, tìm dòng `<<<<<<<`, `=======`, `>>>>>>>`
 3. Chọn code cần giữ, xóa các marker
@@ -174,116 +196,132 @@ Khi 2 người cùng sửa 1 file và merge lại:
 ### Tạo repo GitHub public + commit đầu tiên
 
 #### **Yêu cầu:**
+
 1. **Tạo repo trên GitHub:**
-   - Tên repo: `[tên-nhóm]-tour-management` (ví dụ: `team1-tour-management`)
-   - Public repo
-   - Thêm README.md khi tạo
+
+    - Tên repo: `[tên-nhóm]-tour-management` (ví dụ: `team1-tour-management`)
+    - Public repo
+    - Thêm README.md khi tạo
 
 2. **Clone repo về máy:**
-   ```bash
-   git clone [URL-repo]
-   cd [tên-repo]
-   ```
+
+    ```bash
+    git clone [URL-repo]
+    cd [tên-repo]
+    ```
 
 3. **Tạo cấu trúc thư mục:**
-   ```
-   [tên-repo]/
-   ├── README.md
-   ├── docs/
-   │   ├── Spec_Module_[Tên module].pdf
-   │   └── ERD_Module_[Tên module].pdf
-   ├── src/
-   │   ├── css/
-   │   ├── js/
-   │   └── images/
-   └── database/
-       └── schema.sql
-   ```
+
+    ```
+    [tên-repo]/
+    ├── README.md
+    ├── docs/
+    │   ├── Spec_Module_[Tên module].pdf
+    │   └── ERD_Module_[Tên module].pdf
+    ├── src/
+    │   ├── css/
+    │   ├── js/
+    │   └── images/
+    └── database/
+        └── schema.sql
+    ```
 
 4. **Commit đầu tiên:**
-   - Thêm README.md với thông tin nhóm, module
-   - Thêm folder docs với Spec và ERD
-   - Commit với message: `docs: thêm spec và ERD module`
+
+    - Thêm README.md với thông tin nhóm, module
+    - Thêm folder docs với Spec và ERD
+    - Commit với message: `docs: thêm spec và ERD module`
 
 5. **Push lên GitHub:**
-   ```bash
-   git add .
-   git commit -m "docs: thêm spec và ERD module"
-   git push origin main
-   ```
+    ```bash
+    git add .
+    git commit -m "docs: thêm spec và ERD module"
+    git push origin main
+    ```
 
 #### **Nội dung README.md:**
+
 ```markdown
 # [Tên Module] - Tour Management System
 
 ## Thông tin nhóm
-- Tên nhóm: [Tên nhóm]
-- Thành viên:
-  - [Tên] - [Vai trò]
-  - [Tên] - [Vai trò]
+
+-   Tên nhóm: [Tên nhóm]
+-   Thành viên:
+    -   [Tên] - [Vai trò]
+    -   [Tên] - [Vai trò]
 
 ## Module phụ trách
+
 [Tên module]
 
 ## Mô tả
+
 [Mô tả ngắn gọn về module]
 
 ## Tài liệu
-- Spec: `docs/Spec_Module_[Tên module].pdf`
-- ERD: `docs/ERD_Module_[Tên module].pdf`
+
+-   Spec: `docs/Spec_Module_[Tên module].pdf`
+-   ERD: `docs/ERD_Module_[Tên module].pdf`
 ```
 
 ### Deadline
+
 Nộp link repo GitHub trước buổi 7
 
 ---
 
 ## 📦 Kết quả mong đợi sau buổi học
 
-- ✅ Hiểu được cách sử dụng Git cơ bản
-- ✅ Tạo được repo GitHub và commit code đầu tiên
-- ✅ Nắm được quy tắc đặt tên commit và issue
-- ✅ Biết cách làm việc nhóm với branch
-- ✅ Sẵn sàng bắt đầu code ở tuần 3
+-   ✅ Hiểu được cách sử dụng Git cơ bản
+-   ✅ Tạo được repo GitHub và commit code đầu tiên
+-   ✅ Nắm được quy tắc đặt tên commit và issue
+-   ✅ Biết cách làm việc nhóm với branch
+-   ✅ Sẵn sàng bắt đầu code ở tuần 3
 
 ---
 
 ## 💬 Gợi ý giảng viên
 
 ### ⏱ Thời lượng gợi ý
-- Giới thiệu Git & GitHub: 20 phút
-- Cài đặt: 10 phút
-- Lệnh cơ bản: 25 phút
-- Làm việc nhóm: 20 phút
-- Quy tắc đặt tên: 15 phút
-- Tổng: ~90 phút
+
+-   Giới thiệu Git & GitHub: 20 phút
+-   Cài đặt: 10 phút
+-   Lệnh cơ bản: 25 phút
+-   Làm việc nhóm: 20 phút
+-   Quy tắc đặt tên: 15 phút
+-   Tổng: ~90 phút
 
 ### 💡 Tips hướng dẫn
+
 1. **Thực hành trực tiếp**: Cho sinh viên thực hành ngay trên máy
 2. **Giải thích rõ conflict**: Nhiều sinh viên gặp vấn đề với conflict
 3. **Khuyến khích commit thường xuyên**: Commit nhỏ, thường xuyên tốt hơn commit lớn
 4. **Gợi ý tool**: GitHub Desktop cho người mới bắt đầu (dễ dùng hơn command line)
 
 ### 🔍 Câu hỏi thường gặp
-- **Q: "Em không cài được Git trên máy, phải làm sao?"**
-  - A: Có thể dùng GitHub Desktop hoặc hỏi giảng viên/TA để được hỗ trợ.
 
-- **Q: "Nếu em commit nhầm, có thể sửa không?"**
-  - A: Có thể dùng `git commit --amend` hoặc `git reset` (cẩn thận với reset).
+-   **Q: "Em không cài được Git trên máy, phải làm sao?"**
 
-- **Q: "Em và bạn cùng sửa 1 file, bị conflict, phải làm sao?"**
-  - A: Git sẽ báo conflict, mở file và sửa thủ công, sau đó commit lại.
+    -   A: Có thể dùng GitHub Desktop hoặc hỏi giảng viên/TA để được hỗ trợ.
+
+-   **Q: "Nếu em commit nhầm, có thể sửa không?"**
+
+    -   A: Có thể dùng `git commit --amend` hoặc `git reset` (cẩn thận với reset).
+
+-   **Q: "Em và bạn cùng sửa 1 file, bị conflict, phải làm sao?"**
+    -   A: Git sẽ báo conflict, mở file và sửa thủ công, sau đó commit lại.
 
 ### 📝 Checklist đánh giá repo
 
 Giảng viên có thể check repo của từng nhóm:
 
-- [ ] Repo public, dễ truy cập
-- [ ] Có README.md với thông tin đầy đủ
-- [ ] Có folder docs với Spec và ERD
-- [ ] Cấu trúc thư mục hợp lý
-- [ ] Commit message đúng format
-- [ ] Ít nhất 1 commit thành công
+-   [ ] Repo public, dễ truy cập
+-   [ ] Có README.md với thông tin đầy đủ
+-   [ ] Có folder docs với Spec và ERD
+-   [ ] Cấu trúc thư mục hợp lý
+-   [ ] Commit message đúng format
+-   [ ] Ít nhất 1 commit thành công
 
 ---
 

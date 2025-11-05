@@ -1,5 +1,8 @@
 # Buổi 16 – Báo cáo chính thức
 
+> **Bài trước:** [Buổi 15: Tổng duyệt nhóm yếu](./lesson-15.md)  
+> **Bài tiếp theo:** N/A (Đây là bài cuối cùng)
+
 ## 🎯 Mục tiêu học tập
 
 - Trình bày và bảo vệ module (10 phút/nhóm)
