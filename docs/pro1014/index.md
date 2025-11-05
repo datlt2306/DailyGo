@@ -54,7 +54,7 @@ Các em sẽ được chia thành các nhóm, mỗi nhóm phụ trách một mod
 | Buổi   | Nội dung                                 | File                         |
 | ------ | ---------------------------------------- | ---------------------------- |
 | Buổi 4 | Thiết kế dữ liệu (ERD)                   | [lesson-4.md](./lesson-4.md) |
-| Buổi 5 | Quản lý dự án với ClickUp & Lập kế hoạch | [lesson-5.md](./lesson-5.md) |
+| Buổi 5 | Thiết kế database nâng cao & chuẩn hóa    | [lesson-5.md](./lesson-5.md) |
 | Buổi 6 | Giới thiệu Git & teamwork                | [lesson-6.md](./lesson-6.md) |
 
 **Kết thúc tuần 2:** Có Spec + ERD hoàn chỉnh. Tạo repo GitHub và có kế hoạch triển khai chi tiết.
@@ -67,35 +67,12 @@ Các em sẽ được chia thành các nhóm, mỗi nhóm phụ trách một mod
 | ------ | ---------------------- | ---------------------------- |
 | Buổi 7 | Theo dõi tiến độ lần 1 | [lesson-7.md](./lesson-7.md) |
 | Buổi 8 | Review 1 (Giữa kỳ)     | [lesson-8.md](./lesson-8.md) |
-| Buổi 9 | Phát triển nâng cao    | [lesson-9.md](./lesson-9.md) |
 
 **Kết thúc tuần 3:** Có web chạy cơ bản, ít nhất 1 module hoạt động. Nhận được feedback từ thầy để cải thiện.
 
 ---
 
-### 🗓 TUẦN 4 – TRIỂN KHAI GIAI ĐOẠN 2 & CHUẨN BỊ DEMO
-
-| Buổi    | Nội dung                 | File                           |
-| ------- | ------------------------ | ------------------------------ |
-| Buổi 10 | Theo dõi tiến độ lần 2   | [lesson-10.md](./lesson-10.md) |
-| Buổi 11 | Chuẩn bị demo hoàn chỉnh | [lesson-11.md](./lesson-11.md) |
-| Buổi 12 | Hướng dẫn thuyết trình   | [lesson-12.md](./lesson-12.md) |
-
-**Kết thúc tuần 4:** Web chạy ≥80% chức năng, có video demo và slide nháp.
-
----
-
-### 🗓 TUẦN 5 – HOÀN THIỆN & BÁO CÁO
-
-| Buổi    | Nội dung            | File                           |
-| ------- | ------------------- | ------------------------------ |
-| Buổi 13 | Tổng duyệt & Hỗ trợ | [lesson-13.md](./lesson-13.md) |
-| Buổi 14 | Tổng duyệt lần cuối | [lesson-14.md](./lesson-14.md) |
-| Buổi 15 | Báo cáo chính thức  | [lesson-15.md](./lesson-15.md) |
-
-**Kết thúc tuần 5:** Hoàn thiện sản phẩm, báo cáo và phản biện sản phẩm.
-
----
+<!-- Các tuần sau sẽ được cập nhật sau khi bổ sung tài liệu tương ứng. -->
 
 ## 🧮 Cơ cấu chấm điểm theo giai đoạn
 
