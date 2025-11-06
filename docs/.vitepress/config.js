@@ -57,40 +57,110 @@ export default {
             // ],
             "/javascript/": [
                 {
-                    text: "9. Cấu trúc dữ liệu, toán tử và chuỗi",
+                    text: "Tổng quan",
+                    collapsed: false,
+                    items: [
+                        { text: "Giới thiệu khóa học", link: "/javascript/" },
+                        { text: "Dự án cuối khóa", link: "/javascript/final-project" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 1: Nền tảng JavaScript (Buổi 1-4)",
                     collapsed: false,
                     items: [
                         {
-                            text: "Destructoring Array",
-                            link: "/javascript/destructoring-array",
+                            text: "Buổi 1: Giới thiệu JavaScript & Biến, Kiểu dữ liệu",
+                            link: "/javascript/lesson-1",
                         },
                         {
-                            text: "Destructoring Object",
-                            link: "/javascript/destructoring-object",
+                            text: "Buổi 2: Toán tử & Chuỗi (String)",
+                            link: "/javascript/lesson-2",
                         },
                         {
-                            text: "Spread Operator",
-                            link: "/javascript/spread-operator",
+                            text: "Buổi 3: Cấu trúc điều khiển (if, switch, loop)",
+                            link: "/javascript/lesson-3",
                         },
                         {
-                            text: "Rest Pattern & Parameters",
-                            link: "/javascript/rest-pattern-parameters",
+                            text: "Buổi 4: Hàm, Scope & Hoisting",
+                            link: "/javascript/lesson-4",
+                        },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 2: DOM & Events (Buổi 5-7)",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "Buổi 5: DOM Manipulation",
+                            link: "/javascript/lesson-5",
                         },
                         {
-                            text: "Short Circuiting (|| và &&)",
-                            link: "/javascript/short-circuiting",
+                            text: "Buổi 6: Events & Event Handling",
+                            link: "/javascript/lesson-6",
                         },
                         {
-                            text: "Toán tử Nullish Coalescing (??)",
-                            link: "/javascript/the-nullish-coalescing-operator",
+                            text: "Buổi 7: Forms & Validation",
+                            link: "/javascript/lesson-7",
+                        },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 3: Array & Object (Buổi 8-9)",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "Buổi 8: Array & Array Methods",
+                            link: "/javascript/lesson-8",
                         },
                         {
-                            text: "Toán tử Logical Assignment (||=, ??=, &&=)",
-                            link: "/javascript/logical-assignment-operator",
+                            text: "Buổi 9: Object & JSON",
+                            link: "/javascript/lesson-9",
+                        },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 4: Storage & API (Buổi 10-12)",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "Buổi 10: LocalStorage & SessionStorage",
+                            link: "/javascript/lesson-10",
                         },
                         {
-                            text: "Thử thách",
-                            link: "/javascript/challenge-1",
+                            text: "Buổi 11: Fetch API & Promise",
+                            link: "/javascript/lesson-11",
+                        },
+                        {
+                            text: "Buổi 12: Async/Await & Error Handling",
+                            link: "/javascript/lesson-12",
+                        },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 5: ES6+ Nâng cao (Buổi 13-14)",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "Buổi 13: ES6+ Features (Arrow, Destructuring, Spread, Rest)",
+                            link: "/javascript/lesson-13",
+                        },
+                        {
+                            text: "Buổi 14: Modules & Code Organization",
+                            link: "/javascript/lesson-14",
+                        },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 6: Project & Best Practices (Buổi 15-16)",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "Buổi 15: Mini Project CRUD (Todo List / Quản lý Sinh viên)",
+                            link: "/javascript/lesson-15",
+                        },
+                        {
+                            text: "Buổi 16: Refactor, Debug & Best Practices + Presentation",
+                            link: "/javascript/lesson-16",
                         },
                     ],
                 },
