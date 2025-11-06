@@ -65,7 +65,7 @@ export default {
                     ],
                 },
                 {
-                    text: "Giai đoạn 1: Nền tảng JavaScript (Buổi 1-4)",
+                    text: "Giai đoạn 1: Nền tảng JavaScript",
                     collapsed: false,
                     items: [
                         {
@@ -87,7 +87,7 @@ export default {
                     ],
                 },
                 {
-                    text: "Giai đoạn 2: DOM & Events (Buổi 5-7)",
+                    text: "Giai đoạn 2: DOM & Events",
                     collapsed: false,
                     items: [
                         {
@@ -105,7 +105,7 @@ export default {
                     ],
                 },
                 {
-                    text: "Giai đoạn 3: Array & Object (Buổi 8-9)",
+                    text: "Giai đoạn 3: Array & Object",
                     collapsed: false,
                     items: [
                         {
@@ -119,7 +119,7 @@ export default {
                     ],
                 },
                 {
-                    text: "Giai đoạn 4: Storage & API (Buổi 10-12)",
+                    text: "Giai đoạn 4: Storage & API",
                     collapsed: false,
                     items: [
                         {
@@ -137,7 +137,7 @@ export default {
                     ],
                 },
                 {
-                    text: "Giai đoạn 5: ES6+ Nâng cao (Buổi 13-14)",
+                    text: "Giai đoạn 5: ES6+ Nâng cao",
                     collapsed: false,
                     items: [
                         {
@@ -151,7 +151,7 @@ export default {
                     ],
                 },
                 {
-                    text: "Giai đoạn 6: Project & Best Practices (Buổi 15-16)",
+                    text: "Giai đoạn 6: Project & Best Practices",
                     collapsed: false,
                     items: [
                         {
