@@ -452,7 +452,7 @@ export default {
                     ],
                 },
                 {
-                    text: "Phần 5: Best Practices)",
+                    text: "Phần 5: Best Practices",
                     collapsed: false,
                     items: [
                         {
@@ -501,7 +501,7 @@ export default {
                     ],
                 },
                 {
-                    text: "TUẦN 2 – THIẾT KẾ DỮ LIỆU & TEAMWORK",
+                    text: "TUẦN 2 – THIẾT KẾ DỮ LIỆU & QUẢN LÝ DỰ ÁN",
                     collapsed: false,
                     items: [
                         { text: "Buổi 4: Thiết kế dữ liệu (ERD)", link: "/pro1014/lesson-4" },
@@ -509,16 +509,13 @@ export default {
                             text: "Buổi 5: Thiết kế database nâng cao & chuẩn hóa",
                             link: "/pro1014/lesson-5",
                         },
-                        { text: "Buổi 6: Giới thiệu Git & teamwork", link: "/pro1014/lesson-6" },
+                        { text: "Buổi 6: Giới thiệu Git & teamwork", link: "/pro1014/lesson-7" },
                     ],
                 },
                 {
                     text: "TUẦN 3 – TRIỂN KHAI GIAI ĐOẠN 1",
                     collapsed: false,
-                    items: [
-                        { text: "Buổi 7: Lập kế hoạch triển khai", link: "/pro1014/lesson-7" },
-                        { text: "Buổi 8: Theo dõi tiến độ lần 1", link: "/pro1014/lesson-8" },
-                    ],
+                    items: [{ text: "Buổi 7: Theo dõi tiến độ lần 1", link: "/pro1014/lesson-8" }],
                 },
             ],
             "/blog/": [
