@@ -1,4 +1,4 @@
-# Buổi 5 – Quản lý dự án với ClickUp & Lập kế hoạch triển khai
+# Buổi 6 – Quản lý dự án với ClickUp & Lập kế hoạch triển khai
 
 > **Bài trước:** [Buổi 4: Thiết kế dữ liệu (ERD)](./lesson-4.md)  
 > **Bài tiếp theo:** [Buổi 6: Giới thiệu Git & teamwork](./lesson-6.md)

@@ -1,4 +1,4 @@
-# Buổi 6 – Giới thiệu Git & teamwork
+# Buổi 7 – Giới thiệu Git & teamwork
 
 > **Bài trước:** [Buổi 5: Quản lý dự án với ClickUp & Lập kế hoạch triển khai](./lesson-5.md)  
 > **Bài tiếp theo:** [Buổi 7: Theo dõi tiến độ lần 1](./lesson-7.md)

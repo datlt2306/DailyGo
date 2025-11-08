@@ -1,4 +1,4 @@
-# Buổi 7 – Theo dõi tiến độ lần 1
+# Buổi 8 – Theo dõi tiến độ lần 1
 
 > **Bài trước:** [Buổi 6: Giới thiệu Git & teamwork](./lesson-6.md)  
 > **Bài tiếp theo:** [Buổi 8: Review 1 (Giữa kỳ)](./lesson-8.md)
