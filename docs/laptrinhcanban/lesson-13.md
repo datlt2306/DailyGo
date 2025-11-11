@@ -2,46 +2,66 @@
 
 ## 🎯 Mục tiêu học tập
 
-Sau buổi học này, sinh viên sẽ:
+Sau buổi học này, thầy mong các em sẽ:
 
--   Làm việc với chuỗi ký tự (string)
--   Hiểu và sử dụng cấu trúc (struct)
--   Tạo kiểu dữ liệu mới từ struct
--   Áp dụng vào quản lý thông tin (sinh viên, sách...)
+-   Biết cách làm việc với chuỗi ký tự trong C
+-   Hiểu khái niệm và cách khai báo, sử dụng cấu trúc (struct)
+-   Tự định nghĩa kiểu dữ liệu mới bằng struct
+-   Ứng dụng struct trong quản lý thông tin, ví dụ như thông tin sinh viên
 
 ---
 
 ## 📘 Nội dung chính
 
-### 1. Chuỗi ký tự (string)
+### 1. Chuỗi ký tự trong C
+
+Trong C, chuỗi ký tự được coi là mảng các ký tự, kết thúc bởi ký tự '\0'.
+
+**Ví dụ khai báo và nhập, xuất chuỗi:**
 
 ```c
-#include <string>
+#include <stdio.h>
 
-string ten = "Nguyen Van A";
-cout << ten.length();  // Độ dài chuỗi
+int main() {
+    char ten[50];
+
+    printf("Nhap ho ten: ");
+    fgets(ten, sizeof(ten), stdin); // Doc chuoi co dau cach
+
+    printf("Ho ten vua nhap: %s", ten);
+
+    return 0;
+}
 ```
+
+**Lưu ý:**
+
+-   Dùng `fgets` để nhập chuỗi có chứa dấu cách.
+-   Chuỗi trong C là mảng ký tự, không phải kiểu dữ liệu riêng như trong C++.
 
 ### 2. Cấu trúc (struct)
 
-**Khai báo:**
+**Khai báo cấu trúc SinhVien:**
 
 ```c
 struct SinhVien {
-    string hoTen;
+    char hoTen[50];
     int tuoi;
     float diem;
 };
 ```
 
-**Sử dụng:**
+**Cách sử dụng struct:**
 
 ```c
-SinhVien sv;
-sv.hoTen = "Nguyen Van A";
+struct SinhVien sv;
+
+strcpy(sv.hoTen, "Nguyen Van A");
 sv.tuoi = 20;
 sv.diem = 8.5;
 ```
+
+> Lưu ý khi gán chuỗi cho thành phần kiểu mảng ký tự, các em dùng hàm `strcpy` trong thư viện `<string.h>`. Không gán trực tiếp như biến thông thường.
 
 ---
 
@@ -49,34 +69,46 @@ sv.diem = 8.5;
 
 ### Ví dụ: Quản lý sinh viên với struct
 
+Dưới đây là ví dụ thầy hướng dẫn các em nhập, xuất thông tin của một sinh viên.
+
 ```c
 #include <stdio.h>
-#include <string>
+#include <string.h>
 
 struct SinhVien {
-    string hoTen;
+    char hoTen[50];
     int tuoi;
     float diem;
 };
 
 int main() {
-    SinhVien sv;
+    struct SinhVien sv;
 
-    cout << "Nhap ho ten: ";
-    getline(cin, sv.hoTen);
-    cout << "Nhap tuoi: ";
-    cin >> sv.tuoi;
-    cout << "Nhap diem: ";
-    cin >> sv.diem;
+    printf("Nhap ho ten: ");
+    fgets(sv.hoTen, sizeof(sv.hoTen), stdin);
 
-    cout << "\nThong tin sinh vien:" << endl;
-    cout << "Ho ten: " << sv.hoTen << endl;
-    cout << "Tuoi: " << sv.tuoi << endl;
-    cout << "Diem: " << sv.diem << endl;
+    // Xoa ky tu xuong dong (\n) neu co
+    size_t len = strlen(sv.hoTen);
+    if (sv.hoTen[len - 1] == '\n') {
+        sv.hoTen[len - 1] = '\0';
+    }
+
+    printf("Nhap tuoi: ");
+    scanf("%d", &sv.tuoi);
+
+    printf("Nhap diem: ");
+    scanf("%f", &sv.diem);
+
+    printf("\nThong tin sinh vien:\n");
+    printf("Ho ten: %s\n", sv.hoTen);
+    printf("Tuoi: %d\n", sv.tuoi);
+    printf("Diem: %.2f\n", sv.diem);
 
     return 0;
 }
 ```
+
+Thầy gợi ý các em có thể khai báo, nhập xuất thông tin cho nhiều sinh viên bằng cách sử dụng mảng struct.
 
 ---
 

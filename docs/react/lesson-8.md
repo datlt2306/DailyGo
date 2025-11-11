@@ -1,28 +1,34 @@
 # Buổi 8: useRef & Custom Hooks
 
-## 🎯 Mục tiêu học tập (SMART)
+## 🎯 Mục tiêu buổi học
 
-1. ✅ Sử dụng **useRef** để truy cập DOM elements
-2. ✅ Tạo **Custom Hooks** tái sử dụng logic
-3. ✅ Implement các hooks thường dùng
-4. ✅ Tổ chức hooks theo best practices
+Chào các em, hôm nay thầy sẽ hướng dẫn các em về **useRef** và cách tự tạo Custom Hooks trong React để tái sử dụng logic, giúp code gọn gàng, chuyên nghiệp hơn.
 
-## 📋 Nội dung chính
+1. ✅ Hiểu và sử dụng **useRef** để truy cập DOM element trong React.
+2. ✅ Biết cách tạo và dùng **Custom Hooks** để tái sử dụng logic.
+3. ✅ Làm quen với một số custom hooks phổ biến.
+4. ✅ Tổ chức và đặt tên hooks theo best practices.
 
-### 1. useRef Hook
+## 📋 Nội dung bài học
 
-**useRef** trả về mutable ref object, không gây re-render khi thay đổi.
+### 1. useRef Hook là gì?
 
-#### Truy cập DOM elements
+Các em nhớ nhé, **useRef** trong React giúp chúng ta lưu lại một giá trị nào đó mà khi thay đổi, component sẽ không bị re-render lại. Chủ yếu dùng để lấy tham chiếu tới DOM element hoặc lưu các giá trị tạm thời.
+
+#### a. Truy cập DOM với useRef
+
+Giả sử thầy cần focus vào một ô input khi bấm nút, thầy sẽ làm như sau:
 
 ```javascript
 function TextInput() {
     const inputRef = useRef(null);
-    
+
     const handleFocus = () => {
-        inputRef.current?.focus();
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
     };
-    
+
     return (
         <>
             <input ref={inputRef} />
@@ -32,52 +38,77 @@ function TextInput() {
 }
 ```
 
-#### Lưu trữ mutable values
+Ở đây, **inputRef** sẽ giữ tham chiếu DOM của thẻ input. Khi bấm nút, ta gọi `.focus()` lên inputRef.current.
+
+#### b. useRef để lưu giá trị (không liên quan DOM)
+
+Nhiều khi mình cần lưu lại một giá trị để dùng giữa các lần render (ví dụ id interval của Timer chẳng hạn):
 
 ```javascript
 function Timer() {
     const [count, setCount] = useState(0);
     const intervalRef = useRef(null);
-    
+
     const start = () => {
         intervalRef.current = setInterval(() => {
-            setCount(prev => prev + 1);
+            setCount((prev) => prev + 1);
         }, 1000);
     };
-    
+
     const stop = () => {
         clearInterval(intervalRef.current);
     };
-    
-    return <div>{count}</div>;
+
+    return (
+        <div>
+            {count}
+            <button onClick={start}>Start</button>
+            <button onClick={stop}>Stop</button>
+        </div>
+    );
 }
 ```
 
-### 2. Custom Hooks
+intervalRef ở đây giúp thầy lưu id interval để lúc cần có thể clear nó.
 
-Tạo hooks tái sử dụng logic giữa components.
+---
 
-#### useToggle
+### 2. Custom Hooks - "Siêu năng lực" của sinh viên React
+
+Hooks là công cụ rất mạnh trong React giúp tái sử dụng logic giữa các component khác nhau. Khi các em thấy phần code logic nào lặp đi lặp lại, hãy nghĩ đến việc đóng gói nó thành một custom hook.
+
+#### a. useToggle - Hook chuyển trạng thái true/false
+
+Ví dụ khi làm modal hiển thị/ẩn, mình viết như sau:
 
 ```javascript
 function useToggle(initialValue = false) {
     const [value, setValue] = useState(initialValue);
-    
-    const toggle = () => setValue(prev => !prev);
+
+    // Đảo ngược giá trị (true/false)
+    const toggle = () => setValue((prev) => !prev);
     const setTrue = () => setValue(true);
     const setFalse = () => setValue(false);
-    
+
     return [value, toggle, setTrue, setFalse];
 }
 
-// Sử dụng
+// Cách dùng
 function Modal() {
     const [isOpen, toggle, open, close] = useToggle(false);
-    return <div>{isOpen && <div>Modal</div>}</div>;
+    return (
+        <div>
+            <button onClick={open}>Open Modal</button>
+            <button onClick={close}>Close Modal</button>
+            {isOpen && <div>Modal content...</div>}
+        </div>
+    );
 }
 ```
 
-#### useLocalStorage
+#### b. useLocalStorage - Hook lưu state vào localStorage
+
+Hook này giúp đồng bộ state với localStorage, tắt trình duyệt mở lại vẫn còn:
 
 ```javascript
 function useLocalStorage(key, initialValue) {
@@ -85,31 +116,40 @@ function useLocalStorage(key, initialValue) {
         const stored = localStorage.getItem(key);
         return stored ? JSON.parse(stored) : initialValue;
     });
-    
+
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(value));
     }, [key, value]);
-    
+
     return [value, setValue];
 }
 
-// Sử dụng
+// Ví dụ dùng:
 function Settings() {
-    const [theme, setTheme] = useLocalStorage('theme', 'light');
-    return <div>{theme}</div>;
+    const [theme, setTheme] = useLocalStorage("theme", "light");
+    return (
+        <div>
+            <p>Current theme: {theme}</p>
+            <button onClick={() => setTheme("dark")}>Dark</button>
+            <button onClick={() => setTheme("light")}>Light</button>
+        </div>
+    );
 }
 ```
 
-#### useFetch
+#### c. useFetch - Hook fetch dữ liệu
+
+Tương tự, khi các em cần fetch API nhiều chỗ, hãy viết một custom hook cho gọn:
 
 ```javascript
 function useFetch(url) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    
+
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             try {
                 const response = await fetch(url);
                 const data = await response.json();
@@ -121,34 +161,38 @@ function useFetch(url) {
                 setLoading(false);
             }
         };
-        
+
         fetchData();
     }, [url]);
-    
+
     return { data, loading, error };
 }
 
-// Sử dụng
+// Áp dụng:
 function UserList() {
-    const { data, loading, error } = useFetch('/api/users');
+    const { data, loading, error } = useFetch("/api/users");
     if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error</div>;
-    return <div>{/* render data */}</div>;
+    if (error) return <div>Error: {error}</div>;
+    return <ul>{data && data.map((user) => <li key={user.id}>{user.name}</li>)}</ul>;
 }
 ```
 
-## 🧪 Bài tập Lab
+---
 
-### Lab 1: Focus Input
-Tạo component tự động focus vào input khi mount.
+## 🧪 Bài tập Lab cho các em
 
-### Lab 2: useCounter Hook
-Tạo custom hook `useCounter` với increment, decrement, reset.
+### Lab 1: Tự động focus input khi mount
 
-### Lab 3: useDebounce Hook
-Tạo hook debounce value sau N milliseconds.
+Viết một component input, khi vừa render lên màn hình sẽ tự động focus vào ô input đó.
+
+### Lab 2: Custom hook `useCounter`
+
+Tạo hook `useCounter` với giá trị ban đầu, có các hàm tăng, giảm, reset counter.
+
+### Lab 3: Custom hook debounce (`useDebounce`)
+
+Viết một custom hook giúp debounce một giá trị đầu vào theo thời gian chờ N ms.
 
 ---
 
-**Xem**: [React Docs - useRef](https://react.dev/reference/react/useRef)
-
+**Tài liệu tham khảo:** [React Docs - useRef](https://react.dev/reference/react/useRef)

@@ -1,24 +1,30 @@
-# Buổi 4: Conditional Rendering
+# Buổi 4: Conditional Rendering (Hiển Thị Có Điều Kiện)
 
-## 🎯 Mục tiêu học tập (SMART)
+## 🎯 Mục tiêu buổi học
 
-Sau buổi học này, học viên sẽ có thể:
+Các em học xong buổi này sẽ:
 
-1. ✅ Sử dụng **&& operator** để render có điều kiện (10 phút)
-2. ✅ Sử dụng **ternary operator** cho 2 trường hợp (15 phút)
-3. ✅ Phối hợp **if/else** với JSX (10 phút)
-4. ✅ Render **null** để ẩn elements (5 phút)
-5. ✅ Áp dụng **conditional rendering** trong project thực tế (15 phút)
+1. Hiểu và dùng **&& operator** để render điều kiện (10 phút)
+2. Biết xài **ternary operator** (toán tử 3 ngôi) cho 2 trường hợp (15 phút)
+3. Dùng được **if/else** trong JSX khi logic nhiều điều kiện (10 phút)
+4. Render **null** (ẩn element) khi không cần hiển thị (5 phút)
+5. Ứng dụng **conditional rendering** vào project thực tế (15 phút)
 
-## 📋 Nội dung chính
+---
+
+## 📋 Nội dung bài học
 
 ### 1. Conditional Rendering là gì?
 
-**Conditional Rendering** là kỹ thuật hiển thị UI khác nhau dựa trên điều kiện. Giống như if/else trong JavaScript, nhưng áp dụng cho JSX.
+Các em hình dung như này: trong React, "conditional rendering" nghĩa là mình sẽ cho UI hiển thị khác nhau dựa vào điều kiện của dữ liệu, tương tự như mình dùng if/else trong JavaScript, mà khi qua JSX thì có nhiều cách viết tiện lợi hơn.
 
-### 2. && Operator (Logical AND)
+---
 
-Dùng khi **chỉ hiển thị khi điều kiện đúng**.
+### 2. && Operator (Toán tử AND)
+
+Khi các em muốn **chỉ hiển thị thứ gì đó khi điều kiện đúng**, hãy dùng &&.
+
+Ví dụ:
 
 ```javascript
 function Notification({ message }) {
@@ -29,24 +35,24 @@ function Notification({ message }) {
     );
 }
 
-// Sử dụng
+// Dùng thử
 <Notification message="Đăng nhập thành công!" />
-// Hiển thị: "Đăng nhập thành công!"
+// Trên màn hình hiện: "Đăng nhập thành công!"
 
 <Notification message="" />
-// Không hiển thị gì
+// Không có gì hiện
 ```
 
-**⚠️ Lưu ý quan trọng**:
+**⚠️ Cẩn thận với giá trị falsy:**
 
 ```javascript
-// ❌ SAI - Số 0 sẽ bị ẩn
+// ❌ Sai - 0 sẽ bị ẩn luôn
 const count = 0;
 {
     count && <p>Số: {count}</p>;
 }
 
-// ✅ ĐÚNG - Dùng comparison
+// ✅ Đúng - so sánh cụ thể hơn
 {
     count > 0 && <p>Số: {count}</p>;
 }
@@ -55,7 +61,7 @@ const count = 0;
 }
 ```
 
-#### Ví dụ thực tế
+#### Thầy lấy ví dụ thực tế
 
 ```javascript
 function UserProfile({ user }) {
@@ -69,9 +75,11 @@ function UserProfile({ user }) {
 }
 ```
 
-### 3. Ternary Operator ( ?: )
+---
 
-Dùng khi **có 2 trường hợp** rõ ràng.
+### 3. Ternary Operator (Toán tử ? : )
+
+Khi có **2 trường hợp rõ ràng**, các em dùng toán tử ba ngôi cho gọn nha:
 
 ```javascript
 function Greeting({ user }) {
@@ -79,13 +87,15 @@ function Greeting({ user }) {
 }
 ```
 
+Ví dụ nữa:
+
 ```javascript
 function Button({ isSubmitting }) {
     return <button disabled={isSubmitting}>{isSubmitting ? "Đang xử lý..." : "Gửi"}</button>;
 }
 ```
 
-#### Nested Ternary (nhiều điều kiện)
+#### Lồng nhiều điều kiện (nested ternary)
 
 ```javascript
 function StatusBadge({ status }) {
@@ -109,11 +119,13 @@ function StatusBadge({ status }) {
 }
 ```
 
-**Gợi ý**: Nếu quá 3 điều kiện → nên dùng if/else hoặc object mapping
+**Note nhỏ:** Nếu quá 3 điều kiện → nên tách ra if/else cho dễ đọc, hoặc mapping qua object.
+
+---
 
 ### 4. if/else với JSX
 
-Dùng khi **logic phức tạp, nhiều điều kiện**.
+Khi logic phức tạp, có nhiều trường hợp, các em nên dùng if/else truyền thống. Thầy ví dụ:
 
 ```javascript
 function Content({ user }) {
@@ -133,6 +145,8 @@ function Content({ user }) {
 }
 ```
 
+Hay như kiểm tra đăng nhập:
+
 ```javascript
 function LoginButton({ isLoggedIn, user }) {
     if (!isLoggedIn) {
@@ -148,9 +162,11 @@ function LoginButton({ isLoggedIn, user }) {
 }
 ```
 
+---
+
 ### 5. Render null
 
-Dùng **null** để không render gì cả.
+Hàm trả về **null** nghĩa là React sẽ không render gì cả.
 
 ```javascript
 function Modal({ isOpen, children }) {
@@ -162,13 +178,15 @@ function Modal({ isOpen, children }) {
 }
 ```
 
-### 6. Early Return Pattern
+---
 
-Pattern tốt nhất cho conditional rendering phức tạp.
+### 6. Early Return (Trả kết quả sớm)
+
+Cách này giúp code "sạch" và dễ đọc hơn khi có nhiều điều kiện cần check.
 
 ```javascript
 function ProductCard({ product }) {
-    // Guard clauses
+    // Nếu k có product hoặc đã xóa thì không render
     if (!product) return null;
     if (product.isDeleted) return null;
 
@@ -181,7 +199,9 @@ function ProductCard({ product }) {
 }
 ```
 
-## 💡 Ví dụ minh họa
+---
+
+## 💡 Thầy làm mẫu - Demo code
 
 ### Demo 1: Loading States
 
@@ -211,6 +231,8 @@ function DataDisplay({ data, isLoading, error }) {
 export default DataDisplay;
 ```
 
+---
+
 ### Demo 2: User Badge
 
 ```javascript
@@ -220,12 +242,12 @@ function UserCard({ user }) {
             <img src={user.avatar} alt={user.name} />
             <h3>{user.name}</h3>
 
-            {/* Conditional badges */}
+            {/* Badge điều kiện */}
             {user.isAdmin && <span className="badge admin">Admin</span>}
             {user.isPremium && <span className="badge premium">Premium</span>}
             {user.isVerified && <span className="badge verified">✓ Verified</span>}
 
-            {/* Status */}
+            {/* Trạng thái online/offline */}
             <span className={`status ${user.status}`}>
                 {user.status === "online" && "🟢 Trực tuyến"}
                 {user.status === "offline" && "⚫ Ngoại tuyến"}
@@ -237,6 +259,8 @@ function UserCard({ user }) {
 
 export default UserCard;
 ```
+
+---
 
 ### Demo 3: Product Card với Stock
 
@@ -251,12 +275,12 @@ function ProductCard({ product }) {
             <h3>{product.name}</h3>
             <p className="price">{product.price} đ</p>
 
-            {/* Stock status */}
+            {/* Trạng thái hàng */}
             {isOutOfStock && <p className="stock out">Hết hàng</p>}
             {isLowStock && <p className="stock low">Sắp hết: {product.stock} sản phẩm</p>}
             {product.stock >= 10 && <p className="stock available">Còn hàng</p>}
 
-            {/* Button */}
+            {/* Nút */}
             <button disabled={isOutOfStock}>{isOutOfStock ? "Hết hàng" : "Thêm vào giỏ"}</button>
         </div>
     );
@@ -265,21 +289,23 @@ function ProductCard({ product }) {
 export default ProductCard;
 ```
 
-## 🧪 Bài tập Thực hành: Todo List với Filter
+---
 
-### Mục tiêu
+## 🧪 Bài tập Thực hành: Todo List với Lọc (Filter)
 
-Nâng cấp Todo List từ buổi 3 với conditional rendering để filter todos theo trạng thái.
+### Mục tiêu bài lab
 
-> **Lưu ý**: Các em sẽ tiếp tục phát triển TodoList component từ buổi 3, thêm tính năng filter và conditional rendering.
+Các em sẽ nâng cấp Todo List từ buổi 3, cho phép lọc công việc theo trạng thái và luyện tập render có điều kiện.
 
-### Lab 1: Todo List với Filter (50 phút)
+> **Lưu ý:** Em nào chưa làm xong TodoList buổi 3 thì mượn tạm code mẫu. Đừng quên bổ sung tính năng lọc (filter) cùng conditional rendering.
 
-**Yêu cầu**: Nâng cấp TodoList từ buổi 3, thêm filter để hiển thị todos theo trạng thái (All, Active, Completed) và sử dụng conditional rendering.
+---
 
-#### Bước 1: Thêm State cho Filter và Filter Logic
+### Lab 1: Lọc Todo List (50 phút)
 
-Cập nhật TodoList component từ buổi 3, thêm state cho filter:
+**Yêu cầu:** Thêm tính năng lọc để hiển thị công việc theo trạng thái (Tất cả / Chưa xong / Đã xong) – áp dụng có điều kiện.
+
+#### Bước 1: State và filter logic
 
 ```javascript [src/components/TodoList.jsx]
 import { useState } from "react";
@@ -287,7 +313,7 @@ import TodoItem from "./TodoItem";
 import Button from "./Button";
 
 function TodoList() {
-    // State từ buổi 3
+    // State gốc
     const [todos, setTodos] = useState([
         { id: 1, text: "Học React", completed: false },
         { id: 2, text: "Làm bài tập", completed: true },
@@ -295,10 +321,10 @@ function TodoList() {
     ]);
     const [newTodo, setNewTodo] = useState("");
 
-    // ✅ Thêm state mới cho filter
+    // State cho filter
     const [filter, setFilter] = useState("all"); // 'all', 'active', 'completed'
 
-    // Handlers từ buổi 3
+    // Các hàm logic
     const handleToggle = (id) => {
         setTodos(
             todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
@@ -318,7 +344,7 @@ function TodoList() {
         }
     };
 
-    // ✅ Filter logic với conditional rendering
+    // Lọc công việc dựa theo filter
     const filteredTodos = todos.filter((todo) => {
         if (filter === "active") return !todo.completed;
         if (filter === "completed") return todo.completed;
@@ -329,7 +355,7 @@ function TodoList() {
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
             <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
 
-            {/* Form thêm todo từ buổi 3 */}
+            {/* Form thêm công việc */}
             <form onSubmit={handleAdd} className="mb-4">
                 <div className="flex gap-2">
                     <input
@@ -345,7 +371,7 @@ function TodoList() {
                 </div>
             </form>
 
-            {/* ✅ Filter buttons với conditional rendering */}
+            {/* Các nút lọc - render kiểu điều kiện */}
             <div className="flex gap-2 mb-4">
                 <Button
                     variant={filter === "all" ? "primary" : "secondary"}
@@ -370,7 +396,7 @@ function TodoList() {
                 </Button>
             </div>
 
-            {/* ✅ Conditional rendering: Hiển thị thông báo nếu không có todo */}
+            {/* Hiển thị thông báo khi không có todo nào */}
             <ul className="space-y-2">
                 {filteredTodos.length === 0 ? (
                     <li className="text-center text-gray-500 py-4">
@@ -396,24 +422,24 @@ function TodoList() {
 export default TodoList;
 ```
 
-> **Giải thích**:
->
-> -   Sử dụng `filteredTodos` để lọc todos theo filter state
-> -   Sử dụng ternary operator (`? :`) để hiển thị thông báo khi không có todo
-> -   Sử dụng `&&` operator để hiển thị thông báo khác nhau theo filter
-> -   Button component từ buổi 3 được dùng với conditional `variant` dựa trên filter state
+**Giải thích cho mấy em:**
 
-#### Bước 2: Hiển thị thống kê với Conditional Rendering
+-   `filteredTodos` giúp mình có danh sách todo lọc theo trạng thái.
+-   Dòng `{filteredTodos.length === 0 ? ... : ...}` là ternary, thay đổi giao diện tùy tình huống.
+-   Dòng `{filter === "active" && ...}` là dùng && để xuất thông báo theo filter.
+-   Button dùng `variant` điều kiện: khi filter nào được chọn thì nút đó hiện nổi bật.
 
-Thêm phần thống kê sử dụng conditional rendering:
+---
+
+#### Bước 2: Hiển thị thống kê (stats) bằng conditional rendering
 
 ```javascript [src/components/TodoList.jsx]
 // ... existing code ...
 
 function TodoList() {
-    // ... existing state và handlers ...
+    // ... existing state & handler ...
 
-    // ✅ Tính toán thống kê
+    // Tính tổng, đang làm, đã xong
     const stats = {
         total: todos.length,
         active: todos.filter((t) => !t.completed).length,
@@ -424,7 +450,7 @@ function TodoList() {
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
             <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
 
-            {/* ✅ Hiển thị thống kê với conditional rendering */}
+            {/* Chỉ hiển thị khi có ít nhất 1 công việc */}
             {stats.total > 0 && (
                 <div className="flex justify-between text-sm text-gray-600 mb-4 p-2 bg-gray-50 rounded">
                     <span>Tổng: {stats.total}</span>
@@ -433,37 +459,25 @@ function TodoList() {
                 </div>
             )}
 
-            {/* Form thêm todo */}
-            <form onSubmit={handleAdd} className="mb-4">
-                {/* ... existing form code ... */}
-            </form>
-
-            {/* Filter buttons */}
-            <div className="flex gap-2 mb-4">{/* ... existing filter buttons ... */}</div>
-
-            {/* Todo list */}
-            <ul className="space-y-2">{/* ... existing todo list code ... */}</ul>
+            {/* Form thêm todo, filter buttons, và todo list ở dưới ... */}
         </div>
     );
 }
 ```
 
-> **Giải thích**:
->
-> -   Sử dụng `&&` operator để chỉ hiển thị thống kê khi có ít nhất 1 todo
-> -   Tính toán thống kê từ todos array (không phải filteredTodos)
+**Các em lưu ý:** Phần thống kê lấy từ tổng todos, không phải danh sách đã lọc.
 
 ---
 
-#### Bước 3: Nâng cấp với nhiều điều kiện (Tùy chọn)
+#### Bước 3: Điều kiện đặc biệt (Bonus)
 
-Các em có thể thêm điều kiện hiển thị thông báo khi tất cả todos đã hoàn thành:
+Nếu tất cả công việc đều đã hoàn thành, thử hiện chúc mừng các em:
 
 ```javascript [src/components/TodoList.jsx]
 // ... trong return ...
 
 {
-    /* ✅ Conditional rendering: Hiển thị thông báo khi tất cả đã hoàn thành */
+    /* Hiện banner chúc mừng nếu đã hoàn thành hết */
 }
 {
     stats.total > 0 && stats.completed === stats.total && (
@@ -473,16 +487,16 @@ Các em có thể thêm điều kiện hiển thị thông báo khi tất cả t
     );
 }
 
-{
-    /* Filter buttons và todo list */
-}
+// ... filter buttons & todo list phía dưới
 ```
 
-### Lab 2: Thêm Priority cho Todo với Conditional Rendering (25 phút)
+---
 
-**Yêu cầu**: Thêm priority (ưu tiên) cho todo và hiển thị badge màu khác nhau theo priority
+### Lab 2: Thêm Priority cho Todo và hiển thị badge màu sắc (25 phút)
 
-#### Bước 1: Cập nhật TodoItem để hiển thị priority
+**Yêu cầu:** Thêm thuộc tính ưu tiên (priority) cho mỗi công việc, badge màu theo priority.
+
+#### Bước 1: Sửa TodoItem.jsx để hiện badge
 
 ```javascript [src/components/TodoItem.jsx]
 function TodoItem({ todo, onToggle, onDelete }) {
@@ -501,7 +515,7 @@ function TodoItem({ todo, onToggle, onDelete }) {
             >
                 {todo.text}
             </span>
-            {/* ✅ Conditional rendering: Hiển thị priority badge với màu khác nhau */}
+            {/* Badge theo priority */}
             {todo.priority === "high" && (
                 <span className="mr-2 px-2 py-1 text-xs bg-red-100 text-red-700 rounded">Cao</span>
             )}
@@ -529,30 +543,31 @@ function TodoItem({ todo, onToggle, onDelete }) {
 export default TodoItem;
 ```
 
-#### Bước 2: Cập nhật TodoList để thêm priority khi tạo todo mới
+---
+
+#### Bước 2: Thêm chọn ưu tiên khi tạo mới todo
 
 ```javascript [src/components/TodoList.jsx]
 // ... existing code ...
 
 function TodoList() {
-    // ... existing state ...
+    // ... các state khác ...
     const [newTodo, setNewTodo] = useState("");
-    const [priority, setPriority] = useState("medium"); // ✅ Thêm state cho priority
+    const [priority, setPriority] = useState("medium"); // State cho priority
 
     const handleAdd = (e) => {
         e.preventDefault();
         if (newTodo.trim()) {
             const newId = Math.max(...todos.map((t) => t.id), 0) + 1;
-            setTodos([...todos, { id: newId, text: newTodo, completed: false, priority }]); // ✅ Thêm priority
+            setTodos([...todos, { id: newId, text: newTodo, completed: false, priority }]);
             setNewTodo("");
-            setPriority("medium"); // Reset về medium
+            setPriority("medium");
         }
     };
 
     return (
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
-            {/* ... existing code ... */}
-
+            {/* ... other content ... */}
             <form onSubmit={handleAdd} className="mb-4">
                 <div className="flex gap-2 mb-2">
                     <input
@@ -566,7 +581,7 @@ function TodoList() {
                         Thêm
                     </Button>
                 </div>
-                {/* ✅ Select priority với conditional styling */}
+                {/* Dropdown chọn ưu tiên */}
                 <select
                     value={priority}
                     onChange={(e) => setPriority(e.target.value)}
@@ -578,24 +593,26 @@ function TodoList() {
                 </select>
             </form>
 
-            {/* ... rest of component ... */}
+            {/* ... rest ... */}
         </div>
     );
 }
 ```
 
-### Lab 3: Hiển thị thông báo với Conditional Rendering (25 phút)
+---
 
-**Yêu cầu**: Thêm thông báo success/error khi thao tác với todo
+### Lab 3: Hiển thị Thông báo Success/Error khi thao tác với Todo (25 phút)
 
-#### Cập nhật TodoList để hiển thị thông báo
+**Yêu cầu:** Khi thêm/xóa công việc, hiện thông báo dạng thành công hoặc lỗi.
+
+#### Sửa TodoList để có thông báo
 
 ```javascript [src/components/TodoList.jsx]
 // ... existing code ...
 
 function TodoList() {
-    // ... existing state ...
-    const [message, setMessage] = useState(null); // ✅ State cho thông báo
+    // ... state khác ...
+    const [message, setMessage] = useState(null); // Thông báo
 
     const handleAdd = (e) => {
         e.preventDefault();
@@ -604,11 +621,11 @@ function TodoList() {
             setTodos([...todos, { id: newId, text: newTodo, completed: false, priority }]);
             setNewTodo("");
             setPriority("medium");
-            // ✅ Hiển thị thông báo success
+            // Thông báo success
             setMessage({ type: "success", text: "Đã thêm công việc thành công!" });
-            setTimeout(() => setMessage(null), 3000); // Tự động ẩn sau 3 giây
+            setTimeout(() => setMessage(null), 3000);
         } else {
-            // ✅ Hiển thị thông báo error
+            // Thông báo lỗi
             setMessage({ type: "error", text: "Vui lòng nhập nội dung công việc!" });
             setTimeout(() => setMessage(null), 3000);
         }
@@ -616,7 +633,6 @@ function TodoList() {
 
     const handleDelete = (id) => {
         setTodos(todos.filter((todo) => todo.id !== id));
-        // ✅ Hiển thị thông báo success
         setMessage({ type: "success", text: "Đã xóa công việc!" });
         setTimeout(() => setMessage(null), 3000);
     };
@@ -625,7 +641,7 @@ function TodoList() {
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
             <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
 
-            {/* ✅ Conditional rendering: Hiển thị thông báo nếu có */}
+            {/* Thông báo nếu có */}
             {message && (
                 <div
                     className={`mb-4 p-3 rounded-lg ${
@@ -638,48 +654,48 @@ function TodoList() {
                 </div>
             )}
 
-            {/* ... rest of component ... */}
+            {/* ... rest ... */}
         </div>
     );
 }
 ```
 
-> **Lưu ý**:
->
-> -   Sử dụng `&&` operator để hiển thị thông báo khi có message
-> -   Sử dụng ternary operator để thay đổi màu sắc theo type (success/error)
-> -   Sử dụng `setTimeout` để tự động ẩn thông báo sau 3 giây
+**Lưu ý cho mấy em:**
+
+-   Dùng {message && ...} để chỉ hiện khi có tin nhắn,
+-   Ternary `{message.type === "success" ? ... : ...}` thay đổi màu/thông điệp,
+-   `setTimeout` ẩn thông báo sau 3 giây tự động.
 
 ---
 
-## 📝 Tổng kết
+## 📝 Tổng kết Buổi 4
 
-### Điểm chính
+### Tóm tắt
 
--   ✅ `&&` cho điều kiện đơn giản (hiển thị khi điều kiện đúng)
--   ✅ `?:` cho 2 trường hợp (ternary operator)
--   ✅ `if/else` cho logic phức tạp
--   ✅ `return null` để không render
--   ✅ Early return giảm nesting
--   ✅ Áp dụng conditional rendering trong TodoList từ buổi 3
+-   **&&**: cho điều kiện đơn giản, chỉ render khi đúng.
+-   **?:** cho hai trường hợp (ternary).
+-   **if/else**: logic nhiều trường hợp phức tạp.
+-   **return null**: không render gì hết.
+-   **Early return**: giúp code gọn hơn, tránh lồng nhau.
+-   Ứng dụng được conditional rendering ngay với TodoList luôn nha.
 
-### Checklist buổi 4
+### Checklist cho các em tự đánh giá
 
--   [ ] Hiểu conditional rendering và khi nào sử dụng
--   [ ] Sử dụng được && operator (lưu ý với số 0)
--   [ ] Sử dụng được ternary operator (`? :`)
--   [ ] Áp dụng if/else với JSX
--   [ ] Nâng cấp được TodoList từ buổi 3 với filter và conditional rendering
--   [ ] Hoàn thành Lab 1 (Filter), Lab 2 (Priority), Lab 3 (Thông báo)
+-   [ ] Hiểu thế nào là conditional rendering, ứng dụng vào đâu
+-   [ ] Sử dụng được && operator, nhớ cảnh báo về số 0 nhé
+-   [ ] Sử dụng ternary (`? :`)
+-   [ ] Xử lý được if/else trong JSX
+-   [ ] Nâng TodoList từ buổi 3: filter và conditional rendering
+-   [ ] Làm xong Lab 1 (Filter), Lab 2 (Priority), Lab 3 (Thông báo)
 
-### Chuẩn bị buổi 5
+### Chuẩn bị cho Buổi 5
 
-📚 Đọc trước:
+Các em đọc trước:
 
--   Render lists trong React
--   Key prop
--   map, filter, reduce với React
+-   Cách render danh sách trong React
+-   Ý nghĩa của prop key
+-   Ôn lại map/filter/reduce
 
 ---
 
-**Xem thêm**: [React Documentation - Conditional Rendering](https://react.dev/learn/conditional-rendering)
+**Đọc thêm:** [React Documentation - Conditional Rendering](https://react.dev/learn/conditional-rendering)

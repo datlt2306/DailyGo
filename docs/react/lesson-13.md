@@ -1,181 +1,186 @@
 # Buổi 13: CRUD Operations - Tour Management
 
-## 🎯 Mục tiêu học tập (SMART)
+## 🎯 Mục tiêu của buổi học
 
-Sau buổi học này, học viên sẽ có thể:
+Các bạn sinh viên thân mến, sau buổi học hôm nay, thầy kỳ vọng các bạn sẽ:
 
-1. ✅ Implement đầy đủ CRUD cho Tours (15 phút)
-2. ✅ Tối ưu state management (10 phút)
-3. ✅ Loading và Error states (10 phút)
-4. ✅ Validation form (10 phút)
-5. ✅ Xây dựng Tour Management hoàn chỉnh (15 phút)
+1. ✅ Cài đặt đầy đủ CRUD cho Tours (thực hành ~15 phút)
+2. ✅ Hiểu cách tối ưu quản lý state trong React (10 phút)
+3. ✅ Biết cách hiển thị trạng thái loading và error (10 phút)
+4. ✅ Áp dụng kiểm tra dữ liệu (validation) cho form (10 phút)
+5. ✅ Hoàn thiện toàn bộ chức năng quản lý Tour (15 phút)
 
 ## 📋 Nội dung chính
 
 ### 1. CRUD Flow
+
+Các bạn cùng quan sát ví dụ dưới đây, thầy sẽ minh họa 4 thao tác CRUD cơ bản:
 
 ```javascript
 function TourManager() {
     const [tours, setTours] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    
-    // CREATE
+
+    // Tạo mới tour (CREATE)
     const createTour = async (tourData) => {
         setLoading(true);
         try {
-            const response = await axios.post('/api/tours', tourData);
-            setTours([...tours, response.data]);
+            const res = await axios.post("/api/tours", tourData);
+            setTours([...tours, res.data]);
         } catch (err) {
             setError(err.message);
         } finally {
             setLoading(false);
         }
     };
-    
-    // READ - Fetch all
+    // Lấy danh sách tour (READ)
     const fetchTours = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('/api/tours');
-            setTours(response.data);
+            const res = await axios.get("/api/tours");
+            setTours(res.data);
         } catch (err) {
             setError(err.message);
         } finally {
             setLoading(false);
         }
     };
-    
-    // UPDATE
+    // Sửa thông tin tour (UPDATE)
     const updateTour = async (id, updatedData) => {
         setLoading(true);
         try {
-            const response = await axios.put(`/api/tours/${id}`, updatedData);
-            setTours(tours.map(t => t.id === id ? response.data : t));
+            const res = await axios.put(`/api/tours/${id}`, updatedData);
+            setTours(tours.map((t) => (t.id === id ? res.data : t)));
         } catch (err) {
             setError(err.message);
         } finally {
             setLoading(false);
         }
     };
-    
-    // DELETE
+    // Xóa tour (DELETE)
     const deleteTour = async (id) => {
-        if (!confirm('Xác nhận xóa?')) return;
-        
+        if (!confirm("Bạn chắc chắn muốn xóa Tour này chứ?")) return;
         setLoading(true);
         try {
             await axios.delete(`/api/tours/${id}`);
-            setTours(tours.filter(t => t.id !== id));
+            setTours(tours.filter((t) => t.id !== id));
         } catch (err) {
             setError(err.message);
         } finally {
             setLoading(false);
         }
     };
-    
-    return <div>{/* Render */}</div>;
+
+    return <div>{/* Render nội dung quản lý tour ở đây */}</div>;
 }
 ```
 
-### 2. Loading & Error States
+### 2. Xử lý Loading & Error
+
+Thầy khuyến khích các bạn luôn phải để ý trạng thái loading và error khi làm việc với API nhé:
 
 ```javascript
 function TourList() {
     // ...
-    
+
     if (loading) {
         return (
             <div className="loading">
                 <div className="spinner"></div>
-                <p>Đang tải...</p>
+                <p>Đang tải dữ liệu, các bạn chờ chút nhé...</p>
             </div>
         );
     }
-    
+
     if (error) {
         return (
             <div className="error">
-                <p>❌ {error}</p>
+                <p>❌ Có lỗi: {error}</p>
                 <button onClick={fetchTours}>Thử lại</button>
             </div>
         );
     }
-    
+
     if (tours.length === 0) {
-        return <div className="empty">Không có tour nào</div>;
+        return <div className="empty">Chưa có tour nào!</div>;
     }
-    
-    return <div>{/* Tours */}</div>;
+
+    return <div>{/* Hiển thị các tour tại đây */}</div>;
 }
 ```
 
 ### 3. Optimistic Updates
 
+Có một mẹo hay là cập nhật UI trước khi gọi API xong để tạo cảm giác mượt mà. Đoạn này thầy ví dụ với "like":
+
 ```javascript
 const handleLike = async (id) => {
-    // Optimistic: Update UI ngay
+    // Giả sử UI phản ứng ngay lập tức
     const oldTours = tours;
-    setTours(tours.map(t => 
-        t.id === id ? { ...t, liked: !t.liked } : t
-    ));
-    
+    setTours(tours.map((t) => (t.id === id ? { ...t, liked: !t.liked } : t)));
+
     try {
         await axios.post(`/api/tours/${id}/like`);
     } catch (err) {
-        // Rollback nếu thất bại
+        // Nếu lỗi, quay lại trạng thái cũ và báo cho user
         setTours(oldTours);
-        alert('Có lỗi xảy ra');
+        alert("Có lỗi khi like tour này");
     }
 };
 ```
 
-## 🧪 Bài tập Thực hành: Tour Management - CRUD
+## 🧪 Bài tập Thực hành: CRUD Quản Lý Tour
 
 ### Mục tiêu
-Xây dựng đầy đủ chức năng CRUD cho Tour Management.
 
-### Lab 1: CRUD Tours hoàn chỉnh (50 phút)
+Sau khi thực hành, các bạn sẽ tự xây dựng đầy đủ chức năng CRUD cho phần quản lý Tour.
 
-#### Bước 1: Tạo Tour Form Component (20 phút)
+### Lab 1: CRUD Tour hoàn chỉnh (Thời gian gợi ý: 50 phút)
+
+#### Bước 1: Tạo component Tour Form (20 phút)
+
+Thầy demo code cơ bản cho form thêm/sửa Tour bên dưới. Các bạn hãy đọc và thử triển khai nhé!
 
 ```javascript [src/components/TourForm.jsx]
-import { useState } from 'react';
-import { toursAPI } from '../services/api';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { toursAPI } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 function TourForm({ initialData, onSubmit }) {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState(initialData || {
-        name: '',
-        destination: '',
-        duration: '',
-        price: '',
-        description: '',
-        available: ''
-    });
+    const [formData, setFormData] = useState(
+        initialData || {
+            name: "",
+            destination: "",
+            duration: "",
+            price: "",
+            description: "",
+            available: "",
+        }
+    );
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         });
     };
 
+    // Kiểm tra dữ liệu đầu vào
     const validate = () => {
         const newErrors = {};
-        if (!formData.name.trim()) newErrors.name = 'Tên tour không được để trống';
-        if (!formData.destination.trim()) newErrors.destination = 'Điểm đến không được để trống';
-        if (!formData.price || formData.price <= 0) newErrors.price = 'Giá phải lớn hơn 0';
+        if (!formData.name.trim()) newErrors.name = "Tên tour không được để trống";
+        if (!formData.destination.trim()) newErrors.destination = "Điểm đến không được để trống";
+        if (!formData.price || formData.price <= 0) newErrors.price = "Giá phải lớn hơn 0";
         return newErrors;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validate();
-        
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
             return;
@@ -186,28 +191,31 @@ function TourForm({ initialData, onSubmit }) {
             const data = {
                 ...formData,
                 price: Number(formData.price),
-                available: Number(formData.available)
+                available: Number(formData.available),
             };
-            
+
             if (initialData) {
                 await toursAPI.update(initialData.id, data);
             } else {
                 await toursAPI.create(data);
             }
-            
-            navigate('/tours');
+
+            navigate("/tours");
         } catch (err) {
-            console.error('Error:', err);
-            alert('Có lỗi xảy ra');
+            console.error("Error:", err);
+            alert("Gặp lỗi khi lưu, các bạn vui lòng thử lại!");
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+        <form
+            onSubmit={handleSubmit}
+            className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg"
+        >
             <h2 className="text-2xl font-bold mb-4">
-                {initialData ? 'Sửa Tour' : 'Thêm Tour mới'}
+                {initialData ? "Sửa thông tin Tour" : "Thêm Tour mới"}
             </h2>
 
             <div className="space-y-4">
@@ -222,7 +230,6 @@ function TourForm({ initialData, onSubmit }) {
                     />
                     {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                 </div>
-
                 <div>
                     <label className="block text-gray-700 mb-2">Điểm đến</label>
                     <input
@@ -232,9 +239,10 @@ function TourForm({ initialData, onSubmit }) {
                         onChange={handleChange}
                         className="w-full px-4 py-2 border rounded-lg"
                     />
-                    {errors.destination && <p className="text-red-500 text-sm mt-1">{errors.destination}</p>}
+                    {errors.destination && (
+                        <p className="text-red-500 text-sm mt-1">{errors.destination}</p>
+                    )}
                 </div>
-
                 <div>
                     <label className="block text-gray-700 mb-2">Thời gian</label>
                     <input
@@ -246,7 +254,6 @@ function TourForm({ initialData, onSubmit }) {
                         className="w-full px-4 py-2 border rounded-lg"
                     />
                 </div>
-
                 <div>
                     <label className="block text-gray-700 mb-2">Giá (VNĐ)</label>
                     <input
@@ -258,7 +265,6 @@ function TourForm({ initialData, onSubmit }) {
                     />
                     {errors.price && <p className="text-red-500 text-sm mt-1">{errors.price}</p>}
                 </div>
-
                 <div>
                     <label className="block text-gray-700 mb-2">Mô tả</label>
                     <textarea
@@ -269,7 +275,6 @@ function TourForm({ initialData, onSubmit }) {
                         className="w-full px-4 py-2 border rounded-lg"
                     />
                 </div>
-
                 <div>
                     <label className="block text-gray-700 mb-2">Số chỗ còn lại</label>
                     <input
@@ -288,11 +293,11 @@ function TourForm({ initialData, onSubmit }) {
                     disabled={loading}
                     className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
                 >
-                    {loading ? 'Đang xử lý...' : 'Lưu'}
+                    {loading ? "Đang xử lý..." : "Lưu"}
                 </button>
                 <button
                     type="button"
-                    onClick={() => navigate('/tours')}
+                    onClick={() => navigate("/tours")}
                     className="px-6 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
                 >
                     Hủy
@@ -305,22 +310,24 @@ function TourForm({ initialData, onSubmit }) {
 export default TourForm;
 ```
 
-#### Bước 2: Thêm chức năng Delete (15 phút)
+#### Bước 2: Thêm chức năng Xóa tour (15 phút)
+
+Các bạn chú ý, nên xác nhận lại với user trước khi xóa nhé:
 
 ```javascript [src/components/TourCard.jsx]
-import { Link, useNavigate } from 'react-router-dom';
-import { toursAPI } from '../services/api';
+import { Link, useNavigate } from "react-router-dom";
+import { toursAPI } from "../services/api";
 
 function TourCard({ tour, onDelete }) {
     const navigate = useNavigate();
 
     const handleDelete = async () => {
-        if (window.confirm('Bạn có chắc muốn xóa tour này?')) {
+        if (window.confirm("Bạn có chắc chắn muốn xóa tour này?")) {
             try {
                 await toursAPI.delete(tour.id);
                 onDelete?.(tour.id);
             } catch (err) {
-                alert('Có lỗi xảy ra khi xóa');
+                alert("Xóa không thành công, thử lại sau nhé!");
             }
         }
     };
@@ -347,13 +354,15 @@ function TourCard({ tour, onDelete }) {
 }
 ```
 
-#### Bước 3: Tạo trang Tour Create/Edit (15 phút)
+#### Bước 3: Xây dựng trang Thêm/Sửa Tour (15 phút)
+
+Thầy lấy ví dụ code tạo trang form tổng hợp dưới đây. Các bạn có thể chỉnh sửa thêm nhé!
 
 ```javascript [src/pages/TourFormPage.jsx]
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { toursAPI } from '../services/api';
-import TourForm from '../components/TourForm';
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { toursAPI } from "../services/api";
+import TourForm from "../components/TourForm";
 
 function TourFormPage() {
     const { id } = useParams();
@@ -364,10 +373,10 @@ function TourFormPage() {
         if (id) {
             const fetchTour = async () => {
                 try {
-                    const response = await toursAPI.getById(id);
-                    setTour(response.data);
+                    const res = await toursAPI.getById(id);
+                    setTour(res.data);
                 } catch (err) {
-                    console.error('Error:', err);
+                    console.error("Error:", err);
                 } finally {
                     setLoading(false);
                 }
@@ -376,7 +385,7 @@ function TourFormPage() {
         }
     }, [id]);
 
-    if (loading) return <div>Đang tải...</div>;
+    if (loading) return <div>Đang tải dữ liệu...</div>;
 
     return <TourForm initialData={tour} />;
 }
@@ -384,7 +393,8 @@ function TourFormPage() {
 export default TourFormPage;
 ```
 
-**Routes**:
+**Định tuyến:**
+
 ```javascript
 <Route path="/tours/new" element={<TourFormPage />} />
 <Route path="/tours/:id/edit" element={<TourFormPage />} />
@@ -392,26 +402,25 @@ export default TourFormPage;
 
 ---
 
-## 📝 Tổng kết
+## 📝 Tổng kết buổi học
 
-### Điểm chính
+### Những điểm chính các bạn cần nhớ
 
-- ✅ CRUD đầy đủ: Create, Read, Update, Delete
-- ✅ Form validation quan trọng
-- ✅ Loading và Error states
-- ✅ Confirm dialog trước khi xóa
-- ✅ Navigation sau khi thao tác
+-   ✅ Đã thực hành đủ 4 thao tác CRUD: Tạo, Đọc, Sửa, Xóa Tour
+-   ✅ Biết kiểm tra dữ liệu đầu vào (form validation)
+-   ✅ Hiện thị trạng thái loading và lỗi khi call API
+-   ✅ Luôn xác nhận khi thực hiện thao tác xóa để tránh nhầm lẫn
+-   ✅ Hiểu cách điều hướng (navigation) giữa các trang khi thao tác
 
 ### Checklist buổi 13
 
-- [ ] Tạo Tour Form component
-- [ ] Implement Create tour
-- [ ] Implement Update tour
-- [ ] Implement Delete tour
-- [ ] Form validation
-- [ ] Loading và error handling
+-   [ ] Tạo component form Tour
+-   [ ] Implement chức năng tạo tour
+-   [ ] Implement chức năng sửa tour
+-   [ ] Implement chức năng xóa tour
+-   [ ] Thêm kiểm tra dữ liệu (validate)
+-   [ ] Xử lý trạng thái loading và lỗi
 
 ---
 
-**Xem**: [JSON-Server](https://github.com/typicode/json-server)
-
+**Tài liệu tham khảo:** [JSON-Server](https://github.com/typicode/json-server)

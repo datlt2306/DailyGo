@@ -1,66 +1,94 @@
-# Buổi 14: Đọc/ghi file và tổng kết khóa học
+# Buổi 14: Đọc/Ghi file trong C và Tổng Kết Khóa Học
 
-## 🎯 Mục tiêu học tập
+## 🎯 Mục tiêu buổi học
 
-Sau buổi học này, sinh viên sẽ:
-- Biết cách đọc và ghi file văn bản
-- Sử dụng `ifstream` để đọc file
-- Sử dụng `ofstream` để ghi file
-- Tổng kết toàn bộ kiến thức đã học
-- Chuẩn bị cho project cuối kỳ
+Sau buổi này, thầy mong các em sẽ:
+
+-   Hiểu cách đọc và ghi file văn bản bằng ngôn ngữ C
+-   Biết sử dụng các hàm fopen, fclose, fprintf, fscanf, fgets, fputs
+-   Ôn tập lại toàn bộ kiến thức C cơ bản đã học
+-   Chuẩn bị tinh thần và kỹ năng cho project cuối kỳ
 
 ---
 
 ## 📘 Nội dung chính
 
-### 1. Đọc file (ifstream)
+### 1. Đọc file văn bản trong C
+
+Để đọc file trong C, các em dùng hàm `fopen` với chế độ `"r"` (read):
 
 ```c
-#include <fstream>
+#include <stdio.h>
 
-ifstream file("input.txt");
-string line;
-while (getline(file, line)) {
-    cout << line << endl;
+int main() {
+    FILE *f;
+    char dong[256];
+    f = fopen("input.txt", "r");
+    if(f == NULL) {
+        printf("Khong the mo file!\n");
+        return 1;
+    }
+    while(fgets(dong, sizeof(dong), f)) {
+        printf("%s", dong);
+    }
+    fclose(f);
+    return 0;
 }
-file.close();
 ```
 
-### 2. Ghi file (ofstream)
+### 2. Ghi file văn bản trong C
+
+Để ghi file, ta dùng hàm `fopen` với chế độ `"w"` (write):
 
 ```c
-#include <fstream>
+#include <stdio.h>
 
-ofstream file("output.txt");
-file << "Xin chao!" << endl;
-file.close();
+int main() {
+    FILE *f;
+    f = fopen("output.txt", "w");
+    if(f == NULL) {
+        printf("Khong the tao file!\n");
+        return 1;
+    }
+    fprintf(f, "Xin chao, lap trinh C!\n");
+    fprintf(f, "%d\n", 2024);
+    fclose(f);
+    return 0;
+}
 ```
 
 ---
 
 ## 💻 Ví dụ minh họa
 
-### Ví dụ: Đọc và ghi file
+### Ví dụ: Đọc, ghi file kết hợp trong C
 
 ```c
 #include <stdio.h>
-#include <fstream>
 
 int main() {
     // Ghi file
-    ofstream outFile("data.txt");
-    outFile << "Hello World!" << endl;
-    outFile << 123 << endl;
-    outFile.close();
-    
-    // Đọc file
-    ifstream inFile("data.txt");
-    string line;
-    while (getline(inFile, line)) {
-        cout << line << endl;
+    FILE *fo = fopen("data.txt", "w");
+    if (fo == NULL) {
+        printf("Loi mo file de ghi!\n");
+        return 1;
     }
-    inFile.close();
-    
+    fprintf(fo, "Hello World!\n");
+    fprintf(fo, "%d\n", 123);
+    fclose(fo);
+
+    // Đọc file
+    FILE *fi = fopen("data.txt", "r");
+    if (fi == NULL) {
+        printf("Loi mo file de doc!\n");
+        return 1;
+    }
+    char s[255];
+    while (fgets(s, sizeof(s), fi)) {
+        printf("%s", s);
+    }
+    fclose(fi);
+
     return 0;
 }
 ```
@@ -71,25 +99,25 @@ int main() {
 
 ### Kiến thức đã học:
 
-1. ✅ Cú pháp cơ bản C++ (biến, kiểu dữ liệu, nhập xuất)
+1. ✅ Cú pháp cơ bản C (biến, kiểu dữ liệu, nhập xuất)
 2. ✅ Toán tử và biểu thức
-3. ✅ Cấu trúc điều kiện (if-else, switch)
-4. ✅ Vòng lặp (for, while, do-while)
+3. ✅ Cấu trúc điều kiện (`if-else`, `switch`)
+4. ✅ Vòng lặp (`for`, `while`, `do-while`)
 5. ✅ Vòng lặp lồng nhau
 6. ✅ Hàm (khai báo, định nghĩa, tham số, return)
 7. ✅ Đệ quy cơ bản
 8. ✅ Mảng một chiều và hai chiều
-9. ✅ Chuỗi ký tự (string)
+9. ✅ Chuỗi ký tự (char array, string)
 10. ✅ Cấu trúc (struct)
-11. ✅ Đọc/ghi file
+11. ✅ Đọc/Ghi file
 
 ### Kỹ năng đạt được:
 
-- ✅ Viết chương trình console C++ hoàn chỉnh
-- ✅ Áp dụng tư duy thuật toán để giải quyết bài toán
-- ✅ Tổ chức code có cấu trúc với hàm
-- ✅ Xử lý dữ liệu với mảng và struct
-- ✅ Lưu trữ và đọc dữ liệu từ file
+-   ✅ Viết chương trình console C hoàn chỉnh
+-   ✅ Vận dụng tư duy giải thuật khi xử lý bài toán
+-   ✅ Biết tổ chức chương trình thành các hàm nhỏ
+-   ✅ Xử lý dữ liệu với mảng và struct
+-   ✅ Lưu trữ, đọc dữ liệu từ file
 
 ---
 

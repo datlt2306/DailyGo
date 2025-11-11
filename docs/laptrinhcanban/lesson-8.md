@@ -1,14 +1,14 @@
-# Buổi 8: Hàm cơ bản
+# Buổi 8: Hàm cơ bản trong C
 
 ## 🎯 Mục tiêu học tập
 
-Sau buổi học này, sinh viên sẽ:
+Sau buổi học này, các em sẽ:
 
--   Hiểu khái niệm hàm và lợi ích của việc sử dụng hàm
--   Biết cách khai báo, định nghĩa và gọi hàm
--   Hiểu sự khác biệt giữa khai báo và định nghĩa hàm
--   Viết các hàm đơn giản để tái sử dụng code
--   Áp dụng hàm vào các bài toán thực tế
+-   Hiểu rõ khái niệm hàm trong ngôn ngữ C và những lợi ích khi sử dụng hàm
+-   Biết cách khai báo hàm, định nghĩa hàm và gọi hàm trong chương trình
+-   Phân biệt được khai báo hàm (prototype) và định nghĩa hàm
+-   Viết được các hàm đơn giản để tái sử dụng mã lệnh
+-   Biết áp dụng hàm vào các bài toán nhỏ trong thực tế lập trình
 
 ---
 
@@ -16,60 +16,66 @@ Sau buổi học này, sinh viên sẽ:
 
 ### 1. Hàm là gì?
 
-**Hàm** là một khối code có tên, được tạo để thực hiện một công việc cụ thể. Khi cần, ta gọi hàm để sử dụng.
+-   Hàm là một khối lệnh (block of code) có tên, được viết ra để thực hiện một nhiệm vụ cụ thể. Khi nào cần thực hiện nhiệm vụ đó, ta chỉ việc gọi tên hàm.
 
-**Lợi ích:**
+**Lợi ích khi dùng hàm:**
 
--   ✅ Tái sử dụng code (DRY - Don't Repeat Yourself)
--   ✅ Dễ bảo trì và sửa lỗi
--   ✅ Chia nhỏ chương trình thành các phần nhỏ, dễ hiểu
--   ✅ Có thể test từng hàm riêng biệt
+-   ✅ Tái sử dụng code (không phải viết lại nhiều lần)
+-   ✅ Giúp chương trình dễ bảo trì, dễ sửa lỗi
+-   ✅ Chia nhỏ chương trình lớn thành các phần nhỏ, dễ xử lý
+-   ✅ Có thể kiểm thử (test) từng hàm riêng biệt
 
 **Ví dụ thực tế:**
 
--   Tính tổng 2 số → Hàm `tinhTong()`
--   Kiểm tra số nguyên tố → Hàm `laSoNguyenTo()`
--   In menu → Hàm `inMenu()`
+-   Tính tổng hai số → hàm `tinhTong()`
+-   Kiểm tra số nguyên tố → hàm `laSoNguyenTo()`
+-   In menu → hàm `inMenu()`
 
-### 2. Cấu trúc hàm
+### 2. Cấu trúc một hàm trong C
 
-**Cú pháp:**
+**Cú pháp hàm trong C:**
 
 ```c
-kieu_tra_ve ten_ham(danh_sach_tham_so) {
-    // Các câu lệnh
-    return gia_tri;  // Nếu có giá trị trả về
+<kieu_tra_ve> <ten_ham>(<danh_sach_tham_so nếu có>) {
+    // Các câu lệnh thực hiện chức năng của hàm
+    return <giá_trị_trả_về>; // Nếu không có, dùng void thì không cần return giá trị
 }
 ```
 
-**Các thành phần:**
+**Giải thích từng phần:**
 
-1. **Kiểu trả về:** `int`, `float`, `void` (không trả về)...
-2. **Tên hàm:** Quy tắc đặt tên như biến
-3. **Tham số:** Dữ liệu đầu vào (có thể không có)
-4. **Thân hàm:** Code thực hiện công việc
-5. **Return:** Trả về giá trị (nếu có)
+1. **Kiểu trả về:** int, float, char, void, v.v…
+2. **Tên hàm:** Đặt theo quy tắc tên biến, nên đặt rõ nghĩa
+3. **Tham số:** Giá trị đầu vào cho hàm (có thể không có)
+4. **Thân hàm:** Các câu lệnh thực hiện nhiệm vụ
+5. **Return:** Trả một giá trị nào đó về cho chỗ gọi hàm (nếu không trả giá trị thì dùng void)
 
-### 3. Hàm không có tham số và không trả về giá trị
+### 3. Hàm không tham số, không trả về
+
+Ví dụ hàm in menu đơn giản:
 
 ```c
 void inMenu() {
-    cout << "=== MENU ===" << endl;
-    cout << "1. Tinh tong" << endl;
-    cout << "2. Tinh hieu" << endl;
-    cout << "3. Thoat" << endl;
+    printf("=== MENU ===\n");
+    printf("1. Tính tổng\n");
+    printf("2. Tính hiệu\n");
+    printf("3. Thoát\n");
 }
 ```
 
-### 4. Hàm có tham số nhưng không trả về giá trị
+### 4. Hàm có tham số, không trả về
+
+Ví dụ hàm chào tên sinh viên:
 
 ```c
-void inChao(string ten) {
-    cout << "Xin chao, " << ten << "!" << endl;
+void inChao(char ten[]) {
+    printf("Xin chào, %s!\n", ten);
 }
 ```
 
-### 5. Hàm có tham số và trả về giá trị
+### 5. Hàm có tham số và có giá trị trả về
+
+Ví dụ hàm tính tổng 2 số nguyên:
 
 ```c
 int tinhTong(int a, int b) {
@@ -78,26 +84,28 @@ int tinhTong(int a, int b) {
 }
 ```
 
-### 6. Hàm không có tham số nhưng trả về giá trị
+### 6. Hàm không tham số, có giá trị trả về
+
+Ví dụ hàm nhập một số nguyên bất kỳ:
 
 ```c
 int nhapSo() {
     int n;
-    cout << "Nhap so: ";
-    cin >> n;
+    printf("Nhập số: ");
+    scanf("%d", &n);
     return n;
 }
 ```
 
 ### 7. Khai báo và định nghĩa hàm
 
-**Khai báo hàm (Function Declaration/Prototype):**
+**Khai báo hàm (prototype):**
 
 ```c
-int tinhTong(int a, int b);  // Chỉ khai báo, không có thân hàm
+int tinhTong(int a, int b); // Chỉ khai báo để trình biên dịch biết
 ```
 
-**Định nghĩa hàm (Function Definition):**
+**Định nghĩa hàm:**
 
 ```c
 int tinhTong(int a, int b) {
@@ -105,18 +113,18 @@ int tinhTong(int a, int b) {
 }
 ```
 
-**Lưu ý:** Nếu định nghĩa hàm trước `main()`, không cần khai báo. Nếu định nghĩa sau `main()`, cần khai báo trước.
+**Lưu ý:** Nếu em định nghĩa hàm trước hàm `main()` thì không cần prototype. Nếu định nghĩa hàm sau hàm `main()` thì phải khai báo prototype trước.
 
 ---
 
 ## 💻 Ví dụ minh họa
 
-### Ví dụ 1: Hàm tính tổng
+### Ví dụ 1: Hàm tính tổng hai số
 
 ```c
 #include <stdio.h>
 
-// Định nghĩa hàm
+// Định nghĩa hàm tính tổng
 int tinhTong(int a, int b) {
     return a + b;
 }
@@ -124,7 +132,7 @@ int tinhTong(int a, int b) {
 int main() {
     int x = 5, y = 3;
     int ketQua = tinhTong(x, y);
-    cout << "Tong: " << ketQua << endl;
+    printf("Tổng: %d\n", ketQua);
 
     return 0;
 }
@@ -136,15 +144,15 @@ int main() {
 #include <stdio.h>
 
 void inMenu() {
-    cout << "\n=== MENU ===" << endl;
-    cout << "1. Tinh tong" << endl;
-    cout << "2. Tinh hieu" << endl;
-    cout << "3. Tinh tich" << endl;
-    cout << "4. Thoat" << endl;
+    printf("\n=== MENU ===\n");
+    printf("1. Tính tổng\n");
+    printf("2. Tính hiệu\n");
+    printf("3. Tính tích\n");
+    printf("4. Thoát\n");
 }
 
 int main() {
-    inMenu();  // Gọi hàm
+    inMenu();  // Gọi hàm in menu
     return 0;
 }
 ```
@@ -153,6 +161,7 @@ int main() {
 
 ```c
 #include <stdio.h>
+#include <stdbool.h>
 
 bool laSoChan(int n) {
     if (n % 2 == 0) {
@@ -165,20 +174,20 @@ bool laSoChan(int n) {
 
 int main() {
     int so;
-    cout << "Nhap so: ";
-    cin >> so;
+    printf("Nhập số: ");
+    scanf("%d", &so);
 
     if (laSoChan(so)) {
-        cout << so << " la so chan" << endl;
+        printf("%d là số chẵn\n", so);
     } else {
-        cout << so << " la so le" << endl;
+        printf("%d là số lẻ\n", so);
     }
 
     return 0;
 }
 ```
 
-### Ví dụ 4: Hàm tìm số lớn nhất
+### Ví dụ 4: Hàm tìm số lớn nhất trong 3 số
 
 ```c
 #include <stdio.h>
@@ -192,11 +201,11 @@ int timMax(int a, int b, int c) {
 
 int main() {
     int x, y, z;
-    cout << "Nhap 3 so: ";
-    cin >> x >> y >> z;
+    printf("Nhập 3 số: ");
+    scanf("%d%d%d", &x, &y, &z);
 
     int lonNhat = timMax(x, y, z);
-    cout << "So lon nhat: " << lonNhat << endl;
+    printf("Số lớn nhất: %d\n", lonNhat);
 
     return 0;
 }
@@ -217,10 +226,10 @@ long long tinhGiaiThua(int n) {
 
 int main() {
     int n;
-    cout << "Nhap n: ";
-    cin >> n;
+    printf("Nhập n: ");
+    scanf("%d", &n);
 
-    cout << n << "! = " << tinhGiaiThua(n) << endl;
+    printf("%d! = %lld\n", n, tinhGiaiThua(n));
 
     return 0;
 }
@@ -230,27 +239,26 @@ int main() {
 
 ```c
 #include <stdio.h>
+#include <stdbool.h>
 
 bool laSoNguyenTo(int n) {
     if (n < 2) return false;
 
     for (int i = 2; i < n; i++) {
-        if (n % i == 0) {
-            return false;
-        }
+        if (n % i == 0) return false;
     }
     return true;
 }
 
 int main() {
     int n;
-    cout << "Nhap so: ";
-    cin >> n;
+    printf("Nhập số: ");
+    scanf("%d", &n);
 
     if (laSoNguyenTo(n)) {
-        cout << n << " la so nguyen to" << endl;
+        printf("%d là số nguyên tố\n", n);
     } else {
-        cout << n << " khong phai so nguyen to" << endl;
+        printf("%d không phải số nguyên tố\n", n);
     }
 
     return 0;
@@ -272,23 +280,23 @@ long long tinhLuyThua(int coSo, int soMu) {
 
 int main() {
     int a, n;
-    cout << "Nhap co so: ";
-    cin >> a;
-    cout << "Nhap so mu: ";
-    cin >> n;
+    printf("Nhập cơ số: ");
+    scanf("%d", &a);
+    printf("Nhập số mũ: ");
+    scanf("%d", &n);
 
-    cout << a << "^" << n << " = " << tinhLuyThua(a, n) << endl;
+    printf("%d^%d = %lld\n", a, n, tinhLuyThua(a, n));
 
     return 0;
 }
 ```
 
-### Ví dụ 8: Chương trình sử dụng nhiều hàm
+### Ví dụ 8: Sử dụng nhiều hàm trong chương trình
 
 ```c
 #include <stdio.h>
 
-// Khai báo hàm
+// Khai báo prototype
 void inMenu();
 int tinhTong(int a, int b);
 int tinhHieu(int a, int b);
@@ -299,19 +307,19 @@ int main() {
 
     do {
         inMenu();
-        cout << "Chon: ";
-        cin >> luaChon;
+        printf("Chọn: ");
+        scanf("%d", &luaChon);
 
         if (luaChon >= 1 && luaChon <= 3) {
-            cout << "Nhap 2 so: ";
-            cin >> a >> b;
+            printf("Nhập 2 số: ");
+            scanf("%d%d", &a, &b);
 
             if (luaChon == 1) {
-                cout << "Tong: " << tinhTong(a, b) << endl;
+                printf("Tổng: %d\n", tinhTong(a, b));
             } else if (luaChon == 2) {
-                cout << "Hieu: " << tinhHieu(a, b) << endl;
+                printf("Hiệu: %d\n", tinhHieu(a, b));
             } else if (luaChon == 3) {
-                cout << "Tich: " << tinhTich(a, b) << endl;
+                printf("Tích: %d\n", tinhTich(a, b));
             }
         }
 
@@ -320,13 +328,13 @@ int main() {
     return 0;
 }
 
-// Định nghĩa hàm
+// Định nghĩa các hàm
 void inMenu() {
-    cout << "\n=== MENU ===" << endl;
-    cout << "1. Tinh tong" << endl;
-    cout << "2. Tinh hieu" << endl;
-    cout << "3. Tinh tich" << endl;
-    cout << "4. Thoat" << endl;
+    printf("\n=== MENU ===\n");
+    printf("1. Tính tổng\n");
+    printf("2. Tính hiệu\n");
+    printf("3. Tính tích\n");
+    printf("4. Thoát\n");
 }
 
 int tinhTong(int a, int b) {
@@ -350,16 +358,16 @@ int tinhTich(int a, int b) {
 void veTamGiac(int n) {
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= i; j++) {
-            cout << "* ";
+            printf("* ");
         }
-        cout << endl;
+        printf("\n");
     }
 }
 
 int main() {
     int chieuCao;
-    cout << "Nhap chieu cao: ";
-    cin >> chieuCao;
+    printf("Nhập chiều cao: ");
+    scanf("%d", &chieuCao);
 
     veTamGiac(chieuCao);
 
@@ -367,14 +375,15 @@ int main() {
 }
 ```
 
-### Ví dụ 10: Hàm tính tổng các chữ số
+### Ví dụ 10: Hàm tính tổng các chữ số của 1 số
 
 ```c
 #include <stdio.h>
+#include <stdlib.h>
 
 int tinhTongChuSo(int n) {
     int tong = 0;
-    n = abs(n);  // Lấy giá trị tuyệt đối
+    n = abs(n);  // Lấy trị tuyệt đối cho chắc chắn
 
     while (n > 0) {
         tong += n % 10;
@@ -386,10 +395,10 @@ int tinhTongChuSo(int n) {
 
 int main() {
     int so;
-    cout << "Nhap so: ";
-    cin >> so;
+    printf("Nhập số: ");
+    scanf("%d", &so);
 
-    cout << "Tong cac chu so: " << tinhTongChuSo(so) << endl;
+    printf("Tổng các chữ số: %d\n", tinhTongChuSo(so));
 
     return 0;
 }
@@ -401,69 +410,54 @@ int main() {
 
 ### Bài tập cơ bản
 
-**Bài 1:** Viết hàm `tinhHieu(int a, int b)` trả về hiệu của 2 số
-
-**Bài 2:** Viết hàm `tinhTich(int a, int b)` trả về tích của 2 số
-
-**Bài 3:** Viết hàm `tinhThuong(float a, float b)` trả về thương (xử lý chia cho 0)
-
-**Bài 4:** Viết hàm `inXinChao()` in ra "Xin chao, toi la lap trinh vien!"
-
-**Bài 5:** Viết hàm `laSoLe(int n)` kiểm tra số lẻ
+1. Viết hàm `tinhHieu(int a, int b)` trả về hiệu của 2 số nguyên.
+2. Viết hàm `tinhTich(int a, int b)` trả về tích của 2 số nguyên.
+3. Viết hàm `tinhThuong(float a, float b)` trả về thương của 2 số (chú ý kiểm tra chia cho 0).
+4. Viết hàm `inXinChao()` in ra màn hình "Xin chào, tôi là lập trình viên!".
+5. Viết hàm `laSoLe(int n)` trả về true nếu n là số lẻ, false nếu không.
 
 ### Bài tập trung bình
 
-**Bài 6:** Viết hàm `timMin(int a, int b, int c)` tìm số nhỏ nhất
-
-**Bài 7:** Viết hàm `tinhTrungBinh(float a, float b, float c)` tính trung bình cộng
-
-**Bài 8:** Viết hàm `xepLoaiDiem(float diem)` trả về xếp loại (Xuất sắc, Giỏi, Khá...)
-
-**Bài 9:** Viết hàm `daoNguocSo(int n)` trả về số đảo ngược
-
-**Bài 10:** Viết hàm `demSoChuSo(int n)` đếm số chữ số
+6. Viết hàm `timMin(int a, int b, int c)` trả về số nhỏ nhất trong 3 số.
+7. Viết hàm `tinhTrungBinh(float a, float b, float c)` trả về giá trị trung bình cộng.
+8. Viết hàm `xepLoaiDiem(float diem)` trả về chuỗi (Xuất sắc, Giỏi, Khá, Trung bình, Yếu) dựa trên điểm truyền vào.
+9. Viết hàm `daoNguocSo(int n)` trả về số đảo ngược.
+10. Viết hàm `demSoChuSo(int n)` trả về số lượng chữ số của số nguyên n.
 
 ### Bài tập nâng cao
 
-**Bài 11:** Viết hàm `tinhUCLN(int a, int b)` tính ước chung lớn nhất
-
-**Bài 12:** Viết hàm `tinhBCNN(int a, int b)` tính bội chung nhỏ nhất
-
-**Bài 13:** Viết hàm `laSoHoanHao(int n)` kiểm tra số hoàn hảo
-
-**Bài 14:** Viết hàm `inSoNguyenTo(int n)` in tất cả số nguyên tố từ 1 đến n
-
-**Bài 15:** Viết chương trình máy tính với các hàm riêng biệt cho mỗi phép tính
+11. Viết hàm `tinhUCLN(int a, int b)` trả về ước chung lớn nhất của a và b.
+12. Viết hàm `tinhBCNN(int a, int b)` trả về bội chung nhỏ nhất của a và b.
+13. Viết hàm `laSoHoanHao(int n)` trả về true nếu n là số hoàn hảo.
+14. Viết hàm `inSoNguyenTo(int n)` in ra tất cả các số nguyên tố từ 1 đến n.
+15. Viết chương trình máy tính gồm nhiều hàm riêng cho từng phép tính.
 
 ---
 
 ## 📝 Lưu ý quan trọng
 
-1. **Tên hàm:** Nên đặt tên rõ ràng, mô tả chức năng
-2. **Return:** Hàm `void` không cần `return`, hoặc dùng `return;` để thoát sớm
-3. **Tham số:** Có thể truyền giá trị, biến, hoặc biểu thức
-4. **Phạm vi biến:** Biến trong hàm là biến cục bộ
-5. **Khai báo vs Định nghĩa:** Nhớ khai báo nếu định nghĩa sau `main()`
+1. **Đặt tên hàm:** Rõ ràng, thể hiện đúng chức năng.
+2. **Lệnh return:** Hàm kiểu void thì không cần return giá trị, nhưng có thể dùng return; để thoát sớm.
+3. **Truyền tham số:** Có thể truyền giá trị, biến, hoặc là biểu thức khi gọi hàm.
+4. **Phạm vi biến:** Biến khai báo trong hàm chỉ tồn tại trong hàm đó (biến cục bộ).
+5. **Khai báo - định nghĩa:** Nhớ khai báo (prototype) nếu hàm định nghĩa sau main().
 
 ---
 
-## ✅ Kiểm tra kiến thức
+## ✅ Câu hỏi kiểm tra nhanh
 
-1. Lợi ích của việc sử dụng hàm?
-
-2. Sự khác biệt giữa `void` và kiểu trả về khác?
-
-3. Có thể có nhiều câu lệnh `return` trong một hàm không?
-
-4. Khi nào cần khai báo hàm trước `main()`?
+1. Việc sử dụng hàm có những lợi ích gì?
+2. Sự khác biệt giữa `void` và các kiểu trả về khác là gì?
+3. Một hàm có thể có nhiều câu lệnh `return` không?
+4. Khi nào cần khai báo prototype (khai báo trước) cho hàm?
 
 ---
 
-## 🎯 Tóm tắt
+## 🎯 Tổng kết
 
--   ✅ Đã học khái niệm và cách sử dụng hàm
--   ✅ Biết khai báo và định nghĩa hàm
--   ✅ Hiểu cách truyền tham số và trả về giá trị
--   ✅ Áp dụng hàm để tái sử dụng code và tổ chức chương trình tốt hơn
+-   Hôm nay thầy đã hướng dẫn các em về khái niệm và cách dùng hàm trong C.
+-   Các em đã biết cách khai báo, định nghĩa, gọi hàm, truyền tham số và nhận giá trị trả về.
+-   Khi chia nhỏ chương trình thành nhiều hàm, các em sẽ dễ bảo trì, mở rộng và kiểm thử code.
+-   Nhớ thực hành lại các ví dụ và làm các bài tập về nhà nhé!
 
-**Bài tiếp theo:** [Buổi 9: Tham số, giá trị trả về và phạm vi biến](./lesson-9.md)
+**Buổi sau:** [Buổi 9: Tham số, giá trị trả về và phạm vi biến](./lesson-9.md)

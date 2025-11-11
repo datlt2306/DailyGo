@@ -1,27 +1,33 @@
 # Buổi 10: Routing với React Router
 
-## 🎯 Mục tiêu học tập (SMART)
+## 🎯 Mục tiêu bài học
 
-Sau buổi học này, học viên sẽ có thể:
+Các em thân mến, sau buổi học hôm nay thầy mong các em sẽ:
 
-1. ✅ Setup React Router trong project (10 phút)
-2. ✅ Tạo Routes và Navigate giữa các trang (15 phút)
-3. ✅ Sử dụng useNavigate, useParams (10 phút)
-4. ✅ Implement Layout và Nested Routes (10 phút)
-5. ✅ Xây dựng multi-page Todo App (15 phút)
+1. ✅ Tự cài đặt React Router vào project React (10’)
+2. ✅ Tạo các trang (Route) & chuyển trang dễ dàng trong app (15’)
+3. ✅ Biết dùng useNavigate, useParams để xử lý logic điều hướng (10’)
+4. ✅ Hiểu cấu trúc Layout, Nested Route trong dự án (10’)
+5. ✅ Hoàn thiện Todo App nhiều trang với React Router (15’)
 
-## 📋 Nội dung chính
+---
 
-### 1. React Router Setup
+## 📋 Nội dung bài học
+
+### 1. Cài đặt React Router
+
+Đầu tiên, các em mở terminal gõ:
 
 ```bash
 npm install react-router-dom
 ```
 
+Khi đã cài xong, mình vào file App.js để cấu hình router cơ bản:
+
 ```javascript
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 function App() {
     return (
@@ -35,52 +41,60 @@ function App() {
 }
 ```
 
-### 2. Navigation
+### 2. Tạo navigation chuyển trang
+
+Để chuyển trang, các em dùng 2 component Link và NavLink:
 
 ```javascript
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from "react-router-dom";
 
 function Navigation() {
     return (
         <nav>
             <Link to="/">Home</Link>
-            <NavLink to="/about">About</NavLink> {/* Active class */}
+            <NavLink to="/about">About</NavLink> {/* Tự động highlight khi trang active */}
         </nav>
     );
 }
 ```
 
-### 3. useNavigate
+### 3. Điều hướng bằng useNavigate
+
+Muốn điều hướng bằng code (ví dụ sau khi đăng nhập), ta dùng useNavigate nhé:
 
 ```javascript
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
     const navigate = useNavigate();
-    
+
     const handleSubmit = () => {
-        // Login logic
-        navigate('/dashboard');
+        // Xử lý đăng nhập xong thì chuyển qua trang dashboard
+        navigate("/dashboard");
     };
-    
+
     return <button onClick={handleSubmit}>Login</button>;
 }
 ```
 
-### 4. Dynamic Routes với useParams
+### 4. Dynamic Route và useParams
+
+Khi muốn đọc dữ liệu động trên URL, ví dụ `/tour/:id`, dùng useParams:
 
 ```javascript
-// Route
-<Route path="/tour/:id" element={<TourDetail />} />
+// Định nghĩa route
+<Route path="/tour/:id" element={<TourDetail />} />;
 
-// Component
+// Trong component
 function TourDetail() {
     const { id } = useParams();
     return <div>Tour ID: {id}</div>;
 }
 ```
 
-### 5. Layout Pattern
+### 5. Sử dụng Layout, Nested Routes
+
+Thường mình tạo layout chung chứa header/footer cho nhiều trang con:
 
 ```javascript
 function Layout() {
@@ -97,31 +111,32 @@ function Layout() {
 }
 ```
 
-## 🧪 Bài tập Thực hành: Multi-page Todo App
+---
+
+## 🧪 Bài tập thực hành: Đa trang cho Todo App
 
 ### Mục tiêu
-Nâng cấp Todo App thành multi-page application với React Router.
 
-### Lab 1: Setup Routing cho Todo App (50 phút)
+Các em sẽ nâng cấp Todo App thành SPA nhiều trang sử dụng React Router.
 
-#### Bước 1: Cài đặt React Router (5 phút)
+---
+
+### Lab 1: Bắt đầu cấu hình Routing cho Todo App (50’)
+
+#### Bước 1: Cài React Router
 
 ```bash
 npm install react-router-dom
 ```
 
-#### Bước 2: Tạo các Pages (20 phút)
+#### Bước 2: Tạo các trang cơ bản
 
 ```javascript [src/pages/Home.jsx]
 function Home() {
     return (
         <div className="max-w-4xl mx-auto p-6">
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
-                🏠 Trang chủ
-            </h1>
-            <p className="text-gray-600">
-                Chào mừng đến với Todo App!
-            </p>
+            <h1 className="text-3xl font-bold text-gray-800 mb-4">🏠 Trang chủ</h1>
+            <p className="text-gray-600">Chào mừng các em đến với Todo App!</p>
         </div>
     );
 }
@@ -130,14 +145,12 @@ export default Home;
 ```
 
 ```javascript [src/pages/Todos.jsx]
-import TodoList from '../components/TodoList';
+import TodoList from "../components/TodoList";
 
 function Todos() {
     return (
         <div className="max-w-4xl mx-auto p-6">
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
-                📝 Quản lý Todo
-            </h1>
+            <h1 className="text-3xl font-bold text-gray-800 mb-4">📝 Quản lý Todo</h1>
             <TodoList />
         </div>
     );
@@ -150,11 +163,9 @@ export default Todos;
 function About() {
     return (
         <div className="max-w-4xl mx-auto p-6">
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
-                ℹ️ Giới thiệu
-            </h1>
+            <h1 className="text-3xl font-bold text-gray-800 mb-4">ℹ️ Giới thiệu</h1>
             <p className="text-gray-600">
-                Ứng dụng Todo List được xây dựng với React và React Router.
+                Ứng dụng Todo List này thầy xây bằng React và React Router cho các em.
             </p>
         </div>
     );
@@ -163,14 +174,14 @@ function About() {
 export default About;
 ```
 
-#### Bước 3: Setup Router trong App.jsx (15 phút)
+#### Bước 3: Thêm router vào App.jsx
 
 ```javascript [src/App.jsx]
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import Todos from './pages/Todos';
-import About from './pages/About';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Todos from "./pages/Todos";
+import About from "./pages/About";
 
 function App() {
     return (
@@ -189,10 +200,10 @@ function App() {
 export default App;
 ```
 
-#### Bước 4: Tạo Layout Component với Navigation (10 phút)
+#### Bước 4: Tạo layout có navigation
 
 ```javascript [src/components/Layout.jsx]
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 
 function Layout({ children }) {
     const location = useLocation();
@@ -207,9 +218,9 @@ function Layout({ children }) {
                         <Link
                             to="/"
                             className={`px-4 py-4 ${
-                                isActive('/') 
-                                    ? 'border-b-2 border-blue-500 text-blue-600' 
-                                    : 'text-gray-600 hover:text-gray-800'
+                                isActive("/")
+                                    ? "border-b-2 border-blue-500 text-blue-600"
+                                    : "text-gray-600 hover:text-gray-800"
                             }`}
                         >
                             🏠 Trang chủ
@@ -217,9 +228,9 @@ function Layout({ children }) {
                         <Link
                             to="/todos"
                             className={`px-4 py-4 ${
-                                isActive('/todos') 
-                                    ? 'border-b-2 border-blue-500 text-blue-600' 
-                                    : 'text-gray-600 hover:text-gray-800'
+                                isActive("/todos")
+                                    ? "border-b-2 border-blue-500 text-blue-600"
+                                    : "text-gray-600 hover:text-gray-800"
                             }`}
                         >
                             📝 Todos
@@ -227,9 +238,9 @@ function Layout({ children }) {
                         <Link
                             to="/about"
                             className={`px-4 py-4 ${
-                                isActive('/about') 
-                                    ? 'border-b-2 border-blue-500 text-blue-600' 
-                                    : 'text-gray-600 hover:text-gray-800'
+                                isActive("/about")
+                                    ? "border-b-2 border-blue-500 text-blue-600"
+                                    : "text-gray-600 hover:text-gray-800"
                             }`}
                         >
                             ℹ️ Giới thiệu
@@ -237,10 +248,8 @@ function Layout({ children }) {
                     </div>
                 </div>
             </nav>
-            
-            <main className="py-8">
-                {children}
-            </main>
+
+            <main className="py-8">{children}</main>
         </div>
     );
 }
@@ -248,23 +257,25 @@ function Layout({ children }) {
 export default Layout;
 ```
 
-### Lab 2: Dynamic Route cho Todo Detail (30 phút)
+---
 
-**Yêu cầu**: Tạo trang chi tiết todo với route `/todos/:id`
+### Lab 2: Dynamic Route cho Todo Detail (30’)
+
+**Yêu cầu:** Thầy muốn các em làm thêm trang chi tiết todo, đường dẫn `/todos/:id`.
 
 ```javascript [src/pages/TodoDetail.jsx]
-import { useParams, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function TodoDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [todo, setTodo] = useState(null);
 
-    // TODO: Load todo từ state hoặc localStorage
+    // Thử tải todo từ localStorage (dùng state cũng được)
     useEffect(() => {
-        const todos = JSON.parse(localStorage.getItem('todos') || '[]');
-        const found = todos.find(t => t.id === Number(id));
+        const todos = JSON.parse(localStorage.getItem("todos") || "[]");
+        const found = todos.find((t) => t.id === Number(id));
         setTodo(found);
     }, [id]);
 
@@ -272,17 +283,15 @@ function TodoDetail() {
         return (
             <div className="max-w-4xl mx-auto p-6">
                 <p>Không tìm thấy todo</p>
-                <button onClick={() => navigate('/todos')}>
-                    Quay lại
-                </button>
+                <button onClick={() => navigate("/todos")}>Quay lại</button>
             </div>
         );
     }
 
     return (
         <div className="max-w-4xl mx-auto p-6">
-            <button 
-                onClick={() => navigate('/todos')}
+            <button
+                onClick={() => navigate("/todos")}
                 className="mb-4 text-blue-500 hover:text-blue-700"
             >
                 ← Quay lại
@@ -290,7 +299,7 @@ function TodoDetail() {
             <div className="bg-white rounded-lg shadow-lg p-6">
                 <h1 className="text-2xl font-bold mb-4">{todo.text}</h1>
                 <p className="text-gray-600">
-                    Trạng thái: {todo.completed ? '✅ Hoàn thành' : '⏳ Chưa hoàn thành'}
+                    Trạng thái: {todo.completed ? "✅ Hoàn thành" : "⏳ Chưa hoàn thành"}
                 </p>
             </div>
         </div>
@@ -300,7 +309,7 @@ function TodoDetail() {
 export default TodoDetail;
 ```
 
-**Cập nhật Routes**:
+**Nhớ thêm Route cho chi tiết:**
 
 ```javascript
 <Route path="/todos/:id" element={<TodoDetail />} />
@@ -308,27 +317,26 @@ export default TodoDetail;
 
 ---
 
-## 📝 Tổng kết
+## 📝 Tổng kết buổi học
 
-### Điểm chính
+**Các bạn nhớ:**
 
-- ✅ React Router cho phép điều hướng trong SPA
-- ✅ `BrowserRouter` wrap toàn bộ app
-- ✅ `Routes` và `Route` định nghĩa các trang
-- ✅ `Link` và `useNavigate` để điều hướng
-- ✅ `useParams` để lấy dynamic params
-- ✅ Layout pattern tái sử dụng navigation
+-   ✅ React Router giúp điều hướng trong SPA
+-   ✅ Luôn bọc App bằng `BrowserRouter`
+-   ✅ Định nghĩa route với `Routes`, `Route`
+-   ✅ Chuyển trang với `Link`, hoặc code bằng `useNavigate`
+-   ✅ Lấy tham số động với `useParams`
+-   ✅ Tổ chức navigation và giao diện tái sử dụng bằng Layout pattern
 
 ### Checklist buổi 10
 
-- [ ] Setup React Router
-- [ ] Tạo được multi-page app
-- [ ] Sử dụng Link và useNavigate
-- [ ] Implement Layout với navigation
-- [ ] Tạo dynamic routes
-- [ ] Hoàn thành Todo App với routing
+-   [ ] Cài đặt React Router cho app
+-   [ ] Tạo được app nhiều trang
+-   [ ] Chuyển trang bằng Link/useNavigate
+-   [ ] Làm layout có navigation
+-   [ ] Tạo route động dùng param
+-   [ ] Hoàn thiện Todo App có routing
 
 ---
 
-**Xem**: [React Router Docs](https://reactrouter.com/)
-
+**Tài liệu xem thêm**: [React Router Docs](https://reactrouter.com/)

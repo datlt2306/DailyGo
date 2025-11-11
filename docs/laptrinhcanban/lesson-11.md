@@ -1,128 +1,132 @@
 # Buổi 11: Mảng một chiều
 
-## 🎯 Mục tiêu học tập
+## 🎯 Mục tiêu buổi học
 
-Sau buổi học này, sinh viên sẽ:
+Sau tiết học này, các em sẽ:
 
--   Hiểu khái niệm mảng và tại sao cần mảng
--   Biết cách khai báo, khởi tạo mảng
--   Truy cập và xử lý phần tử mảng
--   Áp dụng mảng vào các bài toán thực tế (quản lý điểm, danh sách...)
+-   Hiểu được mảng là gì, lý do ta cần sử dụng mảng trong lập trình C
+-   Nắm được cách khai báo, khởi tạo mảng một chiều trong C
+-   Biết cách truy cập, cập nhật từng phần tử trong mảng
+-   Vận dụng mảng để giải các bài toán thực tế như quản lý điểm, lưu danh sách...
 
 ---
 
-## 📘 Nội dung chính
+## 📘 Nội dung
 
-### 1. Mảng là gì?
+### 1. Khái niệm mảng
 
-**Mảng** là tập hợp các phần tử cùng kiểu dữ liệu, được lưu trữ liên tiếp trong bộ nhớ.
+Mảng là một tập các biến cùng kiểu, được lưu kế tiếp nhau trong bộ nhớ, giúp lưu trữ nhiều giá trị một lúc mà không cần tạo từng biến lẻ.
 
 **Ví dụ thực tế:**
 
--   Danh sách điểm của 30 sinh viên
--   Danh sách tên sản phẩm
--   Lịch sử giao dịch
+-   Lưu điểm của cả lớp (30 sinh viên)
+-   Lưu danh sách sản phẩm trong kho
+-   Lưu lịch sử mua hàng trong một ứng dụng
 
 ### 2. Khai báo mảng
 
+Khi muốn dùng mảng, ta cần xác định kiểu dữ liệu và kích thước mảng. Cú pháp:
+
 ```c
-int mang[10];  // Mảng 10 phần tử kiểu int
-float diem[30];  // Mảng điểm của 30 sinh viên
+int a[10];         // Mảng a gồm 10 phần tử kiểu int
+float diem[30];    // Lưu 30 điểm thực (float)
 ```
+
+_Chú ý: Số phần tử là số nguyên dương, chỉ số mảng luôn bắt đầu từ 0._
 
 ### 3. Khởi tạo mảng
 
+Có thể khởi tạo giá trị cho mảng khi khai báo:
+
 ```c
-int mang[5] = {1, 2, 3, 4, 5};
-int mang2[] = {10, 20, 30};  // Tự động xác định kích thước
+int b[5] = {1, 2, 3, 4, 5};
+int c[] = {10, 20, 30}; // Không ghi kích thước, C tự tính dựa vào số phần tử khởi tạo
 ```
 
 ### 4. Truy cập phần tử
 
--   Chỉ số bắt đầu từ **0**
--   `mang[0]`: Phần tử đầu tiên
--   `mang[n-1]`: Phần tử cuối cùng
+-   Chỉ số đầu tiên là 0 (`mang[0]`)
+-   Phần tử cuối cùng là `mang[n-1]` (n là số phần tử mảng)
 
 ---
 
-## 💻 Ví dụ minh họa
+## 💻 Ví dụ
 
-### Ví dụ 1: Nhập và in mảng
+### Ví dụ 1: Nhập và xuất mảng số nguyên
 
 ```c
 #include <stdio.h>
 
 int main() {
-    int n;
-    int mang[100];
+    int n, i;
+    int a[100];
 
-    cout << "Nhap so phan tu: ";
-    cin >> n;
+    printf("Nhap so phan tu cua mang: ");
+    scanf("%d", &n);
 
-    // Nhập mảng
-    for (int i = 0; i < n; i++) {
-        cout << "mang[" << i << "] = ";
-        cin >> mang[i];
+    // Nhập từng phần tử của mảng
+    for (i = 0; i < n; i++) {
+        printf("a[%d] = ", i);
+        scanf("%d", &a[i]);
     }
 
-    // In mảng
-    cout << "Mang vua nhap: ";
-    for (int i = 0; i < n; i++) {
-        cout << mang[i] << " ";
+    // Xuất các giá trị vừa nhập
+    printf("Cac phan tu cua mang: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", a[i]);
     }
 
     return 0;
 }
 ```
 
-### Ví dụ 2: Tìm số lớn nhất trong mảng
+### Ví dụ 2: Tìm giá trị lớn nhất trong mảng
 
 ```c
 #include <stdio.h>
 
 int main() {
-    int n, mang[100];
+    int n, i, max, a[100];
+    printf("Nhap so phan tu cua mang: ");
+    scanf("%d", &n);
 
-    cout << "Nhap so phan tu: ";
-    cin >> n;
-
-    for (int i = 0; i < n; i++) {
-        cin >> mang[i];
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
     }
 
-    int max = mang[0];
-    for (int i = 1; i < n; i++) {
-        if (mang[i] > max) {
-            max = mang[i];
+    max = a[0];
+    for (i = 1; i < n; i++) {
+        if (a[i] > max) {
+            max = a[i];
         }
     }
 
-    cout << "So lon nhat: " << max << endl;
+    printf("So lon nhat trong mang la: %d\n", max);
 
     return 0;
 }
 ```
 
-### Ví dụ 3: Tính tổng và trung bình
+### Ví dụ 3: Tính tổng và trung bình các phần tử
 
 ```c
 #include <stdio.h>
 
 int main() {
-    int n, mang[100];
-    int tong = 0;
+    int n, i, tong = 0, a[100];
+    float tbc;
 
-    cout << "Nhap so phan tu: ";
-    cin >> n;
+    printf("Nhap so phan tu cua mang: ");
+    scanf("%d", &n);
 
-    for (int i = 0; i < n; i++) {
-        cin >> mang[i];
-        tong += mang[i];
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+        tong += a[i];
     }
 
-    float trungBinh = (float)tong / n;
-    cout << "Tong: " << tong << endl;
-    cout << "Trung binh: " << trungBinh << endl;
+    tbc = (float)tong/n;
+    printf("Tong cac phan tu: %d\n", tong);
+    printf("Trung binh cong: %.2f\n", tbc);
 
     return 0;
 }
@@ -130,13 +134,13 @@ int main() {
 
 ---
 
-## 🧠 Bài tập thực hành
+## 🧠 Bài tập về nhà
 
-**Bài 1:** Nhập n số, tính tổng và trung bình
-**Bài 2:** Tìm số lớn nhất và số nhỏ nhất
-**Bài 3:** Đếm số phần tử chẵn/lẻ
-**Bài 4:** Tìm vị trí phần tử lớn nhất
-**Bài 5:** Đảo ngược mảng
+1. Viết chương trình nhập mảng n số nguyên, in tổng và trung bình cộng các phần tử.
+2. Tìm số lớn nhất, nhỏ nhất trong mảng một chiều.
+3. Đếm số lượng phần tử chẵn và lẻ trong mảng.
+4. Tìm vị trí của phần tử lớn nhất trong mảng.
+5. Đảo ngược mảng và in ra kết quả.
 
 ---
 

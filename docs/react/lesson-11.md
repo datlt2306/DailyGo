@@ -2,103 +2,113 @@
 
 ## 🎯 Mục tiêu buổi
 
-1. ✅ Kiểm tra kiến thức Giai đoạn 2
-2. ✅ Mini Project: Blog App với Routing
-3. ✅ Review và Feedback
-4. ✅ Chuẩn bị cho Project cuối khóa
+1. ✅ Ôn tập và kiểm tra lại kiến thức Giai đoạn 2
+2. ✅ Thực hành mini project: Blog App có Routing
+3. ✅ Trao đổi, feedback, và giải đáp thắc mắc
+4. ✅ Định hướng chuẩn bị cho project cuối khóa
 
 ## 📋 Nội dung
 
+---
+
 ### 1. Quick Review (15 phút)
 
-**Concepts học trong Giai đoạn 2**:
-- useState nâng cao
-- useEffect & side effects
-- useRef & Custom Hooks
-- Form & Controlled Components
-- React Router & Navigation
-- Dynamic Routes & Params
+Các bạn cùng thầy điểm lại những kiến thức trọng tâm ở Giai đoạn 2 nhé:
+
+-   useState nâng cao (nhiều state, state object, array)
+-   useEffect & xử lý side effect/cleanup
+-   useRef & cách tạo custom hooks
+-   Quản lý Form & Controlled Components
+-   React Router: Navigation cơ bản
+-   Dynamic Routes, Params
+
+---
 
 ### 2. Technical Assessment (30 phút)
 
-**Hình thức**: Code Challenge
+Ở phần này, các nhóm sẽ nhận thử thách code nhỏ (Code Challenge) để review lại kiến thức:
 
-**Bàn 1**: useEffect & Custom Hooks
+#### Bàn 1: useEffect & Custom Hooks
 
 ```javascript
-// Tạo custom hook useWindowSize
+// Yêu cầu: Viết custom hook useWindowSize trả về {width, height}
+
 function useWindowSize() {
-    // TODO: Implement
+    // TODO: Sinh viên tự triển khai
 }
 
-// Sử dụng
+// Sử dụng thử:
 function Component() {
     const { width, height } = useWindowSize();
-    return <div>{width}x{height}</div>;
+    return (
+        <div>
+            {width}x{height}
+        </div>
+    );
 }
 ```
 
-**Bài 2**: Form Validation
+#### Bài 2: Form Validation
 
 ```javascript
-// Tạo LoginForm với validation
+// Viết LoginForm có validate:
+// - Email đúng định dạng
+// - Password tối thiểu 6 ký tự
+// - Hiển thị lỗi, disable submit nếu form chưa hợp lệ
 function LoginForm() {
-    // TODO: 
-    // - Email validation
-    // - Password min 6 chars
-    // - Show error messages
-    // - Disable submit khi invalid
+    // TODO: Viết logic bên trong
 }
 ```
 
-**Bài 3**: Routing
+#### Bài 3: Routing
 
 ```javascript
-// Setup routes cho blog app
-// /posts - List
-// /posts/:id - Detail
-// /posts/:id/edit - Edit
-// /create - Create
+// Yêu cầu tự setup các routes cơ bản cho blog app
+// /posts - Hiển thị danh sách
+// /posts/:id - Hiển thị chi tiết
+// /posts/:id/edit - Sửa nội dung
+// /create - Thêm mới
 ```
+
+---
 
 ### 3. Mini Project: Blog App (90 phút)
 
-**Yêu cầu**: Xây dựng Blog App với routing
+Các bạn sẽ teamwork thực hành xây dựng Blog App có đầy đủ Routing, CRUD features theo yêu cầu bên dưới.
 
-#### Features
+#### Yêu cầu bắt buộc
 
-**Bắt buộc**:
-- [ ] **Danh sách Posts**: `/posts`
-- [ ] **Chi tiết Post**: `/posts/:id`
-- [ ] **Form tạo Post**: `/create`
-- [ ] **Form sửa Post**: `/posts/:id/edit`
-- [ ] **Xóa Post**: Có confirm dialog
-- [ ] **Navigation Menu**: Active states
+-   [ ] Hiển thị **danh sách bài viết**: `/posts`
+-   [ ] Trang **chi tiết bài viết**: `/posts/:id`
+-   [ ] Trang **tạo mới bài viết**: `/create`
+-   [ ] Trang **chỉnh sửa bài viết**: `/posts/:id/edit`
+-   [ ] **Xóa bài** (có xác nhận)
+-   [ ] Menu navigation chuyển trang - có highlight trạng thái trang hiện tại
 
-**Bonus**:
-- [ ] Search posts
-- [ ] Filter theo category
-- [ ] Pagination
-- [ ] Loading states
-- [ ] Error handling
+#### Bonus cho bạn nào nhanh và có thời gian
 
-#### Data Structure
+-   [ ] Tìm kiếm post
+-   [ ] Lọc theo category
+-   [ ] Pagination
+-   [ ] Loading (chờ dữ liệu/UX)
+-   [ ] Bắt lỗi khi thao tác không hợp lệ
+
+#### Cấu trúc dữ liệu (dùng local state hoặc localStorage):
 
 ```javascript
-// Local state hoặc localStorage
 const posts = [
     {
         id: 1,
-        title: 'React là gì?',
-        content: 'React là library...',
-        category: 'React',
-        author: 'John Doe',
-        createdAt: '2024-01-15'
-    }
+        title: "React là gì?",
+        content: "React là library...",
+        category: "React",
+        author: "John Doe",
+        createdAt: "2024-01-15",
+    },
 ];
 ```
 
-#### Component Structure
+#### Đề xuất tổ chức component
 
 ```
 src/
@@ -119,7 +129,7 @@ src/
 └── main.jsx
 ```
 
-#### Routes Setup
+#### Cấu hình routes (tham khảo):
 
 ```javascript
 <Routes>
@@ -131,32 +141,35 @@ src/
 </Routes>
 ```
 
-### 4. Evaluation (15 phút)
+---
 
-**Tiêu chí**:
-| Tiêu chí | Điểm |
-|----------|------|
-| Technical Assessment | 30 |
-| All Routes hoạt động | 25 |
-| CRUD Operations | 25 |
-| UI/UX & Navigation | 10 |
-| Code Quality | 10 |
-| **Tổng** | **100** |
+### 4. Đánh giá (15 phút)
+
+Thầy sẽ chấm điểm dựa theo các tiêu chí sau (các bạn tham khảo để hoàn thiện project):
+
+| Tiêu chí                                | Điểm    |
+| --------------------------------------- | ------- |
+| Làm bài đánh giá kỹ thuật               | 30      |
+| Tất cả routes chạy                      | 25      |
+| Đủ CRUD                                 | 25      |
+| UI/UX & navigation                      | 10      |
+| Chất lượng code (sạch, rõ ràng, hợp lý) | 10      |
+| **TỔNG**                                | **100** |
 
 ---
 
-## 🧪 Sample Code
+## 🧪 Code mẫu tham khảo
 
-### PostCard Component
+### Component: PostCard
 
 ```javascript
 function PostCard({ post }) {
     const navigate = useNavigate();
-    
+
     const handleView = () => {
         navigate(`/posts/${post.id}`);
     };
-    
+
     return (
         <div className="post-card" onClick={handleView}>
             <h3>{post.title}</h3>
@@ -164,7 +177,12 @@ function PostCard({ post }) {
                 {post.author} - {post.createdAt}
             </p>
             <p className="category">{post.category}</p>
-            <button onClick={() => navigate(`/posts/${post.id}/edit`)}>
+            <button
+                onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/posts/${post.id}/edit`);
+                }}
+            >
                 Edit
             </button>
         </div>
@@ -172,19 +190,21 @@ function PostCard({ post }) {
 }
 ```
 
-### PostForm Component
+_Lưu ý: Khi bấm Edit, nhớ ngăn sự kiện nổi lên div cha để không bị chuyển sang trang detail luôn nhé!_
+
+### Component: PostForm
 
 ```javascript
 function PostForm({ onSubmit, initialData }) {
-    const [title, setTitle] = useState(initialData?.title || '');
-    const [content, setContent] = useState(initialData?.content || '');
-    const [category, setCategory] = useState(initialData?.category || '');
-    
+    const [title, setTitle] = useState(initialData?.title || "");
+    const [content, setContent] = useState(initialData?.content || "");
+    const [category, setCategory] = useState(initialData?.category || "");
+
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit({ title, content, category });
     };
-    
+
     return (
         <form onSubmit={handleSubmit}>
             <input
@@ -199,11 +219,7 @@ function PostForm({ onSubmit, initialData }) {
                 placeholder="Nội dung"
                 required
             />
-            <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                required
-            >
+            <select value={category} onChange={(e) => setCategory(e.target.value)} required>
                 <option value="">Chọn category</option>
                 <option value="React">React</option>
                 <option value="JavaScript">JavaScript</option>
@@ -216,68 +232,66 @@ function PostForm({ onSubmit, initialData }) {
 
 ---
 
-## ✅ Checklist
+## ✅ Checklist tự đánh giá
 
-### Knowledge Check
+### Kiến thức
 
-- [ ] Hiểu useEffect & dependencies
-- [ ] Tạo được Custom Hooks
-- [ ] Xử lý Form & Validation
-- [ ] Setup React Router đúng
-- [ ] Dynamic routes & params
-- [ ] Navigation giữa pages
+-   [ ] hiểu rõ useEffect & dependencies
+-   [ ] biết tạo Custom Hooks đơn giản
+-   [ ] xử lý form & validation
+-   [ ] setup React Router chuẩn
+-   [ ] dùng đúng dynamic routes & params
+-   [ ] navigation giữa các page (Link/useNavigate)
 
-### Skills
+### Kỹ năng thực hành
 
-- [ ] Organize components tốt
-- [ ] Manage state trong forms
-- [ ] Handle routing errors
-- [ ] Clean code & comments
-- [ ] Git workflow tốt
+-   [ ] sắp xếp component logic, code gọn gàng
+-   [ ] quản lý state trong form đúng cách
+-   [ ] xử lý lỗi khi chuyển route
+-   [ ] code sạch, có chú thích dễ hiểu
+-   [ ] làm việc với git cẩn thận
 
 ---
 
-## 💡 Pro Tips
+## 💡 Lưu ý & Tips
 
-### Performance
+### Hiệu năng
 
-- Dùng `useCallback` cho handlers
-- Optimize re-renders
-- Lazy load routes
+-   Ưu tiên dùng `useCallback` cho các handler truyền props
+-   Giảm render không cần thiết
+-   Áp dụng lazy load cho routes lớn
 
 ### UX
 
-- Loading states
-- Error boundaries
-- Smooth transitions
-- Confirm dialogs
+-   Thêm loading state để tăng trải nghiệm
+-   Cân nhắc dùng error boundary cho lỗi chưa lường trước
+-   Hiệu ứng mượt, xác nhận khi xoá
+-   Hiển thị thông báo/cảnh báo hợp lý
 
-### Code Quality
+### Chất lượng code
 
-- DRY principle
-- Reusable components
-- Clear naming
-- Comments where needed
-
----
-
-## 🔄 Preparation for Final Project
-
-Sau đánh giá này, chúng ta sẽ bắt đầu **Project cuối khóa**:
-
-**Tour Management System**
-
-Chuẩn bị:
-- ✅ Knowledge: Hooks, Forms, Routing
-- ✅ Skills: CRUD, API calls, State management
-- ✅ Tools: Git, Vite, Tailwind
-- ✅ Mindset: Ready to build real app!
+-   Luôn giữ tư duy DRY, tạo component tái sử dụng
+-   Đặt tên rõ ràng, xuyên suốt
+-   Thêm comment nếu logic phức tạp
 
 ---
 
-## 📚 Review Resources
+## 🔄 Chuẩn bị cho Project cuối khoá
 
-### Hooks Cheatsheet
+Sau buổi đánh giá này, mình sẽ bắt đầu chuyển sang **Project cuối khoá: Tour Management System**.
+
+**Các bạn cần chuẩn bị:**
+
+-   ✅ Kiến thức: Hooks, Forms, Routing (phải chắc tay!)
+-   ✅ Kỹ năng: CRUD, call API thật, quản lý state
+-   ✅ Công cụ: Git, Vite, Tailwind
+-   ✅ Tâm thế: Sẵn sàng chiến đấu, teamwork hết mình nhé!
+
+---
+
+## 📚 Tổng hợp tài liệu tham khảo
+
+### Cheatsheet Hooks
 
 ```javascript
 // useState
@@ -293,26 +307,25 @@ const ref = useRef(initial);
 
 // useNavigate
 const navigate = useNavigate();
-navigate('/path');
+navigate("/path");
 ```
 
-### Router Cheatsheet
+### Cheatsheet Router
 
 ```javascript
-// Routes
+// Khai báo route
 <Route path="/:id" element={<Component />} />
 
-// Link
+// Link chuyển trang
 <Link to="/path">Text</Link>
 
-// useParams
+// lấy params trong URL
 const { id } = useParams();
 
-// useNavigate
+// chuyển trang bằng code
 navigate('/path', { replace: true });
 ```
 
 ---
 
-**Chúc các em thành công! Next: Final Project! 🎯**
-
+**Động viên cuối: Cố gắng làm hết sức nha, project cuối là bước đệm tuyệt vời để các em tự tin hơn với React! Chúc cả lớp thành công và bứt phá ở Final Project! 🎯**

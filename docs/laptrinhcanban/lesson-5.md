@@ -3,11 +3,12 @@
 ## 🎯 Mục tiêu buổi học
 
 Chào các em! Sau buổi học hôm nay, các em cần:
-- Hiểu được khái niệm vòng lặp và lý do cần dùng vòng lặp trong lập trình.
-- Biết cách sử dụng vòng lặp `for` trong ngôn ngữ C.
-- Nắm rõ cấu trúc hoạt động của vòng lặp `for` (gồm 3 phần: khởi tạo, điều kiện, bước nhảy).
-- Vận dụng vòng lặp để giải các bài toán lặp lại đơn giản.
-- Biết dùng lệnh `break` và `continue` trong vòng lặp.
+
+-   Hiểu được khái niệm vòng lặp và lý do cần dùng vòng lặp trong lập trình.
+-   Biết cách sử dụng vòng lặp `for` trong ngôn ngữ C.
+-   Nắm rõ cấu trúc hoạt động của vòng lặp `for` (gồm 3 phần: khởi tạo, điều kiện, bước nhảy).
+-   Vận dụng vòng lặp để giải các bài toán lặp lại đơn giản.
+-   Biết dùng lệnh `break` và `continue` trong vòng lặp.
 
 ---
 
@@ -16,11 +17,12 @@ Chào các em! Sau buổi học hôm nay, các em cần:
 ### 1. Tại sao phải dùng vòng lặp?
 
 Trong thực tế, rất nhiều bài toán yêu cầu thực hiện lặp đi lặp lại một công việc, ví dụ như:
-- In ra các số từ 1 đến 100.
-- Tính tổng từ 1 đến n.
-- Nhập điểm cho 30 sinh viên.
-- In bảng cửu chương...
-Nếu không có vòng lặp, chúng ta sẽ phải viết rất nhiều dòng lệnh giống nhau. Vòng lặp sinh ra để giúp chúng ta tự động hóa việc này.
+
+-   In ra các số từ 1 đến 100.
+-   Tính tổng từ 1 đến n.
+-   Nhập điểm cho 30 sinh viên.
+-   In bảng cửu chương...
+    Nếu không có vòng lặp, chúng ta sẽ phải viết rất nhiều dòng lệnh giống nhau. Vòng lặp sinh ra để giúp chúng ta tự động hóa việc này.
 
 ### 2. Cấu trúc vòng lặp for trong C
 
@@ -32,13 +34,15 @@ for (khởi_tạo; điều_kiện; bước_nhảy) {
 }
 ```
 
-**Thầy giải thích:**  
-- **Khởi tạo:** Chạy đúng 1 lần đầu tiên. Thường dùng để khai báo và gán giá trị ban đầu cho biến đếm.
-- **Điều kiện:** Trước mỗi lần lặp, điều kiện này sẽ được kiểm tra. Nếu đúng thì vòng lặp thực hiện tiếp, sai thì dừng.
-- **Bước nhảy:** Thực hiện sau mỗi lần lặp. Thường gặp nhất là tăng hoặc giảm biến đếm.
-- **Thân vòng lặp:** Các lệnh nằm giữa 2 dấu `{ }`, sẽ được thực hiện lặp lại.
+**Thầy giải thích:**
+
+-   **Khởi tạo:** Chạy đúng 1 lần đầu tiên. Thường dùng để khai báo và gán giá trị ban đầu cho biến đếm.
+-   **Điều kiện:** Trước mỗi lần lặp, điều kiện này sẽ được kiểm tra. Nếu đúng thì vòng lặp thực hiện tiếp, sai thì dừng.
+-   **Bước nhảy:** Thực hiện sau mỗi lần lặp. Thường gặp nhất là tăng hoặc giảm biến đếm.
+-   **Thân vòng lặp:** Các lệnh nằm giữa 2 dấu `{ }`, sẽ được thực hiện lặp lại.
 
 **Ví dụ cơ bản:**
+
 ```c
 #include <stdio.h>
 
@@ -53,6 +57,7 @@ int main() {
 ```
 
 **Thứ tự thực hiện:**
+
 1. Khởi tạo `i = 1`.
 2. Kiểm tra điều kiện: `i <= 10?` Nếu đúng, thực hiện phần thân.
 3. Sau phần thân, thực hiện bước nhảy: `i++` (tăng i lên 1).
@@ -62,6 +67,7 @@ int main() {
 ### 3. Một số dạng vòng lặp for thường gặp
 
 **a) Đếm tăng:**
+
 ```c
 for (i = 1; i <= 10; i++) {
     printf("%d ", i);
@@ -69,6 +75,7 @@ for (i = 1; i <= 10; i++) {
 ```
 
 **b) Đếm giảm:**
+
 ```c
 for (i = 10; i >= 1; i--) {
     printf("%d ", i);
@@ -76,6 +83,7 @@ for (i = 10; i >= 1; i--) {
 ```
 
 **c) Đếm cách quãng (bước nhảy khác 1):**
+
 ```c
 for (i = 0; i <= 100; i += 5) {
     printf("%d ", i);  // In ra 0, 5, 10, ..., 100
@@ -83,6 +91,7 @@ for (i = 0; i <= 100; i += 5) {
 ```
 
 **d) Biến đếm là ký tự:**
+
 ```c
 for (char c = 'A'; c <= 'Z'; c++) {
     printf("%c ", c);  // In từ A đến Z
@@ -91,9 +100,10 @@ for (char c = 'A'; c <= 'Z'; c++) {
 
 ### 4. Lệnh `break` và `continue` trong vòng lặp
 
-- **`break`:** Khi gặp lệnh này bên trong vòng lặp, chương trình sẽ thoát ngay khỏi vòng lặp, không thực hiện nữa.
+-   **`break`:** Khi gặp lệnh này bên trong vòng lặp, chương trình sẽ thoát ngay khỏi vòng lặp, không thực hiện nữa.
 
 Ví dụ:
+
 ```c
 for (i = 1; i <= 10; i++) {
     if (i == 5) break; // Khi i = 5 thì dừng vòng lặp
@@ -102,9 +112,10 @@ for (i = 1; i <= 10; i++) {
 // Kết quả: 1 2 3 4
 ```
 
-- **`continue`:** Khi gặp lệnh này trong vòng lặp, chương trình bỏ qua phần còn lại của vòng lặp tại lần lặp đó và chuyển sang lần lặp tiếp theo.
+-   **`continue`:** Khi gặp lệnh này trong vòng lặp, chương trình bỏ qua phần còn lại của vòng lặp tại lần lặp đó và chuyển sang lần lặp tiếp theo.
 
 Ví dụ:
+
 ```c
 for (i = 1; i <= 10; i++) {
     if (i % 2 == 0) continue; // Bỏ qua số chẵn
@@ -325,12 +336,13 @@ int main() {
 
 ### Bài tập nâng cao
 
-11. Viết chương trình kiểm tra số hoàn hảo.  
-    - Số hoàn hảo là số bằng tổng các ước của nó (không kể chính nó).  
-    - Ví dụ: 6 là số hoàn hảo vì 6 = 1 + 2 + 3.
+11. Viết chương trình kiểm tra số hoàn hảo.
+    -   Số hoàn hảo là số bằng tổng các ước của nó (không kể chính nó).
+    -   Ví dụ: 6 là số hoàn hảo vì 6 = 1 + 2 + 3.
 12. Viết chương trình in ra tất cả số nguyên tố trong khoảng [a, b].
-13. Viết chương trình tính tổng: \( S = 1 - 2 + 3 - 4 + ... + (-1)^{n+1} * n \)
+13. Viết chương trình tính tổng: \( S = 1 - 2 + 3 - 4 + ... + (-1)^{n+1} \* n \)
 14. Viết chương trình in ra hình tam giác số, ví dụ:
+
 ```
 1
 12
@@ -338,8 +350,9 @@ int main() {
 1234
 12345
 ```
-15. Viết chương trình tính tổng các chữ số của một số.  
-    - Ví dụ: 1234 → Tổng = 1 + 2 + 3 + 4 = 10
+
+15. Viết chương trình tính tổng các chữ số của một số.
+    -   Ví dụ: 1234 → Tổng = 1 + 2 + 3 + 4 = 10
 
 ---
 
@@ -364,10 +377,10 @@ int main() {
 
 ## 🎯 Tổng kết
 
-- Các em đã biết cấu trúc và cách sử dụng vòng lặp for trong ngôn ngữ C.
-- Hiểu rõ quá trình khởi tạo, điều kiện lặp, bước nhảy trong for.
-- Sử dụng được lệnh break để thoát vòng lặp và continue để bỏ qua lần lặp hiện tại.
-- Biết vận dụng vòng lặp for vào giải quyết các bài toán thực tiễn.
+-   Các em đã biết cấu trúc và cách sử dụng vòng lặp for trong ngôn ngữ C.
+-   Hiểu rõ quá trình khởi tạo, điều kiện lặp, bước nhảy trong for.
+-   Sử dụng được lệnh break để thoát vòng lặp và continue để bỏ qua lần lặp hiện tại.
+-   Biết vận dụng vòng lặp for vào giải quyết các bài toán thực tiễn.
 
 **Buổi sau thầy sẽ dạy tiếp:** [Buổi 6: Vòng lặp while và do-while](./lesson-6.md)
 
