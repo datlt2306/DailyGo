@@ -1,30 +1,30 @@
-# Buổi 1: React là gì? Vite Setup & JSX
+# Buổi 1: React là gì? Cài đặt Vite & JSX
 
-## 🎯 Mục tiêu học tập (SMART)
+## 🎯 Mục tiêu buổi học
 
-Sau buổi học này, học viên sẽ có thể:
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
 
-1. ✅ Giải thích được **React là gì** và tại sao sử dụng React (2 phút)
-2. ✅ Cài đặt được **Vite + React** và chạy được ứng dụng đầu tiên (5 phút)
-3. ✅ Hiểu được **JSX là gì** và viết được JSX đơn giản (10 phút)
-4. ✅ Phân biệt được **JavaScript thuần vs JSX** (10 phút)
-5. ✅ Tạo được **component đơn giản** và render ra màn hình (5 phút)
+1. ✅ Hiểu **React là gì** và tại sao nên chọn React.
+2. ✅ Tự cài đặt **Vite + React** và chạy thành công ứng dụng React đầu tiên.
+3. ✅ Nhận biết được **JSX** và ứng dụng viết JSX cơ bản.
+4. ✅ Phân biệt rõ **JavaScript thuần** với **JSX**.
+5. ✅ Tạo được một **component đơn giản** và render ra giao diện.
 
 ## 📋 Nội dung chính
 
 ### 1. React là gì?
 
-**React** là một thư viện JavaScript mã nguồn mở, được phát triển bởi Facebook, dùng để xây dựng giao diện người dùng (UI).
+Các em lưu ý, **React** là một thư viện JavaScript mã nguồn mở do Facebook phát triển, giúp lập trình giao diện người dùng (UI) rất hiện đại và hiệu quả.
 
-#### Tại sao học React?
+#### Vì sao chúng ta nên học React?
 
--   ✅ **Phổ biến**: 40%+ website sử dụng React
--   ✅ **Dễ học**: Cú pháp đơn giản, dễ hiểu
--   ✅ **Component-based**: Tái sử dụng code dễ dàng
--   ✅ **Hiệu suất cao**: Virtual DOM giúp render nhanh
--   ✅ **Cộng đồng lớn**: Nhiều tài liệu, tutorial, thư viện
+-   ✅ **Phổ biến**: Hiện nay hơn 40% website sử dụng React.
+-   ✅ **Dễ học**: Cú pháp thân thiện, rất phù hợp cho người mới bắt đầu như các em.
+-   ✅ **Kiến trúc component**: Code chia nhỏ, tái sử dụng tốt, dễ quản lý UI phức tạp.
+-   ✅ **Hiệu suất cao**: Cơ chế Virtual DOM giúp React cập nhật giao diện rất nhanh.
+-   ✅ **Cộng đồng lớn**: Tài liệu, thư viện phong phú, dễ dàng tìm việc cũng như học hỏi.
 
-#### So sánh: Vanilla JS vs React
+#### So sánh nhanh: Vanilla JS và React
 
 **Vanilla JavaScript (Cách cũ):**
 
@@ -52,58 +52,86 @@ function Button({ text }) {
 <Button text="Click me" />;
 ```
 
-➡️ **React ngắn gọn, dễ đọc, dễ maintain hơn!**
+➡️ **Các em thấy không? React giúp viết code ngắn gọn, dễ đọc và rất dễ mở rộng, bảo trì sau này!**
 
-### 2. Setup Vite + React
+### 2. Cài đặt Vite + React + TailwindCSS
 
-**Vite** là công cụ build tool nhanh chóng, hiện đại để phát triển React.
+**Vite** hiện là công cụ build cực kỳ phổ biến để phát triển dự án React. Sau đây, thầy sẽ hướng dẫn các em cách khởi tạo dự án mới:
 
-#### Cài đặt
+#### Hướng dẫn cài đặt từng bước
 
 ```bash
-# Tạo project mới
+# Tạo project React mới
 npm create vite@latest my-react-app -- --template react
 
-# Di chuyển vào thư mục
+# Di chuyển vào thư mục dự án
 cd my-react-app
 
-# Cài đặt dependencies
+# Cài đặt các thư viện phụ thuộc
 npm install
 
-# Chạy development server
+# Cài TailwindCSS
+npm install tailwindcss @tailwindcss/vite
+
+# Chạy ứng dụng
 npm run dev
 ```
 
-#### Cấu trúc thư mục
+#### Cấu hình TailwindCSS với Vite
+
+1. **Sửa file `vite.config.js`:**
+
+```js
+import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+    plugins: [tailwindcss()],
+});
+```
+
+2. **Cập nhật `src/index.css`:**
+
+```css
+@import "tailwindcss";
+```
+
+3. **Import file CSS ở `main.jsx`:**
+
+```javascript
+import "./index.css";
+```
+
+#### Cấu trúc thư mục mẫu
 
 ```
 my-react-app/
-├── index.html          # File HTML chính
-├── package.json        # Quản lý dependencies
-├── vite.config.js      # Cấu hình Vite
-├── public/             # File tĩnh (images, favicon)
+├── index.html         # File HTML chính
+├── package.json       # Quản lý phụ thuộc
+├── vite.config.js     # Cấu hình Vite
+├── public/            # Thư mục chứa file tĩnh (ảnh, favicon, ...)
 └── src/
-    ├── main.jsx        # Entry point
-    ├── App.jsx         # Component chính
-    └── App.css         # Styles
+    ├── main.jsx       # Entry point chính
+    ├── App.jsx        # Component gốc của ứng dụng
+    └── index.css      # Import TailwindCSS
 ```
 
 ### 3. JSX là gì?
 
-**JSX** (JavaScript XML) là một cú pháp mở rộng cho phép viết HTML trong JavaScript.
+JSX (**JavaScript XML**) là cú pháp cho phép viết mã HTML ngay bên trong file JavaScript. Đây là điểm đặc biệt khi lập trình React, giúp code dễ đọc hơn.
 
-#### Đặc điểm JSX
+#### Các em cần nhớ gì về JSX?
 
-**✅ Phải có 1 element duy nhất ở root**
+**✅ 1 element ngoài cùng bọc tất cả**
 
 ```javascript
-// ❌ SAI
+// ❌ Sai
 return (
     <h1>Title</h1>
     <p>Content</p>
 );
 
-// ✅ ĐÚNG - Dùng Fragment
+// ✅ Đúng – dùng Fragment
 return (
     <>
         <h1>Title</h1>
@@ -112,7 +140,7 @@ return (
 );
 ```
 
-**✅ Tên thuộc tính khác HTML**
+**✅ Thuộc tính trong JSX không hoàn toàn giống HTML**
 
 ```javascript
 // HTML
@@ -122,7 +150,7 @@ return (
 <div className="container" onClick={handleClick}>Click</div>
 ```
 
-**✅ Dùng `{}` cho JavaScript expressions**
+**✅ Dùng `{}` để nhúng biến hoặc biểu thức JS**
 
 ```javascript
 const name = "Nguyễn Văn A";
@@ -137,22 +165,23 @@ return (
 );
 ```
 
-**✅ Tự động escape để chống XSS**
+**✅ React tự động "escape" dữ liệu giúp bảo mật XSS**
 
 ```javascript
 const userInput = '<script>alert("hack")</script>';
 
-// An toàn, không thực thi script
-return <div>{userInput}</div>; // Hiển thị dưới dạng text
+// React KHÔNG thực thi đoạn script này mà chỉ hiển thị dưới dạng text
+return <div>{userInput}</div>;
 ```
 
-### 4. Component đầu tiên
+### 4. Viết component đầu tiên
 
-**Component** là các khối xây dựng độc lập, có thể tái sử dụng của React.
+Component là gì? Đó là các khối nhỏ, độc lập và tái sử dụng giúp xây dựng giao diện một cách trực quan.
 
 ::: code-group
 
 ```javascript [App.jsx]
+// Giả sử thầy yêu cầu các em tạo một App với lời chào
 function App() {
     const greeting = "Chào mừng đến với React!";
 
@@ -185,7 +214,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 ### Demo 1: Component đơn giản
 
-**Mục tiêu**: Tạo component hiển thị thông tin cá nhân
+**Nhiệm vụ của các em:** Tạo một component hiển thị thông tin cá nhân sinh viên.
 
 ```javascript [Profile.jsx]
 function Profile() {
@@ -214,7 +243,7 @@ export default Profile;
 
 ### Demo 2: Tính toán trong JSX
 
-**Mục tiêu**: Hiển thị kết quả tính toán
+**Nhiệm vụ:** Hiển thị phép tính trực tiếp trong JSX.
 
 ```javascript [Calculator.jsx]
 function Calculator() {
@@ -243,83 +272,112 @@ function Calculator() {
 export default Calculator;
 ```
 
-## 🧪 Bài tập Lab
+## 🧪 Bài tập Thực hành: Todo List cơ bản
 
-### Lab 1: Thẻ sinh viên (30 phút)
+### Mục tiêu
 
-**Yêu cầu**: Tạo component `StudentCard` hiển thị thông tin của bạn
+Các em sẽ thực hành tự tay tạo ứng dụng Todo List đơn giản bằng React, JSX và TailwindCSS.
 
-```javascript [StudentCard.jsx]
-function StudentCard() {
-    // TODO: Thêm thông tin của bạn
-    const name = "Nhập tên của bạn";
-    const dob = "dd/mm/yyyy";
-    const hometown = "Nhập quê quán";
-    const hobby = "Nhập sở thích";
+### Lab 1: Xây dựng Todo List
 
-    return <div className="student-card">{/* TODO: Hiển thị thông tin */}</div>;
-}
+**Yêu cầu:** Viết component `TodoList` để hiện ra danh sách công việc.
 
-export default StudentCard;
-```
+#### Bước 1: Tạo component TodoList
 
-**Định dạng**:
-
--   Họ tên (font to, màu xanh)
--   Ngày sinh
--   Quê quán
--   Sở thích
--   Tuổi (tính tự động)
-
-**Gợi ý**: Dùng `new Date().getFullYear() - yearOfBirth` để tính tuổi
-
-### Lab 2: Component danh sách (20 phút)
-
-**Yêu cầu**: Tạo component `StudentList` hiển thị 3 bạn trong lớp
-
-```javascript [StudentList.jsx]
-function StudentList() {
-    const students = ["Nguyễn Văn A", "Trần Thị B", "Lê Văn C"];
-
+```javascript [src/components/TodoList.jsx]
+function TodoList() {
+    // Hiển thị một số công việc mẫu để các em luyện JSX + Tailwind
     return (
-        <div className="student-list">
-            <h2>Danh sách sinh viên</h2>
-            {/* TODO: Render danh sách */}
+        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List (v1)</h1>
+
+            <ul className="space-y-2">
+                <li className="flex items-center p-3 bg-gray-50 rounded border">
+                    <span className="flex-1 text-gray-700">Học React</span>
+                </li>
+                <li className="flex items-center p-3 bg-gray-50 rounded border">
+                    <span className="flex-1 text-gray-700">Làm bài tập</span>
+                    <span className="text-green-500">✓</span>
+                </li>
+                <li className="flex items-center p-3 bg-gray-50 rounded border">
+                    <span className="flex-1 text-gray-700">Review code</span>
+                </li>
+            </ul>
         </div>
     );
 }
 
-export default StudentList;
+export default TodoList;
 ```
 
-**Gợi ý**: Dùng `.map()` để render từng item
+#### Bước 2: Sử dụng component trong App.jsx
+
+```javascript [src/App.jsx]
+import TodoList from "./components/TodoList";
+
+function App() {
+    return (
+        <div className="min-h-screen bg-gray-100">
+            <TodoList />
+        </div>
+    );
+}
+
+export default App;
+```
+
+#### Bước 3: Trang trí với TailwindCSS
+
+**Yêu cầu của thầy:**
+
+-   ✅ Sử dụng class TailwindCSS để giao diện đẹp mắt.
+-   ✅ Đảm bảo responsive, xem tốt trên nhiều thiết bị.
+-   ✅ Layout rõ ràng, dễ nhìn.
+
+**Gợi ý dành cho các em:**
+
+-   `bg-white`, `rounded-lg`, `shadow-lg` cho khung card;
+-   `text-2xl`, `font-bold` cho tiêu đề;
+-   `space-y-2` tạo khoảng cách các mục;
+-   `flex`, `items-center` căn chỉnh bố cục dòng.
+
+👉 _Lưu ý:_ Ở buổi này, các em viết từng `<li>` để làm quen với JSX. Ở buổi 2, các em sẽ học cách dùng `.map()` để render danh sách từ mảng một cách tự động và hiệu quả hơn.
+
+### Kết quả mong đợi
+
+Khi hoàn thành, ứng dụng Todo List của các em cần:
+
+-   ✅ Có tiêu đề "📝 Todo List"
+-   ✅ Mỗi công việc nằm trong một card nhỏ riêng biệt
+-   ✅ Có icon check cho công việc hoàn thành
+-   ✅ Giao diện trình bày bằng TailwindCSS, dễ nhìn
 
 ---
 
-## 📝 Tổng kết
+## 📝 Tổng kết buổi học
 
-### Điểm chính
+### Các ý chính thầy muốn các em nhớ:
 
--   ✅ React là library để xây dựng UI
--   ✅ Vite là công cụ build nhanh, hiện đại
--   ✅ JSX cho phép viết HTML trong JavaScript
--   ✅ Component là khối xây dựng của React
--   ✅ Dùng `{}` để nhúng JavaScript vào JSX
+-   ✅ React là thư viện xây dựng UI hiện đại, dễ bảo trì
+-   ✅ Vite giúp tạo và build dự án React cực nhanh
+-   ✅ JSX cho phép viết HTML trong file JavaScript
+-   ✅ Component là đơn vị nhỏ nhất và quan trọng trong React
+-   ✅ Có thể nhúng biến, biểu thức vào JSX bằng `{}`
 
-### Checklist buổi 1
+### Checklist buổi 1 cho sinh viên
 
--   [ ] Setup được Vite + React
--   [ ] Hiểu được JSX syntax
--   [ ] Tạo được component đầu tiên
--   [ ] Hoàn thành Lab 1 & Lab 2
+-   [ ] Cài đặt và chạy thành công dự án React với Vite
+-   [ ] Hiểu được cú pháp JSX
+-   [ ] Tự viết được component đầu tiên của mình
+-   [ ] Hoàn thành các bài Lab thực hành của thầy giao
 
-### Chuẩn bị buổi 2
+### Lưu ý chuẩn bị cho buổi 2
 
-📚 Đọc trước:
+📚 Các em nên xem nghiên cứu trước:
 
--   Component & Props
--   Cách truyền dữ liệu giữa components
+-   Component & Props là gì?
+-   Cách truyền dữ liệu giữa các components trong React
 
 ---
 
-**Xem thêm**: [React Documentation - JSX](https://react.dev/learn/writing-markup-with-jsx)
+**Tham khảo thêm:** [React Documentation - JSX](https://react.dev/learn/writing-markup-with-jsx)

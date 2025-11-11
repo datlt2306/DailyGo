@@ -1,108 +1,52 @@
-# Buổi 5: List & Key
+# Buổi 5: List & Key Nâng cao
 
 ## 🎯 Mục tiêu học tập (SMART)
 
 Sau buổi học này, học viên sẽ có thể:
 
-1. ✅ Render **danh sách** bằng `map()` (10 phút)
-2. ✅ Hiểu và sử dụng **key prop** đúng cách (15 phút)
-3. ✅ Xử lý **dữ liệu động** từ API (10 phút)
-4. ✅ Filter và sort **danh sách** (15 phút)
-5. ✅ Tránh lỗi **key warning** (5 phút)
+1. ✅ Hiểu sâu hơn về **key prop** và khi nào dùng index (10 phút)
+2. ✅ Xử lý **nested lists** (danh sách lồng nhau) (15 phút)
+3. ✅ Filter và sort **danh sách động** (15 phút)
+4. ✅ Tìm kiếm trong danh sách (10 phút)
+5. ✅ Xử lý **empty states** và loading states (10 phút)
 
 ## 📋 Nội dung chính
 
-### 1. Render Lists trong React
+### 1. Ôn tập: map() và Key
 
-React sử dụng `map()` để chuyển mảng dữ liệu thành danh sách các element.
+> **Lưu ý**: Các em đã học về `.map()` và `key` prop ở buổi 2. Ở buổi này, thầy sẽ nhắc lại và đi sâu hơn vào các trường hợp đặc biệt.
 
-```javascript
-const fruits = ['🍎 Táo', '🍌 Chuối', '🍊 Cam'];
+#### Nhắc lại quy tắc về Key
 
-function FruitList() {
-    return (
-        <ul>
-            {fruits.map((fruit, index) => (
-                <li key={index}>{fruit}</li>
-            ))}
-        </ul>
-    );
-}
-```
+-   ✅ Key phải **unique** trong danh sách
+-   ✅ Nên dùng **ID** từ dữ liệu (ví dụ: `todo.id`, `user.id`)
+-   ❌ Không dùng `Math.random()` → key sẽ thay đổi mỗi lần render
+-   ⚠️ Có thể dùng `index` nhưng chỉ khi danh sách **không thay đổi** (không thêm/xóa/sắp xếp)
 
-#### Ví dụ cơ bản
+#### Khi nào có thể dùng index làm key?
 
 ```javascript
-const numbers = [1, 2, 3, 4, 5];
+// ✅ OK - Danh sách tĩnh, không thay đổi
+const categories = ["Tech", "Fashion", "Food"];
 
-function NumberList() {
-    return (
-        <ul>
-            {numbers.map(number => (
-                <li key={number}>{number}</li>
-            ))}
-        </ul>
-    );
-}
-```
-
-### 2. Key Prop - QUAN TRỌNG!
-
-**Key** giúp React xác định element nào thay đổi, được thêm, hoặc bị xóa. Key phải **unique** trong danh sách.
-
-#### Không có Key → Warning!
-
-```javascript
-// ❌ SAI - Warning: "Each child should have a unique key"
-const items = ['A', 'B', 'C'];
-items.map(item => <li>{item}</li>);
-```
-
-#### Sử dụng index làm key (OK với danh sách tĩnh)
-
-```javascript
-const items = ['A', 'B', 'C'];
-
-// ✅ OK khi danh sách không thay đổi
-items.map((item, index) => (
-    <li key={index}>{item}</li>
+categories.map((category, index) => (
+    <button key={index}>{category}</button>
 ));
-```
 
-#### Sử dụng ID làm key (KHUYẾN NGHỊ)
-
-```javascript
-const users = [
-    { id: 1, name: 'Nguyễn Văn A' },
-    { id: 2, name: 'Trần Thị B' },
-    { id: 3, name: 'Lê Văn C' }
+// ❌ KHÔNG NÊN - Danh sách động, có thể thêm/xóa
+const todos = [
+    { id: 1, text: "Học React" },
+    { id: 2, text: "Làm bài tập" },
 ];
 
-// ✅ ĐÚNG - Dùng unique ID
-users.map(user => (
-    <li key={user.id}>{user.name}</li>
-));
+// Nếu dùng index, khi xóa phần tử đầu tiên, React sẽ nhầm lẫn
+todos.map((todo, index) => <TodoItem key={index} todo={todo} />); // ❌
+
+// ✅ ĐÚNG - Dùng ID
+todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
 ```
 
-#### Lưu ý quan trọng
-
-- ✅ **Mỗi key phải unique** trong siblings
-- ✅ **Đừng dùng index** khi danh sách thay đổi (thêm/xóa/sắp xếp)
-- ✅ **Đừng dùng Math.random()** → mỗi lần render key khác nhau
-
-```javascript
-// ❌ SAI - Key thay đổi mỗi lần render
-users.map(user => (
-    <li key={Math.random()}>{user.name}</li>
-));
-
-// ✅ ĐÚNG - Key stable
-users.map(user => (
-    <li key={user.id}>{user.name}</li>
-));
-```
-
-### 3. Nested Lists
+### 2. Nested Lists (Danh sách lồng nhau)
 
 ```javascript
 const students = [
@@ -136,7 +80,7 @@ function StudentList() {
 }
 ```
 
-### 4. Filter Lists
+### 3. Filter Lists (Lọc danh sách)
 
 ```javascript
 const products = [
@@ -163,36 +107,17 @@ function ProductList({ category }) {
 }
 ```
 
-### 5. Dynamic Lists với State
+### 4. Dynamic Lists với State
 
-```javascript
-function TodoList() {
-    const [todos, setTodos] = useState([
-        { id: 1, text: 'Học React' },
-        { id: 2, text: 'Làm bài tập' },
-        { id: 3, text: 'Review code' }
-    ]);
-    
-    const handleDelete = (id) => {
-        setTodos(todos.filter(todo => todo.id !== id));
-    };
-    
-    return (
-        <ul>
-            {todos.map(todo => (
-                <li key={todo.id}>
-                    {todo.text}
-                    <button onClick={() => handleDelete(todo.id)}>
-                        Xóa
-                    </button>
-                </li>
-            ))}
-        </ul>
-    );
-}
-```
+> **Lưu ý**: Các em đã học về Dynamic Lists với State ở buổi 3 (TodoList với thêm, xóa, toggle). Ở buổi này, thầy chỉ nhắc lại cách sử dụng `.map()` và `key` prop với state.
 
-### 6. Search/Filter Lists
+Các em đã biết cách:
+-   Dùng `useState` để quản lý danh sách
+-   Dùng `.map()` để render danh sách từ state
+-   Dùng `key={item.id}` để React theo dõi phần tử
+-   Cập nhật state khi thêm/xóa/sửa phần tử
+
+### 5. Search/Filter Lists (Tìm kiếm trong danh sách)
 
 ```javascript
 function ProductList() {
@@ -228,7 +153,7 @@ function ProductList() {
 }
 ```
 
-### 7. Empty Lists
+### 6. Empty States (Xử lý danh sách rỗng)
 
 ```javascript
 function ProductList({ products }) {
@@ -344,68 +269,78 @@ function ProductGallery() {
 export default ProductGallery;
 ```
 
-### Demo 3: Todo List đầy đủ
+### Demo 3: Todo List với Sort (Sắp xếp)
+
+> **Lưu ý**: Demo này nâng cấp TodoList từ buổi 3, 4, thêm tính năng sắp xếp danh sách.
 
 ```javascript
 function TodoApp() {
     const [todos, setTodos] = useState([
-        { id: 1, text: 'Học React', completed: false },
-        { id: 2, text: 'Làm bài tập', completed: true },
-        { id: 3, text: 'Review code', completed: false }
+        { id: 1, text: "Học React", completed: false, priority: "high" },
+        { id: 2, text: "Làm bài tập", completed: true, priority: "medium" },
+        { id: 3, text: "Review code", completed: false, priority: "low" },
     ]);
-    
-    const [filter, setFilter] = useState('all');
-    
-    const handleToggle = (id) => {
-        setTodos(todos.map(todo =>
-            todo.id === id ? { ...todo, completed: !todo.completed } : todo
-        ));
-    };
-    
-    const handleDelete = (id) => {
-        setTodos(todos.filter(todo => todo.id !== id));
-    };
-    
-    const filteredTodos = todos.filter(todo => {
-        if (filter === 'active') return !todo.completed;
-        if (filter === 'completed') return todo.completed;
+
+    const [filter, setFilter] = useState("all");
+    const [sortBy, setSortBy] = useState("none"); // 'none', 'priority', 'alphabetical'
+
+    // Filter logic (đã học ở buổi 4)
+    const filteredTodos = todos.filter((todo) => {
+        if (filter === "active") return !todo.completed;
+        if (filter === "completed") return todo.completed;
         return true;
+    });
+
+    // ✅ Sort logic (mới)
+    const sortedTodos = [...filteredTodos].sort((a, b) => {
+        if (sortBy === "priority") {
+            const priorityOrder = { high: 3, medium: 2, low: 1 };
+            return priorityOrder[b.priority] - priorityOrder[a.priority];
+        }
+        if (sortBy === "alphabetical") {
+            return a.text.localeCompare(b.text);
+        }
+        return 0; // Không sắp xếp
     });
     
     return (
         <div className="todo-app">
+            {/* Filter buttons (đã học ở buổi 4) */}
             <div className="filters">
-                {['all', 'active', 'completed'].map(f => (
+                {["all", "active", "completed"].map((f) => (
                     <button
                         key={f}
                         onClick={() => setFilter(f)}
-                        className={filter === f ? 'active' : ''}
+                        className={filter === f ? "active" : ""}
                     >
-                        {f}
+                        {f === "all" ? "Tất cả" : f === "active" ? "Chưa xong" : "Đã xong"}
                     </button>
                 ))}
             </div>
             
+            {/* ✅ Sort options (mới) */}
+            <div className="sort-options">
+                <label>Sắp xếp: </label>
+                <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                    <option value="none">Không sắp xếp</option>
+                    <option value="priority">Theo độ ưu tiên</option>
+                    <option value="alphabetical">Theo tên (A-Z)</option>
+                </select>
+            </div>
+
+            {/* Todo list với key từ id */}
             <ul className="todo-list">
-                {filteredTodos.map(todo => (
-                    <li key={todo.id} className={todo.completed ? 'completed' : ''}>
-                        <input
-                            type="checkbox"
-                            checked={todo.completed}
-                            onChange={() => handleToggle(todo.id)}
-                        />
+                {sortedTodos.length === 0 ? (
+                    <li>Không có công việc nào</li>
+                ) : (
+                    sortedTodos.map((todo) => (
+                        <li key={todo.id} className={todo.completed ? "completed" : ""}>
                         <span>{todo.text}</span>
-                        <button onClick={() => handleDelete(todo.id)}>
-                            Xóa
-                        </button>
+                            <span className="priority">{todo.priority}</span>
                     </li>
-                ))}
+                    ))
+                )}
             </ul>
-            
-            <p>
-                Tổng: {todos.length} | 
-                Hoàn thành: {todos.filter(t => t.completed).length}
-            </p>
         </div>
     );
 }
@@ -413,37 +348,234 @@ function TodoApp() {
 export default TodoApp;
 ```
 
-## 🧪 Bài tập Lab
+## 🧪 Bài tập Thực hành: Nâng cấp Todo List
 
-### Lab 1: Danh sách Tours (30 phút)
+### Mục tiêu
+Nâng cấp Todo List từ buổi 3, 4 với các tính năng nâng cao: sort, search, nested lists.
 
-**Yêu cầu**: Hiển thị danh sách tours với filter
+### Lab 1: Todo List với Sort và Search (50 phút)
 
-```javascript
-const tours = [
-    { id: 1, name: 'Sapa 3N2D', destination: 'Sapa', price: 2500000 },
-    { id: 2, name: 'Hạ Long 2N1D', destination: 'Hạ Long', price: 1800000 },
-    { id: 3, name: 'Đà Lạt 4N3D', destination: 'Đà Lạt', price: 3200000 },
-    { id: 4, name: 'Phú Quốc 3N2D', destination: 'Phú Quốc', price: 3500000 }
-];
+**Yêu cầu**: Nâng cấp TodoList từ buổi 4, thêm tính năng sắp xếp và tìm kiếm
 
-function TourList() {
-    const [filter, setFilter] = useState('all');
-    
-    // TODO: Tạo danh sách destinations unique
-    // TODO: Filter tours theo destination
-    // TODO: Hiển thị tours dạng card
-    
+#### Bước 1: Thêm Search (Tìm kiếm) (20 phút)
+
+Nâng cấp TodoList từ buổi 4, thêm tính năng tìm kiếm:
+
+```javascript [src/components/TodoList.jsx]
+import { useState } from "react";
+import TodoItem from "./TodoItem";
+import Button from "./Button";
+
+function TodoList() {
+    // State từ buổi 3, 4
+    const [todos, setTodos] = useState([
+        { id: 1, text: "Học React", completed: false, priority: "high" },
+        { id: 2, text: "Làm bài tập", completed: true, priority: "medium" },
+        { id: 3, text: "Review code", completed: false, priority: "low" },
+    ]);
+    const [newTodo, setNewTodo] = useState("");
+    const [filter, setFilter] = useState("all");
+    const [priority, setPriority] = useState("medium");
+
+    // ✅ Thêm state mới cho search
+    const [searchTerm, setSearchTerm] = useState("");
+
+    // Handlers từ buổi 3
+    const handleToggle = (id) => {
+        setTodos(
+            todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+        );
+    };
+
+    const handleDelete = (id) => {
+        setTodos(todos.filter((todo) => todo.id !== id));
+    };
+
+    const handleAdd = (e) => {
+        e.preventDefault();
+        if (newTodo.trim()) {
+            const newId = Math.max(...todos.map((t) => t.id), 0) + 1;
+            setTodos([...todos, { id: newId, text: newTodo, completed: false, priority }]);
+            setNewTodo("");
+            setPriority("medium");
+        }
+    };
+
+    // Filter logic từ buổi 4
+    const filteredTodos = todos.filter((todo) => {
+        if (filter === "active") return !todo.completed;
+        if (filter === "completed") return todo.completed;
+        return true;
+    });
+
+    // ✅ Search logic (mới)
+    const searchedTodos = filteredTodos.filter((todo) =>
+        todo.text.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
-        <div>
-            {/* TODO: Filter buttons */}
-            {/* TODO: Tour cards */}
+        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
+
+            {/* ✅ Search input (mới) */}
+            <div className="mb-4">
+                <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Tìm kiếm công việc..."
+                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+            </div>
+
+            {/* Form thêm todo từ buổi 3 */}
+            <form onSubmit={handleAdd} className="mb-4">
+                <div className="flex gap-2 mb-2">
+                    <input
+                        type="text"
+                        value={newTodo}
+                        onChange={(e) => setNewTodo(e.target.value)}
+                        placeholder="Thêm công việc mới..."
+                        className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <Button type="submit" variant="primary">
+                        Thêm
+                    </Button>
+                </div>
+                <select
+                    value={priority}
+                    onChange={(e) => setPriority(e.target.value)}
+                    className="px-3 py-1 border rounded text-sm"
+                >
+                    <option value="high">Cao</option>
+                    <option value="medium">Trung bình</option>
+                    <option value="low">Thấp</option>
+                </select>
+            </form>
+
+            {/* Filter buttons từ buổi 4 */}
+            <div className="flex gap-2 mb-4">
+                <Button
+                    variant={filter === "all" ? "primary" : "secondary"}
+                    size="small"
+                    onClick={() => setFilter("all")}
+                >
+                    Tất cả
+                </Button>
+                <Button
+                    variant={filter === "active" ? "primary" : "secondary"}
+                    size="small"
+                    onClick={() => setFilter("active")}
+                >
+                    Chưa xong
+                </Button>
+                <Button
+                    variant={filter === "completed" ? "primary" : "secondary"}
+                    size="small"
+                    onClick={() => setFilter("completed")}
+                >
+                    Đã xong
+                </Button>
+            </div>
+
+            {/* Todo list với key từ id */}
+            <ul className="space-y-2">
+                {searchedTodos.length === 0 ? (
+                    <li className="text-center text-gray-500 py-4">
+                        {searchTerm
+                            ? "Không tìm thấy công việc nào"
+                            : "Không có công việc nào"}
+                    </li>
+                ) : (
+                    searchedTodos.map((todo) => (
+                        <TodoItem
+                            key={todo.id}
+                            todo={todo}
+                            onToggle={handleToggle}
+                            onDelete={handleDelete}
+                        />
+                    ))
+                )}
+            </ul>
         </div>
     );
 }
 
-export default TourList;
+export default TodoList;
 ```
+
+#### Bước 2: Thêm Sort (Sắp xếp) (20 phút)
+
+Thêm tính năng sắp xếp danh sách:
+
+```javascript [src/components/TodoList.jsx]
+// ... existing code ...
+
+function TodoList() {
+    // ... existing state ...
+    const [sortBy, setSortBy] = useState("none"); // 'none', 'priority', 'alphabetical'
+
+    // ... existing handlers và filter logic ...
+
+    // ✅ Sort logic (mới)
+    const sortedTodos = [...searchedTodos].sort((a, b) => {
+        if (sortBy === "priority") {
+            const priorityOrder = { high: 3, medium: 2, low: 1 };
+            return priorityOrder[b.priority] - priorityOrder[a.priority];
+        }
+        if (sortBy === "alphabetical") {
+            return a.text.localeCompare(b.text);
+        }
+        return 0; // Không sắp xếp
+    });
+
+    return (
+        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+            {/* ... existing code ... */}
+
+            {/* ✅ Sort options (mới) */}
+            <div className="mb-4">
+                <label className="text-sm text-gray-600">Sắp xếp: </label>
+                <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="px-3 py-1 border rounded text-sm"
+                >
+                    <option value="none">Không sắp xếp</option>
+                    <option value="priority">Theo độ ưu tiên</option>
+                    <option value="alphabetical">Theo tên (A-Z)</option>
+                </select>
+            </div>
+
+            {/* Todo list - dùng sortedTodos thay vì searchedTodos */}
+            <ul className="space-y-2">
+                {sortedTodos.length === 0 ? (
+                    <li className="text-center text-gray-500 py-4">
+                        {searchTerm
+                            ? "Không tìm thấy công việc nào"
+                            : "Không có công việc nào"}
+                    </li>
+                ) : (
+                    sortedTodos.map((todo) => (
+                        <TodoItem
+                            key={todo.id}
+                            todo={todo}
+                            onToggle={handleToggle}
+                            onDelete={handleDelete}
+                        />
+                    ))
+                )}
+            </ul>
+        </div>
+    );
+}
+```
+
+> **Lưu ý**:
+>
+> -   Khi sort, cần tạo bản sao mảng với `[...searchedTodos]` để không làm thay đổi mảng gốc
+> -   Key prop vẫn dùng `todo.id` (không dùng index) để đảm bảo React theo dõi đúng phần tử
+> -   Kết hợp filter → search → sort theo thứ tự
 
 ### Lab 2: Shopping Cart (30 phút)
 
@@ -521,26 +653,30 @@ export default NotificationList;
 
 ### Điểm chính
 
-- ✅ Dùng `map()` để render danh sách
-- ✅ Key prop bắt buộc, phải unique
-- ✅ Dùng ID thay vì index
-- ✅ Filter và search lists
-- ✅ Xử lý empty states
+-   ✅ Ôn tập về `.map()` và `key` prop (đã học ở buổi 2)
+-   ✅ Hiểu khi nào có thể dùng `index` làm key
+-   ✅ Xử lý nested lists (danh sách lồng nhau)
+-   ✅ Filter và search lists
+-   ✅ Sort (sắp xếp) danh sách
+-   ✅ Xử lý empty states
+-   ✅ Kết hợp filter → search → sort
 
 ### Checklist buổi 5
 
-- [ ] Render được danh sách
-- [ ] Dùng key prop đúng
-- [ ] Filter được danh sách
-- [ ] Hoàn thành Lab 1, 2, 3
+-   [ ] Hiểu sâu hơn về key prop và khi nào dùng index
+-   [ ] Xử lý được nested lists
+-   [ ] Filter và search được danh sách
+-   [ ] Sort được danh sách theo nhiều tiêu chí
+-   [ ] Xử lý được empty states
+-   [ ] Hoàn thành Lab 1, 2, 3
 
 ### Chuẩn bị Đánh giá giữa kỳ 1
 
 📚 Ôn tập:
-- JSX, Component, Props
-- State, Event Handling
-- Conditional Rendering
-- List & Key
+-   JSX, Component, Props
+-   State, Event Handling
+-   Conditional Rendering
+-   List & Key (map, filter, sort, search)
 
 ---
 

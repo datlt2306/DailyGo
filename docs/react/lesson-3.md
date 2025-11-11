@@ -1,29 +1,29 @@
 # Buổi 3: State & Event Handling
 
-## 🎯 Mục tiêu học tập (SMART)
+## 🎯 Mục tiêu buổi học
 
-Sau buổi học này, học viên sẽ có thể:
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
 
-1. ✅ Hiểu được **State là gì** và khác với Props (10 phút)
-2. ✅ Sử dụng được **useState** để quản lý state (15 phút)
-3. ✅ Xử lý được **các sự kiện** (onClick, onChange, onSubmit) (15 phút)
-4. ✅ Thực hiện **Cập nhật state** đúng cách (10 phút)
-5. ✅ Xây dựng được **interactive components** đơn giản (15 phút)
+1. ✅ Hiểu được **State là gì** và phân biệt State với Props
+2. ✅ Biết cách sử dụng **useState** để quản lý state trong component
+3. ✅ Xử lý được **các sự kiện** trong React như onClick, onChange, onSubmit
+4. ✅ Cập nhật state đúng cách, tránh lỗi phổ biến
+5. ✅ Xây dựng được các **interactive components** cơ bản
 
 ## 📋 Nội dung chính
 
 ### 1. State là gì?
 
-**State** là "bộ nhớ" của component - nó giúp component "nhớ" thông tin giữa các lần render.
+Các bạn hình dung **state** là "bộ nhớ tạm" của component - giúp component nhớ được thông tin giữa các lần render.
 
-#### State như một bộ nhớ
+#### State như một bộ nhớ của component
 
-Hãy tưởng tượng component như một form đăng ký:
+Giả sử mình có một form đăng ký như sau nha:
 
 ```javascript
 // ❌ Vấn đề: Biến thường KHÔNG giữ được giá trị giữa các lần render
 function RegistrationForm() {
-    let name = ""; // ❌ Mỗi lần render, name lại trở về rỗng
+    let name = ""; // ❌ Khi render lại, name bị reset về rỗng
 
     return (
         <form>
@@ -38,15 +38,15 @@ function RegistrationForm() {
 }
 ```
 
-**Vấn đề**: Khi bạn gõ vào input, `name` được gán giá trị mới, nhưng component không re-render, nên UI không cập nhật!
+Ở ví dụ trên, mỗi lần thay đổi, biến name lại bị reset về giá trị ban đầu, UI không hiện đúng ý mình nhập.
 
-**Giải pháp**: Dùng **State** - state thay đổi → React tự động re-render → UI cập nhật:
+**Giải pháp**: Dùng **state**. Khi state thay đổi, React sẽ tự render lại component và giao diện được cập nhật.
 
 ```javascript [RegistrationForm.jsx]
 import { useState } from "react";
 
 function RegistrationForm() {
-    // ✅ State "nhớ" giá trị giữa các lần render
+    // ✅ State lưu giá trị qua mỗi lần render
     const [name, setName] = useState("");
 
     return (
@@ -54,7 +54,7 @@ function RegistrationForm() {
             <input
                 type="text"
                 value={name}
-                onChange={(e) => setName(e.target.value)} // ✅ Hoạt động!
+                onChange={(e) => setName(e.target.value)} // ✅ Được React kiểm soát!
             />
             <p>Bạn đã nhập: {name}</p>
         </form>
@@ -62,19 +62,19 @@ function RegistrationForm() {
 }
 ```
 
-**Điều gì xảy ra:**
+Quy trình diễn ra như sau:
 
-1. User gõ "Nguyễn Văn A" → `setName("Nguyễn Văn A")` được gọi
-2. State thay đổi → React phát hiện → **Re-render component**
-3. Component render lại với `name = "Nguyễn Văn A"` → UI hiển thị text mới
+1. Bạn nhập "Nguyễn Văn A" → gọi `setName("Nguyễn Văn A")`
+2. State đổi → React tự render lại component
+3. Lúc này, `name = "Nguyễn Văn A"` nên giao diện hiển thị giống hệt ý bạn
 
 #### So sánh: Biến thường vs State
 
 | Đặc điểm                | Biến thường (`let`, `const`) | State (`useState`)                      |
 | ----------------------- | ---------------------------- | --------------------------------------- |
-| **Giữ giá trị**         | ❌ Mất khi re-render         | ✅ Giữ giữa các lần render              |
+| **Giữ giá trị**         | ❌ Mất khi re-render         | ✅ Lưu giữa các lần render              |
 | **Kích hoạt re-render** | ❌ Không                     | ✅ Có (khi state thay đổi)              |
-| **Sử dụng**             | Tính toán tạm thời           | Lưu trữ dữ liệu cần hiển thị            |
+| **Sử dụng**             | Tính toán tạm thời           | Lưu dữ liệu động hiển thị ra UI         |
 | **Ví dụ**               | `let temp = 0`               | `const [count, setCount] = useState(0)` |
 
 #### Ví dụ thực tế: Toggle Button
@@ -83,29 +83,29 @@ function RegistrationForm() {
 import { useState } from "react";
 
 function ToggleButton() {
-    // State "nhớ" trạng thái on/off
+    // State ghi nhận bật/tắt
     const [isOn, setIsOn] = useState(false);
 
     return <button onClick={() => setIsOn(!isOn)}>{isOn ? "BẬT" : "TẮT"}</button>;
 }
 ```
 
-**Giải thích:**
+Phân tích chi tiết cho các bạn nhé:
 
--   Lần render đầu: `isOn = false` → Hiển thị "TẮT"
--   User click → `setIsOn(true)` → State thay đổi → Re-render
--   Lần render thứ 2: `isOn = true` → Hiển thị "BẬT"
+-   Render lần đầu: `isOn = false` nên nút ghi là "TẮT"
+-   Bạn bấm vào → `setIsOn(true)` → state đổi → React tự render lại
+-   Lần render sau: `isOn = true` nên chuyển thành "BẬT"
 
-**Nếu dùng biến thường:**
+Nếu ta dùng biến thường thì sao?
 
 ```javascript
-// ❌ KHÔNG hoạt động
+// ❌ Không hiệu quả
 function ToggleButton() {
-    let isOn = false; // Mỗi lần render lại = false
+    let isOn = false; // Render lại là reset về false
 
     return (
         <button onClick={() => (isOn = !isOn)}>
-            {isOn ? "BẬT" : "TẮT"} // Luôn hiển thị "TẮT"
+            {isOn ? "BẬT" : "TẮT"} // Lúc nào cũng là "TẮT"
         </button>
     );
 }
@@ -113,31 +113,31 @@ function ToggleButton() {
 
 #### So sánh: Props vs State
 
-| Đặc điểm          | Props                     | State                                   |
-| ----------------- | ------------------------- | --------------------------------------- |
-| **Nguồn dữ liệu** | Từ component cha          | Bên trong component                     |
-| **Thay đổi được** | ❌ Read-only              | ✅ Có thể thay đổi                      |
-| **Re-render**     | Khi cha thay đổi props    | Khi setState                            |
-| **Sử dụng**       | Truyền dữ liệu xuống      | Lưu trữ dữ liệu động                    |
-| **Ví dụ**         | `<Button text="Click" />` | `const [count, setCount] = useState(0)` |
+| Đặc điểm          | Props                        | State                                   |
+| ----------------- | ---------------------------- | --------------------------------------- |
+| **Nguồn dữ liệu** | Từ component cha             | Tự quản lý trong component              |
+| **Thay đổi được** | ❌ Read-only                 | ✅ Có thể thay đổi trong component      |
+| **Re-render**     | Khi component cha truyền mới | Khi gọi setState                        |
+| **Sử dụng**       | Dùng để truyền giá trị xuống | Giữ các dữ liệu động trong component    |
+| **Ví dụ**         | `<Button text="Click" />`    | `const [count, setCount] = useState(0)` |
 
-#### Khi nào dùng State?
+#### Khi nào nên dùng State?
 
-✅ **Dùng State khi:**
+✅ **Các trường hợp dùng State:**
 
--   Component cần "nhớ" giá trị (form input, toggle, counter)
--   Dữ liệu thay đổi theo thời gian (số lượng items, trạng thái loading)
--   Cần re-render khi dữ liệu thay đổi
+-   Component cần nhớ giá trị (form nhập, toggle, bộ đếm)
+-   Dữ liệu thay đổi theo thời gian (items, trạng thái loading, v.v.)
+-   Muốn mỗi lần thay đổi sẽ làm render lại UI
 
-❌ **KHÔNG dùng State khi:**
+❌ **Không nên dùng State khi:**
 
--   Giá trị tính toán từ props (dùng biến thường)
--   Giá trị không thay đổi (dùng `const`)
--   Giá trị từ component cha (dùng props)
+-   Giá trị chỉ tính toán lại từ props (dùng biến thường)
+-   Dữ liệu không đổi (dùng const)
+-   Giá trị truyền từ component cha (props)
 
 ### 2. useState Hook
 
-**useState** là Hook cho phép thêm state vào function component.
+Các em chú ý: **useState** là Hook giúp function component có thể quản lý state.
 
 ```javascript
 import { useState } from "react";
@@ -147,8 +147,8 @@ function Component() {
     const [state, setState] = useState(initialValue);
 
     // state: giá trị hiện tại
-    // setState: function để thay đổi state
-    // initialValue: giá trị ban đầu
+    // setState: hàm để cập nhật state
+    // initialValue: giá trị khởi tạo
 }
 ```
 
@@ -173,47 +173,47 @@ function Counter() {
 
 #### Quy tắc quan trọng
 
-**✅ Cập nhật state dựa trên giá trị cũ**
+Các bạn lưu ý phải **cập nhật state dựa trên giá trị cũ** nhé!
 
 ```javascript
-// ❌ SAI - Nếu click nhiều lần cùng lúc sẽ bị lỗi
+// ❌ SAI - Ấn liên tục sẽ bị lỗi vì chưa kịp cập nhật
 const [count, setCount] = useState(0);
 setCount(count + 1);
-setCount(count + 1); // Vẫn là count + 1, không phải count + 2
+setCount(count + 1); // Vẫn chỉ là count + 1
 
-// ✅ ĐÚNG - Dùng updater function
+// ✅ Đúng - Dùng updater function
 const [count, setCount] = useState(0);
 setCount((prevCount) => prevCount + 1);
-setCount((prevCount) => prevCount + 1); // Đúng là + 2
+setCount((prevCount) => prevCount + 1); // Đúng là +2
 ```
 
-**✅ Không trực tiếp mutate state**
+Thầy cũng nhấn mạnh: **Không được thay đổi trực tiếp state**!
 
 ```javascript
 // ❌ SAI
 const [items, setItems] = useState([1, 2, 3]);
-items.push(4); // Mutation!
+items.push(4); // Không đúng cách
 
-// ✅ ĐÚNG - Tạo copy mới
+// ✅ Đúng - Tạo ra mảng mới rồi set
 const [items, setItems] = useState([1, 2, 3]);
-setItems([...items, 4]); // Tạo array mới
+setItems([...items, 4]); // Chuẩn React
 ```
 
-**✅ Cập nhật object đúng cách**
+Cập nhật object thì cũng phải tạo mới nhé:
 
 ```javascript
 // ❌ SAI
 const [user, setUser] = useState({ name: "A", age: 20 });
-user.age = 21; // Mutation!
+user.age = 21; // Không nên
 
 // ✅ ĐÚNG
 const [user, setUser] = useState({ name: "A", age: 20 });
-setUser({ ...user, age: 21 }); // Tạo object mới
+setUser({ ...user, age: 21 }); // Chuẩn
 ```
 
 ### 4. Event Handling
 
-React sử dụng **camelCase** cho tên event handler.
+Trong React, các sự kiện (event) đều dùng dạng **camelCase**.
 
 #### onClick
 
@@ -226,7 +226,7 @@ function Button() {
     return <button onClick={handleClick}>Click me</button>;
 }
 
-// Inline
+// Hoặc viết nhanh
 <button onClick={() => alert("Clicked!")}>Click</button>;
 ```
 
@@ -258,7 +258,7 @@ function Form() {
     const handleSubmit = (e) => {
         e.preventDefault(); // Ngăn reload trang
         alert(`Chào mừng ${name}!`);
-        setName(""); // Reset
+        setName(""); // Reset lại ô input
     };
 
     return (
@@ -365,7 +365,7 @@ function TodoApp() {
         e.preventDefault();
         if (todo.trim()) {
             setTodos([...todos, todo]);
-            setTodo(""); // Reset input
+            setTodo(""); // Reset input về rỗng
         }
     };
 
@@ -413,149 +413,305 @@ function ToggleSwitch() {
 export default ToggleSwitch;
 ```
 
-## 🧪 Bài tập Lab
+## 🧪 Bài tập Thực hành: Todo List Tương tác
 
-### Lab 1: Like Counter (20 phút)
+### Mục tiêu
 
-**Yêu cầu**: Tạo component Like Button
+Nhiệm vụ của các bạn: Nâng cấp Todo List từ buổi 2 với State và Event Handling để có thể thêm, xóa và đánh dấu hoàn thành công việc.
 
-```javascript
-function LikeButton() {
-    const [likes, setLikes] = useState(0);
+> **Lưu ý**: Các em sẽ nâng cấp các component đã tạo ở buổi 2:
+>
+> -   Button component: Thêm prop `onClick` để xử lý sự kiện
+> -   TodoItem component: Thêm props `onToggle` và `onDelete` để xử lý tương tác
 
-    // TODO:
-    // - Hiển thị số lượt thích
-    // - Click để tăng lượt thích
-    // - Hiển thị "❤️" nếu likes > 0
+### Lab 1: Todo List với State
 
-    return <div className="like-button">{/* TODO: Implement */}</div>;
-}
+**Yêu cầu:** Nâng cấp TodoList từ buổi 2, thêm State và các chức năng thêm mới, xoá và toggle todo
 
-export default LikeButton;
-```
+#### Bước 1: Nâng cấp Button component với onClick
 
-### Lab 2: Calculator đơn giản (25 phút)
+Đầu tiên, các em cần cập nhật Button component từ buổi 2 để nhận prop `onClick`:
 
-**Yêu cầu**: Tạo máy tính cộng/trừ/nhân/chia
+```javascript [src/components/Button.jsx]
+function Button({ children, variant = "primary", size = "medium", onClick, type = "button" }) {
+    const baseClasses = "font-semibold rounded-lg transition hover:opacity-90";
 
-```javascript
-function Calculator() {
-    const [num1, setNum1] = useState(0);
-    const [num2, setNum2] = useState(0);
-    const [result, setResult] = useState(0);
+    const variantClasses = {
+        primary: "bg-blue-500 text-white hover:bg-blue-600",
+        secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
+        danger: "bg-red-500 text-white hover:bg-red-600",
+        success: "bg-green-500 text-white hover:bg-green-600",
+    };
 
-    const handleCalculate = (operator) => {
-        // TODO: Tính toán dựa trên operator
-        // +, -, *, /
+    const sizeClasses = {
+        small: "px-3 py-1 text-sm",
+        medium: "px-4 py-2 text-base",
+        large: "px-6 py-3 text-lg",
     };
 
     return (
-        <div className="calculator">
-            <input type="number" value={num1} onChange={(e) => setNum1(Number(e.target.value))} />
-            <input type="number" value={num2} onChange={(e) => setNum2(Number(e.target.value))} />
-
-            <div className="buttons">
-                <button onClick={() => handleCalculate("+")}>+</button>
-                <button onClick={() => handleCalculate("-")}>-</button>
-                <button onClick={() => handleCalculate("*")}>*</button>
-                <button onClick={() => handleCalculate("/")}>/</button>
-            </div>
-
-            <p>Kết quả: {result}</p>
-        </div>
+        <button
+            type={type}
+            className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`}
+            onClick={onClick}
+        >
+            {children}
+        </button>
     );
 }
 
-export default Calculator;
+export default Button;
 ```
 
-### Lab 3: Product Selection (30 phút)
+> **Giải thích**:
+>
+> -   Thêm prop `onClick` để xử lý sự kiện click (sẽ học ở buổi này)
+> -   Thêm prop `type` với giá trị mặc định là "button" (cần "submit" cho form)
 
-**Yêu cầu**: Chọn sản phẩm và hiển thị thông tin
+#### Bước 2: Thêm State cho todos
 
-```javascript
-const products = [
-    { id: 1, name: "Laptop", price: 15000000 },
-    { id: 2, name: "Mouse", price: 500000 },
-    { id: 3, name: "Keyboard", price: 1500000 },
-];
+Chuyển từ dữ liệu tĩnh (array) sang sử dụng State. Ở bước này, các em vẫn sử dụng TodoItem như ở buổi 2 (chỉ nhận prop `todo`):
 
-function ProductSelector() {
-    const [selectedProduct, setSelectedProduct] = useState(null);
+```javascript [src/components/TodoList.jsx]
+import { useState } from "react";
+import TodoItem from "./TodoItem";
+import Button from "./Button";
+
+function TodoList() {
+    // Chuyển từ const todos = [...] sang useState
+    const [todos, setTodos] = useState([
+        { id: 1, text: "Học React", completed: false },
+        { id: 2, text: "Làm bài tập", completed: true },
+        { id: 3, text: "Review code", completed: false },
+    ]);
 
     return (
-        <div className="product-selector">
-            <h2>Chọn sản phẩm</h2>
-            <div className="products">
-                {/* TODO: Hiển thị danh sách sản phẩm */}
-                {/* TODO: Click để chọn sản phẩm */}
-            </div>
+        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
 
-            {selectedProduct && (
-                <div className="selected">
-                    <h3>Đã chọn: {selectedProduct.name}</h3>
-                    <p>Giá: {selectedProduct.price.toLocaleString("vi-VN")} đ</p>
-                </div>
-            )}
+            <ul className="space-y-2 mb-4">
+                {todos.map((todo) => (
+                    <TodoItem key={todo.id} todo={todo} />
+                ))}
+            </ul>
         </div>
     );
 }
 
-export default ProductSelector;
+export default TodoList;
 ```
 
-### Lab 4: Form đăng ký (25 phút)
+> **Lưu ý**: Ở bước này, TodoItem vẫn chỉ nhận prop `todo` như ở buổi 2. Ở các bước tiếp theo, các em sẽ nâng cấp TodoItem để nhận thêm các event handlers.
 
-**Yêu cầu**: Tạo form đăng ký đơn giản
+#### Bước 3: Nâng cấp TodoItem component với onToggle
 
-```javascript
-function RegisterForm() {
-    // TODO: Tạo state cho form fields
-    // name, email, password, confirmPassword
+Bây giờ các em cần nâng cấp TodoItem component từ buổi 2. Ở buổi 2, TodoItem chỉ nhận prop `todo`. Bây giờ các em sẽ thêm prop `onToggle` để xử lý sự kiện click:
 
-    const handleSubmit = (e) => {
+```javascript [src/components/TodoItem.jsx]
+function TodoItem({ todo, onToggle }) {
+    return (
+        <li
+            className="flex items-center p-3 bg-gray-50 rounded border hover:bg-gray-100 transition cursor-pointer"
+            onClick={() => onToggle(todo.id)}
+        >
+            <span
+                className={`flex-1 ${
+                    todo.completed ? "line-through text-gray-400" : "text-gray-700"
+                }`}
+            >
+                {todo.text}
+            </span>
+            {todo.completed && <span className="text-green-500 font-bold">✓</span>}
+        </li>
+    );
+}
+
+export default TodoItem;
+```
+
+Cập nhật TodoList để thêm handler và truyền xuống TodoItem:
+
+```javascript [src/components/TodoList.jsx]
+// ... existing code ...
+
+function TodoList() {
+    const [todos, setTodos] = useState([
+        { id: 1, text: "Học React", completed: false },
+        { id: 2, text: "Làm bài tập", completed: true },
+        { id: 3, text: "Review code", completed: false },
+    ]);
+
+    const handleToggle = (id) => {
+        setTodos(
+            todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+        );
+    };
+
+    return (
+        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
+
+            <ul className="space-y-2 mb-4">
+                {todos.map((todo) => (
+                    <TodoItem key={todo.id} todo={todo} onToggle={handleToggle} />
+                ))}
+            </ul>
+        </div>
+    );
+}
+```
+
+#### Bước 4: Thêm chức năng Xóa
+
+Nâng cấp TodoItem để nhận thêm prop `onDelete`:
+
+```javascript [src/components/TodoItem.jsx]
+function TodoItem({ todo, onToggle, onDelete }) {
+    const handleDeleteClick = (e) => {
+        e.stopPropagation(); // Tránh bị toggle khi click vào nút xóa
+        onDelete(todo.id);
+    };
+
+    return (
+        <li className="flex items-center p-3 bg-gray-50 rounded border hover:bg-gray-100 transition">
+            <span
+                className={`flex-1 cursor-pointer ${
+                    todo.completed ? "line-through text-gray-400" : "text-gray-700"
+                }`}
+                onClick={() => onToggle(todo.id)}
+            >
+                {todo.text}
+            </span>
+            {todo.completed && <span className="text-green-500 font-bold mr-2">✓</span>}
+            <button
+                onClick={handleDeleteClick}
+                className="ml-2 text-red-500 hover:text-red-700 font-bold"
+            >
+                ×
+            </button>
+        </li>
+    );
+}
+
+export default TodoItem;
+```
+
+Cập nhật TodoList để thêm handler xóa:
+
+```javascript [src/components/TodoList.jsx]
+// ... existing code ...
+
+const handleDelete = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+};
+
+// ... trong return, cập nhật TodoItem ...
+<TodoItem key={todo.id} todo={todo} onToggle={handleToggle} onDelete={handleDelete} />;
+```
+
+#### Bước 5: Thêm chức năng Thêm mới
+
+Cuối cùng, các em sẽ thêm form để thêm todo mới. Ở đây các em sẽ sử dụng Button component đã nâng cấp ở Bước 1:
+
+```javascript [src/components/TodoList.jsx]
+import { useState } from "react";
+import TodoItem from "./TodoItem";
+import Button from "./Button";
+
+function TodoList() {
+    const [todos, setTodos] = useState([
+        { id: 1, text: "Học React", completed: false },
+        { id: 2, text: "Làm bài tập", completed: true },
+        { id: 3, text: "Review code", completed: false },
+    ]);
+    const [newTodo, setNewTodo] = useState("");
+
+    const handleToggle = (id) => {
+        setTodos(
+            todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+        );
+    };
+
+    const handleDelete = (id) => {
+        setTodos(todos.filter((todo) => todo.id !== id));
+    };
+
+    const handleAdd = (e) => {
         e.preventDefault();
-        // TODO: Validate password khớp với confirmPassword
-        // TODO: Hiển thị alert với thông tin đăng ký
+        if (newTodo.trim()) {
+            const newId = Math.max(...todos.map((t) => t.id), 0) + 1;
+            setTodos([...todos, { id: newId, text: newTodo, completed: false }]);
+            setNewTodo("");
+        }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            {/* TODO: Tạo các input fields */}
-            {/* TODO: Validate và hiển thị error message */}
-            <button type="submit">Đăng ký</button>
-        </form>
+        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
+
+            <form onSubmit={handleAdd} className="mb-4">
+                <div className="flex gap-2">
+                    <input
+                        type="text"
+                        value={newTodo}
+                        onChange={(e) => setNewTodo(e.target.value)}
+                        placeholder="Thêm công việc mới..."
+                        className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <Button type="submit" variant="primary">
+                        Thêm
+                    </Button>
+                </div>
+            </form>
+
+            <ul className="space-y-2">
+                {todos.map((todo) => (
+                    <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        onToggle={handleToggle}
+                        onDelete={handleDelete}
+                    />
+                ))}
+            </ul>
+        </div>
     );
 }
 
-export default RegisterForm;
+export default TodoList;
 ```
+
+> **Lưu ý**:
+>
+> -   Button component đã được nâng cấp ở Bước 1 để nhận prop `type="submit"` cho form
+> -   Form sử dụng `onSubmit` event handler để xử lý khi submit
+> -   State `newTodo` được dùng để lưu giá trị input và reset về rỗng sau khi thêm
 
 ---
 
 ## 📝 Tổng kết
 
-### Điểm chính
+### Những ý chính các bạn cần nhớ
 
--   ✅ State là dữ liệu động, có thể thay đổi
--   ✅ useState Hook để thêm state vào component
--   ✅ setState() để cập nhật state
--   ✅ Event handlers dùng camelCase
--   ✅ Cập nhật state dựa trên giá trị cũ với updater function
+-   ✅ State là dữ liệu động, thay đổi được và làm UI cập nhật lại
+-   ✅ Hook useState để thêm state cho component function
+-   ✅ Dùng setState() để cập nhật state
+-   ✅ Event handlers React dùng camelCase
+-   ✅ Khi cập nhật state dựa trên giá trị cũ, dùng updater function cho đúng
 
-### Checklist buổi 3
+### Checklist cho buổi 3
 
--   [ ] Hiểu được State vs Props
--   [ ] Sử dụng được useState
--   [ ] Xử lý được onClick, onChange, onSubmit
--   [ ] Hoàn thành Lab 1, 2, 3, 4
+-   [ ] Phân biệt State và Props
+-   [ ] Biết cách dùng useState
+-   [ ] Xử lý được các sự kiện onClick, onChange, onSubmit trong React
+-   [ ] Hoàn thành đầy đủ các Lab
 
-### Chuẩn bị buổi 4
+### Chuẩn bị cho buổi 4
 
-📚 Đọc trước:
+📚 Các em đọc kỹ trước:
 
 -   Conditional Rendering
--   && operator, ternary operator
+-   && operator, toán tử 3 ngôi
 -   if statements với JSX
 
 ---

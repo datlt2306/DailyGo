@@ -1,152 +1,168 @@
-# Buổi 3: Toán tử và biểu thức
+# Buổi 3: Toán tử và Biểu thức trong ngôn ngữ C
 
-## 🎯 Mục tiêu học tập
+## 🎯 Mục tiêu bài học
 
-Sau buổi học này, sinh viên sẽ:
-- Nắm vững các toán tử số học (+, -, *, /, %)
-- Hiểu thứ tự ưu tiên của các toán tử
-- Sử dụng toán tử gán và toán tử tăng/giảm
-- Áp dụng toán tử so sánh và logic
-- Viết được các biểu thức phức tạp để giải quyết bài toán
+Chào các em, sau buổi học hôm nay, thầy mong các em sẽ:
+
+-   Hiểu và sử dụng thành thạo các toán tử số học trong C (`+`, `-`, `*`, `/`, `%`)
+-   Biết cách sử dụng các toán tử gán, toán tử tăng/giảm
+-   Áp dụng được toán tử so sánh và toán tử logic vào bài toán
+-   Nắm thứ tự ưu tiên khi viết biểu thức phức tạp
 
 ---
 
-## 📘 Nội dung chính
+## 📘 Nội dung chi tiết
 
 ### 1. Toán tử số học (Arithmetic Operators)
 
-| Toán tử | Tên | Ví dụ | Kết quả |
-|---------|-----|-------|---------|
-| `+` | Cộng | `5 + 3` | `8` |
-| `-` | Trừ | `10 - 4` | `6` |
-| `*` | Nhân | `6 * 7` | `42` |
-| `/` | Chia | `15 / 3` | `5` |
-| `%` | Chia lấy dư (modulo) | `17 % 5` | `2` |
+Các toán tử số học trong C:
 
-**Lưu ý:**
-- Với số nguyên, phép chia `/` cho kết quả là phần nguyên
-- `%` chỉ dùng cho số nguyên
+| Toán tử | Ý nghĩa     | Ví dụ    | Kết quả |
+| ------- | ----------- | -------- | ------- |
+| `+`     | Cộng        | `5 + 3`  | `8`     |
+| `-`     | Trừ         | `10 - 4` | `6`     |
+| `*`     | Nhân        | `6 * 7`  | `42`    |
+| `/`     | Chia nguyên | `15 / 3` | `5`     |
+| `%`     | Chia lấy dư | `17 % 5` | `2`     |
 
-**Ví dụ:**
+**Lưu ý cho các em:**
+
+-   Khi chia 2 số nguyên (`int`), kết quả lấy phần nguyên.
+-   Toán tử `%` (modulo) dùng để lấy số dư, chỉ áp dụng cho số nguyên.
+
+**Ví dụ minh hoạ:**
+
 ```c
-int a = 17 / 5;   // a = 3 (phần nguyên)
-int b = 17 % 5;   // b = 2 (phần dư)
-float c = 17.0 / 5.0;  // c = 3.4 (chia thực)
+int a = 17 / 5;       // a = 3
+int b = 17 % 5;       // b = 2
+float c = 17.0 / 5.0; // c = 3.4
 ```
 
 ### 2. Toán tử gán (Assignment Operators)
 
-| Toán tử | Tương đương | Ví dụ |
-|---------|-------------|-------|
-| `=` | `a = b` | `a = 10;` |
-| `+=` | `a = a + b` | `a += 5;` → `a = a + 5;` |
-| `-=` | `a = a - b` | `a -= 3;` → `a = a - 3;` |
-| `*=` | `a = a * b` | `a *= 2;` → `a = a * 2;` |
-| `/=` | `a = a / b` | `a /= 2;` → `a = a / 2;` |
-| `%=` | `a = a % b` | `a %= 3;` → `a = a % 3;` |
+Toán tử gán dùng để gán giá trị cho biến, hoặc kết hợp với các toán tử số học để viết ngắn gọn:
 
-### 3. Toán tử tăng/giảm (Increment/Decrement)
+| Toán tử | Nghĩa tương đương | Ví dụ                  |
+| ------- | ----------------- | ---------------------- |
+| `=`     | Gán               | `a = 10;`              |
+| `+=`    | Cộng rồi gán      | `a += 5; // a = a + 5` |
+| `-=`    | Trừ rồi gán       | `a -= 3; // a = a - 3` |
+| `*=`    | Nhân rồi gán      | `a *= 2; // a = a * 2` |
+| `/=`    | Chia rồi gán      | `a /= 2; // a = a / 2` |
+| `%=`    | Chia dư rồi gán   | `a %= 3; // a = a % 3` |
+
+### 3. Toán tử tăng/giảm (Increment/Decrement Operators)
+
+Hai toán tử này giúp tăng hoặc giảm giá trị biến số nguyên lên 1 đơn vị:
 
 ```c
 int a = 5;
 
-a++;    // Tăng a lên 1 → a = 6
-++a;    // Tăng a lên 1 → a = 7
-a--;    // Giảm a đi 1 → a = 6
---a;    // Giảm a đi 1 → a = 5
+a++;    // sau lệnh này: a = 6
+++a;    // sau lệnh này: a = 7
+a--;    // sau lệnh này: a = 6
+--a;    // sau lệnh này: a = 5
 ```
 
-**Sự khác biệt giữa `a++` và `++a`:**
+**Phân biệt `a++` và `++a`:**
+
 ```c
 int a = 5;
-int b = a++;  // b = 5, a = 6 (gán trước, tăng sau)
-
+int b = a++; // b = 5, a = 6 (gán trước, tăng sau)
 int c = 5;
-int d = ++c;  // d = 6, c = 6 (tăng trước, gán sau)
+int d = ++c; // d = 6, c = 6 (tăng trước, gán sau)
 ```
 
 ### 4. Toán tử so sánh (Comparison Operators)
 
-| Toán tử | Ý nghĩa | Ví dụ | Kết quả |
-|---------|---------|-------|---------|
-| `==` | Bằng | `5 == 5` | `true` |
-| `!=` | Khác | `5 != 3` | `true` |
-| `<` | Nhỏ hơn | `3 < 5` | `true` |
-| `>` | Lớn hơn | `5 > 3` | `true` |
-| `<=` | Nhỏ hơn hoặc bằng | `5 <= 5` | `true` |
-| `>=` | Lớn hơn hoặc bằng | `5 >= 3` | `true` |
+Các em dùng toán tử so sánh để kiểm tra quan hệ giữa các giá trị:
 
-**Kết quả:** `true` (1) hoặc `false` (0)
+| Toán tử | Ý nghĩa           | Ví dụ    | Kết quả  |
+| ------- | ----------------- | -------- | -------- |
+| `==`    | Bằng nhau         | `5 == 5` | 1 (true) |
+| `!=`    | Khác nhau         | `5 != 3` | 1        |
+| `<`     | Nhỏ hơn           | `3 < 5`  | 1        |
+| `>`     | Lớn hơn           | `5 > 3`  | 1        |
+| `<=`    | Nhỏ hơn hoặc bằng | `5 <= 5` | 1        |
+| `>=`    | Lớn hơn hoặc bằng | `5 >= 3` | 1        |
+
+Kết quả trả về là `1` (đúng) hoặc `0` (sai).
 
 ### 5. Toán tử logic (Logical Operators)
 
-| Toán tử | Ý nghĩa | Ví dụ | Kết quả |
-|---------|---------|-------|---------|
-| `&&` | VÀ (AND) | `(5 > 3) && (4 < 6)` | `true` |
-| `||` | HOẶC (OR) | `(5 > 3) || (4 > 6)` | `true` |
-| `!` | PHỦ ĐỊNH (NOT) | `!(5 > 3)` | `false` |
+Dùng kết hợp các điều kiện:
 
-**Bảng chân lý:**
+| Toán tử | Ý nghĩa  | Ví dụ                | Kết quả   |
+| ------- | -------- | -------------------- | --------- | -------- | --- | -------- | --- |
+| `&&`    | VÀ (AND) | `(5 > 3) && (4 < 6)` | 1         |
+| `       |          | `                    | HOẶC (OR) | `(5 > 3) |     | (4 > 6)` | 1   |
+| `!`     | PHỦ ĐỊNH | `!(5 > 3)`           | 0         |
 
-**AND (&&):**
-| A | B | A && B |
-|---|---|--------|
-| true | true | true |
-| true | false | false |
-| false | true | false |
-| false | false | false |
+**Bảng chân lý toán tử AND (&&):**
 
-**OR (||):**
-| A | B | A \|\| B |
-|---|---|---------|
-| true | true | true |
-| true | false | true |
-| false | true | true |
-| false | false | false |
+| A     | B     | A && B |
+| ----- | ----- | ------ |
+| true  | true  | true   |
+| true  | false | false  |
+| false | true  | false  |
+| false | false | false  |
 
-### 6. Thứ tự ưu tiên toán tử
+**Bảng chân lý toán tử OR (||):**
 
-1. `()` - Dấu ngoặc (ưu tiên cao nhất)
+| A     | B     | A \|\| B |
+| ----- | ----- | -------- |
+| true  | true  | true     |
+| true  | false | true     |
+| false | true  | true     |
+| false | false | false    |
+
+### 6. Thứ tự ưu tiên toán tử trong C
+
+Khi viết nhiều toán tử trong một biểu thức, ngôn ngữ C sẽ thực hiện theo thứ tự sau:
+
+1. `()` - Dấu ngoặc (cao nhất)
 2. `++`, `--` - Tăng/giảm
-3. `*`, `/`, `%` - Nhân, chia, modulo
+3. `*`, `/`, `%` - Nhân, chia, chia dư
 4. `+`, `-` - Cộng, trừ
 5. `<`, `>`, `<=`, `>=` - So sánh
-6. `==`, `!=` - So sánh bằng
+6. `==`, `!=` - So sánh bằng/khác
 7. `&&` - AND
 8. `||` - OR
-9. `=` - Gán (ưu tiên thấp nhất)
+9. `=` - Gán (thấp nhất)
 
 **Ví dụ:**
+
 ```c
-int ketQua = 5 + 3 * 2;        // ketQua = 11 (nhân trước)
-int ketQua2 = (5 + 3) * 2;     // ketQua2 = 16 (ngoặc trước)
-bool check = (5 > 3) && (4 < 6); // check = true
+int ketQua = 5 + 3 * 2;          // ketQua = 11 (nhân trước, cộng sau)
+int ketQua2 = (5 + 3) * 2;       // ketQua2 = 16 (ngoặc trước)
+int check = (5 > 3) && (4 < 6);  // check = 1 (true)
 ```
 
 ---
 
-## 💻 Ví dụ minh họa
+## 💻 Ví dụ minh hoạ (code C tiêu chuẩn)
 
-### Ví dụ 1: Tính toán số học cơ bản
+### Ví dụ 1: Phép toán số học cơ bản
 
 ```c
 #include <stdio.h>
 
 int main() {
     int a = 17, b = 5;
-    
-    cout << "a = " << a << ", b = " << b << endl;
-    cout << "a + b = " << (a + b) << endl;
-    cout << "a - b = " << (a - b) << endl;
-    cout << "a * b = " << (a * b) << endl;
-    cout << "a / b = " << (a / b) << endl;
-    cout << "a % b = " << (a % b) << endl;
-    
+
+    printf("a = %d, b = %d\n", a, b);
+    printf("a + b = %d\n", a + b);
+    printf("a - b = %d\n", a - b);
+    printf("a * b = %d\n", a * b);
+    printf("a / b = %d\n", a / b);
+    printf("a %% b = %d\n", a % b);
+
     return 0;
 }
 ```
 
 **Kết quả:**
+
 ```
 a = 17, b = 5
 a + b = 22
@@ -163,21 +179,21 @@ a % b = 2
 
 int main() {
     int x = 10;
-    
-    cout << "Gia tri ban dau: x = " << x << endl;
-    
-    x += 5;  // x = x + 5
-    cout << "Sau x += 5: x = " << x << endl;
-    
-    x -= 3;  // x = x - 3
-    cout << "Sau x -= 3: x = " << x << endl;
-    
-    x *= 2;  // x = x * 2
-    cout << "Sau x *= 2: x = " << x << endl;
-    
-    x /= 4;  // x = x / 4
-    cout << "Sau x /= 4: x = " << x << endl;
-    
+
+    printf("Gia tri ban dau: x = %d\n", x);
+
+    x += 5; // x = x + 5
+    printf("Sau x += 5: x = %d\n", x);
+
+    x -= 3; // x = x - 3
+    printf("Sau x -= 3: x = %d\n", x);
+
+    x *= 2; // x = x * 2
+    printf("Sau x *= 2: x = %d\n", x);
+
+    x /= 4; // x = x / 4
+    printf("Sau x /= 4: x = %d\n", x);
+
     return 0;
 }
 ```
@@ -190,13 +206,13 @@ int main() {
 int main() {
     int a = 5;
     int b, c;
-    
-    b = a++;  // Gán trước, tăng sau
-    cout << "a = " << a << ", b = " << b << endl;  // a = 6, b = 5
-    
-    c = ++a;  // Tăng trước, gán sau
-    cout << "a = " << a << ", c = " << c << endl;  // a = 7, c = 7
-    
+
+    b = a++; // Gán b = a (b = 5), xong tăng a lên (a = 6)
+    printf("a = %d, b = %d\n", a, b);
+
+    c = ++a; // Tăng a trước (a = 7), rồi gán cho c
+    printf("a = %d, c = %d\n", a, c);
+
     return 0;
 }
 ```
@@ -209,27 +225,23 @@ int main() {
 int main() {
     int diem = 8;
     int tuoi = 20;
-    
+
     // Toán tử so sánh
-    cout << "diem == 8: " << (diem == 8) << endl;      // true (1)
-    cout << "diem != 5: " << (diem != 5) << endl;      // true (1)
-    cout << "diem > 7: " << (diem > 7) << endl;        // true (1)
-    cout << "diem < 5: " << (diem < 5) << endl;        // false (0)
-    
+    printf("diem == 8: %d\n", diem == 8);   // 1 (true)
+    printf("diem != 5: %d\n", diem != 5);   // 1 (true)
+    printf("diem > 7: %d\n", diem > 7);     // 1 (true)
+    printf("diem < 5: %d\n", diem < 5);     // 0 (false)
+
     // Toán tử logic
-    cout << "(diem >= 5) && (diem <= 10): " 
-         << ((diem >= 5) && (diem <= 10)) << endl;     // true
-    
-    cout << "(diem < 5) || (tuoi >= 18): " 
-         << ((diem < 5) || (tuoi >= 18)) << endl;      // true
-    
-    cout << "!(diem < 5): " << (!(diem < 5)) << endl;  // true
-    
+    printf("(diem >= 5) && (diem <= 10): %d\n", (diem >= 5) && (diem <= 10)); // 1
+    printf("(diem < 5) || (tuoi >= 18): %d\n", (diem < 5) || (tuoi >= 18));   // 1
+    printf("!(diem < 5): %d\n", !(diem < 5));                                 // 1
+
     return 0;
 }
 ```
 
-### Ví dụ 5: Tính tiền điện theo bậc thang
+### Ví dụ 5: Tính tiền điện theo bậc (giản lược)
 
 ```c
 #include <stdio.h>
@@ -237,10 +249,10 @@ int main() {
 int main() {
     int soDien;
     float tienDien = 0;
-    
-    cout << "Nhap so dien tieu thu (kWh): ";
-    cin >> soDien;
-    
+
+    printf("Nhap so dien tieu thu (kWh): ");
+    scanf("%d", &soDien);
+
     // Bậc 1: 0-50 kWh: 1,800 VND/kWh
     if (soDien > 50) {
         tienDien += 50 * 1800;
@@ -249,147 +261,132 @@ int main() {
         tienDien += soDien * 1800;
         soDien = 0;
     }
-    
+
     // Bậc 2: 51-100 kWh: 2,300 VND/kWh
     if (soDien > 0 && soDien <= 50) {
         tienDien += soDien * 2300;
-        soDien -= 50;
+        soDien = 0;
     } else if (soDien > 50) {
         tienDien += 50 * 2300;
         soDien -= 50;
     }
-    
+
     // Bậc 3: > 100 kWh: 2,900 VND/kWh
     if (soDien > 0) {
         tienDien += soDien * 2900;
     }
-    
-    cout << "Tong tien dien: " << tienDien << " VND" << endl;
-    
+
+    printf("Tong tien dien: %.0f VND\n", tienDien);
+
     return 0;
 }
 ```
 
-### Ví dụ 6: Kiểm tra số chẵn/lẻ và chia hết
+### Ví dụ 6: Kiểm tra số chẵn/lẻ, chia hết cho 3, 5
 
 ```c
 #include <stdio.h>
 
 int main() {
     int so;
-    
-    cout << "Nhap mot so nguyen: ";
-    cin >> so;
-    
+
+    printf("Nhap mot so nguyen: ");
+    scanf("%d", &so);
+
     // Kiểm tra chẵn/lẻ
     if (so % 2 == 0) {
-        cout << so << " la so chan" << endl;
+        printf("%d la so chan\n", so);
     } else {
-        cout << so << " la so le" << endl;
+        printf("%d la so le\n", so);
     }
-    
+
     // Kiểm tra chia hết cho 3 và 5
     if (so % 3 == 0 && so % 5 == 0) {
-        cout << so << " chia het cho ca 3 va 5" << endl;
+        printf("%d chia het cho ca 3 va 5\n", so);
     } else if (so % 3 == 0) {
-        cout << so << " chi chia het cho 3" << endl;
+        printf("%d chi chia het cho 3\n", so);
     } else if (so % 5 == 0) {
-        cout << so << " chi chia het cho 5" << endl;
+        printf("%d chi chia het cho 5\n", so);
     } else {
-        cout << so << " khong chia het cho 3 va 5" << endl;
+        printf("%d khong chia het cho 3 va 5\n", so);
     }
-    
+
     return 0;
 }
 ```
 
 ---
 
-## 🧠 Bài tập thực hành
+## 🧠 Bài tập thực hành cho các em
 
 ### Bài tập cơ bản
 
-**Bài 1:** Viết chương trình nhập 2 số, tính và in:
-- Tổng, hiệu, tích, thương
-- Phần dư của phép chia
-- Trung bình cộng của 2 số
+**Bài 1:** Nhập từ bàn phím 2 số nguyên, in ra:
 
-**Bài 2:** Viết chương trình nhập bán kính, tính:
-- Chu vi hình tròn (C = 2πr)
-- Diện tích hình tròn (S = πr²)
-- Thể tích hình cầu (V = 4/3πr³)
+-   Tổng, hiệu, tích, thương, phần dư
+-   Trung bình cộng của 2 số
 
-**Bài 3:** Viết chương trình đổi thời gian:
-- Nhập số giây, đổi sang giờ : phút : giây
-- Ví dụ: 3665 giây = 1 giờ 1 phút 5 giây
+**Bài 2:** Nhập bán kính r, tính:
 
-**Bài 4:** Viết chương trình nhập 3 số, tìm:
-- Số lớn nhất
-- Số nhỏ nhất
-- Trung bình cộng
+-   Chu vi hình tròn (`C = 2 * pi * r`)
+-   Diện tích hình tròn (`S = pi * r * r`)
+-   Thể tích hình cầu (`V = 4/3 * pi * r * r * r`)
 
-**Bài 5:** Viết chương trình tính tổng các chữ số của một số:
-- Ví dụ: 1234 → Tổng = 1 + 2 + 3 + 4 = 10
+**Bài 3:** Nhập số giây, đổi sang giờ, phút, giây  
+(Ví dụ: 3665 giây = 1 giờ 1 phút 5 giây)
 
-### Bài tập nâng cao
+**Bài 4:** Nhập 3 số nguyên, tìm:
 
-**Bài 6:** Viết chương trình tính lương nhân viên:
-- Lương cơ bản: 5,000,000 VND
-- Phụ cấp ăn trưa: 730,000 VND
-- Phụ cấp xăng xe: 500,000 VND
-- Thưởng: 10% lương cơ bản nếu làm > 22 ngày/tháng
-- Tính tổng lương thực nhận (sau khi trừ BHXH, BHYT, BHTN = 10.5%)
+-   Số lớn nhất, nhỏ nhất, trung bình cộng
 
-**Bài 7:** Viết chương trình tính điểm học phần:
-- Điểm chuyên cần (CC): hệ số 0.1
-- Điểm giữa kỳ (GK): hệ số 0.3
-- Điểm cuối kỳ (CK): hệ số 0.6
-- Điểm học phần = CC×0.1 + GK×0.3 + CK×0.6
-- Nhập 3 điểm, tính và in điểm học phần
+**Bài 5:** Nhập một số nguyên, tính tổng các chữ số  
+(Ví dụ: 1234 → Tổng = 1 + 2 + 3 + 4 = 10)
 
-**Bài 8:** Viết chương trình kiểm tra một số có phải là:
-- Số chẵn
-- Chia hết cho 3
-- Chia hết cho cả 3 và 5
-- Số có 3 chữ số (100-999)
+### Bài nâng cao
 
-**Bài 9:** Viết chương trình tính tiền gửi ngân hàng:
-- Nhập số tiền gửi, lãi suất (%/năm), số tháng gửi
-- Tính số tiền nhận được (lãi kép): `Số tiền nhận = Số tiền gửi × (1 + lãi suất/100)^số tháng`
+**Bài 6:** Tính lương thực nhận của nhân viên (Biết lương cơ bản, phụ cấp ăn trưa, phụ cấp xăng xe. Nếu làm > 22 ngày/tháng thì thưởng 10% lương cơ bản. Trừ các khoản BHXH, BHYT, BHTN = 10.5% tổng lương trước thuế)
+
+**Bài 7:** Nhập điểm chuyên cần (CC), giữa kỳ (GK), cuối kỳ (CK). Tính điểm học phần theo công thức:  
+`Diem hoc phan = CC*0.1 + GK*0.3 + CK*0.6`
+
+**Bài 8:** Kiểm tra một số nguyên xem:
+
+-   Có phải số chẵn không?
+-   Có chia hết cho 3 hoặc cho cả 3 và 5?
+-   Có phải là số có 3 chữ số không?
+
+**Bài 9:** Nhập số tiền gửi, lãi suất (%/năm), số tháng gửi. Tính số tiền nhận được theo lãi kép:  
+`So tien nhan duoc = So tien gui * (1 + lai suat/100)^so_thang`
 
 ---
 
-## 📝 Lưu ý quan trọng
+## 📝 Lưu ý thầy nhắc lại
 
-1. **Thứ tự ưu tiên:** Luôn dùng `()` để làm rõ thứ tự tính toán
-2. **Phép chia:** Với số nguyên, kết quả là phần nguyên. Muốn kết quả thập phân, dùng `float` hoặc `double`
-3. **Modulo `%`:** Chỉ dùng với số nguyên
-4. **So sánh:** Dùng `==` để so sánh bằng, không phải `=`
-5. **Logic:** `&&` (AND) và `||` (OR) rất hữu ích trong điều kiện phức tạp
-
----
-
-## ✅ Kiểm tra kiến thức
-
-1. `17 / 5` cho kết quả bao nhiêu? `17 % 5` cho kết quả bao nhiêu?
-
-2. Sự khác biệt giữa `a++` và `++a`?
-
-3. Kết quả của biểu thức `(5 + 3) * 2 - 4` là bao nhiêu?
-
-4. Kết quả của `(5 > 3) && (4 > 6)` là gì?
-
-5. Làm thế nào để kiểm tra một số `n` có chia hết cho 3?
+1. Khi viết biểu thức phức tạp, hãy dùng dấu ngoặc `()` để tránh sai thứ tự thực hiện.
+2. Khi chia 2 số nguyên, kết quả là nguyên. Nếu muốn lấy kết quả thập phân, phải dùng biến kiểu `float` hoặc `double`.
+3. Dấu `%` (modulo) chỉ dùng được với số nguyên.
+4. Để so sánh bằng, dùng `==` (không phải `=`).
+5. Toán tử logic `&&` (AND), `||` (OR) thường dùng trong điều kiện của lệnh `if`.
 
 ---
 
-## 🎯 Tóm tắt
+## ✅ Ôn tập kiểm tra kiến thức
 
-- ✅ Đã học các toán tử số học: `+`, `-`, `*`, `/`, `%`
-- ✅ Biết sử dụng toán tử gán: `+=`, `-=`, `*=`, `/=`, `%=`
-- ✅ Hiểu toán tử tăng/giảm: `++`, `--`
-- ✅ Nắm toán tử so sánh: `==`, `!=`, `<`, `>`, `<=`, `>=`
-- ✅ Sử dụng toán tử logic: `&&`, `||`, `!`
-- ✅ Áp dụng thứ tự ưu tiên toán tử để viết biểu thức phức tạp
+1. `17 / 5` ra bao nhiêu? `17 % 5` ra bao nhiêu?
+2. `a++` và `++a` khác nhau điểm nào?
+3. `(5 + 3) * 2 - 4` kết quả là mấy?
+4. `(5 > 3) && (4 > 6)` kết quả thế nào?
+5. Làm thế nào kiểm tra một số `n` chia hết cho 3? (Viết code minh hoạ)
 
-**Bài tiếp theo:** [Buổi 4: Cấu trúc điều kiện (if-else, switch)](./lesson-4.md)
+---
+
+## 🎯 Tổng kết bài học
+
+-   Các em đã biết các toán tử số học: `+`, `-`, `*`, `/`, `%`
+-   Dùng được các toán tử gán và toán tử kết hợp: `+=`, `-=`, `*=`, `/=`, `%=`
+-   Hiểu và sử dụng được toán tử tăng/giảm: `++`, `--`
+-   Phân biệt và vận dụng toán tử so sánh: `==`, `!=`, `<`, `>`, `<=`, `>=`
+-   Áp dụng các toán tử logic khi viết điều kiện (`&&`, `||`, `!`)
+-   Nắm được thứ tự ưu tiên toán tử trong biểu thức
+
+**Tiết sau:** [Buổi 4: Cấu trúc điều kiện (if-else, switch)](./lesson-4.md)
