@@ -1,120 +1,126 @@
-# Buổi 5: Vòng lặp for
+# Bài 5: Vòng lặp for trong C
 
-## 🎯 Mục tiêu học tập
+## 🎯 Mục tiêu buổi học
 
-Sau buổi học này, sinh viên sẽ:
-- Hiểu khái niệm vòng lặp và khi nào cần sử dụng
-- Sử dụng thành thạo vòng lặp `for`
-- Hiểu cách vòng lặp `for` hoạt động (khởi tạo, điều kiện, bước nhảy)
-- Áp dụng vòng lặp để giải quyết các bài toán lặp lại
-- Sử dụng `break` và `continue` trong vòng lặp
+Chào các em! Sau buổi học hôm nay, các em cần:
+- Hiểu được khái niệm vòng lặp và lý do cần dùng vòng lặp trong lập trình.
+- Biết cách sử dụng vòng lặp `for` trong ngôn ngữ C.
+- Nắm rõ cấu trúc hoạt động của vòng lặp `for` (gồm 3 phần: khởi tạo, điều kiện, bước nhảy).
+- Vận dụng vòng lặp để giải các bài toán lặp lại đơn giản.
+- Biết dùng lệnh `break` và `continue` trong vòng lặp.
 
 ---
 
-## 📘 Nội dung chính
+## 📘 Nội dung bài học
 
-### 1. Tại sao cần vòng lặp?
+### 1. Tại sao phải dùng vòng lặp?
 
-Khi cần thực hiện một công việc lặp đi lặp lại:
-- In các số từ 1 đến 100
-- Tính tổng các số từ 1 đến n
-- Nhập điểm của 30 sinh viên
-- In bảng cửu chương
+Trong thực tế, rất nhiều bài toán yêu cầu thực hiện lặp đi lặp lại một công việc, ví dụ như:
+- In ra các số từ 1 đến 100.
+- Tính tổng từ 1 đến n.
+- Nhập điểm cho 30 sinh viên.
+- In bảng cửu chương...
+Nếu không có vòng lặp, chúng ta sẽ phải viết rất nhiều dòng lệnh giống nhau. Vòng lặp sinh ra để giúp chúng ta tự động hóa việc này.
 
-**Vòng lặp** giúp lặp lại một khối lệnh nhiều lần.
+### 2. Cấu trúc vòng lặp for trong C
 
-### 2. Cấu trúc vòng lặp for
+**Cú pháp tổng quát:**
 
-**Cú pháp:**
 ```c
-for (khoi_tao; dieu_kien; buoc_nhay) {
-    // Các câu lệnh cần lặp
+for (khởi_tạo; điều_kiện; bước_nhảy) {
+    // Các câu lệnh
 }
 ```
 
-**Giải thích:**
-1. **Khởi tạo:** Chạy một lần khi bắt đầu vòng lặp
-2. **Điều kiện:** Kiểm tra trước mỗi lần lặp, nếu đúng thì tiếp tục
-3. **Bước nhảy:** Thực hiện sau mỗi lần lặp
-4. **Thân vòng lặp:** Các câu lệnh được thực hiện
+**Thầy giải thích:**  
+- **Khởi tạo:** Chạy đúng 1 lần đầu tiên. Thường dùng để khai báo và gán giá trị ban đầu cho biến đếm.
+- **Điều kiện:** Trước mỗi lần lặp, điều kiện này sẽ được kiểm tra. Nếu đúng thì vòng lặp thực hiện tiếp, sai thì dừng.
+- **Bước nhảy:** Thực hiện sau mỗi lần lặp. Thường gặp nhất là tăng hoặc giảm biến đếm.
+- **Thân vòng lặp:** Các lệnh nằm giữa 2 dấu `{ }`, sẽ được thực hiện lặp lại.
 
 **Ví dụ cơ bản:**
 ```c
-for (int i = 1; i <= 10; i++) {
-    cout << i << " ";
+#include <stdio.h>
+
+int main() {
+    int i;
+    for (i = 1; i <= 10; i++) {
+        printf("%d ", i);
+    }
+    // Kết quả: 1 2 3 4 5 6 7 8 9 10
+    return 0;
 }
-// Kết quả: 1 2 3 4 5 6 7 8 9 10
 ```
 
-**Quy trình hoạt động:**
-```
-1. i = 1 (khởi tạo)
-2. Kiểm tra: i <= 10? → Đúng → Thực hiện cout << i
-3. i++ → i = 2 (bước nhảy)
-4. Kiểm tra: i <= 10? → Đúng → Thực hiện cout << i
-5. ... (lặp lại)
-6. Khi i = 11, điều kiện sai → Thoát vòng lặp
-```
+**Thứ tự thực hiện:**
+1. Khởi tạo `i = 1`.
+2. Kiểm tra điều kiện: `i <= 10?` Nếu đúng, thực hiện phần thân.
+3. Sau phần thân, thực hiện bước nhảy: `i++` (tăng i lên 1).
+4. Quay lại bước 2.
+5. Khi điều kiện sai (`i > 10`), thoát vòng lặp.
 
-### 3. Các dạng vòng lặp for
+### 3. Một số dạng vòng lặp for thường gặp
 
 **a) Đếm tăng:**
 ```c
-for (int i = 1; i <= 10; i++) {
-    cout << i << " ";
+for (i = 1; i <= 10; i++) {
+    printf("%d ", i);
 }
 ```
 
 **b) Đếm giảm:**
 ```c
-for (int i = 10; i >= 1; i--) {
-    cout << i << " ";
+for (i = 10; i >= 1; i--) {
+    printf("%d ", i);
 }
 ```
 
-**c) Đếm cách khoảng:**
+**c) Đếm cách quãng (bước nhảy khác 1):**
 ```c
-for (int i = 0; i <= 100; i += 5) {
-    cout << i << " ";  // 0, 5, 10, 15, ..., 100
+for (i = 0; i <= 100; i += 5) {
+    printf("%d ", i);  // In ra 0, 5, 10, ..., 100
 }
 ```
 
-**d) Biến đếm kiểu khác:**
+**d) Biến đếm là ký tự:**
 ```c
 for (char c = 'A'; c <= 'Z'; c++) {
-    cout << c << " ";  // A, B, C, ..., Z
+    printf("%c ", c);  // In từ A đến Z
 }
 ```
 
-### 4. Lệnh break và continue
+### 4. Lệnh `break` và `continue` trong vòng lặp
 
-**`break`:** Thoát khỏi vòng lặp ngay lập tức
+- **`break`:** Khi gặp lệnh này bên trong vòng lặp, chương trình sẽ thoát ngay khỏi vòng lặp, không thực hiện nữa.
+
+Ví dụ:
 ```c
-for (int i = 1; i <= 10; i++) {
-    if (i == 5) {
-        break;  // Thoát khi i = 5
-    }
-    cout << i << " ";
+for (i = 1; i <= 10; i++) {
+    if (i == 5) break; // Khi i = 5 thì dừng vòng lặp
+    printf("%d ", i);
 }
 // Kết quả: 1 2 3 4
 ```
 
-**`continue`:** Bỏ qua phần còn lại của vòng lặp, tiếp tục lần lặp tiếp theo
+- **`continue`:** Khi gặp lệnh này trong vòng lặp, chương trình bỏ qua phần còn lại của vòng lặp tại lần lặp đó và chuyển sang lần lặp tiếp theo.
+
+Ví dụ:
 ```c
-for (int i = 1; i <= 10; i++) {
-    if (i % 2 == 0) {
-        continue;  // Bỏ qua số chẵn
-    }
-    cout << i << " ";
+for (i = 1; i <= 10; i++) {
+    if (i % 2 == 0) continue; // Bỏ qua số chẵn
+    printf("%d ", i);
 }
-// Kết quả: 1 3 5 7 9 (chỉ in số lẻ)
+// Kết quả: 1 3 5 7 9
 ```
 
 ### 5. Vòng lặp for vô hạn
 
+Nếu trong dấu điều kiện của for để trống, vòng lặp sẽ chạy mãi không dừng, chỉ dừng khi gặp lệnh `break`.
+
 ```c
 for (;;) {
-    // Vòng lặp vô hạn (cần break để thoát)
+    // Vòng lặp vô hạn
+    // Nhớ dùng break ở điều kiện nào đó để thoát khỏi vòng lặp!
 }
 ```
 
@@ -128,16 +134,14 @@ for (;;) {
 #include <stdio.h>
 
 int main() {
-    int n;
-    
-    cout << "Nhap n: ";
-    cin >> n;
-    
-    cout << "Cac so tu 1 den " << n << ": ";
-    for (int i = 1; i <= n; i++) {
-        cout << i << " ";
+    int n, i;
+    printf("Nhap n: ");
+    scanf("%d", &n);
+
+    printf("Cac so tu 1 den %d: ", n);
+    for (i = 1; i <= n; i++) {
+        printf("%d ", i);
     }
-    
     return 0;
 }
 ```
@@ -148,43 +152,37 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    int n;
-    int tong = 0;
-    
-    cout << "Nhap n: ";
-    cin >> n;
-    
-    for (int i = 1; i <= n; i++) {
-        tong += i;  // tong = tong + i
+    int n, i, tong = 0;
+    printf("Nhap n: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        tong += i;
     }
-    
-    cout << "Tong cac so tu 1 den " << n << " la: " << tong << endl;
-    
+    printf("Tong cac so tu 1 den %d la: %d\n", n, tong);
     return 0;
 }
 ```
 
-### Ví dụ 3: Tính giai thừa n!
+### Ví dụ 3: Tính giai thừa n! (n!)
 
 ```c
 #include <stdio.h>
 
 int main() {
-    int n;
+    int n, i;
     long long giaiThua = 1;
-    
-    cout << "Nhap n: ";
-    cin >> n;
-    
+    printf("Nhap n: ");
+    scanf("%d", &n);
+
     if (n < 0) {
-        cout << "Khong tinh duoc giai thua so am!" << endl;
+        printf("Khong tinh duoc giai thua so am!\n");
     } else {
-        for (int i = 1; i <= n; i++) {
-            giaiThua *= i;  // giaiThua = giaiThua * i
+        for (i = 1; i <= n; i++) {
+            giaiThua *= i;
         }
-        cout << n << "! = " << giaiThua << endl;
+        printf("%d! = %lld\n", n, giaiThua);
     }
-    
     return 0;
 }
 ```
@@ -195,16 +193,14 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    int n;
-    
-    cout << "Nhap bang cuu chuong can in (2-9): ";
-    cin >> n;
-    
-    cout << "Bang cuu chuong " << n << ":" << endl;
-    for (int i = 1; i <= 10; i++) {
-        cout << n << " x " << i << " = " << (n * i) << endl;
+    int n, i;
+    printf("Nhap bang cuu chuong muon in (2-9): ");
+    scanf("%d", &n);
+
+    printf("Bang cuu chuong %d:\n", n);
+    for (i = 1; i <= 10; i++) {
+        printf("%d x %d = %d\n", n, i, n * i);
     }
-    
     return 0;
 }
 ```
@@ -215,23 +211,18 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    int a, b;
-    int demChan = 0, demLe = 0;
-    
-    cout << "Nhap khoang [a, b]: ";
-    cin >> a >> b;
-    
-    for (int i = a; i <= b; i++) {
-        if (i % 2 == 0) {
+    int a, b, i, demChan = 0, demLe = 0;
+    printf("Nhap khoang [a, b]: ");
+    scanf("%d%d", &a, &b);
+
+    for (i = a; i <= b; i++) {
+        if (i % 2 == 0)
             demChan++;
-        } else {
+        else
             demLe++;
-        }
     }
-    
-    cout << "So chan: " << demChan << endl;
-    cout << "So le: " << demLe << endl;
-    
+    printf("So chan: %d\n", demChan);
+    printf("So le: %d\n", demLe);
     return 0;
 }
 ```
@@ -242,18 +233,14 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    int n;
-    int tong = 0;
-    
-    cout << "Nhap n: ";
-    cin >> n;
-    
-    for (int i = 2; i <= n; i += 2) {
+    int n, i, tong = 0;
+    printf("Nhap n: ");
+    scanf("%d", &n);
+
+    for (i = 2; i <= n; i += 2) {
         tong += i;
     }
-    
-    cout << "Tong cac so chan tu 1 den " << n << " la: " << tong << endl;
-    
+    printf("Tong cac so chan tu 1 den %d la: %d\n", n, tong);
     return 0;
 }
 ```
@@ -262,31 +249,28 @@ int main() {
 
 ```c
 #include <stdio.h>
+#include <stdbool.h>
 
 int main() {
-    int n;
+    int n, i;
     bool laSoNguyenTo = true;
-    
-    cout << "Nhap so nguyen duong: ";
-    cin >> n;
-    
+    printf("Nhap so nguyen duong: ");
+    scanf("%d", &n);
+
     if (n < 2) {
         laSoNguyenTo = false;
     } else {
-        for (int i = 2; i < n; i++) {
+        for (i = 2; i < n; i++) {
             if (n % i == 0) {
                 laSoNguyenTo = false;
-                break;  // Tìm thấy ước → không phải số nguyên tố
+                break;
             }
         }
     }
-    
-    if (laSoNguyenTo) {
-        cout << n << " la so nguyen to!" << endl;
-    } else {
-        cout << n << " khong phai so nguyen to!" << endl;
-    }
-    
+    if (laSoNguyenTo)
+        printf("%d la so nguyen to!\n", n);
+    else
+        printf("%d khong phai so nguyen to!\n", n);
     return 0;
 }
 ```
@@ -297,28 +281,24 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    int n;
-    int so, max;
-    
-    cout << "Nhap so luong so: ";
-    cin >> n;
-    
+    int n, i, so, max;
+    printf("Nhap so luong so: ");
+    scanf("%d", &n);
+
     if (n > 0) {
-        cout << "Nhap so thu 1: ";
-        cin >> max;
-        
-        for (int i = 2; i <= n; i++) {
-            cout << "Nhap so thu " << i << ": ";
-            cin >> so;
-            
+        printf("Nhap so thu 1: ");
+        scanf("%d", &max);
+
+        for (i = 2; i <= n; i++) {
+            printf("Nhap so thu %d: ", i);
+            scanf("%d", &so);
+
             if (so > max) {
                 max = so;
             }
         }
-        
-        cout << "So lon nhat: " << max << endl;
+        printf("So lon nhat la: %d\n", max);
     }
-    
     return 0;
 }
 ```
@@ -329,39 +309,28 @@ int main() {
 
 ### Bài tập cơ bản
 
-**Bài 1:** Viết chương trình in các số từ n đến 1 (giảm dần)
-
-**Bài 2:** Viết chương trình tính tổng: S = 1 + 2 + 3 + ... + n
-
-**Bài 3:** Viết chương trình tính tổng bình phương: S = 1² + 2² + 3² + ... + n²
-
-**Bài 4:** Viết chương trình in bảng cửu chương từ 2 đến 9
-
-**Bài 5:** Viết chương trình nhập n số, tính tổng và trung bình cộng
+1. Viết chương trình in các số từ n đến 1 (giảm dần).
+2. Viết chương trình tính tổng: \( S = 1 + 2 + 3 + ... + n \)
+3. Viết chương trình tính tổng bình phương: \( S = 1^2 + 2^2 + 3^2 + ... + n^2 \)
+4. Viết chương trình in bảng cửu chương từ 2 đến 9.
+5. Viết chương trình nhập n số, tính tổng và trung bình cộng.
 
 ### Bài tập trung bình
 
-**Bài 6:** Viết chương trình in các số chẵn từ 1 đến n
-
-**Bài 7:** Viết chương trình tính tổng: S = 2 + 4 + 6 + ... + 2n
-
-**Bài 8:** Viết chương trình tìm số lớn nhất và số nhỏ nhất trong n số
-
-**Bài 9:** Viết chương trình đếm số lượng số chia hết cho 3 trong khoảng [a, b]
-
-**Bài 10:** Viết chương trình tính lũy thừa: a^n (không dùng hàm pow)
+6. Viết chương trình in các số chẵn từ 1 đến n.
+7. Viết chương trình tính tổng: \( S = 2 + 4 + 6 + ... + 2n \)
+8. Viết chương trình tìm số lớn nhất và số nhỏ nhất trong n số.
+9. Viết chương trình đếm số lượng số chia hết cho 3 trong khoảng [a, b].
+10. Viết chương trình tính lũy thừa \( a^n \) (không dùng hàm pow).
 
 ### Bài tập nâng cao
 
-**Bài 11:** Viết chương trình kiểm tra số hoàn hảo:
-- Số hoàn hảo là số bằng tổng các ước của nó (không tính chính nó)
-- Ví dụ: 6 = 1 + 2 + 3
-
-**Bài 12:** Viết chương trình in tất cả số nguyên tố trong khoảng [a, b]
-
-**Bài 13:** Viết chương trình tính tổng: S = 1 - 2 + 3 - 4 + ... + (-1)^(n+1) * n
-
-**Bài 14:** Viết chương trình in hình tam giác số:
+11. Viết chương trình kiểm tra số hoàn hảo.  
+    - Số hoàn hảo là số bằng tổng các ước của nó (không kể chính nó).  
+    - Ví dụ: 6 là số hoàn hảo vì 6 = 1 + 2 + 3.
+12. Viết chương trình in ra tất cả số nguyên tố trong khoảng [a, b].
+13. Viết chương trình tính tổng: \( S = 1 - 2 + 3 - 4 + ... + (-1)^{n+1} * n \)
+14. Viết chương trình in ra hình tam giác số, ví dụ:
 ```
 1
 12
@@ -369,29 +338,38 @@ int main() {
 1234
 12345
 ```
-
-**Bài 15:** Viết chương trình tính tổng các chữ số của một số:
-- Ví dụ: 1234 → Tổng = 1 + 2 + 3 + 4 = 10
-
----
-
-## 📝 Lưu ý quan trọng
-
-1. **Biến đếm:** Thường dùng `i`, `j`, `k` (quy ước)
-2. **Điều kiện:** Phải có điều kiện dừng rõ ràng, tránh vòng lặp vô hạn
-3. **Bước nhảy:** Có thể tăng, giảm, hoặc nhảy cách khoảng
-4. **Phạm vi biến:** Biến khai báo trong `for` chỉ tồn tại trong vòng lặp
-5. **Hiệu năng:** Với số lớn, cần chú ý đến độ phức tạp thuật toán
+15. Viết chương trình tính tổng các chữ số của một số.  
+    - Ví dụ: 1234 → Tổng = 1 + 2 + 3 + 4 = 10
 
 ---
 
-## ✅ Kiểm tra kiến thức
+## 📝 Lưu ý các em cần nhớ
 
-1. Vòng lặp `for (int i = 1; i <= 10; i++)` chạy bao nhiêu lần?
+1. Biến đếm trong for thường đặt là i, j, k (và chỉ có tác dụng trong vòng lặp).
+2. Luôn đảm bảo có điều kiện dừng để tránh lặp vô hạn.
+3. Bước nhảy có thể tăng, giảm hoặc thay đổi theo ý bài toán.
+4. Biến khai báo trong for (ví dụ `int i;`) chỉ dùng được trong thân for.
+5. Với n lớn, nên chú ý đến độ phức tạp thuật toán để tránh chương trình chạy chậm.
 
-2. Viết vòng lặp in các số từ 10 xuống 1
+---
 
-3. Sự khác biệt giữa `break` và `continue`?
+## ✅ Củng cố kiến thức
+
+1. Vòng lặp `for (i = 1; i <= 10; i++)` sẽ chạy mấy lần?
+2. Viết vòng lặp in các số từ 10 xuống 1.
+3. Phân biệt lệnh `break` và `continue`.
+4. Làm thế nào để tạo vòng lặp đếm cách 5 (0, 5, 10, 15,...)?
+
+---
+
+## 🎯 Tổng kết
+
+- Các em đã biết cấu trúc và cách sử dụng vòng lặp for trong ngôn ngữ C.
+- Hiểu rõ quá trình khởi tạo, điều kiện lặp, bước nhảy trong for.
+- Sử dụng được lệnh break để thoát vòng lặp và continue để bỏ qua lần lặp hiện tại.
+- Biết vận dụng vòng lặp for vào giải quyết các bài toán thực tiễn.
+
+**Buổi sau thầy sẽ dạy tiếp:** [Buổi 6: Vòng lặp while và do-while](./lesson-6.md)
 
 4. Làm thế nào để tạo vòng lặp đếm cách 5 (0, 5, 10, 15...)?
 
@@ -399,10 +377,10 @@ int main() {
 
 ## 🎯 Tóm tắt
 
-- ✅ Đã học cấu trúc và cách sử dụng vòng lặp `for`
-- ✅ Hiểu cách vòng lặp hoạt động (khởi tạo, điều kiện, bước nhảy)
-- ✅ Biết sử dụng `break` để thoát vòng lặp
-- ✅ Biết sử dụng `continue` để bỏ qua lần lặp hiện tại
-- ✅ Áp dụng vòng lặp để giải các bài toán thực tế
+-   ✅ Đã học cấu trúc và cách sử dụng vòng lặp `for`
+-   ✅ Hiểu cách vòng lặp hoạt động (khởi tạo, điều kiện, bước nhảy)
+-   ✅ Biết sử dụng `break` để thoát vòng lặp
+-   ✅ Biết sử dụng `continue` để bỏ qua lần lặp hiện tại
+-   ✅ Áp dụng vòng lặp để giải các bài toán thực tế
 
 **Bài tiếp theo:** [Buổi 6: Vòng lặp while và do-while](./lesson-6.md)

@@ -1,172 +1,200 @@
-# Buổi 4: Cấu trúc điều kiện (if-else, switch)
+# Buổi 4: Cấu trúc điều kiện trong C (if-else, switch)
 
-## 🎯 Mục tiêu học tập
+## 🎯 Mục tiêu buổi học
 
-Sau buổi học này, sinh viên sẽ:
-- Hiểu khái niệm cấu trúc điều kiện và khi nào cần dùng
-- Sử dụng thành thạo câu lệnh `if`, `if-else`, `if-else if-else`
-- Áp dụng câu lệnh `switch-case` cho các trường hợp nhiều nhánh
-- Xử lý các bài toán thực tế có điều kiện (điểm số, tuổi, lựa chọn menu...)
-- Kết hợp điều kiện phức tạp với toán tử logic
+Sau buổi này, thầy muốn các em:
+
+-   Hiểu vì sao cần dùng cấu trúc điều kiện trong lập trình
+-   Viết thành thạo các cấu trúc điều kiện: `if`, `if-else`, `if-else if-else`
+-   Biết dùng `switch-case` cho trường hợp có nhiều nhánh lựa chọn
+-   Vận dụng giải quyết các bài toán sát thực tế
+-   Nắm thêm về cách phối hợp điều kiện bằng toán tử logic
 
 ---
 
 ## 📘 Nội dung chính
 
-### 1. Tại sao cần cấu trúc điều kiện?
+### 1. Sự cần thiết của cấu trúc điều kiện
 
-Trong thực tế, chúng ta thường xuyên gặp các quyết định:
-- **Nếu** điểm ≥ 5.0 **thì** đậu, **nếu không** thì rớt
-- **Nếu** tuổi < 18 **thì** chưa đủ tuổi lái xe
-- **Nếu** số dư ≥ số tiền rút **thì** cho phép rút, **nếu không** thì từ chối
+Trong cuộc sống cũng như lập trình, ta luôn gặp các tình huống dạng "nếu... thì...". Ví dụ:
 
-**Cấu trúc điều kiện** giúp chương trình đưa ra quyết định dựa trên điều kiện.
+-   Nếu điểm >= 5 thì qua môn, ngược lại là trượt
+-   Nếu tuổi < 18 thì chưa được lái xe
+-   Nếu số dư đủ thì cho rút tiền, không thì báo lỗi
+
+Cấu trúc điều kiện giúp chương trình "ra quyết định" đúng với từng trường hợp.
+
+---
 
 ### 2. Câu lệnh if
 
 **Cú pháp:**
+
 ```c
 if (dieu_kien) {
-    // Các câu lệnh thực hiện nếu điều kiện đúng
+    // Các câu lệnh thực thi nếu điều kiện đúng
 }
 ```
 
-**Ví dụ:**
+**Giải thích:** Nếu điều kiện đúng, khối lệnh bên trong sẽ được thực hiện.
+
+**Ví dụ nhỏ:**
+
 ```c
 int diem = 8;
 if (diem >= 5) {
-    cout << "Ban da dau!" << endl;
-}
-```
-
-### 3. Câu lệnh if-else
-
-**Cú pháp:**
-```c
-if (dieu_kien) {
-    // Các câu lệnh nếu điều kiện đúng
-} else {
-    // Các câu lệnh nếu điều kiện sai
-}
-```
-
-**Ví dụ:**
-```c
-int diem = 4;
-if (diem >= 5) {
-    cout << "Ban da dau!" << endl;
-} else {
-    cout << "Ban da rot!" << endl;
-}
-```
-
-### 4. Câu lệnh if-else if-else (nhiều điều kiện)
-
-**Cú pháp:**
-```c
-if (dieu_kien_1) {
-    // Xử lý điều kiện 1
-} else if (dieu_kien_2) {
-    // Xử lý điều kiện 2
-} else if (dieu_kien_3) {
-    // Xử lý điều kiện 3
-} else {
-    // Xử lý các trường hợp còn lại
-}
-```
-
-**Ví dụ:**
-```c
-int diem = 7;
-if (diem >= 9) {
-    cout << "Xuat sac!" << endl;
-} else if (diem >= 8) {
-    cout << "Gioi!" << endl;
-} else if (diem >= 7) {
-    cout << "Kha!" << endl;
-} else if (diem >= 5) {
-    cout << "Trung binh!" << endl;
-} else {
-    cout << "Yeu!" << endl;
-}
-```
-
-### 5. Câu lệnh switch-case
-
-**Cú pháp:**
-```c
-switch (bien) {
-    case gia_tri_1:
-        // Xử lý khi bien == gia_tri_1
-        break;
-    case gia_tri_2:
-        // Xử lý khi bien == gia_tri_2
-        break;
-    default:
-        // Xử lý các trường hợp còn lại
-        break;
-}
-```
-
-**Lưu ý:**
-- `switch` chỉ dùng với `int`, `char`, `enum`
-- **Bắt buộc** có `break;` sau mỗi `case` (trừ khi cố ý để rơi xuống case tiếp theo)
-- `default` là trường hợp mặc định (tương tự `else`)
-
-**Ví dụ:**
-```c
-int luaChon;
-cout << "Chon mon (1-4): ";
-cin >> luaChon;
-
-switch (luaChon) {
-    case 1:
-        cout << "Ban chon Com suon!" << endl;
-        break;
-    case 2:
-        cout << "Ban chon Pho bo!" << endl;
-        break;
-    case 3:
-        cout << "Ban chon Bun bo!" << endl;
-        break;
-    case 4:
-        cout << "Ban chon Banh mi!" << endl;
-        break;
-    default:
-        cout << "Lua chon khong hop le!" << endl;
-        break;
-}
-```
-
-### 6. If lồng nhau (Nested if)
-
-```c
-if (dieu_kien_1) {
-    if (dieu_kien_2) {
-        // Xử lý khi cả 2 điều kiện đều đúng
-    }
-}
-```
-
-**Ví dụ:**
-```c
-int tuoi = 20;
-bool coBangLai = true;
-
-if (tuoi >= 18) {
-    if (coBangLai) {
-        cout << "Duoc phep lai xe!" << endl;
-    } else {
-        cout << "Can co bang lai!" << endl;
-    }
-} else {
-    cout << "Chua du tuoi lai xe!" << endl;
+    printf("Bạn đã đậu!\n");
 }
 ```
 
 ---
 
-## 💻 Ví dụ minh họa
+### 3. Câu lệnh if-else
+
+**Cú pháp:**
+
+```c
+if (dieu_kien) {
+    // Lệnh khi điều kiện đúng
+} else {
+    // Lệnh khi điều kiện sai
+}
+```
+
+**Ví dụ:**
+
+```c
+int diem = 4;
+if (diem >= 5) {
+    printf("Bạn đã đậu!\n");
+} else {
+    printf("Bạn đã rớt!\n");
+}
+```
+
+---
+
+### 4. Câu lệnh if-else if-else (nhiều điều kiện)
+
+**Cú pháp tổng quát:**
+
+```c
+if (dieu_kien_1) {
+    // Xử lý TH1
+} else if (dieu_kien_2) {
+    // Xử lý TH2
+} else if (dieu_kien_3) {
+    // Xử lý TH3
+} else {
+    // Tất cả các trường hợp còn lại
+}
+```
+
+**Ví dụ điểm số:**
+
+```c
+int diem = 7;
+if (diem >= 9) {
+    printf("Xuất sắc!\n");
+} else if (diem >= 8) {
+    printf("Giỏi!\n");
+} else if (diem >= 7) {
+    printf("Khá!\n");
+} else if (diem >= 5) {
+    printf("Trung bình!\n");
+} else {
+    printf("Yếu!\n");
+}
+```
+
+---
+
+### 5. Câu lệnh switch-case
+
+**Cú pháp:**
+
+```c
+switch (bien) {
+    case gia_tri_1:
+        // Nếu bien == gia_tri_1
+        break;
+    case gia_tri_2:
+        // Nếu bien == gia_tri_2
+        break;
+    default:
+        // Các trường hợp còn lại
+        break;
+}
+```
+
+**Một vài lưu ý về switch-case:**
+
+-   Thường dùng cho `int`, `char`, `enum`
+-   Nhớ viết `break;` cuối mỗi case
+-   Nhánh `default` tương tự else, để xử lý trường hợp khác
+
+**Ví dụ chọn món ăn:**
+
+```c
+int luaChon;
+printf("Chọn món (1-4): ");
+scanf("%d", &luaChon);
+
+switch (luaChon) {
+    case 1:
+        printf("Bạn chọn Cơm sườn!\n");
+        break;
+    case 2:
+        printf("Bạn chọn Phở bò!\n");
+        break;
+    case 3:
+        printf("Bạn chọn Bún bò!\n");
+        break;
+    case 4:
+        printf("Bạn chọn Bánh mì!\n");
+        break;
+    default:
+        printf("Lựa chọn không hợp lệ!\n");
+        break;
+}
+```
+
+---
+
+### 6. If lồng nhau (nested if)
+
+Có thể đặt if trong if khi cần kiểm tra nhiều điều kiện liên tiếp.
+
+**Cú pháp:**
+
+```c
+if (dieu_kien_1) {
+    if (dieu_kien_2) {
+        // Xử lý khi cả hai điều kiện đúng
+    }
+}
+```
+
+**Ví dụ kiểm tra giấy phép lái xe:**
+
+```c
+int tuoi = 20;
+int coBangLai = 1;
+
+if (tuoi >= 18) {
+    if (coBangLai) {
+        printf("Được phép lái xe!\n");
+    } else {
+        printf("Cần có bằng lái!\n");
+    }
+} else {
+    printf("Chưa đủ tuổi lái xe!\n");
+}
+```
+
+---
+
+## 💻 Một số ví dụ minh họa
 
 ### Ví dụ 1: Xếp loại điểm số
 
@@ -175,50 +203,50 @@ if (tuoi >= 18) {
 
 int main() {
     float diem;
-    
-    cout << "Nhap diem cua ban: ";
-    cin >> diem;
-    
+    printf("Nhập điểm của bạn: ");
+    scanf("%f", &diem);
+
     if (diem >= 9.0) {
-        cout << "Xep loai: Xuat sac!" << endl;
+        printf("Xếp loại: Xuất sắc!\n");
     } else if (diem >= 8.0) {
-        cout << "Xep loai: Gioi!" << endl;
+        printf("Xếp loại: Giỏi!\n");
     } else if (diem >= 7.0) {
-        cout << "Xep loai: Kha!" << endl;
+        printf("Xếp loại: Khá!\n");
     } else if (diem >= 5.0) {
-        cout << "Xep loai: Trung binh!" << endl;
+        printf("Xếp loại: Trung bình!\n");
     } else {
-        cout << "Xep loai: Yeu!" << endl;
+        printf("Xếp loại: Yếu!\n");
     }
-    
     return 0;
 }
 ```
 
-### Ví dụ 2: Tính tiền vé xe buýt theo độ tuổi
+---
+
+### Ví dụ 2: Vé xe buýt theo tuổi
 
 ```c
 #include <stdio.h>
 
 int main() {
     int tuoi;
-    
-    cout << "Nhap tuoi: ";
-    cin >> tuoi;
-    
+    printf("Nhập tuổi: ");
+    scanf("%d", &tuoi);
+
     if (tuoi < 6) {
-        cout << "Mien phi!" << endl;
-    } else if (tuoi >= 6 && tuoi < 18) {
-        cout << "Gia ve: 3,000 VND" << endl;
-    } else if (tuoi >= 18 && tuoi < 60) {
-        cout << "Gia ve: 7,000 VND" << endl;
+        printf("Miễn phí!\n");
+    } else if (tuoi < 18) {
+        printf("Giá vé: 3,000 VNĐ\n");
+    } else if (tuoi < 60) {
+        printf("Giá vé: 7,000 VNĐ\n");
     } else {
-        cout << "Gia ve: 3,000 VND (Nguoi cao tuoi)" << endl;
+        printf("Giá vé: 3,000 VNĐ (Người cao tuổi)\n");
     }
-    
     return 0;
 }
 ```
+
+---
 
 ### Ví dụ 3: Menu lựa chọn với switch
 
@@ -227,36 +255,36 @@ int main() {
 
 int main() {
     int luaChon;
-    
-    cout << "=== MENU CA FE ===" << endl;
-    cout << "1. Ca phe den - 15,000 VND" << endl;
-    cout << "2. Ca phe sua - 20,000 VND" << endl;
-    cout << "3. Tra sua - 25,000 VND" << endl;
-    cout << "4. Nuoc cam - 30,000 VND" << endl;
-    cout << "Chon mon (1-4): ";
-    cin >> luaChon;
-    
-    switch (luaChon) {
+    printf("=== MENU QUÁN CA FE ===\n");
+    printf("1. Cà phê đen - 15,000\n");
+    printf("2. Cà phê sữa - 20,000\n");
+    printf("3. Trà sữa - 25,000\n");
+    printf("4. Nước cam - 30,000\n");
+    printf("Chọn món (1-4): ");
+    scanf("%d", &luaChon);
+
+    switch(luaChon) {
         case 1:
-            cout << "Ban da chon Ca phe den. Gia: 15,000 VND" << endl;
+            printf("Bạn đã chọn cà phê đen. Giá: 15,000 VNĐ\n");
             break;
         case 2:
-            cout << "Ban da chon Ca phe sua. Gia: 20,000 VND" << endl;
+            printf("Bạn đã chọn cà phê sữa. Giá: 20,000 VNĐ\n");
             break;
         case 3:
-            cout << "Ban da chon Tra sua. Gia: 25,000 VND" << endl;
+            printf("Bạn đã chọn trà sữa. Giá: 25,000 VNĐ\n");
             break;
         case 4:
-            cout << "Ban da chon Nuoc cam. Gia: 30,000 VND" << endl;
+            printf("Bạn đã chọn nước cam. Giá: 30,000 VNĐ\n");
             break;
         default:
-            cout << "Lua chon khong hop le!" << endl;
+            printf("Lựa chọn không hợp lệ!\n");
             break;
     }
-    
     return 0;
 }
 ```
+
+---
 
 ### Ví dụ 4: Kiểm tra năm nhuận
 
@@ -265,21 +293,20 @@ int main() {
 
 int main() {
     int nam;
-    
-    cout << "Nhap nam: ";
-    cin >> nam;
-    
-    // Năm nhuận: chia hết cho 4, nhưng không chia hết cho 100
-    // Hoặc chia hết cho 400
+    printf("Nhập năm: ");
+    scanf("%d", &nam);
+
+    // Năm nhuận: chia hết cho 4 nhưng không chia hết cho 100, hoặc chia hết cho 400
     if ((nam % 4 == 0 && nam % 100 != 0) || (nam % 400 == 0)) {
-        cout << nam << " la nam nhuan!" << endl;
+        printf("%d là năm nhuận!\n", nam);
     } else {
-        cout << nam << " khong phai nam nhuan!" << endl;
+        printf("%d không phải năm nhuận!\n", nam);
     }
-    
     return 0;
 }
 ```
+
+---
 
 ### Ví dụ 5: Giải phương trình bậc nhất ax + b = 0
 
@@ -288,29 +315,29 @@ int main() {
 
 int main() {
     float a, b;
-    
-    cout << "Giai phuong trinh ax + b = 0" << endl;
-    cout << "Nhap a: ";
-    cin >> a;
-    cout << "Nhap b: ";
-    cin >> b;
-    
+    printf("Giải phương trình ax + b = 0\n");
+    printf("Nhập a: ");
+    scanf("%f", &a);
+    printf("Nhập b: ");
+    scanf("%f", &b);
+
     if (a == 0) {
         if (b == 0) {
-            cout << "Phuong trinh co vo so nghiem!" << endl;
+            printf("Phương trình có vô số nghiệm!\n");
         } else {
-            cout << "Phuong trinh vo nghiem!" << endl;
+            printf("Phương trình vô nghiệm!\n");
         }
     } else {
         float x = -b / a;
-        cout << "Nghiem cua phuong trinh: x = " << x << endl;
+        printf("Nghiệm của phương trình: x = %.2f\n", x);
     }
-    
     return 0;
 }
 ```
 
-### Ví dụ 6: Tính tiền điện theo bậc thang (nâng cao)
+---
+
+### Ví dụ 6: Tính tiền điện bậc thang (nâng cao)
 
 ```c
 #include <stdio.h>
@@ -318,10 +345,9 @@ int main() {
 int main() {
     int soDien;
     float tienDien;
-    
-    cout << "Nhap so dien tieu thu (kWh): ";
-    cin >> soDien;
-    
+    printf("Nhập số điện tiêu thụ (kWh): ");
+    scanf("%d", &soDien);
+
     if (soDien <= 50) {
         tienDien = soDien * 1800;
     } else if (soDien <= 100) {
@@ -329,12 +355,12 @@ int main() {
     } else {
         tienDien = 50 * 1800 + 50 * 2300 + (soDien - 100) * 2900;
     }
-    
-    cout << "Tong tien dien: " << tienDien << " VND" << endl;
-    
+    printf("Tổng tiền điện: %.0f VNĐ\n", tienDien);
     return 0;
 }
 ```
+
+---
 
 ### Ví dụ 7: Kiểm tra tam giác
 
@@ -343,125 +369,89 @@ int main() {
 
 int main() {
     float a, b, c;
-    
-    cout << "Nhap 3 canh cua tam giac: ";
-    cin >> a >> b >> c;
-    
-    // Kiểm tra điều kiện tam giác
-    if (a + b > c && b + c > a && a + c > b) {
-        // Phân loại tam giác
+    printf("Nhập 3 cạnh của tam giác: ");
+    scanf("%f%f%f", &a, &b, &c);
+
+    if (a + b > c && a + c > b && b + c > a) {
         if (a == b && b == c) {
-            cout << "Tam giac deu!" << endl;
+            printf("Tam giác đều!\n");
         } else if (a == b || b == c || a == c) {
-            cout << "Tam giac can!" << endl;
+            printf("Tam giác cân!\n");
         } else if (a*a + b*b == c*c || b*b + c*c == a*a || a*a + c*c == b*b) {
-            cout << "Tam giac vuong!" << endl;
+            printf("Tam giác vuông!\n");
         } else {
-            cout << "Tam giac thuong!" << endl;
+            printf("Tam giác thường!\n");
         }
     } else {
-        cout << "Khong phai tam giac!" << endl;
+        printf("Không phải tam giác!\n");
     }
-    
     return 0;
 }
 ```
 
 ---
 
-## 🧠 Bài tập thực hành
+## 🧠 Bài tập tự luyện
 
 ### Bài tập cơ bản
 
-**Bài 1:** Viết chương trình nhập điểm số (0-10), xếp loại:
-- 9-10: Xuất sắc
-- 8-8.9: Giỏi
-- 7-7.9: Khá
-- 5-6.9: Trung bình
-- < 5: Yếu
-
-**Bài 2:** Viết chương trình nhập 2 số, tìm số lớn nhất
-
-**Bài 3:** Viết chương trình nhập 3 số, sắp xếp theo thứ tự tăng dần
-
-**Bài 4:** Viết chương trình kiểm tra số chẵn/lẻ
-
-**Bài 5:** Viết chương trình menu tính toán:
-```
-1. Tinh tong 2 so
-2. Tinh hieu 2 so
-3. Tinh tich 2 so
-4. Tinh thuong 2 so
-```
+1. Viết chương trình nhập điểm số (0-10), xếp loại:
+    - 9-10: Xuất sắc
+    - 8-8.9: Giỏi
+    - 7-7.9: Khá
+    - 5-6.9: Trung bình
+    - <5: Yếu
+2. Nhập 2 số, tìm số lớn nhất.
+3. Nhập 3 số, sắp xếp theo tăng dần.
+4. Kiểm tra số chẵn hay lẻ.
+5. Menu tính toán:
+    ```
+    1. Tính tổng 2 số
+    2. Tính hiệu 2 số
+    3. Tính tích 2 số
+    4. Tính thương 2 số
+    ```
 
 ### Bài tập nâng cao
 
-**Bài 6:** Viết chương trình tính BMI và phân loại:
-- < 18.5: Gầy
-- 18.5 - 24.9: Bình thường
-- 25 - 29.9: Thừa cân
-- ≥ 30: Béo phì
-
-**Bài 7:** Viết chương trình giải phương trình bậc 2: ax² + bx + c = 0
-- Tính delta = b² - 4ac
-- Nếu delta < 0: Vô nghiệm
-- Nếu delta = 0: Nghiệm kép
-- Nếu delta > 0: 2 nghiệm phân biệt
-
-**Bài 8:** Viết chương trình tính lương nhân viên:
-- Nhập số ngày làm việc, lương cơ bản
-- Nếu làm ≥ 22 ngày: Thưởng 10% lương cơ bản
-- Nếu làm < 22 ngày: Phạt 5% lương cơ bản/ngày vắng
-- Tính lương thực nhận
-
-**Bài 9:** Viết chương trình ATM mini:
-```
-1. Kiem tra so du
-2. Rut tien
-3. Gui tien
-4. Chuyen khoan
-```
-- Kiểm tra số dư trước khi rút/chuyển
-- Cập nhật số dư sau mỗi giao dịch
-
-**Bài 10:** Viết chương trình xác định thứ trong tuần dựa vào số (1-7):
-- 1: Chủ nhật
-- 2: Thứ hai
-- ...
-- 7: Thứ bảy
+6. Nhập cân nặng, chiều cao, tính chỉ số BMI và phân loại.
+    - <18.5: Gầy
+    - 18.5-24.9: Bình thường
+    - 25-29.9: Thừa cân
+    - ≥30: Béo phì
+7. Giải phương trình bậc 2: ax² + bx + c = 0 (xét giá trị delta)
+8. Tính lương nhân viên: Nếu ≥22 ngày công được thưởng, <22 ngày bị trừ lương (theo đề bài chi tiết).
+9. Viết chương trình ATM mini chọn các chức năng (kiểm tra số dư, rút tiền, gửi tiền, chuyển khoản).
+10. Nhập số (1-7), in ra thứ trong tuần.
 
 ---
 
-## 📝 Lưu ý quan trọng
+## 📝 Lưu ý khi làm bài
 
-1. **Điều kiện:** Luôn đặt trong `()` sau `if`
-2. **Khối lệnh:** Dùng `{}` để nhóm nhiều câu lệnh
-3. **Switch-case:** Nhớ `break;` sau mỗi `case` (trừ khi cố ý)
-4. **So sánh:** Dùng `==` để so sánh bằng, không phải `=`
-5. **If lồng nhau:** Có thể lồng nhiều cấp nhưng cẩn thận để code dễ đọc
-6. **Default trong switch:** Luôn có để xử lý trường hợp ngoại lệ
-
----
-
-## ✅ Kiểm tra kiến thức
-
-1. Khi nào nên dùng `if-else`, khi nào dùng `switch-case`?
-
-2. Tại sao cần `break;` trong `switch-case`?
-
-3. Viết điều kiện kiểm tra một số `n` có nằm trong khoảng [10, 100]
-
-4. Có bao nhiêu nhánh `else if` có thể có trong một câu lệnh `if`?
+1. Điều kiện trong `if` luôn đặt trong dấu ngoặc tròn ()
+2. Nếu có từ 2 câu lệnh trở lên, nhớ dùng cặp dấu `{}` để bao.
+3. Trong `switch-case`, luôn nhớ có `break;` cuối mỗi case.
+4. Dấu so sánh bằng là `==`, KHÔNG phải dấu bằng `=`.
+5. If có thể lồng nhau, nhưng lố quá sẽ khó đọc.
+6. Luôn có default trong switch để bắt mọi trường hợp.
 
 ---
 
-## 🎯 Tóm tắt
+## ✅ Ôn tập nhanh
 
-- ✅ Đã học câu lệnh `if`, `if-else`, `if-else if-else`
-- ✅ Biết sử dụng `switch-case` cho nhiều lựa chọn
-- ✅ Hiểu cách kết hợp điều kiện với toán tử logic (`&&`, `||`)
-- ✅ Áp dụng cấu trúc điều kiện vào các bài toán thực tế
-- ✅ Sử dụng if lồng nhau cho các tình huống phức tạp
+1. Khi nào dùng if-else, khi nào switch-case?
+2. Vì sao cần có `break;` trong switch-case?
+3. Viết điều kiện kiểm tra n nằm trong [10, 100].
+4. Một câu lệnh if cho phép có bao nhiêu nhánh else if?
 
-**Bài tiếp theo:** [Buổi 5: Vòng lặp for](./lesson-5.md)  
-**🔬 Lab kiểm tra:** [Lab kiểm tra sau buổi 4 - Máy tính đơn giản](./lab.md)
+---
+
+## 🎯 Kết luận bài học
+
+-   Học xong buổi này, các em đã nắm được `if`, `if-else`, if nhiều nhánh, switch-case.
+-   Biết phối hợp điều kiện với toán tử `&&`, `||`
+-   Biết giải quyết nhiều dạng bài toán thực tế dùng cấu trúc điều kiện
+-   Biết dùng lồng nhau khi cần.
+
+**Tuần sau:** [Buổi 5: Vòng lặp for](./lesson-5.md)  
+**Làm lab:** [Lab kiểm tra sau buổi 4 - Máy tính đơn giản](./lab.md)
