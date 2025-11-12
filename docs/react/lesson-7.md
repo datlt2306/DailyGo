@@ -63,7 +63,7 @@ function Form() {
 
 ### 2. useEffect Hook
 
-**useEffect** là hook dùng để xử lý các side effect trong function component (giống componentDidMount, componentDidUpdate và componentWillUnmount bên class component nha các em).
+**useEffect** là hook giúp các function component xử lý “side effect” – những tác vụ xảy ra **sau khi React render ra UI**, ví dụ: gọi API, thao tác với DOM, lắng nghe sự kiện và dọn dẹp tài nguyên.
 
 #### Cú pháp cơ bản
 
