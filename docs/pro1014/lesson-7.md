@@ -313,90 +313,92 @@ Các em có thể:
 
 ## 📘 Bài tập
 
-### Tạo repo GitHub public + commit đầu tiên
+### Case Study: Làm việc nhóm Git với 3 thành viên
 
-#### **Yêu cầu:**
+#### **Tình huống giả định**
 
-1. **Tạo repo trên GitHub:**
+Giả sử nhóm của các em có 3 thành viên: An, Bình và Cường. Nhóm sẽ cùng xây dựng một trang web quản lý book tour đơn giản với các module nhỏ sau:
 
-    - Tên repo: `[tên-nhóm]-tour-management` (ví dụ: `team1-tour-management`)
+- Giao diện trang chủ (An)
+- Chức năng đặt tour (Bình)
+- Danh sách tours và chi tiết tour (Cường)
+
+#### **Yêu cầu thực hành**
+
+1. **Tạo repo nhóm trên GitHub:**
+    - Tên repo: `[tên-nhóm]-tour-management` (vd: `team3-tour-management`)
     - Public repo
-    - Thêm README.md khi tạo
+    - Thêm file README.md khi tạo repo
 
-2. **Clone repo về máy:**
+2. **Các bước làm việc:**
 
+    **Bước 1:** Một thành viên (ví dụ An) tạo repo trên GitHub, thêm README.md (ghi thông tin nhóm, thành viên, mô tả ngắn dự án).
+
+    **Bước 2:** Các thành viên khác (Bình, Cường) **clone** về máy cá nhân:
     ```bash
     git clone [URL-repo]
     cd [tên-repo]
     ```
 
-3. **Tạo cấu trúc thư mục:**
-
-    ```
-    [tên-repo]/
-    ├── README.md
-    ├── docs/
-    │   ├── Spec_Module_[Tên module].pdf
-    │   └── ERD_Module_[Tên module].pdf
-    ├── src/
-    │   ├── css/
-    │   ├── js/
-    │   └── images/
-    └── database/
-        └── schema.sql
+    **Bước 3:** Mỗi thành viên tạo **branch riêng** cho feature mình phụ trách:
+    - An: `feature/homepage`
+    - Bình: `feature/booking`
+    - Cường: `feature/tour-list`
+    ```bash
+    git checkout -b feature/[tên-feature]
     ```
 
-4. **Commit đầu tiên:**
+    **Bước 4:** Mỗi người tạo 1 file đơn giản theo module đã phân công:
+    - `src/homepage.html`
+    - `src/booking.html`
+    - `src/tour-list.html`
 
-    - Thêm README.md với thông tin nhóm, module
-    - Thêm folder docs với Spec và ERD
-    - Commit với message: `docs: thêm spec và ERD module`
-
-5. **Push lên GitHub:**
+    Sau đó `add`, `commit` với message theo Conventional Commit:
     ```bash
     git add .
-    git commit -m "docs: thêm spec và ERD module"
-    git push origin main
+    git commit -m "feat: tạo file [tên file] cho [chức năng]"
+    git push origin feature/[tên-feature]
     ```
 
-#### **Nội dung README.md:**
+    **Bước 5:** Tạo Pull Request cho từng branch lên `main`.
+    - Các thành viên xem code của nhau, comment hoặc góp ý (nếu có).
+    - Merge vào main (nếu cần xử lý conflict thì thực hiện xử lý theo hướng dẫn ở trên).
 
-```markdown
-# [Tên Module] - Tour Management System
+    **Bước 6:** Sau khi 3 file đã merge vào `main`, mỗi người thử update local và thêm một dòng giới thiệu vào README.md, commit theo dạng "docs: thêm thông tin bản thân vào README", rồi push theo flow branch.
 
-## Thông tin nhóm
+    **Bước 7:** Lặp lại chu trình cho những feature/phần khác nếu cần.
 
--   Tên nhóm: [Tên nhóm]
--   Thành viên:
-    -   [Tên] - [Vai trò]
-    -   [Tên] - [Vai trò]
+#### **Check-list:**
 
-## Module phụ trách
+- [ ] Repo nhóm có đủ README.md, folder src/
+- [ ] Mỗi thành viên có branch riêng, Pull Request riêng
+- [ ] Merge thành công tất cả vào main
+- [ ] Có tối thiểu 3 file HTML (theo chức năng)
+- [ ] Sử dụng đúng quy tắc đặt tên commit, issue
 
-[Tên module]
+#### **Gợi ý cấu trúc thư mục:**
 
-## Mô tả
-
-[Mô tả ngắn gọn về module]
-
-## Tài liệu
-
--   Spec: `docs/Spec_Module_[Tên module].pdf`
--   ERD: `docs/ERD_Module_[Tên module].pdf`
 ```
-
-### Deadline
-
-Nộp link repo GitHub trước buổi 7
+[tên-repo]/
+├── README.md
+├── src/
+│   ├── homepage.html
+│   ├── booking.html
+│   └── tour-list.html
+└── docs/
+    ├── Spec_Module_[Tên module].pdf
+    └── ERD_Module_[Tên module].pdf
+```
 
 ---
 
 ## 📦 Kết quả mong đợi sau buổi học
 
 -   ✅ Hiểu được cách sử dụng Git cơ bản
--   ✅ Tạo được repo GitHub và commit code đầu tiên
+-   ✅ Hiểu và thực hành flow teamwork, Pull Request, merge
+-   ✅ Tạo được repo GitHub teamwork, commit code đầu tiên
 -   ✅ Nắm được quy tắc đặt tên commit và issue
--   ✅ Biết cách làm việc nhóm với branch
+-   ✅ Biết cách làm việc nhóm với branch, giải quyết conflict
 -   ✅ Sẵn sàng bắt đầu code ở tuần 3
 
 ---
