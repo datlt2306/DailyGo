@@ -44,7 +44,15 @@ Chon chuc nang (1-7):
 
 2. **Xử lý các phép tính:**
 
-    - Nhập 2 số từ bàn phím (sử dụng `scanf`)
+    - Nhập 2 số từ bàn phím (sử dụng `scanf`).  
+      **Lưu ý:** Ở mỗi phép tính trong `switch-case`, cần bổ sung:
+        ```c
+        printf("Nhap so thu nhat: ");
+        scanf("%lf", &so1);
+        printf("Nhap so thu hai: ");
+        scanf("%lf", &so2);
+        ```
+        Trước khi thực hiện tính toán, đảm bảo đã nhập đủ `so1` và `so2`.
     - Thực hiện phép tính theo lựa chọn
     - In kết quả ra màn hình
 
@@ -116,21 +124,66 @@ int main() {
         switch (luaChon) {
             case 1:
                 // Cộng
+                // Nhập số thứ nhất và số thứ hai từ bàn phím
+                printf("Nhap so thu nhat: ");
+                scanf("%lf", &so1);
+                printf("Nhap so thu hai: ");
+                scanf("%lf", &so2);
+                // Thực hiện phép cộng
+                ketQua = so1 + so2;
+                printf("Ket qua: %.2lf + %.2lf = %.2lf\n", so1, so2, ketQua);
                 break;
             case 2:
                 // Trừ
+                printf("Nhap so thu nhat: ");
+                scanf("%lf", &so1);
+                printf("Nhap so thu hai: ");
+                scanf("%lf", &so2);
+                ketQua = so1 - so2;
+                printf("Ket qua: %.2lf - %.2lf = %.2lf\n", so1, so2, ketQua);
                 break;
             case 3:
                 // Nhân
+                printf("Nhap so thu nhat: ");
+                scanf("%lf", &so1);
+                printf("Nhap so thu hai: ");
+                scanf("%lf", &so2);
+                ketQua = so1 * so2;
+                printf("Ket qua: %.2lf * %.2lf = %.2lf\n", so1, so2, ketQua);
                 break;
             case 4:
                 // Chia (kiểm tra chia cho 0)
+                printf("Nhap so thu nhat: ");
+                scanf("%lf", &so1);
+                printf("Nhap so thu hai: ");
+                scanf("%lf", &so2);
+                if (so2 == 0) {
+                    printf("Loi: Khong the chia cho 0!\n");
+                } else {
+                    ketQua = so1 / so2;
+                    printf("Ket qua: %.2lf / %.2lf = %.2lf\n", so1, so2, ketQua);
+                }
                 break;
             case 5:
                 // Chia lấy dư (chỉ áp dụng cho số nguyên)
+                printf("Nhap so nguyen thu nhat: ");
+                scanf("%lf", &so1);
+                printf("Nhap so nguyen thu hai: ");
+                scanf("%lf", &so2);
+                if ((int)so2 == 0) {
+                    printf("Loi: Khong the chia cho 0!\n");
+                } else {
+                    printf("Ket qua: %d %% %d = %d\n", (int)so1, (int)so2, (int)so1 % (int)so2);
+                }
                 break;
             case 6:
                 // Lũy thừa
+                printf("Nhap co so: ");
+                scanf("%lf", &so1);
+                printf("Nhap so mu: ");
+                scanf("%lf", &so2);
+                ketQua = pow(so1, so2);
+                printf("Ket qua: %.2lf ^ %.2lf = %.2lf\n", so1, so2, ketQua);
                 break;
             case 7:
                 printf("Cam on ban da su dung!\n");
