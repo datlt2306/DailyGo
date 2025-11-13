@@ -54,7 +54,7 @@ Các em có bao giờ gặp tình huống này không: "Ồ, code của mình b�
 -   ✅ Làm việc nhóm không bị conflict (mỗi người làm trên branch riêng)
 -   ✅ Thầy dễ dàng review code (xem code trực tiếp trên GitHub)
 
-### 2. Cài đặt và cấu hình Git (10 phút)
+### 2. Cài đặt và cấu hình Git
 
 #### **Cài đặt Git:**
 
@@ -69,7 +69,7 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-### 3. Các lệnh Git cơ bản (25 phút)
+### 3. Các lệnh Git cơ bản
 
 #### **Lệnh cơ bản:**
 
@@ -102,7 +102,7 @@ git status                  # Xem file đã thay đổi
 git log                     # Xem lịch sử commit
 ```
 
-### 4. Làm việc nhóm với Git (20 phút)
+### 4. Làm việc nhóm với Git
 
 #### **Branch (Nhánh):**
 
@@ -118,15 +118,45 @@ git checkout [tên-branch]   # Chuyển sang branch
 git merge [tên-branch]      # Gộp branch vào branch hiện tại
 ```
 
-#### **Quy trình làm việc nhóm:**
+#### **Quy trình làm việc nhóm khuyến nghị (kết hợp local merge và cập nhật code trước khi push):**
 
-1. Clone repo về máy
-2. Tạo branch riêng: `git checkout -b feature/my-feature`
-3. Làm việc trên branch đó
-4. Commit và push lên branch riêng
-5. Tạo Pull Request để merge vào main
+1. **Clone repo về máy**
+2. **Tạo branch riêng:**
+    ```bash
+    git checkout -b feature/my-feature
+    ```
+3. **Làm việc và commit trên branch đó**
+4. **Khi muốn đẩy code và tạo pull request vào main, thực hiện theo thứ tự sau:**
+    - _a. Chuyển sang branch `main`:_
+        ```bash
+        git checkout main
+        ```
+    - _b. Cập nhật code mới nhất từ remote:_
+        ```bash
+        git fetch origin
+        git pull origin main
+        ```
+    - _c. Quay lại branch đang làm việc:_
+        ```bash
+        git checkout feature/my-feature
+        ```
+    - _d. Merge code mới nhất từ `main` vào branch đang làm:_
+        ```bash
+        git merge main
+        ```
+    - _e. Xử lý conflict (nếu có). Nếu không có conflict, đảm bảo code đã cập nhật theo main._
+    - _f. Push branch lên GitHub:_
+        ```bash
+        git push origin feature/my-feature
+        ```
+    - _g. Tạo Pull Request để merge vào main trên GitHub._
 
-### 5. Quy tắc đặt tên commit và issue (15 phút)
+**Lưu ý:**
+
+-   Việc merge code mới nhất từ `main` về branch đang làm và xử lý conflict local trước khi push lên giúp hạn chế lỗi về sau, giúp code luôn đồng bộ, và pull request dễ review hơn.
+-   Quy trình này thường an toàn và minh bạch hơn so với chỉ merge khi tạo Pull Request trên GitHub.
+
+### 5. Quy tắc đặt tên commit và issue
 
 #### **Format commit message (Conventional Commits):**
 
@@ -182,30 +212,102 @@ Working Directory → Staging Area → Local Repository → Remote Repository (G
 
 ### Branch strategy cho dự án
 
-#### **Mô hình đơn giản:**
-
--   `main`: Code chính, ổn định
--   `develop`: Code đang phát triển
--   `feature/[tên-feature]`: Branch cho từng tính năng
+Theo quy trình **GitHub Flow**, chỉ cần branch chính là `main`, tất cả các tính năng mới sẽ được phát triển trên branch riêng (ví dụ: `feature/[tên-feature]`), sau đó tạo Pull Request để merge vào `main`.
 
 #### **Ví dụ:**
 
 ```
 main
-  └── develop
-       ├── feature/booking
-       ├── feature/tour-management
-       └── feature/user-profile
+  ├── feature/booking
+  ├── feature/tour-management
+  └── feature/user-profile
 ```
 
 ### Xử lý conflict (xung đột)
 
-Khi 2 người cùng sửa 1 file và merge lại:
+**Khái niệm conflict (xung đột):**
 
-1. Git báo conflict
-2. Mở file, tìm dòng `<<<<<<<`, `=======`, `>>>>>>>`
-3. Chọn code cần giữ, xóa các marker
-4. Add và commit lại
+-   Conflict xảy ra khi có hai hoặc nhiều commit cùng sửa đổi một phần giống nhau của file, khiến Git không thể tự động quyết định giữ phiên bản nào. Điều này thường gặp khi merge các branch lại với nhau.
+
+**Các bước xử lý conflict:**
+
+1. Git sẽ báo conflict xuất hiện khi merge/pull. Các file bị xung đột sẽ hiển thị trạng thái "CONFLICT".
+2. Mở file bị conflict. Git sẽ chèn các dấu đánh dấu đặc biệt như sau:
+    ```
+    <<<<<<< HEAD
+    // Current change (thay đổi hiện tại trên branch của bạn)
+    =======
+    // Incoming change (thay đổi mới sắp được merge vào)
+    >>>>>>> [branch hoặc commit-id]
+    ```
+    - **<<<<<<< HEAD**: Phần code hiện tại trên branch bạn đang làm (Current change)
+    - **=======**: Phần giao giữa hai thay đổi
+    - **>>>>>>> ...**: Thay đổi mới được merge vào (Incoming change)
+3. Các chọn lựa khi xử lý conflict:
+    - **Chọn Current Change**: Giữ nguyên code hiện tại trên nhánh của bạn, bỏ thay đổi incoming.
+    - **Chọn Incoming Change**: Giữ lấy code của side incoming (bên branch mình vừa merge xổ vào), bỏ code hiện tại.
+    - **Merge bằng tay**: Kết hợp cả 2 thay đổi lại sao cho phù hợp nhất với logic dự án.
+4. Xóa các dòng marker `<<<<<<<`, `=======`, `>>>>>>>` sau khi chọn xong.
+5. Thực hiện lại lệnh add & commit để hoàn tất xử lý conflict.
+
+**Ví dụ về conflict và cách xử lý:**
+
+Giả sử có đoạn code sau trong file `message.txt`:
+
+Trước khi merge:
+
+```
+Xin chào các bạn!
+```
+
+Bạn sửa trên branch của bạn:
+
+```
+Xin chào các bạn!
+Chúc một ngày tốt lành.
+```
+
+Một bạn khác sửa trên branch khác:
+
+```
+Xin chào các bạn!
+Hôm nay chúng ta học Git.
+```
+
+Khi merge, Git sẽ tạo conflict:
+
+```
+Xin chào các bạn!
+<<<<<<< HEAD
+Chúc một ngày tốt lành.
+=======
+Hôm nay chúng ta học Git.
+>>>>>>> feature/other-feature
+```
+
+Các em có thể:
+
+-   **Chọn Current (HEAD):**
+    ```
+    Xin chào các bạn!
+    Chúc một ngày tốt lành.
+    ```
+-   **Chọn Incoming (feature/other-feature):**
+    ```
+    Xin chào các bạn!
+    Hôm nay chúng ta học Git.
+    ```
+-   **Merge kết hợp tay:**
+    ```
+    Xin chào các bạn!
+    Chúc một ngày tốt lành.
+    Hôm nay chúng ta học Git.
+    ```
+
+**Lưu ý:**
+
+-   Có thể sử dụng các editor (VS Code) để hỗ trợ chọn "Accept Current Change", "Accept Incoming Change" hoặc "Accept Both Changes" khi resolve conflict trực quan.
+-   Sau khi sửa conflict, đừng quên commit lại để hoàn tất quá trình merge.
 
 ---
 
@@ -303,12 +405,11 @@ Nộp link repo GitHub trước buổi 7
 
 ### ⏱ Thời lượng gợi ý
 
--   Giới thiệu Git & GitHub: 20 phút
--   Cài đặt: 10 phút
--   Lệnh cơ bản: 25 phút
--   Làm việc nhóm: 20 phút
--   Quy tắc đặt tên: 15 phút
--   Tổng: ~90 phút
+-   Giới thiệu Git & GitHub
+-   Cài đặt
+-   Lệnh cơ bản
+-   Làm việc nhóm
+-   Quy tắc đặt tên
 
 ### 💡 Tips hướng dẫn
 
