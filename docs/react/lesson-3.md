@@ -470,15 +470,15 @@ export default Button;
 
 #### Bước 2: Thêm State cho todos
 
-Chuyển từ dữ liệu tĩnh (array) sang sử dụng State. Ở bước này, các em vẫn sử dụng TodoItem như ở buổi 2 (chỉ nhận prop `todo`):
+Chuyển từ dữ liệu tĩnh (array) sang sử dụng State. Ở bước này, các em vẫn sử dụng TodoItem và TodoHeader như ở buổi 2:
 
 ```javascript [src/components/TodoList.jsx]
 import { useState } from "react";
 import TodoItem from "./TodoItem";
-import Button from "./Button";
+import TodoHeader from "./TodoHeader";
 
 function TodoList() {
-    // Chuyển từ const todos = [...] sang useState
+    // ✅ Chuyển từ const todos = [...] sang useState
     const [todos, setTodos] = useState([
         { id: 1, text: "Học React", completed: false },
         { id: 2, text: "Làm bài tập", completed: true },
@@ -487,7 +487,10 @@ function TodoList() {
 
     return (
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
+            {/* ✅ Sử dụng TodoHeader component từ buổi 2 */}
+            <TodoHeader title="📝 Todo List">
+                <span className="text-sm text-gray-500">{todos.length} tasks</span>
+            </TodoHeader>
 
             <ul className="space-y-2 mb-4">
                 {todos.map((todo) => (
@@ -501,7 +504,10 @@ function TodoList() {
 export default TodoList;
 ```
 
-> **Lưu ý**: Ở bước này, TodoItem vẫn chỉ nhận prop `todo` như ở buổi 2. Ở các bước tiếp theo, các em sẽ nâng cấp TodoItem để nhận thêm các event handlers.
+> **Lưu ý**: 
+> - Ở bước này, TodoItem vẫn chỉ nhận prop `todo` như ở buổi 2
+> - Sử dụng TodoHeader component từ buổi 2 để hiển thị tiêu đề và số lượng tasks
+> - Ở các bước tiếp theo, các em sẽ nâng cấp TodoItem để nhận thêm các event handlers
 
 #### Bước 3: Nâng cấp TodoItem component với onToggle
 
@@ -532,7 +538,9 @@ export default TodoItem;
 Cập nhật TodoList để thêm handler và truyền xuống TodoItem:
 
 ```javascript [src/components/TodoList.jsx]
-// ... existing code ...
+import { useState } from "react";
+import TodoItem from "./TodoItem";
+import TodoHeader from "./TodoHeader";
 
 function TodoList() {
     const [todos, setTodos] = useState([
@@ -549,7 +557,10 @@ function TodoList() {
 
     return (
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
+            {/* ✅ Sử dụng TodoHeader từ buổi 2 */}
+            <TodoHeader title="📝 Todo List">
+                <span className="text-sm text-gray-500">{todos.length} tasks</span>
+            </TodoHeader>
 
             <ul className="space-y-2 mb-4">
                 {todos.map((todo) => (
@@ -559,6 +570,8 @@ function TodoList() {
         </div>
     );
 }
+
+export default TodoList;
 ```
 
 #### Bước 4: Thêm chức năng Xóa
@@ -599,23 +612,59 @@ export default TodoItem;
 Cập nhật TodoList để thêm handler xóa:
 
 ```javascript [src/components/TodoList.jsx]
-// ... existing code ...
+import { useState } from "react";
+import TodoItem from "./TodoItem";
+import TodoHeader from "./TodoHeader";
 
-const handleDelete = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-};
+function TodoList() {
+    const [todos, setTodos] = useState([
+        { id: 1, text: "Học React", completed: false },
+        { id: 2, text: "Làm bài tập", completed: true },
+        { id: 3, text: "Review code", completed: false },
+    ]);
 
-// ... trong return, cập nhật TodoItem ...
-<TodoItem key={todo.id} todo={todo} onToggle={handleToggle} onDelete={handleDelete} />;
+    const handleToggle = (id) => {
+        setTodos(
+            todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+        );
+    };
+
+    const handleDelete = (id) => {
+        setTodos(todos.filter((todo) => todo.id !== id));
+    };
+
+    return (
+        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+            {/* ✅ Sử dụng TodoHeader từ buổi 2 */}
+            <TodoHeader title="📝 Todo List">
+                <span className="text-sm text-gray-500">{todos.length} tasks</span>
+            </TodoHeader>
+
+            <ul className="space-y-2 mb-4">
+                {todos.map((todo) => (
+                    <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        onToggle={handleToggle}
+                        onDelete={handleDelete}
+                    />
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default TodoList;
 ```
 
 #### Bước 5: Thêm chức năng Thêm mới
 
-Cuối cùng, các em sẽ thêm form để thêm todo mới. Ở đây các em sẽ sử dụng Button component đã nâng cấp ở Bước 1:
+Cuối cùng, các em sẽ thêm form để thêm todo mới. Ở đây các em sẽ sử dụng Button component đã nâng cấp ở Bước 1 và TodoHeader từ buổi 2:
 
 ```javascript [src/components/TodoList.jsx]
 import { useState } from "react";
 import TodoItem from "./TodoItem";
+import TodoHeader from "./TodoHeader";
 import Button from "./Button";
 
 function TodoList() {
@@ -647,8 +696,12 @@ function TodoList() {
 
     return (
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">📝 Todo List</h1>
+            {/* ✅ Sử dụng TodoHeader từ buổi 2, hiển thị số lượng tasks động */}
+            <TodoHeader title="📝 Todo List">
+                <span className="text-sm text-gray-500">{todos.length} tasks</span>
+            </TodoHeader>
 
+            {/* ✅ Form thêm todo mới với Button component đã nâng cấp */}
             <form onSubmit={handleAdd} className="mb-4">
                 <div className="flex gap-2">
                     <input
@@ -683,9 +736,11 @@ export default TodoList;
 
 > **Lưu ý**:
 >
-> -   Button component đã được nâng cấp ở Bước 1 để nhận prop `type="submit"` cho form
+> -   Button component đã được nâng cấp ở Bước 1 để nhận prop `onClick` và `type="submit"` cho form
+> -   TodoHeader component từ buổi 2 được sử dụng để hiển thị tiêu đề và số lượng tasks (tự động cập nhật khi thêm/xóa)
 > -   Form sử dụng `onSubmit` event handler để xử lý khi submit
 > -   State `newTodo` được dùng để lưu giá trị input và reset về rỗng sau khi thêm
+> -   Số lượng tasks trong TodoHeader tự động cập nhật nhờ `{todos.length}`
 
 ---
 
