@@ -18,6 +18,7 @@
 -   Lưu thông tin vào session (chưa cần DB), hiển thị profile card với avatar.
 
 ### Hướng dẫn thực hiện
+
 -   Đặt `session_start()` đầu file để dùng `$_SESSION`.
 -   Form: thêm `enctype="multipart/form-data"`; trường name (text), bio (textarea), avatar (file).
 -   Validate: `trim` name, `strlen` bio <= 200; kiểm tra `$_FILES['avatar']['error'] === UPLOAD_ERR_OK`, dùng `finfo_file` kiểm MIME `image/*`, size `$_FILES['avatar']['size'] <= 2 * 1024 * 1024`.
@@ -25,6 +26,7 @@
 -   Render profile card: lấy từ session, dùng `htmlspecialchars` cho text, hiển thị `<img>` nếu có avatar.
 
 #### Mẫu code gợi ý (upload & lưu session)
+
 ```php
 <?php
 session_start();

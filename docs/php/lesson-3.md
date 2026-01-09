@@ -19,11 +19,13 @@
 -   Viết hàm `slugify($text)` đơn giản: lowercase, trim, thay khoảng trắng thành gạch ngang, bỏ ký tự đặc biệt cơ bản.
 
 ### Hướng dẫn thực hiện
+
 -   Điểm số: tạo mảng `$scores = [7, 5, 9, 4]`; dùng `array_sum / count` lấy trung bình; `max/min` cho giá trị biên; `array_filter` giữ điểm >=5.
 -   Tag list: nhận chuỗi, `explode(', ', $input)`, trim từng phần tử, sau đó loop tạo chuỗi `<li>` và bao bằng `<ul>`.
 -   slugify: `trim`, `strtolower`, thay khoảng trắng bằng `-` với `preg_replace('/\s+/', '-', $text)`, bỏ ký tự đặc biệt bằng regex `/[^a-z0-9-]/`; rút gọn dấu `--` về `-` và trim dấu `-` dư.
 
 #### Mẫu code gợi ý
+
 ```php
 <?php
 $scores = [7, 5, 9, 4];

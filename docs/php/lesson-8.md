@@ -22,6 +22,7 @@
 -   Dùng prepared statement cho mọi truy vấn có tham số.
 
 ### Hướng dẫn thực hiện
+
 -   `db.php`: tạo hàm `get_pdo()` dùng DSN `mysql:host=localhost;dbname=php_blog;charset=utf8mb4`, cấu hình `PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION`.
 -   Chuẩn bị file seed từ buổi 7 để có dữ liệu categories.
 -   List: `SELECT p.id, p.title, c.name AS category, p.created_at FROM posts p LEFT JOIN categories c ON c.id = p.category_id ORDER BY p.created_at DESC`.
@@ -31,6 +32,7 @@
 -   Bọc lệnh nhạy cảm trong try/catch, hiển thị flash message thành công/thất bại.
 
 #### Mẫu code gợi ý
+
 ```php
 <?php
 // src/db.php

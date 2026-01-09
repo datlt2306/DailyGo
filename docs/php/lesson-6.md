@@ -21,6 +21,7 @@
 -   Kiểm tra hiển thị và upload vẫn hoạt động.
 
 ### Hướng dẫn thực hiện
+
 -   Tạo hằng `BASE_PATH = __DIR__ . '/../';` trong `public/index.php` để include file dễ.
 -   Viết hàm `render($view, $data = [])` trong `src/helpers.php` để extract data rồi include view.
 -   Tách header/footer vào partials, include trong layout chính; form và card tách riêng file.
@@ -28,6 +29,7 @@
 -   Kiểm thử: upload avatar, refresh trang, dữ liệu vẫn lấy từ session và hiển thị đúng.
 
 #### Mẫu code gợi ý (router tối giản)
+
 ```php
 <?php
 // public/index.php

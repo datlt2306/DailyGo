@@ -19,6 +19,7 @@
 -   Đảm bảo auth guard hoạt động cho trang admin.
 
 ### Hướng dẫn thực hiện
+
 -   Trong index.php: tạo mảng `$routes = ['home' => 'controllers/home.php', ...];` đọc `page` từ GET, dùng `array_key_exists` để chọn file; nếu không có, set 404 và include trang lỗi.
 -   Đảm bảo mọi include dùng đường dẫn tuyệt đối dựa trên `BASE_PATH` để tránh traversal.
 -   Partial: header/footer đặt chung, render flash message; content section include theo router.
@@ -26,6 +27,7 @@
 -   Kiểm thử: nhập page không hợp lệ, thấy 404; thử truy cập admin khi chưa login bị redirect.
 
 #### Mẫu code gợi ý (router whitelist)
+
 ```php
 <?php
 define('BASE_PATH', __DIR__ . '/..');

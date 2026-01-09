@@ -310,7 +310,10 @@ export default {
                     items: [
                         { text: "Buổi 7: MySQL cơ bản & ERD", link: "/php/lesson-7" },
                         { text: "Buổi 8: PDO & Prepared Statements", link: "/php/lesson-8" },
-                        { text: "Buổi 9: Pagination, Search, Error handling", link: "/php/lesson-9" },
+                        {
+                            text: "Buổi 9: Pagination, Search, Error handling",
+                            link: "/php/lesson-9",
+                        },
                     ],
                 },
                 {

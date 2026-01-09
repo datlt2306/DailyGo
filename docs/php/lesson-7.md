@@ -20,16 +20,18 @@
 -   Viết 3 truy vấn: lấy tất cả posts, lọc theo category, cập nhật title một post.
 
 ### Hướng dẫn thực hiện
+
 -   Mở MySQL CLI hoặc GUI, chạy `CREATE DATABASE php_blog CHARACTER SET utf8mb4;` và `USE php_blog;`.
 -   Tạo bảng tối thiểu:
-	-   users(id INT AI PK, email VARCHAR(191) UNIQUE, password_hash VARCHAR(255), created_at DATETIME DEFAULT CURRENT_TIMESTAMP)
-	-   categories(id INT AI PK, name VARCHAR(100), slug VARCHAR(120) UNIQUE)
-	-   posts(id INT AI PK, title VARCHAR(191), content TEXT, category_id INT, created_at DATETIME DEFAULT CURRENT_TIMESTAMP)
+    -   users(id INT AI PK, email VARCHAR(191) UNIQUE, password_hash VARCHAR(255), created_at DATETIME DEFAULT CURRENT_TIMESTAMP)
+    -   categories(id INT AI PK, name VARCHAR(100), slug VARCHAR(120) UNIQUE)
+    -   posts(id INT AI PK, title VARCHAR(191), content TEXT, category_id INT, created_at DATETIME DEFAULT CURRENT_TIMESTAMP)
 -   Thêm dữ liệu mẫu bằng INSERT; lưu ý cung cấp category_id hợp lệ cho posts.
 -   Truy vấn: `SELECT * FROM posts;`, `SELECT * FROM posts WHERE category_id = ?;`, `UPDATE posts SET title = '...new' WHERE id = ?;`.
 -   Kiểm tra kết quả bằng `SELECT` lại để chắc chắn dữ liệu thay đổi.
 
 #### Mẫu lệnh SQL gợi ý
+
 ```sql
 CREATE DATABASE php_blog CHARACTER SET utf8mb4;
 USE php_blog;

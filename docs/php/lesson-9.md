@@ -19,7 +19,8 @@
 -   Tạo hàm helper build_query_string giữ lại tham số khi chuyển trang.
 
 ### Hướng dẫn thực hiện
--   Nhận `page` từ GET, chuẩn hóa: `$page = max(1, (int)($_GET['page'] ?? 1));` tính OFFSET = ($page - 1) * $pageSize.
+
+-   Nhận `page` từ GET, chuẩn hóa: `$page = max(1, (int)($_GET['page'] ?? 1));` tính OFFSET = ($page - 1) \* $pageSize.
 -   Tổng bản ghi: `SELECT COUNT(*) FROM posts WHERE title LIKE ?` với tham số `%$q%`; tính tổng trang = ceil(total / pageSize).
 -   Lấy dữ liệu trang: thêm LIMIT/OFFSET vào truy vấn, bind giá trị.
 -   Search: lấy `q` từ GET, trim, escape khi render bằng `htmlspecialchars`; dùng tham số LIKE để chống injection.
@@ -27,6 +28,7 @@
 -   UI: render nút Prev/Next disabled khi ở đầu/cuối; hiển thị “Trang X/Y”.
 
 #### Mẫu code gợi ý
+
 ```php
 $pdo = get_pdo();
 $pageSize = 5;

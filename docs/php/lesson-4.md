@@ -19,12 +19,14 @@
 -   Nếu hợp lệ: echo JSON dữ liệu (chưa lưu DB), nếu lỗi: hiển thị dưới từng field.
 
 ### Hướng dẫn thực hiện
+
 -   Tạo `register.php` chứa form method POST, mỗi input có `name` rõ ràng.
 -   Đọc dữ liệu bằng `filter_input(INPUT_POST, 'field', FILTER_SANITIZE_FULL_SPECIAL_CHARS)` rồi `trim`.
 -   Tạo mảng `$errors = []`; kiểm tra rỗng, email với `FILTER_VALIDATE_EMAIL`, độ dài password >= 8, so khớp confirm.
 -   Nếu có lỗi, render lại form và hiển thị thông báo cạnh từng field; nếu không, `echo json_encode($data)` để xem kết quả.
 
 #### Mẫu code gợi ý (trích xử lý submit)
+
 ```php
 <?php
 $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS));

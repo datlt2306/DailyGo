@@ -21,12 +21,14 @@
 -   Viết script in bảng cửu chương 5 bằng vòng lặp for (preview cho buổi 2).
 
 ### Hướng dẫn thực hiện
+
 -   Cài stack: tải XAMPP/MAMP, bật Apache, kiểm tra http://localhost mở được trang mặc định.
 -   Tạo thư mục `public/` trong htdocs, thêm `index.php` và đặt thẻ `<?php ... ?>`.
 -   Dùng `echo` in chuỗi, sau đó tạo biến `$age`, `$name` và `var_dump($age)` để xem kiểu.
 -   Viết vòng lặp `for ($i = 1; $i <= 10; $i++)` in ra bảng cửu chương 5, dùng nối chuỗi để định dạng.
 
 #### Mẫu code gợi ý
+
 ```php
 <?php
 echo "Hello PHP" . PHP_EOL;

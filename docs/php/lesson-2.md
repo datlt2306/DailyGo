@@ -18,12 +18,14 @@
 -   Viết hàm `sumRange($start, $end)` và hàm `isPrime($n)` đơn giản.
 
 ### Hướng dẫn thực hiện
--   BMI: nhận $weight, $height (m), tính $bmi = $weight / ($height * $height); dùng if/elseif để in phân loại.
+
+-   BMI: nhận $weight, $height (m), tính $bmi = $weight / ($height \* $height); dùng if/elseif để in phân loại.
 -   Định dạng chuỗi: đọc tên từ `readline()` (CLI) hoặc form nhỏ, dùng `strlen` và nối chuỗi để in lời chào.
 -   sumRange: dùng for/while cộng dồn từ $start đến $end, trả về tổng; kiểm tra trường hợp $start > $end thì hoán đổi.
 -   isPrime: trả false nếu $n < 2; lặp từ 2 đến sqrt($n), nếu chia hết trả false, ngược lại true; in ra danh sách số nguyên tố nhỏ hơn 50.
 
 #### Mẫu code gợi ý
+
 ```php
 <?php
 // BMI

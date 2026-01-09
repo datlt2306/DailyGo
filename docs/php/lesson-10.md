@@ -19,6 +19,7 @@
 -   Áp CSRF token cho form tạo/sửa/xóa bài viết.
 
 ### Hướng dẫn thực hiện
+
 -   Register: validate email unique (SELECT trước), hash mật khẩu bằng `password_hash(..., PASSWORD_DEFAULT)`, lưu vào users.
 -   Login: lấy user theo email, `password_verify` mật khẩu; nếu đúng, `session_regenerate_id(true)` và lưu `$_SESSION['user_id']`.
 -   Logout: `session_unset(); session_destroy();` rồi redirect.
@@ -27,6 +28,7 @@
 -   Ghi log hoặc đếm số lần login sai (biến session) để tạm khóa hoặc delay nhẹ.
 
 #### Mẫu code gợi ý (auth + CSRF)
+
 ```php
 <?php
 session_start();
