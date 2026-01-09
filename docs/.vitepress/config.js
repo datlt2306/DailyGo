@@ -8,6 +8,7 @@ export default {
             { text: "JavaScript", link: "/javascript/" },
             { text: "React", link: "/react/" },
             { text: "Node.js", link: "/nodejs/" },
+            { text: "PHP", link: "/php/" },
             { text: "Wordpress", link: "/wordpress/" },
             { text: "Git & GitHub", link: "/git/" },
             { text: "Dự án 1", link: "/pro1014/" },
@@ -273,6 +274,52 @@ export default {
                         // },
                         // { text: "15: Tối ưu hiệu năng API", link: "/nodejs/api/lesson-15" },
                         // { text: "16: Triển khai dự án", link: "/nodejs/api/lesson-16" },
+                    ],
+                },
+            ],
+            "/php/": [
+                {
+                    text: "Khóa học PHP 12 buổi",
+                    collapsed: false,
+                    items: [
+                        { text: "Tổng quan khóa", link: "/php/" },
+                        { text: "Dự án cuối khóa", link: "/php/final-project" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 1: Cú pháp & dữ liệu",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 1: Môi trường & PHP 101", link: "/php/lesson-1" },
+                        { text: "Buổi 2: Toán tử, điều kiện, vòng lặp", link: "/php/lesson-2" },
+                        { text: "Buổi 3: Mảng, chuỗi, hàm xử lý", link: "/php/lesson-3" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 2: Form & trạng thái",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 4: Form GET/POST, validate", link: "/php/lesson-4" },
+                        { text: "Buổi 5: Session, Cookie, Upload file", link: "/php/lesson-5" },
+                        { text: "Buổi 6: Tổ chức mã, include/require", link: "/php/lesson-6" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 3: Database & PDO",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 7: MySQL cơ bản & ERD", link: "/php/lesson-7" },
+                        { text: "Buổi 8: PDO & Prepared Statements", link: "/php/lesson-8" },
+                        { text: "Buổi 9: Pagination, Search, Error handling", link: "/php/lesson-9" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 4: Auth & hoàn thiện",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 10: Auth cơ bản, CSRF", link: "/php/lesson-10" },
+                        { text: "Buổi 11: Layout, routing đơn giản", link: "/php/lesson-11" },
+                        { text: "Buổi 12: Tổng hợp & Demo", link: "/php/lesson-12" },
                     ],
                 },
             ],
