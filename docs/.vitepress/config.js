@@ -7,6 +7,7 @@ export default {
             // { text: "HTML/CSS", link: "/html-css/" },
             { text: "JavaScript", link: "/javascript/" },
             { text: "React", link: "/react/" },
+            { text: "VueJS", link: "/vuejs/" },
             { text: "Node.js", link: "/nodejs/" },
             { text: "PHP", link: "/php/" },
             { text: "Wordpress", link: "/wordpress/" },
@@ -207,6 +208,49 @@ export default {
                         { text: "Buổi 14: Context API & Organization", link: "/react/lesson-14" },
                         { text: "Buổi 15: Styling & Responsive", link: "/react/lesson-15" },
                         { text: "Buổi 16: Project Presentation", link: "/react/lesson-16" },
+                    ],
+                },
+            ],
+            "/vuejs/": [
+                {
+                    text: "Khóa học VueJS 15 buổi",
+                    collapsed: false,
+                    items: [
+                        { text: "Tổng quan 15 buổi", link: "/vuejs/" },
+                        { text: "Dự án cuối khóa", link: "/vuejs/final-project" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 1: Nền tảng Vue 3 (Buổi 1-6)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 1: Giới thiệu VueJS & Setup với Vite", link: "/vuejs/lesson-1" },
+                        { text: "Buổi 2: Template Syntax & Directives", link: "/vuejs/lesson-2" },
+                        { text: "Buổi 3: Reactivity cơ bản (ref, reactive, computed, watch)", link: "/vuejs/lesson-3" },
+                        { text: "Buổi 4: Conditional & List Rendering", link: "/vuejs/lesson-4" },
+                        { text: "Buổi 5: Component & Props", link: "/vuejs/lesson-5" },
+                        { text: "Buổi 6: Custom Events & Provide/Inject", link: "/vuejs/lesson-6" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 2: Lifecycle & Router (Buổi 7-11)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 7: Đánh giá giữa kỳ 1", link: "/vuejs/lesson-7" },
+                        { text: "Buổi 8: Lifecycle Hooks & Template Refs", link: "/vuejs/lesson-8" },
+                        { text: "Buổi 9: Form Handling & Validation", link: "/vuejs/lesson-9" },
+                        { text: "Buổi 10: Routing với Vue Router", link: "/vuejs/lesson-10" },
+                        { text: "Buổi 11: Đánh giá giữa kỳ 2", link: "/vuejs/lesson-11" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 3: State Management & API (Buổi 12-15)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 12: Quản lý State với Pinia", link: "/vuejs/lesson-12" },
+                        { text: "Buổi 13: Axios & JSON-Server", link: "/vuejs/lesson-13" },
+                        { text: "Buổi 14: Styling, TailwindCSS & Slots", link: "/vuejs/lesson-14" },
+                        { text: "Buổi 15: Dự án cuối khóa & Presentation", link: "/vuejs/lesson-15" },
                     ],
                 },
             ],

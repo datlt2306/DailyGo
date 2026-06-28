@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chỉnh Sửa Sản Phẩm - TechShop Admin</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex h-screen overflow-hidden">
+
+  <!-- SIDEBAR COMPONENT -->
+  <aside class="w-64 bg-slate-900 text-slate-400 flex flex-col justify-between flex-shrink-0">
+    <div>
+      <div class="h-16 flex items-center px-6 border-b border-slate-800">
+        <a href="index.html" class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
+            <i data-lucide="cpu" class="w-5 h-5"></i>
+          </div>
+          <span class="text-base font-bold text-white">TechShop Admin</span>
+        </a>
+      </div>
+      <nav class="p-4 space-y-1.5">
+        <a href="admin-dashboard.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-800 hover:text-white transition-all">
+          <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+          <span class="text-sm">Tổng quan</span>
+        </a>
+        <a href="admin-product-list.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-indigo-600/10 text-white font-semibold transition-all">
+          <i data-lucide="package" class="w-5 h-5 text-indigo-500"></i>
+          <span class="text-sm">Sản phẩm (CRUD)</span>
+        </a>
+        <a href="admin-order-list.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-800 hover:text-white transition-all">
+          <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+          <span class="text-sm">Đơn hàng</span>
+        </a>
+        <a href="admin-user-list.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-800 hover:text-white transition-all">
+          <i data-lucide="users" class="w-5 h-5"></i>
+          <span class="text-sm">Người dùng</span>
+        </a>
+      </nav>
+    </div>
+    <div class="p-4 border-t border-slate-800">
+      <a href="index.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-800 hover:text-white transition-all text-xs font-bold text-slate-400">
+        <i data-lucide="log-out" class="w-4 h-4"></i>
+        <span>Về trang chủ</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN PAGE WORKSPACE -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    
+    <!-- Topbar Header -->
+    <header class="h-16 bg-white border-b border-slate-200/80 flex items-center justify-between px-8 flex-shrink-0">
+      <div class="flex items-center space-x-3">
+        <a href="admin-product-list.html" class="text-slate-400 hover:text-slate-600 transition-colors">
+          <i data-lucide="arrow-left" class="w-5 h-5"></i>
+        </a>
+        <h2 class="text-base font-bold text-slate-800">Chỉnh sửa sản phẩm</h2>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <div class="text-right">
+          <p class="text-xs font-bold text-slate-800">Quản Trị Viên</p>
+          <p class="text-[10px] text-slate-400">admin@techshop.com</p>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">
+          AD
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Workspace -->
+    <main class="flex-1 overflow-y-auto p-8 space-y-6">
+      
+      <div class="max-w-2xl bg-white border border-slate-200/60 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+        <form class="space-y-4">
+          
+          <!-- Tên sản phẩm -->
+          <div class="space-y-1.5">
+            <label for="name" class="text-xs font-bold text-slate-700">Tên sản phẩm</label>
+            <input 
+              type="text" 
+              id="name" 
+              value="Tai Nghe Vanguard Studio Wireless" 
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+              required
+            />
+          </div>
+
+          <!-- Danh mục & Giá & Tồn kho -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Danh mục -->
+            <div class="space-y-1.5">
+              <label for="category" class="text-xs font-bold text-slate-700">Danh mục</label>
+              <select 
+                id="category" 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                required
+              >
+                <option value="Âm thanh" selected>Âm thanh</option>
+                <option value="Thời trang">Thời trang</option>
+                <option value="Công nghệ">Công nghệ</option>
+                <option value="Phụ kiện">Phụ kiện</option>
+              </select>
+            </div>
+
+            <!-- Giá bán -->
+            <div class="space-y-1.5">
+              <label for="price" class="text-xs font-bold text-slate-700">Giá bán (VND)</label>
+              <input 
+                type="number" 
+                id="price" 
+                value="3500000" 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                required
+              />
+            </div>
+
+            <!-- Số lượng tồn kho -->
+            <div class="space-y-1.5">
+              <label for="stock" class="text-xs font-bold text-slate-700">Số lượng tồn kho</label>
+              <input 
+                type="number" 
+                id="stock" 
+                value="12" 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Link Ảnh sản phẩm -->
+          <div class="space-y-1.5">
+            <label for="image" class="text-xs font-bold text-slate-700">Đường dẫn ảnh sản phẩm (URL)</label>
+            <input 
+              type="url" 
+              id="image" 
+              value="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80" 
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+              required
+            />
+          </div>
+
+          <!-- Mô tả sản phẩm -->
+          <div class="space-y-1.5">
+            <label for="description" class="text-xs font-bold text-slate-700">Mô tả sản phẩm</label>
+            <textarea 
+              id="description" 
+              rows="5"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+              required
+            >Trải nghiệm âm thanh đỉnh cao với tai nghe Vanguard Studio Wireless thế hệ mới. Được trang bị công nghệ chống ồn chủ động ANC tiên tiến lọc tới 95% tiếng ồn môi trường, cùng màng loa dynamic 40mm mang lại âm bass sâu chắc chắn, âm mid trong trẻo và âm cao sắc sảo.</textarea>
+          </div>
+
+          <!-- Form Buttons -->
+          <div class="pt-4 flex justify-end space-x-3">
+            <a 
+              href="admin-product-list.html" 
+              class="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-bold transition-all"
+            >
+              Hủy bỏ
+            </a>
+            <button 
+              type="submit" 
+              class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md transition-all"
+            >
+              Lưu thay đổi
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
