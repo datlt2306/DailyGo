@@ -8,12 +8,24 @@ Dự án này sẽ dựa trên bộ giao diện tĩnh HTML/Tailwind CSS đã thi
 
 ---
 
-## 📁 Tài nguyên giao diện (Tải về)
+Học viên tải về các tệp tin giao diện tĩnh làm cơ sở dữ liệu giao diện gốc dưới đây:
 
-Học viên truy cập và sao chép các tệp tin giao diện tĩnh nằm trong thư mục sau làm cơ sở dữ liệu giao diện gốc:
-- 🔗 **Thư mục chứa HTML mẫu**: [docs/vuejs/templates](https://letrongdat.vercel.app/vuejs/templates)
+- **Trang chủ**: [index.html](https://letrongdat.vercel.app/vuejs/templates/index.html)
+- **Chi tiết sản phẩm**: [product-detail.html](https://letrongdat.vercel.app/vuejs/templates/product-detail.html)
+- **Giỏ hàng**: [cart.html](https://letrongdat.vercel.app/vuejs/templates/cart.html)
+- **Thanh toán**: [checkout.html](https://letrongdat.vercel.app/vuejs/templates/checkout.html)
+- **Đăng nhập**: [login.html](https://letrongdat.vercel.app/vuejs/templates/login.html)
+- **Đăng ký**: [register.html](https://letrongdat.vercel.app/vuejs/templates/register.html)
+- **Thông tin tài khoản**: [account.html](https://letrongdat.vercel.app/vuejs/templates/account.html)
+- **Lịch sử mua hàng**: [order-history.html](https://letrongdat.vercel.app/vuejs/templates/order-history.html)
+- **Admin - Dashboard**: [admin-dashboard.html](https://letrongdat.vercel.app/vuejs/templates/admin-dashboard.html)
+- **Admin - Danh sách sản phẩm**: [admin-product-list.html](https://letrongdat.vercel.app/vuejs/templates/admin-product-list.html)
+- **Admin - Tạo sản phẩm**: [admin-product-create.html](https://letrongdat.vercel.app/vuejs/templates/admin-product-create.html)
+- **Admin - Sửa sản phẩm**: [admin-product-edit.html](https://letrongdat.vercel.app/vuejs/templates/admin-product-edit.html)
+- **Admin - Danh sách khách hàng**: [admin-user-list.html](https://letrongdat.vercel.app/vuejs/templates/admin-user-list.html)
+- **Admin - Danh sách đơn hàng**: [admin-order-list.html](https://letrongdat.vercel.app/vuejs/templates/admin-order-list.html)
 
-*Lưu ý: Học viên chỉ cần tải các tệp tĩnh này để copy mã HTML & Tailwind CSS, không được sửa đổi trực tiếp các file tĩnh.*
+*Lưu ý: Do Vercel là môi trường chạy tĩnh nên khi truy cập thư mục gốc `/templates` nó sẽ mặc định tải file `index.html` (trang chủ) thay vì hiển thị danh sách thư mục. Hãy bấm trực tiếp vào từng liên kết ở trên để tải về.*
 
 ---
 
