@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Sản Phẩm - TechShop Admin</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex h-screen overflow-hidden">
+
+  <!-- SIDEBAR COMPONENT -->
+  <aside class="w-64 bg-slate-900 text-slate-400 flex flex-col justify-between flex-shrink-0">
+    <div>
+      <div class="h-16 flex items-center px-6 border-b border-slate-800">
+        <a href="index.html" class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
+            <i data-lucide="cpu" class="w-5 h-5"></i>
+          </div>
+          <span class="text-base font-bold text-white">TechShop Admin</span>
+        </a>
+      </div>
+      <nav class="p-4 space-y-1.5">
+        <a href="admin-dashboard.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-800 hover:text-white transition-all">
+          <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+          <span class="text-sm">Tổng quan</span>
+        </a>
+        <a href="admin-product-list.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-indigo-600/10 text-white font-semibold transition-all">
+          <i data-lucide="package" class="w-5 h-5 text-indigo-500"></i>
+          <span class="text-sm">Sản phẩm (CRUD)</span>
+        </a>
+        <a href="admin-order-list.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-800 hover:text-white transition-all">
+          <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+          <span class="text-sm">Đơn hàng</span>
+        </a>
+        <a href="admin-user-list.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-800 hover:text-white transition-all">
+          <i data-lucide="users" class="w-5 h-5"></i>
+          <span class="text-sm">Người dùng</span>
+        </a>
+      </nav>
+    </div>
+    <div class="p-4 border-t border-slate-800">
+      <a href="index.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-800 hover:text-white transition-all text-xs font-bold text-slate-400">
+        <i data-lucide="log-out" class="w-4 h-4"></i>
+        <span>Về trang chủ</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN PAGE WORKSPACE -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    
+    <!-- Topbar Header -->
+    <header class="h-16 bg-white border-b border-slate-200/80 flex items-center justify-between px-8 flex-shrink-0">
+      <h2 class="text-base font-bold text-slate-800">Quản lý sản phẩm</h2>
+      
+      <div class="flex items-center space-x-4">
+        <div class="text-right">
+          <p class="text-xs font-bold text-slate-800">Quản Trị Viên</p>
+          <p class="text-[10px] text-slate-400">admin@techshop.com</p>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">
+          AD
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Workspace -->
+    <main class="flex-1 overflow-y-auto p-8 space-y-6">
+      
+      <!-- Top Action Bar -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div class="relative w-full sm:w-80">
+          <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </span>
+          <input 
+            type="text" 
+            placeholder="Tìm kiếm sản phẩm..." 
+            class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-white text-sm shadow-sm transition-all"
+          />
+        </div>
+
+        <a 
+          href="admin-product-create.html" 
+          class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md transition-all flex items-center space-x-2"
+        >
+          <i data-lucide="plus" class="w-4 h-4"></i>
+          <span>Thêm sản phẩm mới</span>
+        </a>
+      </div>
+
+      <!-- Product List Table -->
+      <div class="bg-white rounded-3xl border border-slate-200/60 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-slate-600 border-collapse">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-100 text-xs font-bold text-slate-400 uppercase">
+                <th class="px-6 py-4">Sản phẩm</th>
+                <th class="px-6 py-4">Danh mục</th>
+                <th class="px-6 py-4">Giá bán</th>
+                <th class="px-6 py-4">Tồn kho</th>
+                <th class="px-6 py-4 text-center">Tác vụ</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <!-- PRODUCT ITEM 1 -->
+              <tr>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-3">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&auto=format&fit=crop&q=80" alt="product" class="w-12 h-12 object-cover rounded-lg border border-slate-100 shrink-0" />
+                    <div>
+                      <p class="font-bold text-slate-800 text-sm">Tai Nghe Vanguard Studio Wireless</p>
+                      <p class="text-xs text-slate-400 line-clamp-1">Công nghệ chống ồn ANC đỉnh cao...</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2.5 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600">
+                    Âm thanh
+                  </span>
+                </td>
+                <td class="px-6 py-4 font-extrabold text-slate-800">3.500.000 đ</td>
+                <td class="px-6 py-4 font-semibold text-slate-500">12 chiếc</td>
+                <td class="px-6 py-4 text-center">
+                  <div class="flex items-center justify-center space-x-2">
+                    <a href="admin-product-edit.html" class="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors" title="Sửa">
+                      <i data-lucide="edit-2" class="w-4 h-4"></i>
+                    </a>
+                    <button class="p-2 text-rose-600 hover:bg-rose-50 rounded-lg transition-colors" title="Xóa">
+                      <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- PRODUCT ITEM 2 -->
+              <tr>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-3">
+                    <img src="https://images.unsplash.com/photo-1627124765138-b6b77e815b3c?w=100&auto=format&fit=crop&q=80" alt="product" class="w-12 h-12 object-cover rounded-lg border border-slate-100 shrink-0" />
+                    <div>
+                      <p class="font-bold text-slate-800 text-sm">Ví Da Nam Tối Giản Vanguard Leather</p>
+                      <p class="text-xs text-slate-400 line-clamp-1">Chất liệu da Saffiano thật 100%...</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2.5 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-600">
+                    Phụ kiện
+                  </span>
+                </td>
+                <td class="px-6 py-4 font-extrabold text-slate-800">650.000 đ</td>
+                <td class="px-6 py-4 font-semibold text-slate-500">45 chiếc</td>
+                <td class="px-6 py-4 text-center">
+                  <div class="flex items-center justify-center space-x-2">
+                    <a href="admin-product-edit.html" class="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors" title="Sửa">
+                      <i data-lucide="edit-2" class="w-4 h-4"></i>
+                    </a>
+                    <button class="p-2 text-rose-600 hover:bg-rose-50 rounded-lg transition-colors" title="Xóa">
+                      <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

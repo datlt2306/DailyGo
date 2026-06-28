@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hồ Sơ Của Tôi - Vanguard Store</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- NAVBAR COMPONENT -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2 text-xl font-bold tracking-tight text-indigo-600">
+        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+        <span>Vanguard<span class="text-slate-800 font-medium text-base">Store</span></span>
+      </a>
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="index.html" class="text-slate-600 hover:text-indigo-600 transition-colors">Trang Chủ</a>
+        <a href="#" class="text-slate-600 hover:text-indigo-600 transition-colors">Sản Phẩm</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="cart.html" class="relative p-2 text-slate-600 hover:text-indigo-600 hover:bg-slate-100 rounded-full transition-all">
+          <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+          <span class="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+            2
+          </span>
+        </a>
+        <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold flex items-center justify-center text-sm border border-indigo-200">
+          K
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 py-8 w-full space-y-6">
+    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Hồ Sơ Cá Nhân</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+      <!-- NAVIGATION SIDEBAR FOR USER PROFILE -->
+      <aside class="md:col-span-1 space-y-2">
+        <a href="account.html" class="flex items-center space-x-2.5 px-4 py-3 rounded-xl bg-indigo-600/10 text-indigo-700 font-bold text-sm transition-all">
+          <i data-lucide="user" class="w-4 h-4 text-indigo-600"></i>
+          <span>Thông tin hồ sơ</span>
+        </a>
+        <a href="order-history.html" class="flex items-center space-x-2.5 px-4 py-3 rounded-xl hover:bg-slate-100 text-slate-600 font-semibold text-sm transition-all">
+          <i data-lucide="history" class="w-4 h-4 text-slate-400"></i>
+          <span>Đơn đặt mua</span>
+        </a>
+        <button class="w-full flex items-center space-x-2.5 px-4 py-3 rounded-xl hover:bg-rose-50 text-rose-600 font-semibold text-sm transition-all text-left">
+          <i data-lucide="log-out" class="w-4 h-4 text-rose-500"></i>
+          <span>Đăng xuất</span>
+        </button>
+      </aside>
+
+      <!-- PROFILE INFO WORKSPACE -->
+      <section class="md:col-span-3">
+        <div class="bg-white border border-slate-200/60 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+          <div class="flex items-center space-x-4 pb-6 border-b border-slate-100">
+            <div class="w-16 h-16 rounded-full bg-indigo-150 text-indigo-700 font-extrabold flex items-center justify-center text-xl border border-indigo-200">
+              K
+            </div>
+            <div>
+              <h2 class="text-lg font-bold text-slate-900">Ken Nguyễn</h2>
+              <p class="text-xs text-slate-400">Thành viên từ ngày 25/06/2026</p>
+            </div>
+          </div>
+
+          <form class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Họ tên -->
+              <div class="space-y-1.5">
+                <label for="name" class="text-xs font-bold text-slate-700">Họ và tên</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  value="Ken Nguyễn"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                  required
+                />
+              </div>
+
+              <!-- Email -->
+              <div class="space-y-1.5">
+                <label for="email" class="text-xs font-bold text-slate-700">Email (Không thể thay đổi)</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  value="ken@vanguard.com"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-100 text-slate-500 text-sm focus:outline-none"
+                  disabled
+                />
+              </div>
+
+              <!-- Điện thoại -->
+              <div class="space-y-1.5">
+                <label for="phone" class="text-xs font-bold text-slate-700">Số điện thoại</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  value="0909123456"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                />
+              </div>
+
+              <!-- Địa chỉ -->
+              <div class="space-y-1.5">
+                <label for="address" class="text-xs font-bold text-slate-700">Địa chỉ</label>
+                <input 
+                  type="text" 
+                  id="address" 
+                  value="123 Quang Trung, Quận 12, TP.HCM"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                />
+              </div>
+            </div>
+
+            <!-- Nút lưu thông tin -->
+            <div class="pt-4 flex justify-end">
+              <button 
+                type="submit" 
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all text-sm"
+              >
+                Lưu Thay Đổi
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-sm border-t border-slate-800 py-12 px-4 mt-auto">
+    <div class="max-w-7xl mx-auto border-t border-slate-800 text-center text-xs">
+      &copy; 2026 Vanguard Store. All rights reserved. Designed for FPL Web Course.
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

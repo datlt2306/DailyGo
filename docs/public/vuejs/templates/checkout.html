@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanguard Store - Thanh Toán</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- NAVBAR COMPONENT -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2 text-xl font-bold tracking-tight text-indigo-600">
+        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+        <span>Vanguard<span class="text-slate-800 font-medium text-base">Store</span></span>
+      </a>
+      <div class="text-xs font-semibold text-slate-500 flex items-center space-x-1.5">
+        <i data-lucide="lock" class="w-4 h-4 text-emerald-600"></i>
+        <span>Thanh toán bảo mật SSL</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full space-y-6">
+    <div class="flex items-center space-x-2">
+      <a href="cart.html" class="text-xs font-bold text-slate-400 hover:text-slate-600 transition-colors">Giỏ hàng</a>
+      <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
+      <span class="text-xs font-bold text-slate-800">Thanh toán</span>
+    </div>
+
+    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Thanh Toán Đơn Hàng</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- SHIPPING FORM -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="bg-white border border-slate-200/60 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+          <h2 class="text-lg font-bold text-slate-900 flex items-center space-x-2">
+            <i data-lucide="map-pin" class="w-5 h-5 text-indigo-600"></i>
+            <span>Thông tin giao hàng</span>
+          </h2>
+
+          <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Tên người nhận -->
+            <div class="md:col-span-2 space-y-1.5">
+              <label for="name" class="text-xs font-bold text-slate-700">Họ và tên người nhận</label>
+              <input 
+                type="text" 
+                id="name" 
+                placeholder="Nguyễn Văn A" 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                required
+              />
+            </div>
+
+            <!-- Điện thoại -->
+            <div class="space-y-1.5">
+              <label for="phone" class="text-xs font-bold text-slate-700">Số điện thoại</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                placeholder="0901234567" 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                required
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="space-y-1.5">
+              <label for="email" class="text-xs font-bold text-slate-700">Địa chỉ Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                placeholder="name@example.com" 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                required
+              />
+            </div>
+
+            <!-- Địa chỉ chi tiết -->
+            <div class="md:col-span-2 space-y-1.5">
+              <label for="address" class="text-xs font-bold text-slate-700">Địa chỉ nhận hàng</label>
+              <input 
+                type="text" 
+                id="address" 
+                placeholder="Số nhà, Tên đường, Phường/Xã..." 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 bg-slate-50/50 text-sm transition-all"
+                required
+              />
+            </div>
+
+            <!-- Phương thức thanh toán -->
+            <div class="md:col-span-2 pt-2 space-y-3">
+              <label class="text-xs font-bold text-slate-700 block">Phương thức thanh toán</label>
+              
+              <!-- COD Option -->
+              <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 cursor-pointer bg-slate-50/50 hover:bg-slate-50 transition-colors">
+                <input type="radio" name="payment" value="cod" class="mt-1 text-indigo-600 focus:ring-indigo-500" checked />
+                <div>
+                  <span class="text-sm font-bold text-slate-800 block">Thanh toán khi nhận hàng (COD)</span>
+                  <span class="text-xs text-slate-500">Thanh toán bằng tiền mặt khi shipper giao sản phẩm tới tay bạn.</span>
+                </div>
+              </label>
+
+              <!-- Bank Option -->
+              <label class="flex items-start space-x-3 p-4 rounded-xl border border-slate-200 cursor-pointer bg-slate-50/50 hover:bg-slate-50 transition-colors">
+                <input type="radio" name="payment" value="bank" class="mt-1 text-indigo-600 focus:ring-indigo-500" />
+                <div>
+                  <span class="text-sm font-bold text-slate-800 block">Chuyển khoản ngân hàng (QR Code)</span>
+                  <span class="text-xs text-slate-500">Mã QR chuyển khoản tự động kèm nội dung thanh toán đơn hàng.</span>
+                </div>
+              </label>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- ORDER SUMMARY -->
+      <div class="lg:col-span-1 space-y-6">
+        <div class="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-6 sticky top-24">
+          <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">Đơn hàng của bạn</h2>
+
+          <!-- Items list inside checkout -->
+          <div class="space-y-4 max-h-60 overflow-y-auto pr-1">
+            
+            <div class="flex items-center space-x-3">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&auto=format&fit=crop&q=80" alt="Tai nghe" class="w-12 h-12 object-cover rounded-lg border" />
+              <div class="flex-grow min-w-0">
+                <p class="text-xs font-bold text-slate-800 truncate">Tai Nghe Vanguard Studio Wireless</p>
+                <p class="text-[10px] text-slate-400">SL: 1</p>
+              </div>
+              <p class="text-xs font-bold text-slate-800">3.500.000 đ</p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+              <img src="https://images.unsplash.com/photo-1627124765138-b6b77e815b3c?w=100&auto=format&fit=crop&q=80" alt="Ví da" class="w-12 h-12 object-cover rounded-lg border" />
+              <div class="flex-grow min-w-0">
+                <p class="text-xs font-bold text-slate-800 truncate">Ví Da Nam Tối Giản Vanguard</p>
+                <p class="text-[10px] text-slate-400">SL: 1</p>
+              </div>
+              <p class="text-xs font-bold text-slate-800">650.000 đ</p>
+            </div>
+
+          </div>
+
+          <!-- Total info -->
+          <div class="border-t border-slate-100 pt-4 space-y-2 text-xs">
+            <div class="flex justify-between text-slate-500">
+              <span>Tạm tính:</span>
+              <span class="font-semibold text-slate-800">4.150.000 đ</span>
+            </div>
+            <div class="flex justify-between text-slate-500">
+              <span>Phí vận chuyển:</span>
+              <span class="font-semibold text-emerald-600">Miễn phí</span>
+            </div>
+            <div class="border-t border-slate-100 pt-3 flex justify-between text-sm font-extrabold text-slate-900">
+              <span>Tổng thanh toán:</span>
+              <span class="text-indigo-600 text-base">4.150.000 đ</span>
+            </div>
+          </div>
+
+          <!-- Order button -->
+          <button type="button" class="w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-indigo-600/10 hover:shadow-indigo-600/30 transition-all text-sm cursor-pointer">
+            Xác nhận đặt hàng
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-500 text-xs border-t border-slate-900 py-6 text-center mt-12">
+    &copy; 2026 Vanguard Store. Bảo mật thanh toán bởi TechShop Payment Gateway.
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
