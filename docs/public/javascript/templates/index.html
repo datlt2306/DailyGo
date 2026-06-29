@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Task Manager - To-Do App</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-background"></div>
+    <div class="app-container">
+        
+        <!-- SIDEBAR: Thống kê & Bộ lọc -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">
+                    <i data-lucide="check-square"></i>
+                </div>
+                <h2>ZenTask</h2>
+            </div>
+            
+            <div class="user-profile">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="avatar">
+                <div class="user-info">
+                    <span class="user-name">Lê Trọng Đạt</span>
+                    <span class="user-role">Giảng viên / Developer</span>
+                </div>
+            </div>
+
+            <nav class="nav-filters">
+                <span class="nav-title">Phân loại</span>
+                <button class="nav-item active">
+                    <i data-lucide="list-todo"></i>
+                    <span>Tất cả</span>
+                    <span class="badge">4</span>
+                </button>
+                <button class="nav-item">
+                    <i data-lucide="clock"></i>
+                    <span>Chờ xử lý</span>
+                    <span class="badge warning">2</span>
+                </button>
+                <button class="nav-item">
+                    <i data-lucide="check-circle-2"></i>
+                    <span>Đã hoàn thành</span>
+                    <span class="badge success">2</span>
+                </button>
+            </nav>
+
+            <div class="priority-filters">
+                <span class="nav-title">Độ ưu tiên</span>
+                <button class="priority-item">
+                    <span class="dot priority-high"></span>
+                    <span>Ưu tiên cao</span>
+                </button>
+                <button class="priority-item">
+                    <span class="dot priority-medium"></span>
+                    <span>Ưu tiên trung bình</span>
+                </button>
+                <button class="priority-item">
+                    <span class="dot priority-low"></span>
+                    <span>Ưu tiên thấp</span>
+                </button>
+            </div>
+
+            <!-- Stats Widget -->
+            <div class="stats-widget">
+                <div class="stats-header">
+                    <span>Tiến độ tuần này</span>
+                    <strong>50%</strong>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 50%;"></div>
+                </div>
+                <p class="stats-desc">Hoàn thành 2 trong số 4 công việc của bạn.</p>
+            </div>
+        </aside>
+
+        <!-- MAIN PANEL: Thêm công việc & Danh sách -->
+        <main class="main-panel">
+            
+            <!-- Top bar: Search & Actions -->
+            <header class="top-bar">
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="tim-kiem" placeholder="Tìm kiếm công việc theo từ khóa...">
+                </div>
+                <button class="btn-theme-toggle" title="Đổi giao diện Sáng/Tối">
+                    <i data-lucide="moon"></i>
+                </button>
+            </header>
+
+            <!-- Add Task Form -->
+            <section class="task-form-section">
+                <div class="section-header">
+                    <h3><i data-lucide="plus-circle"></i> Thêm công việc mới</h3>
+                </div>
+                <form id="form-cong-viec">
+                    <div class="form-row">
+                        <div class="form-group flex-2">
+                            <label for="ten-cong-viec">Tên công việc <span class="required">*</span></label>
+                            <input type="text" id="ten-cong-viec" placeholder="Ví dụ: Thiết kế giao diện Dashboard..." required>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="do-uu-tien">Độ ưu tiên</label>
+                            <select id="do-uu-tien">
+                                <option value="3">Thấp</option>
+                                <option value="2" selected>Trung bình</option>
+                                <option value="1">Cao</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mo-ta">Mô tả công việc</label>
+                        <textarea id="mo-ta" rows="2" placeholder="Ghi chú chi tiết về công việc cần làm..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary">Hủy bỏ</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i data-lucide="plus"></i>
+                            <span>Thêm công việc</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Task List Section -->
+            <section class="task-list-section">
+                <div class="section-header">
+                    <h3><i data-lucide="layers"></i> Danh sách công việc</h3>
+                    <div class="list-actions">
+                        <select id="sap-xep">
+                            <option value="moi-nhat">Mới nhất</option>
+                            <option value="uu-tien">Độ ưu tiên</option>
+                            <option value="chu-cai">Tên chữ cái</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="loading-indicator" class="loading-state hidden">
+                    <div class="spinner"></div>
+                    <span>Đang tải dữ liệu...</span>
+                </div>
+
+                <ul id="danh-sach-cong-viec" class="task-list">
+                    <!-- Task Item 1: High Priority (Active) -->
+                    <li class="task-item" data-priority="high">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" id="task-1" class="task-checkbox">
+                            <label for="task-1" class="checkbox-custom"></label>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title-row">
+                                <h4 class="task-title">Học JavaScript nâng cao & viết ứng dụng mẫu</h4>
+                                <span class="badge-priority high">Ưu tiên cao</span>
+                            </div>
+                            <p class="task-desc">Nắm vững các khái niệm Scope, Closure, Promise, Async/Await và ES6 Modules để làm bài tập cuối khóa.</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><i data-lucide="calendar"></i> Hôm nay</span>
+                                <span class="meta-item"><i data-lucide="hash"></i> JS Nền tảng</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="btn-action btn-edit" title="Sửa công việc"><i data-lucide="edit-3"></i></button>
+                            <button class="btn-action btn-delete" title="Xóa công việc"><i data-lucide="trash-2"></i></button>
+                        </div>
+                    </li>
+
+                    <!-- Task Item 2: Medium Priority (Active) -->
+                    <li class="task-item" data-priority="medium">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" id="task-2" class="task-checkbox">
+                            <label for="task-2" class="checkbox-custom"></label>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title-row">
+                                <h4 class="task-title">Xây dựng khung xương HTML/CSS cho dự án</h4>
+                                <span class="badge-priority medium">Ưu tiên trung bình</span>
+                            </div>
+                            <p class="task-desc">Sử dụng Flexbox/Grid để hoàn thiện giao diện responsive theo cấu trúc đã phân chia trong spec.</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><i data-lucide="calendar"></i> Ngày mai</span>
+                                <span class="meta-item"><i data-lucide="hash"></i> UI/UX</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="btn-action btn-edit" title="Sửa công việc"><i data-lucide="edit-3"></i></button>
+                            <button class="btn-action btn-delete" title="Xóa công việc"><i data-lucide="trash-2"></i></button>
+                        </div>
+                    </li>
+
+                    <!-- Task Item 3: Low Priority (Completed) -->
+                    <li class="task-item completed" data-priority="low">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" id="task-3" class="task-checkbox" checked>
+                            <label for="task-3" class="checkbox-custom"></label>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title-row">
+                                <h4 class="task-title">Cài đặt môi trường lập trình và Node.js</h4>
+                                <span class="badge-priority low">Ưu tiên thấp</span>
+                            </div>
+                            <p class="task-desc">Cài đặt VS Code, các Extension hữu ích và cài đặt Git CLI phục vụ đẩy code.</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><i data-lucide="calendar"></i> Đã hoàn thành</span>
+                                <span class="meta-item"><i data-lucide="hash"></i> Setup</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="btn-action btn-edit" title="Sửa công việc" disabled><i data-lucide="edit-3"></i></button>
+                            <button class="btn-action btn-delete" title="Xóa công việc"><i data-lucide="trash-2"></i></button>
+                        </div>
+                    </li>
+
+                    <!-- Task Item 4: High Priority (Completed) -->
+                    <li class="task-item completed" data-priority="high">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" id="task-4" class="task-checkbox" checked>
+                            <label for="task-4" class="checkbox-custom"></label>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title-row">
+                                <h4 class="task-title">Nghiên cứu yêu cầu dự án cuối khóa</h4>
+                                <span class="badge-priority high">Ưu tiên cao</span>
+                            </div>
+                            <p class="task-desc">Đọc kỹ tài liệu mô tả yêu cầu tính năng và rubric chấm điểm của dự án To-Do App.</p>
+                            <div class="task-meta">
+                                <span class="meta-item"><i data-lucide="calendar"></i> Đã hoàn thành</span>
+                                <span class="meta-item"><i data-lucide="hash"></i> Spec</span>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="btn-action btn-edit" title="Sửa công việc" disabled><i data-lucide="edit-3"></i></button>
+                            <button class="btn-action btn-delete" title="Xóa công việc"><i data-lucide="trash-2"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script to render Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

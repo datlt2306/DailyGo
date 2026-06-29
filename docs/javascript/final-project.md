@@ -4,6 +4,13 @@
 
 Xây dựng một ứng dụng **Quản lý Công Việc (To-Do App)** hoàn chỉnh sử dụng JavaScript thuần, thể hiện toàn bộ kiến thức đã học trong khóa học.
 
+Học viên tải về hoặc xem trực tiếp giao diện mẫu tĩnh (HTML/CSS) của ứng dụng tại đây để làm cơ sở xây dựng mã nguồn JavaScript:
+
+- **Giao diện tĩnh mẫu**: [index.html](https://letrongdat.vercel.app/javascript/templates/index.html) (và tệp định dạng [styles.css](https://letrongdat.vercel.app/javascript/templates/styles.css))
+
+> [!NOTE]
+> Giao diện mẫu này đã được thiết kế sẵn cấu trúc HTML chuẩn và CSS hiện đại. Nhiệm vụ của học viên là phân tách logic thành các file JS bổ sung tính năng CRUD, lưu trữ LocalStorage, và kết nối Mock API như mô tả bên dưới.
+
 ---
 
 ## 📁 Cấu trúc thư mục cuối cùng

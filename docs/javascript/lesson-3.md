@@ -1,4 +1,4 @@
-# Buổi 3: Cấu trúc điều khiển, Hàm & Scope
+# Buổi 3: Cấu trúc điều khiển & Hàm
 
 **Loại buổi**: Lý thuyết  
 **Thời lượng**: 120 phút  
@@ -13,7 +13,7 @@ Sau buổi học này, bạn sẽ có thể:
 - ✅ Sử dụng cấu trúc điều khiển: if/else, switch
 - ✅ Sử dụng vòng lặp: for, while, forEach
 - ✅ Tạo và gọi hàm (function, arrow function)
-- ✅ Hiểu về scope (phạm vi biến)
+- ✅ Hiểu rõ phạm vi hàm (Function Scope) & che biến (Shadowing)
 - ✅ Áp dụng vào việc validate và xử lý dữ liệu
 
 ---
@@ -370,68 +370,55 @@ console.log(coReturn());      // "Có giá trị"
 console.log(khongReturn());   // undefined
 ```
 
-### 4. Scope (Phạm vi biến)
+### 4. Scope trong Hàm (Function Scope) & Che biến (Shadowing)
 
-**Scope** là phạm vi mà biến có thể được truy cập.
+Như đã học ở **Buổi 1**, **Global Scope** và **Block Scope** quyết định phạm vi hoạt động của biến. Khi làm việc với **Hàm (Functions)**, chúng ta có một số lưu ý đặc biệt quan trọng về phạm vi biến:
 
-#### 4.1. Global Scope (Toàn cục)
+#### 4.1. Function Scope (Phạm vi của Hàm)
 
+Biến được khai báo bên trong một hàm (bằng `var`, `let`, hoặc `const`) thì chỉ có thể được truy cập bên trong hàm đó. Từ bên ngoài hàm, bạn không thể truy cập được các biến này.
+
+**Ví dụ:**
 ```javascript
-let bienToanCuc = 'Tôi có thể dùng ở mọi nơi';
-
-function ham1() {
-    console.log(bienToanCuc);  // ✅ Có thể truy cập
+function sayHello() {
+    let message = 'Xin chào!'; // Biến cục bộ (local variable)
+    console.log(message);      // ✅ OK: "Xin chào!"
 }
 
-function ham2() {
-    console.log(bienToanCuc);  // ✅ Có thể truy cập
-}
+sayHello();
+console.log(message);          // ❌ Lỗi: message is not defined (không thể truy cập ngoài hàm)
 ```
 
-#### 4.2. Function Scope (Phạm vi hàm)
+#### 4.2. Shadowing (Che biến)
 
+Khi bạn khai báo một biến cục bộ bên trong hàm trùng tên với một biến toàn cục (global) đã có sẵn bên ngoài, biến cục bộ bên trong hàm sẽ **che khuất (shadow)** biến bên ngoài. 
+
+Mọi thay đổi trên biến trùng tên đó ở bên trong hàm sẽ **không** ảnh hưởng đến giá trị của biến bên ngoài.
+
+**Ví dụ:**
 ```javascript
-function ham1() {
-    let bienLocal = 'Chỉ dùng trong hàm này';
-    console.log(bienLocal);  // ✅ OK
+let x = 10; // Biến toàn cục (Global)
+
+function testScope() {
+    let x = 20;      // Biến cục bộ (Local) trùng tên và "che" biến x bên ngoài
+    console.log(x);  // 20 (lấy giá trị của biến cục bộ)
 }
 
-console.log(bienLocal);  // ❌ Lỗi: bienLocal is not defined
+testScope();
+console.log(x);      // 10 (biến toàn cục bên ngoài không hề bị thay đổi)
 ```
 
-#### 4.3. Block Scope (Phạm vi khối)
-
+**⚠️ Lưu ý quan trọng:**
+Nếu bạn không khai báo biến bằng `let`, `const`, hoặc `var` bên trong hàm, JavaScript sẽ tự động hiểu đó là việc gán lại giá trị cho biến toàn cục hoặc tự tạo biến toàn cục mới (đây là một lỗi lập trình nguy hiểm):
 ```javascript
-if (true) {
-    let bienBlock = 'Chỉ trong block này';
-    const bienBlock2 = 'Chỉ trong block này';
-    console.log(bienBlock);  // ✅ OK
+let y = 10;
+
+function testUnintentionalChange() {
+    y = 20; // ⚠️ Không dùng let/const/var, JS sẽ ghi đè lên biến y toàn cục bên ngoài!
 }
 
-console.log(bienBlock);  // ❌ Lỗi
-
-// var không có block scope
-if (true) {
-    var bienVar = 'Có thể dùng ngoài block';
-}
-console.log(bienVar);  // ✅ OK (⚠️ không nên dùng)
-```
-
-**Lưu ý quan trọng:**
-- `let` và `const` có block scope
-- `var` chỉ có function scope (không có block scope)
-
-#### 4.4. Shadowing (Che biến)
-
-```javascript
-let x = 10;
-
-function ham() {
-    let x = 20;  // Biến x trong hàm "che" biến x ngoài
-    console.log(x);  // 20
-}
-
-console.log(x);  // 10
+testUnintentionalChange();
+console.log(y); // 20 (biến toàn cục đã bị thay đổi mất kiểm soát)
 ```
 
 ---

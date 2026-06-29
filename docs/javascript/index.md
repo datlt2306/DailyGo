@@ -42,9 +42,9 @@ Sau khóa học, bạn sẽ có thể:
 
 | Buổi   | Loại   | Chủ đề chính                                   | Mục tiêu                                                          | Nội dung chính                                                                                                                                                   | Task / Bài tập / Quiz                           |
 | ------ | ------ | ---------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| **1**  | **LT** | Giới thiệu JS, biến, kiểu dữ liệu, toán tử     | Hiểu JavaScript là gì, cách khai báo biến, sử dụng toán tử cơ bản | - JavaScript là gì?<br>- Biến (var, let, const)<br>- Kiểu dữ liệu (string, number, boolean, null, undefined)<br>- Toán tử (+, -, \*, /, %, ==, ===, &&, \|\|)    | Quiz: 7 câu về biến và kiểu dữ liệu             |
+| **1**  | **LT** | Giới thiệu JS, biến, scope, kiểu dữ liệu, toán tử | Hiểu JavaScript là gì, cách khai báo biến, phạm vi biến (scope), và toán tử | - JavaScript là gì?<br>- Biến (var, let, const)<br>- Phạm vi biến (Global vs Block scope)<br>- Kiểu dữ liệu (string, number, boolean, null, undefined)<br>- Toán tử (+, -, \*, /, %, ==, ===, &&, \|\|) | Quiz: 7 câu về biến, scope và kiểu dữ liệu |
 | **2**  | **TH** | Tạo giao diện & xử lý form nhập liệu cơ bản    | Tạo HTML/CSS cho To-Do App, nhập liệu và hiển thị thông tin       | - Tạo form nhập công việc<br>- Lấy giá trị từ input<br>- Hiển thị thông tin ra console/alert<br>- Task: Hoàn thành form nhập liệu cơ bản                         | Task: Tạo form + xử lý submit, hiển thị dữ liệu |
-| **3**  | **LT** | Cấu trúc điều khiển (if, loop), hàm, scope     | Sử dụng if/else, vòng lặp, tạo và gọi hàm                         | - if/else, switch<br>- for, while, forEach<br>- Hàm (function, arrow function)<br>- Scope (global, local, block)                                                 | Quiz: 7 câu về điều khiển và hàm                |
+| **3**  | **LT** | Cấu trúc điều khiển (if, loop), hàm             | Sử dụng if/else, vòng lặp, tạo và gọi hàm                         | - if/else, switch<br>- for, while, forEach<br>- Hàm (function, arrow function)<br>- Scope trong Hàm (Function Scope & Shadowing)                                  | Quiz: 7 câu về điều khiển và hàm                |
 | **4**  | **TH** | Thêm chức năng "Thêm công việc"                | Áp dụng hàm và điều kiện để thêm công việc vào danh sách          | - Tạo hàm thêm công việc<br>- Validate dữ liệu đầu vào<br>- Hiển thị danh sách công việc (tạm thời bằng alert/console)                                           | Task: Thêm công việc với validation             |
 | **5**  | **LT** | Mảng, Object, destructuring                    | Làm việc với mảng và object để quản lý dữ liệu                    | - Array (khai báo, truy cập, thêm/xóa)<br>- Object (khai báo, truy cập, thêm/sửa/xóa)<br>- Destructuring (array, object)<br>- Các method: push, pop, filter, map | Quiz: 7 câu về Array và Object                  |
 | **6**  | **TH** | Hiển thị danh sách + thao tác dữ liệu          | Dùng Array/Object để lưu trữ và hiển thị danh sách công việc      | - Lưu danh sách công việc vào array<br>- Render danh sách ra HTML<br>- Thêm công việc vào array                                                                  | Task: Hiển thị danh sách công việc động         |
@@ -91,7 +91,7 @@ Xem chi tiết cấu trúc thư mục và rubric đánh giá tại [Dự án cu�
 
 -   [Buổi 1: Giới thiệu JS, biến, kiểu dữ liệu, toán tử](./lesson-1.md) (LT)
 -   [Buổi 2: Tạo giao diện & xử lý form nhập liệu](./lesson-2.md) (TH)
--   [Buổi 3: Cấu trúc điều khiển, hàm, scope](./lesson-3.md) (LT)
+-   [Buổi 3: Cấu trúc điều khiển và hàm](./lesson-3.md) (LT)
 -   [Buổi 4: Thêm chức năng "Thêm công việc"](./lesson-4.md) (TH)
 
 ### Giai đoạn 2: Dữ liệu & Cấu trúc (Buổi 5-6)

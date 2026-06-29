@@ -12,7 +12,7 @@ Sau buổi học này, bạn sẽ có thể:
 
 - ✅ Hiểu JavaScript là gì và vai trò của nó trong web development
 - ✅ Biết cách nhúng JavaScript vào HTML
-- ✅ Khai báo và sử dụng biến (var, let, const)
+- ✅ Khai báo biến (var, let, const) và hiểu về Scope (phạm vi của biến)
 - ✅ Nhận biết các kiểu dữ liệu cơ bản
 - ✅ Sử dụng các toán tử cơ bản (số học, so sánh, logic)
 
@@ -130,6 +130,36 @@ let laSinhVien = true;
 console.log(hoTen);  // Nguyễn Văn A
 console.log(tuoi);   // 20
 ```
+
+#### 4.4. Phạm vi hoạt động (Scope) của biến
+
+Phạm vi hoạt động (Scope) quyết định nơi bạn có thể truy cập và sử dụng biến. Trong JavaScript, có 2 phạm vi cơ bản cần biết ở giai đoạn này:
+
+- **Global Scope (Toàn cục):** Biến khai báo bên ngoài tất cả các khối lệnh (như ở đầu file). Có thể truy cập và sử dụng ở bất kỳ đâu trong code.
+- **Block Scope (Khối lệnh):** Biến khai báo bên trong cặp dấu ngoặc nhọn `{}` (ví dụ: khối lệnh `if`, vòng lặp `for`, hoặc đơn giản là một cặp `{}` bao bọc độc lập). 
+  - Chỉ có `let` và `const` là tuân thủ **Block Scope** (không thể dùng bên ngoài `{}`).
+  - `var` **không** có block scope (có thể truy cập từ bên ngoài `{}`).
+
+**Ví dụ minh họa:**
+```javascript
+let globalVar = 'Tôi ở ngoài';
+
+{
+    let blockLet = 'Tôi ở trong block (let)';
+    const blockConst = 'Tôi ở trong block (const)';
+    var blockVar = 'Tôi ở trong block (var)';
+    
+    console.log(globalVar);   // ✅ OK: "Tôi ở ngoài"
+    console.log(blockLet);    // ✅ OK
+}
+
+console.log(blockVar);        // ✅ OK: "Tôi ở trong block (var)" (var lọt ra ngoài)
+console.log(blockLet);        // ❌ Lỗi: blockLet is not defined (let bị chặn lại)
+console.log(blockConst);      // ❌ Lỗi: blockConst is not defined (const bị chặn lại)
+```
+
+> [!IMPORTANT]
+> Đây là lý do chính mà bạn nên luôn dùng `let` và `const` thay vì `var`. Việc sử dụng `var` có thể làm rò rỉ biến ra ngoài khối lệnh, gây ra các lỗi logic trùng tên biến rất khó kiểm soát khi code của bạn lớn lên.
 
 ### 5. Kiểu dữ liệu (Data Types)
 
