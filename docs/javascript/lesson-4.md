@@ -1,8 +1,8 @@
-# Buổi 4: Thêm chức năng "Thêm công việc"
+# Buổi 4: Tính năng Thêm & Xóa công việc
 
 **Loại buổi**: Thực hành  
 **Thời lượng**: 120 phút  
-**Dự án**: To-Do App (đã có form nhập liệu từ buổi 2)
+**Dự án**: ZenTask (To-Do App) - Thêm mới và xóa công việc động
 
 ---
 
@@ -10,36 +10,21 @@
 
 Sau buổi học này, bạn sẽ có thể:
 
-- ✅ Tạo hàm để thêm công việc
-- ✅ Validate dữ liệu đầu vào
-- ✅ Lưu công việc vào mảng
-- ✅ Hiển thị danh sách công việc (tạm thời bằng alert/console)
-- ✅ Áp dụng kiến thức hàm và điều kiện từ buổi 3
+- ✅ Lắng nghe sự kiện submit của form để thu thập dữ liệu nhập vào
+- ✅ Thực hiện validate (kiểm tra tính hợp lệ) dữ liệu form cơ bản trước khi xử lý
+- ✅ Thêm phần tử mới vào mảng dữ liệu trạng thái (State) của ứng dụng
+- ✅ Sử dụng kỹ thuật Event Delegation đã học để thực hiện chức năng Xóa công việc
+- ✅ Tự động re-render (hiển thị lại) danh sách và cập nhật tiến độ tương ứng sau khi dữ liệu thay đổi
 
 ---
 
 ## 🧩 Task Project
 
-### Task 1: Tạo cấu trúc dữ liệu (15 phút)
+### Task 1: Xử lý Form Submit & Thêm công việc mới (40 phút)
 
-Trong `main.js`, tạo mảng để lưu danh sách công việc:
+Chúng ta cần lắng nghe sự kiện gửi form (#form-cong-viec), lấy giá trị tên và mức độ ưu tiên của công việc, kiểm tra tính hợp lệ và thêm vào mảng `danhSachCongViec`.
 
-```javascript
-// Mảng lưu trữ danh sách công việc
-let danhSachCongViec = [];
-
-// Cấu trúc một công việc
-// {
-//     id: số duy nhất,
-//     ten: 'Tên công việc',
-//     moTa: 'Mô tả',
-//     trangThai: 'chua lam',
-//     ngayTao: '2024-01-01'
-// }
-```
-
-### Task 2: Tạo hàm validate dữ liệu (20 phút)
-
+#### Bước 1.1: Viết hàm kiểm tra tính hợp lệ (Validation)
 ```javascript
 /**
  * Kiểm tra tên công việc có hợp lệ không
@@ -47,301 +32,159 @@ let danhSachCongViec = [];
  * @returns {boolean} true nếu hợp lệ, false nếu không
  */
 function kiemTraTenCongViec(ten) {
-    // Kiểm tra rỗng
     if (!ten || ten.trim().length === 0) {
         return false;
     }
-    
-    // Kiểm tra độ dài (ít nhất 3 ký tự, tối đa 100 ký tự)
     if (ten.trim().length < 3) {
         return false;
     }
-    
-    if (ten.trim().length > 100) {
-        return false;
-    }
-    
     return true;
 }
 ```
 
-**Test hàm:**
+#### Bước 1.2: Viết hàm thêm công việc và kết nối với sự kiện Form
 ```javascript
-console.log(kiemTraTenCongViec(''));           // false
-console.log(kiemTraTenCongViec('Học'));       // false (quá ngắn)
-console.log(kiemTraTenCongViec('Học JavaScript')); // true
-```
+// Lấy phần tử form
+const formCongViec = document.getElementById('form-cong-viec');
 
-### Task 3: Tạo hàm thêm công việc (30 phút)
-
-```javascript
-/**
- * Thêm công việc mới vào danh sách
- * @param {string} ten - Tên công việc
- * @param {string} moTa - Mô tả công việc
- * @returns {Object|null} Công việc đã thêm hoặc null nếu lỗi
- */
-function themCongViec(ten, moTa = '') {
-    // Bước 1: Validate dữ liệu
-    if (!kiemTraTenCongViec(ten)) {
-        alert('Tên công việc không hợp lệ!\n- Không được rỗng\n- Ít nhất 3 ký tự\n- Tối đa 100 ký tự');
-        return null;
-    }
-    
-    // Bước 2: Tạo object công việc
-    const congViec = {
-        id: Date.now(),  // Tạo ID duy nhất từ timestamp
-        ten: ten.trim(),
-        moTa: moTa.trim(),
-        trangThai: 'chua lam',
-        ngayTao: new Date().toISOString()
-    };
-    
-    // Bước 3: Thêm vào mảng
-    danhSachCongViec.push(congViec);
-    
-    // Bước 4: Thông báo thành công
-    console.log('Đã thêm công việc:', congViec);
-    alert(`Đã thêm công việc: ${congViec.ten}`);
-    
-    // Bước 5: Trả về công việc đã thêm
-    return congViec;
-}
-```
-
-### Task 4: Kết nối với form (20 phút)
-
-Cập nhật event listener của form:
-
-```javascript
-const form = document.getElementById('form-cong-viec');
-
-form.addEventListener('submit', function(event) {
+formCongViec.addEventListener('submit', function(event) {
+    // 1. Ngăn hành vi load lại trang mặc định của form
     event.preventDefault();
     
-    // Lấy giá trị từ form
-    const tenCongViec = document.getElementById('ten-cong-viec').value;
-    const moTa = document.getElementById('mo-ta').value;
+    // 2. Lấy dữ liệu từ các thẻ input/select
+    const inputTen = document.getElementById('ten-cong-viec');
+    const selectUuTien = document.getElementById('do-uu-tien');
+    const textareaMoTa = document.getElementById('mo-ta');
     
-    // Gọi hàm thêm công việc
-    const congViecMoi = themCongViec(tenCongViec, moTa);
+    const ten = inputTen.value;
+    const uuTien = selectUuTien.value === '1' ? 'high' : (selectUuTien.value === '2' ? 'medium' : 'low');
+    const moTa = textareaMoTa.value;
     
-    // Nếu thêm thành công, reset form
-    if (congViecMoi) {
-        form.reset();
-        hienThiDanhSach();  // Hiển thị lại danh sách (sẽ tạo ở Task 5)
-    }
-});
-```
-
-### Task 5: Tạo hàm hiển thị danh sách (25 phút)
-
-```javascript
-/**
- * Hiển thị danh sách công việc ra console
- */
-function hienThiDanhSach() {
-    console.log('=== DANH SÁCH CÔNG VIỆC ===');
-    
-    if (danhSachCongViec.length === 0) {
-        console.log('Danh sách trống!');
-        return;
-    }
-    
-    // Dùng forEach để hiển thị từng công việc
-    danhSachCongViec.forEach(function(congViec, index) {
-        console.log(`${index + 1}. ${congViec.ten}`);
-        console.log(`   Mô tả: ${congViec.moTa || 'Không có'}`);
-        console.log(`   Trạng thái: ${congViec.trangThai}`);
-        console.log(`   Ngày tạo: ${new Date(congViec.ngayTao).toLocaleString('vi-VN')}`);
-        console.log('---');
-    });
-    
-    console.log(`Tổng cộng: ${danhSachCongViec.length} công việc`);
-}
-
-// Hiển thị danh sách khi trang load
-hienThiDanhSach();
-```
-
-**Cải thiện với console.table():**
-```javascript
-function hienThiDanhSach() {
-    if (danhSachCongViec.length === 0) {
-        console.log('Danh sách trống!');
-        return;
-    }
-    
-    // Hiển thị dạng bảng
-    console.table(danhSachCongViec.map((cv, index) => ({
-        'STT': index + 1,
-        'Tên': cv.ten,
-        'Mô tả': cv.moTa || 'Không có',
-        'Trạng thái': cv.trangThai,
-        'Ngày tạo': new Date(cv.ngayTao).toLocaleDateString('vi-VN')
-    })));
-}
-```
-
-### Task 6: Thêm tính năng đếm công việc (10 phút)
-
-```javascript
-/**
- * Đếm số lượng công việc theo trạng thái
- * @param {string} trangThai - Trạng thái cần đếm (optional)
- * @returns {number} Số lượng công việc
- */
-function demCongViec(trangThai = null) {
-    if (trangThai === null) {
-        return danhSachCongViec.length;
-    }
-    
-    return danhSachCongViec.filter(function(cv) {
-        return cv.trangThai === trangThai;
-    }).length;
-}
-
-// Sử dụng
-console.log('Tổng số công việc:', demCongViec());
-console.log('Chưa làm:', demCongViec('chua lam'));
-```
-
-Hiển thị thống kê:
-```javascript
-function hienThiThongKe() {
-    const tong = demCongViec();
-    const chuaLam = demCongViec('chua lam');
-    const dangLam = demCongViec('dang lam');
-    const hoanThanh = demCongViec('hoan thanh');
-    
-    console.log('=== THỐNG KÊ ===');
-    console.log(`Tổng số: ${tong}`);
-    console.log(`Chưa làm: ${chuaLam}`);
-    console.log(`Đang làm: ${dangLam}`);
-    console.log(`Hoàn thành: ${hoanThanh}`);
-}
-```
-
----
-
-## 💻 Code hoàn chỉnh
-
-```javascript
-// ===== DỮ LIỆU =====
-let danhSachCongViec = [];
-
-// ===== VALIDATION =====
-function kiemTraTenCongViec(ten) {
-    if (!ten || ten.trim().length === 0) return false;
-    if (ten.trim().length < 3) return false;
-    if (ten.trim().length > 100) return false;
-    return true;
-}
-
-// ===== THÊM CÔNG VIỆC =====
-function themCongViec(ten, moTa = '') {
+    // 3. Validate dữ liệu
     if (!kiemTraTenCongViec(ten)) {
-        alert('Tên công việc không hợp lệ!');
-        return null;
+        alert('Tên công việc không hợp lệ (Không được rỗng và phải từ 3 ký tự trở lên)!');
+        return;
     }
     
-    const congViec = {
-        id: Date.now(),
+    // 4. Tạo đối tượng công việc mới
+    const congViecMoi = {
+        id: Date.now(), // Sử dụng timestamp làm ID duy nhất
         ten: ten.trim(),
         moTa: moTa.trim(),
-        trangThai: 'chua lam',
-        ngayTao: new Date().toISOString()
+        uuTien: uuTien,
+        hoanThanh: false
     };
     
-    danhSachCongViec.push(congViec);
-    console.log('Đã thêm:', congViec);
-    return congViec;
-}
-
-// ===== HIỂN THỊ =====
-function hienThiDanhSach() {
-    if (danhSachCongViec.length === 0) {
-        console.log('Danh sách trống!');
-        return;
-    }
+    // 5. Thêm đối tượng mới vào đầu mảng (để hiển thị lên trên cùng)
+    danhSachCongViec.unshift(congViecMoi);
     
-    console.table(danhSachCongViec.map((cv, i) => ({
-        'STT': i + 1,
-        'Tên': cv.ten,
-        'Mô tả': cv.moTa || 'Không có',
-        'Trạng thái': cv.trangThai
-    })));
-}
-
-// ===== ĐẾM =====
-function demCongViec(trangThai = null) {
-    if (trangThai === null) return danhSachCongViec.length;
-    return danhSachCongViec.filter(cv => cv.trangThai === trangThai).length;
-}
-
-// ===== FORM HANDLER =====
-const form = document.getElementById('form-cong-viec');
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
+    // 6. Cập nhật giao diện và tiến độ
+    renderList();
+    capNhatTienDo();
     
-    const ten = document.getElementById('ten-cong-viec').value;
-    const moTa = document.getElementById('mo-ta').value;
-    
-    if (themCongViec(ten, moTa)) {
-        form.reset();
-        hienThiDanhSach();
-    }
+    // 7. Reset form về trạng thái trống
+    formCongViec.reset();
 });
 ```
 
 ---
 
-## ✅ Checklist hoàn thành
+### Task 2: Áp dụng Event Delegation để Xóa công việc (40 phút)
 
-- [ ] Đã tạo mảng `danhSachCongViec`
-- [ ] Đã tạo hàm `kiemTraTenCongViec()`
-- [ ] Đã tạo hàm `themCongViec()` với validation
-- [ ] Đã tạo hàm `hienThiDanhSach()` hiển thị ra console
-- [ ] Form submit gọi hàm `themCongViec()`
-- [ ] Form reset sau khi thêm thành công
-- [ ] Có thể thêm nhiều công việc và xem danh sách
-- [ ] Đã tạo hàm đếm công việc
+Chúng ta sẽ lắng nghe sự kiện click trên thẻ cha `#danh-sach-cong-viec`. Khi người dùng click vào nút xóa (`.btn-delete`), ta sẽ lấy `id` của công việc từ thuộc tính `data-id` của thẻ `<li>`, thực hiện xóa khỏi mảng và render lại giao diện.
+
+```javascript
+const listContainer = document.getElementById('danh-sach-cong-viec');
+
+listContainer.addEventListener('click', function(event) {
+    // Tìm xem click có trúng nút xóa (hoặc icon bên trong nút xóa) không
+    const nutXoa = event.target.closest('.btn-delete');
+    
+    if (nutXoa) {
+        // Tìm thẻ task-item (li) cha gần nhất để lấy data-id
+        const taskItem = nutXoa.closest('.task-item');
+        const idCanXoa = parseInt(taskItem.dataset.id);
+        
+        // Xác nhận trước khi xóa
+        const xacNhan = confirm('Bạn có chắc chắn muốn xóa công việc này không?');
+        if (xacNhan) {
+            xoaCongViec(idCanXoa);
+        }
+    }
+});
+
+/**
+ * Xóa công việc khỏi mảng theo ID và render lại
+ * @param {number} id - ID của công việc cần xóa
+ */
+function xoaCongViec(id) {
+    // Lọc mảng để giữ lại các công việc có ID khác với ID cần xóa
+    danhSachCongViec = danhSachCongViec.filter(cv => cv.id !== id);
+    
+    // Render lại giao diện và cập nhật tiến độ
+    renderList();
+    capNhatTienDo();
+}
+```
 
 ---
 
-## 🧪 Checkpoint
+### Task 3: Hiển thị thông báo Toast đơn giản khi hoàn thành hành động (20 phút)
 
-**Câu hỏi:**
+Để cải thiện trải nghiệm người dùng (UX), hãy viết một hàm hiển thị thông báo góc màn hình (Toast Notification) khi thêm hoặc xóa thành công.
 
-1. Tại sao dùng `Date.now()` để tạo ID?
-2. `forEach` khác gì với `for` loop?
-3. Hàm `filter` làm gì?
-4. Khi nào dùng `return` trong hàm?
-
-**Đáp án:**
-1. `Date.now()` trả về timestamp duy nhất (milliseconds)
-2. `forEach` là method của array, gọn hơn, không cần index
-3. `filter` tạo mảng mới chứa các phần tử thỏa điều kiện
-4. Dùng `return` để trả về giá trị và kết thúc hàm sớm
+1. Bổ sung cấu trúc HTML của Toast vào cuối file `index.html`:
+   ```html
+   <div id="toast-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;"></div>
+   ```
+2. Viết hàm hiển thị thông báo trong `main.js`:
+   ```javascript
+   /**
+    * Hiển thị thông báo Toast
+    * @param {string} message - Nội dung thông báo
+    * @param {string} type - Loại thông báo ('success', 'error', 'info')
+    */
+   function showToast(message, type = 'success') {
+       const container = document.getElementById('toast-container');
+       if (!container) return;
+       
+       const toast = document.createElement('div');
+       toast.style.background = type === 'success' ? '#10b981' : (type === 'error' ? '#ef4444' : '#3b82f6');
+       toast.style.color = '#fff';
+       toast.style.padding = '12px 24px';
+       toast.style.borderRadius = '8px';
+       toast.style.marginTop = '10px';
+       toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+       toast.style.transition = 'opacity 0.3s ease';
+       toast.textContent = message;
+       
+       container.appendChild(toast);
+       
+       // Tự động ẩn sau 3 giây
+       setTimeout(() => {
+           toast.style.opacity = '0';
+           setTimeout(() => toast.remove(), 300);
+       }, 3000);
+   }
+   ```
+3. Gọi hàm `showToast` trong xử lý thêm/xóa:
+   * Khi thêm thành công: `showToast('Đã thêm công việc thành công!', 'success');`
+   * Khi xóa thành công: `showToast('Đã xóa công việc khỏi danh sách.', 'info');`
 
 ---
+
+
 
 ## 📝 Bài tập về nhà
 
-1. Thêm validation cho mô tả (tối đa 500 ký tự)
-2. Thêm hàm `timCongViec(id)` để tìm công việc theo ID
-3. Thêm hàm `xoaCongViec(id)` để xóa công việc (tạm thời bằng console)
-4. Thêm hàm `capNhatTrangThai(id, trangThai)` để cập nhật trạng thái
+1. Tích hợp hoàn thiện tính năng Thêm và Xóa công việc vào dự án cá nhân, đảm bảo giao diện ZenTask tự động cập nhật khi bạn thêm hoặc xóa.
+2. Thử nghiệm bổ sung kiểm tra điều kiện validation: Không cho phép thêm công việc nếu tên công việc trùng lặp với tên của một công việc đã có sẵn trong danh sách (sử dụng phương thức mảng `.some()`).
+3. Tích hợp Toast notification và tùy biến giao diện của nó bằng CSS Class thay vì viết CSS Inline trực tiếp trong JS.
 
 ---
 
-## 💡 Tips
+## 🔗 Tài liệu tham khảo
 
-- Luôn validate dữ liệu trước khi xử lý
-- Dùng `console.table()` để hiển thị dữ liệu dạng bảng
-- Tạo hàm nhỏ, mỗi hàm làm 1 việc
-- Dùng JSDoc comments để mô tả hàm
-
----
-
-**Chúc bạn hoàn thành tốt! 🚀**
+- [JavaScript.info: Array methods](https://javascript.info/array-methods)
+- [MDN: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+- [MDN: Array.prototype.unshift()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift)

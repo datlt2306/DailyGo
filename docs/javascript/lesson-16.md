@@ -1,4 +1,4 @@
-# Buổi 16: Tổng hợp & Demo Project cuối khóa
+# Buổi 16: Tích hợp Debounce, Deploy & Demo
 
 **Loại buổi**: Thực hành  
 **Thời lượng**: 120 phút  

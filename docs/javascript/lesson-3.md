@@ -1,8 +1,8 @@
-# Buổi 3: Cấu trúc điều khiển & Hàm
+# Buổi 3: Sự kiện (Events) & Event Delegation
 
 **Loại buổi**: Lý thuyết  
 **Thời lượng**: 120 phút  
-**Dự án**: To-Do App (đã có form nhập liệu từ buổi 2)
+**Dự án**: ZenTask (To-Do App) - Tối ưu hóa lắng nghe sự kiện trên danh sách công việc
 
 ---
 
@@ -10,612 +10,122 @@
 
 Sau buổi học này, bạn sẽ có thể:
 
-- ✅ Sử dụng cấu trúc điều khiển: if/else, switch
-- ✅ Sử dụng vòng lặp: for, while, forEach
-- ✅ Tạo và gọi hàm (function, arrow function)
-- ✅ Hiểu rõ phạm vi hàm (Function Scope) & che biến (Shadowing)
-- ✅ Áp dụng vào việc validate và xử lý dữ liệu
+- ✅ Hiểu rõ cơ chế bắt sự kiện (Event Listeners) và đối tượng sự kiện (Event Object)
+- ✅ Phân biệt được sự khác biệt giữa hai giai đoạn: Event Bubbling (Nổi bọt) và Event Capturing (Lan truyền xuống)
+- ✅ Sử dụng kỹ thuật **Event Delegation** (Ủy quyền sự kiện) để quản lý sự kiện hiệu quả cho danh sách động
+- ✅ Ứng dụng kỹ thuật này để bắt sự kiện click cho các nút được thêm động trên giao diện
 
 ---
 
 ## 🧠 Nội dung chính
 
-### 1. Cấu trúc điều khiển (Control Flow)
+### 1. JavaScript Events & Event Object
 
-#### 1.1. if / else / else if
+**Sự kiện (Event)** là các hành động hoặc sự việc xảy ra trên trình duyệt (ví dụ: người dùng click chuột, gõ phím, gửi form, tải trang...).
 
-**Cú pháp:**
-```javascript
-if (điều kiện) {
-    // Code chạy nếu điều kiện đúng
-} else {
-    // Code chạy nếu điều kiện sai
-}
-```
-
-**Ví dụ:**
-```javascript
-let tuoi = 20;
-
-if (tuoi >= 18) {
-    console.log('Bạn đã trưởng thành');
-} else {
-    console.log('Bạn chưa trưởng thành');
-}
-
-// Nhiều điều kiện
-let diem = 8.5;
-
-if (diem >= 9) {
-    console.log('Xuất sắc');
-} else if (diem >= 8) {
-    console.log('Giỏi');
-} else if (diem >= 7) {
-    console.log('Khá');
-} else if (diem >= 5) {
-    console.log('Trung bình');
-} else {
-    console.log('Yếu');
-}
-```
-
-**Toán tử ternary (rút gọn if/else):**
-```javascript
-let tuoi = 20;
-let thongBao = tuoi >= 18 ? 'Đã trưởng thành' : 'Chưa trưởng thành';
-console.log(thongBao);  // "Đã trưởng thành"
-
-// Tương đương với:
-let thongBao2;
-if (tuoi >= 18) {
-    thongBao2 = 'Đã trưởng thành';
-} else {
-    thongBao2 = 'Chưa trưởng thành';
-}
-```
-
-#### 1.2. switch / case
-
-**Cú pháp:**
-```javascript
-switch (biểu thức) {
-    case giá trị 1:
-        // Code
-        break;
-    case giá trị 2:
-        // Code
-        break;
-    default:
-        // Code mặc định
-}
-```
-
-**Ví dụ:**
-```javascript
-let thu = 3;
-
-switch (thu) {
-    case 1:
-        console.log('Chủ nhật');
-        break;
-    case 2:
-        console.log('Thứ hai');
-        break;
-    case 3:
-        console.log('Thứ ba');
-        break;
-    case 4:
-        console.log('Thứ tư');
-        break;
-    case 5:
-        console.log('Thứ năm');
-        break;
-    case 6:
-        console.log('Thứ sáu');
-        break;
-    case 7:
-        console.log('Thứ bảy');
-        break;
-    default:
-        console.log('Không hợp lệ');
-}
-
-// ⚠️ Nhớ dùng break, nếu không sẽ "fall through"
-```
-
-**So sánh if/else vs switch:**
-- `if/else`: Dùng cho điều kiện phức tạp, so sánh phạm vi
-- `switch`: Dùng cho so sánh giá trị cụ thể, code gọn hơn
-
-### 2. Vòng lặp (Loops)
-
-#### 2.1. for loop
-
-**Cú pháp:**
-```javascript
-for (khởi tạo; điều kiện; bước nhảy) {
-    // Code
-}
-```
-
-**Ví dụ:**
-```javascript
-// In số từ 1 đến 5
-for (let i = 1; i <= 5; i++) {
-    console.log(i);
-}
-// Output: 1, 2, 3, 4, 5
-
-// In số chẵn từ 0 đến 10
-for (let i = 0; i <= 10; i += 2) {
-    console.log(i);
-}
-// Output: 0, 2, 4, 6, 8, 10
-```
-
-**Ví dụ thực tế: Tính tổng từ 1 đến n**
-```javascript
-let n = 10;
-let tong = 0;
-
-for (let i = 1; i <= n; i++) {
-    tong += i;  // tong = tong + i
-}
-
-console.log(`Tổng từ 1 đến ${n} là: ${tong}`);  // 55
-```
-
-#### 2.2. while loop
-
-**Cú pháp:**
-```javascript
-while (điều kiện) {
-    // Code
-}
-```
-
-**Ví dụ:**
-```javascript
-let i = 1;
-while (i <= 5) {
-    console.log(i);
-    i++;
-}
-// Output: 1, 2, 3, 4, 5
-```
-
-**Ví dụ: Đếm ngược**
-```javascript
-let dem = 10;
-while (dem > 0) {
-    console.log(dem);
-    dem--;
-}
-console.log('Bắt đầu!');
-```
-
-#### 2.3. do...while loop
-
-**Cú pháp:**
-```javascript
-do {
-    // Code (chạy ít nhất 1 lần)
-} while (điều kiện);
-```
-
-**Ví dụ:**
-```javascript
-let x = 0;
-do {
-    console.log(x);
-    x++;
-} while (x < 5);
-```
-
-#### 2.4. for...of (ES6) - Dùng với mảng
+#### 1.1. Cách lắng nghe sự kiện bằng `addEventListener`
+Đây là phương pháp hiện đại và an toàn nhất để gán trình xử lý sự kiện cho một phần tử DOM:
 
 ```javascript
-let danhSach = ['Nguyễn Văn A', 'Trần Thị B', 'Lê Văn C'];
+const btn = document.querySelector('.btn-theme-toggle');
 
-for (let ten of danhSach) {
-    console.log(ten);
-}
-// Output: Nguyễn Văn A, Trần Thị B, Lê Văn C
-```
-
-#### 2.5. forEach (Method của mảng)
-
-```javascript
-let danhSach = [1, 2, 3, 4, 5];
-
-danhSach.forEach(function(item) {
-    console.log(item);
+btn.addEventListener('click', function(event) {
+    console.log('Nút đổi giao diện đã được click!');
 });
-
-// Hoặc dùng arrow function
-danhSach.forEach(item => console.log(item));
 ```
 
-**So sánh các vòng lặp:**
-- `for`: Biết trước số lần lặp
-- `while`: Không biết trước số lần lặp
-- `do...while`: Chạy ít nhất 1 lần
-- `for...of`: Duyệt mảng (không cần index)
-- `forEach`: Method của mảng (gọn, hiện đại)
+#### 1.2. Đối tượng Sự kiện (Event Object)
+Khi một sự kiện xảy ra, trình duyệt sẽ tự động truyền một đối tượng chứa tất cả thông tin chi tiết về sự kiện đó vào tham số của hàm xử lý (thường được đặt tên là `e` hoặc `event`).
 
-### 3. Hàm (Functions)
+Các thuộc tính quan trọng nhất của `Event Object`:
+* `event.target`: Trả về phần tử **thực tế phát sinh sự kiện** (nơi người dùng click chuột).
+* `event.currentTarget`: Trả về phần tử **đang lắng nghe sự kiện** (nút hoặc thẻ được gán `addEventListener`).
+* `event.preventDefault()`: Ngăn chặn hành vi mặc định của thẻ (ví dụ: ngăn form reload trang khi submit, ngăn thẻ `<a>` chuyển trang).
 
-**Hàm** là một đoạn code được đặt tên, có thể tái sử dụng nhiều lần.
+---
 
-#### 3.1. Function Declaration
+### 2. Sự nổi bọt sự kiện (Event Bubbling)
 
-```javascript
-function tenHam(thamSo1, thamSo2) {
-    // Code
-    return ketQua;
-}
+Khi một sự kiện xảy ra trên một phần tử, nó không chỉ dừng lại ở đó. Sự kiện sẽ bắt đầu lan truyền theo 3 giai đoạn:
+1. **Capturing Phase**: Sự kiện đi từ phần tử gốc (`window` -> `document` -> `body` -> các thẻ cha) đi xuống phần tử đích.
+2. **Target Phase**: Sự kiện kích hoạt ngay tại phần tử đích (nơi phát sinh sự kiện).
+3. **Bubbling Phase (Nổi bọt)**: Sự kiện "nổi bọt" ngược từ phần tử đích đi lên qua các thẻ cha cho đến khi chạm tới `window`.
 
-// Gọi hàm
-tenHam(giaTri1, giaTri2);
+Mặc định, `addEventListener` lắng nghe sự kiện ở giai đoạn **Nổi bọt (Bubbling)**.
+
+```html
+<div class="card" onclick="alert('Click Card')">
+    <button onclick="alert('Click Button')">Click me</button>
+</div>
 ```
+*Khi bạn click vào nút `button`, sự kiện nổi bọt lên thẻ cha làm cho cả hai alert đều hiển thị: đầu tiên là "Click Button", sau đó là "Click Card".*
 
-**Ví dụ:**
+Để ngăn cản sự kiện nổi bọt tiếp tục đi lên thẻ cha, ta dùng:
 ```javascript
-// Hàm tính tổng
-function tinhTong(a, b) {
-    return a + b;
-}
-
-let ketQua = tinhTong(5, 3);
-console.log(ketQua);  // 8
-
-// Hàm không có return
-function inThongBao(ten) {
-    console.log(`Xin chào ${ten}!`);
-}
-
-inThongBao('Nguyễn Văn A');  // "Xin chào Nguyễn Văn A!"
-```
-
-#### 3.2. Function Expression
-
-```javascript
-const tenHam = function(thamSo) {
-    // Code
-    return ketQua;
-};
-```
-
-**Ví dụ:**
-```javascript
-const tinhTich = function(a, b) {
-    return a * b;
-};
-
-console.log(tinhTich(4, 5));  // 20
-```
-
-#### 3.3. Arrow Function (ES6) - KHUYẾN NGHỊ
-
-**Cú pháp:**
-```javascript
-const tenHam = (thamSo) => {
-    // Code
-    return ketQua;
-};
-
-// Rút gọn (1 dòng)
-const tenHam = (thamSo) => ketQua;
-```
-
-**Ví dụ:**
-```javascript
-// Dạng đầy đủ
-const tinhTong = (a, b) => {
-    return a + b;
-};
-
-// Dạng rút gọn (1 dòng)
-const tinhTong2 = (a, b) => a + b;
-
-// 1 tham số: bỏ ngoặc đơn
-const binhPhuong = x => x * x;
-
-// Không tham số
-const chao = () => console.log('Xin chào!');
-
-console.log(tinhTong(3, 4));    // 7
-console.log(binhPhuong(5));     // 25
-chao();                          // "Xin chào!"
-```
-
-**So sánh:**
-```javascript
-// Function Declaration
-function tong(a, b) { return a + b; }
-
-// Function Expression
-const tong2 = function(a, b) { return a + b; };
-
-// Arrow Function
-const tong3 = (a, b) => a + b;
-```
-
-#### 3.4. Tham số mặc định
-
-```javascript
-function chao(ten = 'Khách') {
-    console.log(`Xin chào ${ten}!`);
-}
-
-chao();              // "Xin chào Khách!"
-chao('Nguyễn Văn A'); // "Xin chào Nguyễn Văn A!"
-```
-
-#### 3.5. Return
-
-- `return`: Trả về giá trị và kết thúc hàm
-- Không có `return`: Hàm trả về `undefined`
-
-```javascript
-function coReturn() {
-    return 'Có giá trị';
-}
-
-function khongReturn() {
-    console.log('Không có return');
-}
-
-console.log(coReturn());      // "Có giá trị"
-console.log(khongReturn());   // undefined
-```
-
-### 4. Scope trong Hàm (Function Scope) & Che biến (Shadowing)
-
-Như đã học ở **Buổi 1**, **Global Scope** và **Block Scope** quyết định phạm vi hoạt động của biến. Khi làm việc với **Hàm (Functions)**, chúng ta có một số lưu ý đặc biệt quan trọng về phạm vi biến:
-
-#### 4.1. Function Scope (Phạm vi của Hàm)
-
-Biến được khai báo bên trong một hàm (bằng `var`, `let`, hoặc `const`) thì chỉ có thể được truy cập bên trong hàm đó. Từ bên ngoài hàm, bạn không thể truy cập được các biến này.
-
-**Ví dụ:**
-```javascript
-function sayHello() {
-    let message = 'Xin chào!'; // Biến cục bộ (local variable)
-    console.log(message);      // ✅ OK: "Xin chào!"
-}
-
-sayHello();
-console.log(message);          // ❌ Lỗi: message is not defined (không thể truy cập ngoài hàm)
-```
-
-#### 4.2. Shadowing (Che biến)
-
-Khi bạn khai báo một biến cục bộ bên trong hàm trùng tên với một biến toàn cục (global) đã có sẵn bên ngoài, biến cục bộ bên trong hàm sẽ **che khuất (shadow)** biến bên ngoài. 
-
-Mọi thay đổi trên biến trùng tên đó ở bên trong hàm sẽ **không** ảnh hưởng đến giá trị của biến bên ngoài.
-
-**Ví dụ:**
-```javascript
-let x = 10; // Biến toàn cục (Global)
-
-function testScope() {
-    let x = 20;      // Biến cục bộ (Local) trùng tên và "che" biến x bên ngoài
-    console.log(x);  // 20 (lấy giá trị của biến cục bộ)
-}
-
-testScope();
-console.log(x);      // 10 (biến toàn cục bên ngoài không hề bị thay đổi)
-```
-
-**⚠️ Lưu ý quan trọng:**
-Nếu bạn không khai báo biến bằng `let`, `const`, hoặc `var` bên trong hàm, JavaScript sẽ tự động hiểu đó là việc gán lại giá trị cho biến toàn cục hoặc tự tạo biến toàn cục mới (đây là một lỗi lập trình nguy hiểm):
-```javascript
-let y = 10;
-
-function testUnintentionalChange() {
-    y = 20; // ⚠️ Không dùng let/const/var, JS sẽ ghi đè lên biến y toàn cục bên ngoài!
-}
-
-testUnintentionalChange();
-console.log(y); // 20 (biến toàn cục đã bị thay đổi mất kiểm soát)
+event.stopPropagation();
 ```
 
 ---
 
-## 💻 Ví dụ minh họa
+### 3. Kỹ thuật Ủy quyền sự kiện (Event Delegation)
 
-### Ví dụ 1: Kiểm tra điểm số
-
+#### 3.1. Vấn đề của các phần tử được thêm động
+Trong ứng dụng To-Do App, danh sách công việc liên tục được thêm mới hoặc xóa đi. Nếu ta gán trực tiếp sự kiện click cho các nút sửa/xóa khi render:
 ```javascript
-function xepLoai(diem) {
-    if (diem >= 9) {
-        return 'Xuất sắc';
-    } else if (diem >= 8) {
-        return 'Giỏi';
-    } else if (diem >= 7) {
-        return 'Khá';
-    } else if (diem >= 5) {
-        return 'Trung bình';
-    } else {
-        return 'Yếu';
-    }
-}
+// ❌ CÁCH LÀM Kém hiệu quả
+const deleteButtons = document.querySelectorAll('.btn-delete');
+deleteButtons.forEach(btn => {
+    btn.addEventListener('click', handleDelete);
+});
+```
+* **Lỗi 1**: Các nút xóa của các công việc mới được thêm vào sau khi gọi `renderList()` sẽ **không** hoạt động (vì chúng chưa hề được gán sự kiện).
+* **Lỗi 2**: Nếu danh sách có hàng nghìn công việc, việc tạo hàng nghìn event listeners sẽ tiêu tốn bộ nhớ và làm giảm hiệu năng của ứng dụng.
 
-console.log(xepLoai(9.5));  // "Xuất sắc"
-console.log(xepLoai(7.5));  // "Khá"
-console.log(xepLoai(4));    // "Yếu"
+#### 3.2. Giải pháp: Event Delegation
+Thay vì gán sự kiện cho từng nút con, ta **chỉ gán duy nhất một event listener** cho thẻ cha trực tiếp (thẻ `<ul id="danh-sach-cong-viec">` - thẻ này luôn tồn tại cố định trên trang).
+
+Khi người dùng click vào bất kỳ đâu bên trong danh sách, sự kiện click sẽ tự động **nổi bọt** lên thẻ cha. Tại đây, ta kiểm tra xem phần tử thực tế được click (`event.target`) là gì để xử lý thích hợp.
+
+**Ví dụ:**
+```javascript
+const listContainer = document.getElementById('danh-sach-cong-viec');
+
+listContainer.addEventListener('click', function(event) {
+    // Tìm phần tử gần nhất khớp với selector (hữu dụng khi click trúng icon nằm trong button)
+    const btnDelete = event.target.closest('.btn-delete');
+    const btnEdit = event.target.closest('.btn-edit');
+    
+    if (btnDelete) {
+        // Lấy ra thẻ task-item cha của nút xóa
+        const taskItem = btnDelete.closest('.task-item');
+        const id = parseInt(taskItem.dataset.id);
+        console.log(`Yêu cầu xóa task có ID: ${id}`);
+    }
+    
+    if (btnEdit) {
+        const taskItem = btnEdit.closest('.task-item');
+        const id = parseInt(taskItem.dataset.id);
+        console.log(`Yêu cầu sửa task có ID: ${id}`);
+    }
+});
 ```
 
-### Ví dụ 2: Validate dữ liệu đầu vào
-
-```javascript
-function kiemTraTuoi(tuoi) {
-    if (typeof tuoi !== 'number') {
-        return 'Tuổi phải là số';
-    }
-    
-    if (tuoi < 0) {
-        return 'Tuổi không hợp lệ';
-    }
-    
-    if (tuoi < 18) {
-        return 'Chưa đủ tuổi';
-    }
-    
-    return 'Hợp lệ';
-}
-
-console.log(kiemTraTuoi(20));   // "Hợp lệ"
-console.log(kiemTraTuoi(15));   // "Chưa đủ tuổi"
-console.log(kiemTraTuoi(-5));   // "Tuổi không hợp lệ"
-console.log(kiemTraTuoi('abc')); // "Tuổi phải là số"
-```
-
-### Ví dụ 3: Tính giai thừa
-
-```javascript
-function giaiThua(n) {
-    if (n < 0) return 'Không hợp lệ';
-    if (n === 0 || n === 1) return 1;
-    
-    let ketQua = 1;
-    for (let i = 2; i <= n; i++) {
-        ketQua *= i;
-    }
-    return ketQua;
-}
-
-console.log(giaiThua(5));  // 120 (5! = 5*4*3*2*1)
-```
-
-### Ví dụ 4: Tìm số lớn nhất trong mảng
-
-```javascript
-function timSoLonNhat(mang) {
-    if (mang.length === 0) return null;
-    
-    let max = mang[0];
-    for (let i = 1; i < mang.length; i++) {
-        if (mang[i] > max) {
-            max = mang[i];
-        }
-    }
-    return max;
-}
-
-let diemSo = [8, 9, 7, 8.5, 9.5];
-console.log(timSoLonNhat(diemSo));  // 9.5
-```
+*Hàm `.closest('selector')` sẽ tìm ngược lên trên để tìm thẻ cha gần nhất khớp với bộ chọn. Điều này giúp code hoạt động chính xác ngay cả khi người dùng click vào thẻ `<i>` (icon) thay vì thẻ `<button>`.*
 
 ---
 
-## 🧪 Quiz cuối buổi (7 câu)
 
-### Câu 1: Kết quả của đoạn code sau là gì?
-```javascript
-let x = 5;
-if (x > 3) {
-    console.log('A');
-} else if (x > 10) {
-    console.log('B');
-} else {
-    console.log('C');
-}
-```
-A. A  
-B. B  
-C. C  
-D. Không có output
 
-**Đáp án: A**
+## 📝 Bài tập về nhà
 
-### Câu 2: Thiếu gì trong switch case sau?
-```javascript
-switch (x) {
-    case 1:
-        console.log('Một');
-    case 2:
-        console.log('Hai');
-        break;
-}
-```
-A. Thiếu `default`  
-B. Thiếu `break` ở case 1  
-C. Thiếu `switch`  
-D. Không thiếu gì
-
-**Đáp án: B**
-
-### Câu 3: Vòng lặp nào chạy ít nhất 1 lần?
-A. `for`  
-B. `while`  
-C. `do...while`  
-D. `for...of`
-
-**Đáp án: C**
-
-### Câu 4: Kết quả của `(() => 5)()` là gì?
-A. `undefined`  
-B. `5`  
-C. Lỗi  
-D. `null`
-
-**Đáp án: B** (IIFE - Immediately Invoked Function Expression)
-
-### Câu 5: Scope của biến `let` trong block `{}` là gì?
-A. Global  
-B. Function  
-C. Block  
-D. Tất cả đều đúng
-
-**Đáp án: C**
-
-### Câu 6: Hàm nào sau đây KHÔNG có return?
-A. `function a() { return 1; }`  
-B. `const b = () => 2;`  
-C. `function c() { console.log(3); }`  
-D. Tất cả đều có return
-
-**Đáp án: C**
-
-### Câu 7: Kết quả của đoạn code sau?
-```javascript
-let x = 1;
-function test() {
-    let x = 2;
-    console.log(x);
-}
-test();
-console.log(x);
-```
-A. `2, 1`  
-B. `1, 2`  
-C. `2, 2`  
-D. `1, 1`
-
-**Đáp án: A**
-
----
-
-## 📝 Bài tập về nhà (chuẩn bị cho buổi 4)
-
-1. Tạo hàm `kiemTraCongViec(tenCongViec)` kiểm tra:
-   - Tên công việc không được rỗng
-   - Tên công việc phải có ít nhất 3 ký tự
-   - Trả về `true` nếu hợp lệ, `false` nếu không
-
-2. Tạo hàm `tinhTongCongViec(soLuong)` dùng vòng lặp tính tổng số công việc từ 1 đến n
-
-3. Dùng switch case để phân loại độ ưu tiên (1: Cao, 2: Trung bình, 3: Thấp)
+1. Viết code JavaScript lắng nghe sự kiện click trên toàn bộ thẻ `<body>` của tài liệu. Mỗi khi click vào một phần tử bất kỳ, hãy in ra console thẻ đó (tagName và className).
+2. Hãy thử nghiệm tạo một nút bấm đơn giản, khi click vào sẽ ngăn chặn không cho nổi bọt lên thẻ cha bằng `event.stopPropagation()` và kiểm tra kết quả.
+3. Giải thích tại sao việc sử dụng `.closest('.btn-delete')` lại tốt hơn việc chỉ kiểm tra `event.target.classList.contains('btn-delete')` khi bên trong nút bấm có chứa thẻ icon `<i>`.
 
 ---
 
 ## 🔗 Tài liệu tham khảo
 
-- [MDN: Control Flow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
-- [JavaScript.info: Functions](https://javascript.info/function-basics)
-
----
-
-**Chúc bạn học tập tốt! 🚀**
+- [JavaScript.info: Bubbling and capturing](https://javascript.info/bubbling-and-capturing)
+- [JavaScript.info: Event delegation](https://javascript.info/event-delegation)
+- [MDN: Event.target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target)

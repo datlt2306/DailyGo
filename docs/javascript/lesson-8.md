@@ -1,8 +1,8 @@
-# Buổi 8: Chức năng Sửa / Xóa / Tìm kiếm
+# Buổi 8: Lưu trữ Todo & Giao diện Sáng/Tối
 
 **Loại buổi**: Thực hành  
 **Thời lượng**: 120 phút  
-**Dự án**: To-Do App (đã có hiển thị danh sách từ buổi 6)
+**Dự án**: ZenTask (To-Do App) - Đồng bộ dữ liệu LocalStorage và hoàn thiện tính năng Đổi giao diện Sáng/Tối
 
 ---
 
@@ -10,356 +10,183 @@
 
 Sau buổi học này, bạn sẽ có thể:
 
-- ✅ Tạo chức năng xóa công việc
-- ✅ Tạo chức năng sửa công việc
-- ✅ Tạo chức năng tìm kiếm công việc
-- ✅ Đánh dấu công việc hoàn thành
-- ✅ Áp dụng DOM và Event từ buổi 7
+- ✅ Đồng bộ hóa dữ liệu State của ứng dụng với LocalStorage sau mỗi hành động CRUD
+- ✅ Đọc dữ liệu từ LocalStorage để tái dựng lại giao diện mỗi khi tải trang
+- ✅ Xây dựng chức năng chuyển đổi giao diện Sáng/Tối (Dark/Light Mode)
+- ✅ Lưu trữ cấu hình giao diện ưa thích của người dùng để duy trì trạng thái khi tải lại trang
 
 ---
 
 ## 🧩 Task Project
 
-### Task 1: Thêm nút Xóa (25 phút)
+### Task 1: Đồng bộ hóa danh sách công việc vào LocalStorage (30 phút)
 
-Cập nhật hàm `taoElementCongViec()` để thêm nút xóa:
+Chúng ta cần tích hợp lưu trữ vào các hàm thay đổi dữ liệu của Buổi 4 và Buổi 6.
 
+#### Bước 1.1: Định nghĩa khóa lưu trữ và hàm ghi/đọc dữ liệu
+Khai báo khóa ở đầu file `main.js`:
 ```javascript
-function taoElementCongViec(congViec, index) {
-    const li = document.createElement('li');
-    li.className = 'cong-viec-item';
-    li.setAttribute('data-id', congViec.id);
-    
-    li.innerHTML = `
-        <div class="cong-viec-info">
-            <!-- ... nội dung cũ ... -->
-        </div>
-        <div class="cong-viec-actions">
-            <button class="btn-xoa" data-id="${congViec.id}">Xóa</button>
-        </div>
-    `;
-    
-    return li;
-}
-```
+const STORAGE_KEY = 'zentask_danh_sach_cong_viec';
 
-Xử lý sự kiện xóa (Event Delegation):
-
-```javascript
 /**
- * Xóa công việc
- * @param {number} id - ID công việc cần xóa
+ * Lưu mảng công việc hiện tại vào LocalStorage
  */
-function xoaCongViec(id) {
-    // Xác nhận trước khi xóa
-    if (!confirm('Bạn có chắc muốn xóa công việc này?')) {
-        return;
+function luuVaoStorage() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(danhSachCongViec));
+    } catch (e) {
+        console.error('Không thể lưu dữ liệu vào LocalStorage:', e);
     }
-    
-    // Tìm và xóa trong mảng
-    const index = danhSachCongViec.findIndex(function(cv) {
-        return cv.id === id;
-    });
-    
-    if (index !== -1) {
-        danhSachCongViec.splice(index, 1);
-        hienThiDanhSach();  // Cập nhật lại danh sách
-        alert('Đã xóa công việc!');
-    }
-}
-
-// Event Delegation: Lắng nghe ở container
-const danhSachElement = document.getElementById('danh-sach-cong-viec');
-danhSachElement.addEventListener('click', function(event) {
-    if (event.target.classList.contains('btn-xoa')) {
-        const id = parseInt(event.target.getAttribute('data-id'));
-        xoaCongViec(id);
-    }
-});
-```
-
-### Task 2: Thêm nút Sửa (35 phút)
-
-Thêm nút sửa và form chỉnh sửa:
-
-```javascript
-function taoElementCongViec(congViec, index) {
-    // ... code cũ ...
-    
-    li.innerHTML = `
-        <div class="cong-viec-info">
-            <!-- ... nội dung ... -->
-        </div>
-        <div class="cong-viec-actions">
-            <button class="btn-sua" data-id="${congViec.id}">Sửa</button>
-            <button class="btn-xoa" data-id="${congViec.id}">Xóa</button>
-        </div>
-    `;
-    
-    return li;
-}
-```
-
-Tạo hàm sửa:
-
-```javascript
-/**
- * Hiển thị form sửa công việc
- * @param {number} id - ID công việc cần sửa
- */
-function hienThiFormSua(id) {
-    const congViec = danhSachCongViec.find(function(cv) {
-        return cv.id === id;
-    });
-    
-    if (!congViec) return;
-    
-    // Điền dữ liệu vào form
-    document.getElementById('ten-cong-viec').value = congViec.ten;
-    document.getElementById('mo-ta').value = congViec.moTa || '';
-    
-    // Đổi nút "Thêm" thành "Cập nhật"
-    const submitBtn = document.querySelector('#form-cong-viec button[type="submit"]');
-    submitBtn.textContent = 'Cập nhật';
-    submitBtn.setAttribute('data-edit-id', id);
-    
-    // Scroll đến form
-    document.querySelector('#form-cong-viec').scrollIntoView({ behavior: 'smooth' });
 }
 
 /**
- * Cập nhật công việc
- * @param {number} id - ID công việc
- * @param {string} ten - Tên mới
- * @param {string} moTa - Mô tả mới
+ * Đọc dữ liệu công việc từ LocalStorage ra mảng
  */
-function capNhatCongViec(id, ten, moTa) {
-    const congViec = danhSachCongViec.find(function(cv) {
-        return cv.id === id;
-    });
-    
-    if (!congViec) {
-        alert('Không tìm thấy công việc!');
-        return false;
+function docTuStorage() {
+    const rawData = localStorage.getItem(STORAGE_KEY);
+    if (!rawData) return [];
+    try {
+        return JSON.parse(rawData);
+    } catch (e) {
+        console.error('Lỗi định dạng dữ liệu LocalStorage. Reset về mảng rỗng.');
+        return [];
     }
-    
-    // Validate
-    if (!kiemTraTenCongViec(ten)) {
-        alert('Tên công việc không hợp lệ!');
-        return false;
-    }
-    
-    // Cập nhật
-    congViec.ten = ten.trim();
-    congViec.moTa = moTa.trim();
-    
-    hienThiDanhSach();
-    alert('Đã cập nhật công việc!');
-    return true;
 }
 ```
 
-Cập nhật form handler:
+#### Bước 1.2: Cập nhật hàm khởi tạo dữ liệu ban đầu
+Thay đổi dòng khai báo `danhSachCongViec` cũ thành:
+```javascript
+// Đọc dữ liệu đã lưu từ trước khi tải trang
+let danhSachCongViec = docTuStorage();
+```
+
+#### Bước 1.3: Gọi `luuVaoStorage()` sau mỗi hành động thay đổi dữ liệu
+Hãy tìm đến các hàm xử lý dữ liệu và thêm lệnh `luuVaoStorage()` vào cuối:
+* **Hành động thêm mới**:
+  ```javascript
+  danhSachCongViec.unshift(congViecMoi);
+  luuVaoStorage(); // 👈 Thêm vào đây
+  renderList();
+  capNhatTienDo();
+  ```
+* **Hành động xóa**:
+  ```javascript
+  danhSachCongViec = danhSachCongViec.filter(cv => cv.id !== id);
+  luuVaoStorage(); // 👈 Thêm vào đây
+  renderList();
+  capNhatTienDo();
+  ```
+* **Hành động sửa (cập nhật)**:
+  ```javascript
+  danhSachCongViec = danhSachCongViec.map(cv => { ... });
+  luuVaoStorage(); // 👈 Thêm vào đây
+  ```
+* **Hành động toggle trạng thái**:
+  ```javascript
+  danhSachCongViec = danhSachCongViec.map(cv => { ... });
+  luuVaoStorage(); // 👈 Thêm vào đây
+  ```
+
+---
+
+### Task 2: Xây dựng tính năng đổi giao diện Sáng/Tối (50 phút)
+
+Chúng ta sẽ lắng nghe sự kiện click trên nút bấm `.btn-theme-toggle` ở góc trên cùng. Khi người dùng click, ta sẽ đổi class `light-theme` trên thẻ `<body>` để chuyển đổi bảng màu CSS, đồng thời ghi nhớ cấu hình này vào LocalStorage.
+
+#### Bước 2.1: Chuẩn bị CSS cho Light Theme
+Để cấu trúc CSS đổi màu mượt mà, ta nên định nghĩa bảng màu bằng CSS Variables ở đầu file `styles.css`. 
+
+Hãy đảm bảo tệp `styles.css` của bạn hỗ trợ chế độ sáng bằng cách thêm class `.light-theme` ghi đè các biến CSS:
+
+```css
+/* Trong file styles.css của template ZenTask */
+:root {
+    /* Mặc định là Dark Theme */
+    --bg-app: #090d16;
+    --bg-card: rgba(17, 24, 39, 0.7);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+/* Khi body có class .light-theme, các biến màu sẽ bị ghi đè */
+body.light-theme {
+    --bg-app: #f1f5f9;
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-hover: rgba(0, 0, 0, 0.15);
+}
+```
+
+#### Bước 2.2: Viết logic JavaScript xử lý chuyển đổi và lưu trữ Theme
+Trong tệp `main.js`, viết hàm đổi theme và lắng nghe sự kiện click nút bấm:
 
 ```javascript
-const form = document.getElementById('form-cong-viec');
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
+const themeToggleBtn = document.querySelector('.btn-theme-toggle');
+const THEME_KEY = 'zentask_theme';
+
+// Hàm áp dụng theme
+function apDungTheme(theme) {
+    const icon = themeToggleBtn.querySelector('i');
     
-    const ten = document.getElementById('ten-cong-viec').value;
-    const moTa = document.getElementById('mo-ta').value;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const editId = submitBtn.getAttribute('data-edit-id');
-    
-    if (editId) {
-        // Đang ở chế độ sửa
-        if (capNhatCongViec(parseInt(editId), ten, moTa)) {
-            // Reset form về chế độ thêm
-            form.reset();
-            submitBtn.textContent = 'Thêm công việc';
-            submitBtn.removeAttribute('data-edit-id');
-        }
+    if (theme === 'light') {
+        document.body.classList.add('light-theme');
+        // Đổi icon sang mặt trời
+        if (icon) icon.setAttribute('data-lucide', 'sun');
     } else {
-        // Chế độ thêm mới
-        if (themCongViec(ten, moTa)) {
-            form.reset();
-        }
-    }
-});
-
-// Xử lý sự kiện click nút sửa
-danhSachElement.addEventListener('click', function(event) {
-    if (event.target.classList.contains('btn-sua')) {
-        const id = parseInt(event.target.getAttribute('data-id'));
-        hienThiFormSua(id);
-    }
-    // ... xử lý xóa ...
-});
-```
-
-### Task 3: Tìm kiếm công việc (25 phút)
-
-Thêm input tìm kiếm:
-
-```html
-<div class="search-container">
-    <input 
-        type="text" 
-        id="tim-kiem" 
-        placeholder="Tìm kiếm công việc..."
-    >
-</div>
-```
-
-Hàm tìm kiếm:
-
-```javascript
-/**
- * Tìm kiếm công việc theo từ khóa
- * @param {string} tuKhoa - Từ khóa tìm kiếm
- */
-function timKiemCongViec(tuKhoa) {
-    const tuKhoaLower = tuKhoa.toLowerCase().trim();
-    
-    if (tuKhoaLower === '') {
-        hienThiDanhSach();  // Hiển thị tất cả nếu rỗng
-        return;
+        document.body.classList.remove('light-theme');
+        // Đổi icon sang mặt trăng
+        if (icon) icon.setAttribute('data-lucide', 'moon');
     }
     
-    const ketQua = danhSachCongViec.filter(function(cv) {
-        return cv.ten.toLowerCase().includes(tuKhoaLower) ||
-               (cv.moTa && cv.moTa.toLowerCase().includes(tuKhoaLower));
-    });
-    
-    // Hiển thị kết quả
-    const danhSachElement = document.getElementById('danh-sach-cong-viec');
-    danhSachElement.innerHTML = '';
-    
-    if (ketQua.length === 0) {
-        danhSachElement.innerHTML = '<li class="empty">Không tìm thấy công việc nào</li>';
-        return;
-    }
-    
-    ketQua.forEach(function(congViec, index) {
-        const li = taoElementCongViec(congViec, index);
-        danhSachElement.appendChild(li);
-    });
-    
-    // Highlight từ khóa
-    highlightKeyword(tuKhoa);
-}
-
-/**
- * Highlight từ khóa trong kết quả
- */
-function highlightKeyword(tuKhoa) {
-    const items = document.querySelectorAll('.cong-viec-ten');
-    items.forEach(function(item) {
-        const text = item.textContent;
-        const regex = new RegExp(`(${tuKhoa})`, 'gi');
-        item.innerHTML = text.replace(regex, '<mark>$1</mark>');
-    });
-}
-
-// Lắng nghe sự kiện tìm kiếm
-const inputTimKiem = document.getElementById('tim-kiem');
-inputTimKiem.addEventListener('input', function() {
-    timKiemCongViec(this.value);
-});
-```
-
-### Task 4: Đánh dấu hoàn thành (20 phút)
-
-Thêm checkbox hoàn thành:
-
-```javascript
-function taoElementCongViec(congViec, index) {
-    // ... code cũ ...
-    
-    li.innerHTML = `
-        <div class="cong-viec-info">
-            <input 
-                type="checkbox" 
-                class="checkbox-hoan-thanh" 
-                data-id="${congViec.id}"
-                ${congViec.trangThai === 'hoan-thanh' ? 'checked' : ''}
-            >
-            <!-- ... nội dung ... -->
-        </div>
-        <!-- ... actions ... -->
-    `;
-    
-    return li;
-}
-```
-
-Xử lý sự kiện:
-
-```javascript
-/**
- * Đánh dấu công việc hoàn thành
- * @param {number} id - ID công việc
- * @param {boolean} hoanThanh - Trạng thái hoàn thành
- */
-function danhDauHoanThanh(id, hoanThanh) {
-    const congViec = danhSachCongViec.find(function(cv) {
-        return cv.id === id;
-    });
-    
-    if (congViec) {
-        congViec.trangThai = hoanThanh ? 'hoan-thanh' : 'chua-lam';
-        hienThiDanhSach();
+    // Refresh lại icon của Lucide
+    if (window.lucide) {
+        window.lucide.createIcons();
     }
 }
 
-// Event delegation cho checkbox
-danhSachElement.addEventListener('change', function(event) {
-    if (event.target.classList.contains('checkbox-hoan-thanh')) {
-        const id = parseInt(event.target.getAttribute('data-id'));
-        const hoanThanh = event.target.checked;
-        danhDauHoanThanh(id, hoanThanh);
+// Lắng nghe sự kiện click đổi theme
+themeToggleBtn.addEventListener('click', function() {
+    let themeHienTai = 'dark';
+    
+    if (document.body.classList.contains('light-theme')) {
+        themeHienTai = 'dark';
+    } else {
+        themeHienTai = 'light';
     }
+    
+    // Áp dụng theme mới và lưu cấu hình
+    apDungTheme(themeHienTai);
+    localStorage.setItem(THEME_KEY, themeHienTai);
 });
+
+// Hàm khởi tạo theme khi load trang
+function khoiTaoTheme() {
+    const savedTheme = localStorage.getItem(THEME_KEY) || 'dark'; // mặc định là dark
+    apDungTheme(savedTheme);
+}
+
+// Khởi chạy
+khoiTaoTheme();
 ```
 
 ---
 
-## ✅ Checklist hoàn thành
 
-- [ ] Đã tạo chức năng xóa công việc với xác nhận
-- [ ] Đã tạo chức năng sửa công việc
-- [ ] Đã tạo chức năng tìm kiếm theo tên/mô tả
-- [ ] Đã thêm checkbox đánh dấu hoàn thành
-- [ ] Đã dùng Event Delegation cho các nút
-- [ ] Form có thể chuyển giữa chế độ thêm và sửa
-
----
-
-## 🧪 Checkpoint
-
-**Câu hỏi:**
-
-1. Tại sao dùng Event Delegation thay vì lắng nghe từng nút?
-2. `findIndex` khác gì với `find`?
-3. Tại sao dùng `includes()` trong tìm kiếm?
-4. `splice` khác gì với `filter`?
-
-**Đáp án:**
-
-1. Event Delegation hiệu quả hơn, không cần lắng nghe lại khi thêm phần tử mới
-2. `findIndex` trả về index, `find` trả về phần tử
-3. `includes()` kiểm tra chuỗi có chứa substring
-4. `splice` thay đổi mảng gốc, `filter` tạo mảng mới
-
----
 
 ## 📝 Bài tập về nhà
 
-1. Thêm tính năng "Xóa tất cả công việc đã hoàn thành"
-2. Thêm tính năng "Đánh dấu tất cả hoàn thành"
-3. Thêm animation khi xóa/sửa công việc
-4. Lưu trạng thái tìm kiếm vào URL
+1. Hãy tích hợp hoàn chỉnh cơ chế đồng bộ LocalStorage cho ứng dụng của bạn để đảm bảo dữ liệu To-Do và trạng thái Theme (giao diện) không bị mất khi tải lại trang.
+2. Nâng cấp hàm `khoiTaoTheme()` để tự động đọc cấu hình theme mặc định của hệ điều hành (sử dụng thuộc tính `window.matchMedia('(prefers-color-scheme: light)').matches`) nếu trong LocalStorage chưa lưu cấu hình.
+3. Tạo một nút bấm "Xóa toàn bộ công việc đã hoàn thành" ở Sidebar và lập trình tính năng xóa hàng loạt, lưu vào Storage & render lại UI.
 
 ---
 
-**Chúc bạn hoàn thành tốt! 🚀**
+## 🔗 Tài liệu tham khảo
+
+- [MDN: Window.matchMedia()](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+- [CSS Tricks: Update CSS Variables with JS](https://css-tricks.com/updating-css-variables-with-javascript/)
+- [JavaScript.info: LocalStorage](https://javascript.info/localstorage)

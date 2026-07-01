@@ -1,8 +1,8 @@
-# Buổi 9: JSON & LocalStorage
+# Buổi 9: Asynchronous JS & Fetch API
 
 **Loại buổi**: Lý thuyết  
 **Thời lượng**: 120 phút  
-**Dự án**: To-Do App (đã có CRUD cơ bản từ buổi 8)
+**Dự án**: ZenTask (To-Do App) - Chuẩn bị kết nối cơ sở dữ liệu Mock API
 
 ---
 
@@ -10,569 +10,121 @@
 
 Sau buổi học này, bạn sẽ có thể:
 
-- ✅ Hiểu JSON là gì và cách sử dụng
-- ✅ Chuyển đổi giữa JSON và JavaScript object
-- ✅ Sử dụng LocalStorage để lưu trữ dữ liệu
-- ✅ Sử dụng SessionStorage để lưu trữ tạm thời
-- ✅ Xử lý lỗi khi làm việc với Storage
-- ✅ Áp dụng vào việc lưu dữ liệu ứng dụng
+- ✅ Phân biệt được sự khác biệt giữa lập trình đồng bộ (Synchronous) và bất đồng bộ (Asynchronous)
+- ✅ Hiểu rõ các giải pháp xử lý bất đồng bộ trong JS: Callbacks, Promises, và Async/Await
+- ✅ Giải thích được mô hình hoạt động của giao thức HTTP và kiến trúc RESTful API
+- ✅ Sử dụng thành thạo `Fetch API` để thực hiện các yêu cầu HTTP Request cơ bản
+- ✅ Áp dụng cơ chế `try...catch` để bắt lỗi khi xử lý bất đồng bộ
 
 ---
 
 ## 🧠 Nội dung chính
 
-### 1. JSON là gì?
+### 1. Đồng bộ (Sync) vs Bất đồng bộ (Async)
 
-**JSON (JavaScript Object Notation)** là định dạng dữ liệu dạng text, dùng để lưu trữ và truyền dữ liệu.
+* **Đồng bộ (Synchronous)**: Các câu lệnh chạy tuần tự từ trên xuống dưới, câu lệnh phía sau phải chờ câu lệnh phía trước hoàn thành rồi mới chạy.
+  * *Hạn chế*: Nếu một tác vụ mất nhiều thời gian (như tải ảnh dung lượng lớn, gọi dữ liệu từ server), toàn bộ trang web sẽ bị "đơ" (blocking).
+* **Bất đồng bộ (Asynchronous)**: Tác vụ tốn thời gian sẽ được đẩy sang chạy ngầm (do trình duyệt xử lý). JS tiếp tục chạy các dòng code bên dưới mà không cần chờ đợi. Khi tác vụ ngầm hoàn thành, nó sẽ gửi kết quả về sau.
 
-**Đặc điểm:**
-- Dễ đọc, dễ viết
-- Nhẹ, nhanh
-- Dùng để trao đổi dữ liệu giữa client và server
-- Hỗ trợ bởi hầu hết ngôn ngữ lập trình
+---
 
-**Cấu trúc JSON:**
-```json
-{
-    "hoTen": "Nguyễn Văn A",
-    "tuoi": 20,
-    "laSinhVien": true,
-    "danhSach": [1, 2, 3],
-    "diaChi": {
-        "soNha": "123",
-        "duong": "Đường ABC"
-    }
-}
-```
+### 2. Các cơ chế xử lý bất đồng bộ trong JavaScript
 
-**Quy tắc JSON:**
-- Key phải là chuỗi (có dấu nháy kép)
-- Giá trị có thể là: string, number, boolean, null, array, object
-- Không có functions, undefined
-- Không có comments
-- Dấu phẩy cuối cùng không được phép
+#### 2.1. Callback (Cách tiếp cận cổ điển)
+Một hàm được truyền dưới dạng đối số vào một hàm khác để được gọi lại sau khi tác vụ hoàn thành.
+* *Hạn chế*: Dẫn đến **Callback Hell** (mã nguồn lồng nhau quá sâu, cực kỳ khó đọc và bảo trì).
 
-### 2. JSON.stringify() - Chuyển Object → JSON
-
-**Chuyển đổi JavaScript object/array thành chuỗi JSON:**
+#### 2.2. Promise (ES6)
+Đại diện cho một giá trị sẽ có trong tương lai. Một Promise có 3 trạng thái:
+1. `Pending`: Đang chờ xử lý tác vụ ngầm.
+2. `Fulfilled`: Tác vụ hoàn thành thành công (kích hoạt hàm `.then()`).
+3. `Rejected`: Tác vụ thất bại do lỗi (kích hoạt hàm `.catch()`).
 
 ```javascript
-let sinhVien = {
-    hoTen: 'Nguyễn Văn A',
-    tuoi: 20,
-    laSinhVien: true
-};
-
-let jsonString = JSON.stringify(sinhVien);
-console.log(jsonString);
-// '{"hoTen":"Nguyễn Văn A","tuoi":20,"laSinhVien":true}'
-console.log(typeof jsonString);  // "string"
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Lỗi rồi:', error));
 ```
 
-**Ví dụ với mảng:**
-```javascript
-let danhSach = [
-    { id: 1, ten: 'Công việc A' },
-    { id: 2, ten: 'Công việc B' }
-];
-
-let jsonString = JSON.stringify(danhSach);
-console.log(jsonString);
-// '[{"id":1,"ten":"Công việc A"},{"id":2,"ten":"Công việc B"}]'
-```
-
-**Tham số thứ 2: Replacer (lọc thuộc tính)**
-```javascript
-let sinhVien = {
-    hoTen: 'Nguyễn Văn A',
-    tuoi: 20,
-    password: 'secret123'
-};
-
-// Chỉ lấy hoTen và tuoi
-let jsonString = JSON.stringify(sinhVien, ['hoTen', 'tuoi']);
-console.log(jsonString);
-// '{"hoTen":"Nguyễn Văn A","tuoi":20}'
-```
-
-**Tham số thứ 3: Space (định dạng đẹp)**
-```javascript
-let sinhVien = {
-    hoTen: 'Nguyễn Văn A',
-    tuoi: 20
-};
-
-let jsonString = JSON.stringify(sinhVien, null, 2);
-console.log(jsonString);
-// {
-//   "hoTen": "Nguyễn Văn A",
-//   "tuoi": 20
-// }
-```
-
-### 3. JSON.parse() - Chuyển JSON → Object
-
-**Chuyển đổi chuỗi JSON thành JavaScript object/array:**
+#### 2.3. Async / Await (ES7 - Khuyến nghị dùng)
+Cú pháp bọc ngoài Promise giúp ta viết code bất đồng bộ trông giống như code đồng bộ tuần tự, cực kỳ sạch và dễ đọc.
+* Từ khóa `async` đặt trước một hàm để khai báo hàm đó là bất đồng bộ (luôn trả về một Promise).
+* Từ khóa `await` đặt trước một Promise (chỉ dùng được bên trong hàm `async`), bắt trình duyệt dừng đợi Promise đó hoàn thành rồi mới chạy tiếp dòng bên dưới.
 
 ```javascript
-let jsonString = '{"hoTen":"Nguyễn Văn A","tuoi":20,"laSinhVien":true}';
-
-let sinhVien = JSON.parse(jsonString);
-console.log(sinhVien);
-// { hoTen: 'Nguyễn Văn A', tuoi: 20, laSinhVien: true }
-console.log(sinhVien.hoTen);  // "Nguyễn Văn A"
-```
-
-**Ví dụ với mảng:**
-```javascript
-let jsonString = '[{"id":1,"ten":"Công việc A"},{"id":2,"ten":"Công việc B"}]';
-
-let danhSach = JSON.parse(jsonString);
-console.log(danhSach);
-// [{ id: 1, ten: 'Công việc A' }, { id: 2, ten: 'Công việc B' }]
-```
-
-**Xử lý lỗi:**
-```javascript
-let jsonString = '{invalid json}';
-
-try {
-    let data = JSON.parse(jsonString);
-} catch (error) {
-    console.error('Lỗi parse JSON:', error.message);
-    // Xử lý lỗi...
-}
-```
-
-### 4. LocalStorage - Lưu trữ vĩnh viễn
-
-**LocalStorage** lưu trữ dữ liệu trên trình duyệt, **tồn tại vĩnh viễn** cho đến khi:
-- Người dùng xóa
-- Code xóa
-- Dữ liệu hết hạn (theo trình duyệt)
-
-**Đặc điểm:**
-- Lưu trữ theo domain (mỗi website có localStorage riêng)
-- Dung lượng: ~5-10MB
-- Chỉ lưu được string
-- Dữ liệu không tự động hết hạn
-
-#### 4.1. setItem() - Lưu dữ liệu
-
-```javascript
-// Lưu string
-localStorage.setItem('ten', 'Nguyễn Văn A');
-localStorage.setItem('tuoi', '20');
-
-// Lưu object/array (phải stringify trước)
-let sinhVien = {
-    hoTen: 'Nguyễn Văn A',
-    tuoi: 20
-};
-localStorage.setItem('sinhVien', JSON.stringify(sinhVien));
-
-let danhSach = [1, 2, 3];
-localStorage.setItem('danhSach', JSON.stringify(danhSach));
-```
-
-#### 4.2. getItem() - Lấy dữ liệu
-
-```javascript
-// Lấy string
-let ten = localStorage.getItem('ten');
-console.log(ten);  // "Nguyễn Văn A"
-
-// Lấy object/array (phải parse)
-let sinhVienString = localStorage.getItem('sinhVien');
-let sinhVien = JSON.parse(sinhVienString);
-console.log(sinhVien);  // { hoTen: 'Nguyễn Văn A', tuoi: 20 }
-
-// Kiểm tra null trước khi parse
-let danhSachString = localStorage.getItem('danhSach');
-let danhSach = danhSachString ? JSON.parse(danhSachString) : [];
-```
-
-#### 4.3. removeItem() - Xóa một key
-
-```javascript
-localStorage.removeItem('ten');
-```
-
-#### 4.4. clear() - Xóa tất cả
-
-```javascript
-localStorage.clear();  // Xóa tất cả dữ liệu của domain
-```
-
-#### 4.5. key() - Lấy key theo index
-
-```javascript
-// Lấy key đầu tiên
-let firstKey = localStorage.key(0);
-console.log(firstKey);
-
-// Duyệt tất cả keys
-for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    let value = localStorage.getItem(key);
-    console.log(`${key}: ${value}`);
-}
-```
-
-#### 4.6. length - Số lượng items
-
-```javascript
-console.log(localStorage.length);  // Số lượng items
-```
-
-### 5. SessionStorage - Lưu trữ tạm thời
-
-**SessionStorage** tương tự LocalStorage nhưng:
-- Dữ liệu **tự động xóa** khi đóng tab/window
-- Dữ liệu chỉ tồn tại trong session hiện tại
-
-**Cách sử dụng giống LocalStorage:**
-```javascript
-// Lưu
-sessionStorage.setItem('ten', 'Nguyễn Văn A');
-
-// Lấy
-let ten = sessionStorage.getItem('ten');
-
-// Xóa
-sessionStorage.removeItem('ten');
-
-// Xóa tất cả
-sessionStorage.clear();
-```
-
-**Khi nào dùng SessionStorage vs LocalStorage:**
-- **LocalStorage**: Dữ liệu cần lưu lâu dài (cài đặt, giỏ hàng, danh sách công việc...)
-- **SessionStorage**: Dữ liệu tạm thời (form đang điền, thông tin session...)
-
-### 6. Xử lý lỗi và best practices
-
-#### 6.1. Xử lý lỗi khi parse JSON
-
-```javascript
-function layDuLieuTuStorage(key) {
+async function layDuLieu() {
     try {
-        let dataString = localStorage.getItem(key);
-        if (!dataString) {
-            return null;  // Hoặc giá trị mặc định
-        }
-        return JSON.parse(dataString);
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        console.log(data);
     } catch (error) {
-        console.error(`Lỗi parse JSON cho key "${key}":`, error);
-        // Xóa dữ liệu lỗi
-        localStorage.removeItem(key);
-        return null;  // Hoặc giá trị mặc định
+        console.error('Lỗi khi gọi API:', error);
     }
 }
-```
-
-#### 6.2. Kiểm tra hỗ trợ Storage
-
-```javascript
-function kiemTraStorage() {
-    try {
-        localStorage.setItem('test', 'test');
-        localStorage.removeItem('test');
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
-
-if (!kiemTraStorage()) {
-    console.warn('Trình duyệt không hỗ trợ LocalStorage');
-}
-```
-
-#### 6.3. Xử lý quá dung lượng
-
-```javascript
-function luuDuLieu(key, data) {
-    try {
-        localStorage.setItem(key, JSON.stringify(data));
-        return true;
-    } catch (error) {
-        if (error.name === 'QuotaExceededError') {
-            console.error('LocalStorage đã đầy!');
-            // Xóa dữ liệu cũ hoặc thông báo người dùng
-            return false;
-        }
-        throw error;
-    }
-}
-```
-
-#### 6.4. Helper functions
-
-```javascript
-// Lưu object/array
-function luuStorage(key, data) {
-    try {
-        localStorage.setItem(key, JSON.stringify(data));
-        return true;
-    } catch (error) {
-        console.error('Lỗi lưu Storage:', error);
-        return false;
-    }
-}
-
-// Lấy object/array
-function layStorage(key, defaultValue = null) {
-    try {
-        let dataString = localStorage.getItem(key);
-        if (!dataString) {
-            return defaultValue;
-        }
-        return JSON.parse(dataString);
-    } catch (error) {
-        console.error('Lỗi đọc Storage:', error);
-        return defaultValue;
-    }
-}
-
-// Xóa
-function xoaStorage(key) {
-    localStorage.removeItem(key);
-}
-
-// Sử dụng
-luuStorage('danhSachCongViec', [{ id: 1, ten: 'CV 1' }]);
-let danhSach = layStorage('danhSachCongViec', []);
 ```
 
 ---
 
-## 💻 Ví dụ minh họa
+### 3. Giao thức HTTP và RESTful API
 
-### Ví dụ 1: Lưu và tải danh sách công việc
+Khi client muốn tương tác với dữ liệu trên server, chúng gửi đi các **HTTP Requests** và nhận về **HTTP Responses**.
 
-```javascript
-// Dữ liệu mẫu
-let danhSachCongViec = [
-    { id: 1, ten: 'Học JavaScript', trangThai: 'chua lam' },
-    { id: 2, ten: 'Làm bài tập', trangThai: 'dang lam' }
-];
+#### 3.1. Các phương thức HTTP (HTTP Methods / Verbs)
+Trong kiến trúc RESTful API, các hành động CRUD tương ứng với các HTTP Methods cụ thể:
+* **GET**: Đọc/Tải dữ liệu từ server về.
+* **POST**: Gửi dữ liệu mới lên server để tạo mới.
+* **PUT**: Ghi đè toàn bộ thông tin của dữ liệu cũ trên server.
+* **PATCH**: Chỉ cập nhật một vài trường thông tin cụ thể của dữ liệu cũ (ví dụ: chỉ sửa trạng thái hoàn thành).
+* **DELETE**: Xóa dữ liệu trên server.
 
-// Lưu vào LocalStorage
-function luuDanhSach() {
-    localStorage.setItem('danhSachCongViec', JSON.stringify(danhSachCongViec));
-}
+#### 3.2. Mã trạng thái HTTP (HTTP Status Codes)
+* **2xx (Success)**: Thành công (ví dụ: `200 OK`, `201 Created`).
+* **3xx (Redirection)**: Chuyển hướng.
+* **4xx (Client Error)**: Lỗi phía Client (ví dụ: `400 Bad Request`, `401 Unauthorized`, `404 Not Found`).
+* **5xx (Server Error)**: Lỗi phía Server (ví dụ: `500 Internal Server Error`).
 
-// Tải từ LocalStorage
-function taiDanhSach() {
-    let dataString = localStorage.getItem('danhSachCongViec');
-    if (dataString) {
-        danhSachCongViec = JSON.parse(dataString);
-    } else {
-        danhSachCongViec = [];  // Khởi tạo mảng rỗng
-    }
-}
+---
 
-// Tự động tải khi trang load
-taiDanhSach();
+### 4. Fetch API cơ bản
 
-// Tự động lưu khi thay đổi
-function themCongViec(ten) {
-    let congViecMoi = {
-        id: Date.now(),
-        ten: ten,
-        trangThai: 'chua lam'
-    };
-    danhSachCongViec.push(congViecMoi);
-    luuDanhSach();  // Tự động lưu
-}
-```
-
-### Ví dụ 2: Xử lý lỗi đầy đủ
+`fetch()` là hàm tích hợp sẵn trong trình duyệt để gửi yêu cầu HTTP. Nó trả về một Promise.
 
 ```javascript
-const Storage = {
-    // Lưu dữ liệu
-    luu: function(key, data) {
-        try {
-            if (!this.kiemTra()) {
-                throw new Error('LocalStorage không được hỗ trợ');
-            }
-            localStorage.setItem(key, JSON.stringify(data));
-            return true;
-        } catch (error) {
-            if (error.name === 'QuotaExceededError') {
-                console.error('LocalStorage đã đầy!');
-                alert('Không thể lưu dữ liệu. Vui lòng xóa dữ liệu cũ.');
-            } else {
-                console.error('Lỗi lưu Storage:', error);
-            }
-            return false;
-        }
-    },
+// Gửi GET Request
+async function taiDanhSachTodo() {
+    const url = 'https://jsonplaceholder.typicode.com/todos?_limit=5';
     
-    // Lấy dữ liệu
-    lay: function(key, defaultValue = null) {
-        try {
-            if (!this.kiemTra()) {
-                return defaultValue;
-            }
-            let dataString = localStorage.getItem(key);
-            if (!dataString) {
-                return defaultValue;
-            }
-            return JSON.parse(dataString);
-        } catch (error) {
-            console.error('Lỗi đọc Storage:', error);
-            // Xóa dữ liệu lỗi
-            localStorage.removeItem(key);
-            return defaultValue;
+    try {
+        const response = await fetch(url);
+        
+        // Kiểm tra xem mã phản hồi có thành công (200-299) không
+        if (!response.ok) {
+            throw new Error(`Lỗi kết nối HTTP: ${response.status}`);
         }
-    },
-    
-    // Xóa
-    xoa: function(key) {
-        if (this.kiemTra()) {
-            localStorage.removeItem(key);
-        }
-    },
-    
-    // Xóa tất cả
-    xoaTatCa: function() {
-        if (this.kiemTra()) {
-            localStorage.clear();
-        }
-    },
-    
-    // Kiểm tra hỗ trợ
-    kiemTra: function() {
-        try {
-            localStorage.setItem('test', 'test');
-            localStorage.removeItem('test');
-            return true;
-        } catch (error) {
-            return false;
-        }
-    }
-};
-
-// Sử dụng
-Storage.luu('danhSachCongViec', [{ id: 1, ten: 'CV 1' }]);
-let danhSach = Storage.lay('danhSachCongViec', []);
-```
-
-### Ví dụ 3: Lưu cài đặt người dùng
-
-```javascript
-// Cài đặt mặc định
-let caiDat = {
-    theme: 'light',
-    ngonNgu: 'vi',
-    thongBao: true
-};
-
-// Tải cài đặt
-function taiCaiDat() {
-    let saved = localStorage.getItem('caiDat');
-    if (saved) {
-        caiDat = { ...caiDat, ...JSON.parse(saved) };
+        
+        const data = await response.json(); // Chuyển đổi dữ liệu JSON nhận được
+        console.log('Dữ liệu nhận về:', data);
+    } catch (error) {
+        console.error('Xử lý lỗi:', error.message);
     }
 }
-
-// Lưu cài đặt
-function luuCaiDat() {
-    localStorage.setItem('caiDat', JSON.stringify(caiDat));
-}
-
-// Cập nhật cài đặt
-function capNhatCaiDat(key, value) {
-    caiDat[key] = value;
-    luuCaiDat();
-}
-
-// Sử dụng
-taiCaiDat();
-capNhatCaiDat('theme', 'dark');
 ```
 
 ---
 
-## 🧪 Quiz cuối buổi (7 câu)
 
-### Câu 1: JSON có thể chứa function không?
-A. Có  
-B. Không  
-C. Tùy trường hợp  
-D. Chỉ arrow function
 
-**Đáp án: B**
+## 📝 Bài tập về nhà
 
-### Câu 2: LocalStorage lưu được những kiểu dữ liệu nào?
-A. Chỉ string  
-B. String, number, boolean  
-C. Tất cả kiểu dữ liệu  
-D. Chỉ object
-
-**Đáp án: A** (chỉ string, phải stringify object/array)
-
-### Câu 3: Khi nào SessionStorage tự động xóa?
-A. Khi đóng tab  
-B. Khi đóng trình duyệt  
-C. Sau 24 giờ  
-D. Không bao giờ
-
-**Đáp án: A**
-
-### Câu 4: `JSON.parse('[1, 2, 3]')` trả về gì?
-A. String  
-B. Array  
-C. Object  
-D. Lỗi
-
-**Đáp án: B**
-
-### Câu 5: Cách nào lưu object vào LocalStorage?
-A. `localStorage.setItem('key', obj)`  
-B. `localStorage.setItem('key', JSON.stringify(obj))`  
-C. `localStorage.save('key', obj)`  
-D. Cả A và B
-
-**Đáp án: B**
-
-### Câu 6: Dung lượng tối đa của LocalStorage?
-A. 1MB  
-B. 5-10MB  
-C. Không giới hạn  
-D. 100MB
-
-**Đáp án: B**
-
-### Câu 7: `localStorage.getItem('key')` trả về gì nếu key không tồn tại?
-A. `undefined`  
-B. `null`  
-C. `''` (chuỗi rỗng)  
-D. Lỗi
-
-**Đáp án: B**
-
----
-
-## 📝 Bài tập về nhà (chuẩn bị cho buổi 10)
-
-1. Tạo helper functions cho LocalStorage (luu, lay, xoa)
-2. Lưu danh sách công việc vào LocalStorage khi thêm/sửa/xóa
-3. Tự động tải danh sách từ LocalStorage khi trang load
-4. Xử lý trường hợp dữ liệu rỗng hoặc lỗi
-5. Thêm nút "Xóa tất cả dữ liệu" để clear LocalStorage
+1. Viết một hàm async `checkUserInfo(userId)` gọi API lấy thông tin người dùng từ URL mẫu: `https://jsonplaceholder.typicode.com/users/1` và in tên (`name`), email (`email`) của họ ra màn hình console.
+2. Thử thay đổi ID người dùng trong URL thành `999` (không tồn tại) để kiểm tra xem khối `try...catch` của bạn có bắt được lỗi 404 và in ra thông báo lỗi chính xác không.
+3. Tìm hiểu khái niệm **API Endpoint** là gì trong lập trình Web API.
 
 ---
 
 ## 🔗 Tài liệu tham khảo
 
-- [MDN: JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
-- [MDN: LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
-- [JavaScript.info: LocalStorage](https://javascript.info/localstorage)
-
----
-
-**Chúc bạn học tập tốt! 🚀**
+- [JavaScript.info: Promises, async/await](https://javascript.info/js-async)
+- [MDN: Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [MDN: HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)

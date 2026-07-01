@@ -1,8 +1,8 @@
-# Buổi 10: Lưu dữ liệu vào LocalStorage
+# Buổi 10: Mock API Setup & Tải dữ liệu (GET)
 
 **Loại buổi**: Thực hành  
 **Thời lượng**: 120 phút  
-**Dự án**: To-Do App (đã có CRUD từ buổi 8)
+**Dự án**: ZenTask (To-Do App) - Cài đặt Mock API Server và tải dữ liệu công việc động từ API
 
 ---
 
@@ -10,308 +10,164 @@
 
 Sau buổi học này, bạn sẽ có thể:
 
-- ✅ Lưu danh sách công việc vào LocalStorage
-- ✅ Tải dữ liệu từ LocalStorage khi trang load
-- ✅ Tự động lưu khi thêm/sửa/xóa công việc
-- ✅ Xử lý trường hợp dữ liệu rỗng hoặc lỗi
-- ✅ Áp dụng kiến thức JSON và LocalStorage từ buổi 9
+- ✅ Cấu hình và chạy một Mock API Server cục bộ sử dụng thư viện `json-server`
+- ✅ Gửi yêu cầu HTTP GET Request bằng Fetch API để tải dữ liệu về ứng dụng khi trang web khởi chạy
+- ✅ Lập trình hiển thị trạng thái Loading (Đang tải) để cải thiện trải nghiệm người dùng
+- ✅ Xử lý hiển thị thông báo lỗi trực quan trên giao diện nếu API Server gặp sự cố
 
 ---
 
 ## 🧩 Task Project
 
-### Task 1: Tạo helper functions cho Storage (25 phút)
+### Task 1: Cài đặt và cấu hình Mock API Server (30 phút)
 
-Tạo file `storage.js` hoặc thêm vào `main.js`:
+Chúng ta sử dụng `json-server` để giả lập một RESTful API Server hoàn chỉnh chạy trên máy tính cá nhân.
 
+1. Mở Terminal tại thư mục dự án `todo-app` và chạy lệnh sau để khởi tạo tệp `package.json` (nếu chưa có) và cài đặt `json-server`:
+   ```bash
+   npm init -y
+   npm install json-server --save-dev
+   ```
+2. Tạo tệp tin `db.json` trong thư mục gốc dự án để chứa cơ sở dữ liệu giả lập dạng JSON:
+   ```json
+   {
+     "todos": [
+       {
+         "id": 1719600000001,
+         "ten": "Đọc tài liệu hướng dẫn Mock API",
+         "moTa": "Tìm hiểu cách cài đặt json-server trên local.",
+         "uuTien": "high",
+         "hoanThanh": true
+       },
+       {
+         "id": 1719600000002,
+         "ten": "Thiết lập cấu hình json-server",
+         "moTa": "Chạy thử server cổng 3000 để kiểm tra kết nối.",
+         "uuTien": "medium",
+         "hoanThanh": false
+       }
+     ]
+   }
+   ```
+3. Cấu hình câu lệnh khởi chạy nhanh (npm script) trong file `package.json`:
+   ```json
+   "scripts": {
+     "server": "json-server --watch db.json --port 3000"
+   }
+   ```
+4. Khởi chạy API Server bằng lệnh:
+   ```bash
+   npm run server
+   ```
+   *Kiểm tra: Truy cập đường dẫn `http://localhost:3000/todos` trên trình duyệt để kiểm tra xem danh sách JSON có hiển thị không.*
+
+---
+
+### Task 2: Gọi GET API tải dữ liệu về ứng dụng khi load trang (50 phút)
+
+Chúng ta sẽ khai báo biến lưu trữ URL gốc của API và viết hàm bất đồng bộ `taiDanhSachTuAPI()` để lấy dữ liệu, lưu vào mảng `danhSachCongViec` rồi gọi hiển thị.
+
+#### Bước 2.1: Khai báo hằng số API URL và cấu trúc Loading
+1. Đảm bảo cấu trúc Loading đã có sẵn trong file `index.html` của template ZenTask:
+   ```html
+   <div id="loading-indicator" class="loading-state hidden">
+       <div class="spinner"></div>
+       <span>Đang tải dữ liệu...</span>
+   </div>
+   ```
+
+2. Viết logic JavaScript trong file `main.js`:
 ```javascript
-/**
- * Helper functions cho LocalStorage
- */
-const Storage = {
-    /**
-     * Lưu dữ liệu vào LocalStorage
-     * @param {string} key - Key lưu trữ
-     * @param {any} data - Dữ liệu cần lưu
-     * @returns {boolean} true nếu thành công
-     */
-    luu: function(key, data) {
-        try {
-            const jsonString = JSON.stringify(data);
-            localStorage.setItem(key, jsonString);
-            return true;
-        } catch (error) {
-            console.error('Lỗi lưu Storage:', error);
-            alert('Không thể lưu dữ liệu. Vui lòng thử lại.');
-            return false;
-        }
-    },
-    
-    /**
-     * Lấy dữ liệu từ LocalStorage
-     * @param {string} key - Key cần lấy
-     * @param {any} defaultValue - Giá trị mặc định nếu không có
-     * @returns {any} Dữ liệu đã lấy hoặc defaultValue
-     */
-    lay: function(key, defaultValue = null) {
-        try {
-            const jsonString = localStorage.getItem(key);
-            if (!jsonString) {
-                return defaultValue;
-            }
-            return JSON.parse(jsonString);
-        } catch (error) {
-            console.error('Lỗi đọc Storage:', error);
-            // Xóa dữ liệu lỗi
-            localStorage.removeItem(key);
-            return defaultValue;
-        }
-    },
-    
-    /**
-     * Xóa dữ liệu
-     * @param {string} key - Key cần xóa
-     */
-    xoa: function(key) {
-        localStorage.removeItem(key);
-    },
-    
-    /**
-     * Xóa tất cả dữ liệu
-     */
-    xoaTatCa: function() {
-        localStorage.clear();
-    }
-};
+const API_URL = 'http://localhost:3000/todos';
 
-// Key lưu trữ danh sách công việc
-const STORAGE_KEY = 'todoApp_danhSachCongViec';
+// Thay đổi mảng lưu trữ ban đầu thành rỗng
+let danhSachCongViec = [];
+
+/**
+ * Hàm điều khiển hiển thị trạng thái Loading
+ * @param {boolean} show - true để hiển thị, false để ẩn
+ */
+function toggleLoading(show) {
+    const loader = document.getElementById('loading-indicator');
+    if (!loader) return;
+    
+    if (show) {
+        loader.classList.remove('hidden');
+    } else {
+        loader.classList.add('hidden');
+    }
+}
 ```
 
-### Task 2: Tải dữ liệu khi trang load (20 phút)
-
+#### Bước 2.2: Viết hàm Fetch dữ liệu bất đồng bộ
 ```javascript
 /**
- * Tải danh sách công việc từ LocalStorage
+ * Gọi API lấy danh sách công việc từ JSON Server
  */
-function taiDanhSach() {
-    const data = Storage.lay(STORAGE_KEY, []);
+async function taiDanhSachTuAPI() {
+    toggleLoading(true); // 1. Hiện spinner loading
     
-    if (Array.isArray(data)) {
+    try {
+        const response = await fetch(API_URL);
+        
+        if (!response.ok) {
+            throw new Error(`Lỗi kết nối HTTP: ${response.status}`);
+        }
+        
+        // 2. Chuyển đổi dữ liệu và cập nhật vào State
+        const data = await response.json();
         danhSachCongViec = data;
-        console.log('Đã tải', danhSachCongViec.length, 'công việc từ LocalStorage');
-    } else {
-        console.warn('Dữ liệu không hợp lệ, khởi tạo danh sách rỗng');
-        danhSachCongViec = [];
+        
+        // 3. Render dữ liệu mới ra giao diện
+        renderList();
+        capNhatTienDo();
+        
+    } catch (error) {
+        console.error('Lỗi khi tải dữ liệu từ API:', error);
+        
+        // Hiển thị thông báo lỗi trực quan lên UI
+        const listContainer = document.getElementById('danh-sach-cong-viec');
+        listContainer.innerHTML = `
+            <li class="error-state" style="text-align:center; padding:30px; color:#ef4444;">
+                <i data-lucide="alert-triangle"></i>
+                <p>Không thể kết nối với API Server!</p>
+                <button onclick="taiDanhSachTuAPI()" style="margin-top:10px; padding:6px 12px; border-radius:6px; cursor:pointer;">Thử lại</button>
+            </li>
+        `;
+        if (window.lucide) window.lucide.createIcons();
+        
+    } finally {
+        toggleLoading(false); // 4. Ẩn spinner loading (luôn chạy bất kể thành công hay thất bại)
     }
-    
-    // Hiển thị danh sách
-    hienThiDanhSach();
 }
+```
 
-// Tải dữ liệu khi trang load
+#### Bước 2.3: Lắng nghe sự kiện DOMContentLoaded để kích hoạt tải dữ liệu
+```javascript
+// Gọi API ngay sau khi trình duyệt dựng xong cây DOM của trang web
 document.addEventListener('DOMContentLoaded', function() {
-    taiDanhSach();
+    // Khởi chạy lấy theme cũ
+    khoiTaoTheme();
+    
+    // Tải danh sách công việc từ API thay vì đọc từ LocalStorage như trước
+    taiDanhSachTuAPI();
 });
 ```
 
-### Task 3: Tự động lưu khi thay đổi (30 phút)
-
-Cập nhật các hàm để tự động lưu:
-
-```javascript
-/**
- * Lưu danh sách công việc vào LocalStorage
- */
-function luuDanhSach() {
-    const success = Storage.luu(STORAGE_KEY, danhSachCongViec);
-    if (success) {
-        console.log('Đã lưu danh sách vào LocalStorage');
-    }
-}
-
-// Cập nhật hàm thêm công việc
-function themCongViec(ten, moTa = '') {
-    // ... validation và tạo công việc ...
-    
-    danhSachCongViec.push(congViec);
-    hienThiDanhSach();
-    luuDanhSach();  // Tự động lưu
-    
-    return congViec;
-}
-
-// Cập nhật hàm xóa
-function xoaCongViec(id) {
-    // ... code xóa ...
-    
-    danhSachCongViec.splice(index, 1);
-    hienThiDanhSach();
-    luuDanhSach();  // Tự động lưu
-    
-    alert('Đã xóa công việc!');
-}
-
-// Cập nhật hàm sửa
-function capNhatCongViec(id, ten, moTa) {
-    // ... code cập nhật ...
-    
-    congViec.ten = ten.trim();
-    congViec.moTa = moTa.trim();
-    
-    hienThiDanhSach();
-    luuDanhSach();  // Tự động lưu
-    
-    alert('Đã cập nhật công việc!');
-    return true;
-}
-
-// Cập nhật hàm đánh dấu hoàn thành
-function danhDauHoanThanh(id, hoanThanh) {
-    const congViec = danhSachCongViec.find(cv => cv.id === id);
-    if (congViec) {
-        congViec.trangThai = hoanThanh ? 'hoan-thanh' : 'chua-lam';
-        hienThiDanhSach();
-        luuDanhSach();  // Tự động lưu
-    }
-}
-```
-
-### Task 4: Thêm nút "Xóa tất cả dữ liệu" (15 phút)
-
-Thêm vào HTML:
-
-```html
-<div class="actions-container">
-    <button id="btn-xoa-tat-ca" class="btn-danger">Xóa tất cả dữ liệu</button>
-</div>
-```
-
-Xử lý sự kiện:
-
-```javascript
-/**
- * Xóa tất cả công việc
- */
-function xoaTatCaCongViec() {
-    if (!confirm('Bạn có chắc muốn xóa TẤT CẢ công việc? Hành động này không thể hoàn tác!')) {
-        return;
-    }
-    
-    danhSachCongViec = [];
-    hienThiDanhSach();
-    luuDanhSach();
-    alert('Đã xóa tất cả công việc!');
-}
-
-// Lắng nghe sự kiện
-const btnXoaTatCa = document.getElementById('btn-xoa-tat-ca');
-if (btnXoaTatCa) {
-    btnXoaTatCa.addEventListener('click', xoaTatCaCongViec);
-}
-```
-
-### Task 5: Export/Import dữ liệu (20 phút)
-
-Thêm tính năng xuất/nhập dữ liệu:
-
-```javascript
-/**
- * Xuất dữ liệu ra file JSON
- */
-function xuatDuLieu() {
-    const data = {
-        danhSachCongViec: danhSachCongViec,
-        ngayXuat: new Date().toISOString(),
-        version: '1.0'
-    };
-    
-    const jsonString = JSON.stringify(data, null, 2);
-    const blob = new Blob([jsonString], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `todo-backup-${Date.now()}.json`;
-    a.click();
-    
-    URL.revokeObjectURL(url);
-    alert('Đã xuất dữ liệu!');
-}
-
-/**
- * Nhập dữ liệu từ file
- */
-function nhapDuLieu(file) {
-    const reader = new FileReader();
-    
-    reader.onload = function(event) {
-        try {
-            const data = JSON.parse(event.target.result);
-            
-            if (data.danhSachCongViec && Array.isArray(data.danhSachCongViec)) {
-                if (confirm('Bạn có muốn thay thế dữ liệu hiện tại?')) {
-                    danhSachCongViec = data.danhSachCongViec;
-                    hienThiDanhSach();
-                    luuDanhSach();
-                    alert('Đã nhập dữ liệu thành công!');
-                }
-            } else {
-                alert('File không hợp lệ!');
-            }
-        } catch (error) {
-            console.error('Lỗi:', error);
-            alert('Lỗi khi đọc file!');
-        }
-    };
-    
-    reader.readAsText(file);
-}
-
-// Thêm vào HTML
-// <button id="btn-xuat">Xuất dữ liệu</button>
-// <input type="file" id="input-nhap" accept=".json">
-```
-
 ---
 
-## ✅ Checklist hoàn thành
 
-- [ ] Đã tạo helper functions cho Storage
-- [ ] Đã tải dữ liệu khi trang load
-- [ ] Đã tự động lưu khi thêm/sửa/xóa công việc
-- [ ] Đã xử lý lỗi khi parse JSON
-- [ ] Đã thêm nút "Xóa tất cả dữ liệu"
-- [ ] Dữ liệu vẫn tồn tại sau khi reload trang
-- [ ] Đã test với dữ liệu rỗng và lỗi
-
----
-
-## 🧪 Checkpoint
-
-**Câu hỏi:**
-
-1. Tại sao phải dùng `JSON.stringify()` trước khi lưu?
-2. `localStorage.getItem()` trả về gì nếu key không tồn tại?
-3. Tại sao cần try/catch khi parse JSON?
-4. `DOMContentLoaded` khác gì với `window.onload`?
-
-**Đáp án:**
-
-1. LocalStorage chỉ lưu string, cần stringify object/array
-2. Trả về `null`
-3. Parse có thể lỗi nếu JSON không hợp lệ
-4. `DOMContentLoaded` chạy sớm hơn, chỉ chờ DOM, không chờ images
-
----
 
 ## 📝 Bài tập về nhà
 
-1. Thêm tính năng "Xuất/Nhập dữ liệu"
-2. Thêm tính năng "Backup tự động" (lưu nhiều bản backup)
-3. Thêm thông báo khi lưu dữ liệu thành công
-4. Thêm tính năng "Khôi phục từ backup"
+1. Hãy cài đặt thư viện `json-server` và cấu hình chạy Mock API cổng 3000 trên máy của bạn.
+2. Viết mã nguồn tải danh sách công việc từ cổng 3000 khi load trang web ZenTask của bạn.
+3. Thử tắt Terminal đang chạy `json-server` đi (simulating API server crash) để kiểm tra xem giao diện ZenTask có hiển thị đúng thông báo lỗi kết nối và nút "Thử lại" hoạt động chính xác khi bạn bật lại server hay không.
 
 ---
 
-**Chúc bạn hoàn thành tốt! 🚀**
+## 🔗 Tài liệu tham khảo
+
+- [GitHub: json-server repository](https://github.com/typicode/json-server)
+- [MDN: Document: DOMContentLoaded event](https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event)
+- [JavaScript.info: Try...catch...finally](https://javascript.info/try-catch)

@@ -40,24 +40,24 @@ Sau khóa học, bạn sẽ có thể:
 
 ### 📊 Bảng tổng hợp 16 buổi học
 
-| Buổi   | Loại   | Chủ đề chính                                   | Mục tiêu                                                          | Nội dung chính                                                                                                                                                   | Task / Bài tập / Quiz                           |
-| ------ | ------ | ---------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| **1**  | **LT** | Giới thiệu JS, biến, scope, kiểu dữ liệu, toán tử | Hiểu JavaScript là gì, cách khai báo biến, phạm vi biến (scope), và toán tử | - JavaScript là gì?<br>- Biến (var, let, const)<br>- Phạm vi biến (Global vs Block scope)<br>- Kiểu dữ liệu (string, number, boolean, null, undefined)<br>- Toán tử (+, -, \*, /, %, ==, ===, &&, \|\|) | Quiz: 7 câu về biến, scope và kiểu dữ liệu |
-| **2**  | **TH** | Tạo giao diện & xử lý form nhập liệu cơ bản    | Tạo HTML/CSS cho To-Do App, nhập liệu và hiển thị thông tin       | - Tạo form nhập công việc<br>- Lấy giá trị từ input<br>- Hiển thị thông tin ra console/alert<br>- Task: Hoàn thành form nhập liệu cơ bản                         | Task: Tạo form + xử lý submit, hiển thị dữ liệu |
-| **3**  | **LT** | Cấu trúc điều khiển (if, loop), hàm             | Sử dụng if/else, vòng lặp, tạo và gọi hàm                         | - if/else, switch<br>- for, while, forEach<br>- Hàm (function, arrow function)<br>- Scope trong Hàm (Function Scope & Shadowing)                                  | Quiz: 7 câu về điều khiển và hàm                |
-| **4**  | **TH** | Thêm chức năng "Thêm công việc"                | Áp dụng hàm và điều kiện để thêm công việc vào danh sách          | - Tạo hàm thêm công việc<br>- Validate dữ liệu đầu vào<br>- Hiển thị danh sách công việc (tạm thời bằng alert/console)                                           | Task: Thêm công việc với validation             |
-| **5**  | **LT** | Mảng, Object, destructuring                    | Làm việc với mảng và object để quản lý dữ liệu                    | - Array (khai báo, truy cập, thêm/xóa)<br>- Object (khai báo, truy cập, thêm/sửa/xóa)<br>- Destructuring (array, object)<br>- Các method: push, pop, filter, map | Quiz: 7 câu về Array và Object                  |
-| **6**  | **TH** | Hiển thị danh sách + thao tác dữ liệu          | Dùng Array/Object để lưu trữ và hiển thị danh sách công việc      | - Lưu danh sách công việc vào array<br>- Render danh sách ra HTML<br>- Thêm công việc vào array                                                                  | Task: Hiển thị danh sách công việc động         |
-| **7**  | **LT** | DOM & Event                                    | Thao tác với DOM và xử lý sự kiện                                 | - DOM là gì?<br>- querySelector, getElementById<br>- createElement, appendChild<br>- addEventListener (click, submit, change)<br>- Event object, preventDefault  | Quiz: 7 câu về DOM và Event                     |
-| **8**  | **TH** | Chức năng "Sửa / Xóa / Tìm kiếm"               | Tạo các chức năng CRUD cơ bản cho ứng dụng                        | - Xóa công việc (delete)<br>- Sửa công việc (edit)<br>- Tìm kiếm công việc (filter)<br>- Đánh dấu hoàn thành                                                     | Task: Hoàn thiện CRUD cơ bản                    |
-| **9**  | **LT** | JSON & LocalStorage                            | Lưu trữ dữ liệu trên trình duyệt                                  | - JSON là gì?<br>- JSON.stringify / JSON.parse<br>- LocalStorage API<br>- setItem, getItem, removeItem<br>- SessionStorage                                       | Quiz: 7 câu về JSON và Storage                  |
-| **10** | **TH** | Lưu dữ liệu vào LocalStorage                   | Lưu và khôi phục dữ liệu khi reload trang                         | - Lưu danh sách công việc vào LocalStorage<br>- Load dữ liệu khi trang load<br>- Xử lý trường hợp dữ liệu rỗng                                                   | Task: Lưu trữ dữ liệu persistent                |
-| **11** | **LT** | Fetch API, Promise, Async/Await                | Gọi API và xử lý dữ liệu bất đồng bộ                              | - HTTP là gì?<br>- Fetch API cơ bản<br>- Promise (then, catch)<br>- Async/Await<br>- Error handling (try/catch)                                                  | Quiz: 7 câu về API và Promise                   |
-| **12** | **TH** | Lấy dữ liệu từ API (JSON Server)               | Tích hợp API vào ứng dụng                                         | - Setup JSON Server<br>- Fetch dữ liệu từ API<br>- POST, PUT, DELETE requests<br>- Xử lý loading và error                                                        | Task: Tích hợp API vào To-Do App                |
-| **13** | **LT** | Module, ES6+, Refactor code                    | Tổ chức code theo module và best practices                        | - ES6 Modules (import/export)<br>- Arrow functions, Template literals<br>- Spread operator, Rest parameters<br>- Code organization<br>- Naming conventions       | Quiz: 7 câu về Module và ES6+                   |
-| **14** | **TH** | Tách module code (storage.js, dom.js, main.js) | Refactor code để dễ bảo trì và mở rộng                            | - Tách code thành modules<br>- storage.js (quản lý LocalStorage)<br>- dom.js (thao tác DOM)<br>- main.js (logic chính)<br>- Tổ chức thư mục                      | Task: Refactor code theo module                 |
-| **15** | **LT** | Debug, Optimization, Best Practices            | Kỹ năng debug và tối ưu hóa code                                  | - Console.log, debugger<br>- Chrome DevTools<br>- Performance tips<br>- Code review checklist<br>- Git cơ bản                                                    | Quiz: 7 câu về Debug và Best Practices          |
-| **16** | **TH** | Tổng hợp & Demo Project cuối khóa              | Hoàn thiện project và thuyết trình                                | - Hoàn thiện tất cả tính năng<br>- Fix bugs<br>- Cải thiện UI/UX<br>- Chuẩn bị demo<br>- Thuyết trình project                                                    | Task: Demo Project + Thuyết trình               |
+| Buổi | Loại | Chủ đề chính | Mục tiêu | Nội dung chính | Task / Bài tập |
+| --- | --- | --- | --- | --- | --- |
+| **1** | **LT** | DOM Selection & Manipulation | Hiểu DOM, biết cách tìm và sửa đổi phần tử HTML bằng JS | - DOM là gì?<br>- querySelector, querySelectorAll<br>- classList, style, attributes, dataset | |
+| **2** | **TH** | Tích hợp UI & Render Danh sách | Tích hợp template ZenTask, render dữ liệu từ mảng mẫu | - Setup cấu trúc giao diện ZenTask<br>- Tạo mảng công việc mẫu (Mock data)<br>- Duyệt mảng và đổ dữ liệu động (innerHTML/textContent)<br>- Phòng chống lỗi bảo mật XSS cơ bản | Task: Render danh sách công việc tĩnh từ mảng |
+| **3** | **LT** | Sự kiện (Events) & Event Delegation | Hiểu cơ chế sự kiện và cách tối ưu với Event Delegation | - Event Listeners & Event Object<br>- Bubbling & Capturing<br>- Event Delegation (Ủy quyền sự kiện) | |
+| **4** | **TH** | Chức năng Thêm & Xóa công việc | Xử lý thêm công việc mới từ form và click nút xóa | - Submit form & validate input cơ bản<br>- Thêm công việc mới vào mảng<br>- Áp dụng Event Delegation xử lý nút Xóa | Task: Thêm mới và xóa công việc động |
+| **5** | **LT** | Mảng & Object nâng cao - Tư duy State | Làm việc với các phương thức mảng nâng cao và tư duy State | - map, filter, find, findIndex, reduce<br>- Tư duy State-driven UI (State -> Render) | |
+| **6** | **TH** | Chức năng Sửa, Tìm kiếm & Lọc | Hoàn thiện CRUD cơ bản và các bộ lọc tìm kiếm | - Toggle status công việc<br>- Điền dữ liệu vào form để Sửa (Edit)<br>- Tìm kiếm (Search) & Lọc (Filter) theo trạng thái/ưu tiên | Task: Hoàn thiện CRUD và bộ lọc |
+| **7** | **LT** | Web Storage APIs & JSON | Hiểu cách lưu trữ dữ liệu bền vững ở phía Client | - localStorage và sessionStorage<br>- JSON.stringify & JSON.parse | |
+| **8** | **TH** | Lưu trữ Todo & Giao diện Sáng/Tối | Đồng bộ công việc với LocalStorage và làm Dark/Light mode | - Lưu và tải danh sách từ LocalStorage<br>- Theme toggle (Dark/Light mode) & lưu theme preference | Task: Lưu Todo bền vững & Đổi Theme |
+| **9** | **LT** | Asynchronous JS & Fetch API | Hiểu lập trình bất đồng bộ và cách giao tiếp với API | - Callback, Promise, Async/Await<br>- HTTP Protocol & RESTful API (GET, POST, PUT, DELETE) | |
+| **10** | **TH** | JSON Server & Tải dữ liệu (GET) | Thiết lập Mock API và tải danh sách công việc | - Cấu hình và chạy json-server<br>- Gọi GET API tải danh sách khi load trang<br>- Xử lý trạng thái Loading & Error | Task: Tải danh sách công việc từ API |
+| **11** | **LT** | HTTP Methods nâng cao & Tối ưu UI | Hiểu các thao tác cập nhật API và các kỹ thuật tối ưu UI | - Phân biệt PUT và PATCH<br>- Pessimistic UI vs Optimistic UI | |
+| **12** | **TH** | Đồng bộ CRUD với API | Hoàn thiện đồng bộ mọi thay đổi dữ liệu lên Mock API | - Gọi POST khi thêm công việc<br>- Gọi PATCH khi cập nhật trạng thái/nội dung<br>- Gọi DELETE khi xóa công việc | Task: Đồng bộ toàn bộ CRUD với Mock API |
+| **13** | **LT** | ES6 Modules & Kiến trúc phần mềm | Hiểu cách tổ chức code dự án sạch sẽ và modular | - ES6 Modules (import/export)<br>- Tách lớp kiến trúc: API, Storage, DOM, Main | |
+| **14** | **TH** | Tách Module code | Tái cấu trúc (Refactor) To-Do App thành các modules riêng | - Tách code thành api.js, storage.js, dom.js, constants.js<br>- Nhúng Script dạng type="module" | Task: Hoàn thành refactor code |
+| **15** | **LT** | Debugging & Performance Optimization | Biết cách gỡ lỗi chuyên nghiệp và tối ưu hiệu năng | - Chrome DevTools debugger, breakpoints<br>- Kỹ thuật Debounce (tối ưu ô tìm kiếm) | |
+| **16** | **TH** | Tích hợp Debounce, Deploy & Demo | Hoàn thiện tính năng tìm kiếm, deploy dự án và thuyết trình | - Tích hợp Debounce vào ô tìm kiếm<br>- Deploy ứng dụng và Mock API lên Cloud<br>- Demo & Q&A | Task: Hoàn thiện & Thuyết trình |
 
 **Chú thích:**
 
@@ -87,39 +87,39 @@ Xem chi tiết cấu trúc thư mục và rubric đánh giá tại [Dự án cu�
 
 ## 📖 Danh sách bài học
 
-### Giai đoạn 1: Nền tảng JavaScript (Buổi 1-4)
+### Giai đoạn 1: DOM & Quản lý Sự kiện (Buổi 1-4)
 
--   [Buổi 1: Giới thiệu JS, biến, kiểu dữ liệu, toán tử](./lesson-1.md) (LT)
--   [Buổi 2: Tạo giao diện & xử lý form nhập liệu](./lesson-2.md) (TH)
--   [Buổi 3: Cấu trúc điều khiển và hàm](./lesson-3.md) (LT)
--   [Buổi 4: Thêm chức năng "Thêm công việc"](./lesson-4.md) (TH)
+-   [Buổi 1: DOM Selection, Traversal & Manipulation](./lesson-1.md) (LT)
+-   [Buổi 2: Tích hợp giao diện mẫu & Render danh sách](./lesson-2.md) (TH)
+-   [Buổi 3: JavaScript Events & Event Delegation](./lesson-3.md) (LT)
+-   [Buổi 4: Tính năng Thêm & Xóa công việc](./lesson-4.md) (TH)
 
-### Giai đoạn 2: Dữ liệu & Cấu trúc (Buổi 5-6)
+### Giai đoạn 2: Quản lý State & Tính năng CRUD (Buổi 5-6)
 
--   [Buổi 5: Mảng, Object, destructuring](./lesson-5.md) (LT)
--   [Buổi 6: Hiển thị danh sách + thao tác dữ liệu](./lesson-6.md) (TH)
+-   [Buổi 5: Array/Object Methods & Tư duy State-driven UI](./lesson-5.md) (LT)
+-   [Buổi 6: Tính năng Sửa, Tìm kiếm & Lọc](./lesson-6.md) (TH)
 
-### Giai đoạn 3: DOM & Tương tác (Buổi 7-8)
+### Giai đoạn 3: Web Storage & Dark Mode (Buổi 7-8)
 
--   [Buổi 7: DOM & Event](./lesson-7.md) (LT)
--   [Buổi 8: Chức năng Sửa / Xóa / Tìm kiếm](./lesson-8.md) (TH)
+-   [Buổi 7: Web Storage APIs & JSON](./lesson-7.md) (LT)
+-   [Buổi 8: Lưu trữ dữ liệu & Tính năng Dark/Light Mode](./lesson-8.md) (TH)
 
-### Giai đoạn 4: Lưu trữ & API (Buổi 9-12)
+### Giai đoạn 4: Lập trình bất đồng bộ & Kết nối API (Buổi 9-12)
 
--   [Buổi 9: JSON & LocalStorage](./lesson-9.md) (LT)
--   [Buổi 10: Lưu dữ liệu vào LocalStorage](./lesson-10.md) (TH)
--   [Buổi 11: Fetch API, Promise, Async/Await](./lesson-11.md) (LT)
--   [Buổi 12: Lấy dữ liệu từ API](./lesson-12.md) (TH)
+-   [Buổi 9: Asynchronous JavaScript & Fetch API](./lesson-9.md) (LT)
+-   [Buổi 10: Mock API Setup & Tải dữ liệu (GET)](./lesson-10.md) (TH)
+-   [Buổi 11: HTTP Methods & Tối ưu hóa UI](./lesson-11.md) (LT)
+-   [Buổi 12: Đồng bộ CRUD với API](./lesson-12.md) (TH)
 
-### Giai đoạn 5: Code Organization (Buổi 13-14)
+### Giai đoạn 5: Modularization & Refactoring (Buổi 13-14)
 
--   [Buổi 13: Module, ES6+, Refactor code](./lesson-13.md) (LT)
--   [Buổi 14: Tách module code](./lesson-14.md) (TH)
+-   [Buổi 13: ES6 Modules & Kiến trúc ứng dụng](./lesson-13.md) (LT)
+-   [Buổi 14: Tách Module code](./lesson-14.md) (TH)
 
-### Giai đoạn 6: Tối ưu & Hoàn thiện (Buổi 15-16)
+### Giai đoạn 6: Tối ưu, Deploy & Demo (Buổi 15-16)
 
--   [Buổi 15: Debug, Optimization, Best Practices](./lesson-15.md) (LT)
--   [Buổi 16: Tổng hợp & Demo Project](./lesson-16.md) (TH)
+-   [Buổi 15: Debugging & Performance Optimization](./lesson-15.md) (LT)
+-   [Buổi 16: Tích hợp Debounce, Deploy & Demo](./lesson-16.md) (TH)
 
 ## 🎯 Dự án cuối khóa
 

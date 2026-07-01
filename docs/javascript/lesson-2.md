@@ -1,8 +1,8 @@
-# Buổi 2: Tạo giao diện & Xử lý form nhập liệu cơ bản
+# Buổi 2: Tích hợp giao diện mẫu & Render danh sách
 
 **Loại buổi**: Thực hành  
 **Thời lượng**: 120 phút  
-**Dự án**: To-Do App - Bắt đầu xây dựng
+**Dự án**: ZenTask (To-Do App) - Tích hợp giao diện và hiển thị dữ liệu động
 
 ---
 
@@ -10,320 +10,176 @@
 
 Sau buổi học này, bạn sẽ có thể:
 
--   ✅ Tạo giao diện HTML/CSS cho To-Do App
--   ✅ Nhúng JavaScript vào HTML
--   ✅ Lấy giá trị từ form input
--   ✅ Xử lý sự kiện submit form
--   ✅ Hiển thị thông tin ra console/alert
+- ✅ Tích hợp thành công giao diện mẫu ZenTask vào dự án của mình
+- ✅ Thiết lập cấu trúc lưu trữ dữ liệu dạng mảng đối tượng (Mock Data)
+- ✅ Viết hàm duyệt mảng dữ liệu để render danh sách công việc động ra giao diện HTML
+- ✅ Hiểu rõ và ngăn ngừa lỗ hổng bảo mật XSS (Cross-site Scripting) khi chèn dữ liệu động
 
 ---
 
 ## 🧩 Task Project
 
-### Task 1: Tạo cấu trúc HTML cơ bản (20 phút)
+### Task 1: Thiết lập thư mục dự án và tích hợp giao diện (20 phút)
 
-Tạo file `index.html` với cấu trúc sau:
+1. Tạo một thư mục dự án mới tên là `todo-app`.
+2. Tạo các tệp tin `index.html` và `styles.css` trong thư mục `todo-app`.
+3. Sao chép toàn bộ nội dung mã nguồn của giao diện mẫu ZenTask:
+   * HTML: [index.html](https://letrongdat.vercel.app/javascript/templates/index.html)
+   * CSS: [styles.css](https://letrongdat.vercel.app/javascript/templates/styles.css)
+4. Tạo tệp tin `main.js` trong thư mục dự án. Nhúng `main.js` vào cuối tệp `index.html` ngay trước thẻ đóng `</body>`:
+   ```html
+   <script src="main.js"></script>
+   ```
 
-```html
-<!DOCTYPE html>
-<html lang="vi">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>To-Do App</title>
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
-        <div class="container">
-            <h1>Quản lý Công Việc</h1>
+---
 
-            <form id="form-cong-viec">
-                <div class="form-group">
-                    <label for="ten-cong-viec">Tên công việc:</label>
-                    <input
-                        type="text"
-                        id="ten-cong-viec"
-                        placeholder="Nhập tên công việc..."
-                        required
-                    />
-                </div>
+### Task 2: Tạo cấu trúc dữ liệu giả lập (Mock Data) (20 phút)
 
-                <div class="form-group">
-                    <label for="mo-ta">Mô tả (tùy chọn):</label>
-                    <textarea id="mo-ta" rows="3" placeholder="Mô tả công việc..."></textarea>
-                </div>
-
-                <button type="submit">Thêm công việc</button>
-            </form>
-
-            <div id="ket-qua"></div>
-        </div>
-
-        <script src="main.js"></script>
-    </body>
-</html>
-```
-
-### Task 2: Tạo CSS cơ bản (15 phút)
-
-Tạo file `styles.css`:
-
-```css
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    padding: 20px;
-}
-
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-}
-
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#ket-qua {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    min-height: 50px;
-}
-```
-
-### Task 3: Xử lý form với JavaScript (40 phút)
-
-Tạo file `main.js`:
+Trong tệp `main.js`, hãy khai báo một mảng các đối tượng chứa thông tin công việc giả lập. Mỗi công việc cần có các thuộc tính: `id` (số duy nhất), `ten` (tên công việc), `moTa` (mô tả), `uuTien` (mức độ: 'high', 'medium', 'low'), và `hoanThanh` (trạng thái: `true` hoặc `false`).
 
 ```javascript
-// Bước 1: Lấy form element
-const form = document.getElementById("form-cong-viec");
-
-// Bước 2: Lắng nghe sự kiện submit
-form.addEventListener("submit", function (event) {
-    // Ngăn form submit mặc định (reload trang)
-    event.preventDefault();
-
-    // Bước 3: Lấy giá trị từ input
-    const tenCongViec = document.getElementById("ten-cong-viec").value;
-    const moTa = document.getElementById("mo-ta").value;
-
-    // Bước 4: Hiển thị thông tin
-    console.log("Tên công việc:", tenCongViec);
-    console.log("Mô tả:", moTa);
-
-    // Hiển thị ra màn hình
-    const ketQua = document.getElementById("ket-qua");
-    ketQua.innerHTML = `
-        <h3>Thông tin công việc:</h3>
-        <p><strong>Tên:</strong> ${tenCongViec}</p>
-        <p><strong>Mô tả:</strong> ${moTa || "Không có mô tả"}</p>
-    `;
-
-    // Bước 5: Reset form
-    form.reset();
-});
-```
-
-**Hướng dẫn từng bước:**
-
-1. **Lấy form element:**
-
-    - Dùng `document.getElementById('form-cong-viec')`
-    - Lưu vào biến `form`
-
-2. **Lắng nghe sự kiện submit:**
-
-    - Dùng `form.addEventListener('submit', function...)`
-    - Tham số `event` chứa thông tin sự kiện
-    - Dùng `event.preventDefault()` để ngăn reload trang
-
-3. **Lấy giá trị từ input:**
-
-    - Dùng `.value` để lấy giá trị
-    - `document.getElementById('ten-cong-viec').value`
-
-4. **Hiển thị thông tin:**
-
-    - Dùng `console.log()` để in ra console
-    - Dùng `innerHTML` để hiển thị ra màn hình
-
-5. **Reset form:**
-    - Dùng `form.reset()` để xóa input
-
-### Task 4: Cải thiện với Alert (15 phút)
-
-Thêm validation và hiển thị alert:
-
-```javascript
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const tenCongViec = document.getElementById("ten-cong-viec").value.trim();
-    const moTa = document.getElementById("mo-ta").value.trim();
-
-    // Kiểm tra dữ liệu
-    if (tenCongViec === "") {
-        alert("Vui lòng nhập tên công việc!");
-        return; // Dừng hàm
+// Mảng lưu trữ trạng thái danh sách công việc (State)
+let danhSachCongViec = [
+    {
+        id: 1,
+        ten: "Học JavaScript nâng cao",
+        moTa: "Nắm vững các khái niệm DOM, Event và API.",
+        uuTien: "high",
+        hoanThanh: false
+    },
+    {
+        id: 2,
+        ten: "Xây dựng giao diện CSS cho dự án",
+        moTa: "Hoàn thiện CSS Glassmorphism cho ZenTask.",
+        uuTien: "medium",
+        hoanThanh: true
+    },
+    {
+        id: 3,
+        ten: "Cài đặt môi trường Node.js",
+        moTa: "Cài đặt git, npm và các thư viện cần thiết.",
+        uuTien: "low",
+        hoanThanh: true
     }
-
-    // Hiển thị thông báo
-    alert(`Đã thêm công việc: ${tenCongViec}`);
-
-    // Hiển thị ra màn hình
-    const ketQua = document.getElementById("ket-qua");
-    ketQua.innerHTML = `
-        <h3>Thông tin công việc:</h3>
-        <p><strong>Tên:</strong> ${tenCongViec}</p>
-        <p><strong>Mô tả:</strong> ${moTa || "Không có mô tả"}</p>
-        <p><em>Thời gian tạo: ${new Date().toLocaleString("vi-VN")}</em></p>
-    `;
-
-    form.reset();
-});
+];
 ```
 
-### Task 5: Thêm tính năng (30 phút)
+---
 
-**Task 5.1: Thêm input Độ ưu tiên**
+### Task 3: Viết hàm Render danh sách động ra HTML (50 phút)
 
-```html
-<div class="form-group">
-    <label for="do-uu-tien">Độ ưu tiên:</label>
-    <select id="do-uu-tien">
-        <option value="cao">Cao</option>
-        <option value="trung-binh" selected>Trung bình</option>
-        <option value="thap">Thấp</option>
-    </select>
-</div>
-```
-
-**Task 5.2: Hiển thị tất cả thông tin**
+Chúng ta cần tạo một hàm `renderList()` để tự động duyệt qua mảng `danhSachCongViec`, tạo mã HTML tương ứng cho từng công việc và cập nhật vào thẻ `<ul id="danh-sach-cong-viec">`.
 
 ```javascript
-const doUuTien = document.getElementById("do-uu-tien").value;
-
-ketQua.innerHTML = `
-    <h3>Thông tin công việc:</h3>
-    <p><strong>Tên:</strong> ${tenCongViec}</p>
-    <p><strong>Mô tả:</strong> ${moTa || "Không có mô tả"}</p>
-    <p><strong>Độ ưu tiên:</strong> ${doUuTien}</p>
-    <p><em>Thời gian: ${new Date().toLocaleString("vi-VN")}</em></p>
-`;
-```
-
-**Task 5.3: Thêm CSS cho select**
-
-```css
-select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+/**
+ * Duyệt mảng danh sách công việc và hiển thị ra UI
+ */
+function renderList() {
+    const listContainer = document.getElementById('danh-sach-cong-viec');
+    
+    // Xóa sạch danh sách cũ trước khi render lại
+    listContainer.innerHTML = '';
+    
+    // Nếu danh sách trống, hiển thị thông báo trống
+    if (danhSachCongViec.length === 0) {
+        listContainer.innerHTML = '<li class="empty-state"><p>Không có công việc nào!</p></li>';
+        return;
+    }
+    
+    // Duyệt qua từng công việc để xây dựng HTML
+    danhSachCongViec.forEach(congViec => {
+        const item = document.createElement('li');
+        item.className = `task-item ${congViec.hoanThanh ? 'completed' : ''}`;
+        item.dataset.id = congViec.id;
+        item.dataset.priority = congViec.uuTien;
+        
+        // Chuẩn bị nhãn độ ưu tiên hiển thị tương ứng
+        let nhanUuTien = 'Ưu tiên thấp';
+        if (congViec.uuTien === 'high') nhanUuTien = 'Ưu tiên cao';
+        else if (congViec.uuTien === 'medium') nhanUuTien = 'Ưu tiên trung bình';
+        
+        item.innerHTML = `
+            <div class="task-checkbox-wrapper">
+                <input type="checkbox" id="task-${congViec.id}" class="task-checkbox" ${congViec.hoanThanh ? 'checked' : ''}>
+                <label for="task-${congViec.id}" class="checkbox-custom"></label>
+            </div>
+            <div class="task-content">
+                <div class="task-title-row">
+                    <h4 class="task-title">${congViec.ten}</h4>
+                    <span class="badge-priority ${congViec.uuTien}">${nhanUuTien}</span>
+                </div>
+                <p class="task-desc">${congViec.moTa}</p>
+                <div class="task-meta">
+                    <span class="meta-item"><i data-lucide="calendar"></i> Hôm nay</span>
+                </div>
+            </div>
+            <div class="task-actions">
+                <button class="btn-action btn-edit" title="Sửa công việc" ${congViec.hoanThanh ? 'disabled' : ''}><i data-lucide="edit-3"></i></button>
+                <button class="btn-action btn-delete" title="Xóa công việc"><i data-lucide="trash-2"></i></button>
+            </div>
+        `;
+        
+        listContainer.appendChild(item);
+    });
+    
+    // Kích hoạt lại Lucide Icons để hiển thị các biểu tượng vừa sinh động
+    if (window.lucide) {
+        window.lucide.createIcons();
+    }
 }
+
+// Gọi hàm render lần đầu khi tải trang
+renderList();
 ```
 
 ---
 
-## ✅ Checklist hoàn thành
+### Task 4: Viết hàm cập nhật Tiến độ công việc (30 phút)
 
--   [ ] Đã tạo file `index.html` với form đầy đủ
--   [ ] Đã tạo file `styles.css` và style đẹp
--   [ ] Đã tạo file `main.js` và xử lý form submit
--   [ ] Form không reload trang khi submit
--   [ ] Lấy được giá trị từ input và hiển thị ra console
--   [ ] Hiển thị thông tin ra màn hình
--   [ ] Có validation (kiểm tra input rỗng)
--   [ ] Form reset sau khi submit
--   [ ] Thêm được tính năng độ ưu tiên
+Hãy viết thêm một hàm để tính toán tiến độ hoàn thành dựa trên mảng `danhSachCongViec` và cập nhật thông số lên thanh tiến độ của thanh Sidebar.
+
+```javascript
+/**
+ * Tính toán và cập nhật tiến độ công việc lên UI
+ */
+function capNhatTienDo() {
+    const total = danhSachCongViec.length;
+    const completed = danhSachCongViec.filter(cv => cv.hoanThanh).length;
+    
+    // Tính phần trăm
+    const phanTram = total === 0 ? 0 : Math.round((completed / total) * 100);
+    
+    // Cập nhật số liệu text
+    const textTienDo = document.querySelector('.stats-header strong');
+    if (textTienDo) textTienDo.textContent = `${phanTram}%`;
+    
+    const descTienDo = document.querySelector('.stats-desc');
+    if (descTienDo) {
+        descTienDo.textContent = `Hoàn thành ${completed} trong số ${total} công việc của bạn.`;
+    }
+    
+    // Cập nhật thanh tiến độ
+    const fillTienDo = document.querySelector('.progress-bar-fill');
+    if (fillTienDo) {
+        fillTienDo.style.width = `${phanTram}%`;
+    }
+}
+
+// Gọi cập nhật tiến độ sau khi render danh sách
+capNhatTienDo();
+```
 
 ---
 
-## 🧪 Checkpoint
 
-**Câu hỏi kiểm tra:**
-
-1. Làm thế nào để ngăn form reload trang khi submit?
-2. Cách lấy giá trị từ input text là gì?
-3. `event.preventDefault()` dùng để làm gì?
-4. Cách hiển thị thông tin ra màn hình HTML?
-
-**Đáp án:**
-
-1. Dùng `event.preventDefault()` trong event listener
-2. Dùng `.value` của element: `element.value`
-3. Ngăn hành vi mặc định của phần tử (form submit)
-4. Dùng `element.innerHTML` hoặc `element.textContent`
-
----
 
 ## 📝 Bài tập về nhà
 
-1. Thêm input "Ngày hết hạn" (date picker)
-2. Thêm input "Thời gian" (time picker)
-3. Hiển thị thông tin đầy đủ với format đẹp
-4. Thử nghiệm với các loại input khác (checkbox, radio)
+1. Hãy thêm 2 công việc nữa vào mảng `danhSachCongViec` trong file `main.js` của bạn và kiểm tra xem giao diện có tự động hiển thị thêm khi tải lại trang không.
+2. Đọc hiểu đoạn mã `capNhatTienDo()` và thử đổi trạng thái `hoanThanh` của một công việc trong mảng để kiểm tra xem phần trăm tiến độ có tự động tính toán lại khi tải lại trang không.
 
 ---
 
-## 💡 Tips
+## 🔗 Tài liệu tham khảo
 
--   Luôn dùng `trim()` để loại bỏ khoảng trắng thừa
--   Kiểm tra dữ liệu trước khi xử lý
--   Dùng `console.log()` để debug
--   Test trên nhiều trình duyệt khác nhau
-
----
-
-**Chúc bạn hoàn thành tốt! 🚀**
+- [JavaScript.info: Modifying the document](https://javascript.info/modifying-document)

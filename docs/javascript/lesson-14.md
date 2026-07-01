@@ -1,8 +1,8 @@
-# Buổi 14: Tách module code
+# Buổi 14: Tách Module code
 
 **Loại buổi**: Thực hành  
 **Thời lượng**: 120 phút  
-**Dự án**: To-Do App (đã có API từ buổi 12)
+**Dự án**: ZenTask (To-Do App) - Thực hiện tái cấu trúc (Refactoring) mã nguồn sang kiến trúc Module
 
 ---
 
@@ -10,542 +10,433 @@
 
 Sau buổi học này, bạn sẽ có thể:
 
-- ✅ Tách code thành các modules riêng biệt
-- ✅ Sử dụng ES6 Modules (import/export)
-- ✅ Tổ chức cấu trúc thư mục hợp lý
-- ✅ Refactor code để dễ bảo trì
-- ✅ Áp dụng kiến thức Module và ES6+ từ buổi 13
+- ✅ Phân rã tệp tin `main.js` cồng kềnh thành các tệp tin module chuyên biệt
+- ✅ Thiết lập lớp hằng số và các helper tiện ích sử dụng chung
+- ✅ Xây dựng Module API cô lập các tác vụ HTTP Requests
+- ✅ Xây dựng Module DOM quản lý hiển thị giao diện độc lập
+- ✅ Vận hành ứng dụng ZenTask hoàn chỉnh sử dụng mô hình ES6 Modules chạy trên trình duyệt
 
 ---
 
 ## 🧩 Task Project
 
-### Task 1: Tạo cấu trúc thư mục (10 phút)
+Chúng ta sẽ tiến hành bẻ nhỏ file `main.js` của Buổi 12 thành các file nằm trong thư mục `src/`.
 
-Tạo cấu trúc thư mục mới:
+### Task 1: Tạo `src/constants.js` và `src/utils.js` (20 phút)
 
-```
-todo-app/
-├── index.html
-├── styles.css
-├── src/
-│   ├── constants.js
-│   ├── utils.js
-│   ├── storage.js
-│   ├── api.js
-│   ├── dom.js
-│   └── main.js
-└── README.md
-```
-
-### Task 2: Tạo constants.js (10 phút)
-
+1. Tạo file `src/constants.js` để lưu trữ các hằng số cấu hình:
 ```javascript
-// constants.js
-export const STORAGE_KEY = 'todoApp_danhSachCongViec';
-export const API_BASE = 'http://localhost:3000/todos';
-
-export const SELECTORS = {
-    FORM: '#form-cong-viec',
-    INPUT_TEN: '#ten-cong-viec',
-    INPUT_MOTA: '#mo-ta',
-    DANH_SACH: '#danh-sach-cong-viec',
-    TONG_SO: '#tong-so',
-    TIM_KIEM: '#tim-kiem',
-    LOADING: '#loading'
-};
-
-export const TRANG_THAI = {
-    CHUA_LAM: 'chua-lam',
-    DANG_LAM: 'dang-lam',
-    HOAN_THANH: 'hoan-thanh'
-};
-
-export const CONFIG = {
-    MIN_TEN_LENGTH: 3,
-    MAX_TEN_LENGTH: 100,
-    MAX_MOTA_LENGTH: 500
-};
+// src/constants.js
+export const API_URL = 'http://localhost:3000/todos';
+export const THEME_KEY = 'zentask_theme';
 ```
 
-### Task 3: Tạo utils.js (15 phút)
-
+2. Tạo file `src/utils.js` chứa các hàm tiện ích dùng chung:
 ```javascript
-// utils.js
-import { CONFIG } from './constants.js';
-
+// src/utils.js
 /**
- * Kiểm tra tên công việc có hợp lệ không
+ * Hiển thị Toast Notification thông báo
  */
-export function kiemTraTenCongViec(ten) {
-    if (!ten || typeof ten !== 'string') {
-        return false;
-    }
+export function showToast(message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
     
-    const tenTrim = ten.trim();
-    if (tenTrim.length < CONFIG.MIN_TEN_LENGTH) {
-        return false;
-    }
+    const toast = document.createElement('div');
+    toast.style.background = type === 'success' ? '#10b981' : (type === 'error' ? '#ef4444' : '#3b82f6');
+    toast.style.color = '#fff';
+    toast.style.padding = '12px 24px';
+    toast.style.borderRadius = '8px';
+    toast.style.marginTop = '10px';
+    toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+    toast.style.transition = 'opacity 0.3s ease';
+    toast.textContent = message;
     
-    if (tenTrim.length > CONFIG.MAX_TEN_LENGTH) {
-        return false;
-    }
+    container.appendChild(toast);
     
-    return true;
-}
-
-/**
- * Kiểm tra mô tả có hợp lệ không
- */
-export function kiemTraMoTa(moTa) {
-    if (!moTa) return true;  // Mô tả là optional
-    
-    if (typeof moTa !== 'string') {
-        return false;
-    }
-    
-    return moTa.trim().length <= CONFIG.MAX_MOTA_LENGTH;
-}
-
-/**
- * Format ngày tháng
- */
-export function formatNgay(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('vi-VN', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
-}
-
-/**
- * Format thời gian đầy đủ
- */
-export function formatThoiGian(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleString('vi-VN');
-}
-
-/**
- * Debounce function
- */
-export function debounce(func, delay) {
-    let timeoutId;
-    return function(...args) {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => func.apply(this, args), delay);
-    };
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
 }
 ```
 
-### Task 4: Tạo storage.js (15 phút)
+---
 
+### Task 2: Tạo module `src/api.js` và `src/storage.js` (30 phút)
+
+1. Tạo module `src/api.js` chịu trách nhiệm gọi API server:
 ```javascript
-// storage.js
-import { STORAGE_KEY } from './constants.js';
+// src/api.js
+import { API_URL } from './constants.js';
 
-export const Storage = {
+export const api = {
     /**
-     * Lưu dữ liệu vào LocalStorage
+     * Tải danh sách công việc
      */
-    luu: function(data) {
-        try {
-            const jsonString = JSON.stringify(data);
-            localStorage.setItem(STORAGE_KEY, jsonString);
-            return true;
-        } catch (error) {
-            console.error('Lỗi lưu Storage:', error);
-            return false;
-        }
+    async getAll() {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error('Failed to fetch todos');
+        return response.json();
     },
     
     /**
-     * Lấy dữ liệu từ LocalStorage
+     * Thêm mới công việc
      */
-    lay: function(defaultValue = []) {
-        try {
-            const jsonString = localStorage.getItem(STORAGE_KEY);
-            if (!jsonString) {
-                return defaultValue;
-            }
-            return JSON.parse(jsonString);
-        } catch (error) {
-            console.error('Lỗi đọc Storage:', error);
-            localStorage.removeItem(STORAGE_KEY);
-            return defaultValue;
-        }
+    async create(todo) {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(todo)
+        });
+        if (!response.ok) throw new Error('Failed to create todo');
+        return response.json();
     },
     
     /**
-     * Xóa dữ liệu
+     * Cập nhật một phần công việc
      */
-    xoa: function() {
-        localStorage.removeItem(STORAGE_KEY);
+    async update(id, data) {
+        const response = await fetch(`${API_URL}/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (!response.ok) throw new Error('Failed to update todo');
+        return response.json();
     },
     
     /**
-     * Xóa tất cả
+     * Xóa công việc
      */
-    xoaTatCa: function() {
-        localStorage.clear();
+    async delete(id) {
+        const response = await fetch(`${API_URL}/${id}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) throw new Error('Failed to delete todo');
+        return true;
     }
 };
 ```
 
-### Task 5: Tạo api.js (20 phút)
-
+2. Tạo module `src/storage.js` quản lý cấu hình giao diện:
 ```javascript
-// api.js
-import { API_BASE } from './constants.js';
+// src/storage.js
+import { THEME_KEY } from './constants.js';
 
-export const API = {
-    async layDanhSach() {
-        try {
-            const response = await fetch(API_BASE);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Lỗi khi lấy danh sách:', error);
-            throw error;
-        }
+export const storage = {
+    getTheme() {
+        return localStorage.getItem(THEME_KEY) || 'dark';
     },
-    
-    async layMot(id) {
-        try {
-            const response = await fetch(`${API_BASE}/${id}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Lỗi khi lấy công việc:', error);
-            throw error;
-        }
-    },
-    
-    async tao(congViec) {
-        try {
-            const response = await fetch(API_BASE, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(congViec)
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Lỗi khi tạo công việc:', error);
-            throw error;
-        }
-    },
-    
-    async capNhat(id, congViec) {
-        try {
-            const response = await fetch(`${API_BASE}/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(congViec)
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Lỗi khi cập nhật:', error);
-            throw error;
-        }
-    },
-    
-    async xoa(id) {
-        try {
-            const response = await fetch(`${API_BASE}/${id}`, {
-                method: 'DELETE'
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return true;
-        } catch (error) {
-            console.error('Lỗi khi xóa:', error);
-            throw error;
-        }
+    setTheme(theme) {
+        localStorage.setItem(THEME_KEY, theme);
     }
 };
 ```
 
-### Task 6: Tạo dom.js (25 phút)
+---
+
+### Task 3: Tạo module `src/dom.js` (35 phút)
+
+Tạo module `src/dom.js` quản lý vẽ giao diện.
 
 ```javascript
-// dom.js
-import { SELECTORS, TRANG_THAI } from './constants.js';
-import { formatNgay } from './utils.js';
+// src/dom.js
 
-export const DOM = {
+export const dom = {
     /**
-     * Tạo element HTML
+     * Hiển thị loading spinner
      */
-    createElement: function(tag, className, textContent) {
-        const el = document.createElement(tag);
-        if (className) el.className = className;
-        if (textContent) el.textContent = textContent;
-        return el;
+    toggleLoading(show) {
+        const loader = document.getElementById('loading-indicator');
+        if (loader) {
+            loader.classList.toggle('hidden', !show);
+        }
     },
     
     /**
-     * Tạo element công việc
+     * Cập nhật phần trăm tiến độ ở Sidebar
      */
-    createTodoItem: function(congViec, index) {
-        const li = this.createElement('li', 'cong-viec-item');
-        li.setAttribute('data-id', congViec.id);
+    updateProgress(todos) {
+        const total = todos.length;
+        const completed = todos.filter(t => t.hoanThanh).length;
+        const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
         
-        const trangThaiClass = `trang-thai-${congViec.trangThai}`;
-        const isHoanThanh = congViec.trangThai === TRANG_THAI.HOAN_THANH;
+        const txt = document.querySelector('.stats-header strong');
+        if (txt) txt.textContent = `${percent}%`;
         
-        li.innerHTML = `
-            <div class="cong-viec-info">
-                <input 
-                    type="checkbox" 
-                    class="checkbox-hoan-thanh" 
-                    data-id="${congViec.id}"
-                    ${isHoanThanh ? 'checked' : ''}
-                >
-                <span class="stt">${index + 1}</span>
-                <div class="cong-viec-details">
-                    <h3 class="cong-viec-ten ${isHoanThanh ? 'completed' : ''}">${congViec.ten}</h3>
-                    ${congViec.moTa ? `<p class="cong-viec-mota">${congViec.moTa}</p>` : ''}
-                    <div class="cong-viec-meta">
-                        <span class="trang-thai ${trangThaiClass}">${congViec.trangThai}</span>
-                        <span class="ngay-tao">${formatNgay(congViec.ngayTao)}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="cong-viec-actions">
-                <button class="btn-sua" data-id="${congViec.id}">Sửa</button>
-                <button class="btn-xoa" data-id="${congViec.id}">Xóa</button>
-            </div>
-        `;
+        const desc = document.querySelector('.stats-desc');
+        if (desc) desc.textContent = `Hoàn thành ${completed} trong số ${total} công việc của bạn.`;
         
-        return li;
+        const fill = document.querySelector('.progress-bar-fill');
+        if (fill) fill.style.width = `${percent}%`;
     },
     
     /**
-     * Hiển thị danh sách
+     * Render danh sách công việc ra HTML
      */
-    renderList: function(danhSach) {
-        const container = document.querySelector(SELECTORS.DANH_SACH);
-        const tongSo = document.querySelector(SELECTORS.TONG_SO);
-        
+    renderList(todos, filterState) {
+        const container = document.getElementById('danh-sach-cong-viec');
         container.innerHTML = '';
-        tongSo.textContent = danhSach.length;
         
-        if (danhSach.length === 0) {
-            container.innerHTML = '<li class="empty">Chưa có công việc nào</li>';
+        // Lọc dữ liệu dựa theo filterState truyền vào
+        const filtered = todos.filter(todo => {
+            const khopTuKhoa = todo.ten.toLowerCase().includes(filterState.tuKhoa.toLowerCase()) ||
+                               todo.moTa.toLowerCase().includes(filterState.tuKhoa.toLowerCase());
+            
+            let khopTrangThai = true;
+            if (filterState.trangThai === 'pending') khopTrangThai = !todo.hoanThanh;
+            else if (filterState.trangThai === 'completed') khopTrangThai = todo.hoanThanh;
+            
+            let khopUuTien = true;
+            if (filterState.uuTien !== 'all') khopUuTien = todo.uuTien === filterState.uuTien;
+            
+            return khopTuKhoa && khopTrangThai && khopUuTien;
+        });
+        
+        if (filtered.length === 0) {
+            container.innerHTML = '<li class="empty-state" style="text-align:center; padding:30px; color:#94a3b8;"><p>Không có công việc nào!</p></li>';
             return;
         }
         
-        const fragment = document.createDocumentFragment();
-        danhSach.forEach((congViec, index) => {
-            fragment.appendChild(this.createTodoItem(congViec, index));
+        filtered.forEach(todo => {
+            const li = document.createElement('li');
+            li.className = `task-item ${todo.hoanThanh ? 'completed' : ''}`;
+            li.dataset.id = todo.id;
+            li.dataset.priority = todo.uuTien;
+            
+            const priorityText = todo.uuTien === 'high' ? 'Ưu tiên cao' : (todo.uuTien === 'medium' ? 'Ưu tiên trung bình' : 'Ưu tiên thấp');
+            
+            li.innerHTML = `
+                <div class="task-checkbox-wrapper">
+                    <input type="checkbox" id="task-${todo.id}" class="task-checkbox" ${todo.hoanThanh ? 'checked' : ''}>
+                    <label for="task-${todo.id}" class="checkbox-custom"></label>
+                </div>
+                <div class="task-content">
+                    <div class="task-title-row">
+                        <h4 class="task-title">${todo.ten}</h4>
+                        <span class="badge-priority ${todo.uuTien}">${priorityText}</span>
+                    </div>
+                    <p class="task-desc">${todo.moTa}</p>
+                    <div class="task-meta">
+                        <span class="meta-item"><i data-lucide="calendar"></i> Hôm nay</span>
+                    </div>
+                </div>
+                <div class="task-actions">
+                    <button class="btn-action btn-edit" title="Sửa công việc" ${todo.hoanThanh ? 'disabled' : ''}><i data-lucide="edit-3"></i></button>
+                    <button class="btn-action btn-delete" title="Xóa công việc"><i data-lucide="trash-2"></i></button>
+                </div>
+            `;
+            container.appendChild(li);
         });
         
-        container.appendChild(fragment);
-    },
-    
-    /**
-     * Hiển thị loading
-     */
-    showLoading: function(show) {
-        const loading = document.querySelector(SELECTORS.LOADING);
-        if (loading) {
-            loading.style.display = show ? 'block' : 'none';
-        }
-    },
-    
-    /**
-     * Hiển thị thông báo
-     */
-    showNotification: function(message, type = 'info') {
-        const notification = this.createElement('div', `notification notification-${type}`);
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.remove();
-        }, 3000);
+        if (window.lucide) window.lucide.createIcons();
     }
 };
 ```
 
-### Task 7: Refactor main.js (20 phút)
+---
+
+### Task 4: Viết lại file `src/main.js` làm Entry Point (35 phút)
+
+`main.js` sẽ kết hợp tất cả các module trên, quản lý State và lắng nghe các sự kiện.
 
 ```javascript
-// main.js
-import { SELECTORS, TRANG_THAI } from './constants.js';
-import { kiemTraTenCongViec } from './utils.js';
-import { Storage } from './storage.js';
-import { API } from './api.js';
-import { DOM } from './dom.js';
+// src/main.js
+import { api } from './api.js';
+import { storage } from './storage.js';
+import { dom } from './dom.js';
+import { showToast } from './utils.js';
 
-// State
+// State quản lý toàn cục
 let danhSachCongViec = [];
-let editId = null;
+let dangSuaId = null;
+let filterState = {
+    tuKhoa: '',
+    trangThai: 'all',
+    uuTien: 'all'
+};
 
-// ===== INIT =====
-async function init() {
-    await taiDanhSach();
-    setupEventListeners();
+// Hàm cập nhật giao diện tổng thể
+function refreshUI() {
+    dom.renderList(danhSachCongViec, filterState);
+    dom.updateProgress(danhSachCongViec);
 }
 
-// ===== LOAD DATA =====
-async function taiDanhSach() {
+// 1. Tải danh sách công việc ban đầu từ API
+async function initApp() {
+    dom.toggleLoading(true);
     try {
-        DOM.showLoading(true);
-        const data = await API.layDanhSach();
-        danhSachCongViec = data;
-        DOM.renderList(danhSachCongViec);
-        Storage.luu(danhSachCongViec);
-    } catch (error) {
-        console.error('Lỗi khi tải:', error);
-        danhSachCongViec = Storage.lay([]);
-        DOM.renderList(danhSachCongViec);
-        DOM.showNotification('Đang dùng dữ liệu local', 'warning');
+        danhSachCongViec = await api.getAll();
+        refreshUI();
+    } catch (e) {
+        console.error(e);
+        showToast('Lỗi kết nối API Server!', 'error');
     } finally {
-        DOM.showLoading(false);
+        dom.toggleLoading(false);
     }
 }
 
-// ===== CRUD OPERATIONS =====
-async function themCongViec(ten, moTa) {
-    if (!kiemTraTenCongViec(ten)) {
-        alert('Tên công việc không hợp lệ!');
-        return null;
+// 2. Xử lý Form Submit (Thêm / Sửa)
+const form = document.getElementById('form-cong-viec');
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const ten = document.getElementById('ten-cong-viec').value;
+    const desc = document.getElementById('mo-ta').value;
+    const priVal = document.getElementById('do-uu-tien').value;
+    const uuTien = priVal === '1' ? 'high' : (priVal === '2' ? 'medium' : 'low');
+    
+    dom.toggleLoading(true);
+    try {
+        if (dangSuaId) {
+            // Sửa
+            const updated = await api.update(dangSuaId, { ten, moTa: desc, uuTien });
+            danhSachCongViec = danhSachCongViec.map(cv => cv.id === dangSuaId ? updated : cv);
+            dangSuaId = null;
+            document.querySelector('#form-cong-viec button[type="submit"] span').textContent = 'Thêm công việc';
+            showToast('Đã lưu cập nhật!', 'success');
+        } else {
+            // Thêm mới
+            const created = await api.create({ ten, moTa: desc, uuTien, hoanThanh: false });
+            danhSachCongViec.unshift(created);
+            showToast('Đã thêm công việc!', 'success');
+        }
+        refreshUI();
+        form.reset();
+    } catch (err) {
+        showToast('Thao tác thất bại!', 'error');
+    } finally {
+        dom.toggleLoading(false);
+    }
+});
+
+// 3. Xử lý click và change trên List (Xóa, Sửa, Toggle hoàn thành)
+const list = document.getElementById('danh-sach-cong-viec');
+
+list.addEventListener('change', async function(e) {
+    if (e.target.classList.contains('task-checkbox')) {
+        const item = e.target.closest('.task-item');
+        const id = parseInt(item.dataset.id);
+        const index = danhSachCongViec.findIndex(cv => cv.id === id);
+        if (index === -1) return;
+        
+        const oldVal = danhSachCongViec[index].hoanThanh;
+        
+        // Optimistic UI update
+        danhSachCongViec[index].hoanThanh = !oldVal;
+        refreshUI();
+        
+        try {
+            await api.update(id, { hoanThanh: !oldVal });
+        } catch (err) {
+            // Rollback
+            danhSachCongViec[index].hoanThanh = oldVal;
+            refreshUI();
+            showToast('Không thể cập nhật API!', 'error');
+        }
+    }
+});
+
+list.addEventListener('click', async function(e) {
+    // Xóa
+    const btnDel = e.target.closest('.btn-delete');
+    if (btnDel) {
+        const item = btnDel.closest('.task-item');
+        const id = parseInt(item.dataset.id);
+        if (confirm('Bạn muốn xóa công việc này?')) {
+            dom.toggleLoading(true);
+            try {
+                await api.delete(id);
+                danhSachCongViec = danhSachCongViec.filter(cv => cv.id !== id);
+                refreshUI();
+                showToast('Đã xóa công việc.', 'info');
+            } catch (err) {
+                showToast('Không thể xóa!', 'error');
+            } finally {
+                dom.toggleLoading(false);
+            }
+        }
     }
     
-    const congViec = {
-        ten: ten.trim(),
-        moTa: moTa.trim(),
-        trangThai: TRANG_THAI.CHUA_LAM,
-        ngayTao: new Date().toISOString()
+    // Bắt đầu sửa
+    const btnEdit = e.target.closest('.btn-edit');
+    if (btnEdit) {
+        const item = btnEdit.closest('.task-item');
+        const id = parseInt(item.dataset.id);
+        const cv = danhSachCongViec.find(todo => todo.id === id);
+        if (cv) {
+            dangSuaId = id;
+            document.getElementById('ten-cong-viec').value = cv.ten;
+            document.getElementById('mo-ta').value = cv.moTa;
+            document.getElementById('do-uu-tien').value = cv.uuTien === 'high' ? '1' : (cv.uuTien === 'medium' ? '2' : '3');
+            document.querySelector('#form-cong-viec button[type="submit"] span').textContent = 'Cập nhật công việc';
+            document.querySelector('.task-form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
+
+// 4. Lọc tìm kiếm và Sidebar
+document.getElementById('tim-kiem').addEventListener('input', function(e) {
+    filterState.tuKhoa = e.target.value;
+    refreshUI();
+});
+
+const navItems = document.querySelectorAll('.nav-filters .nav-item');
+navItems.forEach(item => {
+    item.addEventListener('click', function() {
+        navItems.forEach(nav => nav.classList.remove('active'));
+        item.classList.add('active');
+        
+        const txt = item.querySelector('span').textContent;
+        filterState.trangThai = txt === 'Chờ xử lý' ? 'pending' : (txt === 'Đã hoàn thành' ? 'completed' : 'all');
+        refreshUI();
+    });
+});
+
+// 5. Khởi tạo Theme giao diện
+function initTheme() {
+    const themeBtn = document.querySelector('.btn-theme-toggle');
+    const body = document.body;
+    const currentTheme = storage.getTheme();
+    
+    const applyTheme = (theme) => {
+        const icon = themeBtn.querySelector('i');
+        if (theme === 'light') {
+            body.classList.add('light-theme');
+            if (icon) icon.setAttribute('data-lucide', 'sun');
+        } else {
+            body.classList.remove('light-theme');
+            if (icon) icon.setAttribute('data-lucide', 'moon');
+        }
+        if (window.lucide) window.lucide.createIcons();
     };
     
-    try {
-        DOM.showLoading(true);
-        const congViecMoi = await API.tao(congViec);
-        danhSachCongViec.push(congViecMoi);
-        DOM.renderList(danhSachCongViec);
-        Storage.luu(danhSachCongViec);
-        return congViecMoi;
-    } catch (error) {
-        DOM.showNotification('Không thể thêm công việc', 'error');
-        return null;
-    } finally {
-        DOM.showLoading(false);
-    }
+    applyTheme(currentTheme);
+    
+    themeBtn.addEventListener('click', function() {
+        const next = body.classList.contains('light-theme') ? 'dark' : 'light';
+        applyTheme(next);
+        storage.setTheme(next);
+    });
 }
 
-// ... các hàm khác tương tự ...
-
-// ===== EVENT LISTENERS =====
-function setupEventListeners() {
-    // Form submit
-    const form = document.querySelector(SELECTORS.FORM);
-    form.addEventListener('submit', handleFormSubmit);
-    
-    // Event delegation cho danh sách
-    const danhSach = document.querySelector(SELECTORS.DANH_SACH);
-    danhSach.addEventListener('click', handleListClick);
-    danhSach.addEventListener('change', handleListChange);
-}
-
-function handleFormSubmit(event) {
-    event.preventDefault();
-    const ten = document.querySelector(SELECTORS.INPUT_TEN).value;
-    const moTa = document.querySelector(SELECTORS.INPUT_MOTA).value;
-    
-    if (editId) {
-        capNhatCongViec(editId, ten, moTa);
-    } else {
-        themCongViec(ten, moTa);
-    }
-    
-    form.reset();
-    editId = null;
-}
-
-// ... các handlers khác ...
-
-// Khởi tạo khi DOM ready
-document.addEventListener('DOMContentLoaded', init);
-```
-
-### Task 8: Cập nhật index.html (5 phút)
-
-```html
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do App</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- ... HTML content ... -->
-    
-    <script type="module" src="src/main.js"></script>
-</body>
-</html>
+// Chạy ứng dụng
+initTheme();
+initApp();
 ```
 
 ---
 
-## ✅ Checklist hoàn thành
 
-- [ ] Đã tạo cấu trúc thư mục modules
-- [ ] Đã tách constants vào file riêng
-- [ ] Đã tách utils vào file riêng
-- [ ] Đã tách storage vào file riêng
-- [ ] Đã tách API vào file riêng
-- [ ] Đã tách DOM operations vào file riêng
-- [ ] Đã refactor main.js sạch sẽ
-- [ ] Đã cập nhật HTML để dùng modules
-- [ ] Code chạy được và không có lỗi
-
----
-
-## 🧪 Checkpoint
-
-**Câu hỏi:**
-
-1. Tại sao tách code thành modules?
-2. `export` và `import` dùng để làm gì?
-3. `type="module"` trong script tag làm gì?
-4. Lợi ích của việc tách constants?
-
-**Đáp án:**
-
-1. Dễ bảo trì, tái sử dụng, tổ chức code tốt hơn
-2. Xuất và nhập dữ liệu giữa các modules
-3. Báo cho browser biết đây là ES6 module
-4. Dễ thay đổi, tránh magic numbers, quản lý tập trung
-
----
 
 ## 📝 Bài tập về nhà
 
-1. Thêm module `events.js` để quản lý tất cả event listeners
-2. Thêm module `validation.js` để tập trung validation
-3. Tạo file `config.js` để quản lý cấu hình
-4. Thêm JSDoc comments đầy đủ cho tất cả functions
+1. Hãy thực hiện phân rã hoàn thiện file `main.js` cũ của bạn thành các file modules độc lập nằm trong thư mục `src/` theo đúng cấu trúc hướng dẫn.
+2. Kiểm tra xem ứng dụng của bạn có hoạt động bình thường sau khi tách không (lưu ý: bắt buộc phải mở ứng dụng thông qua Live Server trên VS Code).
+3. Đọc hiểu luồng dữ liệu khi người dùng bấm nút xóa: Từ sự kiện click ở `main.js`, gọi API xóa ở `api.js`, cập nhật mảng trong `main.js`, gọi vẽ lại UI ở `dom.js`.
 
 ---
 
-**Chúc bạn hoàn thành tốt! 🚀**
+## 🔗 Tài liệu tham khảo
+
+- [MDN: JavaScript modules - Import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+- [MDN: JavaScript modules - Export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)

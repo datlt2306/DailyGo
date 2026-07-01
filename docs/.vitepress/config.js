@@ -67,101 +67,101 @@ export default {
                     ],
                 },
                 {
-                    text: "Giai đoạn 1: Nền tảng JavaScript",
+                    text: "Giai đoạn 1: DOM & Sự kiện (Buổi 1-4)",
                     collapsed: false,
                     items: [
                         {
-                            text: "Buổi 1: Giới thiệu JavaScript & Biến, Kiểu dữ liệu",
+                            text: "Buổi 1: DOM Selection & Manipulation",
                             link: "/javascript/lesson-1",
                         },
                         {
-                            text: "Buổi 2: Toán tử & Chuỗi (String)",
+                            text: "Buổi 2: Tích hợp UI & Render Danh sách",
                             link: "/javascript/lesson-2",
                         },
                         {
-                            text: "Buổi 3: Cấu trúc điều khiển (if, switch, loop)",
+                            text: "Buổi 3: Sự kiện & Event Delegation",
                             link: "/javascript/lesson-3",
                         },
                         {
-                            text: "Buổi 4: Hàm, Scope & Hoisting",
+                            text: "Buổi 4: Tính năng Thêm & Xóa công việc",
                             link: "/javascript/lesson-4",
                         },
                     ],
                 },
                 {
-                    text: "Giai đoạn 2: DOM & Events",
+                    text: "Giai đoạn 2: Quản lý State & CRUD (Buổi 5-6)",
                     collapsed: false,
                     items: [
                         {
-                            text: "Buổi 5: DOM Manipulation",
+                            text: "Buổi 5: Mảng, Object & Tư duy State",
                             link: "/javascript/lesson-5",
                         },
                         {
-                            text: "Buổi 6: Events & Event Handling",
+                            text: "Buổi 6: Tính năng Sửa, Tìm kiếm & Lọc",
                             link: "/javascript/lesson-6",
                         },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 3: Web Storage & Dark Mode (Buổi 7-8)",
+                    collapsed: false,
+                    items: [
                         {
-                            text: "Buổi 7: Forms & Validation",
+                            text: "Buổi 7: Web Storage APIs & JSON",
                             link: "/javascript/lesson-7",
                         },
-                    ],
-                },
-                {
-                    text: "Giai đoạn 3: Array & Object",
-                    collapsed: false,
-                    items: [
                         {
-                            text: "Buổi 8: Array & Array Methods",
+                            text: "Buổi 8: Lưu trữ Todo & Đổi Theme",
                             link: "/javascript/lesson-8",
                         },
-                        {
-                            text: "Buổi 9: Object & JSON",
-                            link: "/javascript/lesson-9",
-                        },
                     ],
                 },
                 {
-                    text: "Giai đoạn 4: Storage & API",
+                    text: "Giai đoạn 4: Async & Mock API (Buổi 9-12)",
                     collapsed: false,
                     items: [
                         {
-                            text: "Buổi 10: LocalStorage & SessionStorage",
+                            text: "Buổi 9: Asynchronous JS & Fetch API",
+                            link: "/javascript/lesson-9",
+                        },
+                        {
+                            text: "Buổi 10: Mock API Setup & Tải dữ liệu",
                             link: "/javascript/lesson-10",
                         },
                         {
-                            text: "Buổi 11: Fetch API & Promise",
+                            text: "Buổi 11: HTTP Methods & Tối ưu UI",
                             link: "/javascript/lesson-11",
                         },
                         {
-                            text: "Buổi 12: Async/Await & Error Handling",
+                            text: "Buổi 12: Đồng bộ CRUD với Mock API",
                             link: "/javascript/lesson-12",
                         },
                     ],
                 },
                 {
-                    text: "Giai đoạn 5: ES6+ Nâng cao",
+                    text: "Giai đoạn 5: Code Organization (Buổi 13-14)",
                     collapsed: false,
                     items: [
                         {
-                            text: "Buổi 13: ES6+ Features (Arrow, Destructuring, Spread, Rest)",
+                            text: "Buổi 13: ES6 Modules & Kiến trúc",
                             link: "/javascript/lesson-13",
                         },
                         {
-                            text: "Buổi 14: Modules & Code Organization",
+                            text: "Buổi 14: Tách Module Code",
                             link: "/javascript/lesson-14",
                         },
                     ],
                 },
                 {
-                    text: "Giai đoạn 6: Project & Best Practices",
+                    text: "Giai đoạn 6: Tối ưu & Demo (Buổi 15-16)",
                     collapsed: false,
                     items: [
                         {
-                            text: "Buổi 15: Mini Project CRUD (Todo List / Quản lý Sinh viên)",
+                            text: "Buổi 15: Debugging & Performance",
                             link: "/javascript/lesson-15",
                         },
                         {
-                            text: "Buổi 16: Refactor, Debug & Best Practices + Presentation",
+                            text: "Buổi 16: Tích hợp Debounce, Deploy & Demo",
                             link: "/javascript/lesson-16",
                         },
                     ],

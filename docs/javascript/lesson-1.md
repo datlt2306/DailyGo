@@ -1,8 +1,8 @@
-# Buổi 1: Giới thiệu JavaScript, Biến, Kiểu dữ liệu & Toán tử
+# Buổi 1: DOM Selection, Traversal & Manipulation
 
 **Loại buổi**: Lý thuyết  
 **Thời lượng**: 120 phút  
-**Dự án**: Chưa có (chuẩn bị cho buổi 2)
+**Dự án**: ZenTask (To-Do App) - Chuẩn bị giao diện
 
 ---
 
@@ -10,448 +10,174 @@
 
 Sau buổi học này, bạn sẽ có thể:
 
-- ✅ Hiểu JavaScript là gì và vai trò của nó trong web development
-- ✅ Biết cách nhúng JavaScript vào HTML
-- ✅ Khai báo biến (var, let, const) và hiểu về Scope (phạm vi của biến)
-- ✅ Nhận biết các kiểu dữ liệu cơ bản
-- ✅ Sử dụng các toán tử cơ bản (số học, so sánh, logic)
+- ✅ Hiểu rõ cấu trúc cây DOM (Document Object Model)
+- ✅ Sử dụng thành thạo các bộ chọn DOM hiện đại (`querySelector`, `querySelectorAll`)
+- ✅ Di chuyển qua lại giữa các nút trên cây DOM (DOM Traversal)
+- ✅ Thao tác thay đổi nội dung, thuộc tính, class CSS và CSS Inline của các thẻ HTML
+- ✅ Ứng dụng để lấy tham chiếu các thành phần giao diện của dự án ZenTask
 
 ---
 
 ## 🧠 Nội dung chính
 
-### 1. JavaScript là gì?
+### 1. Cấu trúc cây DOM là gì?
 
-**JavaScript** là ngôn ngữ lập trình chạy trên trình duyệt, giúp trang web trở nên **tương tác** và **động** hơn.
+**DOM (Document Object Model)** là giao diện lập trình cho phép JavaScript tương tác và thay đổi cấu trúc, nội dung cũng như định dạng của tài liệu HTML.
 
-**Vai trò của JavaScript:**
-- HTML: Cấu trúc trang web (như khung xương)
-- CSS: Trang trí, làm đẹp (như quần áo)
-- JavaScript: Làm cho trang web "sống" (như thần kinh, cơ bắp)
+Khi trình duyệt tải một trang HTML, nó sẽ chuyển đổi mã nguồn thành một cấu trúc dạng cây gọi là **Cây DOM (DOM Tree)**:
+* Mỗi thẻ HTML là một **Element Node** (ví dụ: `<body>`, `<div>`, `<h1>`).
+* Các đoạn chữ bên trong thẻ là **Text Node**.
+* Các thuộc tính của thẻ là **Attribute Node** (ví dụ: `class`, `id`, `href`).
 
-**Ví dụ thực tế:**
-- Khi click nút "Thêm vào giỏ", JavaScript xử lý
-- Khi nhập tìm kiếm, JavaScript gợi ý kết quả
-- Khi form submit, JavaScript validate dữ liệu
+Đối tượng toàn cục `document` đại diện cho toàn bộ trang web và là điểm xuất phát để truy cập cây DOM.
 
-### 2. Nhúng JavaScript vào HTML
+---
 
-**Cách 1: Inline (trong thẻ HTML)**
-```html
-<button onclick="alert('Xin chào!')">Click me</button>
-```
+### 2. Truy xuất phần tử (DOM Selection)
 
-**Cách 2: Internal (trong thẻ `<script>`)**
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JavaScript Cơ bản</title>
-</head>
-<body>
-    <h1>Xin chào</h1>
-    
-    <script>
-        console.log('JavaScript đang chạy!');
-    </script>
-</body>
-</html>
-```
+Để làm việc với một thẻ HTML, bước đầu tiên là tìm và chọn nó bằng JavaScript.
 
-**Cách 3: External (file riêng) - KHUYẾN NGHỊ**
-```html
-<script src="main.js"></script>
-```
+#### 2.1. Các bộ chọn cổ điển (Ít dùng hơn)
+* `document.getElementById('id')`: Chọn 1 phần tử theo ID.
+* `document.getElementsByClassName('class-name')`: Chọn danh sách các phần tử theo Class (trả về một HTMLCollection).
 
-**Vị trí thẻ `<script>`:**
-- Thường đặt trước thẻ đóng `</body>` (tải nhanh hơn)
-- Hoặc trong `<head>` với `defer` hoặc `async`
+#### 2.2. Các bộ chọn hiện đại (Khuyến nghị dùng)
+Sử dụng cú pháp selector của CSS để tìm kiếm phần tử, rất linh hoạt và mạnh mẽ.
 
-### 3. Console - Công cụ debug quan trọng
-
-**Mở Console:**
-- Chrome/Edge: `F12` hoặc `Ctrl + Shift + I` (Windows) / `Cmd + Option + I` (Mac)
-- Tab: **Console**
-
-**Các lệnh console cơ bản:**
+* `document.querySelector('css-selector')`: Trả về phần tử **đầu tiên** khớp với bộ chọn. Nếu không tìm thấy, trả về `null`.
 ```javascript
-console.log('In ra màn hình');        // Hiển thị thông tin
-console.warn('Cảnh báo');              // Cảnh báo (màu vàng)
-console.error('Lỗi');                  // Lỗi (màu đỏ)
-console.table([1, 2, 3]);             // Hiển thị dạng bảng
+const appTitle = document.querySelector('.brand h2'); // Chọn thẻ h2 nằm trong class brand
+const taskForm = document.querySelector('#form-cong-viec'); // Chọn form theo ID
 ```
 
-### 4. Biến (Variables)
-
-**Biến** là nơi lưu trữ dữ liệu để tái sử dụng.
-
-**Cú pháp khai báo:**
+* `document.querySelectorAll('css-selector')`: Trả về **tất cả** các phần tử khớp với bộ chọn dưới dạng một `NodeList`.
 ```javascript
-let tenBien = 'Giá trị';
-```
-
-**Ba cách khai báo biến:**
-
-#### 4.1. `var` (Cũ - không nên dùng)
-```javascript
-var hoTen = 'Nguyễn Văn A';
-var hoTen = 'Nguyễn Văn B';  // ✅ Có thể khai báo lại
-hoTen = 'Nguyễn Văn C';      // ✅ Có thể gán lại
-```
-
-#### 4.2. `let` (Khuyến nghị cho biến thay đổi)
-```javascript
-let tuoi = 20;
-let tuoi = 21;  // ❌ Lỗi: Không thể khai báo lại
-tuoi = 21;      // ✅ Có thể gán lại
-```
-
-#### 4.3. `const` (Khuyến nghị cho hằng số)
-```javascript
-const PI = 3.14;
-PI = 3.15;      // ❌ Lỗi: Không thể gán lại
-const PI = 3.15; // ❌ Lỗi: Không thể khai báo lại
-```
-
-**Quy tắc đặt tên biến:**
-- Bắt đầu bằng chữ cái, `_`, hoặc `$`
-- Không được bắt đầu bằng số
-- Phân biệt hoa thường (`name` ≠ `Name`)
-- Đặt tên có ý nghĩa, dùng camelCase
-- ✅ Tốt: `hoTen`, `soLuongSinhVien`, `isActive`
-- ❌ Xấu: `a`, `x1`, `data`, `temp`
-
-**Ví dụ:**
-```javascript
-let hoTen = 'Nguyễn Văn A';
-let tuoi = 20;
-let laSinhVien = true;
-
-console.log(hoTen);  // Nguyễn Văn A
-console.log(tuoi);   // 20
-```
-
-#### 4.4. Phạm vi hoạt động (Scope) của biến
-
-Phạm vi hoạt động (Scope) quyết định nơi bạn có thể truy cập và sử dụng biến. Trong JavaScript, có 2 phạm vi cơ bản cần biết ở giai đoạn này:
-
-- **Global Scope (Toàn cục):** Biến khai báo bên ngoài tất cả các khối lệnh (như ở đầu file). Có thể truy cập và sử dụng ở bất kỳ đâu trong code.
-- **Block Scope (Khối lệnh):** Biến khai báo bên trong cặp dấu ngoặc nhọn `{}` (ví dụ: khối lệnh `if`, vòng lặp `for`, hoặc đơn giản là một cặp `{}` bao bọc độc lập). 
-  - Chỉ có `let` và `const` là tuân thủ **Block Scope** (không thể dùng bên ngoài `{}`).
-  - `var` **không** có block scope (có thể truy cập từ bên ngoài `{}`).
-
-**Ví dụ minh họa:**
-```javascript
-let globalVar = 'Tôi ở ngoài';
-
-{
-    let blockLet = 'Tôi ở trong block (let)';
-    const blockConst = 'Tôi ở trong block (const)';
-    var blockVar = 'Tôi ở trong block (var)';
-    
-    console.log(globalVar);   // ✅ OK: "Tôi ở ngoài"
-    console.log(blockLet);    // ✅ OK
-}
-
-console.log(blockVar);        // ✅ OK: "Tôi ở trong block (var)" (var lọt ra ngoài)
-console.log(blockLet);        // ❌ Lỗi: blockLet is not defined (let bị chặn lại)
-console.log(blockConst);      // ❌ Lỗi: blockConst is not defined (const bị chặn lại)
-```
-
-> [!IMPORTANT]
-> Đây là lý do chính mà bạn nên luôn dùng `let` và `const` thay vì `var`. Việc sử dụng `var` có thể làm rò rỉ biến ra ngoài khối lệnh, gây ra các lỗi logic trùng tên biến rất khó kiểm soát khi code của bạn lớn lên.
-
-### 5. Kiểu dữ liệu (Data Types)
-
-JavaScript có các kiểu dữ liệu cơ bản:
-
-#### 5.1. String (Chuỗi)
-```javascript
-let hoTen = 'Nguyễn Văn A';      // Dấu nháy đơn
-let diaChi = "123 Đường ABC";    // Dấu nháy kép
-let email = `test@example.com`;  // Template literal (ES6)
-
-// Nối chuỗi
-let fullName = hoTen + ' - ' + diaChi;
-console.log(fullName);  // "Nguyễn Văn A - 123 Đường ABC"
-```
-
-#### 5.2. Number (Số)
-```javascript
-let tuoi = 20;           // Số nguyên
-let diemSo = 8.5;        // Số thập phân
-let soAm = -10;          // Số âm
-
-// Phép toán
-let tong = tuoi + diemSo;  // 28.5
-let tich = tuoi * 2;       // 40
-```
-
-#### 5.3. Boolean (Đúng/Sai)
-```javascript
-let laSinhVien = true;   // Đúng
-let daTotNghiep = false; // Sai
-
-// Dùng trong điều kiện
-if (laSinhVien) {
-    console.log('Bạn là sinh viên');
-}
-```
-
-#### 5.4. Undefined (Chưa định nghĩa)
-```javascript
-let bienChuaGan;
-console.log(bienChuaGan);  // undefined
-
-let bienNull = undefined;
-console.log(bienNull);     // undefined
-```
-
-#### 5.5. Null (Rỗng)
-```javascript
-let rong = null;
-console.log(rong);  // null
-
-// null vs undefined
-console.log(null == undefined);      // true (so sánh lỏng)
-console.log(null === undefined);     // false (so sánh chặt)
-```
-
-**Kiểm tra kiểu dữ liệu:**
-```javascript
-console.log(typeof 'hello');      // "string"
-console.log(typeof 123);          // "number"
-console.log(typeof true);         // "boolean"
-console.log(typeof undefined);    // "undefined"
-console.log(typeof null);         // "object" (bug của JS)
-```
-
-### 6. Toán tử (Operators)
-
-#### 6.1. Toán tử số học
-```javascript
-let a = 10;
-let b = 3;
-
-console.log(a + b);  // 13 (Cộng)
-console.log(a - b);  // 7 (Trừ)
-console.log(a * b);  // 30 (Nhân)
-console.log(a / b);  // 3.333... (Chia)
-console.log(a % b);  // 1 (Chia lấy dư)
-console.log(a ** b); // 1000 (Lũy thừa - ES6)
-
-// Tăng/Giảm
-let x = 5;
-x++;      // x = 6 (tăng sau)
-++x;      // x = 7 (tăng trước)
-x--;      // x = 6 (giảm sau)
---x;      // x = 5 (giảm trước)
-```
-
-#### 6.2. Toán tử gán
-```javascript
-let x = 10;
-x += 5;   // x = x + 5 → 15
-x -= 3;   // x = x - 3 → 12
-x *= 2;   // x = x * 2 → 24
-x /= 4;   // x = x / 4 → 6
-x %= 5;   // x = x % 5 → 1
-```
-
-#### 6.3. Toán tử so sánh
-```javascript
-let a = 5;
-let b = '5';
-
-console.log(a == b);   // true (so sánh lỏng - chỉ so giá trị)
-console.log(a === b);  // false (so sánh chặt - so giá trị + kiểu)
-console.log(a != b);   // false
-console.log(a !== b);  // true
-
-console.log(5 > 3);    // true
-console.log(5 < 3);    // false
-console.log(5 >= 5);   // true
-console.log(5 <= 3);   // false
-```
-
-**⚠️ Lưu ý quan trọng:**
-- Luôn dùng `===` và `!==` thay vì `==` và `!=` (tránh lỗi)
-
-#### 6.4. Toán tử logic
-```javascript
-// AND (&&) - Tất cả đều đúng
-console.log(true && true);   // true
-console.log(true && false);  // false
-console.log(false && false); // false
-
-// OR (||) - Một trong hai đúng
-console.log(true || false);  // true
-console.log(false || false); // false
-
-// NOT (!) - Đảo ngược
-console.log(!true);   // false
-console.log(!false);  // true
-
-// Ví dụ thực tế
-let tuoi = 20;
-let coThe = true;
-
-if (tuoi >= 18 && coThe) {
-    console.log('Được phép tham gia');
-}
-```
-
-#### 6.5. Toán tử nối chuỗi
-```javascript
-let ho = 'Nguyễn';
-let ten = 'Văn A';
-let hoTen = ho + ' ' + ten;  // "Nguyễn Văn A"
-
-// Template literal (ES6) - KHUYẾN NGHỊ
-let hoTen2 = `${ho} ${ten}`;  // "Nguyễn Văn A"
-let thongBao = `Xin chào ${hoTen}, bạn ${tuoi} tuổi`;  // "Xin chào Nguyễn Văn A, bạn 20 tuổi"
+const allTaskItems = document.querySelectorAll('.task-item');
+// Duyệt qua NodeList bằng forEach
+allTaskItems.forEach(item => {
+    console.log(item);
+});
 ```
 
 ---
 
-## 💻 Ví dụ minh họa
+### 3. Duyệt cây DOM (DOM Traversal)
 
-### Ví dụ 1: Tính toán đơn giản
+Đôi khi ta cần đi từ một phần tử đã chọn để truy cập vào phần tử cha, con hoặc anh em của nó.
+
+* **Đi lên (Cha):** `parentElement`
 ```javascript
-// Khai báo biến
-let soThuNhat = 10;
-let soThuHai = 5;
-
-// Tính toán
-let tong = soThuNhat + soThuHai;
-let hieu = soThuNhat - soThuHai;
-let tich = soThuNhat * soThuHai;
-let thuong = soThuNhat / soThuHai;
-
-// In kết quả
-console.log('Tổng:', tong);      // 15
-console.log('Hiệu:', hieu);      // 5
-console.log('Tích:', tich);      // 50
-console.log('Thương:', thuong);  // 2
+const deleteButton = document.querySelector('.btn-delete');
+const taskItem = deleteButton.parentElement.parentElement; // Đi lên 2 cấp để lấy thẻ <li> chứa nút
 ```
-
-### Ví dụ 2: Thông tin sinh viên
+* **Đi xuống (Con):** `children` (trả về danh sách thẻ con), `firstElementChild`, `lastElementChild`
 ```javascript
-// Thông tin sinh viên
-const hoTen = 'Nguyễn Văn A';
-let tuoi = 20;
-const maSoSinhVien = 'SV001';
-let diemTrungBinh = 8.5;
-let laSinhVienNam1 = true;
-
-// Hiển thị thông tin
-console.log('Họ tên:', hoTen);
-console.log('Tuổi:', tuoi);
-console.log('Mã số:', maSoSinhVien);
-console.log('Điểm TB:', diemTrungBinh);
-console.log('Sinh viên năm 1:', laSinhVienNam1);
-
-// Tăng tuổi
-tuoi = tuoi + 1;
-console.log('Tuổi mới:', tuoi);  // 21
+const taskList = document.querySelector('.task-list');
+const firstTask = taskList.firstElementChild; // Phần tử con đầu tiên
 ```
-
-### Ví dụ 3: So sánh và điều kiện
+* **Đi ngang (Anh em):** `nextElementSibling` (phía sau), `previousElementSibling` (phía trước)
 ```javascript
-let diem = 8.5;
-
-// So sánh
-console.log('Điểm >= 8?', diem >= 8);        // true
-console.log('Điểm === 8.5?', diem === 8.5);  // true
-console.log('Điểm == "8.5"?', diem == "8.5"); // true (⚠️ nguy hiểm)
-console.log('Điểm === "8.5"?', diem === "8.5"); // false (✅ đúng)
-
-// Logic
-let coDiemTot = diem >= 8;
-let coDiemKha = diem >= 7 && diem < 8;
-let coDiemTrungBinh = diem < 7;
-
-console.log('Điểm tốt?', coDiemTot);  // true
+const currentTask = document.querySelector('.task-item');
+const nextTask = currentTask.nextElementSibling; // Phần tử kế tiếp
 ```
 
 ---
 
-## 🧪 Quiz cuối buổi (7 câu)
+### 4. Thao tác với DOM (DOM Manipulation)
 
-### Câu 1: Khai báo biến nào sau đây ĐÚNG?
-A. `let 1tuoi = 20;`  
-B. `let tuoi = 20;`  
-C. `let tuoi@name = 20;`  
-D. `let tuoi-name = 20;`
+#### 4.1. Thay đổi Nội dung
+* `textContent`: Lấy hoặc ghi đè nội dung thuần văn bản (an sau, chống XSS).
+* `innerHTML`: Lấy hoặc ghi đè nội dung bao gồm cả thẻ HTML (⚠️ nguy hiểm nếu nhận dữ liệu từ user vì có thể bị tấn công XSS).
+```javascript
+const title = document.querySelector('.brand h2');
+title.textContent = 'ZenTask Pro'; // Thay đổi chữ hiển thị
 
-**Đáp án: B**
+const resultContainer = document.querySelector('#ket-qua');
+resultContainer.innerHTML = '<span class="error">Đã xảy ra lỗi!</span>'; // Tạo cấu trúc thẻ mới
+```
 
-### Câu 2: Kết quả của `console.log(typeof null)` là gì?
-A. `"null"`  
-B. `"undefined"`  
-C. `"object"`  
-D. `"number"`
+#### 4.2. Thao tác Class CSS (classList)
+Thay vì sửa trực tiếp inline style, khuyến nghị viết các class CSS sẵn rồi bật/tắt class đó bằng JavaScript.
+* `.classList.add('className')`: Thêm class.
+* `.classList.remove('className')`: Xóa class.
+* `.classList.toggle('className')`: Bật/tắt class (nếu có thì xóa, chưa có thì thêm).
+* `.classList.contains('className')`: Kiểm tra xem phần tử có class đó không (trả về `true/false`).
 
-**Đáp án: C** (Bug của JavaScript)
+```javascript
+const taskItem = document.querySelector('.task-item');
+taskItem.classList.add('completed'); // Đánh dấu hoàn thành (chuyển CSS sang gạch ngang chữ)
+taskItem.classList.toggle('active');  // Toggle trạng thái hoạt động
+```
 
-### Câu 3: Kết quả của `5 == "5"` và `5 === "5"` là gì?
-A. `true, true`  
-B. `true, false`  
-C. `false, true`  
-D. `false, false`
+#### 4.3. Thay đổi CSS Inline (style property)
+Dùng khi cần thay đổi style động trực tiếp (ví dụ: tính toán kích thước, phần trăm tiến độ).
+* Cú pháp: `element.style.propertyName` (dạng camelCase thay vì dấu gạch ngang).
+```javascript
+const progressBar = document.querySelector('.progress-bar-fill');
+progressBar.style.width = '75%'; // Thay đổi chiều rộng thanh tiến độ
+progressBar.style.backgroundColor = '#10b981'; // Đổi màu nền sang xanh lá (background-color -> backgroundColor)
+```
 
-**Đáp án: B**
+#### 4.4. Thao tác Thuộc tính (Attributes) & Dataset
+* `getAttribute(name)`: Lấy giá trị thuộc tính.
+* `setAttribute(name, value)`: Thiết lập giá trị thuộc tính.
+* `dataset`: Truy cập các thuộc tính tùy biến dạng `data-*`. Trong dự án, ta dùng `data-id` hoặc `data-priority` trên thẻ `<li>` để xác định công việc.
+```javascript
+const task = document.querySelector('.task-item');
+// Lấy giá trị data-id
+const taskId = task.dataset.id; // tương đương data-id trong HTML
+const taskPriority = task.dataset.priority; // tương đương data-priority trong HTML
 
-### Câu 4: Toán tử nào dùng để chia lấy dư?
-A. `/`  
-B. `%`  
-C. `//`  
-D. `mod`
-
-**Đáp án: B**
-
-### Câu 5: Biến nào sau đây KHÔNG thể gán lại giá trị?
-A. `var x = 10;`  
-B. `let y = 10;`  
-C. `const z = 10;`  
-D. Tất cả đều có thể
-
-**Đáp án: C**
-
-### Câu 6: Kết quả của `true && false || true` là gì?
-A. `true`  
-B. `false`  
-C. `undefined`  
-D. Lỗi
-
-**Đáp án: A** (Thứ tự: `(true && false) || true` = `false || true` = `true`)
-
-### Câu 7: Cách nào sau đây là cách tốt nhất để nhúng JavaScript?
-A. Inline trong HTML  
-B. Internal trong thẻ `<script>`  
-C. External file riêng  
-D. Tất cả đều như nhau
-
-**Đáp án: C**
+// Thay đổi thuộc tính
+const inputField = document.querySelector('#ten-cong-viec');
+inputField.setAttribute('placeholder', 'Nhập công việc cần làm hôm nay...');
+```
 
 ---
 
-## 📝 Bài tập về nhà (chuẩn bị cho buổi 2)
+## 💻 Ví dụ minh họa: Phân tích và truy xuất giao diện ZenTask
 
-1. Tạo file HTML với thẻ `<script>` để chạy JavaScript
-2. Khai báo các biến lưu thông tin cá nhân (họ tên, tuổi, địa chỉ)
-3. Tính toán: Nhập 2 số, tính tổng, hiệu, tích, thương
-4. So sánh: Kiểm tra tuổi có >= 18 không
-5. In tất cả kết quả ra console
+Dựa trên cấu trúc HTML của template ZenTask, đoạn mã sau mô phỏng cách ta chọn và đọc trạng thái ban đầu của ứng dụng:
+
+```javascript
+// 1. Lấy thông tin tiêu đề ứng dụng
+const appName = document.querySelector('.brand h2').textContent;
+console.log('Tên ứng dụng:', appName);
+
+// 2. Lấy thông tin user đăng nhập
+const userName = document.querySelector('.user-name').textContent;
+console.log('Người dùng:', userName);
+
+// 3. Đếm số lượng công việc đang hiển thị trên giao diện
+const taskCount = document.querySelectorAll('.task-item').length;
+console.log(`Số công việc hiện tại: ${taskCount}`);
+
+// 4. Đọc ID và độ ưu tiên của công việc đầu tiên
+const firstTask = document.querySelector('.task-item');
+if (firstTask) {
+    const id = firstTask.dataset.id;
+    const priority = firstTask.dataset.priority;
+    console.log(`Task đầu tiên - ID: ${id}, Độ ưu tiên: ${priority}`);
+}
+```
+
+---
+
+
+
+## 📝 Bài tập về nhà
+
+Tạo một file nháp `app.js` nhúng vào template ZenTask và thực hiện các yêu cầu sau:
+1. Truy xuất form thêm công việc bằng bộ chọn ID.
+2. Truy xuất ô nhập tên công việc và in placeholder hiện tại của nó ra console.
+3. Thay đổi thanh tiến độ tuần này thành `80%` và đổi màu nền của nó sang màu cam (`#f59e0b`).
+4. Truy xuất tất cả các nút sửa (`.btn-edit`) và in ra màn hình console số lượng nút tìm thấy.
+5. Lấy ra tiêu đề công việc thứ 2 trong danh sách và in ra console.
 
 ---
 
 ## 🔗 Tài liệu tham khảo
 
-- [MDN: JavaScript Basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
-- [JavaScript.info: Variables](https://javascript.info/variables)
-
----
-
-**Chúc bạn học tập tốt! 🚀**
-
+- [MDN: Document Object Model](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+- [MDN: Locating DOM elements using selectors](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Locating_DOM_elements_using_selectors)
+- [JavaScript.info: Searching: getElement*, querySelector*](https://javascript.info/searching-elements-dom)

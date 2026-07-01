@@ -1,8 +1,8 @@
-# Buổi 12: Lấy dữ liệu từ API
+# Buổi 12: Đồng bộ CRUD với API
 
 **Loại buổi**: Thực hành  
 **Thời lượng**: 120 phút  
-**Dự án**: To-Do App (đã có LocalStorage từ buổi 10)
+**Dự án**: ZenTask (To-Do App) - Đồng bộ hóa toàn bộ chức năng Thêm, Sửa, Xóa và Check hoàn thành lên JSON Server
 
 ---
 
@@ -10,415 +10,215 @@
 
 Sau buổi học này, bạn sẽ có thể:
 
-- ✅ Setup JSON Server hoặc Mock API
-- ✅ Tích hợp Fetch API vào ứng dụng
-- ✅ Thực hiện CRUD operations qua API
-- ✅ Xử lý loading state và error handling
-- ✅ Đồng bộ dữ liệu giữa LocalStorage và API
-- ✅ Áp dụng kiến thức Fetch API và Async/Await từ buổi 11
+- ✅ Gửi yêu cầu HTTP POST để lưu thêm mới công việc lên API Server
+- ✅ Gửi yêu cầu HTTP PATCH để cập nhật trạng thái hoàn thành hoặc nội dung sửa đổi lên API Server
+- ✅ Gửi yêu cầu HTTP DELETE để xóa công việc khỏi API Server
+- ✅ Kết hợp nhuần nhuyễn hai chiến lược UI: Pessimistic cho các thao tác nhạy cảm (Xóa, Thêm) và Optimistic cho thao tác nhanh (Toggle hoàn thành)
 
 ---
 
 ## 🧩 Task Project
 
-### Task 1: Setup JSON Server (20 phút)
+Trong buổi này, chúng ta sẽ viết lại toàn bộ các hàm thao tác dữ liệu của `main.js` để kết nối trực tiếp với API Server. Hãy đảm bảo `json-server` đang chạy tại `http://localhost:3000`.
 
-**Cách 1: Sử dụng JSON Server (khuyến nghị)**
+### Task 1: Đồng bộ tính năng Thêm công việc (POST) (30 phút)
 
-```bash
-# Cài đặt JSON Server
-npm install -g json-server
-
-# Tạo file db.json
-# {
-#   "todos": [
-#     { "id": 1, "ten": "Công việc 1", "moTa": "Mô tả", "trangThai": "chua-lam" }
-#   ]
-# }
-
-# Chạy server
-json-server --watch db.json --port 3000
-```
-
-**Cách 2: Sử dụng Mock API (JSONPlaceholder)**
+Khi thêm công việc, ta sẽ gửi một request POST chứa thông tin công việc mới lên server. Chúng ta áp dụng chiến lược **Pessimistic UI**: Đợi server lưu thành công -> lấy đối tượng phản hồi từ server -> thêm vào State -> vẽ lại giao diện.
 
 ```javascript
-const API_BASE = 'https://jsonplaceholder.typicode.com/todos';
-```
-
-**Cách 3: Sử dụng Mock Service Worker (MSW)**
-
-### Task 2: Tạo API service (30 phút)
-
-Tạo file `api.js`:
-
-```javascript
-const API_BASE = 'http://localhost:3000/todos';  // JSON Server
-// Hoặc: const API_BASE = 'https://jsonplaceholder.typicode.com/todos';
-
-/**
- * API Service - Xử lý tất cả requests
- */
-const API = {
-    /**
-     * Lấy danh sách công việc
-     * @returns {Promise<Array>} Danh sách công việc
-     */
-    async layDanhSach() {
-        try {
-            const response = await fetch(API_BASE);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Lỗi khi lấy danh sách:', error);
-            throw error;
-        }
-    },
+// Cập nhật sự kiện submit form trong main.js
+formCongViec.addEventListener('submit', async function(event) {
+    event.preventDefault();
     
-    /**
-     * Lấy một công việc theo ID
-     * @param {number} id - ID công việc
-     * @returns {Promise<Object>} Công việc
-     */
-    async layMot(id) {
-        try {
-            const response = await fetch(`${API_BASE}/${id}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Lỗi khi lấy công việc:', error);
-            throw error;
-        }
-    },
+    const inputTen = document.getElementById('ten-cong-viec');
+    const selectUuTien = document.getElementById('do-uu-tien');
+    const textareaMoTa = document.getElementById('mo-ta');
     
-    /**
-     * Tạo công việc mới
-     * @param {Object} congViec - Dữ liệu công việc
-     * @returns {Promise<Object>} Công việc đã tạo
-     */
-    async tao(congViec) {
-        try {
-            const response = await fetch(API_BASE, {
+    const ten = inputTen.value;
+    const uuTien = selectUuTien.value === '1' ? 'high' : (selectUuTien.value === '2' ? 'medium' : 'low');
+    const moTa = textareaMoTa.value;
+    
+    if (!kiemTraTenCongViec(ten)) {
+        alert('Tên công việc không hợp lệ!');
+        return;
+    }
+    
+    toggleLoading(true);
+    
+    try {
+        if (dangSuaId !== null) {
+            // Xử lý CẬP NHẬT (SẼ VIẾT Ở TASK 2)
+            await capNhatCongViecAPI(dangSuaId, ten, moTa, uuTien);
+        } else {
+            // Xử lý THÊM MỚI (POST)
+            const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(congViec)
+                body: JSON.stringify({
+                    ten: ten.trim(),
+                    moTa: moTa.trim(),
+                    uuTien: uuTien,
+                    hoanThanh: false
+                })
             });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Lỗi khi tạo công việc:', error);
-            throw error;
+            
+            if (!response.ok) throw new Error('Không thể thêm công việc lên API');
+            
+            // Nhận đối tượng công việc đã có kèm ID do server tự sinh
+            const newTodo = await response.json();
+            
+            // Cập nhật State
+            danhSachCongViec.unshift(newTodo);
+            showToast('Đã thêm công việc thành công!', 'success');
         }
-    },
-    
-    /**
-     * Cập nhật công việc
-     * @param {number} id - ID công việc
-     * @param {Object} congViec - Dữ liệu mới
-     * @returns {Promise<Object>} Công việc đã cập nhật
-     */
-    async capNhat(id, congViec) {
-        try {
-            const response = await fetch(`${API_BASE}/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(congViec)
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Lỗi khi cập nhật:', error);
-            throw error;
-        }
-    },
-    
-    /**
-     * Xóa công việc
-     * @param {number} id - ID công việc
-     * @returns {Promise<boolean>} true nếu thành công
-     */
-    async xoa(id) {
-        try {
-            const response = await fetch(`${API_BASE}/${id}`, {
-                method: 'DELETE'
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return true;
-        } catch (error) {
-            console.error('Lỗi khi xóa:', error);
-            throw error;
-        }
+        
+        renderList();
+        capNhatTienDo();
+        formCongViec.reset();
+        
+    } catch (error) {
+        console.error('Lỗi khi submit form:', error);
+        showToast('Đã xảy ra lỗi kết nối!', 'error');
+    } finally {
+        toggleLoading(false);
     }
-};
+});
 ```
 
-### Task 3: Tích hợp API vào ứng dụng (35 phút)
+---
 
-Cập nhật `main.js`:
+### Task 2: Đồng bộ tính năng Sửa công việc (PATCH) (35 phút)
+
+Khi chỉnh sửa nội dung, ta sẽ gửi một PATCH request lên ID công việc tương ứng để cập nhật các trường thông tin thay đổi.
 
 ```javascript
-// Import API service
-// import { API } from './api.js';  // Nếu dùng modules
-
 /**
- * Tải danh sách từ API
+ * Gửi PATCH cập nhật thông tin công việc lên API
  */
-async function taiDanhSachTuAPI() {
-    try {
-        hienThiLoading(true);
-        const danhSach = await API.layDanhSach();
-        danhSachCongViec = danhSach;
-        hienThiDanhSach();
-        luuDanhSach();  // Lưu vào LocalStorage làm backup
-    } catch (error) {
-        console.error('Lỗi khi tải từ API:', error);
-        // Fallback: Tải từ LocalStorage
-        taiDanhSach();
-        hienThiThongBao('Không thể kết nối API. Đang dùng dữ liệu local.', 'warning');
-    } finally {
-        hienThiLoading(false);
-    }
+async function capNhatCongViecAPI(id, ten, moTa, uuTien) {
+    const response = await fetch(`${API_URL}/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            ten: ten.trim(),
+            moTa: moTa.trim(),
+            uuTien: uuTien
+        })
+    });
+    
+    if (!response.ok) throw new Error('Lỗi cập nhật API');
+    
+    const updatedTodo = await response.json();
+    
+    // Cập nhật State cục bộ
+    danhSachCongViec = danhSachCongViec.map(cv => cv.id === id ? updatedTodo : cv);
+    
+    // Reset trạng thái sửa
+    dangSuaId = null;
+    document.querySelector('#form-cong-viec button[type="submit"] span').textContent = 'Thêm công việc';
+    showToast('Đã lưu chỉnh sửa!', 'success');
 }
+```
 
-/**
- * Thêm công việc qua API
- */
-async function themCongViec(ten, moTa = '') {
-    // Validation
-    if (!kiemTraTenCongViec(ten)) {
-        alert('Tên công việc không hợp lệ!');
-        return null;
-    }
-    
-    const congViec = {
-        ten: ten.trim(),
-        moTa: moTa.trim(),
-        trangThai: 'chua-lam',
-        ngayTao: new Date().toISOString()
-    };
-    
-    try {
-        hienThiLoading(true);
-        const congViecMoi = await API.tao(congViec);
-        danhSachCongViec.push(congViecMoi);
-        hienThiDanhSach();
-        luuDanhSach();
-        alert('Đã thêm công việc!');
-        return congViecMoi;
-    } catch (error) {
-        console.error('Lỗi khi thêm:', error);
-        alert('Không thể thêm công việc. Vui lòng thử lại.');
-        return null;
-    } finally {
-        hienThiLoading(false);
-    }
-}
+---
 
-/**
- * Cập nhật công việc qua API
- */
-async function capNhatCongViec(id, ten, moTa) {
-    // Validation
-    if (!kiemTraTenCongViec(ten)) {
-        alert('Tên công việc không hợp lệ!');
-        return false;
-    }
+### Task 3: Đồng bộ tính năng Check Hoàn thành (Optimistic PATCH) (25 phút)
+
+Áp dụng chiến lược **Optimistic UI** cho nút Checkbox. Khi click sẽ toggle ngay lập tức, rồi gửi PATCH chạy ngầm, nếu lỗi thì rollback dữ liệu.
+
+```javascript
+// Thay đổi lại hàm toggleHoanThanh trong main.js
+async function toggleHoanThanh(id) {
+    const index = danhSachCongViec.findIndex(cv => cv.id === id);
+    if (index === -1) return;
     
-    const congViec = danhSachCongViec.find(cv => cv.id === id);
-    if (!congViec) {
-        alert('Không tìm thấy công việc!');
-        return false;
-    }
+    const statusCu = danhSachCongViec[index].hoanThanh;
     
-    const congViecMoi = {
-        ...congViec,
-        ten: ten.trim(),
-        moTa: moTa.trim()
-    };
+    // 1. Cập nhật UI ngay lập tức
+    danhSachCongViec[index].hoanThanh = !statusCu;
+    renderList();
+    capNhatTienDo();
     
+    // 2. Gửi PATCH ngầm
     try {
-        hienThiLoading(true);
-        const congViecCapNhat = await API.capNhat(id, congViecMoi);
+        const response = await fetch(`${API_URL}/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                hoanThanh: !statusCu
+            })
+        });
         
-        // Cập nhật trong mảng
-        const index = danhSachCongViec.findIndex(cv => cv.id === id);
-        if (index !== -1) {
-            danhSachCongViec[index] = congViecCapNhat;
-        }
+        if (!response.ok) throw new Error('PATCH Error');
         
-        hienThiDanhSach();
-        luuDanhSach();
-        alert('Đã cập nhật công việc!');
-        return true;
     } catch (error) {
-        console.error('Lỗi khi cập nhật:', error);
-        alert('Không thể cập nhật. Vui lòng thử lại.');
-        return false;
-    } finally {
-        hienThiLoading(false);
+        console.error('Lỗi khi toggle. Đang rollback...', error);
+        showToast('Không thể kết nối! Khôi phục trạng thái cũ.', 'error');
+        
+        // Rollback
+        danhSachCongViec[index].hoanThanh = statusCu;
+        renderList();
+        capNhatTienDo();
     }
 }
+```
 
+---
+
+### Task 4: Đồng bộ tính năng Xóa công việc (DELETE) (30 phút)
+
+Chúng ta áp dụng **Pessimistic UI** cho tính năng xóa: Hiện prompt xác nhận -> gửi DELETE request -> chờ server xác nhận xóa thành công -> lọc State -> render lại.
+
+```javascript
 /**
- * Xóa công việc qua API
+ * Gọi API DELETE để xóa công việc khỏi JSON Server
+ * @param {number} id - ID công việc cần xóa
  */
 async function xoaCongViec(id) {
-    if (!confirm('Bạn có chắc muốn xóa công việc này?')) {
-        return;
-    }
+    toggleLoading(true);
     
     try {
-        hienThiLoading(true);
-        await API.xoa(id);
+        const response = await fetch(`${API_URL}/${id}`, {
+            method: 'DELETE'
+        });
         
-        // Xóa khỏi mảng
+        if (!response.ok) throw new Error('DELETE Error');
+        
+        // Cập nhật State sau khi server xóa thành công
         danhSachCongViec = danhSachCongViec.filter(cv => cv.id !== id);
-        hienThiDanhSach();
-        luuDanhSach();
-        alert('Đã xóa công việc!');
+        
+        renderList();
+        capNhatTienDo();
+        showToast('Đã xóa công việc khỏi danh sách.', 'info');
+        
     } catch (error) {
         console.error('Lỗi khi xóa:', error);
-        alert('Không thể xóa. Vui lòng thử lại.');
+        showToast('Không thể xóa! Thử lại sau.', 'error');
     } finally {
-        hienThiLoading(false);
-    }
-}
-
-// Tải danh sách khi trang load
-document.addEventListener('DOMContentLoaded', function() {
-    taiDanhSachTuAPI();
-});
-```
-
-### Task 4: Thêm Loading State (15 phút)
-
-Thêm HTML:
-
-```html
-<div id="loading" class="loading" style="display: none;">
-    <div class="spinner"></div>
-    <p>Đang tải...</p>
-</div>
-```
-
-CSS:
-
-```css
-.loading {
-    text-align: center;
-    padding: 20px;
-}
-
-.spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #4CAF50;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 10px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-```
-
-JavaScript:
-
-```javascript
-function hienThiLoading(show) {
-    const loading = document.getElementById('loading');
-    if (loading) {
-        loading.style.display = show ? 'block' : 'none';
+        toggleLoading(false);
     }
 }
 ```
 
-### Task 5: Error Handling & Fallback (10 phút)
-
-```javascript
-/**
- * Hiển thị thông báo
- */
-function hienThiThongBao(message, type = 'info') {
-    // Tạo element thông báo
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    
-    document.body.appendChild(notification);
-    
-    // Tự động xóa sau 3 giây
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
-}
-
-// Xử lý lỗi mạng
-window.addEventListener('online', function() {
-    hienThiThongBao('Đã kết nối lại internet!', 'success');
-    taiDanhSachTuAPI();
-});
-
-window.addEventListener('offline', function() {
-    hienThiThongBao('Mất kết nối internet. Đang dùng dữ liệu local.', 'warning');
-});
-```
-
 ---
 
-## ✅ Checklist hoàn thành
 
-- [ ] Đã setup JSON Server hoặc Mock API
-- [ ] Đã tạo API service với đầy đủ CRUD operations
-- [ ] Đã tích hợp API vào ứng dụng
-- [ ] Đã thêm loading state khi gọi API
-- [ ] Đã xử lý lỗi và fallback về LocalStorage
-- [ ] Đã test tất cả các chức năng (thêm, sửa, xóa, lấy)
-
----
-
-## 🧪 Checkpoint
-
-**Câu hỏi:**
-
-1. Tại sao cần `Content-Type: application/json` trong header?
-2. `response.ok` kiểm tra gì?
-3. Tại sao dùng `finally` trong try/catch?
-4. Fallback về LocalStorage khi nào?
-
-**Đáp án:**
-
-1. Báo cho server biết dữ liệu gửi lên là JSON
-2. Kiểm tra status code trong khoảng 200-299
-3. Code trong `finally` luôn chạy, dù có lỗi hay không
-4. Khi không kết nối được API hoặc API lỗi
-
----
 
 ## 📝 Bài tập về nhà
 
-1. Thêm tính năng "Retry" khi API lỗi
-2. Thêm tính năng "Sync" để đồng bộ LocalStorage với API
-3. Thêm timeout cho các request (5 giây)
-4. Thêm pagination nếu danh sách quá dài
+1. Hãy tích hợp hoàn thiện cả 4 thao tác API (POST, PATCH, DELETE, Toggle) vào ứng dụng ZenTask của bạn.
+2. Mở file `db.json` trên VS Code song song với màn hình trình duyệt. Hãy thực hiện thêm, sửa, xóa trên giao diện và quan sát xem nội dung file `db.json` có tự động thay đổi theo thời gian thực hay không.
+3. Thử tạo độ trễ mạng giả lập trên JSON Server bằng cách chạy lệnh: `json-server --watch db.json --delay 2000` (delay 2 giây). Hãy click toggle checkbox để kiểm tra xem trải nghiệm Optimistic UI mượt mà thế nào, và click nút xóa để thấy Pessimistic UI hiển thị loading ra sao.
 
 ---
 
-**Chúc bạn hoàn thành tốt! 🚀**
+## 🔗 Tài liệu tham khảo
+
+- [JSON Server Options](https://github.com/typicode/json-server#options)
+- [MDN: Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
