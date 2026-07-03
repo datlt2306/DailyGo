@@ -10,6 +10,18 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    Source[Mã nguồn .vue, .js] -->|npm run build| Bundler[Vite Bundler]
+    Bundler -->|Tối ưu, Minify| Dist[Thư mục dist: JS/CSS gọn nhẹ]
+    Dist -->|Deploy| Host[Vercel, Netlify, Github Pages]
+```
+
+
+---
+
 ### 1. Tối ưu hóa hiệu năng Vue App trước khi phát hành
 - **Lazy Loading Routes (Định tuyến tải chậm)**:
   - Thay vì import tất cả các View ngay khi khởi động trang web (khiến file bundle ban đầu rất nặng), ta sử dụng Dynamic Import để chỉ tải file js của trang đó khi người dùng click truy cập.
@@ -61,6 +73,26 @@ Mỗi nhóm hoặc cá nhân sẽ có 10-15 phút để thuyết trình dự án
 3. Kiểm tra thư mục `/dist` vừa được tạo ra. Đảm bảo cấu trúc chứa file `index.html` và các thư mục assets chứa js/css được mã hóa nén.
 4. Chuẩn bị slide báo cáo, đẩy toàn bộ mã nguồn lên GitHub repository cá nhân và nộp liên kết dự án hoàn chỉnh.
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```bash
+# Bước 1: Build ứng dụng cho môi trường Production
+npm run build
+
+# Bước 2: Chạy thử bản build ở local
+npm run preview
+
+# Bước 3: Deploy lên Vercel bằng CLI
+npm install -g vercel
+vercel login
+vercel --prod
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -69,19 +101,22 @@ Mỗi nhóm hoặc cá nhân sẽ có 10-15 phút để thuyết trình dự án
 - B. `npm run build`
 - C. `npm run test`
 - D. `npm start`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **2. Để thực hiện kỹ thuật Lazy Loading cho các component View trong Vue Router, ta sử dụng cú pháp import nào?**
 - A. `import ViewName from 'path'`
 - B. `const ViewName = () => import('path')`
 - C. `require('path')`
 - D. `loadComponent('path')`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Áp dụng lazy loading cho toàn bộ các route của ứng dụng.
-- [ ] Chạy build thành công dự án bằng lệnh `npm run build` không báo lỗi.
-- [ ] Chuẩn bị đầy đủ mã nguồn (đẩy lên GitHub) và slide thuyết trình dự án.
-- [ ] Hoàn thiện 100% các chức năng cốt lõi của Dự án cuối khóa Vanguard Store.

@@ -10,6 +10,18 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    A[Condition: v-if] -->|True| B[Dựng phần tử vào DOM]
+    A -->|False| C[Hủy phần tử hoàn toàn khỏi DOM]
+    D[Tối ưu hóa List: v-for] -->|Lặp mảng dữ liệu| E[Yêu cầu :key độc lập để nhận diện phần tử khi cập nhật]
+```
+
+
+---
+
 ### 1. Conditional Rendering (`v-if` vs `v-show`)
 - **`v-if`**: Bổ sung hoặc gỡ bỏ phần tử hoàn toàn khỏi cây DOM thật dựa trên điều kiện.
 - **`v-show`**: Luôn render và giữ phần tử trong DOM, chỉ thay đổi thuộc tính CSS `display: none` để ẩn/hiện.
@@ -75,6 +87,49 @@ const products = ref([
 6. Sử dụng `computed` để tạo danh sách `filteredProducts` chỉ hiển thị các sản phẩm thuộc danh mục `selectedCategory` (nếu khác 'Tất cả').
 7. Tạo các tab lựa chọn danh mục (Tất cả, Âm thanh, Thời trang, Công nghệ, Phụ kiện), khi click sẽ thay đổi `selectedCategory` và xem giao diện thay đổi tự động.
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```vue
+<script setup>
+import { ref, computed } from 'vue'
+
+const currentCategory = ref('all')
+const products = ref([
+  { id: 1, name: 'Tai nghe Wireless S1', price: 1500000, category: 'audio' },
+  { id: 2, name: 'Bàn phím cơ K2', price: 2500000, category: 'keyboard' },
+  { id: 3, name: 'Chuột Gaming G3', price: 900000, category: 'mouse' },
+  { id: 4, name: 'Loa Bluetooth B4', price: 3200000, category: 'audio' }
+])
+
+const filteredProducts = computed(() => {
+  if (currentCategory.value === 'all') return products.value
+  return products.value.filter(p => p.category === currentCategory.value)
+})
+</script>
+
+<template>
+  <div class="p-6">
+    <div class="filters flex gap-4 mb-6">
+      <button @click="currentCategory = 'all'" :class="{ 'font-bold': currentCategory === 'all' }">Tất cả</button>
+      <button @click="currentCategory = 'audio'" :class="{ 'font-bold': currentCategory === 'audio' }">Âm thanh</button>
+      <button @click="currentCategory = 'keyboard'" :class="{ 'font-bold': currentCategory === 'keyboard' }">Bàn phím</button>
+    </div>
+
+    <ul v-if="filteredProducts.length > 0">
+      <li v-for="product in filteredProducts" :key="product.id" class="p-2 border-b">
+        {{ product.name }} - {{ product.price.toLocaleString() }}đ
+      </li>
+    </ul>
+    <p v-else class="text-gray-500">Không có sản phẩm nào thuộc nhóm này.</p>
+  </div>
+</template>
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -83,25 +138,33 @@ const products = ref([
 - B. Khi cần ẩn hiện phần tử liên tục và tần suất cao.
 - C. Khi muốn bảo mật thông tin nhạy cảm của người dùng.
 - D. Khi dùng với danh sách `v-for`.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **2. Điểm đặc trưng nhất của `v-for` trong Vue là gì?**
 - A. Tự động sắp xếp mảng.
 - B. Phải đi kèm với thuộc tính `:key` duy nhất để tối ưu hóa việc quản lý DOM của Vue.
 - C. Chỉ hoạt động với thẻ `<li>`.
 - D. Không thể đi kèm điều kiện `v-if` trên cùng 1 thẻ.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **3. Khẳng định nào sau đây là ĐÚNG về sự khác biệt giữa `v-if` và `v-show`?**
 - A. `v-if` chỉ ẩn phần tử bằng CSS display: none.
 - B. `v-if` gỡ bỏ hoàn toàn phần tử khỏi DOM, còn `v-show` chỉ dùng CSS để ẩn/hiện.
 - C. Cả hai đều gỡ bỏ phần tử khỏi DOM.
 - D. Không có sự khác biệt về hiệu năng.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Dùng `v-for` kết hợp `:key` để hiển thị danh sách sản phẩm động.
-- [ ] Lọc được danh sách sản phẩm theo danh mục thông qua `computed`.
-- [ ] Hiển thị thông báo bằng `v-if` khi không tìm thấy sản phẩm trong danh mục được lọc.

@@ -10,6 +10,18 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    URL[Người dùng gõ URL] -->|Khớp cấu hình| Router[Vue Router]
+    Router -->|render component tương ứng| View[RouterView]
+    Guard[beforeEach Guard] -->|Kiểm tra Auth| Redirect[Đăng nhập hoặc Chuyển hướng]
+```
+
+
+---
+
 ### 1. Cấu hình cơ bản Vue Router
 Thư viện `vue-router` quản lý ánh xạ từ các URL trên trình duyệt sang các Component của Vue.
 
@@ -91,6 +103,47 @@ function goBackHome() {
 5. Tại `ProductCard.vue`, thay thế link chi tiết sản phẩm bằng `<router-link :to="'/product/' + product.id">`.
 6. Tại trang chi tiết `ProductDetailView.vue`, dùng `useRoute()` lấy ID sản phẩm từ URL và hiển thị ra màn hình thông tin ID tương ứng.
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```javascript
+// src/router/index.js
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+import CartView from '../views/CartView.vue'
+import LoginView from '../views/LoginView.vue'
+
+const routes = [
+  { path: '/', component: HomeView },
+  { path: '/login', component: LoginView },
+  { 
+    path: '/cart', 
+    component: CartView,
+    meta: { requiresAuth: true }
+  }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
+  if (to.meta.requiresAuth && !isLoggedIn) {
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+export default router
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -99,25 +152,33 @@ function goBackHome() {
 - B. `<router-view>`
 - C. `<router-content>`
 - D. `<router-page>`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **2. Để khai báo một route động nhận tham số ID sản phẩm, định dạng `path` sẽ như thế nào?**
 - A. `path: '/product?id'`
 - B. `path: '/product/id'`
 - C. `path: '/product/:id'`
 - D. `path: '/product/{id}'`
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 **3. Hook nào được sử dụng để lấy thông tin chi tiết của đường dẫn hiện tại (như params, query)?**
 - A. `useRouter()`
 - B. `useRoute()`
 - C. `useParams()`
 - D. `useQuery()`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Cấu hình thành công file `router/index.js` và liên kết 3 trang chính.
-- [ ] Lấy chính xác tham số ID sản phẩm động trên URL trang chi tiết.
-- [ ] Chuyển trang thành công bằng thẻ `<router-link>` và không bị tải lại trang.

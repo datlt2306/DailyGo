@@ -10,6 +10,18 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    A[Khởi tạo: setup chạy] --> B[Mounted: onMounted - DOM sẵn sàng]
+    B -->|User tương tác| C[Updated: Trạng thái thay đổi]
+    B --> D[Unmounted: onUnmounted - Dọn dẹp bộ nhớ/Events]
+```
+
+
+---
+
 ### 1. Vòng đời của Component (Lifecycle Hooks)
 - **`onMounted()`**: Chạy ngay sau khi component được chèn vào DOM thật. Đây là nơi tốt nhất để gọi API, tương tác DOM hoặc khởi tạo thư viện icons, slide.
 - **`onUnmounted()`**: Chạy sau khi component bị gỡ bỏ khỏi DOM. Dùng để dọn dẹp các timer, sự kiện chạy ngầm.
@@ -66,6 +78,38 @@ onMounted(() => {
    - Trên template, gắn thuộc tính `ref="emailField"` vào ô nhập liệu Email đăng nhập.
    - Trong `onMounted()`, gọi `emailField.value.focus()` để tự động kích hoạt con trỏ chuột vào ô nhập email giúp nâng cao trải nghiệm người dùng (UX).
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```vue
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const inputRef = ref(null)
+
+onMounted(() => {
+  if (inputRef.value) {
+    inputRef.value.focus()
+  }
+  console.log("Component đã được gắn kết!")
+})
+
+onUnmounted(() => {
+  console.log("Component dọn dẹp trước khi hủy!")
+})
+</script>
+
+<template>
+  <div class="p-6">
+    <input ref="inputRef" type="text" placeholder="Tự động focus khi vào trang..." class="border p-2" />
+  </div>
+</template>
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -74,25 +118,33 @@ onMounted(() => {
 - B. `onMounted()`
 - C. `onUpdated()`
 - D. `onRendered()`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **2. Để liên kết biến ref trong script setup với thẻ `<input ref="passwordField">` ta làm thế nào?**
 - A. `const passwordField = ref(null)`
 - B. `const ref = passwordField`
 - C. `const myInput = ref('passwordField')`
 - D. `document.querySelector('input')`
-*Đáp án đúng: **A**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **A**.*
+</details>
 
 **3. Tại thời điểm nào thì thuộc tính `.value` của một Template Ref sẽ khác `null`?**
 - A. Ngay khi khai báo biến.
 - B. Khi component đã hoàn thành Mounted (`onMounted`).
 - C. Khi người dùng click chuột.
 - D. Khi component bị Unmounted.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Tự động focus thành công vào ô nhập email của form đăng nhập khi load trang.
-- [ ] Khởi chạy thành công Lucide Icons trong hook `onMounted`.
-- [ ] Không hiển thị toàn bộ code HTML thô của file `login.html` trong bài giảng.

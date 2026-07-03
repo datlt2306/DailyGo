@@ -10,6 +10,19 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    Client[Vue App Axios Client] -->|GET /todos| API[json-server Mock API]
+    API -->|Phản hồi 200 OK| Client
+    Client -->|POST /todos| API
+    API -->|Phản hồi 201 Created| Client
+```
+
+
+---
+
 ### 1. JSON-Server là gì?
 - Giả lập REST API chạy trên local từ tệp `db.json` với đầy đủ các phương thức HTTP chuẩn: GET (lấy dữ liệu), POST (thêm mới), PUT/PATCH (cập nhật), DELETE (xóa).
 
@@ -62,6 +75,35 @@ async function fetchProducts() {
 5. Gắn sự kiện click vào nút "Xóa" gọi phương thức DELETE API để xóa sản phẩm khỏi JSON-Server, sau đó lọc cập nhật lại state cục bộ để biến mất khỏi bảng giao diện.
 6. (Nâng cao) Tạo trang `AdminProductCreateView.vue` dựa trên [admin-product-create.html](https://letrongdat.vercel.app/vuejs/templates/admin-product-create.html), cho phép điền thông tin và gọi POST API để thêm mới sản phẩm vào database.
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```javascript
+// src/services/api.js
+import axios from 'axios'
+
+const apiClient = axios.create({
+  baseURL: 'http://localhost:3000',
+  headers: { 'Content-Type': 'application/json' }
+})
+
+export const productService = {
+  getAll() {
+    return apiClient.get('/products')
+  },
+  create(product) {
+    return apiClient.post('/products', product)
+  },
+  delete(id) {
+    return apiClient.delete(`/products/${id}`)
+  }
+}
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -70,25 +112,33 @@ async function fetchProducts() {
 - B. `npx json-server --watch db.json --port 3000`
 - C. `npm run json-server`
 - D. `node server.js`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **2. Đoạn mã giao diện bảng quản trị danh sách sản phẩm nằm trong file nào của thư mục templates?**
 - A. `admin-dashboard.html`
 - B. `admin-product-list.html`
 - C. `admin-product-create.html`
 - D. `admin-product-edit.html`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **3. Để thêm mới sản phẩm vào database qua REST API, ta gọi phương thức HTTP nào qua Axios?**
 - A. GET
 - B. POST
 - C. PUT
 - D. DELETE
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Lấy thành công dữ liệu sản phẩm từ JSON-Server hiển thị lên trang chủ.
-- [ ] Xây dựng hoàn chỉnh trang quản trị bảng danh sách sản phẩm Admin có tính năng Xóa kết nối API.
-- [ ] Sử dụng đường dẫn liên kết file HTML mẫu thay vì copy code thô vào bài học.

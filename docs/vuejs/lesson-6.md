@@ -9,6 +9,17 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    Parent[Component Cha] -->|Nhận sự kiện: @delete-item='handleDelete'| Child[Component Con]
+    Child -->|Kích hoạt sự kiện: emit'delete-item', id| Parent
+```
+
+
+---
+
 ### 1. Custom Events (Truyền thông tin con lên cha)
 - Để giao tiếp ngược lên cha, component con phát ra (emit) một sự kiện kèm theo dữ liệu payload (nếu có).
 - Trong `<script setup>`, dùng macro `defineEmits()` để định nghĩa các event mà component có thể phát ra.
@@ -71,6 +82,30 @@ const currentTheme = inject('globalTheme')
    - Import và render danh sách `<CartItem v-for="prod in cartList" :key="prod.id" :item="prod" @remove-item="removeItemFromList" />`.
    - Viết hàm `removeItemFromList(id)` để lọc bỏ phần tử có ID tương ứng ra khỏi giỏ hàng thực tế.
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```vue
+<!-- components/CartItem.vue -->
+<script setup>
+defineProps({
+  item: Object
+})
+const emit = defineEmits(['delete-item'])
+</script>
+
+<template>
+  <div class="flex justify-between items-center p-4 border-b">
+    <span>{{ item.name }}</span>
+    <button @click="emit('delete-item', item.id)" class="text-red-500">Xóa</button>
+  </div>
+</template>
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -79,25 +114,33 @@ const currentTheme = inject('globalTheme')
 - B. `defineEmits()`
 - C. `defineProps()`
 - D. `fireEvents()`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **2. Đoạn mã HTML nút Xóa sản phẩm nằm ở khoảng dòng nào trong cart.html?**
 - A. Dòng 35 đến 45.
 - B. Dòng 88 đến 92.
 - C. Dòng 94 đến 97.
 - D. Dòng 137 đến 165.
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 **3. Để bắt sự kiện click và truyền ID sản phẩm lên cha, component con sử dụng cú pháp nào?**
 - A. `emit('remove-item', id)`
 - B. `this.$emit('remove-item')`
 - C. `send('remove-item')`
 - D. `dispatch('remove-item')`
-*Đáp án đúng: **A**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **A**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Tách thành công component con `CartItem.vue` từ file giao diện giỏ hàng mẫu.
-- [ ] Phát sự kiện `remove-item` kèm theo ID sản phẩm lên component cha khi click nút Xóa.
-- [ ] Sử dụng link file HTML mẫu thay vì ghi đè toàn bộ code HTML thô vào bài học.

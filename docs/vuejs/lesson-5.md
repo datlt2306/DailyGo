@@ -10,6 +10,17 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    Parent[Component Cha: App.vue] -->|Gửi dữ liệu qua Props: :product='data'| Child[Component Con: ProductCard.vue]
+    Child -->|Định nghĩa và kiểm tra kiểu| Props[defineProps]
+```
+
+
+---
+
 ### 1. Kiến trúc Component-based
 - Một ứng dụng Vue là một cây gồm các component lồng nhau.
 - Mỗi component đại diện cho một phần giao diện độc lập, khép kín (self-contained) bao gồm cả giao diện, logic xử lý và phong cách thiết kế riêng biệt.
@@ -74,6 +85,33 @@ const currentAge = ref(25)
    <ProductCard v-for="prod in products" :key="prod.id" :product="prod" />
    ```
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```vue
+<!-- components/ProductCard.vue -->
+<script setup>
+defineProps({
+  product: {
+    type: Object,
+    required: true
+  }
+})
+</script>
+
+<template>
+  <div class="border p-4 rounded shadow">
+    <img :src="product.image" class="w-full h-40 object-cover" />
+    <h3 class="font-bold mt-2">{{ product.name }}</h3>
+    <p class="text-indigo-600">{{ product.price.toLocaleString() }}đ</p>
+  </div>
+</template>
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -82,25 +120,33 @@ const currentAge = ref(25)
 - B. Để ngăn các component con vô tình thay đổi trạng thái của component cha, gây khó khăn cho việc gỡ lỗi (debug).
 - C. Do Vue không hỗ trợ binding hai chiều.
 - D. Do cú pháp template bắt buộc như vậy.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **2. Đoạn mã HTML cần tách thành component ProductCard nằm ở khoảng dòng nào trong index.html?**
 - A. Dòng 35 đến 64.
 - B. Dòng 122 đến 150.
 - C. Dòng 73 đến 99.
 - D. Dòng 253 đến 292.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **3. Để nhận dữ liệu từ cha truyền xuống, component con sử dụng hàm compiler macro nào?**
 - A. `getProps()`
 - B. `receiveProps()`
 - C. `defineProps()`
 - D. `props()`
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Tách thành công card sản phẩm thành component con `ProductCard.vue` độc lập.
-- [ ] Khai báo và validate prop `product` kiểu dữ liệu Object trong component con.
-- [ ] Không hiển thị toàn bộ code HTML thô của `index.html` trong bài giảng markdown mà sử dụng link.

@@ -9,6 +9,17 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    Parent[Parent Component] -->|Truyền nội dung động| Slot[<slot name='header'>]
+    Slot --> Child[BaseCard.vue UI Component]
+```
+
+
+---
+
 ### 1. Tích hợp TailwindCSS vào Vue
 TailwindCSS là framework CSS kiểu utility-first giúp viết CSS trực tiếp trên class của HTML.
 
@@ -64,6 +75,32 @@ Slots cho phép component cha truyền toàn bộ cấu trúc HTML xuống cho c
 4. Tại trang giỏ hàng `CartView.vue`, thay thế hộp thoại confirm mặc định của trình duyệt (`window.confirm`) bằng cách mở component `BaseModal.vue` tự thiết kế khi nhấn nút xóa sản phẩm.
 5. Truyền nội dung động (Tiêu đề "Xóa sản phẩm", Nội dung cảnh báo và các nút bấm TailwindCSS đẹp mắt) vào các slot tương ứng của `BaseModal`.
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```vue
+<!-- components/BaseModal.vue -->
+<template>
+  <div class="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="modal-content bg-white p-6 rounded shadow-lg max-w-md w-full">
+      <header class="border-b pb-2 mb-4">
+        <slot name="header">Tiêu đề mặc định</slot>
+      </header>
+      <main class="mb-4">
+        <slot>Nội dung mặc định</slot>
+      </main>
+      <footer class="flex justify-end gap-2">
+        <slot name="footer"></slot>
+      </footer>
+    </div>
+  </div>
+</template>
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -72,18 +109,22 @@ Slots cho phép component cha truyền toàn bộ cấu trúc HTML xuống cho c
 - B. `<template #title>`
 - C. `<template slot="title">`
 - D. `<template @title>`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **2. Slot mặc định (không đặt tên) trong Vue component con được đại diện bằng thẻ nào?**
 - A. `<slot name="default">` hoặc chỉ đơn giản là `<slot>`
 - B. `<default-slot>`
 - C. `<slot-view>`
 - D. `<inner-html>`
-*Đáp án đúng: **A**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **A**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Thiết kế thành công component nổi `BaseModal.vue` sử dụng Tailwind CSS.
-- [ ] Truyền nội dung động vào Modal thành công qua các Named Slots.
-- [ ] Giao diện Responsive hoạt động tốt trên các tỷ lệ màn hình.

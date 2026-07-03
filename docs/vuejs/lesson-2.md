@@ -10,6 +10,18 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    A[Vite/Vue State] -->|v-bind hoặc :| B[Thuộc tính HTML: src, href, class...]
+    C[User Input / Form] -->|v-model hai chiều| A
+    D[User Action: Click, Submit...] -->|v-on hoặc @| E[Hàm xử lý sự kiện trong Script]
+```
+
+
+---
+
 ### 1. Interpolation (Nội suy)
 - **Text**: Sử dụng cặp dấu ngoặc nhọn kép `{{ message }}`.
 - **Raw HTML**: Mặc định Vue chuyển đổi HTML thành text để chống tấn công XSS. Để hiển thị HTML thực tế, dùng `v-html`.
@@ -134,6 +146,40 @@ button:disabled {
    - Dùng interpolation `{{ }}` để hiển thị tên sản phẩm, danh mục, và giá bán.
    - Sử dụng sự kiện mouseover và mouseleave (`@mouseover`, `@mouseleave`) để cập nhật trạng thái `isHovered`. Nếu `isHovered` bằng true, hãy thêm class CSS `shadow-2xl` và `border-indigo-300` thông qua class binding động (`:class`).
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const message = ref('Chào mừng tới Vanguard Store!')
+const isHovered = ref(false)
+const productImage = ref('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60')
+</script>
+
+<template>
+  <div class="container mx-auto p-6">
+    <div 
+      class="max-w-sm rounded overflow-hidden shadow-lg border p-4 transition-all duration-300"
+      :class="{ 'shadow-2xl border-indigo-400': isHovered }"
+      @mouseover="isHovered = true"
+      @mouseleave="isHovered = false"
+    >
+      <img :src="productImage" alt="Giày thể thao" class="w-full h-48 object-cover rounded" />
+      <div class="py-4">
+        <h3 class="font-bold text-xl mb-2">{{ message }}</h3>
+        <p class="text-gray-700 text-base">Sản phẩm cao cấp chất lượng hàng đầu.</p>
+      </div>
+    </div>
+  </div>
+</template>
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -142,39 +188,55 @@ button:disabled {
 - B. `#class`
 - C. `:class`
 - D. `&class`
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 **2. Modifier nào được dùng để ngăn chặn hành động tải lại trang mặc định của Form?**
 - A. `.stop`
 - B. `.prevent`
 - C. `.capture`
 - D. `.self`
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **3. Sự khác biệt giữa `v-model` và `v-bind` là gì?**
 - A. `v-bind` là hai chiều, `v-model` là một chiều.
 - B. `v-bind` chỉ dùng cho class, `v-model` dùng cho style.
 - C. `v-bind` ràng buộc dữ liệu một chiều (từ script ra template), `v-model` ràng buộc hai chiều.
 - D. Không có sự khác biệt.
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 **4. Khi bind đường dẫn ảnh sản phẩm `:src="productImage"`, chúng ta đang sử dụng directive nào?**
 - A. `v-on`
 - B. `v-model`
 - C. `v-bind`
 - D. `v-text`
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 **5. Lắng nghe sự kiện di chuột rời khỏi thẻ dùng sự kiện nào?**
 - A. `@click`
 - B. `@mouseover`
 - C. `@mouseleave`
 - D. `@keydown`
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Ràng buộc thành công thuộc tính ảnh `:src` động.
-- [ ] Bind class thành công dựa trên trạng thái hover của card sản phẩm.
-- [ ] Không hiển thị toàn bộ code HTML thô của `index.html` trong bài giảng markdown mà truy cập qua link tải.

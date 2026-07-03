@@ -11,6 +11,23 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    subgraph MPA [Multi-Page Application]
+        A[User Click Link] -->|Gửi Request| B[Server]
+        B -->|Tải lại toàn bộ trang| C[HTML mới hoàn toàn]
+    end
+    subgraph SPA [Single-Page Application]
+        D[User Click Link] -->|JS Intercept| E[Vue Router]
+        E -->|Chỉ thay thế Component cần thiết| F[Cập nhật DOM cục bộ]
+    end
+```
+
+
+---
+
 ### 1. Single Page Application (SPA) vs Multi Page Application (MPA)
 - **MPA (Multi Page Application)**: Mỗi lần người dùng chuyển hướng hoặc tương tác, trình duyệt sẽ gửi yêu cầu lên server và tải lại toàn bộ trang HTML mới.
 - **SPA (Single Page Application)**: Trang web chỉ tải một tài liệu HTML duy nhất ban đầu. Khi chuyển trang, Vue sẽ tự động cập nhật DOM bằng cách thay thế các component cần thiết mà không tải lại toàn bộ trang, giúp trải nghiệm mượt mà giống như ứng dụng desktop.
@@ -115,6 +132,32 @@ button:hover {
    npm run dev
    ```
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```bash
+# Bước 1: Khởi tạo dự án
+npm create vite@latest vanguard-store -- --template vue
+
+# Bước 2: Di chuyển và cài đặt dependencies
+cd vanguard-store
+npm install
+
+# Bước 3: Cấu trúc thư mục khuyên dùng
+# vanguard-store/
+# ├── public/           # Chứa ảnh, font tĩnh
+# ├── src/
+# │   ├── assets/       # CSS, ảnh được bundle
+# │   ├── components/   # Các Component tái sử dụng
+# │   ├── App.vue       # Component gốc
+# │   └── main.js       # Điểm khởi chạy (Entry point)
+# └── index.html        # File HTML duy nhất
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -123,39 +166,55 @@ button:hover {
 - B. Do không phải load lại toàn bộ trang web mỗi khi chuyển trang.
 - C. Do SPA nhẹ hơn về dung lượng lưu trữ trên server.
 - D. Tất cả các ý trên.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **2. Scoped CSS trong tệp `.vue` có vai trò gì?**
 - A. Giúp tăng tốc độ tải trang.
 - B. Giới hạn tầm ảnh hưởng của CSS chỉ trong component đó.
 - C. Biến CSS thành JavaScript.
 - D. Xóa bỏ các CSS bị trùng lặp.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **3. Lựa chọn nào đúng khi chạy từng bước khởi tạo dự án Vue bằng Vite?**
 - A. Chạy `npm install vue` và tự tạo file cấu hình.
 - B. Chạy `npm create vite@latest` -> nhập tên dự án -> chọn Vue -> chọn JavaScript.
 - C. Chạy `npm run dev`.
 - D. Sao chép thư mục `node_modules` từ dự án khác.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **4. Khai báo cú pháp logic Vue 3 hiện đại nhất hiện nay sử dụng thẻ script nào?**
 - A. `<script>`
 - B. `<script option>`
 - C. `<script setup>`
 - D. `<script composition>`
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 **5. Thư mục chứa giao diện HTML mẫu tĩnh dùng làm cơ sở cho dự án là gì?**
 - A. `/public/`
 - B. `/src/assets/`
 - C. `docs/vuejs/templates`
 - D. `/node_modules/`
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Đã cài đặt Node.js và VS Code (kèm Extension Volar).
-- [ ] Đã tạo thành công dự án `vanguard-store` bằng Vite CLI tương tác.
-- [ ] Đọc qua cấu trúc thư mục templates mẫu của dự án Vanguard Store.

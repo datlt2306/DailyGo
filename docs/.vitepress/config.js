@@ -1,4 +1,6 @@
-export default {
+import { withMermaid } from 'vitepress-plugin-mermaid'
+
+export default withMermaid({
     title: "Lê Trọng Đạt", // Thay đổi tiêu đề hiển thị
     description: "Học lập trình cùng Đạt",
     themeConfig: {
@@ -688,4 +690,16 @@ export default {
     markdown: {
         lineNumbers: true,
     },
-};
+    vite: {
+        optimizeDeps: {
+            include: ['dayjs', 'mermaid']
+        },
+        resolve: {
+            alias: {
+                'dayjs/plugin/advancedFormat.js': 'dayjs/esm/plugin/advancedFormat',
+                'dayjs/plugin/customParseFormat.js': 'dayjs/esm/plugin/customParseFormat',
+                'dayjs/plugin/isoWeek.js': 'dayjs/esm/plugin/isoWeek'
+            }
+        }
+    }
+});

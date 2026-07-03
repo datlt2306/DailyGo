@@ -10,6 +10,18 @@
 
 ## 📖 Lý thuyết cốt lõi
 
+### 📊 Sơ đồ minh họa khái niệm:
+
+```mermaid
+graph TD
+    Store[Pinia Global Store] -->|State| ComponentA[ProductCard.vue]
+    Store -->|Getters / Actions| ComponentB[CartView.vue]
+    ComponentB -->|Gọi action: cartStore.add| Store
+```
+
+
+---
+
 ### 1. Tại sao cần State Management?
 - Trong các ứng dụng lớn, dữ liệu cần được chia sẻ giữa các component không có mối quan hệ cha-con trực tiếp (ví dụ: số lượng giỏ hàng hiển thị trên Navbar nhưng nút "Thêm vào giỏ" nằm ở Product Card hay Trang chi tiết).
 - **Pinia** cung cấp một kho lưu trữ tập trung (Store) chứa các trạng thái toàn cục mà bất cứ component nào cũng có thể đọc và ghi trực tiếp.
@@ -69,6 +81,38 @@ const counter = useCounterStore()
 4. Tại component `Navbar.vue`, hiển thị số lượng giỏ hàng động trên icon giỏ hàng (dòng **58-60** của [index.html](https://letrongdat.vercel.app/vuejs/templates/index.html)) liên kết trực tiếp với getter `totalCount`.
 5. Kết nối các hành động tăng/giảm/xóa ở trang Giỏ hàng `CartView.vue` với các actions của `useCartStore`.
 
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+
+```javascript
+// src/stores/cart.js
+import { defineStore } from 'pinia'
+
+export const useCartStore = defineStore('cart', {
+  state: () => ({
+    items: []
+  }),
+  getters: {
+    totalItems: (state) => state.items.reduce((sum, i) => sum + i.quantity, 0),
+    totalPrice: (state) => state.items.reduce((sum, i) => sum + (i.price * i.quantity), 0)
+  },
+  actions: {
+    addToCart(product) {
+      const existing = this.items.find(i => i.id === product.id)
+      if (existing) {
+        existing.quantity++
+      } else {
+        this.items.push({ ...product, quantity: 1 })
+      }
+    }
+  }
+})
+```
+
+</details>
+
 ---
 
 ## ❓ Trắc nghiệm nhanh
@@ -77,25 +121,33 @@ const counter = useCounterStore()
 - B. Redux
 - C. Pinia
 - D. MobX
-*Đáp án đúng: **C**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **C**.*
+</details>
 
 **2. Thành phần nào trong Pinia đóng vai trò tương tự như computed properties trong component?**
 - A. State
 - B. Getters
 - C. Actions
 - D. Mutations
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 **3. Để lấy dữ liệu state từ store mà vẫn giữ được tính phản ứng (Reactivity) khi destructure?**
 - A. Dùng destructure bình thường: `const { cartItems } = store`.
 - B. Sử dụng hàm trợ giúp `storeToRefs(store)`.
 - C. Dùng `computed(store)`.
 - D. Không thể destructure.
-*Đáp án đúng: **B**.*
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
 
 ---
 
-## 📝 Checklist hoàn thành
-- [ ] Cấu hình thành công Pinia store quản lý mảng giỏ hàng toàn cục.
-- [ ] Đồng bộ thành công số lượng giỏ hàng trên Navbar ngay khi click thêm sản phẩm ở trang chủ.
-- [ ] Các hành động tăng/giảm/xóa trên trang giỏ hàng liên kết trực tiếp với Pinia actions.
