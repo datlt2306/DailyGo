@@ -8,7 +8,7 @@
       <div class="hero-content">
         <div class="badge-dev">const user = "developer";</div>
         <div>
-          <BlurText text="Thầy Đạt Fpoly" :delay="60" animateBy="letters" direction="top" class="gradient-title" />
+          <BlurText text="Thầy Đạtlt34 Fpoly" :delay="60" animateBy="letters" direction="top" class="gradient-title" />
         </div>
         <!-- Terminal Window Wrapper -->
         <div class="terminal-window">
