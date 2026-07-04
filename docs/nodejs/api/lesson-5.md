@@ -3,6 +3,18 @@
 > **Bài trước:** [Lesson 4: Giới thiệu MongoDB và Mongoose](./lesson-4.md)  
 > **Bài tiếp theo:** [Lesson 6: Middleware validate dữ liệu đầu vào](./lesson-6.md)
 
+### Sơ đồ hoạt động
+
+```mermaid
+graph TD
+    Req[Request] --> Router[Express Router]
+    Router --> Controller[Product Controller]
+    Controller -->|Mongoose Queries| MongoDB[(MongoDB Atlas)]
+    MongoDB -->|Result| Controller
+    Controller -->|Global Error Handler if fails| Res[Response JSON]
+```
+
+
 ## Mục tiêu
 
 -   Thực hành xây dựng API CRUD sản phẩm đầy đủ với MongoDB và Mongoose.

@@ -1,7 +1,16 @@
 # Bài 11: Hiểu Về Populate Trong MongoDB
 
 > **Bài trước:** [Lesson 10: Thiết Kế Schema MongoDB](./lesson-10.md)  
-> **Bài tiếp theo:** Không có (Đây là bài cuối cùng)
+> **Bài tiếp theo:** [Lesson 12: Xây dựng API Giỏ hàng (Cart)](./lesson-12.md)
+
+### Sơ đồ hoạt động
+
+```mermaid
+graph TD
+    Story[Story Document: author ID] -->|Mongoose populate| Fetch[Query Person Collection by ID]
+    Fetch -->|Merge| FullStory[Story Document with full Author details]
+```
+
 
 ## Khái Niệm
 
@@ -349,23 +358,6 @@ Total: $1550
 **Ví dụ thực tế:** 
 - Amazon: Hiển thị product info trong order → Populate tốt
 - Facebook: Hiển thị tất cả friends (có thể hàng ngàn) → Không populate, dùng pagination và query riêng
-
-## Tổng kết khóa học
-
-Qua 11 bài học, các em đã học được:
-1. ✅ Thiết lập dự án Node.js/Express với Babel và pnpm
-2. ✅ Làm việc với Request/Response và Middleware
-3. ✅ Xây dựng CRUD API với in-memory data
-4. ✅ Kết nối MongoDB và sử dụng Mongoose
-5. ✅ Xây dựng CRUD API với database thực
-6. ✅ Validate dữ liệu đầu vào với Joi
-7. ✅ Hiểu về Authentication và Authorization
-8. ✅ Xây dựng hệ thống đăng ký/đăng nhập với JWT
-9. ✅ Bảo vệ API với middleware và role-based access
-10. ✅ Thiết kế schema MongoDB hiệu quả
-11. ✅ Sử dụng populate để query dữ liệu liên quan
-
-Chúc các em áp dụng thành công những kiến thức này vào dự án thực tế!
 
 Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
 Chúc các em học tốt! 🚀

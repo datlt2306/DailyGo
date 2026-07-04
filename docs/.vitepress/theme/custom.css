@@ -1,0 +1,4 @@
+:root {
+  /* Make the content area wider for better readability of code and diagrams */
+  --vp-content-max-width: 960px;
+}

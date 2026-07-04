@@ -3,6 +3,17 @@
 > **Bài trước:** [Lesson 1: Giới thiệu Node.js và thiết lập dự án](./lesson-1.md)  
 > **Bài tiếp theo:** [Lesson 3: Thực hành CRUD với mảng dữ liệu giả](./lesson-3.md)
 
+### Sơ đồ hoạt động
+
+```mermaid
+graph LR
+    Req[Request] --> MW1[loggerMiddleware]
+    MW1 -->|next| MW2[express.json]
+    MW2 -->|next| Handler[Route Handler /api/products]
+    Handler --> Res[Response JSON]
+```
+
+
 ## Mục tiêu
 
 -   Ôn tập và thực hành lại cài đặt từ buổi 1.

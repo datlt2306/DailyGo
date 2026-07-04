@@ -3,6 +3,20 @@
 > **Bài trước:** [Lesson 7: Authentication và Authorization](./lesson-7.md)  
 > **Bài tiếp theo:** [Lesson 9: Kiểm tra Quyền trong API Sản phẩm](./lesson-9.md)
 
+### Sơ đồ hoạt động
+
+```mermaid
+graph TD
+    Client[Client Browser] -->|1. Đăng nhập đúng credentials| Server[Express API Server]
+    Server -->|2. jwt.sign| JWT[Sinh chuỗi JWT Token]
+    JWT -->|3. Trả về| Client
+    Client -->|4. Request tiếp theo mang theo Bearer Token| Server
+    Server -->|5. jwt.verify| Verify{Token hợp lệ?}
+    Verify -->|Yes| Route[Tiến vào API Route]
+    Verify -->|No| Block[Trả về 401/403]
+```
+
+
 Chào các em!  
 Hôm nay, Thầy sẽ hướng dẫn các em cách xây dựng chức năng **Đăng ký**, **Đăng nhập** với **JWT** (JSON Web Token). Chúng ta sẽ đi theo flow chuẩn: **Model → Controller → Middleware Validate → Router**. Bắt đầu thôi nào!
 

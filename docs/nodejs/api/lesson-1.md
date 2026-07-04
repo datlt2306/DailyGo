@@ -1,5 +1,18 @@
 # Giới thiệu về khóa học Node.js API cho Ecommerce
 
+> **Bài trước:** Không có (Đây là bài đầu tiên)  
+> **Bài tiếp theo:** [Lesson 2: Request, Response & Middleware](./lesson-2.md)
+
+### Sơ đồ hoạt động
+```mermaid
+graph TD
+    Client[Browser / Frontend Client] -->|HTTP Request| NodeExpress[Node.js + Express API Server]
+    NodeExpress -->|Query| DB[(MongoDB Database)]
+    DB -->|Data| NodeExpress
+    NodeExpress -->|JSON Response| Client
+```
+
+
 Chào mừng các em đến với khóa học Node.js/Express xây dựng API cho ứng dụng thương mại điện tử! 👨‍🏫
 
 Khóa học này sẽ giúp các em:

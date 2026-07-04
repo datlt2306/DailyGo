@@ -1,57 +1,134 @@
-# Buổi 12 (TH) – Testing với Jest & Supertest
+# Bài 12: Xây dựng API Giỏ hàng (Cart)
 
-## 🎯 Mục tiêu
+> **Bài trước:** [Lesson 11: Hiểu Về Populate Trong MongoDB](./lesson-11.md)  
+> **Bài tiếp theo:** [Lesson 13: API Đơn hàng & Checkout (Orders)](./lesson-13.md)
 
--   Thiết lập Jest + Supertest cho dự án API hiện có
--   Viết unit test cho service, integration test cho route (Auth/Product)
--   Chạy test trong CI, đặt ngưỡng coverage tối thiểu ≥60%
-
-## 🧠 Nội dung chính
-
--   Cấu hình Jest (ESM/CJS), `testEnvironment`, `setupFilesAfterEnv`
--   Supertest: kiểm thử endpoint Express, khởi tạo app không cần listen cổng
--   Kỹ thuật: seed dữ liệu test, mock JWT/Redis/Cloudinary khi cần
--   Test pyramid: Unit (service) < Integration (route) < E2E (ít)
-
-## 💻 Thiết lập nhanh
-
-```bash
-pnpm i -D jest supertest ts-jest @types/jest @types/supertest
-pnpm dlx ts-jest config:init  # nếu dùng TypeScript
-```
-
-Tạo `tests/setup.ts` để chuẩn bị DB test (Mongo Memory Server hoặc DB riêng), và export `app` từ `src/app` để dùng trong Supertest.
-
-## 🧩 Task
-
-1. Cấu hình Jest để chạy được test trên dự án hiện tại
-2. Viết test cho Auth:
-
--   POST /auth/register: trả 201 khi hợp lệ; 400 khi email trùng
--   POST /auth/login: trả accessToken/refreshToken khi hợp lệ; 401 khi sai mật khẩu
-
-3. Viết test cho Product:
-
--   GET /products: trả 200, trả đúng dạng `data` + `meta`
--   POST /products: chỉ `admin` được phép, 403 nếu user thường
-
-4. Thêm script: `"test"`, `"test:watch"`, `"coverage"`; đặt threshold ≥60%
-
-## ✅ Deliverables
-
--   tests/auth.test.(ts|js), tests/product.test.(ts|js)
--   CI chạy test pass, coverage report ≥60%
--   README cập nhật cách chạy test
-
-## 📌 Gợi ý kiểm thử
-
--   Dùng Mongo Memory Server cho unit/integration để cô lập dữ liệu
--   Tránh phụ thuộc mạng ngoài (mock Cloudinary/Redis)
+**Loại buổi**: Thực hành  
+**Thời lượng**: 120 phút  
+**Dự án**: Vanguard Store E-Commerce API  
 
 ---
 
-## 📝 Rubric (15 điểm – Testing)
+## 🎯 Mục tiêu học tập
+- Thiết kế Schema cho Giỏ hàng (Cart) liên kết với Model User và Model Product.
+- Áp dụng kỹ thuật `populate` đã học ở Bài 11 để lấy thông tin sản phẩm đầy đủ từ Giỏ hàng.
+- Lập trình các API: thêm sản phẩm vào giỏ, cập nhật số lượng, và lấy thông tin giỏ hàng của người dùng hiện tại.
 
--   Thiết lập & chạy test ổn định (5đ)
--   Test Auth & Product bao phủ case quan trọng (7đ)
--   Coverage đạt yêu cầu, cấu trúc test rõ ràng (3đ)
+---
+
+## 📖 Lý thuyết cốt lõi
+
+### 1. Tại sao cần API Giỏ hàng?
+Trong một ứng dụng thương mại điện tử (E-Commerce), giỏ hàng là nơi lưu trữ tạm thời các sản phẩm mà người dùng muốn mua trước khi tiến hành thanh toán (checkout).
+- Giỏ hàng cần gắn liền với từng tài khoản người dùng (`userId`).
+- Giỏ hàng chứa danh sách các sản phẩm và số lượng tương ứng của từng sản phẩm.
+
+### 2. Thiết kế Schema Giỏ hàng với Mongoose
+Để liên kết dữ liệu, chúng ta sử dụng `Schema.Types.ObjectId` và thuộc tính `ref` tham chiếu đến các model `User` và `Product` như đã học ở bài 10 & 11:
+```javascript
+const cartSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    items: [
+        {
+            productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+            quantity: { type: Number, required: true, min: 1, default: 1 }
+        }
+    ]
+}, { timestamps: true });
+```
+
+### 📊 Sơ đồ luồng hoạt động của API Giỏ hàng:
+```mermaid
+graph TD
+    User[Người dùng đã đăng nhập] -->|Gửi request kèm Token| Auth[authenticateJWT Middleware]
+    Auth -->|Nạp req.user| Controller[Cart Controller]
+    Controller -->|Tìm giỏ hàng theo userId và populate| DB[(Database: Cart Collection)]
+    DB -->|Trả về thông tin chi tiết sản phẩm| Client[Response JSON]
+```
+
+---
+
+## 💻 Ví dụ thực tiễn
+Dưới đây là mã nguồn Controller xử lý việc thêm sản phẩm vào giỏ hàng (`src/controllers/cart.controller.js`). Nó sẽ kiểm tra xem sản phẩm đã tồn tại trong giỏ chưa: nếu đã có thì cộng dồn số lượng, nếu chưa có thì thêm mới vào mảng `items`:
+
+```javascript
+import Cart from '../models/Cart.js';
+
+export const addToCart = async (req, res, next) => {
+    try {
+        const { productId, quantity } = req.body;
+        const userId = req.user.id; // Lấy từ middleware authenticateJWT
+
+        // 1. Tìm giỏ hàng của user
+        let cart = await Cart.findOne({ userId });
+
+        if (!cart) {
+            // Nếu chưa có giỏ hàng, tạo mới
+            cart = new Cart({
+                userId,
+                items: [{ productId, quantity: Number(quantity) }]
+            });
+        } else {
+            // Nếu đã có, kiểm tra sản phẩm đã tồn tại trong giỏ chưa
+            const itemIndex = cart.items.findIndex(item => item.productId.toString() === productId);
+
+            if (itemIndex > -1) {
+                // Đã tồn tại, cộng dồn số lượng
+                cart.items[itemIndex].quantity += Number(quantity);
+            } else {
+                // Chưa tồn tại, thêm mới vào mảng
+                cart.items.push({ productId, quantity: Number(quantity) });
+            }
+        }
+
+        await cart.save();
+        
+        // Trả về dữ liệu giỏ hàng đã được populate thông tin sản phẩm
+        const populatedCart = await cart.populate('items.productId', 'name price image');
+        res.status(200).json(populatedCart);
+    } catch (error) {
+        next(error);
+    }
+};
+```
+
+---
+
+## 🛠️ Bài tập thực hành (Lab)
+Hãy viết API lấy thông tin giỏ hàng của người dùng hiện tại `GET /api/cart`. API này phải bắt buộc người dùng đã đăng nhập (sử dụng middleware `authenticateJWT`) và tự động populate đầy đủ tên và giá của sản phẩm.
+
+<details class="details custom-block">
+  <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
+
+```javascript
+// src/controllers/cart.controller.js
+export const getCart = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+        const cart = await Cart.findOne({ userId }).populate('items.productId', 'name price image');
+        
+        if (!cart) {
+            return res.status(200).json({ userId, items: [] });
+        }
+        
+        res.status(200).json(cart);
+    } catch (error) {
+        next(error);
+    }
+};
+```
+</details>
+
+---
+
+## ❓ Trắc nghiệm nhanh
+**1. Tại sao chúng ta cần sử dụng hàm `.populate()` khi lấy thông tin giỏ hàng?**
+- A. Để tự động cộng tiền giỏ hàng.
+- B. Để Mongoose tự động thay thế `productId` (dạng ObjectId) bằng thông tin chi tiết của sản phẩm (như tên, giá, ảnh) từ bảng Products.
+- C. Để mã hóa giỏ hàng an toàn.
+<details class="details custom-block">
+  <summary>Xem giải đáp</summary>
+
+  *Đáp án đúng: **B**.*
+</details>
+

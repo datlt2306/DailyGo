@@ -43,7 +43,7 @@ Sau khóa học, bạn sẽ có thể:
 | Buổi | Loại | Chủ đề chính | Mục tiêu | Nội dung chính | Task / Bài tập |
 | --- | --- | --- | --- | --- | --- |
 | **1** | **LT** | DOM Selection & Manipulation | Hiểu DOM, biết cách tìm và sửa đổi phần tử HTML bằng JS | - DOM là gì?<br>- querySelector, querySelectorAll<br>- classList, style, attributes, dataset | |
-| **2** | **TH** | Tích hợp UI & Render Danh sách | Tích hợp template ZenTask, render dữ liệu từ mảng mẫu | - Setup cấu trúc giao diện ZenTask<br>- Tạo mảng công việc mẫu (Mock data)<br>- Duyệt mảng và đổ dữ liệu động (innerHTML/textContent)<br>- Phòng chống lỗi bảo mật XSS cơ bản | Task: Render danh sách công việc tĩnh từ mảng |
+| **2** | **TH** | Tích hợp UI & Render Danh sách | Tích hợp template ZenTask, render dữ liệu từ mảng mẫu | - Setup cấu trúc giao diện ZenTask<br>- Tạo mảng công việc mẫu (Mock data)<br>- Duyệt mảng và đổ dữ liệu động (innerHTML/textContent) | Task: Render danh sách công việc tĩnh từ mảng |
 | **3** | **LT** | Sự kiện (Events) & Event Delegation | Hiểu cơ chế sự kiện và cách tối ưu với Event Delegation | - Event Listeners & Event Object<br>- Bubbling & Capturing<br>- Event Delegation (Ủy quyền sự kiện) | |
 | **4** | **TH** | Chức năng Thêm & Xóa công việc | Xử lý thêm công việc mới từ form và click nút xóa | - Submit form & validate input cơ bản<br>- Thêm công việc mới vào mảng<br>- Áp dụng Event Delegation xử lý nút Xóa | Task: Thêm mới và xóa công việc động |
 | **5** | **LT** | Mảng & Object nâng cao - Tư duy State | Làm việc với các phương thức mảng nâng cao và tư duy State | - map, filter, find, findIndex, reduce<br>- Tư duy State-driven UI (State -> Render) | |

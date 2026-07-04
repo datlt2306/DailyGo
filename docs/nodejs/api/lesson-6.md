@@ -3,6 +3,16 @@
 > **Bài trước:** [Lesson 5: Xây dựng CRUD API sản phẩm](./lesson-5.md)  
 > **Bài tiếp theo:** [Lesson 7: Authentication và Authorization](./lesson-7.md)
 
+### Sơ đồ hoạt động
+
+```mermaid
+graph LR
+    Req[Request: req.body] --> Validation{Joi Validation Middleware}
+    Validation -->|Hợp lệ| Controller[Product Controller]
+    Validation -->|Lỗi validate| BadReq[Response 400 Bad Request]
+```
+
+
 Chào các em! 👋 Hôm nay chúng ta sẽ cùng nhau tìm hiểu cách viết middleware để validate dữ liệu đầu vào trong Express. Đây là một kỹ năng rất quan trọng khi xây dựng API, giúp đảm bảo dữ liệu gửi lên từ client luôn hợp lệ và giảm thiểu lỗi trong ứng dụng.
 
 ## Mục tiêu

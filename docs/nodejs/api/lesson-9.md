@@ -3,6 +3,17 @@
 > **Bài trước:** [Lesson 8: Đăng ký, Đăng nhập với JWT](./lesson-8.md)  
 > **Bài tiếp theo:** [Lesson 10: Thiết kế Schema MongoDB](./lesson-10.md)
 
+### Sơ đồ hoạt động
+
+```mermaid
+graph TD
+    Req[Request] --> Auth[authenticateJWT Middleware]
+    Auth --> Role{checkRole admin/member}
+    Role -->|Hợp lệ| Controller[Controller xử lý API]
+    Role -->|Sai quyền| Err[Trả về 403 Forbidden]
+```
+
+
 Chào các em!  
 Hôm nay, Thầy sẽ hướng dẫn các em cách kiểm tra quyền trong API sản phẩm. Chúng ta sẽ viết middleware để xác thực JWT và kiểm tra quyền dựa trên vai trò người dùng. Sau đó, tích hợp middleware này vào API sản phẩm. Bắt đầu thôi nào!
 

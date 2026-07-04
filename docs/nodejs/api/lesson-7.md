@@ -3,6 +3,15 @@
 > **Bài trước:** [Lesson 6: Middleware validate dữ liệu đầu vào](./lesson-6.md)  
 > **Bài tiếp theo:** [Lesson 8: Đăng ký, Đăng nhập với JWT](./lesson-8.md)
 
+### Sơ đồ hoạt động
+
+```mermaid
+graph TD
+    User[Người dùng] -->|Đăng ký| Register[Bcrypt mã hóa pass -> Lưu DB]
+    User -->|Đăng nhập| Login[So sánh mật khẩu băm -> Cấp JWT]
+```
+
+
 Authentication (xác thực) và Authorization (ủy quyền) là hai khái niệm cốt lõi trong bảo mật ứng dụng. Trong bài này, chúng ta sẽ tìm hiểu:
 
 1. Authentication và Authorization là gì?

@@ -3,6 +3,19 @@
 > **Bài trước:** [Lesson 9: Kiểm tra Quyền trong API Sản phẩm](./lesson-9.md)  
 > **Bài tiếp theo:** [Lesson 11: Hiểu Về Populate Trong MongoDB](./lesson-11.md)
 
+### Sơ đồ hoạt động
+
+```mermaid
+graph TD
+    subgraph Embedded [Embedded Document]
+        UserEmb[User Document] --> AddrEmb[Address Array: embedded inside User]
+    end
+    subgraph Referenced [Referenced Document]
+        UserRef[User Document] -->|contains Address ID| AddrRef[Address Collection: separate document]
+    end
+```
+
+
 Chào các bạn sinh viên thân yêu! Hôm nay chúng ta sẽ cùng nhau khám phá một chủ đề cực kỳ thú vị: **Làm thế nào để thiết kế schema cơ sở dữ liệu trong MongoDB?**
 
 Đây là câu hỏi đầu tiên mà bất kỳ ai cũng phải đối mặt khi bắt đầu một dự án với MongoDB. Và câu trả lời là: **Tùy vào từng trường hợp!**

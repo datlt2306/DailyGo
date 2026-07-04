@@ -1,5 +1,16 @@
 # Giới thiệu MongoDB và các khái niệm cơ bản
 
+> **Bài trước:** [Lesson 3: CRUD với dữ liệu giả lập (In-memory)](./lesson-3.md)  
+> **Bài tiếp theo:** [Lesson 5: Xây dựng CRUD với MongoDB](./lesson-5.md)
+
+### Sơ đồ kết nối Mongoose
+```mermaid
+graph LR
+    App[Node.js Application] -->|Mongoose ODM| Connection[MongoDB Connection]
+    Connection -->|Map Schema to Collection| DB[(MongoDB Database)]
+```
+
+
 ## Mục tiêu
 
 -   Hiểu MongoDB là gì và tại sao nên sử dụng.

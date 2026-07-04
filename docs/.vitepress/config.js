@@ -6,19 +6,26 @@ export default withMermaid({
     themeConfig: {
         nav: [
             { text: "Trang chủ", link: "/" },
-            // { text: "HTML/CSS", link: "/html-css/" },
-            { text: "JavaScript", link: "/javascript/" },
-            { text: "React", link: "/react/" },
-            { text: "VueJS", link: "/vuejs/" },
-            { text: "Node.js", link: "/nodejs/" },
-            { text: "PHP", link: "/php/" },
-            { text: "Wordpress", link: "/wordpress/" },
-            { text: "Git & GitHub", link: "/git/" },
-            { text: "Dự án 1", link: "/pro1014/" },
-            { text: "Lập trình Cơ bản", link: "/laptrinhcanban/" },
-            // { text: "MongoDB", link: "/mongodb/" },
-            { text: "Blog", link: "/blog/" }, // Added blog link to main navigation
-            // { text: "NextJs", link: "/nextjs/" }, // Added blog link to main navigation
+            {
+                text: "Lập trình Web",
+                items: [
+                    { text: "Javascript cơ bản", link: "/javascript/" },
+                    { text: "Javascript nâng cao", link: "/javascript/lesson-9" },
+                    { text: "ReactJs", link: "/react/" },
+                    { text: "Vuejs", link: "/vuejs/" },
+                    { text: "PHP cơ bản", link: "/php/" },
+                    { text: "Wordpress", link: "/wordpress/" },
+                    { text: "Lập trình C", link: "/laptrinhcanban/" },
+                    { text: "Dự án 1", link: "/pro1014/" }
+                ]
+            },
+            {
+                text: "Kiến thức tổng hợp",
+                items: [
+                    { text: "Git Github", link: "/git/" }
+                ]
+            },
+            { text: "Blog", link: "/blog/" }
         ],
         sidebar: {
             // "/html-css/": [
@@ -266,60 +273,24 @@ export default withMermaid({
                     ],
                 },
                 {
-                    text: "Phần 2: Xây dựng dự án API Ecommerce",
+                    text: "Phần 2: Xây dựng REST API Ecommerce (15 Buổi)",
                     collapsed: false,
                     items: [
-                        { text: "1. Giới thiệu dự án", link: "/nodejs/api/lesson-1" },
-                        {
-                            text: "2.Request/Response",
-                            link: "/nodejs/api/lesson-2",
-                        },
-                        {
-                            text: "3. CRUD với data fake",
-                            link: "/nodejs/api/lesson-3",
-                        },
-                        { text: "4. Giới thiệu MongoDB", link: "/nodejs/api/lesson-4" },
-                        {
-                            text: "5. Xây dựng CRUD với MongoDB",
-                            link: "/nodejs/api/lesson-5",
-                        },
-                        {
-                            text: "6. Validate dữ liệu với Joi",
-                            link: "/nodejs/api/lesson-6",
-                        },
-                        {
-                            text: "7: Authentication và Authorization",
-                            link: "/nodejs/api/lesson-7",
-                        },
-                        {
-                            text: "8: Đăng ký, Đăng nhập",
-                            link: "/nodejs/api/lesson-8",
-                        },
-                        {
-                            text: "9: Kiểm tra Quyền trong API",
-                            link: "/nodejs/api/lesson-9",
-                        },
-                        {
-                            text: "10: Thiết Kế Schema MongoDB",
-                            link: "/nodejs/api/lesson-10",
-                        },
-                        {
-                            text: "11: Hiểu Về Populate Trong MongoDB",
-                            link: "/nodejs/api/lesson-11",
-                        },
-                        // { text: "10: Xây dựng API Products", link: "/nodejs/api/lesson-10" },
-                        // { text: "11: Xây dựng API Cart", link: "/nodejs/api/lesson-11" },
-                        // { text: "12: Xây dựng API Orders", link: "/nodejs/api/lesson-12" },
-                        // {
-                        //     text: "13: Xử lý thanh toán (Payment)",
-                        //     link: "/nodejs/api/lesson-13",
-                        // },
-                        // {
-                        //     text: "14: Tích hợp Email Notifications",
-                        //     link: "/nodejs/api/lesson-14",
-                        // },
-                        // { text: "15: Tối ưu hiệu năng API", link: "/nodejs/api/lesson-15" },
-                        // { text: "16: Triển khai dự án", link: "/nodejs/api/lesson-16" },
+                        { text: "Buổi 1: Intro Node.js & Setup Express", link: "/nodejs/api/lesson-1" },
+                        { text: "Buổi 2: Request, Response & Middleware", link: "/nodejs/api/lesson-2" },
+                        { text: "Buổi 3: CRUD với dữ liệu giả lập (In-memory)", link: "/nodejs/api/lesson-3" },
+                        { text: "Buổi 4: MongoDB & Mongoose Schemas", link: "/nodejs/api/lesson-4" },
+                        { text: "Buổi 5: CRUD Database & Error Handling", link: "/nodejs/api/lesson-5" },
+                        { text: "Buổi 6: Filtering, Sorting & Pagination", link: "/nodejs/api/lesson-6" },
+                        { text: "Buổi 7: User Model & Mã hóa Mật khẩu", link: "/nodejs/api/lesson-7" },
+                        { text: "Buổi 8: Authentication (JWT)", link: "/nodejs/api/lesson-8" },
+                        { text: "Buổi 9: Authorization (RBAC)", link: "/nodejs/api/lesson-9" },
+                        { text: "Buổi 10: Upload hình ảnh với Multer", link: "/nodejs/api/lesson-10" },
+                        { text: "Buổi 11: API Giỏ hàng (Cart)", link: "/nodejs/api/lesson-11" },
+                        { text: "Buổi 12: API Đơn hàng & Checkout (Orders)", link: "/nodejs/api/lesson-12" },
+                        { text: "Buổi 13: API Thống kê & Dashboard", link: "/nodejs/api/lesson-13" },
+                        { text: "Buổi 14: Testing với Jest & Supertest", link: "/nodejs/api/lesson-14" },
+                        { text: "Buổi 15: Deploy Production & CORS", link: "/nodejs/api/lesson-15" }
                     ],
                 },
             ],
@@ -374,55 +345,68 @@ export default withMermaid({
             ],
             "/wordpress/": [
                 {
-                    text: "Giới thiệu",
+                    text: "Tổng quan",
                     collapsed: false,
                     items: [
-                        {
-                            text: "1. Lộ trình học Wordpress",
-                            link: "/wordpress/become-wordpress-developer/1-road-map",
-                        },
-                        {
-                            text: "2. Chào mừng đến với khóa học Wordpress",
-                            link: "/wordpress/become-wordpress-developer/2-welcome-to-the-course",
-                        },
-                        {
-                            text: "3. Môi trường phát triển",
-                            link: "/wordpress/become-wordpress-developer/3-what-is-dev-env",
-                        },
-                        {
-                            text: "5. Làm quen với PHP",
-                            link: "/wordpress/become-wordpress-developer/5-first-tates-php",
-                        },
-                        {
-                            text: "8. Tạo một theme mới",
-                            link: "/wordpress/become-wordpress-developer/8-create-a-new-theme",
-                        },
-                        {
-                            text: "9. PHP Function",
-                            link: "/wordpress/become-wordpress-developer/9-php-function",
-                        },
-                        {
-                            text: "10. PHP Array",
-                            link: "/wordpress/become-wordpress-developer/10-php-array",
-                        },
-                        {
-                            text: "11. Loops trong wordpress",
-                            link: "/wordpress/become-wordpress-developer/11-loops-in-wordpress",
-                        },
-                        {
-                            text: "12. Header & Footer",
-                            link: "/wordpress/become-wordpress-developer/12-header-footer",
-                        },
-                        {
-                            text: "13. Chuyển đổi giao diện HTML thành giao diện WordPress",
-                            link: "/wordpress/become-wordpress-developer/14-convert-static-html-to-wordpress",
-                        },
-                        {
-                            text: "14. Trang con bên trong một website",
-                            link: "/wordpress/become-wordpress-developer/16-interior-page",
-                        },
-                    ],
+                        { text: "Lộ trình học WordPress", link: "/wordpress/" }
+                    ]
                 },
+                {
+                    text: "1. Lập trình Theme (Theme Development)",
+                    collapsed: false,
+                    items: [
+                        { text: "Đề cương khóa học Theme", link: "/wordpress/theme-development/" },
+                        { text: "Bài 1: Thiết lập môi trường phát triển", link: "/wordpress/theme-development/lesson-1" },
+                        { text: "Bài 2: Nền tảng PHP trong WordPress", link: "/wordpress/theme-development/lesson-2" },
+                        { text: "Bài 3: Vòng lặp Loop mặc định (The Loop)", link: "/wordpress/theme-development/lesson-3" },
+                        { text: "Bài 4: Khởi tạo Theme từ con số 0", link: "/wordpress/theme-development/lesson-4" },
+                        { text: "Bài 5: Phân tách Modular Layout", link: "/wordpress/theme-development/lesson-5" },
+                        { text: "Bài 6: Nạp tệp CSS/JS chuẩn (Enqueue)", link: "/wordpress/theme-development/lesson-6" },
+                        { text: "Bài 7: Hàm lấy đường dẫn an toàn", link: "/wordpress/theme-development/lesson-7" },
+                        { text: "Bài 8: Template Hierarchy: Trang page.php", link: "/wordpress/theme-development/lesson-8" },
+                        { text: "Bài 9: Hiển thị Trang cha - Trang con", link: "/wordpress/theme-development/lesson-9" },
+                        { text: "Bài 10: Thiết kế Navigation Menus động", link: "/wordpress/theme-development/lesson-10" },
+                        { text: "Bài 11: Thiết lập trang lưu trữ archive.php", link: "/wordpress/theme-development/lesson-11" },
+                        { text: "Bài 12: Thiết lập trang chi tiết single.php", link: "/wordpress/theme-development/lesson-12" },
+                        { text: "Bài 13: Đăng ký Custom Post Types (CPT)", link: "/wordpress/theme-development/lesson-13" },
+                        { text: "Bài 14: Tạo thư mục mu-plugins bảo vệ CPT", link: "/wordpress/theme-development/lesson-14" },
+                        { text: "Bài 15: Đăng ký CPT bổ sung", link: "/wordpress/theme-development/lesson-15" },
+                        { text: "Bài 16: Tạo truy vấn tùy biến WP_Query", link: "/wordpress/theme-development/lesson-16" },
+                        { text: "Bài 17: Lọc & Sắp xếp nâng cao (Meta Query)", link: "/wordpress/theme-development/lesson-17" },
+                        { text: "Bài 18: Tích hợp Advanced Custom Fields", link: "/wordpress/theme-development/lesson-18" },
+                        { text: "Bài 19: Thiết lập trường mối quan hệ", link: "/wordpress/theme-development/lesson-19" },
+                        { text: "Bài 20: Custom Image Sizes trong Theme", link: "/wordpress/theme-development/lesson-20" },
+                        { text: "Bài 21: Thiết lập WooCommerce & Theme Support", link: "/wordpress/theme-development/lesson-21" },
+                        { text: "Bài 22: Cơ chế WooCommerce Template Overrides", link: "/wordpress/theme-development/lesson-22" },
+                        { text: "Bài 23: Tùy biến trang cửa hàng (Shop Page)", link: "/wordpress/theme-development/lesson-23" },
+                        { text: "Bài 24: Tùy biến trang chi tiết sản phẩm", link: "/wordpress/theme-development/lesson-24" },
+                        { text: "Bài 25: Tích hợp ACF vào sản phẩm WooCommerce", link: "/wordpress/theme-development/lesson-25" },
+                        { text: "Bài 26: WP_Query sản phẩm ngoài trang chủ", link: "/wordpress/theme-development/lesson-26" },
+                        { text: "Bài 27: Tùy biến Giỏ hàng & Thanh toán", link: "/wordpress/theme-development/lesson-27" },
+                        { text: "Bài 28: Bảo mật WordPress Theme chuyên sâu", link: "/wordpress/theme-development/lesson-28" },
+                        { text: "Bài 29: Tối ưu hóa hiệu năng & Caching", link: "/wordpress/theme-development/lesson-29" },
+                        { text: "Bài 30: Đóng gói & Cấu hình Production", link: "/wordpress/theme-development/lesson-30" }
+                    ]
+                },
+                {
+                    text: "2. Lập trình Plugin (Plugin Development)",
+                    collapsed: false,
+                    items: [
+                        { text: "Đề cương khóa học Plugin", link: "/wordpress/plugin-development/" },
+                        { text: "Buổi 1: Kiến trúc & Vòng đời Plugin", link: "/wordpress/plugin-development/lesson-1" },
+                        { text: "Buổi 2: Làm chủ Actions & Filters Hooks", link: "/wordpress/plugin-development/lesson-2" },
+                        { text: "Buổi 3: Options API & Transients API", link: "/wordpress/plugin-development/lesson-3" },
+                        { text: "Buổi 4: Database tùy biến với $wpdb", link: "/wordpress/plugin-development/lesson-4" },
+                        { text: "Buổi 5: Xây dựng Admin Settings Page", link: "/wordpress/plugin-development/lesson-5" },
+                        { text: "Buổi 6: Gutenberg Block Development", link: "/wordpress/plugin-development/lesson-6" },
+                        { text: "Buổi 7: Block Attributes & React/JS", link: "/wordpress/plugin-development/lesson-7" },
+                        { text: "Buổi 8: Đăng ký Custom REST API", link: "/wordpress/plugin-development/lesson-8" },
+                        { text: "Buổi 9: Bảo mật API (Permission Callbacks)", link: "/wordpress/plugin-development/lesson-9" },
+                        { text: "Buổi 10: Tích hợp AJAX trong Plugin", link: "/wordpress/plugin-development/lesson-10" },
+                        { text: "Buổi 11: Shortcodes & Custom Widgets", link: "/wordpress/plugin-development/lesson-11" },
+                        { text: "Buổi 12: Đóng gói & Phát hành Plugin", link: "/wordpress/plugin-development/lesson-12" }
+                    ]
+                }
             ],
             "/laptrinhcanban/": [
                 {

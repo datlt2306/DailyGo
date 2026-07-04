@@ -3,6 +3,18 @@
 > **Bài trước:** [Lesson 2: Request/Response và Middleware](./lesson-2.md)  
 > **Bài tiếp theo:** [Lesson 4: Giới thiệu MongoDB và Mongoose](./lesson-4.md)
 
+### Sơ đồ hoạt động
+
+```mermaid
+graph TD
+    Client[Client / Postman] -->|HTTP Method| Router[Express Router]
+    Router -->|GET /products| GET[Trả về danh sách mảng]
+    Router -->|POST /products| POST[Thêm item mới vào mảng]
+    Router -->|PUT /products/:id| PUT[Cập nhật item trong mảng]
+    Router -->|DELETE /products/:id| DELETE[Xóa item ra khỏi mảng]
+```
+
+
 ## Mục tiêu
 
 -   Hiểu rõ cách thực hiện các thao tác CRUD (Create, Read, Update, Delete) với dữ liệu giả.

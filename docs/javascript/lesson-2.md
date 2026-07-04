@@ -13,7 +13,6 @@ Sau buổi học này, bạn sẽ có thể:
 - ✅ Tích hợp thành công giao diện mẫu ZenTask vào dự án của mình
 - ✅ Thiết lập cấu trúc lưu trữ dữ liệu dạng mảng đối tượng (Mock Data)
 - ✅ Viết hàm duyệt mảng dữ liệu để render danh sách công việc động ra giao diện HTML
-- ✅ Hiểu rõ và ngăn ngừa lỗ hổng bảo mật XSS (Cross-site Scripting) khi chèn dữ liệu động
 
 ---
 
@@ -43,7 +42,7 @@ let danhSachCongViec = [
     {
         id: 1,
         ten: "Học JavaScript nâng cao",
-        moTa: "Nắm vững các khái niệm DOM, Event và API.",
+        moTa: "Nắm vững các khái niệm DOM Selection và Manipulation.",
         uuTien: "high",
         hoanThanh: false
     },
