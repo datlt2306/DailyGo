@@ -22,9 +22,16 @@
           </div>
           <div class="terminal-body">
             <div class="terminal-line"><span class="cmd-prompt">></span>
-              <TextType
-                :text="['Học lập trình JavaScript cơ bản thực chiến', 'Học lập trình JavaScript nâng cao thực chiến', 'Học lập trình ReactJS thực chiến', 'Học lập trình VueJS thực chiến', 'Học lập trình Node.js & MongoDB thực chiến', 'Học lập trình WordPress thực chiến', 'Học lập trình C thực chiến', 'Học làm Dự án 1 thực chiến']"
-                :typingSpeed="70" :pauseDuration="2000" :deletingSpeed="30" class="terminal-typed" />
+              Học lập trình 
+              <TextType :text="[
+                'JavaScript toàn diện ⚡', 
+                'ReactJS hiện đại ⚛️', 
+                'VueJS tối ưu 🟢', 
+                'Node.js chuẩn REST API 🚀', 
+                'WordPress & WooCommerce 🐘',
+                'C cơ bản & giải thuật 💻',
+                'Dự án 1 chuẩn doanh nghiệp 📦'
+              ]" :typingSpeed="70" :pauseDuration="2000" :deletingSpeed="30" class="terminal-typed" />
             </div>
 
             <div class="terminal-line comment">// Môi trường học tập tương tác chuẩn PBL (Project-Based Learning)</div>
