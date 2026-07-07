@@ -5,13 +5,11 @@
 -   Tạo một hàm tái sử dụng để hiển thị vùng biểu ngữ trang.
 -   Loại bỏ mã trùng lặp trong các tệp mẫu.
 
-
 ## Tạo hàm tái sử dụng cho biểu ngữ trang
 
 ### Mục đích
 
-Thay vì sao chép và dán mã biểu ngữ trang vào nhiều tệp mẫu, chúng ta sẽ tạo một hàm tái sử dụng để quản lý logic và hiển thị.
-
+Thay vì sao chép và dán mã biểu ngữ trang vào nhiều tệp mẫu, thầy trò mình sẽ tạo một hàm tái sử dụng để quản lý logic và hiển thị.
 
 ### Code mẫu
 
@@ -50,19 +48,16 @@ function page_banner($args = null) {
 }
 ```
 
-
 ### Tóm tắt
 
 - **`page_banner($args)`**: Hàm tái sử dụng để hiển thị vùng biểu ngữ trang.
 - **Logic mặc định**: Xử lý các giá trị dự phòng nếu không có đối số được truyền vào.
-
 
 ## Sử dụng hàm biểu ngữ trang trong các tệp mẫu
 
 ### Mục đích
 
 Thay thế mã biểu ngữ trang trong các tệp mẫu bằng cách gọi hàm `page_banner()`.
-
 
 ### Code mẫu
 
@@ -100,12 +95,10 @@ page_banner(array(
 // ...existing code...
 ```
 
-
 ### Tóm tắt
 
 - **`page_banner()`**: Gọi hàm để hiển thị biểu ngữ trang.
 - **Đối số tùy chỉnh**: Truyền các giá trị tùy chỉnh cho tiêu đề, phụ đề, và hình nền khi cần.
-
 
 ## Bài tập gợi ý
 
@@ -115,17 +108,15 @@ page_banner(array(
 2. **Tùy chỉnh giao diện**:  
    - Thêm hiệu ứng CSS để làm nổi bật vùng biểu ngữ trang.
 
-
-## Tips / Lưu ý
+## Tips / Các em các em lưu ý
 
 - **Giá trị dự phòng**: Đảm bảo hàm xử lý các trường hợp không có giá trị được truyền vào.
 - **Tái sử dụng**: Sử dụng hàm `page_banner()` trong tất cả các tệp mẫu để giảm mã trùng lặp.
 
-
 ## Kết luận
 
-Trong bài học này, bạn đã học cách giảm mã trùng lặp bằng cách tạo một hàm tái sử dụng cho vùng biểu ngữ trang. Đây là bước quan trọng để làm cho mã của bạn dễ bảo trì và mở rộng hơn.
+Trong bài học này, các em đã học cách giảm mã trùng lặp bằng cách tạo một hàm tái sử dụng cho vùng biểu ngữ trang. Đây là bước quan trọng để làm cho mã của các em dễ bảo trì và mở rộng hơn.
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
-Chúc các bạn học tốt! 🚀  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
+Chúc các các em học tốt! 🚀  
 — **Thầy Đạt 🧡**

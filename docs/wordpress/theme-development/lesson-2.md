@@ -1,7 +1,4 @@
 # Bài 2: Nền tảng PHP trong WordPress
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask WooCommerce Theme Development  
 
 ---
@@ -15,7 +12,7 @@
 ## 📖 Lý thuyết cốt lõi
 
 ### 1. Cú pháp PHP lồng HTML (Alternative Syntax)
-Khi phát triển Theme WordPress, chúng ta phải in ra giao diện HTML rất nhiều. Việc viết chuỗi HTML bên trong lệnh `echo` của PHP rất dễ gây lỗi nháy kép `"` hoặc nháy đơn `'` và làm code rối rắm.
+Khi phát triển Theme WordPress, thầy trò mình phải in ra giao diện HTML rất nhiều. Việc viết chuỗi HTML bên trong lệnh `echo` của PHP rất dễ gây lỗi nháy kép `"` hoặc nháy đơn `'` và làm code rối rắm.
 WordPress khuyến khích sử dụng cú pháp thay thế (Alternative Syntax) để lồng ghép HTML:
 - Sử dụng dấu hai chấm `:` thay cho dấu mở ngoặc nhọn `{`.
 - Sử dụng `endif;`, `endforeach;`, `endwhile;` thay cho dấu đóng ngoặc nhọn `}`.
@@ -125,4 +122,3 @@ $categories = [
 
   *Đáp án đúng: **C**. Phải sử dụng dấu hai chấm `:` sau điều kiện và kết thúc bằng `endif;`.*
 </details>
-

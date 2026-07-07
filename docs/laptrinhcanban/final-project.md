@@ -217,4 +217,4 @@ Sau khi hoàn thành project, sinh viên sẽ:
 
 ---
 
-**Chúc các bạn hoàn thành project xuất sắc! 🚀**
+**Chúc các các em hoàn thành project xuất sắc! 🚀**

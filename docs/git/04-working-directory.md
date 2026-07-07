@@ -14,7 +14,7 @@
 
 ### 3 Khu vực quan trọng trong Git
 
-Git quản lý code của bạn qua 3 khu vực:
+Git quản lý code của các em qua 3 khu vực:
 
 ```
 ┌─────────────────┐    git add    ┌─────────────────┐    git commit   ┌──────────────┐
@@ -27,9 +27,9 @@ Git quản lý code của bạn qua 3 khu vực:
 
 #### 1. **Working Directory** (Thư mục làm việc)
 
--   **Là gì**: Thư mục dự án của bạn trên máy tính
+-   **Là gì**: Thư mục dự án của các em trên máy tính
 -   **Chứa gì**: Tất cả file code (HTML, CSS, JS, v.v.)
--   **Đặc điểm**: Đây là nơi bạn sửa code hàng ngày
+-   **Đặc điểm**: Đây là nơi các em sửa code hàng ngày
 
 **Ví dụ:** Folder `my-website/` chứa `index.html`, `style.css`
 
@@ -70,7 +70,7 @@ Git quản lý code của bạn qua 3 khu vực:
 # - test.js (đang thử nghiệm, chưa xong)
 # - .env (file config, không muốn commit)
 
-# Với staging area, bạn có thể:
+# Với staging area, các em có thể:
 git add index.html style.css  # Chỉ add 2 file hoàn thành
 git commit -m "Thêm tính năng mới"
 # 2 file kia không bị commit
@@ -133,7 +133,6 @@ git status
 # Changes to be committed: (xanh lá)
 #   new file:   index.html
 #   new file:   style.css
-#
 # Untracked files: (đỏ)
 #   script.js
 ```
@@ -231,7 +230,7 @@ git status
 # File vẫn còn trong Working Directory, chỉ bị bỏ khỏi staging
 ```
 
-**Lưu ý quan trọng:**
+**Các em các em lưu ý quan trọng:**
 -   `git reset` chỉ bỏ khỏi staging, KHÔNG xóa file
 -   File vẫn còn trong Working Directory
 -   Có thể add lại sau
@@ -401,7 +400,6 @@ git commit -m "Message"
 
 ---
 
-**Kết luận:** Hiểu rõ 3 khu vực trong Git giúp bạn làm việc có chủ đích và tránh commit nhầm. Staging Area là tính năng mạnh mẽ để bạn kiểm soát chính xác những gì sẽ được commit!
+**Kết luận:** Hiểu rõ 3 khu vực trong Git giúp các em làm việc có chủ đích và tránh commit nhầm. Staging Area là tính năng mạnh mẽ để các em kiểm soát chính xác những gì sẽ được commit!
 
 **Bài tiếp theo:** [05. Làm việc với Branch](./05-git-branching.md) - Học cách tạo và quản lý các nhánh trong Git
-

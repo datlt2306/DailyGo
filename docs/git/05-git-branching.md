@@ -14,16 +14,16 @@
 
 ### Branch là gì?
 
-**Branch (Nhánh)** là một phiên bản độc lập của code, cho phép bạn phát triển tính năng mới mà không ảnh hưởng đến code chính.
+**Branch (Nhánh)** là một phiên bản độc lập của code, cho phép các em phát triển tính năng mới mà không ảnh hưởng đến code chính.
 
 **Ví dụ minh họa thực tế:**
-Hãy tưởng tượng bạn đang viết một cuốn sách:
+Các em các em hãy tưởng tượng các em đang viết một cuốn sách:
 
 -   **main branch**: Bản thảo chính, đã được review, ổn định
 -   **chapter-5 branch**: Bạn đang viết chương 5, chưa hoàn thành
 -   **fix-typo branch**: Bạn sửa lỗi chính tả ở chương 2
 
-Nếu viết trực tiếp vào bản thảo chính, bạn có thể làm hỏng toàn bộ sách. Nhưng với branch, bạn có thể:
+Nếu viết trực tiếp vào bản thảo chính, các em có thể làm hỏng toàn bộ sách. Nhưng với branch, các em có thể:
 
 -   Viết chương 5 trên branch riêng
 -   Sửa lỗi chính tả trên branch khác
@@ -223,7 +223,7 @@ git branch -D feature-login    # Force delete (xóa dù chưa merge)
 git push origin --delete feature-login
 ```
 
-**Lưu ý:**
+**Các em các em lưu ý:**
 
 -   `-d`: Chỉ xóa được branch đã merge (an toàn)
 -   `-D`: Force delete, xóa dù chưa merge (cẩn thận!)
@@ -436,6 +436,6 @@ git checkout feature-new
 
 ---
 
-**Kết luận:** Branch là công cụ mạnh mẽ giúp bạn làm việc an toàn và hiệu quả. Hãy tạo branch cho mỗi tính năng mới, đừng sợ tạo quá nhiều branch - chúng rất nhẹ và dễ quản lý!
+**Kết luận:** Branch là công cụ mạnh mẽ giúp các em làm việc an toàn và hiệu quả. Các em các em hãy tạo branch cho mỗi tính năng mới, đừng sợ tạo quá nhiều branch - chúng rất nhẹ và dễ quản lý!
 
 **Bài tiếp theo:** [06. Merge và Rebase](./06-merge-vs-rebase.md) - Học cách gộp code từ branch này sang branch khác

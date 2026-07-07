@@ -1,7 +1,4 @@
 # Bài 1: Thiết lập môi trường phát triển local
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask WooCommerce Theme Development  
 
 ---
@@ -16,7 +13,7 @@
 ## 📖 Lý thuyết cốt lõi
 
 ### 1. Tại sao cần môi trường phát triển cục bộ (Local)?
-Khi phát triển giao diện (Theme) hoặc tính năng (Plugin) cho WordPress, chúng ta tuyệt đối **không** code trực tiếp trên hosting/server đang chạy thực tế (Production). Thay vào đó, chúng ta phát triển trên máy cá nhân để:
+Khi phát triển giao diện (Theme) hoặc tính năng (Plugin) cho WordPress, thầy trò mình tuyệt đối **không** code trực tiếp trên hosting/server đang chạy thực tế (Production). Thay vào đó, thầy trò mình phát triển trên máy cá nhân để:
 - Tránh làm sập website đang hoạt động khi gặp lỗi cú pháp PHP.
 - Không phụ thuộc vào tốc độ đường truyền Internet khi tải file.
 - Dễ dàng kiểm tra, gỡ lỗi (debug) mà không hiển thị thông tin nhạy cảm cho người dùng ngoài.
@@ -105,7 +102,7 @@ Sau đó lưu lại và tải lại trang Dashboard. Nếu có lỗi PHP xảy r
 ---
 
 ## ❓ Trắc nghiệm nhanh
-**1. Tại sao chúng ta KHÔNG được tự ý chỉnh sửa code trong thư mục `wp-admin` và `wp-includes`?**
+**1. Tại sao thầy trò mình KHÔNG được tự ý chỉnh sửa code trong thư mục `wp-admin` và `wp-includes`?**
 - A. Do WordPress sẽ bị khóa không cho truy cập.
 - B. Do code trong đó đã được mã hóa không thể sửa.
 - C. Do khi cập nhật (update) phiên bản WordPress mới, toàn bộ các file trong hai thư mục này sẽ bị ghi đè và mất hết code tự sửa.
@@ -115,4 +112,3 @@ Sau đó lưu lại và tải lại trang Dashboard. Nếu có lỗi PHP xảy r
 
   *Đáp án đúng: **C**. Mọi tùy biến phải được viết trong `wp-content/themes/` hoặc `wp-content/plugins/`.*
 </details>
-

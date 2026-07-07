@@ -137,12 +137,10 @@ git checkout -b release/v1.0.0 v1.0.0
 1.  Vào repository → Releases → "Draft a new release"
 2.  Chọn tag (hoặc tạo tag mới):
 
-
     -   Tag: `v1.0.0`
     -   Target: `main` (branch)
 
 3.  Điền thông tin:
-
 
     -   **Title:** "Version 1.0.0 - First Release"
     -   **Description:**
@@ -164,7 +162,6 @@ git checkout -b release/v1.0.0 v1.0.0
         ```
 
 4.  Đính kèm file (nếu có):
-
 
     -   Source code (zip, tar.gz)
     -   Binary files
@@ -237,7 +234,6 @@ npm run release
 2.  Tạo tag `v1.0.0` cho commit mới nhất
 3.  Push tag lên GitHub
 4.  Tạo Release trên GitHub với:
-
 
     -   Title: "Version 1.0.0"
     -   Description: Mô tả các tính năng chính
@@ -340,6 +336,6 @@ git push origin v1.0.0
 
 ---
 
-**Kết luận:** Tag và Release giúp bạn quản lý version code một cách chuyên nghiệp. Semantic Versioning giúp users hiểu được mức độ thay đổi giữa các version!
+**Kết luận:** Tag và Release giúp các em quản lý version code một cách chuyên nghiệp. Semantic Versioning giúp users hiểu được mức độ thay đổi giữa các version!
 
 **Bài tiếp theo:** [15. Mini Project](./15-mini-project.md) - Dự án cuối khóa: Làm việc nhóm theo GitHub Flow

@@ -18,12 +18,12 @@ Chào các em, hôm nay chúng ta sẽ cùng tìm hiểu về cách làm đẹp 
 
 Các em mở terminal và chạy 2 dòng lệnh này để cài đặt:
 
-```bash
+::: code-group
+
+```bash [Bash]
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
-
-Sau đó, chỉnh file `tailwind.config.js` như sau:
 
 ```js [tailwind.config.js]
 module.exports = {
@@ -35,14 +35,14 @@ module.exports = {
 };
 ```
 
-Tiếp theo, trong file `index.css`, các em bổ sung 3 dòng này:
-
-```css
+```css [index.css]
 /* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
+
+:::
 
 Như vậy là Tailwind đã sẵn sàng cho React của mình.
 

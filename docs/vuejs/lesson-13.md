@@ -20,7 +20,6 @@ graph TD
     API -->|Phản hồi 201 Created| Client
 ```
 
-
 ---
 
 ### 1. JSON-Server là gì?
@@ -75,10 +74,8 @@ async function fetchProducts() {
 5. Gắn sự kiện click vào nút "Xóa" gọi phương thức DELETE API để xóa sản phẩm khỏi JSON-Server, sau đó lọc cập nhật lại state cục bộ để biến mất khỏi bảng giao diện.
 6. (Nâng cao) Tạo trang `AdminProductCreateView.vue` dựa trên [admin-product-create.html](https://letrongdat.vercel.app/vuejs/templates/admin-product-create.html), cho phép điền thông tin và gọi POST API để thêm mới sản phẩm vào database.
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```javascript
 // src/services/api.js
@@ -141,4 +138,3 @@ export const productService = {
 </details>
 
 ---
-

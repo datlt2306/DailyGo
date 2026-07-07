@@ -48,7 +48,7 @@ Sau buổi học này, sinh viên sẽ:
 #include <stdio.h>   // Thư viện nhập/xuất chuẩn
 
 int main() {         // Hàm chính - điểm bắt đầu chương trình
-    // Code của bạn ở đây
+    // Code của các em ở đây
 
     return 0;        // Kết thúc chương trình thành công
 }
@@ -137,7 +137,7 @@ Buoi 1: Lam quen voi C
 Ngay mai toi se gioi lap trinh!
 ```
 
-**Bài 2:** Viết chương trình in bảng điểm của bạn:
+**Bài 2:** Viết chương trình in bảng điểm của các em:
 
 ```
 ======================
@@ -149,7 +149,7 @@ Xep loai: Kha
 ======================
 ```
 
-**Bài 3:** Viết chương trình in thông tin cá nhân của bạn (họ tên, tuổi, quê quán, sở thích)
+**Bài 3:** Viết chương trình in thông tin cá nhân của các em (họ tên, tuổi, quê quán, sở thích)
 
 ### Bài tập nâng cao
 

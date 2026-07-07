@@ -1,29 +1,26 @@
 # Thiết Lập Menu Điều Hướng Động Trong WordPress
 
-Chào mừng bạn đã trở lại!
+Chào mừng các em đã trở lại!
 
-Trong bài học này, chúng ta sẽ tìm hiểu cách thiết lập menu điều hướng động mà bạn có thể kiểm soát từ bên trong quản trị viên WordPress. Hãy đi sâu vào và để tôi cho bạn thấy những gì tôi đang đề cập đến.
-
+Trong bài học này, thầy trò mình sẽ tìm hiểu cách thiết lập menu điều hướng động mà các em có thể kiểm soát từ bên trong quản trị viên WordPress. Hãy đi sâu vào và để tôi cho các em thấy những gì tôi đang đề cập đến.
 
 ## Lý thuyết về menu điều hướng động trong WordPress
 
 ### Menu điều hướng động là gì?
-Menu điều hướng động trong WordPress là một danh sách các liên kết được tạo tự động dựa trên cấu hình trong giao diện quản trị viên. Thay vì mã hóa cứng các liên kết trong mã nguồn, bạn có thể dễ dàng thêm, xóa, hoặc sắp xếp các liên kết từ giao diện quản trị.
+Menu điều hướng động trong WordPress là một danh sách các liên kết được tạo tự động dựa trên cấu hình trong giao diện quản trị viên. Thay vì mã hóa cứng các liên kết trong mã nguồn, các em có thể dễ dàng thêm, xóa, hoặc sắp xếp các liên kết từ giao diện quản trị.
 
 ### Tại sao cần menu điều hướng động?
 - **Dễ quản lý**: Bạn có thể thay đổi menu mà không cần chỉnh sửa mã.
 - **Tùy chỉnh linh hoạt**: Menu có thể được gán vào nhiều vị trí khác nhau như header, footer, hoặc sidebar.
 - **Thân thiện với người dùng**: Giúp người dùng dễ dàng điều hướng giữa các phần của website.
 
-
 ## Giới thiệu về bài giảng
 
-Trong bài học này, chúng ta sẽ học cách thiết lập menu điều hướng động trong WordPress. Điều này sẽ giúp bạn dễ dàng kiểm soát và cập nhật menu từ giao diện quản trị viên mà không cần chỉnh sửa mã nguồn.
-
+Trong bài học này, thầy trò mình sẽ học cách thiết lập menu điều hướng động trong WordPress. Điều này sẽ giúp các em dễ dàng kiểm soát và cập nhật menu từ giao diện quản trị viên mà không cần chỉnh sửa mã nguồn.
 
 ## Đăng ký vị trí menu trong WordPress
 
-1. Mở tệp `functions.php` trong thư mục chủ đề của bạn.
+1. Mở tệp `functions.php` trong thư mục chủ đề của các em.
 2. Thêm đoạn mã sau để đăng ký vị trí menu:
 
 ```php
@@ -41,27 +38,25 @@ add_action('after_setup_theme', 'university_features');
 ```
 
 ### Tại sao cần viết như vậy?
-- **`register_nav_menus()`**: Hàm này đăng ký các vị trí menu để bạn có thể gán menu từ giao diện quản trị viên.
+- **`register_nav_menus()`**: Hàm này đăng ký các vị trí menu để các em có thể gán menu từ giao diện quản trị viên.
 - **`after_setup_theme`**: Hook này đảm bảo rằng các vị trí menu được đăng ký khi chủ đề được kích hoạt.
-
 
 ## Tạo menu trong quản trị viên WordPress
 
 1. Truy cập vào **Appearance > Menus** trong bảng điều khiển WordPress.
 2. Tạo một menu mới và đặt tên cho nó, ví dụ: "Header Menu".
-3. Thêm các trang hoặc liên kết bạn muốn vào menu.
+3. Thêm các trang hoặc liên kết các em muốn vào menu.
 4. Gán menu này vào vị trí "Header Menu Location".
 5. Lặp lại các bước trên để tạo các menu cho `"Footer Menu One"` và `"Footer Menu Two"`.
 
 ### Tại sao cần làm như vậy?
-- Giao diện quản trị viên giúp bạn dễ dàng thêm, xóa, hoặc sắp xếp các liên kết mà không cần chỉnh sửa mã nguồn.
-
+- Giao diện quản trị viên giúp các em dễ dàng thêm, xóa, hoặc sắp xếp các liên kết mà không cần chỉnh sửa mã nguồn.
 
 ## Xuất menu động trong tệp mẫu
 
 ### Xuất menu trong header
 
-1. Mở tệp `header.php` trong thư mục chủ đề của bạn.
+1. Mở tệp `header.php` trong thư mục chủ đề của các em.
 2. Thay thế phần tử danh sách không có thứ tự được mã hóa cứng bằng đoạn mã sau:
 
 ```php
@@ -104,7 +99,6 @@ add_action('after_setup_theme', 'university_features');
 - **`wp_nav_menu()`**: Hàm này hiển thị menu dựa trên vị trí đã đăng ký.
 - **`menu_class`**: Thêm lớp CSS để tùy chỉnh giao diện menu.
 
-
 ## Bài tập
 
 1. **Tạo thêm vị trí menu**:
@@ -113,7 +107,6 @@ add_action('after_setup_theme', 'university_features');
 
 2. **Tùy chỉnh menu**:
     - Thêm CSS để tùy chỉnh giao diện của menu động.
-
 
 ## Hướng dẫn cách làm
 
@@ -133,10 +126,9 @@ register_nav_menus(array(
 3. Truy cập vào **Appearance > Menus** và tạo một menu mới.
 4. Gán menu này vào vị trí `"Sidebar Menu Location"`.
 
-
 ### Tùy chỉnh menu
 
-1. Mở tệp `style.css` trong thư mục chủ đề của bạn.
+1. Mở tệp `style.css` trong thư mục chủ đề của các em.
 2. Thêm đoạn mã CSS sau để tùy chỉnh giao diện của menu:
 
 ```css
@@ -162,9 +154,8 @@ register_nav_menus(array(
 }
 ```
 
-3. Lưu tệp và làm mới trang web của bạn để xem các thay đổi.
-
+3. Lưu tệp và làm mới trang web của các em để xem các thay đổi.
 
 ## Tổng kết
 
-Trong bài học này, chúng ta đã học cách thiết lập menu điều hướng động trong WordPress. Chúng ta đã đăng ký các vị trí menu, tạo menu trong quản trị viên WordPress và xuất menu động trong tệp mẫu. Điều này giúp bạn dễ dàng kiểm soát và cập nhật menu từ giao diện quản trị viên mà không cần chỉnh sửa mã nguồn. Chúc các bạn học vui vẻ và thành công!
+Trong bài học này, thầy trò mình đã học cách thiết lập menu điều hướng động trong WordPress. Thầy trò mình đã đăng ký các vị trí menu, tạo menu trong quản trị viên WordPress và xuất menu động trong tệp mẫu. Điều này giúp các em dễ dàng kiểm soát và cập nhật menu từ giao diện quản trị viên mà không cần chỉnh sửa mã nguồn. Chúc các các em học vui vẻ và thành công!

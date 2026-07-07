@@ -1,7 +1,4 @@
 # Buổi 6: Gutenberg Block Development - Khởi đầu với Custom Blocks
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -59,4 +56,3 @@ register_block_type( __DIR__ . '/blocks/contact-block' );
 
   *Đáp án đúng: **B**.*
 </details>
-

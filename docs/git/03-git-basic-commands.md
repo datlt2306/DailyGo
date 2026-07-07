@@ -14,7 +14,7 @@
 
 ### Workflow cơ bản của Git
 
-Khi làm việc với Git, bạn thường làm theo 3 bước:
+Khi làm việc với Git, các em thường làm theo 3 bước:
 
 ```
 1. Sửa code (tạo/sửa/xóa file)
@@ -48,7 +48,7 @@ git init
 
 **Chức năng:** Xem file nào đã thay đổi, file nào đã được stage
 
-**Khi nào dùng:** Trước khi commit, để biết bạn đã add đủ file chưa
+**Khi nào dùng:** Trước khi commit, để biết các em đã add đủ file chưa
 
 **Kết quả có thể có:**
 
@@ -70,7 +70,7 @@ git add .                 # Thêm TẤT CẢ file thay đổi
 git add src/              # Thêm cả thư mục src/
 ```
 
-**Lưu ý:** `git add .` rất tiện nhưng cần cẩn thận - có thể add cả file không mong muốn!
+**Các em các em lưu ý:** `git add .` rất tiện nhưng cần cẩn thận - có thể add cả file không mong muốn!
 
 #### `git commit` - Lưu snapshot
 
@@ -79,7 +79,7 @@ git add src/              # Thêm cả thư mục src/
 **Cú pháp:**
 
 ```bash
-git commit -m "Mô tả ngắn gọn những gì bạn đã làm"
+git commit -m "Mô tả ngắn gọn những gì các em đã làm"
 ```
 
 **Ví dụ commit message tốt:**
@@ -113,7 +113,7 @@ git log --graph --oneline  # Kết hợp cả hai
 **Quy tắc vàng:** Commit message nên:
 
 1.  **Ngắn gọn**: Dưới 50 ký tự cho dòng đầu
-2.  **Rõ ràng**: Mô tả chính xác bạn làm gì
+2.  **Rõ ràng**: Mô tả chính xác các em làm gì
 3.  **Dùng câu mệnh lệnh**: "Thêm tính năng" thay vì "Đã thêm tính năng"
 
 **Ví dụ tốt:**
@@ -259,13 +259,10 @@ git log
 # commit def5678
 # Author: Nguyễn Văn A <nguyenvana@example.com>
 # Date:   Mon Jan 15 10:30:45 2024 +0700
-#
 #     Thêm CSS styling cho trang chủ
-#
 # commit abc1234
 # Author: Nguyễn Văn A <nguyenvana@example.com>
 # Date:   Mon Jan 15 09:15:20 2024 +0700
-#
 #     Thêm trang chủ HTML cơ bản
 ```
 
@@ -340,11 +337,11 @@ git commit -m "Commit message"
 **Giải thích:**
 
 ```bash
-# Lệnh này sẽ mở editor để bạn nhập message
+# Lệnh này sẽ mở editor để các em nhập message
 git commit
 
 # Hoặc dùng -m ngay:
-git commit -m "Message của bạn"
+git commit -m "Message của các em"
 ```
 
 **Mẹo:** Luôn dùng `-m` để tránh mở editor không mong muốn

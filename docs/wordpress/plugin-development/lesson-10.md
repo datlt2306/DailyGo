@@ -1,7 +1,4 @@
 # Buổi 10: Tích hợp các cổng tương tác AJAX Requests an toàn trong Plugin
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -55,4 +52,3 @@ function handle_ajax_like_post() {
 
   *Đáp án đúng: **B**.*
 </details>
-

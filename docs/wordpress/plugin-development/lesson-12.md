@@ -1,7 +1,4 @@
 # Buổi 12: Đóng gói, Viết hướng dẫn sử dụng và Quy trình phát hành Plugin lên WordPress.org
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -54,4 +51,3 @@ Plugin đếm lượt xem bài viết chi tiết an toàn và hiệu suất cao.
 
   *Đáp án đúng: **B**.*
 </details>
-

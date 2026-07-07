@@ -19,7 +19,6 @@ graph TD
     ComponentB -->|Gọi action: cartStore.add| Store
 ```
 
-
 ---
 
 ### 1. Tại sao cần State Management?
@@ -81,10 +80,8 @@ const counter = useCounterStore()
 4. Tại component `Navbar.vue`, hiển thị số lượng giỏ hàng động trên icon giỏ hàng (dòng **58-60** của [index.html](https://letrongdat.vercel.app/vuejs/templates/index.html)) liên kết trực tiếp với getter `totalCount`.
 5. Kết nối các hành động tăng/giảm/xóa ở trang Giỏ hàng `CartView.vue` với các actions của `useCartStore`.
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```javascript
 // src/stores/cart.js
@@ -150,4 +147,3 @@ export const useCartStore = defineStore('cart', {
 </details>
 
 ---
-

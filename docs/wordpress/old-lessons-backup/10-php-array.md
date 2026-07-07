@@ -2,20 +2,18 @@
 
 ## Giới thiệu
 
-Chào các em, hôm nay thầy sẽ hướng dẫn các em làm quen với **mảng** – một khái niệm cực kỳ quan trọng trong PHP và WordPress. Mảng giúp chúng ta lưu trữ nhiều giá trị trong một biến duy nhất, mở ra rất nhiều khả năng thú vị trong lập trình.
+Chào các em, hôm nay thầy sẽ hướng dẫn các em làm quen với **mảng** – một khái niệm cực kỳ quan trọng trong PHP và WordPress. Mảng giúp thầy trò mình lưu trữ nhiều giá trị trong một biến duy nhất, mở ra rất nhiều khả năng thú vị trong lập trình.
 
 ### Tại sao cần sử dụng mảng?
 - **Quản lý dữ liệu**: Mảng giúp lưu trữ nhiều giá trị liên quan trong một biến duy nhất, thay vì tạo nhiều biến riêng lẻ.
 - **Hiệu quả**: Dễ dàng lặp qua các giá trị, thêm, sửa, hoặc xóa mà không cần thay đổi toàn bộ mã.
 - **Ứng dụng thực tế**: Trong WordPress, mảng thường được sử dụng để lưu trữ danh sách bài đăng, danh mục, hoặc các tùy chọn cấu hình.
 
-
 ## Mục tiêu bài học
 
 - Hiểu cách tạo và sử dụng mảng trong PHP.
 - Lặp qua mảng để hiển thị nội dung.
 - Áp dụng mảng vào các tình huống thực tế trong WordPress.
-
 
 ## Tạo mảng trong PHP
 
@@ -39,13 +37,12 @@ echo $names[0]; // Kết quả: Brad
 echo $names[2]; // Kết quả: Jane
 ```
 
-> **Lưu ý**: Nếu cố gắng truy cập một chỉ số không tồn tại, PHP sẽ trả về lỗi.
-
+> **Các em các em lưu ý**: Nếu cố gắng truy cập một chỉ số không tồn tại, PHP sẽ trả về lỗi.
 
 ## Lặp qua mảng
 
 ### 1. Vòng lặp `while`
-Vòng lặp `while` cho phép chúng ta lặp qua tất cả các giá trị trong mảng một cách tuần tự.
+Vòng lặp `while` cho phép thầy trò mình lặp qua tất cả các giá trị trong mảng một cách tuần tự.
 
 ```php
 <?php
@@ -66,14 +63,12 @@ while ($count < count($names)) {
   - **"Xin chào, tên tôi là Jane."**
   - **"Xin chào, tên tôi là Meowsalot."**
 
-
 ## Tại sao sử dụng mảng?
 
-Mảng giúp chúng ta:
+Mảng giúp thầy trò mình:
 - **Lưu trữ dữ liệu liên quan**: Ví dụ, danh sách tên, danh mục sản phẩm, hoặc bài đăng.
 - **Dễ dàng quản lý**: Thêm, sửa, hoặc xóa giá trị mà không cần thay đổi toàn bộ mã.
 - **Hiển thị nội dung động**: Trong WordPress, mảng thường được sử dụng để hiển thị danh sách bài đăng hoặc danh mục.
-
 
 ## Ứng dụng mảng trong WordPress
 
@@ -90,7 +85,6 @@ foreach ($posts as $post) {
 ### 2. Tùy chỉnh giao diện
 Mảng cũng được sử dụng để truyền các tùy chọn cấu hình vào các hàm như `wp_nav_menu()` hoặc `wp_list_pages()`.
 
-
 ## Tóm tắt nhanh
 
 - **Mảng**: Lưu trữ nhiều giá trị trong một biến duy nhất.
@@ -98,5 +92,4 @@ Mảng cũng được sử dụng để truyền các tùy chọn cấu hình v�
 - **Vòng lặp**: Sử dụng vòng lặp để lặp qua tất cả các giá trị trong mảng.
 - **Ứng dụng trong WordPress**: Hiển thị danh sách bài đăng, danh mục, hoặc tùy chọn cấu hình.
 
-
-Hy vọng bài viết này giúp các em hiểu rõ hơn về mảng trong PHP. Trong bài học tiếp theo, chúng ta sẽ sử dụng mảng để hiển thị nội dung WordPress động như bài đăng và trang. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi! 🎉
+Hy vọng bài viết này giúp các em hiểu rõ hơn về mảng trong PHP. Trong bài học tiếp theo, thầy trò mình sẽ sử dụng mảng để hiển thị nội dung WordPress động như bài đăng và trang. Hãy chuẩn bị tinh thần, thầy trò mình sẽ bắt đầu ngay thôi! 🎉

@@ -21,7 +21,6 @@
 
 1.  **Cùng sửa một dòng code:**
 
-
     ```
     Branch A: const API_URL = "https://api.old.com";
     Branch B: const API_URL = "https://api.new.com";
@@ -29,7 +28,6 @@
     ```
 
 2.  **Cùng thêm code vào cùng vị trí:**
-
 
     ```
     Branch A thêm: console.log("Debug A");
@@ -39,7 +37,6 @@
 
 3.  **Một branch xóa file, branch kia sửa file:**
 
-
     ```
     Branch A: Xóa file config.js
     Branch B: Sửa file config.js
@@ -47,7 +44,6 @@
     ```
 
 4.  **Sửa code ở gần nhau:**
-
 
     ```
     Branch A sửa dòng 10-15
@@ -61,13 +57,11 @@
 
 1.  **Nhiều người cùng làm một feature:**
 
-
     -   Người A làm tính năng login
     -   Người B cũng làm tính năng login
     -   Cùng sửa file `Login.js` → Conflict!
 
 2.  **Không pull trước khi làm việc:**
-
 
     -   Bạn checkout branch lúc 9h sáng
     -   Làm việc cả ngày
@@ -76,12 +70,10 @@
 
 3.  **Merge nhiều branch cùng lúc:**
 
-
     -   Merge feature A vào main → OK
     -   Merge feature B vào main → Conflict với feature A!
 
 4.  **Rebase khi branch đã có người khác dùng:**
-
 
     -   Bạn rebase branch
     -   Người khác đang làm việc trên branch đó
@@ -267,7 +259,7 @@ git commit -m "Merge feature/register, cập nhật API URL v2"
 git push origin main
 ```
 
-### Lưu ý
+### Các em các em lưu ý
 
 ✅ **Nên làm:**
 
@@ -420,7 +412,9 @@ export default LoginForm;
 
 **File sau khi resolve:**
 
-```javascript
+::: code-group
+
+```javascript [LoginForm.js]
 // LoginForm.js - Hợp nhất cả 2
 import React, { useState } from "react";
 
@@ -492,13 +486,13 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-**Bước tiếp theo:**
-
-```bash
+```bash [Bash]
 git add LoginForm.js
 git commit -m "Merge feature/login-error-handling, hợp nhất validation và error handling"
 git push origin main
 ```
+
+:::
 
 ### Kinh nghiệm
 
@@ -640,7 +634,7 @@ git rebase --continue
 -   Bạn tạo PR từ `feature/product-list` vào `main`
 -   PR đang được review
 -   Trong lúc đó, có PR khác merge vào `main` trước
--   PR của bạn bị conflict với code mới trong `main`
+-   PR của các em bị conflict với code mới trong `main`
 -   → Cần update PR branch!
 
 ### Diễn biến
@@ -670,7 +664,7 @@ git push -u origin feature/product-list
 5.  Click **"Mark as resolved"**
 6.  Click **"Commit merge"**
 
-**Lưu ý:** Cách này tạo merge commit
+**Các em các em lưu ý:** Cách này tạo merge commit
 
 ### Cách resolve local (Khuyến nghị)
 
@@ -719,7 +713,7 @@ git push origin feature/product-list
 git push --force-with-lease origin feature/product-list
 ```
 
-**Lưu ý:** `--force-with-lease` an toàn hơn `--force` vì kiểm tra remote trước
+**Các em các em lưu ý:** `--force-with-lease` an toàn hơn `--force` vì kiểm tra remote trước
 
 ### Workflow khuyến nghị
 
@@ -863,7 +857,9 @@ git commit -m "Merge feature/add-helper, di chuyển helper sang new-utils.js"
 
 **Bước 1: Xem tất cả conflicts**
 
-```bash
+::: code-group
+
+```bash [Bash]
 git merge feature/checkout
 
 # Output:
@@ -874,11 +870,7 @@ git merge feature/checkout
 # Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-**Bước 2: Resolve từng file một**
-
-**File 1: App.js**
-
-```javascript
+```javascript [main.js]
 // Conflict trong App.js
 <<<<<<< HEAD
 import Cart from './components/Cart';
@@ -899,9 +891,7 @@ function App() {
 }
 ```
 
-**Resolve: Giữ cả 2 (hợp nhất)**
-
-```javascript
+```javascript [App.js]
 // App.js sau khi resolve
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
@@ -916,9 +906,7 @@ function App() {
 }
 ```
 
-**File 2: components/Cart.js**
-
-```javascript
+```javascript [main.js]
 // Conflict trong Cart.js
 const Cart = () => {
 <<<<<<< HEAD
@@ -941,9 +929,7 @@ const Cart = () => {
 };
 ```
 
-**Resolve: Giữ cả 2 functions**
-
-```javascript
+```javascript [Cart.js]
 // Cart.js sau khi resolve
 const Cart = () => {
     const [items, setItems] = useState([]);
@@ -960,9 +946,7 @@ const Cart = () => {
 };
 ```
 
-**Bước 3: Đánh dấu tất cả đã resolve**
-
-```bash
+```bash [Bash]
 git add App.js
 git add components/Cart.js
 git status
@@ -971,6 +955,8 @@ git status
 # Hoàn tất merge
 git commit -m "Merge feature/checkout, hợp nhất Cart và Checkout features"
 ```
+
+:::
 
 ### Checklist resolve nhiều files
 
@@ -994,7 +980,7 @@ git commit -m "Merge feature/checkout, hợp nhất Cart và Checkout features"
 
 **Rebase với conflict:**
 
--   Branch của bạn có 3 commits
+-   Branch của các em có 3 commits
 -   Main đã có code mới
 -   Rebase lên main → Mỗi commit có thể conflict!
 -   → Phải resolve 3 lần!
@@ -1002,7 +988,7 @@ git commit -m "Merge feature/checkout, hợp nhất Cart và Checkout features"
 ### Diễn biến
 
 ```bash
-# Branch của bạn
+# Branch của các em
 git log --oneline
 # abc123 feat: thêm component A
 # def456 feat: thêm component B
@@ -1100,7 +1086,6 @@ git merge main
 1.  Mở file conflict trong VS Code
 2.  VS Code tự động highlight conflict
 3.  Click vào:
-
 
     -   **"Accept Current Change"** (giữ version HEAD)
     -   **"Accept Incoming Change"** (giữ version merge vào)
@@ -1278,7 +1263,6 @@ Tạo tình huống conflict cơ bản và resolve:
 4.  Tạo PR và resolve conflict
 5.  Viết tài liệu ghi lại:
 
-
     -   Files nào bị conflict
     -   Cách resolve
     -   Bài học rút ra
@@ -1324,6 +1308,6 @@ Tạo tình huống conflict cơ bản và resolve:
 
 ---
 
-**Kết luận:** Conflict là một phần tất yếu của teamwork. Đừng sợ conflict, hãy học cách resolve nó một cách chuyên nghiệp. Với kiến thức từ bài này, bạn đã sẵn sàng làm việc nhóm hiệu quả!
+**Kết luận:** Conflict là một phần tất yếu của teamwork. Đừng sợ conflict, hãy học cách resolve nó một cách chuyên nghiệp. Với kiến thức từ bài này, các em đã sẵn sàng làm việc nhóm hiệu quả!
 
 **Nhớ:** Practice makes perfect - Hãy thực hành nhiều với các case study trên để thành thạo!

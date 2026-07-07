@@ -1,7 +1,4 @@
 # Buổi 9: Bảo mật API (Permission Callbacks, Nonce verification cho REST requests)
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -53,4 +50,3 @@ register_rest_route( 'zentask/v1', '/secure-data', array(
 
   *Đáp án đúng: **B**.*
 </details>
-

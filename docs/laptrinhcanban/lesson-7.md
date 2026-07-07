@@ -2,14 +2,13 @@
 
 ## 🎯 Mục tiêu buổi học
 
--   Giúp các em hiểu bản chất vòng lặp lồng nhau (for lồng for, while lồng for, v.v)
--   Biết vận dụng vòng lặp lồng nhau để giải các bài toán, đặc biệt là in hình học cơ bản
--   Thực hành vẽ các hình: vuông, tam giác, kim cương (hình thoi) bằng C
--   Làm quen các bài toán thực tế với vòng lặp lồng nhau trên mảng/hai chiều
--   Biết cách tối ưu vòng lặp - tránh lồng nhau “vô tội vạ” gây nặng máy
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
 
----
-
+1. ✅ Giúp các em hiểu bản chất vòng lặp lồng nhau (for lồng for, while lồng for, v.v)
+2. ✅ Biết vận dụng vòng lặp lồng nhau để giải các bài toán, đặc biệt là in hình học cơ bản
+3. ✅ Thực hành vẽ các hình: vuông, tam giác, kim cương (hình thoi) bằng C
+4. ✅ Làm quen các bài toán thực tế với vòng lặp lồng nhau trên mảng/hai chiều
+5. ✅ Biết cách tối ưu vòng lặp - tránh lồng nhau “vô tội vạ” gây nặng máy
 ## 📘 Nội dung chính
 
 ### 1. Khái niệm Vòng lặp lồng nhau
@@ -381,7 +380,7 @@ int main() {
         1
     ```
 
-### Bài tập nâng cao (dành cho bạn khá, muốn thử thách)
+### Bài tập nâng cao (dành cho các em khá, muốn thử thách)
 
 11. In tam giác Floyd:
     ```
@@ -408,7 +407,7 @@ int main() {
 
 ---
 
-## 📝 Một số lưu ý khi làm bài
+## 📝 Một số các em lưu ý khi làm bài
 
 1. **Hiệu năng:** Vòng lặp lồng nhau thường có độ phức tạp O(n^2) trở lên - cẩn thận khi dùng cho n lớn.
 2. **Biến đếm:** Luôn đặt tên khác nhau cho các vòng lặp i, j, k,... để đỡ nhầm lẫn.

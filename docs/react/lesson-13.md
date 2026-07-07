@@ -358,6 +358,8 @@ function TourCard({ tour, onDelete }) {
 
 Thầy lấy ví dụ code tạo trang form tổng hợp dưới đây. Các bạn có thể chỉnh sửa thêm nhé!
 
+::: code-group
+
 ```javascript [src/pages/TourFormPage.jsx]
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -393,12 +395,12 @@ function TourFormPage() {
 export default TourFormPage;
 ```
 
-**Định tuyến:**
-
-```javascript
+```javascript [main.js]
 <Route path="/tours/new" element={<TourFormPage />} />
 <Route path="/tours/:id/edit" element={<TourFormPage />} />
 ```
+
+:::
 
 ---
 

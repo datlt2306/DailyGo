@@ -2,9 +2,6 @@
 
 > **Bài trước:** [Lesson 13: API Đơn hàng & Checkout (Orders)](./lesson-13.md)  
 > **Bài tiếp theo:** [Lesson 15: Deploy Production & CORS](./lesson-15.md)
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: Vanguard Store E-Commerce API  
 
 ---
@@ -18,7 +15,7 @@
 ## 📖 Lý thuyết cốt lõi
 
 ### 1. Tại sao cần kiểm thử tự động (Automation Testing)?
-Khi dự án lớn lên, mỗi lần sửa đổi hoặc thêm tính năng mới có thể vô tình làm hỏng các tính năng cũ đang chạy bình thường. Viết test tự động giúp chúng ta phát hiện lỗi ngay lập tức.
+Khi dự án lớn lên, mỗi lần sửa đổi hoặc thêm tính năng mới có thể vô tình làm hỏng các tính năng cũ đang chạy bình thường. Viết test tự động giúp thầy trò mình phát hiện lỗi ngay lập tức.
 - **Jest**: Thư viện quản lý các ca kiểm thử (test cases), cung cấp các hàm so sánh kết quả (`expect`, `toBe`).
 - **Supertest**: Thư viện giả lập gửi các HTTP request (GET, POST...) trực tiếp đến cấu trúc ứng dụng Express mà không cần chạy máy chủ thực tế (không cần listen cổng mạng).
 
@@ -59,7 +56,7 @@ describe('Kiểm thử API Đăng nhập (POST /api/auth/login)', () => {
 ---
 
 ## 🛠️ Bài tập thực hành (Lab)
-Hãy viết một đoạn kiểm thử kiểm tra API lấy danh sách sản phẩm `GET /api/products` phải trả về status code 200 và kết quả trả về phải là một mảng dữ liệu.
+Các em các em hãy viết một đoạn kiểm thử kiểm tra API lấy danh sách sản phẩm `GET /api/products` phải trả về status code 200 và kết quả trả về phải là một mảng dữ liệu.
 
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
@@ -93,4 +90,3 @@ describe('Kiểm thử API Sản phẩm', () => {
 
   *Đáp án đúng: **B**.*
 </details>
-

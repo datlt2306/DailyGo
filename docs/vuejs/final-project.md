@@ -25,7 +25,7 @@ Học viên tải về các tệp tin giao diện tĩnh làm cơ sở dữ liệ
 - **Admin - Danh sách khách hàng**: [admin-user-list.html](https://letrongdat.vercel.app/vuejs/templates/admin-user-list.html)
 - **Admin - Danh sách đơn hàng**: [admin-order-list.html](https://letrongdat.vercel.app/vuejs/templates/admin-order-list.html)
 
-*Lưu ý: Do Vercel là môi trường chạy tĩnh nên khi truy cập thư mục gốc `/templates` nó sẽ mặc định tải file `index.html` (trang chủ) thay vì hiển thị danh sách thư mục. Hãy bấm trực tiếp vào từng liên kết ở trên để tải về.*
+*Các em các em lưu ý: Do Vercel là môi trường chạy tĩnh nên khi truy cập thư mục gốc `/templates` nó sẽ mặc định tải file `index.html` (trang chủ) thay vì hiển thị danh sách thư mục. Hãy bấm trực tiếp vào từng liên kết ở trên để tải về.*
 
 ---
 

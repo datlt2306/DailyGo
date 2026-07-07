@@ -2,9 +2,6 @@
 
 > **Bài trước:** [Lesson 11: Hiểu Về Populate Trong MongoDB](./lesson-11.md)  
 > **Bài tiếp theo:** [Lesson 13: API Đơn hàng & Checkout (Orders)](./lesson-13.md)
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: Vanguard Store E-Commerce API  
 
 ---
@@ -24,7 +21,7 @@ Trong một ứng dụng thương mại điện tử (E-Commerce), giỏ hàng l
 - Giỏ hàng chứa danh sách các sản phẩm và số lượng tương ứng của từng sản phẩm.
 
 ### 2. Thiết kế Schema Giỏ hàng với Mongoose
-Để liên kết dữ liệu, chúng ta sử dụng `Schema.Types.ObjectId` và thuộc tính `ref` tham chiếu đến các model `User` và `Product` như đã học ở bài 10 & 11:
+Để liên kết dữ liệu, thầy trò mình sử dụng `Schema.Types.ObjectId` và thuộc tính `ref` tham chiếu đến các model `User` và `Product` như đã học ở bài 10 & 11:
 ```javascript
 const cartSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -95,7 +92,7 @@ export const addToCart = async (req, res, next) => {
 ---
 
 ## 🛠️ Bài tập thực hành (Lab)
-Hãy viết API lấy thông tin giỏ hàng của người dùng hiện tại `GET /api/cart`. API này phải bắt buộc người dùng đã đăng nhập (sử dụng middleware `authenticateJWT`) và tự động populate đầy đủ tên và giá của sản phẩm.
+Các em các em hãy viết API lấy thông tin giỏ hàng của người dùng hiện tại `GET /api/cart`. API này phải bắt buộc người dùng đã đăng nhập (sử dụng middleware `authenticateJWT`) và tự động populate đầy đủ tên và giá của sản phẩm.
 
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
@@ -122,7 +119,7 @@ export const getCart = async (req, res, next) => {
 ---
 
 ## ❓ Trắc nghiệm nhanh
-**1. Tại sao chúng ta cần sử dụng hàm `.populate()` khi lấy thông tin giỏ hàng?**
+**1. Tại sao thầy trò mình cần sử dụng hàm `.populate()` khi lấy thông tin giỏ hàng?**
 - A. Để tự động cộng tiền giỏ hàng.
 - B. Để Mongoose tự động thay thế `productId` (dạng ObjectId) bằng thông tin chi tiết của sản phẩm (như tên, giá, ảnh) từ bảng Products.
 - C. Để mã hóa giỏ hàng an toàn.
@@ -131,4 +128,3 @@ export const getCart = async (req, res, next) => {
 
   *Đáp án đúng: **B**.*
 </details>
-

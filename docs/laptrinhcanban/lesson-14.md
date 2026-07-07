@@ -2,15 +2,13 @@
 
 ## 🎯 Mục tiêu buổi học
 
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+
 Sau buổi này, thầy mong các em sẽ:
-
--   Hiểu cách đọc và ghi file văn bản bằng ngôn ngữ C
--   Biết sử dụng các hàm fopen, fclose, fprintf, fscanf, fgets, fputs
--   Ôn tập lại toàn bộ kiến thức C cơ bản đã học
--   Chuẩn bị tinh thần và kỹ năng cho project cuối kỳ
-
----
-
+1. ✅ Hiểu cách đọc và ghi file văn bản bằng ngôn ngữ C
+2. ✅ Biết sử dụng các hàm fopen, fclose, fprintf, fscanf, fgets, fputs
+3. ✅ Ôn tập lại toàn bộ kiến thức C cơ bản đã học
+4. ✅ Chuẩn bị tinh thần và kỹ năng cho project cuối kỳ
 ## 📘 Nội dung chính
 
 ### 1. Đọc file văn bản trong C

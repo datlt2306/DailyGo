@@ -19,7 +19,6 @@ graph TD
     B -->|Có lỗi| D[Hiển thị mảng errors xuống UI]
 ```
 
-
 ---
 
 ### 1. Thu thập dữ liệu form với `v-model`
@@ -105,10 +104,8 @@ function handleSubmit() {
 7. Hiển thị thông báo lỗi bằng class chữ màu đỏ (`text-rose-500 text-xs mt-1`) ngay dưới mỗi ô input tương ứng nếu có lỗi.
 8. Chỉ khi nhấn submit và toàn bộ dữ liệu hợp lệ mới hiển thị alert thông báo thành công.
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```vue
 <script setup>
@@ -189,4 +186,3 @@ function validate() {
 </details>
 
 ---
-

@@ -81,12 +81,12 @@ git commit -m "Thêm validation cho form"
 git push -u origin feature/add-login-form
 ```
 
-**Lưu ý:** Push branch riêng, không push trực tiếp vào main!
+**Các em các em lưu ý:** Push branch riêng, không push trực tiếp vào main!
 
 #### Bước 4: Tạo Pull Request
 
 -   Vào GitHub → Repository → Click "New Pull Request"
--   Chọn branch source (branch của bạn) và target (main)
+-   Chọn branch source (branch của các em) và target (main)
 -   Điền mô tả về thay đổi
 -   Gán reviewer (người review code)
 -   Click "Create Pull Request"
@@ -212,7 +212,6 @@ git push origin feature/product-search
 1.  Vào PR → Xem lại code và comment
 2.  Nếu OK, click "Merge pull request"
 3.  Chọn merge type:
-
 
     -   **Create a merge commit**: Giữ nguyên lịch sử (khuyến nghị)
     -   **Squash and merge**: Gom tất cả commit thành 1
@@ -344,7 +343,7 @@ git checkout feature/fix
 
 ### 5. **Conflict khi merge PR**
 
-**Nguyên nhân:** Main đã có code mới trong lúc bạn làm branch
+**Nguyên nhân:** Main đã có code mới trong lúc các em làm branch
 
 **Giải pháp:**
 
@@ -371,6 +370,6 @@ git push origin feature/your-branch
 
 ---
 
-**Kết luận:** GitHub Flow là quy trình đơn giản nhưng mạnh mẽ. Nắm vững quy trình này giúp bạn làm việc nhóm hiệu quả và chuyên nghiệp. Nhớ quy tắc vàng: Không bao giờ commit trực tiếp vào main!
+**Kết luận:** GitHub Flow là quy trình đơn giản nhưng mạnh mẽ. Nắm vững quy trình này giúp các em làm việc nhóm hiệu quả và chuyên nghiệp. Nhớ quy tắc vàng: Không bao giờ commit trực tiếp vào main!
 
 **Bài tiếp theo:** [10. Pull Request và Review Code](./10-pull-request.md) - Học cách tạo PR chuyên nghiệp và review code hiệu quả

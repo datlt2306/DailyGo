@@ -1,7 +1,4 @@
 # Buổi 1: Kiến trúc hệ thống WordPress, Cấu trúc thư mục & Vòng đời của một Plugin
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -53,4 +50,3 @@ Author: Instructor
 
   *Đáp án đúng: **B**.*
 </details>
-

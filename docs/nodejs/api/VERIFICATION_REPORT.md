@@ -45,7 +45,7 @@
   - ✅ Chuyển sang ES6 `import/export`
   - ✅ Thêm `import dotenv from 'dotenv'`
   - ✅ Cải thiện code example với Bearer token parsing
-  - ✅ Thêm lưu ý về environment variables
+  - ✅ Thêm các em lưu ý về environment variables
 
 #### ✅ Lesson-11.md
 - **Trạng thái:** ĐÃ SỬA HOÀN TOÀN
@@ -57,7 +57,7 @@
   - ✅ Thêm code-group wrapper cho consistency
   - ✅ Cải thiện file paths thành `src/models/...`
   - ✅ Thêm error handling với try/catch
-  - ✅ Thêm lưu ý về performance populate
+  - ✅ Thêm các em lưu ý về performance populate
 
 ---
 
@@ -67,7 +67,7 @@
 - **Trạng thái:** ĐÃ SỬA
 - **Trước:** `const secretKey = 'yourSecretKey';`
 - **Sau:** `const secretKey = process.env.JWT_SECRET || 'yourSecretKey';`
-- **Bổ sung:** Thêm note về `.env` file và lưu ý bảo mật
+- **Bổ sung:** Thêm note về `.env` file và các em lưu ý bảo mật
 
 #### ✅ Lesson-8.md
 - **Trạng thái:** ĐÃ SỬA (2 chỗ)
@@ -81,7 +81,7 @@
 - **Sau:** `jwt.verify(token, process.env.JWT_SECRET || "yourSecretKey", ...)`
 - **Bổ sung:** Thêm import dotenv và note về `.env`
 
-#### ⚠️ Lưu ý:
+#### ⚠️ Các em các em lưu ý:
 - Vẫn còn fallback `|| "yourSecretKey"` trong code - đây là acceptable pattern để không break code khi thiếu env var
 - Tuy nhiên, có thể cải thiện thêm bằng cách throw error nếu thiếu JWT_SECRET trong production
 
@@ -165,7 +165,7 @@
 
 ### Các cải thiện đã thực hiện thêm:
 - ✅ Thêm error handling trong Lesson-11
-- ✅ Thêm lưu ý về performance populate
+- ✅ Thêm các em lưu ý về performance populate
 - ✅ Cải thiện code examples với Bearer token parsing
 - ✅ Thêm documentation về environment variables
 
@@ -178,4 +178,3 @@
 **Người kiểm tra:** AI Assistant  
 **Ngày:** $(date)  
 **Phiên bản:** 1.0
-

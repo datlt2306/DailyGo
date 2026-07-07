@@ -14,7 +14,7 @@
 
 ### Clone - Lấy code từ GitHub về máy
 
-**Clone** là cách lấy toàn bộ repository từ GitHub về máy tính của bạn, bao gồm cả lịch sử Git.
+**Clone** là cách lấy toàn bộ repository từ GitHub về máy tính của các em, bao gồm cả lịch sử Git.
 
 **Khi nào dùng clone:**
 -   Bạn mới tham gia dự án, muốn lấy code về máy
@@ -30,7 +30,7 @@ git clone https://github.com/username/project.git
 
 ### Fork - Tạo bản sao repository
 
-**Fork** là tạo một bản sao repository của người khác vào tài khoản GitHub của bạn.
+**Fork** là tạo một bản sao repository của người khác vào tài khoản GitHub của các em.
 
 **Khi nào dùng fork:**
 -   Muốn contribute vào dự án open source
@@ -42,9 +42,9 @@ git clone https://github.com/username/project.git
 | Clone                           | Fork                              |
 | ------------------------------- | --------------------------------- |
 | Lấy code về máy để làm việc     | Tạo bản sao repository vào GitHub |
-| Code thuộc về repository gốc    | Code thuộc về bạn                 |
+| Code thuộc về repository gốc    | Code thuộc về các em                 |
 | Không thể push (trừ khi có quyền) | Có thể push vào fork của mình    |
-| Dùng cho dự án bạn có quyền      | Dùng cho dự án của người khác     |
+| Dùng cho dự án các em có quyền      | Dùng cho dự án của người khác     |
 
 ### Push - Đẩy code lên GitHub
 
@@ -52,10 +52,10 @@ git clone https://github.com/username/project.git
 
 **Workflow:**
 ```
-Local (máy bạn) → git push → GitHub (cloud)
+Local (máy các em) → git push → GitHub (cloud)
 ```
 
-**Lưu ý quan trọng:**
+**Các em các em lưu ý quan trọng:**
 -   Push chỉ đẩy commit, không tự động merge
 -   Cần quyền write để push vào repository
 -   Push branch riêng, sau đó tạo Pull Request để merge vào main
@@ -66,7 +66,7 @@ Local (máy bạn) → git push → GitHub (cloud)
 
 **Workflow:**
 ```
-GitHub (cloud) → git pull → Local (máy bạn)
+GitHub (cloud) → git pull → Local (máy các em)
 ```
 
 **Pull = Fetch + Merge:**
@@ -125,14 +125,14 @@ git remote -v
 4.   Chờ vài giây, fork sẽ được tạo
 
 **Sau khi fork:**
--   Repository sẽ xuất hiện trong GitHub của bạn
+-   Repository sẽ xuất hiện trong GitHub của các em
 -   URL: `https://github.com/your-username/original-repo-name`
 -   Bạn có quyền push vào fork của mình
 
 ### Làm việc với fork
 
 ```bash
-# Clone fork của bạn về máy
+# Clone fork của các em về máy
 git clone https://github.com/your-username/project.git
 cd project
 
@@ -141,7 +141,7 @@ git remote add upstream https://github.com/original-username/project.git
 
 # Xem remote
 git remote -v
-# origin    https://github.com/your-username/project.git (fork của bạn)
+# origin    https://github.com/your-username/project.git (fork của các em)
 # upstream  https://github.com/original-username/project.git (gốc)
 
 # Update code từ upstream
@@ -242,7 +242,7 @@ git commit -m "Thay đổi của tôi"
 
 **Bài tập 2: Làm việc nhóm giả lập**
 
-Tạo một repository trên GitHub và mời 1-2 bạn cùng thực hành:
+Tạo một repository trên GitHub và mời 1-2 các em cùng thực hành:
 
 1.   **Người A (Owner):**
     -   Tạo repository `team-project`
@@ -274,7 +274,7 @@ Tạo một repository trên GitHub và mời 1-2 bạn cùng thực hành:
 **Nguyên nhân:** Không có quyền push vào repository
 
 **Giải pháp:**
--   Kiểm tra bạn có là collaborator không
+-   Kiểm tra các em có là collaborator không
 -   Hoặc fork repository rồi push vào fork
 -   Hoặc xin quyền từ owner
 
@@ -311,7 +311,7 @@ git remote add upstream https://github.com/original/repo.git
 # 2. Fetch code mới
 git fetch upstream
 
-# 3. Merge vào branch của bạn
+# 3. Merge vào branch của các em
 git checkout main
 git merge upstream/main
 
@@ -332,11 +332,10 @@ git push origin main
 -   **Luôn pull trước khi push:** Tránh conflict và giữ code đồng bộ
 -   **Làm việc trên branch riêng:** Không commit trực tiếp vào main
 -   **Giao tiếp:** Nếu sửa file quan trọng, báo team biết
--   **Commit message rõ ràng:** Giúp team hiểu bạn làm gì
+-   **Commit message rõ ràng:** Giúp team hiểu các em làm gì
 
 ---
 
-**Kết luận:** Làm việc nhóm với GitHub yêu cầu bạn hiểu rõ workflow: clone → làm việc → commit → push → pull. Hãy thực hành nhiều để quen với quy trình này!
+**Kết luận:** Làm việc nhóm với GitHub yêu cầu các em hiểu rõ workflow: clone → làm việc → commit → push → pull. Hãy thực hành nhiều để quen với quy trình này!
 
 **Bài tiếp theo:** [09. GitHub Flow](./09-github-flow.md) - Học quy trình làm việc nhóm chuẩn trên GitHub
-

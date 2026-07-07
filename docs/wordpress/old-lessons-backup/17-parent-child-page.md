@@ -2,24 +2,21 @@
 
 Xin chào tất cả mọi người!
 
-Trong bài học này, chúng ta sẽ tìm hiểu cách điều chỉnh các template của mình để tính cho các trang dành cho cha và con. Hãy tưởng tượng rằng dưới trang "Giới thiệu về chúng tôi", chúng ta muốn có hai trang con mới có tên là "Lịch sử" và "Mục tiêu của chúng tôi". Chúng ta sẽ cùng nhau tạo các trang con này và cập nhật template để phản ánh mối quan hệ cha con.
-
+Trong bài học này, thầy trò mình sẽ tìm hiểu cách điều chỉnh các template của mình để tính cho các trang dành cho cha và con. Các em các em hãy tưởng tượng rằng dưới trang "Giới thiệu về chúng tôi", thầy trò mình muốn có hai trang con mới có tên là "Lịch sử" và "Mục tiêu của chúng tôi". Thầy trò mình sẽ cùng nhau tạo các trang con này và cập nhật template để phản ánh mối quan hệ cha con.
 
 ## Lý thuyết về trang cha và con trong WordPress
 
 ### Trang cha và con là gì?
-Trong WordPress, **trang cha (Parent Page)** và **trang con (Child Page)** là một cách tổ chức nội dung theo cấu trúc phân cấp. Trang cha là trang chính, trong khi trang con là các trang phụ thuộc vào trang cha. Điều này giúp bạn tạo ra các nhóm nội dung liên quan và dễ dàng điều hướng.
+Trong WordPress, **trang cha (Parent Page)** và **trang con (Child Page)** là một cách tổ chức nội dung theo cấu trúc phân cấp. Trang cha là trang chính, trong khi trang con là các trang phụ thuộc vào trang cha. Điều này giúp các em tạo ra các nhóm nội dung liên quan và dễ dàng điều hướng.
 
 ### Tại sao cần điều chỉnh template cho trang cha và con?
 - **Hiển thị mối quan hệ**: Giúp người dùng hiểu rõ cấu trúc nội dung.
 - **Breadcrumbs**: Cung cấp đường dẫn điều hướng rõ ràng.
 - **Danh sách trang con**: Hiển thị các trang con dưới trang cha để người dùng dễ dàng truy cập.
 
-
 ## Giới thiệu về bài giảng
 
-Trong bài học này, chúng ta sẽ học cách điều chỉnh các template của mình để tính cho các trang cha và con. Điều này sẽ giúp chúng ta tạo ra các trang có cấu trúc rõ ràng và dễ dàng điều hướng.
-
+Trong bài học này, thầy trò mình sẽ học cách điều chỉnh các template của mình để tính cho các trang cha và con. Điều này sẽ giúp thầy trò mình tạo ra các trang có cấu trúc rõ ràng và dễ dàng điều hướng.
 
 ## Tạo các trang con trong WordPress
 
@@ -31,12 +28,11 @@ Trong bài học này, chúng ta sẽ học cách điều chỉnh các template 
 6. Tạo một trang khác có tên "Mục tiêu của chúng tôi" với nội dung giả và chọn "Giới thiệu về chúng tôi" làm trang cha.
 7. Xuất bản trang này.
 
-
 ## Cập nhật template để phản ánh mối quan hệ cha con
 
 ### Hiển thị tiêu đề động
 
-1. Mở tệp `page.php` trong thư mục template của bạn.
+1. Mở tệp `page.php` trong thư mục template của các em.
 2. Tìm đoạn mã hiển thị tiêu đề tĩnh và thay thế bằng hàm `the_title()`.
 
 ```php
@@ -45,8 +41,7 @@ Trong bài học này, chúng ta sẽ học cách điều chỉnh các template 
 ```
 
 ### Tại sao cần viết như vậy?
-- **`the_title()`**: Hiển thị tiêu đề của trang hiện tại một cách tự động, giúp bạn không cần viết tiêu đề tĩnh.
-
+- **`the_title()`**: Hiển thị tiêu đề của trang hiện tại một cách tự động, giúp các em không cần viết tiêu đề tĩnh.
 
 ### Chỉ hiển thị hộp breadcrumb trên các trang con
 
@@ -65,7 +60,6 @@ Trong bài học này, chúng ta sẽ học cách điều chỉnh các template 
 - **`wp_get_post_parent_id()`**: Hàm này trả về ID của trang cha. Nếu trang hiện tại không có cha, giá trị trả về sẽ là `0`.
 - **Breadcrumbs**: Hiển thị đường dẫn điều hướng chỉ khi trang hiện tại là trang con.
 
-
 ### Hiển thị tiêu đề trang cha động
 
 1. Thay thế tiêu đề tĩnh của trang cha bằng hàm `get_the_title()`.
@@ -81,7 +75,6 @@ Trong bài học này, chúng ta sẽ học cách điều chỉnh các template 
 - **`get_the_title()`**: Hiển thị tiêu đề của trang cha.
 - **`get_permalink()`**: Trả về URL của trang cha, giúp tạo liên kết điều hướng.
 
-
 ## Bài tập
 
 1. **Tạo thêm trang con**:
@@ -92,7 +85,6 @@ Trong bài học này, chúng ta sẽ học cách điều chỉnh các template 
 2. **Hiển thị danh sách các trang con**:
     - Thêm mã để hiển thị danh sách các trang con dưới trang cha.
 
-
 ## Hướng dẫn cách làm
 
 ### Tạo thêm trang con
@@ -102,7 +94,6 @@ Trong bài học này, chúng ta sẽ học cách điều chỉnh các template 
 3. Tạo một trang có tên "Đội ngũ của chúng tôi" với nội dung giả.
 4. Trong thanh bên phải, dưới "Thuộc tính trang", chọn "Giới thiệu về chúng tôi" làm trang cha.
 5. Xuất bản trang này.
-
 
 ### Hiển thị danh sách các trang con
 
@@ -138,7 +129,6 @@ if ( wp_get_post_parent_id( get_the_ID() ) ) {
 - **`WP_Query`**: Truy vấn các trang con dựa trên ID của trang cha.
 - **`menu_order`**: Sắp xếp các trang con theo thứ tự được định nghĩa trong WordPress.
 
-
 ## Tổng kết
 
-Trong bài học này, chúng ta đã học cách điều chỉnh các template để tính cho các trang cha và con. Chúng ta đã tạo các trang con, cập nhật template để hiển thị tiêu đề động và chỉ hiển thị hộp breadcrumb trên các trang con. Hãy thực hành các bài tập để nắm vững kiến thức này. Chúc các bạn học vui vẻ và thành công!
+Trong bài học này, thầy trò mình đã học cách điều chỉnh các template để tính cho các trang cha và con. Thầy trò mình đã tạo các trang con, cập nhật template để hiển thị tiêu đề động và chỉ hiển thị hộp breadcrumb trên các trang con. Hãy thực hành các bài tập để nắm vững kiến thức này. Chúc các các em học vui vẻ và thành công!

@@ -5,13 +5,11 @@
 -   Hiển thị phụ đề và hình nền động cho vùng biểu ngữ trang.
 -   Sử dụng trường tùy chỉnh để cho phép người dùng tải lên hình ảnh và nhập phụ đề.
 
-
 ## Tạo trường tùy chỉnh cho biểu ngữ trang
 
 ### Mục đích
 
 Cho phép người dùng tải lên hình ảnh và nhập phụ đề cho vùng biểu ngữ trang.
-
 
 ### Hướng dẫn
 
@@ -25,18 +23,15 @@ Cho phép người dùng tải lên hình ảnh và nhập phụ đề cho vùng
 4. Trong phần **Location**, thiết lập:
     - Hiển thị nhóm trường này trên tất cả các loại bài đăng.
 
-
 ### Kết quả mẫu
 
-Khi chỉnh sửa bài đăng hoặc trang, bạn sẽ thấy các trường tùy chỉnh **Page Banner Subtitle** và **Page Banner Background**.
-
+Khi chỉnh sửa bài đăng hoặc trang, các em sẽ thấy các trường tùy chỉnh **Page Banner Subtitle** và **Page Banner Background**.
 
 ## Hiển thị phụ đề và hình nền động
 
 ### Mục đích
 
 Sử dụng giá trị từ trường tùy chỉnh để hiển thị phụ đề và hình nền động.
-
 
 ### Code mẫu
 
@@ -58,24 +53,20 @@ Sử dụng giá trị từ trường tùy chỉnh để hiển thị phụ đ�
 </div>
 ```
 
-
 ### Tóm tắt
 
 - **`get_field()`**: Lấy giá trị từ trường tùy chỉnh.
 - **`$pageBannerImage['sizes']['page-banner']`**: Sử dụng kích thước hình ảnh tùy chỉnh cho hình nền.
 
-
 ### Kết quả mẫu
 
 Trên trang chi tiết giáo sư, vùng biểu ngữ sẽ hiển thị phụ đề và hình nền động.
-
 
 ## Tạo kích thước hình ảnh tùy chỉnh cho biểu ngữ
 
 ### Mục đích
 
 Tạo kích thước hình ảnh phù hợp với vùng biểu ngữ trang.
-
 
 ### Code mẫu
 
@@ -90,16 +81,13 @@ function university_features() {
 }
 ```
 
-
 ### Tóm tắt
 
 - **`add_image_size()`**: Tạo kích thước hình ảnh tùy chỉnh với tỷ lệ khung hình phù hợp.
 
-
 ### Kết quả mẫu
 
-WordPress sẽ tự động tạo kích thước hình ảnh biểu ngữ trang khi bạn tải lên hình ảnh.
-
+WordPress sẽ tự động tạo kích thước hình ảnh biểu ngữ trang khi các em tải lên hình ảnh.
 
 ## Bài tập gợi ý
 
@@ -109,17 +97,15 @@ WordPress sẽ tự động tạo kích thước hình ảnh biểu ngữ trang 
 2. **Tùy chỉnh giao diện**:  
    - Thêm hiệu ứng CSS để làm nổi bật vùng biểu ngữ trang.
 
-
-## Tips / Lưu ý
+## Tips / Các em các em lưu ý
 
 - **Kiểm tra dữ liệu**: Đảm bảo trường tùy chỉnh đã được thiết lập đúng trước khi hiển thị trên giao diện người dùng.
 - **Sử dụng plugin Manual Image Crop**: Chỉnh sửa vùng cắt cho hình ảnh biểu ngữ nếu cần.
 
-
 ## Kết luận
 
-Trong bài học này, bạn đã học cách làm cho vùng biểu ngữ trang trở nên động bằng cách sử dụng trường tùy chỉnh và kích thước hình ảnh tùy chỉnh. Đây là bước quan trọng để nâng cao tính cá nhân hóa và trải nghiệm người dùng trên website WordPress.
+Trong bài học này, các em đã học cách làm cho vùng biểu ngữ trang trở nên động bằng cách sử dụng trường tùy chỉnh và kích thước hình ảnh tùy chỉnh. Đây là bước quan trọng để nâng cao tính cá nhân hóa và trải nghiệm người dùng trên website WordPress.
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
-Chúc các bạn học tốt! 🚀  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
+Chúc các các em học tốt! 🚀  
 — **Thầy Đạt 🧡**

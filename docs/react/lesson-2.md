@@ -439,6 +439,8 @@ export default TodoList;
 
 #### Bước 3: Tạo TodoHeader Component với children
 
+::: code-group
+
 ```javascript [src/components/TodoHeader.jsx]
 function TodoHeader({ title, children }) {
     return (
@@ -452,17 +454,19 @@ function TodoHeader({ title, children }) {
 export default TodoHeader;
 ```
 
-**Cách sử dụng:**
-
-```javascript
+```javascript [main.js]
 <TodoHeader title="📝 Todo List">
     <span className="text-sm text-gray-500">3 tasks</span>
 </TodoHeader>
 ```
 
+:::
+
 ### Lab 2: Tạo Button component với các variant
 
 **Yêu cầu**: Tạo một component Button với TailwindCSS hỗ trợ nhiều kiểu giao diện
+
+::: code-group
 
 ```javascript [src/components/Button.jsx]
 function Button({ children, variant = "primary", size = "medium" }) {
@@ -491,9 +495,7 @@ function Button({ children, variant = "primary", size = "medium" }) {
 export default Button;
 ```
 
-**Gợi ý sử dụng trong TodoList:**
-
-```javascript
+```javascript [main.js]
 import Button from "./Button";
 
 // Thêm nút vào header
@@ -503,6 +505,8 @@ import Button from "./Button";
     </Button>
 </TodoHeader>;
 ```
+
+:::
 
 ---
 

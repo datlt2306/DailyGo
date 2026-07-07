@@ -1,7 +1,4 @@
 # Buổi 2: Làm chủ Action Hooks và Filter Hooks
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -36,7 +33,7 @@ Viết bộ lọc `the_content` tự động chèn thêm chữ ký liên hệ �
 ```php
 function add_my_signature( $content ) {
     if ( is_single() ) {
-        $signature = '<p class="sig">Cảm ơn bạn đã đọc bài viết!</p>';
+        $signature = '<p class="sig">Cảm ơn các em đã đọc bài viết!</p>';
         return $content . $signature;
     }
     return $content;
@@ -58,4 +55,3 @@ add_filter( 'the_content', 'add_my_signature' );
 
   *Đáp án đúng: **B**.*
 </details>
-

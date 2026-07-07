@@ -12,8 +12,7 @@ graph LR
     Validation -->|Lỗi validate| BadReq[Response 400 Bad Request]
 ```
 
-
-Chào các em! 👋 Hôm nay chúng ta sẽ cùng nhau tìm hiểu cách viết middleware để validate dữ liệu đầu vào trong Express. Đây là một kỹ năng rất quan trọng khi xây dựng API, giúp đảm bảo dữ liệu gửi lên từ client luôn hợp lệ và giảm thiểu lỗi trong ứng dụng.
+Chào các em! 👋 Hôm nay thầy trò mình sẽ cùng nhau tìm hiểu cách viết middleware để validate dữ liệu đầu vào trong Express. Đây là một kỹ năng rất quan trọng khi xây dựng API, giúp đảm bảo dữ liệu gửi lên từ client luôn hợp lệ và giảm thiểu lỗi trong ứng dụng.
 
 ## Mục tiêu
 
@@ -23,7 +22,7 @@ Chào các em! 👋 Hôm nay chúng ta sẽ cùng nhau tìm hiểu cách viết 
 
 ## 1. Joi là gì?
 
-Joi là một thư viện JavaScript mạnh mẽ, giúp chúng ta kiểm tra dữ liệu đầu vào một cách dễ dàng và rõ ràng. Nó cho phép định nghĩa các quy tắc (schema) để kiểm tra dữ liệu và trả về lỗi nếu dữ liệu không hợp lệ.
+Joi là một thư viện JavaScript mạnh mẽ, giúp thầy trò mình kiểm tra dữ liệu đầu vào một cách dễ dàng và rõ ràng. Nó cho phép định nghĩa các quy tắc (schema) để kiểm tra dữ liệu và trả về lỗi nếu dữ liệu không hợp lệ.
 
 ### Tính năng nổi bật của Joi:
 
@@ -59,13 +58,13 @@ if (error) {
 ```
 :::
 
-Các em thấy không, Joi giúp chúng ta kiểm tra dữ liệu rất dễ dàng và rõ ràng. Bây giờ, chúng ta sẽ áp dụng Joi vào thực tế nhé!
+Các em thấy không, Joi giúp thầy trò mình kiểm tra dữ liệu rất dễ dàng và rõ ràng. Bây giờ, thầy trò mình sẽ áp dụng Joi vào thực tế nhé!
 
 ## 2. So sánh Joi với validate từ model và các thư viện khác
 
 ### Validate từ model (ví dụ: Mongoose)
 
-Mongoose cũng hỗ trợ validate dữ liệu, nhưng nó chỉ hoạt động khi lưu dữ liệu vào MongoDB. Điều này có thể không đủ linh hoạt nếu chúng ta muốn kiểm tra dữ liệu trước khi xử lý logic.
+Mongoose cũng hỗ trợ validate dữ liệu, nhưng nó chỉ hoạt động khi lưu dữ liệu vào MongoDB. Điều này có thể không đủ linh hoạt nếu thầy trò mình muốn kiểm tra dữ liệu trước khi xử lý logic.
 
 | Tiêu chí                      | Joi                          | Mongoose Validate    | Express-Validator   |
 | ----------------------------- | ---------------------------- | -------------------- | ------------------- |
@@ -122,7 +121,7 @@ src/
 
 #### Định nghĩa middleware `validateRequest`
 
-Middleware này sẽ giúp chúng ta kiểm tra dữ liệu đầu vào dựa trên schema được định nghĩa bằng Joi.
+Middleware này sẽ giúp thầy trò mình kiểm tra dữ liệu đầu vào dựa trên schema được định nghĩa bằng Joi.
 
 **src/middleware/validateRequest.js**
 
@@ -152,7 +151,7 @@ export const validateRequest = (schema, target = "body") => {
 :::
 #### Tách schema validate vào file riêng
 
-Để code gọn gàng và dễ bảo trì, chúng ta sẽ tách `createProductSchema` và `updateProductSchema` vào một file riêng.
+Để code gọn gàng và dễ bảo trì, thầy trò mình sẽ tách `createProductSchema` và `updateProductSchema` vào một file riêng.
 
 :::code-group
 ```javascript [validation/product.validation.js]
@@ -367,11 +366,10 @@ Ví dụ thực tế: Khi đăng ký tài khoản, nếu không validate email f
 
 ## 7. Kết luận
 
-Các em thấy không, việc sử dụng Joi giúp chúng ta kiểm tra dữ liệu đầu vào một cách dễ dàng và hiệu quả. Hãy nhớ rằng, việc validate dữ liệu là rất quan trọng để đảm bảo ứng dụng của chúng ta hoạt động ổn định và an toàn.
+Các em thấy không, việc sử dụng Joi giúp thầy trò mình kiểm tra dữ liệu đầu vào một cách dễ dàng và hiệu quả. Hãy nhớ rằng, việc validate dữ liệu là rất quan trọng để đảm bảo ứng dụng của thầy trò mình hoạt động ổn định và an toàn.
 
 **Bài tiếp theo:** [Lesson 7: Authentication và Authorization](./lesson-7.md) - Học về bảo mật và phân quyền
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**
-

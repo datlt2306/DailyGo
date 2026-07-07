@@ -124,9 +124,9 @@ function increaseQuantity(index) {
 
 ### Yêu cầu: Tăng giảm số lượng, áp mã giảm giá và tính toán hóa đơn Giỏ hàng
 
-Trong bài tập này, chúng ta sẽ xây dựng một trình quản lý sản phẩm đơn lẻ nâng cao trong giỏ hàng, ứng dụng cả `computed` và `watch` để xử lý các logic thực tế của một trang E-Commerce.
+Trong bài tập này, thầy trò mình sẽ xây dựng một trình quản lý sản phẩm đơn lẻ nâng cao trong giỏ hàng, ứng dụng cả `computed` và `watch` để xử lý các logic thực tế của một trang E-Commerce.
 
-1. **Tạo Component**: Tạo component Vue `CartManager.vue` trong dự án của bạn và sao chép cấu trúc giao diện tương tự trang giỏ hàng mẫu tại [cart.html](https://letrongdat.vercel.app/vuejs/templates/cart.html).
+1. **Tạo Component**: Tạo component Vue `CartManager.vue` trong dự án của các em và sao chép cấu trúc giao diện tương tự trang giỏ hàng mẫu tại [cart.html](https://letrongdat.vercel.app/vuejs/templates/cart.html).
 2. **Khai báo State**:
    - Sử dụng `reactive` khai báo một sản phẩm trong giỏ:
      ```javascript
@@ -315,4 +315,3 @@ const total = computed(() => {
 </details>
 
 ---
-

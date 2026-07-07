@@ -6,7 +6,7 @@
 ## 🎯 Mục tiêu học tập
 
 -   Cài đặt Git thành công trên Windows, macOS hoặc Linux
--   Cấu hình Git với tên và email của bạn
+-   Cấu hình Git với tên và email của các em
 -   Kiểm tra phiên bản Git đã cài đặt
 -   Thiết lập một số cấu hình cơ bản để làm việc hiệu quả hơn
 
@@ -14,13 +14,13 @@
 
 ### Tại sao cần cấu hình Git?
 
-Git cần biết bạn là ai để ghi lại thông tin trong mỗi commit. Thông tin này bao gồm:
+Git cần biết các em là ai để ghi lại thông tin trong mỗi commit. Thông tin này bao gồm:
 
 -   **Tên người dùng**: Ai đã tạo commit này?
 -   **Email**: Liên hệ khi cần review code hoặc có vấn đề
 
 **Ví dụ thực tế:**
-Khi làm việc nhóm trên GitHub, bạn sẽ thấy:
+Khi làm việc nhóm trên GitHub, các em sẽ thấy:
 
 ```
 Commit: "Thêm tính năng đăng nhập"
@@ -28,7 +28,7 @@ Author: Nguyễn Văn A <nguyenvana@example.com>
 Date: 2024-01-15 10:30:45
 ```
 
-Nếu không cấu hình, Git sẽ dùng tên máy tính (như "DESKTOP-ABC123") - không ai biết bạn là ai!
+Nếu không cấu hình, Git sẽ dùng tên máy tính (như "DESKTOP-ABC123") - không ai biết các em là ai!
 
 ### Global vs Local Configuration
 
@@ -36,7 +36,7 @@ Git có 2 cấp độ cấu hình:
 
 #### 1. **Global Configuration** (Toàn cục)
 
--   Áp dụng cho TẤT CẢ repository trên máy bạn
+-   Áp dụng cho TẤT CẢ repository trên máy các em
 -   Dùng cho thông tin cá nhân (tên, email)
 -   Lệnh: `git config --global`
 
@@ -110,10 +110,10 @@ git --version
 #### Bước 1: Cấu hình tên và email
 
 ```bash
-# Cấu hình tên (thay "Nguyễn Văn A" bằng tên của bạn)
+# Cấu hình tên (thay "Nguyễn Văn A" bằng tên của các em)
 git config --global user.name "Nguyễn Văn A"
 
-# Cấu hình email (thay email bằng email của bạn)
+# Cấu hình email (thay email bằng email của các em)
 git config --global user.email "nguyenvana@example.com"
 
 # Xác nhận cấu hình
@@ -124,9 +124,9 @@ git config --global --list
 # user.email=nguyenvana@example.com
 ```
 
-**Lưu ý quan trọng:**
+**Các em các em lưu ý quan trọng:**
 
--   Email nên dùng email GitHub của bạn (nếu có tài khoản GitHub)
+-   Email nên dùng email GitHub của các em (nếu có tài khoản GitHub)
 -   Email này sẽ hiển thị công khai trên GitHub (nếu repository public)
 -   Có thể dùng email công ty hoặc email cá nhân
 
@@ -148,8 +148,8 @@ git config --global core.editor "nano"
 
 **Giải thích:**
 
--   Editor này sẽ mở khi Git cần bạn nhập commit message
--   `code --wait`: VS Code sẽ đợi bạn đóng file mới tiếp tục
+-   Editor này sẽ mở khi Git cần các em nhập commit message
+-   `code --wait`: VS Code sẽ đợi các em đóng file mới tiếp tục
 -   Nên dùng VS Code vì có syntax highlighting và dễ dùng
 
 #### Bước 3: Cấu hình branch mặc định
@@ -206,7 +206,7 @@ git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
 
-# Sau khi alias, bạn có thể dùng:
+# Sau khi alias, các em có thể dùng:
 git st    # Thay vì git status
 git co    # Thay vì git checkout
 ```
@@ -222,16 +222,16 @@ git co    # Thay vì git checkout
 
 **Bài tập 1: Cài đặt và cấu hình Git**
 
-1.  Cài đặt Git trên máy tính của bạn (theo hướng dẫn ở trên)
+1.  Cài đặt Git trên máy tính của các em (theo hướng dẫn ở trên)
 2.  Kiểm tra phiên bản: `git --version`
-3.  Cấu hình tên và email của bạn
+3.  Cấu hình tên và email của các em
 4.  Xác nhận cấu hình bằng `git config --global --list`
 5.  Chụp màn hình kết quả và lưu lại
 
 **Kết quả mong đợi:**
 
 ```
-user.name=Tên của bạn
+user.name=Tên của các em
 user.email=email@example.com
 core.editor=code --wait
 init.defaultBranch=main
@@ -301,7 +301,7 @@ where git    # Windows
     git config --global user.email "email-da-verify-tren-github@example.com"
     ```
 
-**Lưu ý:** GitHub chỉ hiển thị avatar và link profile nếu email khớp!
+**Các em các em lưu ý:** GitHub chỉ hiển thị avatar và link profile nếu email khớp!
 
 ### 3. **Quên đã cấu hình gì**
 
@@ -350,6 +350,6 @@ git config --global user.email "Email đúng"
 
 ---
 
-**Kết luận:** Cấu hình Git đúng cách ngay từ đầu sẽ giúp bạn làm việc hiệu quả và chuyên nghiệp hơn. Đặc biệt quan trọng khi làm việc nhóm - mọi người cần biết ai đã commit code gì!
+**Kết luận:** Cấu hình Git đúng cách ngay từ đầu sẽ giúp các em làm việc hiệu quả và chuyên nghiệp hơn. Đặc biệt quan trọng khi làm việc nhóm - mọi người cần biết ai đã commit code gì!
 
 **Bài tiếp theo:** [03. Các lệnh cơ bản](./03-git-basic-commands.md) - Học cách sử dụng `git init`, `git add`, `git commit`, và `git log`

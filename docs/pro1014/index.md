@@ -6,12 +6,13 @@ Xin chào các em! 🎉
 
 ## 🎯 Mục tiêu môn học
 
-Trong môn học này, các em sẽ:
+Trong môn học này, các em sẽ đạt được:
 
 -   ✅ Xây dựng một hệ thống website **"Quản lý Tour Du lịch"** bằng HTML/CSS/PHP/MySQL
--   ✅ Học cách làm việc nhóm chuyên nghiệp với Git/GitHub
--   ✅ Trải nghiệm quy trình phát triển phần mềm thực tế: Phân tích → Viết Spec → Thiết kế → Xây dựng → Kiểm thử → Báo cáo
--   ✅ Rèn luyện kỹ năng thuyết trình và bảo vệ dự án
+-   ✅ Làm chủ các công cụ hỗ trợ lập trình **AI & AI Agents (ChatGPT, Claude, Cursor, Copilot)** để đẩy nhanh tiến độ và nâng cao chất lượng code
+-   ✅ Học cách làm việc nhóm chuyên nghiệp với Git/GitHub & Cơ chế Code Review chéo
+-   ✅ Trải nghiệm quy trình phát triển phần mềm thực tế: Phân tích (AI-assisted) → Viết Spec → Thiết kế DB → Xây dựng & Tích hợp → Kiểm thử → Báo cáo
+-   ✅ Rèn luyện kỹ năng thuyết trình và bảo vệ dự án trước hội đồng phản biện
 
 **Thầy sẽ đóng vai trò người hướng dẫn và phản biện**, luôn sẵn sàng hỗ trợ các em trong suốt quá trình làm dự án!
 
@@ -35,40 +36,40 @@ Các em sẽ được chia thành các nhóm, mỗi nhóm phụ trách một mod
 
 ---
 
-## 📅 Lộ trình 15 buổi học (5 tuần, 3 buổi/tuần)
+## 📅 Lộ trình 8 buổi học (Giai đoạn 1 & Giai đoạn 2)
 
-### 🗓 TUẦN 1 – KHỞI ĐỘNG & PHÂN TÍCH ĐỀ TÀI
+### 🗓 Giai đoạn 1: Phân tích & Đặc tả bằng AI (Buổi 1-3)
 
 | Buổi   | Nội dung                          | File                         |
 | ------ | --------------------------------- | ---------------------------- |
-| Buổi 1 | Giới thiệu đề tài & chia nhóm     | [lesson-1.md](./lesson-1.md) |
-| Buổi 2 | Phân tích chức năng (Use Case)    | [lesson-2.md](./lesson-2.md) |
-| Buổi 3 | Viết Project Specification (Spec) | [lesson-3.md](./lesson-3.md) |
+| Buổi 1 | Giới thiệu đề tài & Ý tưởng sơ bộ bằng AI | [lesson-1.md](./lesson-1.md) |
+| Buổi 2 | Phân tích Use Case bằng Prompting | [lesson-2.md](./lesson-2.md) |
+| Buổi 3 | Viết Project Spec với sự hỗ trợ của AI | [lesson-3.md](./lesson-3.md) |
 
-**Kết thúc tuần 1:** Mỗi nhóm xác định module cụ thể và phạm vi chức năng. Có Spec nháp mô tả rõ module đó.
+**Kết thúc giai đoạn 1:** Mỗi nhóm xác định module cụ thể và có Spec nháp mô tả rõ module được tối ưu hóa bằng Prompt mẫu.
 
 ---
 
-### 🗓 TUẦN 2 – THIẾT KẾ DỮ LIỆU & QUẢN LÝ DỰ ÁN
+### 🗓 Giai đoạn 2: Thiết kế Dữ liệu & Quy trình Teamwork (Buổi 4-6)
 
 | Buổi   | Nội dung                               | File                         |
 | ------ | -------------------------------------- | ---------------------------- |
-| Buổi 4 | Thiết kế dữ liệu (ERD)                 | [lesson-4.md](./lesson-4.md) |
-| Buổi 5 | Thiết kế database nâng cao & chuẩn hóa | [lesson-5.md](./lesson-5.md) |
-| Buổi 6 | Giới thiệu Git & teamwork              | [lesson-6.md](./lesson-6.md) |
+| Buổi 4 | Thiết kế dữ liệu (ERD) & Prompt sinh SQL | [lesson-4.md](./lesson-4.md) |
+| Buổi 5 | Thiết kế DB nâng cao & AI Sinh Mock Data | [lesson-5.md](./lesson-5.md) |
+| Buổi 6 | Teamwork với Git & Quy trình Review code | [lesson-6.md](./lesson-6.md) |
 
-**Kết thúc tuần 2:** Có Spec + ERD hoàn chỉnh. Tạo repo GitHub và có kế hoạch triển khai chi tiết.
+**Kết thúc giai đoạn 2:** Có Spec + ERD hoàn chỉnh. Tạo repo GitHub, có seed data mẫu và kế hoạch triển khai chi tiết.
 
 ---
 
-### 🗓 TUẦN 3 – TRIỂN KHAI GIAI ĐOẠN 1
+### 🗓 Giai đoạn 3: Triển khai & Kiểm thử cùng AI Agents (Buổi 7-8)
 
 | Buổi   | Nội dung               | File                         |
 | ------ | ---------------------- | ---------------------------- |
-| Buổi 7 | Theo dõi tiến độ lần 1 | [lesson-7.md](./lesson-7.md) |
-| Buổi 8 | Review 1 (Giữa kỳ)     | [lesson-8.md](./lesson-8.md) |
+| Buổi 7 | Triển khai mã nguồn bằng AI Agents | [lesson-7.md](./lesson-7.md) |
+| Buổi 8 | Review 1 (Đánh giá Giữa kỳ) | [lesson-8.md](./lesson-8.md) |
 
-**Kết thúc tuần 3:** Có web chạy cơ bản, ít nhất 1 module hoạt động. Nhận được feedback từ thầy để cải thiện.
+**Kết thúc giai đoạn 3:** Có trang web hoạt động cơ bản (CRUD được dữ liệu thật từ DB), ít nhất 1 module hoạt động trơn tru. Nhận góp ý từ thầy để chuẩn bị triển khai mở rộng.
 
 ---
 
@@ -123,18 +124,6 @@ Thầy đã chuẩn bị một số tài liệu hữu ích cho các em:
 -   [MySQL Documentation](https://dev.mysql.com/doc/) - Tài liệu MySQL
 -   [Bootstrap Templates](https://colorlib.com/wp/free-html-css-website-templates/) - Template HTML/CSS miễn phí
 -   [BootstrapMade Templates](https://bootstrapmade.com/) - Template đẹp và chuyên nghiệp
-
----
-
-## 💪 Lời khuyên từ thầy
-
-Các em thân mến! Dự án này có thể sẽ khó khăn, nhưng thầy tin rằng các em sẽ làm được! Hãy nhớ:
-
--   ✅ **Đừng ngại hỏi**: Thầy và TA luôn sẵn sàng hỗ trợ các em
--   ✅ **Làm việc nhóm tốt**: Giao tiếp thường xuyên, hỗ trợ lẫn nhau
--   ✅ **Commit thường xuyên**: Đừng đợi đến phút cuối mới commit code
--   ✅ **Bắt đầu sớm**: Đừng để đến tuần cuối mới bắt đầu code
--   ✅ **Tận hưởng quá trình**: Đây là cơ hội để các em học hỏi và phát triển!
 
 **Chúc các em học tốt và hoàn thành dự án xuất sắc! 🚀**
 

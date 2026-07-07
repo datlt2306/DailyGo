@@ -2,8 +2,7 @@
 
 ## Giới thiệu
 
-Chào các em, hôm nay thầy sẽ hướng dẫn các em về **truy vấn tùy chỉnh** trong WordPress. Đây là một khái niệm quan trọng giúp chúng ta kiểm soát nội dung hiển thị trên website. Truy vấn tùy chỉnh cho phép chúng ta tải bất kỳ nội dung nào, ở bất kỳ đâu, bất kể URL hiện tại. Nào, cùng bắt đầu nhé!
-
+Chào các em, hôm nay thầy sẽ hướng dẫn các em về **truy vấn tùy chỉnh** trong WordPress. Đây là một khái niệm quan trọng giúp thầy trò mình kiểm soát nội dung hiển thị trên website. Truy vấn tùy chỉnh cho phép thầy trò mình tải bất kỳ nội dung nào, ở bất kỳ đâu, bất kể URL hiện tại. Nào, cùng bắt đầu nhé!
 
 ## Lý thuyết về truy vấn tùy chỉnh
 
@@ -18,11 +17,9 @@ Truy vấn mặc định trong WordPress là cơ chế tự động lấy nội 
 - Không hỗ trợ việc lấy nội dung từ nhiều nguồn hoặc theo các tiêu chí phức tạp.
 
 ### Truy vấn tùy chỉnh là gì?
-Truy vấn tùy chỉnh sử dụng lớp `WP_Query` để tạo các truy vấn riêng biệt, giúp bạn kiểm soát nội dung hiển thị theo nhu cầu cụ thể. Ví dụ:
+Truy vấn tùy chỉnh sử dụng lớp `WP_Query` để tạo các truy vấn riêng biệt, giúp các em kiểm soát nội dung hiển thị theo nhu cầu cụ thể. Ví dụ:
 - Hiển thị bài đăng từ một danh mục cụ thể.
 - Hiển thị bài đăng theo thứ tự tùy chỉnh.
-
-
 
 ## Truy vấn mặc định của WordPress
 
@@ -34,8 +31,7 @@ Truy vấn tùy chỉnh sử dụng lớp `WP_Query` để tạo các truy vấn
 
 ### 2. Hạn chế của truy vấn mặc định
 - Không thể tùy chỉnh nội dung hiển thị theo nhu cầu cụ thể.
-- Để giải quyết vấn đề này, chúng ta cần sử dụng **truy vấn tùy chỉnh**.
-
+- Để giải quyết vấn đề này, thầy trò mình cần sử dụng **truy vấn tùy chỉnh**.
 
 ## Tạo truy vấn tùy chỉnh
 
@@ -51,9 +47,8 @@ $custom_query = new WP_Query(array(
 ```
 
 ### Tại sao cần viết như vậy?
-- **`WP_Query`**: Đây là lớp mạnh mẽ trong WordPress, cho phép bạn tạo các truy vấn tùy chỉnh để lấy nội dung theo tiêu chí cụ thể.
+- **`WP_Query`**: Đây là lớp mạnh mẽ trong WordPress, cho phép các em tạo các truy vấn tùy chỉnh để lấy nội dung theo tiêu chí cụ thể.
 - **`posts_per_page`**: Xác định số lượng bài đăng cần hiển thị trên mỗi trang.
-
 
 ### 2. Các tham số phổ biến
 - **`posts_per_page`**: Số lượng bài đăng trên mỗi trang.
@@ -61,7 +56,6 @@ $custom_query = new WP_Query(array(
 - **`post_type`**: Loại bài đăng (ví dụ: `post`, `page`).
 - **`orderby`**: Sắp xếp bài đăng theo tiêu chí (ví dụ: `date`, `title`).
 - **`order`**: Thứ tự sắp xếp (`ASC` hoặc `DESC`).
-
 
 ## Hiển thị nội dung với truy vấn tùy chỉnh
 
@@ -88,7 +82,6 @@ wp_reset_postdata(); // Dọn dẹp sau khi sử dụng truy vấn tùy chỉnh
 - **`the_post()`**: Lấy dữ liệu của bài đăng hiện tại trong truy vấn.
 - **`wp_reset_postdata()`**: Dọn dẹp dữ liệu sau khi sử dụng truy vấn tùy chỉnh để tránh xung đột với truy vấn mặc định.
 
-
 ### 2. Kết hợp với HTML
 - Sử dụng cấu trúc HTML để định dạng nội dung:
 ```php
@@ -111,7 +104,6 @@ wp_reset_postdata(); // Dọn dẹp sau khi sử dụng truy vấn tùy chỉnh
 - **HTML và CSS**: Kết hợp với các lớp CSS như `headline`, `metabox`, và `btn` để định dạng giao diện.
 - **`the_permalink()` và `the_title()`**: Hiển thị liên kết và tiêu đề bài đăng.
 
-
 ## Tổng kết
 
-Trong bài học này, chúng ta đã học cách sử dụng **truy vấn tùy chỉnh** để kiểm soát nội dung hiển thị trong WordPress. Truy vấn tùy chỉnh giúp chúng ta tải nội dung theo nhu cầu cụ thể, mở ra nhiều khả năng mạnh mẽ trong phát triển website. Hy vọng bài viết này giúp các em hiểu rõ hơn về cách sử dụng truy vấn tùy chỉnh. Trong bài học tiếp theo, chúng ta sẽ tiếp tục khám phá các tính năng nâng cao của WordPress. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi!
+Trong bài học này, thầy trò mình đã học cách sử dụng **truy vấn tùy chỉnh** để kiểm soát nội dung hiển thị trong WordPress. Truy vấn tùy chỉnh giúp thầy trò mình tải nội dung theo nhu cầu cụ thể, mở ra nhiều khả năng mạnh mẽ trong phát triển website. Hy vọng bài viết này giúp các em hiểu rõ hơn về cách sử dụng truy vấn tùy chỉnh. Trong bài học tiếp theo, thầy trò mình sẽ tiếp tục khám phá các tính năng nâng cao của WordPress. Hãy chuẩn bị tinh thần, thầy trò mình sẽ bắt đầu ngay thôi!

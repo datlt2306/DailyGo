@@ -2,15 +2,13 @@
 
 ## 🎯 Mục tiêu buổi học
 
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+
 Sau buổi học hôm nay, thầy mong các em sẽ:
-
--   Hiểu rõ khái niệm về đệ quy trong C
--   Nắm được cách viết một hàm đệ quy cơ bản
--   Biết được tại sao cần điều kiện dừng (base case)
--   Làm quen với ứng dụng đệ quy qua các ví dụ như: giai thừa, Fibonacci, lũy thừa
-
----
-
+1. ✅ Hiểu rõ khái niệm về đệ quy trong C
+2. ✅ Nắm được cách viết một hàm đệ quy cơ bản
+3. ✅ Biết được tại sao cần điều kiện dừng (base case)
+4. ✅ Làm quen với ứng dụng đệ quy qua các ví dụ như: giai thừa, Fibonacci, lũy thừa
 ## 📘 Nội dung chính
 
 ### 1. Đệ quy là gì?

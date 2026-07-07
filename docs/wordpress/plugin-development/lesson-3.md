@@ -1,7 +1,4 @@
 # Buổi 3: Quản lý cấu hình với Options API & Caching nâng cao với Transients API
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -50,4 +47,3 @@ $is_enabled = get_option( 'zentask_feature_enabled', '0' );
 
   *Đáp án đúng: **B**.*
 </details>
-

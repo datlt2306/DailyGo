@@ -10,7 +10,6 @@ graph LR
     Connection -->|Map Schema to Collection| DB[(MongoDB Database)]
 ```
 
-
 ## Mục tiêu
 
 -   Hiểu MongoDB là gì và tại sao nên sử dụng.
@@ -114,13 +113,13 @@ MongoDB là một cơ sở dữ liệu NoSQL mã nguồn mở, được thiết 
 
 ### Mongoose là gì?
 
-Mongoose là một thư viện Node.js giúp làm việc với MongoDB dễ dàng hơn. Nó cung cấp một lớp trừu tượng (abstraction layer) để tương tác với MongoDB, cho phép bạn định nghĩa schema, thực hiện các thao tác CRUD, và quản lý dữ liệu một cách hiệu quả.
+Mongoose là một thư viện Node.js giúp làm việc với MongoDB dễ dàng hơn. Nó cung cấp một lớp trừu tượng (abstraction layer) để tương tác với MongoDB, cho phép các em định nghĩa schema, thực hiện các thao tác CRUD, và quản lý dữ liệu một cách hiệu quả.
 
 ### Tại sao sử dụng Mongoose?
 
 #### Định nghĩa schema
 
-Schema giúp bạn định nghĩa cấu trúc dữ liệu rõ ràng, kiểm soát các trường dữ liệu và kiểu dữ liệu.
+Schema giúp các em định nghĩa cấu trúc dữ liệu rõ ràng, kiểm soát các trường dữ liệu và kiểu dữ liệu.
 
 ##### Ví dụ:
 
@@ -158,7 +157,7 @@ const posts = await Post.find({ title: /Node.js/i }); // Tìm bài viết có ti
 
 #### Middleware
 
-Middleware trong Mongoose cho phép bạn thực hiện các logic trước hoặc sau khi thao tác với dữ liệu, như mã hóa mật khẩu trước khi lưu.
+Middleware trong Mongoose cho phép các em thực hiện các logic trước hoặc sau khi thao tác với dữ liệu, như mã hóa mật khẩu trước khi lưu.
 
 ##### Ví dụ:
 
@@ -278,7 +277,7 @@ export default Post;
 
 ### Error Handling Pattern
 
-Trước khi viết controller, chúng ta cần hiểu cách xử lý lỗi một cách nhất quán. Có 3 loại lỗi chính:
+Trước khi viết controller, thầy trò mình cần hiểu cách xử lý lỗi một cách nhất quán. Có 3 loại lỗi chính:
 
 1. **Validation Error**: Lỗi do dữ liệu đầu vào không hợp lệ (400 Bad Request)
 2. **Not Found Error**: Không tìm thấy resource (404 Not Found)
@@ -517,11 +516,11 @@ export default Category;
 
 -   MongoDB là một cơ sở dữ liệu NoSQL mạnh mẽ, phù hợp với các ứng dụng hiện đại.
 -   Mongoose giúp đơn giản hóa việc làm việc với MongoDB trong Node.js, cung cấp các tính năng mạnh mẽ như schema, validation, và middleware.
--   Hiểu rõ sự khác biệt giữa NoSQL và SQL giúp bạn chọn công cụ phù hợp với dự án.
+-   Hiểu rõ sự khác biệt giữa NoSQL và SQL giúp các em chọn công cụ phù hợp với dự án.
 -   Làm quen với các khái niệm cơ bản trong MongoDB và Mongoose là bước đầu để xây dựng ứng dụng hiệu quả.
 
 **Bài tiếp theo:** [Lesson 5: Xây dựng CRUD API sản phẩm](./lesson-5.md) - Áp dụng kiến thức MongoDB vào dự án thực tế
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀  
 — **Thầy Đạt 🧡**

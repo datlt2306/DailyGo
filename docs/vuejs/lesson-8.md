@@ -19,7 +19,6 @@ graph TD
     B --> D[Unmounted: onUnmounted - Dọn dẹp bộ nhớ/Events]
 ```
 
-
 ---
 
 ### 1. Vòng đời của Component (Lifecycle Hooks)
@@ -71,17 +70,15 @@ onMounted(() => {
 ## 🛠️ Bài tập thực hành (Lab)
 ### Yêu cầu: Tự động focus ô nhập liệu Form đăng nhập & Khởi chạy Lucide Icons
 1. Xem giao diện trang đăng nhập tại [login.html](https://letrongdat.vercel.app/vuejs/templates/login.html).
-2. Tạo component Vue `LoginView.vue` trong dự án của bạn. Copy toàn bộ giao diện HTML trong thẻ `<main>` của [login.html](https://letrongdat.vercel.app/vuejs/templates/login.html) vào template.
+2. Tạo component Vue `LoginView.vue` trong dự án của các em. Copy toàn bộ giao diện HTML trong thẻ `<main>` của [login.html](https://letrongdat.vercel.app/vuejs/templates/login.html) vào template.
 3. Trong script setup:
    - Sử dụng `onMounted()` để gọi hàm `lucide.createIcons()` giúp hiển thị các biểu tượng đẹp mắt trên form đăng nhập ngay khi tải trang.
    - Tạo một biến ref `const emailField = ref(null)`.
    - Trên template, gắn thuộc tính `ref="emailField"` vào ô nhập liệu Email đăng nhập.
    - Trong `onMounted()`, gọi `emailField.value.focus()` để tự động kích hoạt con trỏ chuột vào ô nhập email giúp nâng cao trải nghiệm người dùng (UX).
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```vue
 <script setup>
@@ -147,4 +144,3 @@ onUnmounted(() => {
 </details>
 
 ---
-

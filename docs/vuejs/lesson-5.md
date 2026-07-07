@@ -18,7 +18,6 @@ graph TD
     Child -->|Định nghĩa và kiểm tra kiểu| Props[defineProps]
 ```
 
-
 ---
 
 ### 1. Kiến trúc Component-based
@@ -74,7 +73,7 @@ const currentAge = ref(25)
 
 ## 🛠️ Bài tập thực hành (Lab)
 ### Yêu cầu: Tách component ProductCard.vue từ template trang chủ Vanguard Store
-1. Hãy mở tệp HTML trang chủ [index.html](https://letrongdat.vercel.app/vuejs/templates/index.html) và copy phần giao diện của **PRODUCT CARD 1** (nằm ở dòng **122 đến 150**).
+1. Các em các em hãy mở tệp HTML trang chủ [index.html](https://letrongdat.vercel.app/vuejs/templates/index.html) và copy phần giao diện của **PRODUCT CARD 1** (nằm ở dòng **122 đến 150**).
 2. Tạo component Vue con mới tên là `ProductCard.vue` tại thư mục `/src/components/`.
 3. Trong `ProductCard.vue`, sử dụng `defineProps()` để khai báo các thuộc tính cần nhận:
    - `product`: Object chứa `id`, `name`, `price`, `category`, `image`. Định rõ kiểu dữ liệu `Object` và thuộc tính `required: true`.
@@ -85,10 +84,8 @@ const currentAge = ref(25)
    <ProductCard v-for="prod in products" :key="prod.id" :product="prod" />
    ```
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```vue
 <!-- components/ProductCard.vue -->
@@ -149,4 +146,3 @@ defineProps({
 </details>
 
 ---
-

@@ -104,12 +104,10 @@ Related to #456
 1.  **Review nhanh (trong 24-48 giờ)**
 2.  **Comment constructive (xây dựng)**
 
-
     -   ✅ "Có thể tối ưu function này bằng cách..."
     -   ❌ "Code này sai rồi!"
 
 3.  **Praise code tốt**
-
 
     -   "Cách implement này hay!"
 
@@ -282,7 +280,6 @@ git push origin feature/add-search
 6.  Push branch lên GitHub
 7.  Tạo Pull Request với:
 
-
     -   Title rõ ràng
     -   Description đầy đủ
     -   Screenshot (nếu có)
@@ -339,7 +336,7 @@ Team 3 người, mỗi người làm một PR:
 
 ### 3. **Không reply comment của reviewer**
 
-**Vấn đề:** Reviewer không biết bạn đã đọc comment chưa
+**Vấn đề:** Reviewer không biết các em đã đọc comment chưa
 
 **Giải pháp:** Luôn reply:
 

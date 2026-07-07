@@ -13,6 +13,7 @@ export default withMermaid({
                     { text: "Javascript nâng cao", link: "/javascript/lesson-9" },
                     { text: "ReactJs", link: "/react/" },
                     { text: "Vuejs", link: "/vuejs/" },
+                    { text: "NodeJS", link: "/nodejs/" },
                     { text: "PHP cơ bản", link: "/php/" },
                     { text: "Wordpress", link: "/wordpress/" },
                     { text: "Lập trình C", link: "/laptrinhcanban/" },
@@ -265,7 +266,7 @@ export default withMermaid({
             ],
             "/nodejs/": [
                 {
-                    text: "Phần 1: Node.js cơ bản",
+                    text: "Mở đầu",
                     collapsed: false,
                     items: [
                         { text: "Giới thiệu về Node.js", link: "/nodejs/" },
@@ -273,22 +274,46 @@ export default withMermaid({
                     ],
                 },
                 {
-                    text: "Phần 2: Xây dựng REST API Ecommerce (15 Buổi)",
+                    text: "Giai đoạn 1: Nền tảng Node.js & Express (Buổi 1-3)",
                     collapsed: false,
                     items: [
                         { text: "Buổi 1: Intro Node.js & Setup Express", link: "/nodejs/api/lesson-1" },
                         { text: "Buổi 2: Request, Response & Middleware", link: "/nodejs/api/lesson-2" },
                         { text: "Buổi 3: CRUD với dữ liệu giả lập (In-memory)", link: "/nodejs/api/lesson-3" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 2: CSDL MongoDB & Mongoose (Buổi 4-6)",
+                    collapsed: false,
+                    items: [
                         { text: "Buổi 4: MongoDB & Mongoose Schemas", link: "/nodejs/api/lesson-4" },
                         { text: "Buổi 5: CRUD Database & Error Handling", link: "/nodejs/api/lesson-5" },
                         { text: "Buổi 6: Filtering, Sorting & Pagination", link: "/nodejs/api/lesson-6" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 3: Xác thực & Phân quyền (Buổi 7-9)",
+                    collapsed: false,
+                    items: [
                         { text: "Buổi 7: User Model & Mã hóa Mật khẩu", link: "/nodejs/api/lesson-7" },
                         { text: "Buổi 8: Authentication (JWT)", link: "/nodejs/api/lesson-8" },
                         { text: "Buổi 9: Authorization (RBAC)", link: "/nodejs/api/lesson-9" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 4: Nghiệp vụ Ecommerce nâng cao (Buổi 10-13)",
+                    collapsed: false,
+                    items: [
                         { text: "Buổi 10: Upload hình ảnh với Multer", link: "/nodejs/api/lesson-10" },
                         { text: "Buổi 11: API Giỏ hàng (Cart)", link: "/nodejs/api/lesson-11" },
-                        { text: "Buổi 12: API Đơn hàng & Checkout (Orders)", link: "/nodejs/api/lesson-12" },
+                        { text: "Buổi 12: API Đơn hàng & Checkout", link: "/nodejs/api/lesson-12" },
                         { text: "Buổi 13: API Thống kê & Dashboard", link: "/nodejs/api/lesson-13" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 5: Testing & Deploy Production (Buổi 14-15)",
+                    collapsed: false,
+                    items: [
                         { text: "Buổi 14: Testing với Jest & Supertest", link: "/nodejs/api/lesson-14" },
                         { text: "Buổi 15: Deploy Production & CORS", link: "/nodejs/api/lesson-15" }
                     ],
@@ -563,39 +588,88 @@ export default withMermaid({
                     items: [{ text: "Giới thiệu môn học", link: "/pro1014/" }],
                 },
                 {
-                    text: "TUẦN 1 – KHỞI ĐỘNG & PHÂN TÍCH ĐỀ TÀI",
+                    text: "Giai đoạn 1: Phân tích & Đặc tả bằng AI (Buổi 1-3)",
                     collapsed: false,
                     items: [
                         {
-                            text: "Buổi 1: Giới thiệu đề tài & chia nhóm",
+                            text: "Buổi 1: Giới thiệu đề tài & Ý tưởng bằng AI",
                             link: "/pro1014/lesson-1",
                         },
                         {
-                            text: "Buổi 2: Phân tích chức năng (Use Case)",
+                            text: "Buổi 2: Phân tích Use Case bằng Prompting",
                             link: "/pro1014/lesson-2",
                         },
                         {
-                            text: "Buổi 3: Viết Project Specification (Spec)",
+                            text: "Buổi 3: Viết Project Spec với sự hỗ trợ của AI",
                             link: "/pro1014/lesson-3",
                         },
                     ],
                 },
                 {
-                    text: "TUẦN 2 – THIẾT KẾ DỮ LIỆU & QUẢN LÝ DỰ ÁN",
+                    text: "Giai đoạn 2: Thiết kế Dữ liệu & Teamwork (Buổi 4-6)",
                     collapsed: false,
                     items: [
-                        { text: "Buổi 4: Thiết kế dữ liệu (ERD)", link: "/pro1014/lesson-4" },
                         {
-                            text: "Buổi 5: Thiết kế database nâng cao & chuẩn hóa",
+                            text: "Buổi 4: Thiết kế dữ liệu (ERD) & Prompt SQL",
+                            link: "/pro1014/lesson-4",
+                        },
+                        {
+                            text: "Buổi 5: Thiết kế DB nâng cao & AI Sinh Mock Data",
                             link: "/pro1014/lesson-5",
                         },
-                        { text: "Buổi 6: Giới thiệu Git & teamwork", link: "/pro1014/lesson-7" },
+                        {
+                            text: "Buổi 6: Teamwork với Git & Review code",
+                            link: "/pro1014/lesson-6",
+                        },
                     ],
                 },
                 {
-                    text: "TUẦN 3 – TRIỂN KHAI GIAI ĐOẠN 1",
+                    text: "Giai đoạn 3: Triển khai & Tích hợp cùng AI (Buổi 7-13)",
                     collapsed: false,
-                    items: [{ text: "Buổi 7: Theo dõi tiến độ lần 1", link: "/pro1014/lesson-8" }],
+                    items: [
+                        {
+                            text: "Buổi 7: Triển khai mã nguồn bằng AI Agents",
+                            link: "/pro1014/lesson-7",
+                        },
+                        {
+                            text: "Buổi 8: Review 1 & Kiểm thử với AI",
+                            link: "/pro1014/lesson-8",
+                        },
+                        {
+                            text: "Buổi 9: Khung Dự án & Class Kết nối DB (PDO)",
+                            link: "/pro1014/lesson-9",
+                        },
+                        {
+                            text: "Buổi 10: Module Tour - Danh sách & Bộ lọc",
+                            link: "/pro1014/lesson-10",
+                        },
+                        {
+                            text: "Buổi 11: Module Đặt Tour - Form & Lưu DB",
+                            link: "/pro1014/lesson-11",
+                        },
+                        {
+                            text: "Buổi 12: Module Admin - Quản lý Booking (CRUD)",
+                            link: "/pro1014/lesson-12",
+                        },
+                        {
+                            text: "Buổi 13: Module Admin - Thống kê & Biểu đồ",
+                            link: "/pro1014/lesson-13",
+                        },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 4: Tích hợp, Tối ưu & Thuyết trình (Buổi 14-15)",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: "Buổi 14: Tích hợp Hệ thống & Xử lý Xung đột",
+                            link: "/pro1014/lesson-14",
+                        },
+                        {
+                            text: "Buổi 15: Hoàn thiện, Tối ưu SEO & Thuyết trình",
+                            link: "/pro1014/lesson-15",
+                        },
+                    ],
                 },
             ],
             "/blog/": [

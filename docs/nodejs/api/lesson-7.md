@@ -11,16 +11,13 @@ graph TD
     User -->|Đăng nhập| Login[So sánh mật khẩu băm -> Cấp JWT]
 ```
 
-
-Authentication (xác thực) và Authorization (ủy quyền) là hai khái niệm cốt lõi trong bảo mật ứng dụng. Trong bài này, chúng ta sẽ tìm hiểu:
+Authentication (xác thực) và Authorization (ủy quyền) là hai khái niệm cốt lõi trong bảo mật ứng dụng. Trong bài này, thầy trò mình sẽ tìm hiểu:
 
 1. Authentication và Authorization là gì?
 2. Cookie và Session Authentication.
 3. JSON Web Token (JWT): Giải thích và demo.
 4. Lưu JWT ở đâu: localStorage hay cookie?
 5. Ứng dụng với Node.js.
-
-
 
 ## 1. Authentication và Authorization là gì?
 
@@ -46,7 +43,6 @@ Ví dụ:
 - Giảng viên không chỉ được phép vào lớp học mà còn có quyền giảng bài, quản lý danh sách sinh viên, và chấm điểm.
 
 > **Điểm khác biệt**: Mặc dù cả sinh viên và giảng viên đều được xác thực để vào lớp học, nhưng quyền hạn của họ khác nhau.
-
 
 ## 2. Cookie và Session Authentication
 
@@ -74,7 +70,6 @@ Ví dụ:
 
 - Phụ thuộc vào máy chủ để lưu trữ session.
 - Không phù hợp cho các ứng dụng phân tán (distributed systems).
-
 
 ## 3. JSON Web Token (JWT)
 
@@ -125,7 +120,6 @@ sequenceDiagram
 3. Trình duyệt gửi JWT trong các yêu cầu tiếp theo (trong header `Authorization: Bearer <token>`).
 4. Máy chủ xác minh JWT để xác thực người dùng.
 
-
 ### Demo: Sử dụng JWT trong Node.js
 
 #### Tạo JWT:
@@ -144,7 +138,7 @@ const token = jwt.sign(user, secretKey, { expiresIn: '1h' });
 console.log('JWT:', token);
 ```
 
-> **Lưu ý quan trọng:** Luôn sử dụng environment variable cho JWT secret key. Thêm vào file `.env`:
+> **Các em các em lưu ý quan trọng:** Luôn sử dụng environment variable cho JWT secret key. Thêm vào file `.env`:
 > ```env
 > JWT_SECRET=your_super_secret_key_here
 > ```
@@ -171,7 +165,6 @@ const authenticateToken = (req, res, next) => {
 };
 ```
 
-
 ## 4. Lưu JWT ở đâu: localStorage hay cookie?
 
 ### Lưu trong localStorage:
@@ -194,12 +187,11 @@ const authenticateToken = (req, res, next) => {
 
 > **Khuyến nghị**: Sử dụng cookie với các thuộc tính bảo mật (`HttpOnly`, `Secure`) để lưu JWT.
 
-
 ## 5. Sự khác nhau giữa JWT, Cookie và Session-based Authentication
 
 ### Ví dụ minh họa: Sinh viên gửi xe
 
-Hãy tưởng tượng một sinh viên đến trường và gửi xe. Ông bảo vệ sẽ xử lý theo 3 cách khác nhau:
+Các em các em hãy tưởng tượng một sinh viên đến trường và gửi xe. Ông bảo vệ sẽ xử lý theo 3 cách khác nhau:
 
 1. **Session-based Authentication**:
    - Ông bảo vệ ghi thông tin xe (biển số, thời gian gửi) vào sổ (tương tự như lưu session trên máy chủ).
@@ -216,7 +208,6 @@ Hãy tưởng tượng một sinh viên đến trường và gửi xe. Ông bả
    - Vé xe này được đưa cho sinh viên.
    - Khi sinh viên quay lại, ông bảo vệ kiểm tra tính hợp lệ của vé bằng cách giải mã và xác minh chữ ký, mà không cần lưu trữ thông tin xe ở đâu cả.
 
-
 ### Ưu và nhược điểm
 
 | **Phương pháp**          | **Ưu điểm**                                                                 | **Nhược điểm**                                                                 |
@@ -228,7 +219,6 @@ Hãy tưởng tượng một sinh viên đến trường và gửi xe. Ông bả
 | **JWT-based**             | - Không trạng thái (stateless), phù hợp cho hệ thống phân tán.             | - Không thể hủy bỏ token sau khi phát hành (trừ khi sử dụng danh sách đen).    |
 |                           | - Không cần lưu trữ trên máy chủ.                                          | - Token có thể lớn, làm tăng kích thước yêu cầu HTTP.                          |
 
-
 ### Kết luận
 
 - **Session-based Authentication** phù hợp cho các ứng dụng nhỏ hoặc nội bộ, nơi máy chủ có thể quản lý tất cả các phiên.
@@ -237,6 +227,6 @@ Hãy tưởng tượng một sinh viên đến trường và gửi xe. Ông bả
 
 **Bài tiếp theo:** [Lesson 8: Đăng ký, Đăng nhập với JWT](./lesson-8.md) - Áp dụng JWT vào dự án thực tế
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

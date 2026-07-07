@@ -34,7 +34,7 @@ int main() {
 }
 ```
 
-**Lưu ý:**
+**Các em các em lưu ý:**
 
 -   Dùng `fgets` để nhập chuỗi có chứa dấu cách.
 -   Chuỗi trong C là mảng ký tự, không phải kiểu dữ liệu riêng như trong C++.
@@ -61,7 +61,7 @@ sv.tuoi = 20;
 sv.diem = 8.5;
 ```
 
-> Lưu ý khi gán chuỗi cho thành phần kiểu mảng ký tự, các em dùng hàm `strcpy` trong thư viện `<string.h>`. Không gán trực tiếp như biến thông thường.
+> Các em các em lưu ý khi gán chuỗi cho thành phần kiểu mảng ký tự, các em dùng hàm `strcpy` trong thư viện `<string.h>`. Không gán trực tiếp như biến thông thường.
 
 ---
 

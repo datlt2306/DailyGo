@@ -1,7 +1,4 @@
 # Buổi 7: Block Attributes, Block States & Sử dụng React/JS trong Editor
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -61,4 +58,3 @@ registerBlockType( 'myplugin/text-block', {
 
   *Đáp án đúng: **B**.*
 </details>
-

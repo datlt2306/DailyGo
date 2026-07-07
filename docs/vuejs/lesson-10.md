@@ -19,7 +19,6 @@ graph TD
     Guard[beforeEach Guard] -->|Kiểm tra Auth| Redirect[Đăng nhập hoặc Chuyển hướng]
 ```
 
-
 ---
 
 ### 1. Cấu hình cơ bản Vue Router
@@ -103,10 +102,8 @@ function goBackHome() {
 5. Tại `ProductCard.vue`, thay thế link chi tiết sản phẩm bằng `<router-link :to="'/product/' + product.id">`.
 6. Tại trang chi tiết `ProductDetailView.vue`, dùng `useRoute()` lấy ID sản phẩm từ URL và hiển thị ra màn hình thông tin ID tương ứng.
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```javascript
 // src/router/index.js
@@ -181,4 +178,3 @@ export default router
 </details>
 
 ---
-

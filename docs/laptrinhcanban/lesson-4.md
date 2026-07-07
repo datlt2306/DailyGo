@@ -2,16 +2,14 @@
 
 ## 🎯 Mục tiêu buổi học
 
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+
 Sau buổi này, thầy muốn các em:
-
--   Hiểu vì sao cần dùng cấu trúc điều kiện trong lập trình
--   Viết thành thạo các cấu trúc điều kiện: `if`, `if-else`, `if-else if-else`
--   Biết dùng `switch-case` cho trường hợp có nhiều nhánh lựa chọn
--   Vận dụng giải quyết các bài toán sát thực tế
--   Nắm thêm về cách phối hợp điều kiện bằng toán tử logic
-
----
-
+1. ✅ Hiểu vì sao cần dùng cấu trúc điều kiện trong lập trình
+2. ✅ Viết thành thạo các cấu trúc điều kiện: `if`, `if-else`, `if-else if-else`
+3. ✅ Biết dùng `switch-case` cho trường hợp có nhiều nhánh lựa chọn
+4. ✅ Vận dụng giải quyết các bài toán sát thực tế
+5. ✅ Nắm thêm về cách phối hợp điều kiện bằng toán tử logic
 ## 📘 Nội dung chính
 
 ### 1. Sự cần thiết của cấu trúc điều kiện
@@ -127,7 +125,7 @@ switch (bien) {
 }
 ```
 
-**Một vài lưu ý về switch-case:**
+**Một vài các em lưu ý về switch-case:**
 
 -   Thường dùng cho `int`, `char`, `enum`
 -   Nhớ viết `break;` cuối mỗi case
@@ -203,7 +201,7 @@ if (tuoi >= 18) {
 
 int main() {
     float diem;
-    printf("Nhập điểm của bạn: ");
+    printf("Nhập điểm của các em: ");
     scanf("%f", &diem);
 
     if (diem >= 9.0) {
@@ -426,7 +424,7 @@ int main() {
 
 ---
 
-## 📝 Lưu ý khi làm bài
+## 📝 Các em các em lưu ý khi làm bài
 
 1. Điều kiện trong `if` luôn đặt trong dấu ngoặc tròn ()
 2. Nếu có từ 2 câu lệnh trở lên, nhớ dùng cặp dấu `{}` để bao.

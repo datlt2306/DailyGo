@@ -1,7 +1,4 @@
 # Buổi 5: Lập trình trang cấu trị Admin Settings Page & Settings API của WordPress
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -59,4 +56,3 @@ function zentask_admin_page_html() {
 
   *Đáp án đúng: **C**.*
 </details>
-

@@ -13,10 +13,8 @@ graph TD
     Role -->|Sai quyền| Err[Trả về 403 Forbidden]
 ```
 
-
 Chào các em!  
-Hôm nay, Thầy sẽ hướng dẫn các em cách kiểm tra quyền trong API sản phẩm. Chúng ta sẽ viết middleware để xác thực JWT và kiểm tra quyền dựa trên vai trò người dùng. Sau đó, tích hợp middleware này vào API sản phẩm. Bắt đầu thôi nào!
-
+Hôm nay, Thầy sẽ hướng dẫn các em cách kiểm tra quyền trong API sản phẩm. Thầy trò mình sẽ viết middleware để xác thực JWT và kiểm tra quyền dựa trên vai trò người dùng. Sau đó, tích hợp middleware này vào API sản phẩm. Bắt đầu thôi nào!
 
 ## 1. Middleware: `verifyJWT` và `restrictTo`
 
@@ -45,14 +43,13 @@ export const verifyJWT = (req, res, next) => {
 };
 ```
 
-> **Lưu ý:** Đảm bảo file `.env` có biến `JWT_SECRET`. Middleware này sử dụng cùng secret key với controller để verify token.
+> **Các em các em lưu ý:** Đảm bảo file `.env` có biến `JWT_SECRET`. Middleware này sử dụng cùng secret key với controller để verify token.
 :::
 
 > **Giải thích**:  
 > - `req.headers.authorization`: Lấy token từ header `Authorization`.  
 > - `jwt.verify`: Giải mã và xác thực token.  
 > - Nếu token hợp lệ, thông tin người dùng sẽ được gắn vào `req.user`.
-
 
 ### 1.2. Middleware `restrictTo`
 
@@ -76,10 +73,9 @@ export const restrictTo = (...roles) => {
 > - `req.user.role`: Vai trò của người dùng được lấy từ `verifyJWT`.  
 > - Nếu vai trò không phù hợp, trả về lỗi `403 Forbidden`.
 
-
 ## 2. Tích hợp Middleware vào API Sản phẩm
 
-Sau khi viết xong middleware, chúng ta sẽ tích hợp chúng vào API sản phẩm. Các route như tạo, cập nhật, và xóa sản phẩm sẽ yêu cầu quyền admin hoặc staff.
+Sau khi viết xong middleware, thầy trò mình sẽ tích hợp chúng vào API sản phẩm. Các route như tạo, cập nhật, và xóa sản phẩm sẽ yêu cầu quyền admin hoặc staff.
 
 ::: code-group
 ```javascript [src/routes/product.router.js]
@@ -139,14 +135,12 @@ graph TD
 > - `productRouter.use(restrictTo("admin", "staff"))`: Chỉ cho phép admin và staff truy cập các route sau dòng này.
 > - **Quan trọng**: Thứ tự middleware rất quan trọng! `verifyJWT` phải chạy trước `restrictTo` vì `restrictTo` cần `req.user` từ `verifyJWT`.  
 
-
 ## 3. Test API với Postman
 
 ### 3.1. Lấy danh sách sản phẩm (Không yêu cầu xác thực)
 
 - **Method**: `GET`  
 - **URL**: `http://localhost:3000/api/products`  
-
 
 ### 3.2. Tạo sản phẩm mới (Yêu cầu quyền admin hoặc staff)
 
@@ -191,7 +185,6 @@ graph TD
 }
 ```
 
-
 ### 3.3. Xóa sản phẩm (Yêu cầu quyền admin hoặc staff)
 
 - **Method**: `DELETE`  
@@ -211,7 +204,6 @@ graph TD
   "success": true
 }
 ```
-
 
 ## 4. Phân biệt 401 vs 403
 
@@ -258,6 +250,6 @@ Ví dụ thực tế: Amazon, Shopify đều sử dụng RBAC để phân quyề
 
 **Bài tiếp theo:** [Lesson 10: Thiết kế Schema MongoDB](./lesson-10.md) - Học cách thiết kế database schema hiệu quả
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

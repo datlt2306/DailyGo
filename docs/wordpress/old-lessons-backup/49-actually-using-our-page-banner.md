@@ -2,8 +2,7 @@
 
 ## Chào các em!
 
-Hôm nay, thầy sẽ hướng dẫn các em cách sử dụng hàm biểu ngữ trang (`pageBanner`) mà chúng ta đã tạo trong bài học trước. Chúng ta sẽ thay thế mã biểu ngữ trang trùng lặp trong tất cả các tệp mẫu bằng hàm này để làm cho mã của chúng ta sạch sẽ và dễ bảo trì hơn.
-
+Hôm nay, thầy sẽ hướng dẫn các em cách sử dụng hàm biểu ngữ trang (`pageBanner`) mà thầy trò mình đã tạo trong bài học trước. Thầy trò mình sẽ thay thế mã biểu ngữ trang trùng lặp trong tất cả các tệp mẫu bằng hàm này để làm cho mã của thầy trò mình sạch sẽ và dễ bảo trì hơn.
 
 ## Bắt đầu hành động
 
@@ -17,7 +16,7 @@ Hôm nay, thầy sẽ hướng dẫn các em cách sử dụng hàm biểu ngữ
     <div class="page-banner__content container container--narrow">
         <h1 class="page-banner__title">Tất cả sự kiện</h1>
         <div class="page-banner__intro">
-            <p>Xem điều gì đang xảy ra trong thế giới của chúng ta.</p>
+            <p>Xem điều gì đang xảy ra trong thế giới của thầy trò mình.</p>
         </div>
     </div>
 </div>
@@ -30,11 +29,10 @@ Hôm nay, thầy sẽ hướng dẫn các em cách sử dụng hàm biểu ngữ
 <?php
 pageBanner(array(
     'title' => 'Tất cả sự kiện',
-    'subtitle' => 'Xem điều gì đang xảy ra trong thế giới của chúng ta.'
+    'subtitle' => 'Xem điều gì đang xảy ra trong thế giới của thầy trò mình.'
 ));
 ?>
 ```
-
 
 ### 2. Cập nhật tệp `archive-program.php`
 
@@ -64,7 +62,6 @@ pageBanner(array(
 ?>
 ```
 
-
 ### 3. Cập nhật tệp `archive.php`
 
 #### Trước đây:
@@ -92,7 +89,6 @@ pageBanner(array(
 ));
 ?>
 ```
-
 
 ### 4. Cập nhật tệp `index.php`
 
@@ -122,7 +118,6 @@ pageBanner(array(
 ?>
 ```
 
-
 ### 5. Cập nhật tệp `single-event.php`
 
 #### Trước đây:
@@ -147,7 +142,6 @@ pageBanner(array(
 pageBanner();
 ?>
 ```
-
 
 ### 6. Cập nhật tệp `single-program.php`
 
@@ -174,7 +168,6 @@ pageBanner();
 ?>
 ```
 
-
 ### 7. Cập nhật tệp `single.php`
 
 #### Trước đây:
@@ -200,7 +193,6 @@ pageBanner();
 ?>
 ```
 
-
 ## Tóm tắt nhanh
 
 - **Hàm `pageBanner`**: Được sử dụng để thay thế mã biểu ngữ trang trùng lặp trong tất cả các tệp mẫu.
@@ -208,10 +200,9 @@ pageBanner();
     - `archive-event.php`, `archive-program.php`, `archive.php`, `index.php`, `single-event.php`, `single-program.php`, `single.php`.
 - **Lợi ích**: Mã sạch hơn, dễ bảo trì hơn, và giảm thiểu lỗi.
 
-
 ## Kết luận
 
-Các em thấy không, việc sử dụng hàm tái sử dụng như `pageBanner` giúp chúng ta tiết kiệm rất nhiều thời gian và công sức. Đây là một kỹ thuật quan trọng khi làm việc với WordPress, giúp mã của chúng ta trở nên chuyên nghiệp hơn.
+Các em thấy không, việc sử dụng hàm tái sử dụng như `pageBanner` giúp thầy trò mình tiết kiệm rất nhiều thời gian và công sức. Đây là một kỹ thuật quan trọng khi làm việc với WordPress, giúp mã của thầy trò mình trở nên chuyên nghiệp hơn.
 
 Nếu có thắc mắc, đừng ngại hỏi thầy nhé!  
 Chúc các em học tốt! 🚀  

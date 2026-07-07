@@ -2,9 +2,6 @@
 
 > **Bài trước:** [Lesson 14: Testing với Jest & Supertest](./lesson-14.md)  
 > **Bài tiếp theo:** Không có (Đây là bài cuối cùng)
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: Vanguard Store E-Commerce API  
 
 ---
@@ -19,7 +16,7 @@
 
 ### 1. Hiểu về CORS và cách cấu hình
 Theo cơ chế bảo mật của trình duyệt, mã Javascript của một ứng dụng Frontend chạy ở domain A (ví dụ: `vanguardstore.vercel.app`) không được tự ý gọi API đến domain B (ví dụ: `vanguard-api.onrender.com`).
-Chúng ta sử dụng thư viện `cors` của Express để cấp phép an toàn cho các domain cụ thể:
+Thầy trò mình sử dụng thư viện `cors` của Express để cấp phép an toàn cho các domain cụ thể:
 ```javascript
 import cors from 'cors';
 
@@ -67,7 +64,7 @@ Cấu hình hoàn chỉnh phần scripts khởi chạy của file `package.json`
 ---
 
 ## 🛠️ Bài tập thực hành (Lab)
-1. Thêm cấu hình scripts `build` và `start` vào file `package.json` của bạn.
+1. Thêm cấu hình scripts `build` và `start` vào file `package.json` của các em.
 2. Đăng ký một tài khoản trên nền tảng [Render](https://render.com/), liên kết dự án Github và thiết lập biến môi trường `MONGO_URI` cùng `JWT_SECRET`.
 
 <details class="details custom-block">
@@ -83,18 +80,18 @@ app.listen(PORT, () => {
 ```
 Khi điền trên Dashboard Render:
 - Nhấn **New Web Service**.
-- Chọn Repository dự án của bạn.
+- Chọn Repository dự án của các em.
 - Điền **Build Command**: `pnpm install && pnpm run build`.
 - Điền **Start Command**: `pnpm run start`.
 - Tại mục **Advanced** > **Add Environment Variable**, thêm:
-  - `MONGO_URI` = Chuỗi kết nối MongoDB Atlas của bạn.
+  - `MONGO_URI` = Chuỗi kết nối MongoDB Atlas của các em.
   - `JWT_SECRET` = Chuỗi mật mã bí mật ký nhận JWT.
 </details>
 
 ---
 
 ## ❓ Trắc nghiệm nhanh
-**1. Tại sao chúng ta cần chạy lệnh Build biên dịch code trước khi chạy server trên môi trường Production?**
+**1. Tại sao thầy trò mình cần chạy lệnh Build biên dịch code trước khi chạy server trên môi trường Production?**
 - A. Để code ngắn hơn.
 - B. Để biên dịch mã ES6/Modern JS (chứa import/export) thành mã CommonJS thuần mà Node.js có thể chạy trực tiếp với hiệu năng tối ưu nhất.
 - C. Để tự động sửa lỗi code.
@@ -103,4 +100,3 @@ Khi điền trên Dashboard Render:
 
   *Đáp án đúng: **B**.*
 </details>
-

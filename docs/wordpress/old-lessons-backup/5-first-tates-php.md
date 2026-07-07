@@ -2,7 +2,7 @@
 
 ## Giới thiệu
 
-Chào các em, hôm nay thầy sẽ hướng dẫn các em làm quen với PHP – ngôn ngữ cốt lõi của WordPress. Đừng lo lắng nếu các em chưa từng làm việc với ngôn ngữ lập trình trước đây, chúng ta sẽ cùng nhau vượt qua từng bước một cách dễ dàng.
+Chào các em, hôm nay thầy sẽ hướng dẫn các em làm quen với PHP – ngôn ngữ cốt lõi của WordPress. Đừng lo lắng nếu các em chưa từng làm việc với ngôn ngữ lập trình trước đây, thầy trò mình sẽ cùng nhau vượt qua từng bước một cách dễ dàng.
 
 ### PHP là gì và tại sao nó quan trọng?
 PHP (Hypertext Preprocessor) là một ngôn ngữ lập trình phía máy chủ (server-side), được sử dụng để tạo các trang web động. Trong WordPress, PHP đóng vai trò trung tâm, giúp:
@@ -10,13 +10,11 @@ PHP (Hypertext Preprocessor) là một ngôn ngữ lập trình phía máy chủ
 - **Xử lý logic**: Tạo điều kiện, vòng lặp, và các thao tác phức tạp.
 - **Kết hợp với HTML**: Hiển thị nội dung động trên giao diện người dùng.
 
-
 ## Mục tiêu bài học
 
 - Làm quen với cú pháp cơ bản của PHP.
 - Hiểu cách PHP hoạt động trong WordPress.
 - Tạo một tệp PHP thử nghiệm để thực hành.
-
 
 ## Thiết lập môi trường làm việc
 
@@ -30,7 +28,6 @@ Thầy khuyên các em sử dụng **Visual Studio Code** – một trình soạ
 1. Tìm kiếm "Visual Studio Code" trên trình duyệt.
 2. Tải xuống và cài đặt từ [code.visualstudio.com](https://code.visualstudio.com).
 3. Mở Visual Studio Code và tạo một tệp mới.
-
 
 ## Tạo tệp PHP thử nghiệm
 
@@ -48,7 +45,6 @@ echo "Hello, WordPress!";
 ### 3. Xem tệp trong trình duyệt
 - Mở trình duyệt và truy cập URL của trang web cục bộ, thêm `/test.php` vào cuối.
 - Ví dụ: `http://localhost/test.php`.
-
 
 ## Làm quen với cú pháp PHP
 
@@ -81,11 +77,9 @@ $name = "Thầy Đạt";
 ```
 - **Giải thích**: Biến `$name` lưu trữ giá trị `"Thầy Đạt"` và được sử dụng để hiển thị nội dung động.
 
-
 ## Xóa tệp thử nghiệm
 
 Sau khi hoàn thành bài học, các em có thể xóa tệp `test.php` để giữ cho thư mục WordPress gọn gàng. Nếu muốn giữ lại để tham khảo, cũng không sao.
-
 
 ## Tóm tắt nhanh
 
@@ -94,5 +88,4 @@ Sau khi hoàn thành bài học, các em có thể xóa tệp `test.php` để g
 - **Tệp thử nghiệm**: Tạo tệp PHP để thực hành cú pháp cơ bản.
 - **Xóa tệp**: Dọn dẹp thư mục sau khi hoàn thành bài học.
 
-
-Hy vọng bài viết này giúp các em làm quen với PHP một cách dễ dàng. Trong bài học tiếp theo, chúng ta sẽ bắt đầu viết mã để tạo chủ đề WordPress tùy chỉnh. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi! 🎉
+Hy vọng bài viết này giúp các em làm quen với PHP một cách dễ dàng. Trong bài học tiếp theo, thầy trò mình sẽ bắt đầu viết mã để tạo chủ đề WordPress tùy chỉnh. Hãy chuẩn bị tinh thần, thầy trò mình sẽ bắt đầu ngay thôi! 🎉

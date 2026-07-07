@@ -13,7 +13,6 @@ graph LR
     Handler --> Res[Response JSON]
 ```
 
-
 ## Mục tiêu
 
 -   Ôn tập và thực hành lại cài đặt từ buổi 1.
@@ -54,7 +53,7 @@ const postRouter = Router();
 
 // GET /hello?name=Teo
 postRouter.get("/hello", (req, res) => {
-    const name = req.query.name || "bạn"; // Lấy giá trị 'name' từ query string
+    const name = req.query.name || "các em"; // Lấy giá trị 'name' từ query string
     res.json({ message: `Xin chào, ${name}!` }); // Trả về JSON với lời chào
 });
 
@@ -100,7 +99,7 @@ app.listen(process.env.PORT || 3000, () => {
 
 // GET /greet?name=Ken
 postRouter.get("/greet", (req, res) => {
-    const name = req.query.name || "bạn"; // Lấy giá trị 'name' từ query string
+    const name = req.query.name || "các em"; // Lấy giá trị 'name' từ query string
     res.json({ message: `Xin chào, ${name}!` }); // Trả về JSON với lời chào
 });
 
@@ -167,7 +166,7 @@ app.post("/api/posts", (req, res) => {
 
 :::
 
-> **Lưu ý:** Nếu không sử dụng `express.json()`, `req.body` sẽ là `undefined`.
+> **Các em các em lưu ý:** Nếu không sử dụng `express.json()`, `req.body` sẽ là `undefined`.
 
 ## Bài tập thực hành
 
@@ -214,7 +213,7 @@ Trong thực tế, các API lớn thường sử dụng middleware để:
 -   **CORS**: Cho phép các domain khác truy cập API
 -   **Authentication**: Kiểm tra token trước khi cho phép truy cập
 
-Ví dụ thực tế: Khi bạn gọi API từ frontend React, cần CORS middleware để cho phép request từ localhost:3000 (React) đến localhost:5000 (API).
+Ví dụ thực tế: Khi các em gọi API từ frontend React, cần CORS middleware để cho phép request từ localhost:3000 (React) đến localhost:5000 (API).
 
 ## Kết luận
 
@@ -222,6 +221,6 @@ Trong bài học này, các em đã học cách làm việc với Request và Re
 
 **Bài tiếp theo:** [Lesson 3: Thực hành CRUD với mảng dữ liệu giả](./lesson-3.md) - Học cách xây dựng CRUD API đầy đủ
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀  
 — **Thầy Đạt 🧡**

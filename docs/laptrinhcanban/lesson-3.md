@@ -25,7 +25,7 @@ Các toán tử số học trong C:
 | `/`     | Chia nguyên | `15 / 3` | `5`     |
 | `%`     | Chia lấy dư | `17 % 5` | `2`     |
 
-**Lưu ý cho các em:**
+**Các em các em lưu ý cho các em:**
 
 -   Khi chia 2 số nguyên (`int`), kết quả lấy phần nguyên.
 -   Toán tử `%` (modulo) dùng để lấy số dư, chỉ áp dụng cho số nguyên.
@@ -360,9 +360,9 @@ int main() {
 
 ---
 
-## 📝 Lưu ý thầy nhắc lại
+## 📝 Các em các em lưu ý thầy nhắc lại
 
-1. Khi viết biểu thức phức tạp, hãy dùng dấu ngoặc `()` để tránh sai thứ tự thực hiện.
+1. Khi viết biểu thức phức tạp, các em hãy dùng dấu ngoặc `()` để tránh sai thứ tự thực hiện.
 2. Khi chia 2 số nguyên, kết quả là nguyên. Nếu muốn lấy kết quả thập phân, phải dùng biến kiểu `float` hoặc `double`.
 3. Dấu `%` (modulo) chỉ dùng được với số nguyên.
 4. Để so sánh bằng, dùng `==` (không phải `=`).

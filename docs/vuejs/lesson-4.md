@@ -19,7 +19,6 @@ graph TD
     D[Tối ưu hóa List: v-for] -->|Lặp mảng dữ liệu| E[Yêu cầu :key độc lập để nhận diện phần tử khi cập nhật]
 ```
 
-
 ---
 
 ### 1. Conditional Rendering (`v-if` vs `v-show`)
@@ -87,10 +86,8 @@ const products = ref([
 6. Sử dụng `computed` để tạo danh sách `filteredProducts` chỉ hiển thị các sản phẩm thuộc danh mục `selectedCategory` (nếu khác 'Tất cả').
 7. Tạo các tab lựa chọn danh mục (Tất cả, Âm thanh, Thời trang, Công nghệ, Phụ kiện), khi click sẽ thay đổi `selectedCategory` và xem giao diện thay đổi tự động.
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```vue
 <script setup>
@@ -167,4 +164,3 @@ const filteredProducts = computed(() => {
 </details>
 
 ---
-

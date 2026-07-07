@@ -147,4 +147,3 @@ A: Giải thích và fix nếu có thể
 **🎉 Chúc mừng các em hoàn thành khóa học ReactJS!**
 
 **Keep coding, keep learning! 🚀**
-

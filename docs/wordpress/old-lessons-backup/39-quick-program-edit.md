@@ -6,13 +6,11 @@
 -   Thêm liên kết điều hướng chính đến màn hình lưu trữ chương trình.
 -   Xử lý trường hợp chương trình không có sự kiện liên quan.
 
-
 ## Cải thiện kiểu dáng và định dạng
 
 ### Mục đích
 
 Thêm khoảng cách và tiêu đề để làm rõ nội dung trên trang chi tiết chương trình.
-
 
 ### Code mẫu
 
@@ -53,24 +51,20 @@ Thêm khoảng cách và tiêu đề để làm rõ nội dung trên trang chi t
 <?php get_footer(); ?>
 ```
 
-
 ### Tóm tắt
 
 - **`<hr class="section-break">`**: Thêm khoảng cách giữa nội dung chính và tiêu đề sự kiện.
 - **`<h2 class="headline headline--medium">`**: Hiển thị tiêu đề động dựa trên tên chương trình.
 
-
 ### Kết quả mẫu
 
-Trên trang chi tiết của chương trình, bạn sẽ thấy tiêu đề "Sự kiện [Tên chương trình] sắp tới" và danh sách các sự kiện liên quan.
-
+Trên trang chi tiết của chương trình, các em sẽ thấy tiêu đề "Sự kiện [Tên chương trình] sắp tới" và danh sách các sự kiện liên quan.
 
 ## Xử lý trường hợp không có sự kiện liên quan
 
 ### Mục đích
 
 Ẩn tiêu đề và danh sách sự kiện nếu chương trình không có sự kiện liên quan.
-
 
 ### Code mẫu
 
@@ -94,23 +88,19 @@ if ($relatedEvents->have_posts()) {
 ?>
 ```
 
-
 ### Tóm tắt
 
 - **`if ($relatedEvents->have_posts())`**: Kiểm tra nếu có sự kiện liên quan trước khi hiển thị nội dung.
 
-
 ### Kết quả mẫu
 
 Nếu chương trình không có sự kiện liên quan, tiêu đề và danh sách sẽ không hiển thị.
-
 
 ## Thêm liên kết điều hướng chính
 
 ### Mục đích
 
 Liên kết mục "Chương trình" trong điều hướng chính đến màn hình lưu trữ chương trình.
-
 
 ### Code mẫu
 
@@ -123,17 +113,14 @@ Liên kết mục "Chương trình" trong điều hướng chính đến màn h�
 </li>
 ```
 
-
 ### Tóm tắt
 
 - **`get_post_type_archive_link('program')`**: Trả về liên kết đến màn hình lưu trữ chương trình.
 - **`class="current-menu-item"`**: Thêm lớp CSS để làm nổi bật liên kết khi đang ở màn hình chương trình.
 
-
 ### Kết quả mẫu
 
 Khi truy cập màn hình lưu trữ chương trình hoặc trang chi tiết chương trình, liên kết "Chương trình" trong điều hướng chính sẽ được làm nổi bật.
-
 
 ## Bài tập gợi ý
 
@@ -143,17 +130,15 @@ Khi truy cập màn hình lưu trữ chương trình hoặc trang chi tiết ch�
 2. **Tùy chỉnh giao diện**:  
    - Thêm biểu tượng hoặc hình ảnh bên cạnh tiêu đề sự kiện để làm nổi bật danh sách.
 
-
-## Tips / Lưu ý
+## Tips / Các em các em lưu ý
 
 - **Kiểm tra dữ liệu**: Đảm bảo các sự kiện liên quan được thiết lập đúng trong trường tùy chỉnh.
 - **CSS**: Sử dụng lớp CSS như `current-menu-item` để làm nổi bật liên kết điều hướng.
 
-
 ## Kết luận
 
-Trong bài học này, bạn đã học cách cải thiện kiểu dáng và định dạng của trang chi tiết chương trình, xử lý trường hợp không có sự kiện liên quan, và thêm liên kết điều hướng chính đến màn hình lưu trữ chương trình. Đây là bước quan trọng để nâng cao trải nghiệm người dùng trên website WordPress.
+Trong bài học này, các em đã học cách cải thiện kiểu dáng và định dạng của trang chi tiết chương trình, xử lý trường hợp không có sự kiện liên quan, và thêm liên kết điều hướng chính đến màn hình lưu trữ chương trình. Đây là bước quan trọng để nâng cao trải nghiệm người dùng trên website WordPress.
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
-Chúc các bạn học tốt! 🚀  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
+Chúc các các em học tốt! 🚀  
 — **Thầy Đạt 🧡**

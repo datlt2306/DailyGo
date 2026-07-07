@@ -8,7 +8,7 @@
 
 -   LIMIT/OFFSET, tính toán tổng trang với COUNT.
 -   Nhận tham số page, page_size, từ khóa q qua GET; chuẩn hóa giá trị.
--   Search với LIKE, lưu ý wildcard và escape.
+-   Search với LIKE, các em lưu ý wildcard và escape.
 -   Hiển thị pagination UI (prev/next, số trang).
 -   Xử lý lỗi: try/catch, thông báo lỗi thân thiện, flash message.
 

@@ -1,7 +1,4 @@
 # Bài 14: Tạo thư mục mu-plugins bảo vệ CPT
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask WooCommerce Theme Development  
 
 ---
@@ -15,7 +12,7 @@
 ## 📖 Lý thuyết cốt lõi
 
 ### 1. Kiến thức chuyên môn
-Trong bài học này, chúng ta tập trung nghiên cứu sâu về cơ chế cốt lõi của **Bài 14: Tạo thư mục mu-plugins bảo vệ CPT**:
+Trong bài học này, thầy trò mình tập trung nghiên cứu sâu về cơ chế cốt lõi của **Bài 14: Tạo thư mục mu-plugins bảo vệ CPT**:
 - Cách WordPress biên dịch và truy xuất thông tin từ database.
 - Tối ưu hóa cú pháp PHP và sử dụng các helper function chuyên biệt của WordPress API.
 - Đảm bảo tuân thủ các nguyên tắc bảo mật và quản lý tài nguyên hệ thống.
@@ -89,4 +86,3 @@ function handle_my_custom_lab_action_14() {
 
   *Đáp án đúng: **B**. Luôn tận dụng API hệ thống và bảo vệ luồng dữ liệu.*
 </details>
-

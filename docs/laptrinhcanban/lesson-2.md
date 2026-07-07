@@ -48,7 +48,7 @@ char hoTen[100] = "Nguyen Van A";
 | `char[]` | Thay đổi | Chuỗi ký tự | `char ten[50] = "Nam";` |
 | `bool` (_Bool) | 1 byte | `1` hoặc `0` | `_Bool laSinhVien = 1;` |
 
-**Lưu ý:** Với chuỗi ký tự, dùng mảng `char` (ví dụ: `char ten[100];`)
+**Các em các em lưu ý:** Với chuỗi ký tự, dùng mảng `char` (ví dụ: `char ten[100];`)
 
 ### 4. Nhập dữ liệu với `scanf`
 
@@ -103,7 +103,7 @@ int main() {
 }
 ```
 
-**Lưu ý:** `scanf("%s", hoTen);` chỉ đọc được một từ. Để đọc cả dòng, dùng `fgets(hoTen, sizeof(hoTen), stdin);`
+**Các em các em lưu ý:** `scanf("%s", hoTen);` chỉ đọc được một từ. Để đọc cả dòng, dùng `fgets(hoTen, sizeof(hoTen), stdin);`
 
 ### Ví dụ 2: Tính tổng hai số
 
@@ -245,7 +245,7 @@ Nhập số km, tính tổng tiền.
 
 ---
 
-## 📝 Lưu ý quan trọng
+## 📝 Các em các em lưu ý quan trọng
 
 1. **Khai báo biến trước khi sử dụng**
 2. **Chọn kiểu dữ liệu phù hợp:**

@@ -14,7 +14,6 @@ graph TD
     Router -->|DELETE /products/:id| DELETE[Xóa item ra khỏi mảng]
 ```
 
-
 ## Mục tiêu
 
 -   Hiểu rõ cách thực hiện các thao tác CRUD (Create, Read, Update, Delete) với dữ liệu giả.
@@ -198,6 +197,6 @@ Ví dụ thực tế: API GitHub, Twitter API đều sử dụng RESTful pattern
 
 **Bài tiếp theo:** [Lesson 4: Giới thiệu MongoDB và Mongoose](./lesson-4.md) - Chuyển từ in-memory data sang database thực sự
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

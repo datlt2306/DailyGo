@@ -337,4 +337,3 @@ git revert --abort
 **Kết luận:** Các lệnh Git nâng cao này rất mạnh nhưng cần cẩn thận. Hãy hiểu rõ từng lệnh trước khi dùng, đặc biệt là `reset --hard`!
 
 **Bài tiếp theo:** [13. Lỗi thường gặp và khắc phục](./13-common-errors.md) - Tổng hợp các lỗi phổ biến và cách xử lý
-

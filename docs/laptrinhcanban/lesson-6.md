@@ -2,16 +2,14 @@
 
 ## 🎯 Mục tiêu buổi học
 
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+
 Chào các em, hôm nay thầy sẽ hướng dẫn về vòng lặp `while` và `do-while` trong ngôn ngữ C. Sau buổi học, các em cần:
-
--   Hiểu rõ điểm khác biệt giữa vòng lặp `for`, `while` và `do-while`.
--   Biết cách sử dụng đúng cú pháp và logic của `while`.
--   Biết cách dùng vòng lặp `do-while` vào tình huống thực tế.
--   Xác định khi nào dùng `while`, khi nào dùng `do-while`.
--   Vận dụng hai loại vòng lặp này cho các bài toán lặp không xác định trước số lần lặp.
-
----
-
+1. ✅ Hiểu rõ điểm khác biệt giữa vòng lặp `for`, `while` và `do-while`.
+2. ✅ Biết cách sử dụng đúng cú pháp và logic của `while`.
+3. ✅ Biết cách dùng vòng lặp `do-while` vào tình huống thực tế.
+4. ✅ Xác định khi nào dùng `while`, khi nào dùng `do-while`.
+5. ✅ Vận dụng hai loại vòng lặp này cho các bài toán lặp không xác định trước số lần lặp.
 ## 📘 Nội dung chính
 
 ### 1. Vòng lặp while
@@ -90,13 +88,13 @@ int main() {
 
 ```c
 while (1) {
-    // Đây là vòng lặp vô hạn, các em lưu ý phải có điều kiện dừng bên trong, ví dụ dùng break!
+    // Đây là vòng lặp vô hạn, các em các em lưu ý phải có điều kiện dừng bên trong, ví dụ dùng break!
 }
 ```
 
 ### 5. Lệnh break và continue
 
-Các em lưu ý:
+Các em các em lưu ý:
 
 -   `break` dùng để thoát khỏi vòng lặp ngay lập tức.
 -   `continue` bỏ qua phần còn lại của vòng lặp hiện tại và quay về đầu vòng lặp (kiểm tra điều kiện lại nếu còn vòng tiếp).
@@ -323,7 +321,7 @@ int main() {
 9. Viết chương trình đảo ngược một số nguyên.
 10. Viết chương trình kiểm tra số đối xứng.
 
-### Bài tập nâng cao cho các bạn muốn thử sức
+### Bài tập nâng cao cho các các em muốn thử sức
 
 11. Viết chương trình đổi số thập phân sang nhị phân.
 12. Viết chương trình tính số Fibonacci thứ n.
@@ -335,7 +333,7 @@ int main() {
 
 ## 📝 Ghi chú của thầy
 
-Các em lưu ý những nội dung sau:
+Các em các em lưu ý những nội dung sau:
 
 -   Với `while`, phải nhớ cập nhật biến điều kiện trong vòng lặp, nếu không sẽ bị lặp vô hạn.
 -   Với `do-while`, luôn luôn chạy ít nhất 1 lần, rất phù hợp cho nhập liệu cần kiểm tra hợp lệ hoặc menu.

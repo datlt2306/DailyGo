@@ -12,7 +12,6 @@ graph TD
     NodeExpress -->|JSON Response| Client
 ```
 
-
 Chào mừng các em đến với khóa học Node.js/Express xây dựng API cho ứng dụng thương mại điện tử! 👨‍🏫
 
 Khóa học này sẽ giúp các em:
@@ -62,7 +61,7 @@ Node.js là một nền tảng (runtime) giúp chạy JavaScript ở phía serve
 
 ### Kiến thức cần có
 
-Để học Node.js hiệu quả, bạn nên có kiến thức cơ bản về:
+Để học Node.js hiệu quả, các em nên có kiến thức cơ bản về:
 
 -   **JavaScript ES6+**: Hiểu các khái niệm như `let`, `const`, `arrow function`, `async/await`.
 -   **Networking và HTTP**: Hiểu cách giao tiếp giữa client và server qua giao thức HTTP.
@@ -178,7 +177,7 @@ dist/
 -   `.env`: File chứa thông tin nhạy cảm như biến môi trường, không nên công khai.
 -   `dist/`: Thư mục chứa mã nguồn đã build (nếu có), thường được tạo lại khi build dự án.
 
-Nhờ `.gitignore`, bạn có thể giữ repo sạch sẽ và bảo mật thông tin nhạy cảm.
+Nhờ `.gitignore`, các em có thể giữ repo sạch sẽ và bảo mật thông tin nhạy cảm.
 
 ### 6.3. Cài đặt Git và đẩy dự án lên GitHub
 
@@ -218,7 +217,7 @@ Thêm URL của repository GitHub vào dự án:
 git remote add origin https://github.com/<username>/nodejs-ecommerce-api.git
 ```
 
-Thay `<username>` bằng tên tài khoản GitHub của bạn.
+Thay `<username>` bằng tên tài khoản GitHub của các em.
 
 #### 5. Đẩy dự án lên GitHub
 
@@ -241,7 +240,7 @@ git branch -M main
 git push -u origin main
 ```
 
-Sau khi hoàn tất, bạn có thể kiểm tra repository trên GitHub để xem các file đã được đẩy lên.
+Sau khi hoàn tất, các em có thể kiểm tra repository trên GitHub để xem các file đã được đẩy lên.
 
 ### 7. Viết mã nguồn khởi tạo app
 
@@ -274,11 +273,11 @@ Nếu thấy dòng "Server is running on port ..." hiện ra, nghĩa là server 
 
 ### 9. Router là gì?
 
-Router trong Express là một công cụ giúp bạn nhóm các endpoint API liên quan lại với nhau. Nó giống như một "nhánh" trong cây route của ứng dụng, giúp tổ chức code khoa học hơn.
+Router trong Express là một công cụ giúp các em nhóm các endpoint API liên quan lại với nhau. Nó giống như một "nhánh" trong cây route của ứng dụng, giúp tổ chức code khoa học hơn.
 
 #### Tạo router cơ bản
 
-Để tạo một router, bạn sử dụng `Router()` từ thư viện Express. Ví dụ:
+Để tạo một router, các em sử dụng `Router()` từ thư viện Express. Ví dụ:
 
 ::: code-group
 
@@ -308,7 +307,7 @@ Trong ví dụ trên:
 
 #### Tích hợp router vào ứng dụng
 
-Sau khi tạo router, bạn cần tích hợp nó vào ứng dụng chính bằng `app.use()`:
+Sau khi tạo router, các em cần tích hợp nó vào ứng dụng chính bằng `app.use()`:
 
 ::: code-group
 
@@ -335,18 +334,18 @@ Trong ví dụ trên:
 #### Lợi ích của việc sử dụng router
 
 -   **Tổ chức code tốt hơn**: Bạn có thể chia các endpoint theo chức năng (ví dụ: bài viết, người dùng, đơn hàng).
--   **Dễ bảo trì**: Khi cần sửa đổi hoặc thêm endpoint, bạn chỉ cần làm việc với file router tương ứng.
+-   **Dễ bảo trì**: Khi cần sửa đổi hoặc thêm endpoint, các em chỉ cần làm việc với file router tương ứng.
 -   **Khả năng mở rộng**: Dễ dàng thêm các router mới mà không làm phức tạp ứng dụng chính.
 
 #### Ví dụ thực tế
 
-Giả sử bạn đang xây dựng một ứng dụng ecommerce. Bạn có thể tạo các router như sau:
+Giả sử các em đang xây dựng một ứng dụng ecommerce. Bạn có thể tạo các router như sau:
 
 -   `productsRouter`: Quản lý các endpoint liên quan đến sản phẩm.
 -   `usersRouter`: Quản lý các endpoint liên quan đến người dùng.
 -   `ordersRouter`: Quản lý các endpoint liên quan đến đơn hàng.
 
-Nhờ việc sử dụng router, ứng dụng của bạn sẽ trở nên khoa học và dễ quản lý hơn.
+Nhờ việc sử dụng router, ứng dụng của các em sẽ trở nên khoa học và dễ quản lý hơn.
 
 ## Kiểm tra API với Postman
 
@@ -377,7 +376,9 @@ Tạo một router mới cho quản lý người dùng với 3 endpoint cơ bả
 
 **Gợi ý:**
 
-```javascript
+::: code-group
+
+```javascript [src/routers/users.js]
 // src/routers/users.js
 import { Router } from "express";
 
@@ -398,12 +399,12 @@ usersRouter.post("/", (req, res) => {
 export default usersRouter;
 ```
 
-3. Tích hợp router vào `src/app.js`:
-
-```javascript
+```javascript [main.js]
 import usersRouter from "./routers/users";
 app.use("/api/users", usersRouter);
 ```
+
+:::
 
 4. Test bằng Postman:
     - `GET http://localhost:3000/api/users`
@@ -434,6 +435,6 @@ Hãy luôn tự hỏi "vì sao mình làm như vậy", vì hiểu bản chất s
 
 **Bài tiếp theo:** [Lesson 2: Request/Response và Middleware](./lesson-2.md) - Học cách làm việc với request/response và middleware trong Express
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀  
 — **Thầy Đạt 🧡**

@@ -1,7 +1,4 @@
 # Buổi 4: Tương tác cơ sở dữ liệu tùy biến (Lớp $wpdb & Prepared Statements)
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -53,4 +50,3 @@ $result = $wpdb->get_row( $query );
 
   *Đáp án đúng: **C**.*
 </details>
-

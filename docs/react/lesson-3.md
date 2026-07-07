@@ -513,6 +513,8 @@ export default TodoList;
 
 Bây giờ các em cần nâng cấp TodoItem component từ buổi 2. Ở buổi 2, TodoItem chỉ nhận prop `todo`. Bây giờ các em sẽ thêm prop `onToggle` để xử lý sự kiện click:
 
+::: code-group
+
 ```javascript [src/components/TodoItem.jsx]
 function TodoItem({ todo, onToggle }) {
     return (
@@ -534,8 +536,6 @@ function TodoItem({ todo, onToggle }) {
 
 export default TodoItem;
 ```
-
-Cập nhật TodoList để thêm handler và truyền xuống TodoItem:
 
 ```javascript [src/components/TodoList.jsx]
 import { useState } from "react";
@@ -574,9 +574,13 @@ function TodoList() {
 export default TodoList;
 ```
 
+:::
+
 #### Bước 4: Thêm chức năng Xóa
 
 Nâng cấp TodoItem để nhận thêm prop `onDelete`:
+
+::: code-group
 
 ```javascript [src/components/TodoItem.jsx]
 function TodoItem({ todo, onToggle, onDelete }) {
@@ -608,8 +612,6 @@ function TodoItem({ todo, onToggle, onDelete }) {
 
 export default TodoItem;
 ```
-
-Cập nhật TodoList để thêm handler xóa:
 
 ```javascript [src/components/TodoList.jsx]
 import { useState } from "react";
@@ -656,6 +658,8 @@ function TodoList() {
 
 export default TodoList;
 ```
+
+:::
 
 #### Bước 5: Thêm chức năng Thêm mới
 

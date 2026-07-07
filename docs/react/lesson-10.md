@@ -131,6 +131,8 @@ npm install react-router-dom
 
 #### Bước 2: Tạo các trang cơ bản
 
+::: code-group
+
 ```javascript [src/pages/Home.jsx]
 function Home() {
     return (
@@ -173,6 +175,8 @@ function About() {
 
 export default About;
 ```
+
+:::
 
 #### Bước 3: Thêm router vào App.jsx
 
@@ -263,6 +267,8 @@ export default Layout;
 
 **Yêu cầu:** Thầy muốn các em làm thêm trang chi tiết todo, đường dẫn `/todos/:id`.
 
+::: code-group
+
 ```javascript [src/pages/TodoDetail.jsx]
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -309,11 +315,11 @@ function TodoDetail() {
 export default TodoDetail;
 ```
 
-**Nhớ thêm Route cho chi tiết:**
-
-```javascript
+```javascript [main.js]
 <Route path="/todos/:id" element={<TodoDetail />} />
 ```
+
+:::
 
 ---
 

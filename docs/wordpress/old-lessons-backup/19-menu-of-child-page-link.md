@@ -1,9 +1,8 @@
 # Thiết Lập Menu Động Cho Các Trang Con Trong WordPress
 
-Chào mừng bạn đã trở lại!
+Chào mừng các em đã trở lại!
 
-Trong bài học này, chúng ta sẽ học cách thiết lập menu các liên kết trang con cho trang hiện tại mà bạn đang xem. Ví dụ, nếu bạn điều hướng đến trang "Giới thiệu về Hoa Kỳ", bạn sẽ thấy các liên kết đến các trang con như "Lịch sử" và "Mục tiêu của chúng tôi". Hãy cùng nhau làm cho menu này trở nên động và tự động hiển thị các trang con tương ứng.
-
+Trong bài học này, thầy trò mình sẽ học cách thiết lập menu các liên kết trang con cho trang hiện tại mà các em đang xem. Ví dụ, nếu các em điều hướng đến trang "Giới thiệu về Hoa Kỳ", các em sẽ thấy các liên kết đến các trang con như "Lịch sử" và "Mục tiêu của chúng tôi". Hãy cùng nhau làm cho menu này trở nên động và tự động hiển thị các trang con tương ứng.
 
 ## Lý thuyết về menu động trong WordPress
 
@@ -11,21 +10,19 @@ Trong bài học này, chúng ta sẽ học cách thiết lập menu các liên 
 Menu động trong WordPress là một danh sách các liên kết được tạo tự động dựa trên cấu trúc nội dung của website. Thay vì mã hóa cứng các liên kết, menu động sử dụng các hàm PHP để hiển thị các trang con tương ứng với trang cha hiện tại.
 
 ### Tại sao cần menu động?
-- **Tự động hóa**: Menu động tự cập nhật khi bạn thêm hoặc xóa các trang con.
+- **Tự động hóa**: Menu động tự cập nhật khi các em thêm hoặc xóa các trang con.
 - **Dễ quản lý**: Không cần chỉnh sửa mã mỗi khi cấu trúc trang thay đổi.
 - **Cải thiện trải nghiệm người dùng**: Giúp người dùng dễ dàng điều hướng giữa các trang liên quan.
 
-
 ## Giới thiệu về bài giảng
 
-Trong bài học này, chúng ta sẽ học cách thiết lập menu động cho các trang con trong WordPress. Điều này sẽ giúp trang web của bạn trở nên linh hoạt hơn và dễ dàng điều hướng hơn.
-
+Trong bài học này, thầy trò mình sẽ học cách thiết lập menu động cho các trang con trong WordPress. Điều này sẽ giúp trang web của các em trở nên linh hoạt hơn và dễ dàng điều hướng hơn.
 
 ## Thiết lập menu động
 
 ### Xóa mã cứng và thêm hàm động
 
-1. Mở tệp `page.php` trong thư mục chủ đề của bạn.
+1. Mở tệp `page.php` trong thư mục chủ đề của các em.
 2. Tìm đoạn mã chứa menu được mã hóa cứng và xóa nó:
 
 ```php
@@ -60,7 +57,6 @@ Trong bài học này, chúng ta sẽ học cách thiết lập menu động cho
 - **`child_of`**: Xác định ID của trang cha để hiển thị các trang con tương ứng.
 - **`title_li`**: Xóa tiêu đề mặc định của danh sách để giữ giao diện gọn gàng.
 
-
 ### Hiển thị tiêu đề trang cha động
 
 1. Tìm đoạn mã chứa tiêu đề trang cha và thay thế bằng đoạn mã sau:
@@ -74,7 +70,6 @@ Trong bài học này, chúng ta sẽ học cách thiết lập menu động cho
 ### Tại sao cần viết như vậy?
 - **`get_the_title()`**: Hiển thị tiêu đề của trang cha.
 - **`get_permalink()`**: Trả về URL của trang cha, giúp tạo liên kết điều hướng.
-
 
 ### Ẩn menu nếu không có trang con
 
@@ -99,7 +94,6 @@ if ($children) : ?>
 - **`echo => 0`**: Trả về danh sách các trang con dưới dạng chuỗi thay vì hiển thị trực tiếp.
 - **Kiểm tra `$children`**: Chỉ hiển thị menu nếu có trang con, giúp giao diện gọn gàng hơn.
 
-
 ## Bài tập
 
 1. **Tạo thêm trang con**:
@@ -108,7 +102,6 @@ if ($children) : ?>
 
 2. **Hiển thị danh sách các trang con**:
     - Thêm mã để hiển thị danh sách các trang con dưới trang cha.
-
 
 ## Hướng dẫn cách làm
 
@@ -119,7 +112,6 @@ if ($children) : ?>
 3. Tạo một trang có tên "Đội ngũ của chúng tôi" với nội dung giả.
 4. Trong thanh bên phải, dưới "Thuộc tính trang", chọn "Giới thiệu về chúng tôi" làm trang cha.
 5. Xuất bản trang này.
-
 
 ### Hiển thị danh sách các trang con
 
@@ -141,7 +133,6 @@ if ($children) : ?>
 <?php endif; ?>
 ```
 
-
 ## Tổng kết
 
-Trong bài học này, chúng ta đã học cách thiết lập menu động cho các trang con trong WordPress. Chúng ta đã xóa mã cứng, thêm hàm động và hiển thị tiêu đề trang cha động. Hãy thực hành các bài tập để nắm vững kiến thức này. Chúc các bạn học vui vẻ và thành công!
+Trong bài học này, thầy trò mình đã học cách thiết lập menu động cho các trang con trong WordPress. Thầy trò mình đã xóa mã cứng, thêm hàm động và hiển thị tiêu đề trang cha động. Hãy thực hành các bài tập để nắm vững kiến thức này. Chúc các các em học vui vẻ và thành công!

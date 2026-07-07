@@ -1,7 +1,4 @@
 # Buổi 8: Đăng ký Custom REST API Endpoints trong Plugin
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -57,4 +54,3 @@ function my_api_callback() {
 
   *Đáp án đúng: **C**.*
 </details>
-

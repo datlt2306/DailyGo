@@ -1,7 +1,4 @@
 # Bài 21: Thiết lập WooCommerce & Theme Support
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask WooCommerce Theme Development  
 
 ---
@@ -15,8 +12,8 @@
 ## 📖 Lý thuyết cốt lõi
 
 ### 1. Tại sao phải khai báo hỗ trợ WooCommerce?
-Mặc định, khi bạn cài đặt plugin WooCommerce lên một theme tự viết, WooCommerce sẽ sử dụng các tệp tin CSS và cấu trúc trang mặc định của nó. Điều này thường dẫn đến vỡ layout trang cửa hàng hoặc trang chi tiết sản phẩm.
-Khai báo hỗ trợ theme bằng hàm `add_theme_support( 'woocommerce' )` sẽ báo cho WooCommerce biết rằng theme của bạn đã sẵn sàng tiếp quản cấu trúc layout và tự style CSS lại.
+Mặc định, khi các em cài đặt plugin WooCommerce lên một theme tự viết, WooCommerce sẽ sử dụng các tệp tin CSS và cấu trúc trang mặc định của nó. Điều này thường dẫn đến vỡ layout trang cửa hàng hoặc trang chi tiết sản phẩm.
+Khai báo hỗ trợ theme bằng hàm `add_theme_support( 'woocommerce' )` sẽ báo cho WooCommerce biết rằng theme của các em đã sẵn sàng tiếp quản cấu trúc layout và tự style CSS lại.
 
 ### 2. Cú pháp khai báo add_theme_support
 Ta cần khai báo hàm này trong action hook `after_setup_theme`:
@@ -39,7 +36,7 @@ add_action( 'after_setup_theme', 'custom_theme_woocommerce_support' );
 ```
 
 ### 3. Hỗ trợ các tính năng ảnh sản phẩm (Gallery Features)
-Chúng ta có thể kích hoạt các tính năng xem ảnh cao cấp của WooCommerce mà không cần cài thêm plugin:
+Thầy trò mình có thể kích hoạt các tính năng xem ảnh cao cấp của WooCommerce mà không cần cài thêm plugin:
 - `wc-product-gallery-zoom`: Di chuột vào ảnh để phóng to.
 - `wc-product-gallery-lightbox`: Click vào ảnh để phóng to toàn màn hình.
 - `wc-product-gallery-slider`: Tạo thanh trượt slide cho album ảnh phụ.
@@ -80,8 +77,8 @@ add_action( 'after_setup_theme', 'my_custom_shop_setup' );
 ---
 
 ## 🛠️ Bài tập thực hành (Lab)
-1. Hãy cài đặt plugin **WooCommerce** vào trang web local từ thư viện plugin.
-2. Thêm đoạn mã khai báo hỗ trợ WooCommerce và kích hoạt 3 tính năng gallery ảnh sản phẩm (zoom, lightbox, slider) vào file `functions.php` của theme của bạn.
+1. Các em các em hãy cài đặt plugin **WooCommerce** vào trang web local từ thư viện plugin.
+2. Thêm đoạn mã khai báo hỗ trợ WooCommerce và kích hoạt 3 tính năng gallery ảnh sản phẩm (zoom, lightbox, slider) vào file `functions.php` của theme của các em.
 
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
@@ -100,7 +97,7 @@ function register_woocommerce_theme_support() {
 }
 add_action( 'after_setup_theme', 'register_woocommerce_theme_support' );
 ```
-Lưu lại, sau đó truy cập trang quản trị Admin WooCommerce > Status. Cảnh báo "Theme của bạn không hỗ trợ WooCommerce" sẽ biến mất.
+Lưu lại, sau đó truy cập trang quản trị Admin WooCommerce > Status. Cảnh báo "Theme của các em không hỗ trợ WooCommerce" sẽ biến mất.
 </details>
 
 ---
@@ -116,4 +113,3 @@ Lưu lại, sau đó truy cập trang quản trị Admin WooCommerce > Status. C
 
   *Đáp án đúng: **B**. Giúp lập trình viên kiểm soát hoàn toàn layout hiển thị của cửa hàng.*
 </details>
-

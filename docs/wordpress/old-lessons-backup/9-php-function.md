@@ -2,11 +2,9 @@
 
 Chào các em, hôm nay thầy sẽ hướng dẫn các em làm quen với **hàm** – một trong những khái niệm quan trọng nhất trong PHP và WordPress. Đừng lo lắng, thầy sẽ giải thích từng bước một cách dễ hiểu để các em có thể tự tin sử dụng hàm trong quá trình phát triển WordPress. Nào, cùng bắt đầu nhé!
 
-
 ## Hàm là gì?
 
-Hàm là một đoạn mã được định nghĩa để thực hiện một nhiệm vụ cụ thể. Các em có thể nghĩ hàm như một công thức, nơi chúng ta định nghĩa cách thực hiện một hành động và sau đó có thể tái sử dụng công thức đó nhiều lần.
-
+Hàm là một đoạn mã được định nghĩa để thực hiện một nhiệm vụ cụ thể. Các em có thể nghĩ hàm như một công thức, nơi thầy trò mình định nghĩa cách thực hiện một hành động và sau đó có thể tái sử dụng công thức đó nhiều lần.
 
 ## Tạo hàm PHP cơ bản
 
@@ -29,7 +27,6 @@ myFirstFunction();
 
 ### 3. Kết quả
 - Lưu tệp và làm mới trang web. Các em sẽ thấy dòng chữ: **"Xin chào, đây là hàm đầu tiên của tôi!"**
-
 
 ## Sử dụng tham số trong hàm
 
@@ -55,7 +52,6 @@ greet("Jane", "xanh lá");
   - **"Xin chào, tên tôi là John và màu yêu thích của tôi là xanh."**
   - **"Xin chào, tên tôi là Jane và màu yêu thích của tôi là xanh lá."**
 
-
 ## Hàm WordPress tích hợp
 
 WordPress cung cấp rất nhiều hàm tích hợp sẵn để các em sử dụng. Dưới đây là một vài ví dụ:
@@ -75,12 +71,10 @@ WordPress cung cấp rất nhiều hàm tích hợp sẵn để các em sử d�
 ### 3. Kết quả
 - Lưu tệp và làm mới trang web. Tên và khẩu hiệu của trang web sẽ tự động hiển thị.
 
-
 ## Tóm tắt nhanh
 
 - **Hàm**: Đoạn mã thực hiện một nhiệm vụ cụ thể, có thể tái sử dụng nhiều lần.
 - **Tham số**: Biến trong hàm để nhận giá trị từ đối số.
 - **Hàm WordPress**: Các hàm tích hợp như `bloginfo()` giúp lấy thông tin trang web.
 
-
-Hy vọng bài viết này giúp các em hiểu rõ hơn về hàm trong PHP và WordPress. Trong bài học tiếp theo, chúng ta sẽ khám phá **mảng** – một khái niệm quan trọng để hiển thị nội dung động như bài đăng và trang. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi! 🎉
+Hy vọng bài viết này giúp các em hiểu rõ hơn về hàm trong PHP và WordPress. Trong bài học tiếp theo, thầy trò mình sẽ khám phá **mảng** – một khái niệm quan trọng để hiển thị nội dung động như bài đăng và trang. Hãy chuẩn bị tinh thần, thầy trò mình sẽ bắt đầu ngay thôi! 🎉

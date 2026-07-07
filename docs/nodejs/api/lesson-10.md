@@ -15,30 +15,28 @@ graph TD
     end
 ```
 
-
-Chào các bạn sinh viên thân yêu! Hôm nay chúng ta sẽ cùng nhau khám phá một chủ đề cực kỳ thú vị: **Làm thế nào để thiết kế schema cơ sở dữ liệu trong MongoDB?**
+Chào các các em sinh viên thân yêu! Hôm nay thầy trò mình sẽ cùng nhau khám phá một chủ đề cực kỳ thú vị: **Làm thế nào để thiết kế schema cơ sở dữ liệu trong MongoDB?**
 
 Đây là câu hỏi đầu tiên mà bất kỳ ai cũng phải đối mặt khi bắt đầu một dự án với MongoDB. Và câu trả lời là: **Tùy vào từng trường hợp!**
 
-Có rất nhiều yếu tố ảnh hưởng đến cách bạn thiết kế schema, ví dụ như:
-- Ứng dụng của bạn đọc dữ liệu nhiều hay ghi dữ liệu nhiều?
+Có rất nhiều yếu tố ảnh hưởng đến cách các em thiết kế schema, ví dụ như:
+- Ứng dụng của các em đọc dữ liệu nhiều hay ghi dữ liệu nhiều?
 - Những dữ liệu nào thường được truy cập cùng nhau?
-- Yêu cầu về hiệu suất của bạn như thế nào?
-- Dữ liệu của bạn sẽ tăng trưởng và mở rộng ra sao?
+- Yêu cầu về hiệu suất của các em như thế nào?
+- Dữ liệu của các em sẽ tăng trưởng và mở rộng ra sao?
 
-Trong bài học này, chúng ta sẽ cùng nhau tìm hiểu cách mô hình hóa cơ sở dữ liệu MongoDB thông qua các ví dụ thực tế. Các bạn sẽ học được các phương pháp phổ biến để thiết kế schema cho ứng dụng của mình.
-
+Trong bài học này, thầy trò mình sẽ cùng nhau tìm hiểu cách mô hình hóa cơ sở dữ liệu MongoDB thông qua các ví dụ thực tế. Các các em sẽ học được các phương pháp phổ biến để thiết kế schema cho ứng dụng của mình.
 
 ## Cách tiếp cận thiết kế cơ sở dữ liệu - Relational vs MongoDB
 
-Nhiều bạn đã học môn "Thiết kế cơ sở dữ liệu" ở trường đại học, thường bê nguyên kiểu thiết kế dành cho SQL database sang MongoDB. Nhưng các bạn ơi, làm vậy là không đúng đâu nhé!
+Nhiều các em đã học môn "Thiết kế cơ sở dữ liệu" ở trường đại học, thường bê nguyên kiểu thiết kế dành cho SQL database sang MongoDB. Nhưng các các em ơi, làm vậy là không đúng đâu nhé!
 
-MongoDB là một NoSQL database, và mặc dù nó có một số điểm tương đồng với SQL, nhưng nếu bạn áp dụng y nguyên cách thiết kế của SQL thì sẽ không tận dụng được những điểm mạnh của MongoDB.
+MongoDB là một NoSQL database, và mặc dù nó có một số điểm tương đồng với SQL, nhưng nếu các em áp dụng y nguyên cách thiết kế của SQL thì sẽ không tận dụng được những điểm mạnh của MongoDB.
 
-Để dễ dàng tìm ra cách thiết kế đúng trong MongoDB, chúng ta hãy cùng so sánh giữa SQL và MongoDB nhé!
+Để dễ dàng tìm ra cách thiết kế đúng trong MongoDB, thầy trò mình hãy cùng so sánh giữa SQL và MongoDB nhé!
 
 ### Thiết kế cơ sở dữ liệu SQL
-Trong SQL, chúng ta thường chia dữ liệu thành nhiều bảng (tables) và sử dụng các khóa ngoại (foreign keys) để liên kết chúng lại với nhau. Mỗi bảng sẽ có một schema rõ ràng, và chúng ta sẽ sử dụng JOIN để truy xuất dữ liệu từ nhiều bảng.
+Trong SQL, thầy trò mình thường chia dữ liệu thành nhiều bảng (tables) và sử dụng các khóa ngoại (foreign keys) để liên kết chúng lại với nhau. Mỗi bảng sẽ có một schema rõ ràng, và thầy trò mình sẽ sử dụng JOIN để truy xuất dữ liệu từ nhiều bảng.
 #### SQL Example:
 ```sql
 CREATE TABLE Users (
@@ -63,7 +61,7 @@ CREATE TABLE OrderItems (
 ```
 ### Thiết kế cơ sở dữ liệu MongoDB
 
-MongoDB thì khác nhé các bạn! Thay vì chia nhỏ dữ liệu thành nhiều collection, chúng ta có thể nhúng các mảng và đối tượng trực tiếp vào một document.
+MongoDB thì khác nhé các các em! Thay vì chia nhỏ dữ liệu thành nhiều collection, thầy trò mình có thể nhúng các mảng và đối tượng trực tiếp vào một document.
 
 ```sql
 
@@ -112,13 +110,11 @@ Order {
 }
 ```
 
-Các bạn thấy không, thay vì chia nhỏ dữ liệu thành từng collection, chúng ta tận dụng lợi thế của MongoDB document để lưu trữ array và object bên trong User object. Bây giờ chỉ với một query đơn giản, chúng ta có thể kéo tất cả dữ liệu về ứng dụng của mình. Tiện lợi quá phải không nào?
-
+Các các em thấy không, thay vì chia nhỏ dữ liệu thành từng collection, thầy trò mình tận dụng lợi thế của MongoDB document để lưu trữ array và object bên trong User object. Bây giờ chỉ với một query đơn giản, thầy trò mình có thể kéo tất cả dữ liệu về ứng dụng của mình. Tiện lợi quá phải không nào?
 
 ## Nhúng vs Tham chiếu
 
-Khi thiết kế schema cho MongoDB, chúng ta sẽ đứng giữa hai lựa chọn: **Nhúng** hay **Tham chiếu**. Nào, cùng tìm hiểu nhé!
-
+Khi thiết kế schema cho MongoDB, thầy trò mình sẽ đứng giữa hai lựa chọn: **Nhúng** hay **Tham chiếu**. Nào, cùng tìm hiểu nhé!
 
 ### Embedded Document – Nhúng
 
@@ -198,7 +194,6 @@ Ví dụ
 - Cần $lookup để JOIN
 - Truy vấn chậm hơn (nhiều query)
 
-
 ## Bảng so sánh Embedded vs Referenced
 
 | Tiêu chí | Embedded | Referenced |
@@ -218,7 +213,6 @@ Ví dụ
 | Dữ liệu con có dùng ở nhiều nơi không? | Có | 🟦 Reference |
 | Số lượng con có lớn không? | Lớn | 🟦 Reference |
 | Dữ liệu có gắn chặt với cha không? | Có | 🟩 Embedded |
-
 
 ### Tóm lại: Nhúng hay Tham chiếu?
 
@@ -333,6 +327,6 @@ Ví dụ thực tế: Shopify, WooCommerce đều sử dụng pattern này.
 
 **Bài tiếp theo:** [Lesson 11: Hiểu Về Populate Trong MongoDB](./lesson-11.md) - Học cách lấy dữ liệu từ các collection liên quan
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

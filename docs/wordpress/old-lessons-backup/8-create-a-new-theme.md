@@ -9,13 +9,11 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một ch�
 - **Học cách làm việc với WordPress**: Tạo chủ đề từ đầu giúp các em hiểu rõ cách WordPress hoạt động.
 - **Tùy chỉnh theo nhu cầu**: Các em có thể thêm các tính năng độc đáo mà chủ đề có sẵn không cung cấp.
 
-
 ## Mục tiêu bài học
 
 - Tạo một chủ đề WordPress cơ bản.
 - Hiểu cách các tệp như `index.php` và `style.css` hoạt động trong chủ đề.
 - Kích hoạt chủ đề và kiểm tra kết quả.
-
 
 ## Bắt đầu với bảng điều khiển WordPress
 
@@ -26,8 +24,7 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một ch�
 
 ### 2. Khám phá tab Giao diện
 - Vào **Appearance** > **Themes** để xem danh sách các chủ đề hiện có.
-- Thay vì sử dụng chủ đề có sẵn, chúng ta sẽ tạo một chủ đề hoàn toàn mới.
-
+- Thay vì sử dụng chủ đề có sẵn, thầy trò mình sẽ tạo một chủ đề hoàn toàn mới.
 
 ## Tạo thư mục chủ đề
 
@@ -40,7 +37,6 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một ch�
 
 ### 2. Tạo thư mục mới
 - Tạo một thư mục mới trong `themes` và đặt tên là `fictional-university-theme`.
-
 
 ## Tạo các tệp cần thiết
 
@@ -69,7 +65,6 @@ Version: 1.0
 ```
 - **Giải thích**: Phần comment này cung cấp thông tin về chủ đề, bao gồm tên, tác giả, và phiên bản.
 
-
 ## Thêm ảnh chụp màn hình cho chủ đề
 
 ### 1. Tạo ảnh chụp màn hình
@@ -78,7 +73,6 @@ Version: 1.0
 
 ### 2. Di chuyển ảnh vào thư mục chủ đề
 - Di chuyển tệp `screenshot.png` vào thư mục `fictional-university-theme`.
-
 
 ## Kích hoạt chủ đề
 
@@ -90,14 +84,12 @@ Version: 1.0
 - Nhấp vào **Activate** để kích hoạt chủ đề.
 - Truy cập giao diện người dùng để xem kết quả.
 
-
 ## Xóa các chủ đề không cần thiết
 
 Để giữ cho thư mục chủ đề gọn gàng, các em có thể xóa các chủ đề mặc định như `twentyseventeen`, `twentysixteen`, v.v.
 
 - Quay lại thư mục `themes` và xóa các thư mục của các chủ đề mặc định.
 - Làm mới bảng điều khiển để chỉ giữ lại chủ đề tùy chỉnh của các em.
-
 
 ## Tóm tắt nhanh
 
@@ -106,5 +98,4 @@ Version: 1.0
 - **Thêm ảnh chụp màn hình**: Đặt tên là `screenshot.png`.
 - **Kích hoạt chủ đề**: Làm mới bảng điều khiển và kích hoạt chủ đề mới.
 
-
-Hy vọng bài viết này giúp các em tự tin tạo chủ đề WordPress của riêng mình. Trong bài học tiếp theo, chúng ta sẽ khám phá các hàm PHP – trung tâm và linh hồn của WordPress. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi!
+Hy vọng bài viết này giúp các em tự tin tạo chủ đề WordPress của riêng mình. Trong bài học tiếp theo, thầy trò mình sẽ khám phá các hàm PHP – trung tâm và linh hồn của WordPress. Hãy chuẩn bị tinh thần, thầy trò mình sẽ bắt đầu ngay thôi!

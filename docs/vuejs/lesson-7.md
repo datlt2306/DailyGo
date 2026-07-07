@@ -22,7 +22,7 @@ Hãy xây dựng một ứng dụng giỏ hàng Vue 3 dựa trên giao diện t�
    - Tính toán tổng số lượng sản phẩm đang có trong giỏ hàng.
    - Tính tổng tiền tạm tính bằng tổng của `đơn giá * số lượng` từng sản phẩm.
    - Tự động đồng bộ các giá trị này lên khu vực **Tóm tắt đơn hàng** (vùng cột bên phải ở dòng **137 đến 165** của [cart.html](https://letrongdat.vercel.app/vuejs/templates/cart.html)).
-5. **Giỏ hàng trống (Sử dụng v-if/v-else)**: Nếu mảng giỏ hàng rỗng (không còn sản phẩm nào), hiển thị khối thông báo "Giỏ hàng của bạn đang trống. Hãy quay lại trang chủ mua sắm!" và ẩn khu vực tóm tắt đơn hàng đi.
+5. **Giỏ hàng trống (Sử dụng v-if/v-else)**: Nếu mảng giỏ hàng rỗng (không còn sản phẩm nào), hiển thị khối thông báo "Giỏ hàng của các em đang trống. Hãy quay lại trang chủ mua sắm!" và ẩn khu vực tóm tắt đơn hàng đi.
 
 ### Yêu cầu cấu trúc Components (Bắt buộc tách file):
 - `CartManager.vue` (hoặc `App.vue`): Quản lý mảng giỏ hàng, chứa logic tăng/giảm/xóa và phần tính tổng hóa đơn.

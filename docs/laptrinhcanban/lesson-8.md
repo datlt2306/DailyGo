@@ -113,7 +113,7 @@ int tinhTong(int a, int b) {
 }
 ```
 
-**Lưu ý:** Nếu em định nghĩa hàm trước hàm `main()` thì không cần prototype. Nếu định nghĩa hàm sau hàm `main()` thì phải khai báo prototype trước.
+**Các em các em lưu ý:** Nếu em định nghĩa hàm trước hàm `main()` thì không cần prototype. Nếu định nghĩa hàm sau hàm `main()` thì phải khai báo prototype trước.
 
 ---
 
@@ -434,7 +434,7 @@ int main() {
 
 ---
 
-## 📝 Lưu ý quan trọng
+## 📝 Các em các em lưu ý quan trọng
 
 1. **Đặt tên hàm:** Rõ ràng, thể hiện đúng chức năng.
 2. **Lệnh return:** Hàm kiểu void thì không cần return giá trị, nhưng có thể dùng return; để thoát sớm.

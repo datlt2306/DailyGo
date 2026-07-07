@@ -16,14 +16,12 @@ graph TD
     Verify -->|No| Block[Trả về 401/403]
 ```
 
-
 Chào các em!  
-Hôm nay, Thầy sẽ hướng dẫn các em cách xây dựng chức năng **Đăng ký**, **Đăng nhập** với **JWT** (JSON Web Token). Chúng ta sẽ đi theo flow chuẩn: **Model → Controller → Middleware Validate → Router**. Bắt đầu thôi nào!
-
+Hôm nay, Thầy sẽ hướng dẫn các em cách xây dựng chức năng **Đăng ký**, **Đăng nhập** với **JWT** (JSON Web Token). Thầy trò mình sẽ đi theo flow chuẩn: **Model → Controller → Middleware Validate → Router**. Bắt đầu thôi nào!
 
 ## 1. Model: Định nghĩa User với Mongoose
 
-Đầu tiên, chúng ta sẽ tạo một model `User` để quản lý dữ liệu người dùng trong MongoDB. Model này sẽ bao gồm các trường như `name`, `email`, `password`, `role`, `phone`, và các thông tin khác.
+Đầu tiên, thầy trò mình sẽ tạo một model `User` để quản lý dữ liệu người dùng trong MongoDB. Model này sẽ bao gồm các trường như `name`, `email`, `password`, `role`, `phone`, và các thông tin khác.
 
 ::: code-group
 
@@ -102,10 +100,9 @@ export const User = mongoose.model("User", userSchema);
 > - **`timestamps`**: Tự động thêm `createdAt` và `updatedAt`.
 > - **`versionKey: false`**: Loại bỏ trường `__v` từ MongoDB.
 
-
 ## 2. Các bước cần làm trước khi viết Controller
 
-Trước khi bắt tay vào viết code cho controller, chúng ta cần xác định rõ các bước cần thực hiện để đảm bảo logic được xây dựng đúng và đầy đủ. Dưới đây là các bước cụ thể:
+Trước khi bắt tay vào viết code cho controller, thầy trò mình cần xác định rõ các bước cần thực hiện để đảm bảo logic được xây dựng đúng và đầy đủ. Dưới đây là các bước cụ thể:
 
 ### 2.1. Đăng ký tài khoản (`signup`)
 
@@ -192,7 +189,7 @@ export const login = async (req, res) => {
 };
 ```
 
-> **Lưu ý:** Đảm bảo đã thêm `JWT_SECRET` vào file `.env`:
+> **Các em các em lưu ý:** Đảm bảo đã thêm `JWT_SECRET` vào file `.env`:
 > ```env
 > JWT_SECRET=your_super_secret_key_here_minimum_32_characters
 > ```
@@ -279,7 +276,6 @@ export const validateRequest = (schema, target = "body") => {
 ```
 :::
 
-
 ## 5. Schema: Định nghĩa các schema cho Signup và Signin
 
 Dưới đây là các schema được định nghĩa bằng Joi để kiểm tra dữ liệu đầu vào cho các API `signup` và `signin`.
@@ -361,7 +357,6 @@ router.get("/me", verifyJWT, getMe);
 export default router;
 ```
 :::
-
 
 ## 7. Tổng hợp Code
 
@@ -517,7 +512,6 @@ export const signinSchema = Joi.object({
 ```
 :::
 
-
 ## 8. Use Case thực tế: Authentication Flow trong Production
 
 Trong thực tế, các ứng dụng production thường có:
@@ -528,16 +522,16 @@ Trong thực tế, các ứng dụng production thường có:
 4. **Email Verification**: Xác thực email trước khi cho phép đăng nhập
 5. **Password Reset**: Quên mật khẩu với token tạm thời
 
-Ví dụ thực tế: Khi bạn đăng nhập vào Facebook, họ sử dụng JWT token, và nếu bạn quên mật khẩu, họ gửi email với reset token.
+Ví dụ thực tế: Khi các em đăng nhập vào Facebook, họ sử dụng JWT token, và nếu các em quên mật khẩu, họ gửi email với reset token.
 
 ## 9. Kết luận
 
-Qua bài học này, các em đã được hướng dẫn cách xây dựng chức năng **Đăng ký**, **Đăng nhập**, và **Lấy thông tin người dùng hiện tại** với **JWT**. Chúng ta đã đi qua các bước từ định nghĩa **Model**, viết **Controller**, đến thiết lập **Router**. Đây là một quy trình chuẩn để xây dựng các API bảo mật và hiệu quả.
+Qua bài học này, các em đã được hướng dẫn cách xây dựng chức năng **Đăng ký**, **Đăng nhập**, và **Lấy thông tin người dùng hiện tại** với **JWT**. Thầy trò mình đã đi qua các bước từ định nghĩa **Model**, viết **Controller**, đến thiết lập **Router**. Đây là một quy trình chuẩn để xây dựng các API bảo mật và hiệu quả.
 
 Hãy áp dụng những kiến thức này vào các dự án thực tế của mình. Nếu có bất kỳ thắc mắc nào, đừng ngần ngại đặt câu hỏi nhé!
 
 **Bài tiếp theo:** [Lesson 9: Kiểm tra Quyền trong API Sản phẩm](./lesson-9.md) - Học cách bảo vệ API với middleware
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

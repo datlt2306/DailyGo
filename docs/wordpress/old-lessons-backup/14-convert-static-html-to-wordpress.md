@@ -2,7 +2,7 @@
 
 Hello em!
 
-Trong bài học này, chúng ta sẽ học cách chuyển đổi một trang HTML và CSS tĩnh thành một theme WordPress cơ bản. Đến thời điểm này của khóa học, trang web WordPress mà thầy và em đang làm việc không có phong cách hoặc thiết kế nào cho nó cả. Điều này không thực tế lắm phải không? Vì vậy, chúng ta cần thêm chút thiết kế và hướng nghệ thuật vào website của chúng ta.
+Trong bài học này, thầy trò mình sẽ học cách chuyển đổi một trang HTML và CSS tĩnh thành một theme WordPress cơ bản. Đến thời điểm này của khóa học, trang web WordPress mà thầy và em đang làm việc không có phong cách hoặc thiết kế nào cho nó cả. Điều này không thực tế lắm phải không? Vì vậy, thầy trò mình cần thêm chút thiết kế và hướng nghệ thuật vào website của thầy trò mình.
 
 ### Tại sao cần chuyển đổi HTML tĩnh sang WordPress?
 Như các em đã biết HTML tĩnh là các trang web không có khả năng tương tác hoặc quản lý nội dung động. Trong khi đó, WordPress là một hệ thống quản lý nội dung (CMS) mạnh mẽ, cho phép em dễ dàng quản lý, chỉnh sửa, và mở rộng nội dung của website. Việc chuyển đổi HTML tĩnh sang WordPress giúp em:
@@ -39,16 +39,16 @@ theme-name/
     └── customizer.php  # Tùy chỉnh theme
 ```
 
-Những lưu ý quan trọng:
+Những các em lưu ý quan trọng:
 - **style.css**: Phải có header comment chứa thông tin theme (tên, tác giả, phiên bản...)
 - **functions.php**: Nơi đăng ký scripts, styles, menus, widgets và các chức năng khác
 - **Tệp template phân cấp**: WordPress sử dụng hệ thống phân cấp template để hiển thị nội dung
 
-Khi bắt đầu chuyển đổi, chúng ta chỉ cần tập trung vào các file cốt lõi: `style.css`, `index.php`, `header.php`, `footer.php` và `functions.php`. Các file còn lại có thể được thêm vào khi theme phát triển.
+Khi bắt đầu chuyển đổi, thầy trò mình chỉ cần tập trung vào các file cốt lõi: `style.css`, `index.php`, `header.php`, `footer.php` và `functions.php`. Các file còn lại có thể được thêm vào khi theme phát triển.
 
 ## 1. Tải xuống mã khởi động
 
-Để bắt đầu, chúng ta sẽ tải xuống một chút HTML và CSS mà tôi đã viết cho chúng ta. em có thể mở một tab mới trong trình duyệt web của mình và truy cập URL này:
+Để bắt đầu, thầy trò mình sẽ tải xuống một chút HTML và CSS mà tôi đã viết cho thầy trò mình. em có thể mở một tab mới trong trình duyệt web của mình và truy cập URL này:
 
 ```bash
 https://github.com/learnwebcode/university-static
@@ -56,11 +56,9 @@ https://github.com/learnwebcode/university-static
 
 Tại đây, em chỉ cần sử dụng nút "Clone or download" và chọn "Download ZIP". Sau khi tải xuống và giải nén tệp ZIP, em sẽ có một thư mục có tên là `university-static-master`.
 
-
 ## 2. Xem trước HTML tĩnh
 
 Trước tiên, hãy xem trước tệp HTML đã được lập chỉ mục trong trình duyệt web của em. Mở tệp `index.html` từ thư mục `university-static-master` trong trình duyệt của em. em sẽ thấy một trang HTML tĩnh không có PHP và hoàn toàn không liên quan gì đến WordPress.
-
 
 ## 3. Chuyển HTML tĩnh sang theme WordPress
 
@@ -109,7 +107,7 @@ File `footer.php` chứa phần chân trang của website và sử dụng hàm `
 - **`wp_footer()`**: Hàm này cho phép WordPress thêm các tài nguyên như JavaScript vào cuối trang, đảm bảo website hoạt động đúng cách.
 
 ### Bao gồm các tệp này trong tệp chính
-Tệp `index.php` là tệp mẫu chính của WordPress. Chúng ta sẽ sử dụng các hàm `get_header()` và `get_footer()` để gọi nội dung từ các tệp `header.php` và `footer.php`.
+Tệp `index.php` là tệp mẫu chính của WordPress. Thầy trò mình sẽ sử dụng các hàm `get_header()` và `get_footer()` để gọi nội dung từ các tệp `header.php` và `footer.php`.
 
 ::: code-group
 ```php [index.php]
@@ -178,7 +176,7 @@ Cập nhật đường dẫn hình ảnh trong tệp `index.php` để sử dụ
 
 ## Tổng kết
 
-Trong bài học này, chúng ta đã học cách chuyển đổi một trang HTML và CSS tĩnh thành một theme WordPress đầy đủ chức năng. Chúng ta đã tìm hiểu:
+Trong bài học này, thầy trò mình đã học cách chuyển đổi một trang HTML và CSS tĩnh thành một theme WordPress đầy đủ chức năng. Thầy trò mình đã tìm hiểu:
 
 - Cấu trúc thư mục của một theme WordPress
 - Cách tạo các tệp template cơ bản: header.php, footer.php, index.php
@@ -186,8 +184,8 @@ Trong bài học này, chúng ta đã học cách chuyển đổi một trang HT
 - Xử lý đường dẫn tài nguyên như hình ảnh
 - Tạo menu động có thể quản lý từ WordPress admin
 
-Quá trình chuyển đổi này không chỉ giúp website của chúng ta có giao diện đẹp mắt mà còn mang lại khả năng quản lý nội dung linh hoạt thông qua hệ thống quản trị WordPress.
+Quá trình chuyển đổi này không chỉ giúp website của thầy trò mình có giao diện đẹp mắt mà còn mang lại khả năng quản lý nội dung linh hoạt thông qua hệ thống quản trị WordPress.
 
-Trong bài học tiếp theo, chúng ta sẽ tìm hiểu cách tùy chỉnh theme với các tính năng nâng cao hơn như widget, custom post types, và các template cho các loại nội dung khác nhau.
+Trong bài học tiếp theo, thầy trò mình sẽ tìm hiểu cách tùy chỉnh theme với các tính năng nâng cao hơn như widget, custom post types, và các template cho các loại nội dung khác nhau.
 
 Hãy tiếp tục thực hành với bài tập đã được giao và chuẩn bị cho những kiến thức mới trong bài học tiếp theo!

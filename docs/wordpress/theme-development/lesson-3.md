@@ -1,7 +1,4 @@
 # Bài 3: Vòng lặp Loop mặc định (The Loop)
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask WooCommerce Theme Development  
 
 ---
@@ -67,7 +64,7 @@ Cú pháp chuẩn chỉnh của Vòng lặp mặc định (The Loop) trong WordP
 ---
 
 ## 🛠️ Bài tập thực hành (Lab)
-Hãy viết cấu trúc The Loop lồng trong cấu trúc bảng HTML (`<table>` và các hàng `<tr>`), hiển thị danh sách bài viết gồm cột ID bài viết, cột Tiêu đề (có gắn link chi tiết), và cột Ngày đăng bài.
+Các em các em hãy viết cấu trúc The Loop lồng trong cấu trúc bảng HTML (`<table>` và các hàng `<tr>`), hiển thị danh sách bài viết gồm cột ID bài viết, cột Tiêu đề (có gắn link chi tiết), và cột Ngày đăng bài.
 
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
@@ -117,4 +114,3 @@ Hãy viết cấu trúc The Loop lồng trong cấu trúc bảng HTML (`<table>`
 
   *Đáp án đúng: **B**. Nếu thiếu `the_post()`, vòng lặp sẽ bị vô hạn vì con trỏ dữ liệu không được dịch chuyển sang bài viết tiếp theo.*
 </details>
-

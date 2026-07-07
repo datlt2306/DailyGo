@@ -1,7 +1,4 @@
 # Bài 22: Cơ chế WooCommerce Template Overrides
-
-**Loại buổi**: Thực hành  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask WooCommerce Theme Development  
 
 ---
@@ -16,13 +13,13 @@
 
 ### 1. Cơ chế hoạt động của Template Overrides
 WooCommerce chứa hàng chục tệp tin giao diện thành phần (như khung hiển thị giá, mô tả sản phẩm, giỏ hàng) nằm trong thư mục `wp-content/plugins/woocommerce/templates/`.
-Khi render giao diện, WooCommerce sẽ tự động tìm kiếm trong thư mục theme của bạn xem có tồn tại thư mục tên là `woocommerce/` chứa file trùng tên hay không:
-- Nếu **CÓ**: Nó nạp file trong thư mục theme của bạn (ưu tiên cao nhất).
+Khi render giao diện, WooCommerce sẽ tự động tìm kiếm trong thư mục theme của các em xem có tồn tại thư mục tên là `woocommerce/` chứa file trùng tên hay không:
+- Nếu **CÓ**: Nó nạp file trong thư mục theme của các em (ưu tiên cao nhất).
 - Nếu **KHÔNG**: Nó nạp file mặc định của plugin.
 
 ### 2. Nguyên tắc quan trọng khi đè template
 - **Không bao giờ sửa trực tiếp file trong plugin WooCommerce**. Lỗi sẽ bị mất hoàn toàn khi plugin cập nhật.
-- Chỉ sao chép đúng file bạn cần chỉnh sửa sang thư mục theme. Ví dụ: Để sửa trang chi tiết sản phẩm, copy file từ:
+- Chỉ sao chép đúng file các em cần chỉnh sửa sang thư mục theme. Ví dụ: Để sửa trang chi tiết sản phẩm, copy file từ:
   `plugins/woocommerce/templates/single-product.php` 
   sang 
   `themes/mytheme/woocommerce/single-product.php`.
@@ -49,7 +46,7 @@ wp-content/plugins/woocommerce/templates/
 └── loop/
     └── price.php
 
-Vị trí file ghi đè trong Theme của bạn:
+Vị trí file ghi đè trong Theme của các em:
 wp-content/themes/mytheme/
 ├── functions.php
 ├── index.php
@@ -63,7 +60,7 @@ wp-content/themes/mytheme/
 ---
 
 ## 🛠️ Bài tập thực hành (Lab)
-Hãy thực hiện sao chép file cấu trúc hiển thị sản phẩm trong vòng lặp `content-product.php` từ plugin WooCommerce vào thư mục theme của bạn và tiến hành chỉnh sửa thử HTML bên trong.
+Các em các em hãy thực hiện sao chép file cấu trúc hiển thị sản phẩm trong vòng lặp `content-product.php` từ plugin WooCommerce vào thư mục theme của các em và tiến hành chỉnh sửa thử HTML bên trong.
 
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
@@ -78,7 +75,7 @@ Hãy thực hiện sao chép file cấu trúc hiển thị sản phẩm trong v�
 ---
 
 ## ❓ Trắc nghiệm nhanh
-**1. Khi muốn đè tệp tin `templates/cart/cart.php` của WooCommerce, chúng ta phải đặt tệp đó ở đường dẫn nào trong theme?**
+**1. Khi muốn đè tệp tin `templates/cart/cart.php` của WooCommerce, thầy trò mình phải đặt tệp đó ở đường dẫn nào trong theme?**
 - A. `themes/mytheme/templates/cart.php`
 - B. `themes/mytheme/woocommerce/cart/cart.php`
 - C. `themes/mytheme/woocommerce/cart.php`
@@ -88,4 +85,3 @@ Hãy thực hiện sao chép file cấu trúc hiển thị sản phẩm trong v�
 
   *Đáp án đúng: **B**. Cấu trúc thư mục con bên trong `woocommerce/` của theme phải giống hệt cấu trúc thư mục con bên trong `templates/` của plugin gốc.*
 </details>
-

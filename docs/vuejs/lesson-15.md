@@ -19,7 +19,6 @@ graph TD
     Dist -->|Deploy| Host[Vercel, Netlify, Github Pages]
 ```
 
-
 ---
 
 ### 1. Tối ưu hóa hiệu năng Vue App trước khi phát hành
@@ -66,17 +65,15 @@ Mỗi nhóm hoặc cá nhân sẽ có 10-15 phút để thuyết trình dự án
 ## 🛠️ Bài tập thực hành (Lab)
 ### Yêu cầu: Đóng gói sản phẩm dự án Vanguard Store
 1. Áp dụng lazy loading cho toàn bộ các trang chính (HomeView, ProductDetailView, CartView, LoginView, RegisterView, các trang Admin).
-2. Chạy thử lệnh đóng gói dự án trong thư mục code của bạn:
+2. Chạy thử lệnh đóng gói dự án trong thư mục code của các em:
    ```bash
    npm run build
    ```
 3. Kiểm tra thư mục `/dist` vừa được tạo ra. Đảm bảo cấu trúc chứa file `index.html` và các thư mục assets chứa js/css được mã hóa nén.
 4. Chuẩn bị slide báo cáo, đẩy toàn bộ mã nguồn lên GitHub repository cá nhân và nộp liên kết dự án hoàn chỉnh.
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```bash
 # Bước 1: Build ứng dụng cho môi trường Production
@@ -119,4 +116,3 @@ vercel --prod
 </details>
 
 ---
-

@@ -60,7 +60,7 @@ main:        A---B---C
 feature:             D'---E'
 ```
 
-**Lưu ý:** Commit D' và E' là commit MỚI (hash khác), nhưng nội dung giống D và E.
+**Các em các em lưu ý:** Commit D' và E' là commit MỚI (hash khác), nhưng nội dung giống D và E.
 
 ### So sánh Merge vs Rebase
 
@@ -91,7 +91,7 @@ git merge feature/login
 ### Khi nào dùng Rebase?
 
 ✅ **Nên dùng Rebase khi:**
--   Branch cá nhân, chưa push hoặc chỉ mình bạn dùng
+-   Branch cá nhân, chưa push hoặc chỉ mình các em dùng
 -   Muốn lịch sử sạch sẽ, dễ đọc
 -   Update branch với code mới từ main
 -   Trước khi tạo Pull Request
@@ -289,7 +289,7 @@ git rebase --continue
 git rebase --abort
 ```
 
-**Lưu ý:** Với rebase, bạn có thể phải resolve conflict nhiều lần (cho mỗi commit)
+**Các em các em lưu ý:** Với rebase, các em có thể phải resolve conflict nhiều lần (cho mỗi commit)
 
 ## 🧩 Bài tập
 
@@ -412,7 +412,6 @@ git rebase --skip
 
 ---
 
-**Kết luận:** Merge và Rebase đều có ưu nhược điểm riêng. Hiểu rõ sự khác biệt giúp bạn chọn đúng công cụ cho từng tình huống. Khi làm việc nhóm, luôn ưu tiên an toàn - Merge thường là lựa chọn tốt hơn!
+**Kết luận:** Merge và Rebase đều có ưu nhược điểm riêng. Hiểu rõ sự khác biệt giúp các em chọn đúng công cụ cho từng tình huống. Khi làm việc nhóm, luôn ưu tiên an toàn - Merge thường là lựa chọn tốt hơn!
 
 **Bài tiếp theo:** [07. Giới thiệu GitHub](./07-github-intro.md) - Học cách sử dụng GitHub để lưu trữ code trên cloud
-

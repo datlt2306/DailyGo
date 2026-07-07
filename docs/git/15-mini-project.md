@@ -14,7 +14,7 @@
 
 ### Tổng hợp kiến thức đã học
 
-Qua 14 bài học, bạn đã học được:
+Qua 14 bài học, các em đã học được:
 
 1.  ✅ Git cơ bản: init, add, commit, log
 2.  ✅ Working directory và staging area
@@ -222,7 +222,6 @@ git push origin v1.0.0
 # - ✅ Header component with navigation
 # - ✅ Footer component with social links
 # - ✅ About section
-#
 # ## Contributors
 # - @nguoi1 (Header)
 # - @nguoi2 (Footer)
@@ -239,14 +238,12 @@ git push origin v1.0.0
 
 1.  **Setup (Người 1):**
 
-
     -   Tạo repository trên GitHub
     -   Khởi tạo cấu trúc cơ bản
     -   Thêm README.md với mô tả dự án
     -   Thêm .gitignore
 
 2.  **Phát triển (Mỗi người 1 component):**
-
 
     -   Component 1: Header/Navigation
     -   Component 2: Footer
@@ -255,20 +252,17 @@ git push origin v1.0.0
 
 3.  **Review:**
 
-
     -   Mỗi PR phải có ít nhất 1 người review
     -   Reviewer comment ít nhất 2 điểm
     -   Author reply và sửa (nếu cần)
 
 4.  **Merge và Release:**
 
-
     -   Merge tất cả PR vào main
     -   Tạo tag v1.0.0
     -   Tạo Release trên GitHub với changelog
 
 5.  **Documentation:**
-
 
     -   Tạo file `PROJECT_SUMMARY.md`:
         -   Tổng hợp các PR đã tạo
@@ -317,7 +311,7 @@ git push origin v1.0.0
 
 ### Kết quả mong đợi
 
-Sau khi hoàn thành dự án, bạn sẽ có:
+Sau khi hoàn thành dự án, các em sẽ có:
 
 -   ✅ Repository trên GitHub với code hoàn chỉnh
 -   ✅ Ít nhất 3 Pull Request đã merge
@@ -327,7 +321,7 @@ Sau khi hoàn thành dự án, bạn sẽ có:
 
 ### Tiếp tục học tập
 
-**Sau khóa học này, bạn có thể:**
+**Sau khóa học này, các em có thể:**
 
 1.  **Học Git Flow:** Quy trình phức tạp hơn cho dự án lớn
 2.  **GitHub Actions:** Tự động hóa CI/CD
@@ -349,6 +343,6 @@ Sau khi hoàn thành dự án, bạn sẽ có:
 
 ---
 
-**Kết luận:** Chúc mừng bạn đã hoàn thành khóa học Git & GitHub! Với kiến thức này, bạn đã sẵn sàng làm việc nhóm chuyên nghiệp trên bất kỳ dự án nào. Hãy tiếp tục thực hành và áp dụng vào các dự án thực tế!
+**Kết luận:** Chúc mừng các em đã hoàn thành khóa học Git & GitHub! Với kiến thức này, các em đã sẵn sàng làm việc nhóm chuyên nghiệp trên bất kỳ dự án nào. Hãy tiếp tục thực hành và áp dụng vào các dự án thực tế!
 
 **Kết thúc khóa học!** 🎉

@@ -2,8 +2,7 @@
 
 ## Giới thiệu
 
-Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo **Custom Post Type** trong WordPress. Đây là một tính năng mạnh mẽ giúp chúng ta mở rộng khả năng của WordPress, cho phép tạo các loại nội dung mới như sự kiện, chương trình, giáo sư, và khu học xá. Nào, cùng bắt đầu nhé!
-
+Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo **Custom Post Type** trong WordPress. Đây là một tính năng mạnh mẽ giúp thầy trò mình mở rộng khả năng của WordPress, cho phép tạo các loại nội dung mới như sự kiện, chương trình, giáo sư, và khu học xá. Nào, cùng bắt đầu nhé!
 
 ## Lý thuyết về Custom Post Type
 
@@ -13,17 +12,16 @@ Trong WordPress, **Post Type** là một loại nội dung. Mặc định, WordP
 - **Page**: Dùng cho các trang tĩnh như "Giới thiệu" hoặc "Liên hệ".
 
 ### Custom Post Type là gì?
-**Custom Post Type** cho phép bạn tạo các loại nội dung mới ngoài các loại mặc định. Ví dụ:
+**Custom Post Type** cho phép các em tạo các loại nội dung mới ngoài các loại mặc định. Ví dụ:
 - **Sự kiện**: Hiển thị các sự kiện sắp tới.
 - **Chương trình**: Hiển thị thông tin về các chương trình học.
 - **Giáo sư**: Hiển thị danh sách giáo sư.
 - **Khu học xá**: Hiển thị thông tin về các khu học xá.
 
 ### Tại sao cần Custom Post Type?
-- **Tổ chức nội dung**: Giúp bạn quản lý nội dung theo cách phù hợp với mục đích của website.
+- **Tổ chức nội dung**: Giúp các em quản lý nội dung theo cách phù hợp với mục đích của website.
 - **Mở rộng khả năng**: Tạo các loại nội dung tùy chỉnh để đáp ứng nhu cầu cụ thể.
 - **Thân thiện với người dùng**: Hiển thị nội dung một cách rõ ràng và dễ điều hướng.
-
 
 ## Mục lục
 
@@ -33,7 +31,6 @@ Trong WordPress, **Post Type** là một loại nội dung. Mặc định, WordP
 4. [Cấu hình Custom Post Type](#cấu-hình-custom-post-type)
 5. [Sử dụng plugin "Must-Use" để bảo vệ loại bài đăng](#sử-dụng-plugin-must-use-để-bảo-vệ-loại-bài-đăng)
 6. [Tổng kết](#tổng-kết)
-
 
 ## Tạo Custom Post Type
 
@@ -65,10 +62,8 @@ add_action('init', 'university_post_types');
 - **`labels`**: Tùy chỉnh các nhãn hiển thị trong giao diện quản trị viên.
 - **`menu_icon`**: Thêm biểu tượng cho loại bài đăng trong thanh bên của WordPress Admin.
 
-
 ### 2. Kết quả
 - Sau khi lưu tệp, loại bài đăng **Sự kiện** sẽ xuất hiện trong thanh bên của WordPress Admin.
-
 
 ## Cấu hình Custom Post Type
 
@@ -81,7 +76,6 @@ add_action('init', 'university_post_types');
 ### 2. Thêm biểu tượng
 - Sử dụng tham số `menu_icon` để thêm biểu tượng cho loại bài đăng.
 - Truy cập [Dashicons](https://developer.wordpress.org/resource/dashicons/) để chọn biểu tượng.
-
 
 ## Sử dụng plugin "Must-Use" để bảo vệ loại bài đăng
 
@@ -115,12 +109,9 @@ add_action('init', 'university_post_types');
 ### Tại sao cần làm như vậy?
 - **Must-Use Plugins**: Đây là loại plugin đặc biệt luôn được kích hoạt, ngay cả khi chủ đề hoặc plugin khác bị thay đổi. Điều này giúp bảo vệ loại bài đăng tùy chỉnh khỏi bị vô tình xóa.
 
-
 ### 3. Kết quả
 - Loại bài đăng **Sự kiện** sẽ luôn được kích hoạt, ngay cả khi chủ đề hoặc plugin khác bị thay đổi.
 
-
 ## Tổng kết
 
-Trong bài học này, chúng ta đã học cách tạo Custom Post Type trong WordPress. Chúng ta đã tạo loại bài đăng **Sự kiện**, tùy chỉnh nhãn và biểu tượng, và sử dụng plugin "Must-Use" để bảo vệ loại bài đăng. Hy vọng bài viết này giúp các em mở rộng khả năng của WordPress. Trong bài học tiếp theo, chúng ta sẽ học cách hiển thị các bài đăng từ Custom Post Type trên giao diện người dùng. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi! 🎉
-
+Trong bài học này, thầy trò mình đã học cách tạo Custom Post Type trong WordPress. Thầy trò mình đã tạo loại bài đăng **Sự kiện**, tùy chỉnh nhãn và biểu tượng, và sử dụng plugin "Must-Use" để bảo vệ loại bài đăng. Hy vọng bài viết này giúp các em mở rộng khả năng của WordPress. Trong bài học tiếp theo, thầy trò mình sẽ học cách hiển thị các bài đăng từ Custom Post Type trên giao diện người dùng. Hãy chuẩn bị tinh thần, thầy trò mình sẽ bắt đầu ngay thôi! 🎉

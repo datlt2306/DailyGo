@@ -2,9 +2,6 @@
 
 > **Bài trước:** [Lesson 12: Xây dựng API Giỏ hàng (Cart)](./lesson-12.md)  
 > **Bài tiếp theo:** [Lesson 14: Testing với Jest & Supertest](./lesson-14.md)
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: Vanguard Store E-Commerce API  
 
 ---
@@ -64,7 +61,7 @@ export default mongoose.model('Order', orderSchema);
 ---
 
 ## 🛠️ Bài tập thực hành (Lab)
-Hãy viết controller `createOrder` thực hiện việc chốt đơn hàng từ giỏ hàng hiện tại, kiểm tra và trừ tồn kho, tính tổng số tiền và lưu đơn hàng vào database.
+Các em các em hãy viết controller `createOrder` thực hiện việc chốt đơn hàng từ giỏ hàng hiện tại, kiểm tra và trừ tồn kho, tính tổng số tiền và lưu đơn hàng vào database.
 
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
@@ -82,7 +79,7 @@ export const createOrder = async (req, res, next) => {
         // 1. Lấy giỏ hàng
         const cart = await Cart.findOne({ userId }).populate('items.productId');
         if (!cart || cart.items.length === 0) {
-            return res.status(400).json({ message: 'Giỏ hàng của bạn đang trống!' });
+            return res.status(400).json({ message: 'Giỏ hàng của các em đang trống!' });
         }
 
         let total = 0;
@@ -129,7 +126,7 @@ export const createOrder = async (req, res, next) => {
 ---
 
 ## ❓ Trắc nghiệm nhanh
-**1. Tại sao chúng ta cần lưu trực tiếp trường `price` vào mảng `items` của đơn hàng thay vì dùng populate lấy từ bảng Products?**
+**1. Tại sao thầy trò mình cần lưu trực tiếp trường `price` vào mảng `items` của đơn hàng thay vì dùng populate lấy từ bảng Products?**
 - A. Để code chạy nhanh hơn.
 - B. Để lưu lại chính xác giá sản phẩm tại thời điểm mua, tránh việc giá sản phẩm thay đổi sau này làm sai lệch doanh thu lịch sử của đơn hàng.
 - C. Tránh trùng lặp ID.
@@ -138,4 +135,3 @@ export const createOrder = async (req, res, next) => {
 
   *Đáp án đúng: **B**.*
 </details>
-

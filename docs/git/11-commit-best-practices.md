@@ -34,7 +34,7 @@ def5678 fix
 xyz9999 changes
 ```
 
-Rõ ràng commit message tốt giúp bạn hiểu code đã thay đổi như thế nào!
+Rõ ràng commit message tốt giúp các em hiểu code đã thay đổi như thế nào!
 
 #### 2. **Tìm bug nhanh**
 
@@ -376,6 +376,6 @@ Refs #67"
 
 ---
 
-**Kết luận:** Commit message tốt giúp bạn và team hiểu lịch sử code, tìm bug nhanh, và làm việc hiệu quả hơn. Hãy bắt đầu viết commit message chuyên nghiệp ngay hôm nay!
+**Kết luận:** Commit message tốt giúp các em và team hiểu lịch sử code, tìm bug nhanh, và làm việc hiệu quả hơn. Hãy bắt đầu viết commit message chuyên nghiệp ngay hôm nay!
 
 **Bài tiếp theo:** [12. Git Nâng cao](./12-git-advanced.md) - Học các lệnh Git nâng cao: stash, revert, reset, cherry-pick

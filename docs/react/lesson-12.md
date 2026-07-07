@@ -93,6 +93,8 @@ npx json-server --watch db.json --port 3001
 
 Ví dụ code dưới lấy dữ liệu tours từ API và render danh sách:
 
+::: code-group
+
 ```javascript [src/pages/Tours.jsx]
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -185,6 +187,8 @@ function TourCard({ tour }) {
 
 export default TourCard;
 ```
+
+:::
 
 ### 3. Gửi request thêm Tour (POST)
 

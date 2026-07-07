@@ -14,21 +14,21 @@
 
 ### GitHub là gì?
 
-**GitHub** là một nền tảng lưu trữ code trên internet, sử dụng Git làm công cụ quản lý phiên bản. GitHub giống như "Google Drive cho code" - bạn lưu code lên cloud và có thể truy cập từ bất kỳ đâu.
+**GitHub** là một nền tảng lưu trữ code trên internet, sử dụng Git làm công cụ quản lý phiên bản. GitHub giống như "Google Drive cho code" - các em lưu code lên cloud và có thể truy cập từ bất kỳ đâu.
 
 **So sánh Git vs GitHub:**
 
 | Git                              | GitHub                                    |
 | -------------------------------- | ----------------------------------------- |
-| Công cụ trên máy tính của bạn    | Website lưu trữ code trên internet         |
+| Công cụ trên máy tính của các em    | Website lưu trữ code trên internet         |
 | Quản lý phiên bản local          | Chia sẻ code và làm việc nhóm              |
 | Hoạt động offline                | Cần internet để upload/download            |
 | Miễn phí, mã nguồn mở            | Miễn phí cho dự án public, trả phí private |
 | Lệnh: `git init`, `git commit`   | Web interface + Git commands + PR         |
 
 **Ví dụ minh họa:**
--   **Git**: Giống như Microsoft Word trên máy bạn - bạn viết và lưu file local
--   **GitHub**: Giống như Google Docs - bạn lưu file trên cloud, có thể chia sẻ và làm việc nhóm
+-   **Git**: Giống như Microsoft Word trên máy các em - các em viết và lưu file local
+-   **GitHub**: Giống như Google Docs - các em lưu file trên cloud, có thể chia sẻ và làm việc nhóm
 
 ### Tại sao cần GitHub?
 
@@ -41,7 +41,7 @@
 
 #### 2. **Chia sẻ code với người khác**
 
-**Ví dụ:** Bạn làm dự án website, muốn bạn cùng lớp xem code:
+**Ví dụ:** Bạn làm dự án website, muốn các em cùng lớp xem code:
 -   Gửi file qua email? → Khó quản lý version
 -   Upload lên Google Drive? → Không có version control
 -   Push lên GitHub? → Dễ chia sẻ, có lịch sử, có thể collaborate
@@ -56,10 +56,10 @@
 
 #### 4. **Portfolio và học tập**
 
-**Ví dụ:** Khi xin việc, nhà tuyển dụng muốn xem code của bạn:
--   Có GitHub profile đầy đủ → Chứng tỏ bạn biết version control
+**Ví dụ:** Khi xin việc, nhà tuyển dụng muốn xem code của các em:
+-   Có GitHub profile đầy đủ → Chứng tỏ các em biết version control
 -   Có nhiều repository → Thể hiện kinh nghiệm
--   Có contribution history → Cho thấy bạn code thường xuyên
+-   Có contribution history → Cho thấy các em code thường xuyên
 
 ### Repository trên GitHub
 
@@ -67,7 +67,7 @@
 -   Lưu trữ trên server của GitHub (cloud)
 -   Có thể truy cập qua URL
 -   Có web interface để xem code, lịch sử, issues
--   Có thể set public (ai cũng xem được) hoặc private (chỉ bạn xem)
+-   Có thể set public (ai cũng xem được) hoặc private (chỉ các em xem)
 
 **Ví dụ URL repository:**
 ```
@@ -76,7 +76,7 @@ https://github.com/username/my-website
 
 ### Remote Repository
 
-**Remote** là "địa chỉ" của repository trên GitHub. Git cho phép bạn kết nối repository local với remote repository trên GitHub.
+**Remote** là "địa chỉ" của repository trên GitHub. Git cho phép các em kết nối repository local với remote repository trên GitHub.
 
 **Các remote phổ biến:**
 -   `origin`: Remote mặc định, thường là repository chính trên GitHub
@@ -100,7 +100,7 @@ git remote add origin https://github.com/username/my-website.git
 4.   Verify email
 5.   Hoàn tất setup profile
 
-**Lưu ý:** Username sẽ là một phần của URL repository, chọn cẩn thận!
+**Các em các em lưu ý:** Username sẽ là một phần của URL repository, chọn cẩn thận!
 
 ### Tạo repository trên GitHub
 
@@ -270,7 +270,7 @@ git push -u origin main
 **Bài tập 2: Làm việc với nhiều remote**
 
 1.   Fork một repository public (ví dụ: [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife))
-2.   Clone fork của bạn về máy
+2.   Clone fork của các em về máy
 3.   Thêm remote `upstream` trỏ đến repository gốc
 4.   Xem cấu trúc remote:
     ```bash
@@ -282,7 +282,7 @@ git push -u origin main
     ```bash
     git pull upstream main
     ```
-6.   Push code lên fork của bạn:
+6.   Push code lên fork của các em:
     ```bash
     git push origin main
     ```
@@ -384,7 +384,6 @@ git commit -m "Thêm .gitignore"
 
 ---
 
-**Kết luận:** GitHub là công cụ không thể thiếu khi làm web development. Nó giúp bạn backup code, chia sẻ với người khác, và làm việc nhóm hiệu quả. Hãy tạo repository ngay và bắt đầu push code lên!
+**Kết luận:** GitHub là công cụ không thể thiếu khi làm web development. Nó giúp các em backup code, chia sẻ với người khác, và làm việc nhóm hiệu quả. Các em các em hãy tạo repository ngay và bắt đầu push code lên!
 
 **Bài tiếp theo:** [08. Làm việc nhóm với GitHub](./08-collaboration.md) - Học cách clone, fork, và collaborate với người khác
-

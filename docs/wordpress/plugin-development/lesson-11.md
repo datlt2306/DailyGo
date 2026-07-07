@@ -1,7 +1,4 @@
 # Buổi 11: Lập trình tạo Shortcodes & Custom Widgets trong Plugin
-
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
 **Dự án**: ZenTask Plugin Development  
 
 ---
@@ -53,4 +50,3 @@ add_shortcode( 'zentask_button', 'zentask_custom_button_shortcode' );
 
   *Đáp án đúng: **B**.*
 </details>
-

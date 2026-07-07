@@ -2,15 +2,13 @@
 
 ## 🎯 Mục tiêu buổi học
 
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+
 Sau tiết học này, các em sẽ:
-
--   Hiểu được mảng là gì, lý do ta cần sử dụng mảng trong lập trình C
--   Nắm được cách khai báo, khởi tạo mảng một chiều trong C
--   Biết cách truy cập, cập nhật từng phần tử trong mảng
--   Vận dụng mảng để giải các bài toán thực tế như quản lý điểm, lưu danh sách...
-
----
-
+1. ✅ Hiểu được mảng là gì, lý do ta cần sử dụng mảng trong lập trình C
+2. ✅ Nắm được cách khai báo, khởi tạo mảng một chiều trong C
+3. ✅ Biết cách truy cập, cập nhật từng phần tử trong mảng
+4. ✅ Vận dụng mảng để giải các bài toán thực tế như quản lý điểm, lưu danh sách...
 ## 📘 Nội dung
 
 ### 1. Khái niệm mảng

@@ -17,7 +17,6 @@ graph TD
     Child -->|Kích hoạt sự kiện: emit'delete-item', id| Parent
 ```
 
-
 ---
 
 ### 1. Custom Events (Truyền thông tin con lên cha)
@@ -82,10 +81,8 @@ const currentTheme = inject('globalTheme')
    - Import và render danh sách `<CartItem v-for="prod in cartList" :key="prod.id" :item="prod" @remove-item="removeItemFromList" />`.
    - Viết hàm `removeItemFromList(id)` để lọc bỏ phần tử có ID tương ứng ra khỏi giỏ hàng thực tế.
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```vue
 <!-- components/CartItem.vue -->
@@ -143,4 +140,3 @@ const emit = defineEmits(['delete-item'])
 </details>
 
 ---
-

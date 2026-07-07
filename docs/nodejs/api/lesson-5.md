@@ -14,7 +14,6 @@ graph TD
     Controller -->|Global Error Handler if fails| Res[Response JSON]
 ```
 
-
 ## Mục tiêu
 
 -   Thực hành xây dựng API CRUD sản phẩm đầy đủ với MongoDB và Mongoose.
@@ -152,7 +151,7 @@ export default Product;
 
 ## 3. Các bước cần làm trước khi viết Controller
 
-Trước khi bắt tay vào viết code cho controller, chúng ta cần xác định rõ các bước cần thực hiện để đảm bảo logic được xây dựng đúng và đầy đủ. Dưới đây là các bước cụ thể:
+Trước khi bắt tay vào viết code cho controller, thầy trò mình cần xác định rõ các bước cần thực hiện để đảm bảo logic được xây dựng đúng và đầy đủ. Dưới đây là các bước cụ thể:
 
 ### 3.1. Lấy danh sách sản phẩm (`GET /api/products`)
 
@@ -211,7 +210,7 @@ Trước khi bắt tay vào viết code cho controller, chúng ta cần xác đ�
 
 ## 4. Tách Controller để quản lý logic
 
-Sau khi xác định rõ các bước cần làm, chúng ta sẽ viết code cho các chức năng trong file controller.
+Sau khi xác định rõ các bước cần làm, thầy trò mình sẽ viết code cho các chức năng trong file controller.
 
 :::code-group
 
@@ -357,7 +356,7 @@ export default routeProduct;
 
 ### Import router vào file `src/routers/index.js`
 
-Để sử dụng các router đã tạo, bạn cần import chúng vào file `routers/index.js` và cấu hình như sau:
+Để sử dụng các router đã tạo, các em cần import chúng vào file `routers/index.js` và cấu hình như sau:
 
 :::code-group
 
@@ -602,6 +601,6 @@ GET /api/products?status=published&minPrice=20000&maxPrice=100000&sort=-createdA
 -   **Dữ liệu Fake**: Sử dụng các mẫu JSON để kiểm tra các endpoint CRUD
 -   **Test Postman**: Kiểm tra các endpoint `/api/products` với các phương thức và query parameters
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

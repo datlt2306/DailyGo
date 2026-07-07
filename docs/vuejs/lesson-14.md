@@ -17,7 +17,6 @@ graph TD
     Slot --> Child[BaseCard.vue UI Component]
 ```
 
-
 ---
 
 ### 1. Tích hợp TailwindCSS vào Vue
@@ -75,10 +74,8 @@ Slots cho phép component cha truyền toàn bộ cấu trúc HTML xuống cho c
 4. Tại trang giỏ hàng `CartView.vue`, thay thế hộp thoại confirm mặc định của trình duyệt (`window.confirm`) bằng cách mở component `BaseModal.vue` tự thiết kế khi nhấn nút xóa sản phẩm.
 5. Truyền nội dung động (Tiêu đề "Xóa sản phẩm", Nội dung cảnh báo và các nút bấm TailwindCSS đẹp mắt) vào các slot tương ứng của `BaseModal`.
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```vue
 <!-- components/BaseModal.vue -->
@@ -127,4 +124,3 @@ Slots cho phép component cha truyền toàn bộ cấu trúc HTML xuống cho c
 </details>
 
 ---
-

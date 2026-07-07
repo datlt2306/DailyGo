@@ -2,8 +2,7 @@
 
 ## Giới thiệu
 
-Chào các em, hôm nay thầy sẽ hướng dẫn các em cách hiển thị các bài đăng từ loại bài đăng tùy chỉnh trên giao diện người dùng của trang web. Loại bài đăng tùy chỉnh là một cách mạnh mẽ để mở rộng khả năng của WordPress, cho phép chúng ta tạo các loại nội dung mới như sự kiện, chương trình, giáo sư, và khu học xá.
-
+Chào các em, hôm nay thầy sẽ hướng dẫn các em cách hiển thị các bài đăng từ loại bài đăng tùy chỉnh trên giao diện người dùng của trang web. Loại bài đăng tùy chỉnh là một cách mạnh mẽ để mở rộng khả năng của WordPress, cho phép thầy trò mình tạo các loại nội dung mới như sự kiện, chương trình, giáo sư, và khu học xá.
 
 ## Lý thuyết về hiển thị loại bài đăng tùy chỉnh
 
@@ -17,11 +16,10 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách hiển thị c�
 - **Mẫu bài đăng (Single Template)**: Kiểm soát cách hiển thị nội dung của từng bài đăng tùy chỉnh.
 - **Mẫu lưu trữ (Archive Template)**: Hiển thị danh sách tất cả các bài đăng thuộc loại bài đăng tùy chỉnh.
 
-
 ## Hiển thị bài đăng tùy chỉnh trên trang chủ
 
 ### 1. Tạo truy vấn tùy chỉnh
-Để hiển thị các bài đăng từ loại bài đăng tùy chỉnh trên trang chủ, chúng ta cần sử dụng **truy vấn tùy chỉnh**. Truy vấn tùy chỉnh cho phép chúng ta lấy dữ liệu từ cơ sở dữ liệu theo điều kiện mong muốn.
+Để hiển thị các bài đăng từ loại bài đăng tùy chỉnh trên trang chủ, thầy trò mình cần sử dụng **truy vấn tùy chỉnh**. Truy vấn tùy chỉnh cho phép thầy trò mình lấy dữ liệu từ cơ sở dữ liệu theo điều kiện mong muốn.
 
 - Mở tệp `front-page.php` và thêm đoạn mã sau:
 ```php
@@ -39,9 +37,8 @@ $homepageEvents = new WP_Query(array(
 - **`posts_per_page`**: Xác định số lượng bài đăng cần hiển thị.
 - **`post_type`**: Chỉ định loại bài đăng cần truy vấn (ví dụ: `event`).
 
-
 ### 2. Hiển thị bài đăng
-Sau khi tạo truy vấn, chúng ta cần sử dụng **vòng lặp WordPress** để hiển thị nội dung bài đăng.
+Sau khi tạo truy vấn, thầy trò mình cần sử dụng **vòng lặp WordPress** để hiển thị nội dung bài đăng.
 
 ```php
 // filepath: /Users/ken/Folders/Projects/polytuts-5/theme/front-page.php
@@ -66,11 +63,10 @@ wp_reset_postdata(); // Dọn dẹp sau khi sử dụng truy vấn tùy chỉnh
 - **`have_posts()` và `the_post()`**: Kiểm tra và lấy dữ liệu bài đăng từ truy vấn tùy chỉnh.
 - **`wp_reset_postdata()`**: Dọn dẹp dữ liệu sau khi sử dụng truy vấn tùy chỉnh để tránh xung đột với truy vấn mặc định.
 
-
 ## Tạo mẫu cho bài đăng tùy chỉnh
 
 ### 1. Tại sao cần mẫu riêng cho bài đăng tùy chỉnh?
-Mẫu riêng giúp chúng ta kiểm soát cách hiển thị nội dung của từng bài đăng tùy chỉnh. Ví dụ, khi người dùng truy cập vào một bài đăng sự kiện, chúng ta có thể hiển thị thông tin chi tiết về sự kiện đó.
+Mẫu riêng giúp thầy trò mình kiểm soát cách hiển thị nội dung của từng bài đăng tùy chỉnh. Ví dụ, khi người dùng truy cập vào một bài đăng sự kiện, thầy trò mình có thể hiển thị thông tin chi tiết về sự kiện đó.
 
 ### 2. Tạo tệp `single-event.php`
 - Trong thư mục chủ đề, tạo tệp mới tên là `single-event.php`.
@@ -89,7 +85,6 @@ Mẫu riêng giúp chúng ta kiểm soát cách hiển thị nội dung của t�
 ### Tại sao cần viết như vậy?
 - **`get_post_type_archive_link()`**: Hàm này trả về liên kết đến màn hình lưu trữ của loại bài đăng tùy chỉnh.
 - **HTML và CSS**: Kết hợp với các lớp CSS để định dạng giao diện.
-
 
 ## Tạo mẫu lưu trữ cho bài đăng tùy chỉnh
 
@@ -126,7 +121,6 @@ Mẫu lưu trữ giúp hiển thị danh sách tất cả các bài đăng thu�
 - **`have_posts()` và `the_post()`**: Hiển thị danh sách bài đăng từ loại bài đăng tùy chỉnh.
 - **HTML và CSS**: Kết hợp với các lớp CSS để định dạng giao diện.
 
-
 ## Tổng kết
 
-Trong bài học này, chúng ta đã học cách hiển thị các bài đăng từ loại bài đăng tùy chỉnh trên giao diện người dùng. Chúng ta đã tạo truy vấn tùy chỉnh, mẫu cho bài đăng tùy chỉnh, và mẫu lưu trữ. Hy vọng bài viết này giúp các em dễ dàng hiển thị nội dung động trên website của mình. Trong bài học tiếp theo, chúng ta sẽ học cách sử dụng trường tùy chỉnh để thêm thông tin bổ sung cho bài đăng. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi! 🎉
+Trong bài học này, thầy trò mình đã học cách hiển thị các bài đăng từ loại bài đăng tùy chỉnh trên giao diện người dùng. Thầy trò mình đã tạo truy vấn tùy chỉnh, mẫu cho bài đăng tùy chỉnh, và mẫu lưu trữ. Hy vọng bài viết này giúp các em dễ dàng hiển thị nội dung động trên website của mình. Trong bài học tiếp theo, thầy trò mình sẽ học cách sử dụng trường tùy chỉnh để thêm thông tin bổ sung cho bài đăng. Hãy chuẩn bị tinh thần, thầy trò mình sẽ bắt đầu ngay thôi! 🎉

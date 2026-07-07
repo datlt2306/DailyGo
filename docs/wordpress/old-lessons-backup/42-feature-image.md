@@ -5,13 +5,11 @@
 -   Kích hoạt tính năng hình ảnh nổi bật cho loại bài đăng **Professor**.
 -   Tạo kích thước hình ảnh tùy chỉnh để tối ưu hóa hiển thị và hiệu suất.
 
-
 ## Kích hoạt hình ảnh nổi bật
 
 ### Mục đích
 
 Hình ảnh nổi bật giúp liên kết một hình ảnh đại diện với mỗi bài đăng, được sử dụng để hiển thị trên giao diện người dùng.
-
 
 ### Code mẫu
 
@@ -37,24 +35,20 @@ register_post_type('professor', array(
 ));
 ```
 
-
 ### Tóm tắt
 
 - **`add_theme_support('post-thumbnails')`**: Kích hoạt hình ảnh nổi bật cho chủ đề.
 - **`'thumbnail'`**: Thêm hỗ trợ hình ảnh nổi bật cho loại bài đăng **Professor**.
 
-
 ### Kết quả mẫu
 
-Sau khi lưu tệp, bạn sẽ thấy tùy chọn **Featured Image** xuất hiện khi chỉnh sửa bài đăng **Professor**.
-
+Sau khi lưu tệp, các em sẽ thấy tùy chọn **Featured Image** xuất hiện khi chỉnh sửa bài đăng **Professor**.
 
 ## Tạo kích thước hình ảnh tùy chỉnh
 
 ### Mục đích
 
 Tạo các kích thước hình ảnh tùy chỉnh để tối ưu hóa hiển thị trên các màn hình khác nhau.
-
 
 ### Code mẫu
 
@@ -70,25 +64,21 @@ function university_features() {
 }
 ```
 
-
 ### Tóm tắt
 
 - **`add_image_size()`**: Tạo kích thước hình ảnh tùy chỉnh.
     - **`professor-landscape`**: Kích thước phong cảnh (400x260, cắt).
     - **`professor-portrait`**: Kích thước chân dung (480x650, cắt).
 
-
 ### Kết quả mẫu
 
-WordPress sẽ tự động tạo các kích thước hình ảnh mới khi bạn tải lên hình ảnh.
-
+WordPress sẽ tự động tạo các kích thước hình ảnh mới khi các em tải lên hình ảnh.
 
 ## Sử dụng plugin để tạo kích thước cho hình ảnh cũ
 
 ### Mục đích
 
 Tạo kích thước hình ảnh tùy chỉnh cho các hình ảnh đã tải lên trước đó.
-
 
 ### Hướng dẫn
 
@@ -98,16 +88,13 @@ Tạo kích thước hình ảnh tùy chỉnh cho các hình ảnh đã tải l�
 4. Truy cập **Tools** > **Regenerate Thumbnails**.
 5. Nhấn nút **Regenerate Thumbnails** để tạo kích thước mới cho tất cả hình ảnh.
 
-
 ### Tóm tắt
 
 - **Regenerate Thumbnails**: Plugin giúp tạo kích thước hình ảnh tùy chỉnh cho các hình ảnh cũ.
 
-
 ### Kết quả mẫu
 
 Sau khi chạy plugin, các hình ảnh cũ sẽ có các kích thước tùy chỉnh mới được tạo.
-
 
 ## Bài tập gợi ý
 
@@ -117,17 +104,15 @@ Sau khi chạy plugin, các hình ảnh cũ sẽ có các kích thước tùy ch
 2. **Kiểm tra hiệu suất**:  
    - So sánh thời gian tải trang trước và sau khi sử dụng kích thước hình ảnh tùy chỉnh.
 
-
-## Tips / Lưu ý
+## Tips / Các em các em lưu ý
 
 - **Sử dụng kích thước phù hợp**: Chỉ sử dụng kích thước hình ảnh cần thiết để tối ưu hóa hiệu suất.
 - **Kiểm tra thư mục tải lên**: WordPress lưu các kích thước hình ảnh trong thư mục `wp-content/uploads`.
 
-
 ## Kết luận
 
-Trong bài học này, bạn đã học cách kích hoạt hình ảnh nổi bật, tạo kích thước hình ảnh tùy chỉnh, và sử dụng plugin để tạo kích thước cho hình ảnh cũ. Đây là bước quan trọng để tối ưu hóa hiển thị và hiệu suất của website WordPress.
+Trong bài học này, các em đã học cách kích hoạt hình ảnh nổi bật, tạo kích thước hình ảnh tùy chỉnh, và sử dụng plugin để tạo kích thước cho hình ảnh cũ. Đây là bước quan trọng để tối ưu hóa hiển thị và hiệu suất của website WordPress.
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
-Chúc các bạn học tốt! 🚀  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
+Chúc các các em học tốt! 🚀  
 — **Thầy Đạt 🧡**

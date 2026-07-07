@@ -2,16 +2,14 @@
 
 ## 🎯 Mục tiêu buổi học
 
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+
 Chào các em! Sau buổi học hôm nay, các em cần:
-
--   Hiểu được khái niệm vòng lặp và lý do cần dùng vòng lặp trong lập trình.
--   Biết cách sử dụng vòng lặp `for` trong ngôn ngữ C.
--   Nắm rõ cấu trúc hoạt động của vòng lặp `for` (gồm 3 phần: khởi tạo, điều kiện, bước nhảy).
--   Vận dụng vòng lặp để giải các bài toán lặp lại đơn giản.
--   Biết dùng lệnh `break` và `continue` trong vòng lặp.
-
----
-
+1. ✅ Hiểu được khái niệm vòng lặp và lý do cần dùng vòng lặp trong lập trình.
+2. ✅ Biết cách sử dụng vòng lặp `for` trong ngôn ngữ C.
+3. ✅ Nắm rõ cấu trúc hoạt động của vòng lặp `for` (gồm 3 phần: khởi tạo, điều kiện, bước nhảy).
+4. ✅ Vận dụng vòng lặp để giải các bài toán lặp lại đơn giản.
+5. ✅ Biết dùng lệnh `break` và `continue` trong vòng lặp.
 ## 📘 Nội dung bài học
 
 ### 1. Tại sao phải dùng vòng lặp?
@@ -22,7 +20,7 @@ Trong thực tế, rất nhiều bài toán yêu cầu thực hiện lặp đi l
 -   Tính tổng từ 1 đến n.
 -   Nhập điểm cho 30 sinh viên.
 -   In bảng cửu chương...
-    Nếu không có vòng lặp, chúng ta sẽ phải viết rất nhiều dòng lệnh giống nhau. Vòng lặp sinh ra để giúp chúng ta tự động hóa việc này.
+    Nếu không có vòng lặp, thầy trò mình sẽ phải viết rất nhiều dòng lệnh giống nhau. Vòng lặp sinh ra để giúp thầy trò mình tự động hóa việc này.
 
 ### 2. Cấu trúc vòng lặp for trong C
 
@@ -356,7 +354,7 @@ int main() {
 
 ---
 
-## 📝 Lưu ý các em cần nhớ
+## 📝 Các em các em lưu ý các em cần nhớ
 
 1. Biến đếm trong for thường đặt là i, j, k (và chỉ có tác dụng trong vòng lặp).
 2. Luôn đảm bảo có điều kiện dừng để tránh lặp vô hạn.

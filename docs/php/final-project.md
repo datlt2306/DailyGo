@@ -93,4 +93,4 @@ project-root/
 -   Tuần 2: CRUD bài viết + upload ảnh + category.
 -   Tuần 3: Pagination, search, filter, polish UI, kiểm thử và viết README.
 
-Chúc bạn và đội nhóm build sản phẩm thành công! 🚀
+Chúc các em và đội nhóm build sản phẩm thành công! 🚀

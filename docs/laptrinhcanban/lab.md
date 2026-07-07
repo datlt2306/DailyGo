@@ -45,7 +45,7 @@ Chon chuc nang (1-7):
 2. **Xử lý các phép tính:**
 
     - Nhập 2 số từ bàn phím (sử dụng `scanf`).  
-      **Lưu ý:** Ở mỗi phép tính trong `switch-case`, cần bổ sung:
+      **Các em các em lưu ý:** Ở mỗi phép tính trong `switch-case`, cần bổ sung:
         ```c
         printf("Nhap so thu nhat: ");
         scanf("%lf", &so1);
@@ -290,7 +290,7 @@ Sau khi hoàn thành Lab này, sinh viên sẽ:
 -   ✅ Áp dụng điều kiện để xử lý lỗi trong C
 -   ✅ Tổ chức code có cấu trúc
 
-**Chúc các bạn làm bài tốt với ngôn ngữ lập trình C! 🚀**
+**Chúc các các em làm bài tốt với ngôn ngữ lập trình C! 🚀**
 
 Sau khi hoàn thành Lab này, sinh viên sẽ:
 
@@ -299,4 +299,4 @@ Sau khi hoàn thành Lab này, sinh viên sẽ:
 -   ✅ Áp dụng điều kiện để xử lý lỗi
 -   ✅ Tổ chức code có cấu trúc
 
-**Chúc các bạn làm bài tốt! 🚀**
+**Chúc các các em làm bài tốt! 🚀**

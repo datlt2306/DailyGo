@@ -25,7 +25,6 @@ graph TD
     end
 ```
 
-
 ---
 
 ### 1. Single Page Application (SPA) vs Multi Page Application (MPA)
@@ -132,10 +131,8 @@ button:hover {
    npm run dev
    ```
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```bash
 # Bước 1: Khởi tạo dự án
@@ -217,4 +214,3 @@ npm install
 </details>
 
 ---
-

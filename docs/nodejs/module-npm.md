@@ -21,7 +21,7 @@
     ```
 
 2. **Local Modules**  
-   Đây là các module do bạn tự tạo. Ví dụ, tạo file `math.js`:
+   Đây là các module do các em tự tạo. Ví dụ, tạo file `math.js`:
 
     ```js
     // math.js
@@ -155,4 +155,4 @@ npm install -g pnpm
 
 ## Kết luận
 
-Hiểu rõ về module, npm và pnpm sẽ giúp bạn tổ chức và quản lý dự án Node.js hiệu quả hơn. Trong khi npm là công cụ phổ biến, pnpm mang lại hiệu suất cao hơn và là lựa chọn tốt cho các dự án lớn.
+Hiểu rõ về module, npm và pnpm sẽ giúp các em tổ chức và quản lý dự án Node.js hiệu quả hơn. Trong khi npm là công cụ phổ biến, pnpm mang lại hiệu suất cao hơn và là lựa chọn tốt cho các dự án lớn.

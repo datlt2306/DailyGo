@@ -43,7 +43,7 @@ git push origin main
 # 1. Kiểm tra remote URL
 git remote -v
 
-# 2. Kiểm tra bạn có là collaborator không
+# 2. Kiểm tra các em có là collaborator không
 # Vào GitHub → Repository → Settings → Collaborators
 
 # 3. Nếu không có quyền, có 2 cách:
@@ -279,7 +279,7 @@ Tạo tình huống:
 3.   Khôi phục lại bằng `git reflog`
 4.   Tạo file `RECOVERY_NOTES.md` ghi lại:
     -   Cách khôi phục
-    -   Lưu ý khi dùng reset --hard
+    -   Các em các em lưu ý khi dùng reset --hard
     -   Best practices để tránh mất code
 
 **Mục tiêu:** Hiểu cách khôi phục code khi gặp sự cố
@@ -308,7 +308,7 @@ Tạo tình huống:
     ```bash
     # ⚠️ KHÔNG làm:
     git push --force origin main
-    # Trừ khi bạn chắc chắn và đã báo team!
+    # Trừ khi các em chắc chắn và đã báo team!
     ```
 
 4.   **Test code trước khi commit:**
@@ -333,7 +333,6 @@ Tạo tình huống:
 
 ---
 
-**Kết luận:** Lỗi Git là điều không thể tránh, nhưng biết cách xử lý và phòng tránh giúp bạn làm việc hiệu quả hơn. Nhớ luôn backup code và giao tiếp với team khi gặp vấn đề!
+**Kết luận:** Lỗi Git là điều không thể tránh, nhưng biết cách xử lý và phòng tránh giúp các em làm việc hiệu quả hơn. Nhớ luôn backup code và giao tiếp với team khi gặp vấn đề!
 
 **Bài tiếp theo:** [14. Tag và Release](./14-git-tag-release.md) - Học cách đánh dấu version và phát hành phiên bản
-

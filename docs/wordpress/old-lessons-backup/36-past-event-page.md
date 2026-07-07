@@ -2,20 +2,18 @@
 
 ## Giới thiệu
 
-Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một trang mới chỉ liệt kê các sự kiện đã diễn ra trong quá khứ. Tính đến thời điểm này, trang chủ của chúng ta chỉ hiển thị các sự kiện sắp tới, và ngay cả màn hình lưu trữ sự kiện cũng không hiển thị các sự kiện đã qua. Tuy nhiên, có thể có trường hợp người dùng muốn xem lại bản tóm tắt các sự kiện mà chúng ta đã tổ chức trong những năm trước.
-
+Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một trang mới chỉ liệt kê các sự kiện đã diễn ra trong quá khứ. Tính đến thời điểm này, trang chủ của thầy trò mình chỉ hiển thị các sự kiện sắp tới, và ngay cả màn hình lưu trữ sự kiện cũng không hiển thị các sự kiện đã qua. Tuy nhiên, có thể có trường hợp người dùng muốn xem lại bản tóm tắt các sự kiện mà thầy trò mình đã tổ chức trong những năm trước.
 
 ## Lý thuyết về trang các sự kiện đã qua
 
 ### Tại sao cần trang các sự kiện đã qua?
-- **Lưu trữ lịch sử**: Hiển thị các sự kiện đã diễn ra giúp người dùng có cái nhìn tổng quan về hoạt động của chúng ta trong quá khứ.
+- **Lưu trữ lịch sử**: Hiển thị các sự kiện đã diễn ra giúp người dùng có cái nhìn tổng quan về hoạt động của thầy trò mình trong quá khứ.
 - **Tăng tính chuyên nghiệp**: Một trang lưu trữ các sự kiện đã qua giúp website trở nên đầy đủ và chuyên nghiệp hơn.
 
 ### Các thành phần chính
 - **Truy vấn tùy chỉnh (Custom Query)**: Sử dụng lớp `WP_Query` để lấy dữ liệu từ cơ sở dữ liệu theo điều kiện cụ thể.
 - **Mẫu trang (Page Template)**: Tạo tệp mẫu riêng để kiểm soát cách hiển thị nội dung của trang.
 - **Liên kết động**: Sử dụng hàm `site_url()` để tạo liên kết chính xác đến trang các sự kiện đã qua.
-
 
 ## Tạo trang các sự kiện đã qua
 
@@ -26,13 +24,12 @@ Chào các em, hôm nay thầy sẽ hướng dẫn các em cách tạo một tra
 
 ### 2. Xem trước trang
 - Sử dụng liên kết **View Page** để xem trước trang vừa tạo.
-- Lưu ý rằng tại thời điểm này, trang sẽ sử dụng tệp mẫu `page.php` trong thư mục chủ đề.
-
+- Các em các em lưu ý rằng tại thời điểm này, trang sẽ sử dụng tệp mẫu `page.php` trong thư mục chủ đề.
 
 ## Tạo mẫu cho trang các sự kiện đã qua
 
 ### 1. Tạo tệp mẫu riêng
-Trong WordPress, chúng ta có thể tạo tệp mẫu riêng cho một trang cụ thể bằng cách đặt tên tệp theo định dạng `page-{slug}.php`. Slug là phần cuối của URL trang, ví dụ: nếu URL là `/past-events`, thì slug là `past-events`.
+Trong WordPress, thầy trò mình có thể tạo tệp mẫu riêng cho một trang cụ thể bằng cách đặt tên tệp theo định dạng `page-{slug}.php`. Slug là phần cuối của URL trang, ví dụ: nếu URL là `/past-events`, thì slug là `past-events`.
 
 - Trong thư mục chủ đề, tạo tệp mới tên là `page-past-events.php`.
 
@@ -48,13 +45,12 @@ Trong WordPress, chúng ta có thể tạo tệp mẫu riêng cho một trang c�
 // ...existing code...
 ```
 
-
 ## Hiển thị các sự kiện đã qua
 
 ### 1. Tạo truy vấn tùy chỉnh
 
 #### Tại sao cần truy vấn tùy chỉnh?
-Truy vấn tùy chỉnh (Custom Query) cho phép chúng ta lấy dữ liệu từ cơ sở dữ liệu theo điều kiện cụ thể. Trong trường hợp này, chúng ta sẽ chỉ lấy các sự kiện có ngày diễn ra nhỏ hơn ngày hiện tại.
+Truy vấn tùy chỉnh (Custom Query) cho phép thầy trò mình lấy dữ liệu từ cơ sở dữ liệu theo điều kiện cụ thể. Trong trường hợp này, thầy trò mình sẽ chỉ lấy các sự kiện có ngày diễn ra nhỏ hơn ngày hiện tại.
 
 #### Cách viết truy vấn tùy chỉnh
 - Thêm truy vấn tùy chỉnh vào tệp `page-past-events.php`:
@@ -80,11 +76,10 @@ $pastEvents = new WP_Query(array(
 ?>
 ```
 
-
 ## Giải thích `'paged' => get_query_var('paged', 1)`
 
 ### Tại sao cần `paged`?
-- **Phân trang**: Khi hiển thị danh sách bài đăng dài, chúng ta thường chia nội dung thành nhiều trang để người dùng dễ dàng duyệt qua.
+- **Phân trang**: Khi hiển thị danh sách bài đăng dài, thầy trò mình thường chia nội dung thành nhiều trang để người dùng dễ dàng duyệt qua.
 - **`paged`**: Đây là tham số trong `WP_Query` để xác định trang hiện tại mà người dùng đang xem.
 
 ### Cách hoạt động của `get_query_var('paged', 1)`
@@ -94,14 +89,12 @@ $pastEvents = new WP_Query(array(
 ### Kết quả
 - Khi sử dụng `'paged' => get_query_var('paged', 1)` trong truy vấn tùy chỉnh, WordPress sẽ tự động hiển thị nội dung tương ứng với trang hiện tại.
 
-
 ### Ví dụ URL và giá trị `paged`
 | URL                          | Giá trị `paged` |
 |------------------------------|------------------|
 | `/past-events`               | 1                |
 | `/past-events/page/2`        | 2                |
 | `/past-events/page/3`        | 3                |
-
 
 ### Kết hợp với `paginate_links()`
 - **`paginate_links()`**: Sử dụng giá trị `paged` để tạo liên kết phân trang.
@@ -117,7 +110,6 @@ echo paginate_links(array(
 ?>
 ```
 
-
 ## Tạo trang các sự kiện đã qua
 
 ### 1. Tạo trang mới
@@ -127,13 +119,12 @@ echo paginate_links(array(
 
 ### 2. Xem trước trang
 - Sử dụng liên kết **View Page** để xem trước trang vừa tạo.
-- Lưu ý rằng tại thời điểm này, trang sẽ sử dụng tệp mẫu `page.php` trong thư mục chủ đề.
-
+- Các em các em lưu ý rằng tại thời điểm này, trang sẽ sử dụng tệp mẫu `page.php` trong thư mục chủ đề.
 
 ## Tạo mẫu cho trang các sự kiện đã qua
 
 ### 1. Tạo tệp mẫu riêng
-Trong WordPress, chúng ta có thể tạo tệp mẫu riêng cho một trang cụ thể bằng cách đặt tên tệp theo định dạng `page-{slug}.php`. Slug là phần cuối của URL trang, ví dụ: nếu URL là `/past-events`, thì slug là `past-events`.
+Trong WordPress, thầy trò mình có thể tạo tệp mẫu riêng cho một trang cụ thể bằng cách đặt tên tệp theo định dạng `page-{slug}.php`. Slug là phần cuối của URL trang, ví dụ: nếu URL là `/past-events`, thì slug là `past-events`.
 
 - Trong thư mục chủ đề, tạo tệp mới tên là `page-past-events.php`.
 
@@ -149,13 +140,12 @@ Trong WordPress, chúng ta có thể tạo tệp mẫu riêng cho một trang c�
 // ...existing code...
 ```
 
-
 ## Hiển thị các sự kiện đã qua
 
 ### 1. Tạo truy vấn tùy chỉnh
 
 #### Tại sao cần truy vấn tùy chỉnh?
-Truy vấn tùy chỉnh (Custom Query) cho phép chúng ta lấy dữ liệu từ cơ sở dữ liệu theo điều kiện cụ thể. Trong trường hợp này, chúng ta sẽ chỉ lấy các sự kiện có ngày diễn ra nhỏ hơn ngày hiện tại.
+Truy vấn tùy chỉnh (Custom Query) cho phép thầy trò mình lấy dữ liệu từ cơ sở dữ liệu theo điều kiện cụ thể. Trong trường hợp này, thầy trò mình sẽ chỉ lấy các sự kiện có ngày diễn ra nhỏ hơn ngày hiện tại.
 
 #### Cách viết truy vấn tùy chỉnh
 - Thêm truy vấn tùy chỉnh vào tệp `page-past-events.php`:
@@ -180,7 +170,6 @@ $pastEvents = new WP_Query(array(
 ));
 ?>
 ```
-
 
 ### 2. Hiển thị nội dung với phân trang
 
@@ -211,11 +200,10 @@ wp_reset_postdata(); // Đặt lại dữ liệu bài đăng sau khi sử dụng
 - **`paginate_links()`**: Hiển thị liên kết phân trang.
 - **`max_num_pages`**: Trả về số trang tối đa của truy vấn tùy chỉnh.
 
-
 ## Thêm liên kết đến trang các sự kiện đã qua
 
 ### 1. Thêm liên kết trong màn hình lưu trữ sự kiện
-Để người dùng dễ dàng truy cập trang các sự kiện đã qua, chúng ta sẽ thêm một liên kết vào cuối màn hình lưu trữ sự kiện.
+Để người dùng dễ dàng truy cập trang các sự kiện đã qua, thầy trò mình sẽ thêm một liên kết vào cuối màn hình lưu trữ sự kiện.
 
 - Mở tệp `archive-event.php` và thêm liên kết:
 ```php
@@ -234,7 +222,6 @@ wp_reset_postdata(); // Đặt lại dữ liệu bài đăng sau khi sử dụng
 ### 2. Kết quả
 - Liên kết sẽ xuất hiện ở cuối màn hình lưu trữ sự kiện, dẫn đến trang các sự kiện đã qua.
 
-
 ## Tổng kết
 
-Trong bài học này, chúng ta đã học cách tạo một trang mới để hiển thị các sự kiện đã diễn ra trong quá khứ. Chúng ta đã tạo truy vấn tùy chỉnh, hiển thị nội dung, và thêm phân trang để người dùng dễ dàng duyệt qua danh sách sự kiện. Hy vọng bài viết này giúp các em hiểu rõ hơn về cách làm việc với các loại bài đăng tùy chỉnh và truy vấn trong WordPress. Trong bài học tiếp theo, chúng ta sẽ học cách tạo mối quan hệ giữa các bài đăng. Hãy chuẩn bị tinh thần, chúng ta sẽ bắt đầu ngay thôi! 🎉
+Trong bài học này, thầy trò mình đã học cách tạo một trang mới để hiển thị các sự kiện đã diễn ra trong quá khứ. Thầy trò mình đã tạo truy vấn tùy chỉnh, hiển thị nội dung, và thêm phân trang để người dùng dễ dàng duyệt qua danh sách sự kiện. Hy vọng bài viết này giúp các em hiểu rõ hơn về cách làm việc với các loại bài đăng tùy chỉnh và truy vấn trong WordPress. Trong bài học tiếp theo, thầy trò mình sẽ học cách tạo mối quan hệ giữa các bài đăng. Hãy chuẩn bị tinh thần, thầy trò mình sẽ bắt đầu ngay thôi! 🎉

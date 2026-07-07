@@ -11,22 +11,19 @@ graph TD
     Fetch -->|Merge| FullStory[Story Document with full Author details]
 ```
 
-
 ## Khái Niệm
 
-`populate` là một tính năng của Mongoose giúp bạn tự động thay thế các đường dẫn được chỉ định trong document bằng các document từ collection khác. Điều này rất hữu ích khi làm việc với các mối quan hệ giữa các collection.
-
+`populate` là một tính năng của Mongoose giúp các em tự động thay thế các đường dẫn được chỉ định trong document bằng các document từ collection khác. Điều này rất hữu ích khi làm việc với các mối quan hệ giữa các collection.
 
 ## Tại Sao Cần Populate?
 
-Khi sử dụng tham chiếu giữa các collection, bạn thường cần truy xuất dữ liệu từ nhiều collection để hiển thị thông tin đầy đủ. `populate` giúp bạn làm điều này một cách dễ dàng mà không cần viết nhiều truy vấn phức tạp.
-
+Khi sử dụng tham chiếu giữa các collection, các em thường cần truy xuất dữ liệu từ nhiều collection để hiển thị thông tin đầy đủ. `populate` giúp các em làm điều này một cách dễ dàng mà không cần viết nhiều truy vấn phức tạp.
 
 ## Ví Dụ Trực Quan
 
 ### 1. Thiết Kế Schema
 
-Giả sử bạn có hai collection: **Person** và **Story**.
+Giả sử các em có hai collection: **Person** và **Story**.
 
 #### Collection Person:
 ```json
@@ -47,7 +44,6 @@ Giả sử bạn có hai collection: **Person** và **Story**.
   "fans": ["ObjectId('PERSON002'), ObjectId('PERSON003')"]
 }
 ```
-
 
 ### 2. Định Nghĩa Schema Trong Mongoose
 
@@ -81,7 +77,6 @@ export default Story;
 ```
 :::
 
-
 ### 3. Sử Dụng Populate
 
 #### Truy xuất thông tin tác giả của một câu chuyện:
@@ -108,7 +103,6 @@ const getStoryWithFans = async (storyId) => {
 getStoryWithFans('STORY001');
 ```
 
-
 ### 4. Kết Quả
 
 Khi sử dụng `populate`, kết quả sẽ tự động bao gồm thông tin từ collection liên quan:
@@ -128,7 +122,6 @@ Khi sử dụng `populate`, kết quả sẽ tự động bao gồm thông tin t
   ]
 }
 ```
-
 
 ## Các Tính Năng Nâng Cao
 
@@ -163,20 +156,17 @@ const story = await Story.findById('STORY001').populate({
 });
 ```
 
-
 ## Lưu Ý
 
 - **Hiệu suất**: `populate` có thể làm chậm truy vấn nếu dữ liệu liên quan quá lớn. Hãy sử dụng nó một cách hợp lý. Tránh populate quá nhiều documents cùng lúc (ví dụ: populate 1000+ documents).
 - **Không Có Document Liên Quan**: Nếu không có document liên quan, giá trị sẽ là `null` hoặc `[]`.
 - **Nested Populate**: Bạn có thể populate nhiều cấp bằng cách sử dụng nested populate (ví dụ: `.populate('author').populate('author.friends')`), nhưng cần cẩn thận về performance.
 
-
 ## Tóm Lại
 
-`populate` là một công cụ mạnh mẽ giúp bạn làm việc với dữ liệu liên quan trong MongoDB một cách dễ dàng. Hãy sử dụng nó khi bạn cần truy xuất thông tin từ nhiều collection mà không muốn viết nhiều truy vấn phức tạp.
+`populate` là một công cụ mạnh mẽ giúp các em làm việc với dữ liệu liên quan trong MongoDB một cách dễ dàng. Hãy sử dụng nó khi các em cần truy xuất thông tin từ nhiều collection mà không muốn viết nhiều truy vấn phức tạp.
 
-Chúc các bạn học tốt và áp dụng thành công nhé!
-
+Chúc các các em học tốt và áp dụng thành công nhé!
 
 # Bài Tập: Sử Dụng Populate Trong Dự Án Bán Hàng
 
@@ -187,13 +177,11 @@ Bạn sẽ thiết kế một hệ thống quản lý đơn hàng cho một webs
 - **Product**: Lưu thông tin sản phẩm.
 - **Order**: Lưu thông tin đơn hàng, bao gồm khách hàng và danh sách sản phẩm.
 
-
 ## Yêu Cầu
 
 1. Tạo schema cho **User**, **Product**, và **Order**.
 2. Sử dụng `populate` để truy xuất thông tin khách hàng và danh sách sản phẩm trong đơn hàng.
 3. Viết code để thêm dữ liệu mẫu và truy xuất thông tin đơn hàng.
-
 
 ## Hướng Dẫn
 
@@ -241,7 +229,6 @@ export default Order;
 ```
 :::
 
-
 ### 2. Thêm Dữ Liệu Mẫu
 
 ```javascript
@@ -278,7 +265,6 @@ const addSampleData = async () => {
 
 addSampleData();
 ```
-
 
 ### 3. Truy Xuất Thông Tin Đơn Hàng
 
@@ -321,10 +307,9 @@ const getOrderDetails = async (orderId) => {
 // Sử dụng: getOrderDetails('ORDER_ID'); // Thay 'ORDER_ID' bằng ID thực tế
 ```
 
-
 ## Kết Quả Mong Đợi
 
-Khi chạy script truy xuất thông tin đơn hàng, bạn sẽ nhận được kết quả như sau:
+Khi chạy script truy xuất thông tin đơn hàng, các em sẽ nhận được kết quả như sau:
 
 ```
 Order Details:
@@ -334,7 +319,6 @@ Products:
 - Mouse: $50
 Total: $1550
 ```
-
 
 ## Bài Tập Thêm
 
@@ -359,6 +343,6 @@ Total: $1550
 - Amazon: Hiển thị product info trong order → Populate tốt
 - Facebook: Hiển thị tất cả friends (có thể hàng ngàn) → Không populate, dùng pagination và query riêng
 
-Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các bạn nhé!  
+Nếu có thắc mắc, đừng ngại hỏi thầy hoặc các các em nhé!  
 Chúc các em học tốt! 🚀
 — **Thầy Đạt 🧡**

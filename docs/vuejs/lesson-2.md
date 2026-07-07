@@ -19,7 +19,6 @@ graph TD
     D[User Action: Click, Submit...] -->|v-on hoặc @| E[Hàm xử lý sự kiện trong Script]
 ```
 
-
 ---
 
 ### 1. Interpolation (Nội suy)
@@ -81,7 +80,7 @@ function handleSubmit() {
     
     <!-- Bind class và style động -->
     <p :style="{ color: themeColor }" :class="activeClass">
-      Điền thông tin của bạn bên dưới:
+      Điền thông tin của các em bên dưới:
     </p>
 
     <!-- Two-way Binding với v-model -->
@@ -132,8 +131,8 @@ button:disabled {
 
 ## 🛠️ Bài tập thực hành (Lab)
 ### Yêu cầu: Đổ dữ liệu động và xử lý tương tác trên Giao diện trang chủ Vanguard Store
-1. Hãy mở tệp HTML trang chủ [index.html](https://letrongdat.vercel.app/vuejs/templates/index.html) (đặc biệt chú ý vùng sản phẩm từ dòng **122 đến 150**).
-2. Tạo component Vue `App.vue` mới trong dự án `vanguard-store` của bạn.
+1. Các em các em hãy mở tệp HTML trang chủ [index.html](https://letrongdat.vercel.app/vuejs/templates/index.html) (đặc biệt chú ý vùng sản phẩm từ dòng **122 đến 150**).
+2. Tạo component Vue `App.vue` mới trong dự án `vanguard-store` của các em.
 3. Trong script setup, khai báo các biến ref mô tả thông tin sản phẩm đầu tiên:
    - `productName` (ref string, ví dụ: "Tai Nghe Vanguard Studio Wireless")
    - `productPrice` (ref number, ví dụ: 3500000)
@@ -146,10 +145,8 @@ button:disabled {
    - Dùng interpolation `{{ }}` để hiển thị tên sản phẩm, danh mục, và giá bán.
    - Sử dụng sự kiện mouseover và mouseleave (`@mouseover`, `@mouseleave`) để cập nhật trạng thái `isHovered`. Nếu `isHovered` bằng true, hãy thêm class CSS `shadow-2xl` và `border-indigo-300` thông qua class binding động (`:class`).
 
-
 <details class="details custom-block">
   <summary>🔑 Xem gợi ý giải pháp (Code mẫu)</summary>
-
 
 ```vue
 <script setup>
@@ -216,7 +213,7 @@ const productImage = ref('https://images.unsplash.com/photo-1542291026-7eec264c2
   *Đáp án đúng: **C**.*
 </details>
 
-**4. Khi bind đường dẫn ảnh sản phẩm `:src="productImage"`, chúng ta đang sử dụng directive nào?**
+**4. Khi bind đường dẫn ảnh sản phẩm `:src="productImage"`, thầy trò mình đang sử dụng directive nào?**
 - A. `v-on`
 - B. `v-model`
 - C. `v-bind`
@@ -239,4 +236,3 @@ const productImage = ref('https://images.unsplash.com/photo-1542291026-7eec264c2
 </details>
 
 ---
-

@@ -14,10 +14,10 @@
 
 ### Version Control là gì?
 
-**Version Control (Kiểm soát phiên bản)** là một hệ thống giúp bạn lưu trữ và quản lý các thay đổi trong mã nguồn theo thời gian. Nó giống như một "máy thời gian" cho code của bạn!
+**Version Control (Kiểm soát phiên bản)** là một hệ thống giúp các em lưu trữ và quản lý các thay đổi trong mã nguồn theo thời gian. Nó giống như một "máy thời gian" cho code của các em!
 
 **Ví dụ thực tế:**
-Hãy tưởng tượng bạn đang làm một website bán hàng:
+Các em các em hãy tưởng tượng các em đang làm một website bán hàng:
 
 -   **Hôm qua**: Bạn tạo trang chủ với menu đơn giản
 -   **Hôm nay**: Bạn thêm form đăng nhập, nhưng code bị lỗi
@@ -31,7 +31,7 @@ Hãy tưởng tượng bạn đang làm một website bán hàng:
 
 **Git** là một công cụ Version Control mã nguồn mở, được tạo bởi Linus Torvalds (người tạo Linux) vào năm 2005. Git được thiết kế để:
 
--   **Lưu trữ lịch sử thay đổi**: Mỗi lần bạn sửa code và "commit", Git lưu lại snapshot (ảnh chụp) toàn bộ dự án
+-   **Lưu trữ lịch sử thay đổi**: Mỗi lần các em sửa code và "commit", Git lưu lại snapshot (ảnh chụp) toàn bộ dự án
 -   **Làm việc nhóm dễ dàng**: Nhiều người có thể làm việc trên cùng một dự án mà không bị conflict
 -   **Branch (nhánh)**: Tạo các phiên bản song song để thử nghiệm tính năng mới
 -   **Không cần internet**: Git hoạt động offline, chỉ cần internet khi đồng bộ với GitHub
@@ -40,7 +40,7 @@ Hãy tưởng tượng bạn đang làm một website bán hàng:
 
 | Git                                | GitHub                             |
 | ---------------------------------- | ---------------------------------- |
-| Công cụ chạy trên máy tính của bạn | Website lưu trữ code trên internet |
+| Công cụ chạy trên máy tính của các em | Website lưu trữ code trên internet |
 | Quản lý phiên bản code local       | Chia sẻ code và làm việc nhóm      |
 | Hoạt động offline                  | Cần internet để upload/download    |
 | Miễn phí, mã nguồn mở              | Miễn phí cho dự án public          |
@@ -48,14 +48,14 @@ Hãy tưởng tượng bạn đang làm một website bán hàng:
 
 **Ví dụ minh họa:**
 
--   **Git**: Giống như phần mềm Word trên máy bạn - bạn viết và lưu file trên máy
--   **GitHub**: Giống như Google Docs - bạn lưu file trên cloud, có thể chia sẻ và làm việc nhóm
+-   **Git**: Giống như phần mềm Word trên máy các em - các em viết và lưu file trên máy
+-   **GitHub**: Giống như Google Docs - các em lưu file trên cloud, có thể chia sẻ và làm việc nhóm
 
 ### Tại sao học Git khi làm web development?
 
-#### 1. **An toàn code của bạn**
+#### 1. **An toàn code của các em**
 
-Khi làm project web, bạn có thể:
+Khi làm project web, các em có thể:
 
 -   Vô tình xóa file quan trọng
 -   Code bị lỗi và không nhớ code cũ như thế nào
@@ -86,13 +86,13 @@ Trong thực tế, một dự án web thường có:
 #### Repository (Repo)
 
 -   **Là gì**: Thư mục chứa toàn bộ code và lịch sử thay đổi
--   **Ví dụ**: Folder `my-website/` của bạn, sau khi chạy `git init` sẽ trở thành một Git repository
+-   **Ví dụ**: Folder `my-website/` của các em, sau khi chạy `git init` sẽ trở thành một Git repository
 
 #### Commit
 
 -   **Là gì**: Một snapshot (ảnh chụp) của code tại một thời điểm
--   **Ví dụ**: Mỗi lần bạn sửa xong một tính năng và chạy `git commit`, Git lưu lại trạng thái hiện tại
--   **Tương tự**: Giống như "Save Game" trong game - bạn có thể quay lại bất kỳ save nào
+-   **Ví dụ**: Mỗi lần các em sửa xong một tính năng và chạy `git commit`, Git lưu lại trạng thái hiện tại
+-   **Tương tự**: Giống như "Save Game" trong game - các em có thể quay lại bất kỳ save nào
 
 #### Branch (Nhánh)
 
@@ -139,12 +139,9 @@ git status
 
 # Kết quả mẫu:
 # On branch main
-#
 # No commits yet
-#
 # Untracked files:
 #   index.html
-#
 # nothing added to commit but untracked files present (use "git add" to track)
 ```
 
@@ -152,7 +149,7 @@ git status
 
 -   `git status`: Hiển thị trạng thái hiện tại của repository
 -   "Untracked files": File chưa được Git theo dõi
--   Chúng ta sẽ học cách add và commit ở bài sau
+-   Thầy trò mình sẽ học cách add và commit ở bài sau
 
 ## 🧩 Bài tập
 
@@ -160,7 +157,7 @@ git status
 
 **Bài tập 1: Tạo dự án web và khởi tạo Git**
 
-1.  Tạo thư mục tên `my-portfolio` cho website portfolio của bạn
+1.  Tạo thư mục tên `my-portfolio` cho website portfolio của các em
 2.  Tạo file `index.html` với nội dung:
     ```html
     <!DOCTYPE html>
@@ -225,9 +222,9 @@ git init
 
 ### 3. **Sợ Git làm hỏng code**
 
-**Yên tâm:** Git KHÔNG BAO GIỜ xóa code của bạn trừ khi bạn cố tình!
+**Yên tâm:** Git KHÔNG BAO GIỜ xóa code của các em trừ khi các em cố tình!
 
--   Git chỉ lưu thêm thông tin, không thay đổi file của bạn
+-   Git chỉ lưu thêm thông tin, không thay đổi file của các em
 -   Code cũ vẫn còn nguyên trong lịch sử
 -   Có thể quay lại bất kỳ lúc nào
 
@@ -235,14 +232,14 @@ git init
 
 **Cách nhớ:**
 
--   **Git** = Công cụ trên máy bạn (như Word)
+-   **Git** = Công cụ trên máy các em (như Word)
 -   **GitHub** = Nơi lưu trữ online (như Google Drive)
 -   Bạn có thể dùng Git mà không cần GitHub
 -   Nhưng GitHub giúp làm việc nhóm dễ hơn
 
 ### 5. **Không biết khi nào nên commit**
 
-**Nguyên tắc vàng:** Commit khi bạn hoàn thành một "công việc nhỏ"
+**Nguyên tắc vàng:** Commit khi các em hoàn thành một "công việc nhỏ"
 
 -   ✅ Commit: "Thêm nút đăng nhập"
 -   ✅ Commit: "Sửa lỗi responsive trên mobile"
@@ -253,10 +250,10 @@ git init
 
 -   Commit thường xuyên (mỗi 30 phút - 1 giờ làm việc)
 -   Mỗi commit chỉ làm một việc nhỏ
--   Viết commit message rõ ràng để đồng nghiệp hiểu bạn làm gì
+-   Viết commit message rõ ràng để đồng nghiệp hiểu các em làm gì
 
 ---
 
-**Kết luận:** Git là công cụ không thể thiếu khi làm web development. Hãy xem Git như một "bảo hiểm" cho code của bạn - tốn ít thời gian học nhưng tiết kiệm rất nhiều thời gian khi gặp sự cố!
+**Kết luận:** Git là công cụ không thể thiếu khi làm web development. Hãy xem Git như một "bảo hiểm" cho code của các em - tốn ít thời gian học nhưng tiết kiệm rất nhiều thời gian khi gặp sự cố!
 
 **Bài tiếp theo:** [02. Cài đặt và cấu hình Git](./02-install-config.md) - Học cách cài đặt Git và cấu hình thông tin cá nhân
