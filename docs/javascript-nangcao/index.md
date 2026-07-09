@@ -1,39 +1,33 @@
-# JavaScript từ cơ bản đến nâng cao
+# JavaScript Nâng cao
 
-Chào mừng bạn đến với khóa học **JavaScript từ cơ bản đến nâng cao** theo mô hình **Project-Based Learning (PBL)**!
+Chào mừng các em đến với khóa học **JavaScript Nâng cao** theo mô hình **Project-Based Learning (PBL)**!
 
 ## 🎯 Giới thiệu khóa học
 
-Khóa học này được thiết kế với phương pháp **học qua dự án**, giúp bạn vừa hiểu lý thuyết, vừa áp dụng ngay vào thực tế thông qua việc xây dựng một ứng dụng hoàn chỉnh.
+Khóa học này đi sâu vào các ứng dụng thực tiễn với JavaScript nâng cao thông qua việc xây dựng một dự án hoàn chỉnh.
 
 ### Thông tin chung
 
 -   **Tổng thời lượng**: 14 buổi (mỗi buổi 120 phút)
 -   **Cấu trúc**: 7 cặp buổi (Lý thuyết - Thực hành)
--   **Dự án xuyên suốt**: Mini Website Quản lý Công Việc (To-Do App)
--   **Đối tượng**: Sinh viên cao đẳng ngành lập trình web (đã học HTML/CSS cơ bản)
+-   **Dự án xuyên suốt**: Website Quản lý Công Việc (To-Do App/ZenTask)
+-   **Đối tượng**: Sinh viên đã hoàn thành khóa JavaScript cơ bản
 -   **Phương pháp**: 20% lý thuyết, 80% thực hành
 
 ### Điều kiện tiên quyết
 
-✅ HTML cơ bản (thẻ, form, cấu trúc trang)  
-✅ CSS cơ bản (selectors, properties, layout)  
-✅ Biết cách sử dụng trình soạn thảo code (VS Code)  
-✅ Biết cách mở file HTML trong trình duyệt
+✅ Đã học xong khóa [JavaScript cơ bản](/javascript/)
+✅ Hiểu các kiến thức lập trình cơ bản (biến, vòng lặp, hàm)
 
 ### Kết quả học tập
 
-Sau khóa học, bạn sẽ có thể:
+Sau khóa học, các em sẽ có thể:
 
--   ✅ Hiểu rõ cách JavaScript vận hành trong trình duyệt
--   ✅ Sử dụng thành thạo biến, kiểu dữ liệu, toán tử, hàm
--   ✅ Làm việc với DOM để thao tác trang web
--   ✅ Xử lý sự kiện (click, submit, input...)
--   ✅ Làm việc với Mảng và Object để quản lý dữ liệu
--   ✅ Lưu trữ dữ liệu bằng LocalStorage
--   ✅ Gọi API và xử lý dữ liệu bất đồng bộ
--   ✅ Tổ chức code theo module (ES6 Modules)
--   ✅ Xây dựng một ứng dụng web hoàn chỉnh
+-   ✅ Hiểu rõ cách JavaScript tương tác và thay đổi cấu trúc trang HTML thông qua DOM
+-   ✅ Xử lý sự kiện (click, submit, input...) và tối ưu bằng Event Delegation
+-   ✅ Lưu trữ dữ liệu phía client bằng LocalStorage
+-   ✅ Gọi API và xử lý dữ liệu bất đồng bộ với Async/Await
+-   ✅ Tổ chức code chuyên nghiệp bằng ES6 Modules
 
 ## 📚 Nội dung khóa học
 
@@ -49,8 +43,8 @@ Sau khóa học, bạn sẽ có thể:
 | **6** | **TH** | Chức năng Sửa, Tìm kiếm & Lọc | Hoàn thiện CRUD cơ bản và các bộ lọc tìm kiếm | - Toggle status công việc<br>- Điền dữ liệu vào form để Sửa (Edit)<br>- Tìm kiếm (Search) & Lọc (Filter) theo trạng thái/ưu tiên | Task: Hoàn thiện CRUD và bộ lọc |
 | **7** | **LT** | Web Storage APIs & JSON | Hiểu cách lưu trữ dữ liệu bền vững ở phía Client | - localStorage và sessionStorage<br>- JSON.stringify & JSON.parse | |
 | **8** | **TH** | Lưu trữ Todo & Giao diện Sáng/Tối | Đồng bộ công việc với LocalStorage và làm Dark/Light mode | - Lưu và tải danh sách từ LocalStorage<br>- Theme toggle (Dark/Light mode) & lưu theme preference | Task: Lưu Todo bền vững & Đổi Theme |
-| **9** | **LT** | Lập trình Bất đồng bộ trong JavaScript | Hiểu lập trình bất đồng bộ và cách xử lý | - Callback, Promise, Async/Await<br>- Xử lý bất đồng bộ tuần tự và song song | |
-| **10** | **TH** | Mock API Setup & Tải dữ liệu (GET) | Thiết lập Mock API và tải danh sách công việc | - Cấu hình và chạy json-server<br>- Gọi GET API tải danh sách khi load trang<br>- Xử lý trạng thái Loading & Error | Task: Tải danh sách công việc từ API |
+| **9** | **LT** | Asynchronous JS & Fetch API | Hiểu lập trình bất đồng bộ và cách giao tiếp với API | - Callback, Promise, Async/Await<br>- HTTP Protocol & RESTful API (GET, POST, PUT, DELETE) | |
+| **10** | **TH** | JSON Server & Tải dữ liệu (GET) | Thiết lập Mock API và tải danh sách công việc | - Cấu hình và chạy json-server<br>- Gọi GET API tải danh sách khi load trang<br>- Xử lý trạng thái Loading & Error | Task: Tải danh sách công việc từ API |
 | **11** | **LT** | HTTP Methods nâng cao & Tối ưu UI | Hiểu các thao tác cập nhật API và các kỹ thuật tối ưu UI | - Phân biệt PUT và PATCH<br>- Pessimistic UI vs Optimistic UI | |
 | **12** | **TH** | Đồng bộ CRUD với API | Hoàn thiện đồng bộ mọi thay đổi dữ liệu lên Mock API | - Gọi POST khi thêm công việc<br>- Gọi PATCH khi cập nhật trạng thái/nội dung<br>- Gọi DELETE khi xóa công việc | Task: Đồng bộ toàn bộ CRUD với Mock API |
 | **13** | **LT** | ES6 Modules & Kiến trúc phần mềm | Hiểu cách tổ chức code dự án sạch sẽ và modular | - ES6 Modules (import/export)<br>- Tách lớp kiến trúc: API, Storage, DOM, Main | |
@@ -93,7 +87,7 @@ Xem chi tiết cấu trúc thư mục và rubric đánh giá tại [Dự án cu�
 
 ### Giai đoạn 2: Quản lý State & Tính năng CRUD (Buổi 5-6)
 
--   [Buổi 5: Mảng, Object & Tư duy State](./lesson-5.md) (LT)
+-   [Buổi 5: Array/Object Methods & Tư duy State-driven UI](./lesson-5.md) (LT)
 -   [Buổi 6: Tính năng Sửa, Tìm kiếm & Lọc](./lesson-6.md) (TH)
 
 ### Giai đoạn 3: Web Storage & Dark Mode (Buổi 7-8)
@@ -103,7 +97,7 @@ Xem chi tiết cấu trúc thư mục và rubric đánh giá tại [Dự án cu�
 
 ### Giai đoạn 4: Lập trình bất đồng bộ & Kết nối API (Buổi 9-12)
 
--   [Buổi 9: Lập trình Bất đồng bộ trong JavaScript](./lesson-9.md) (LT)
+-   [Buổi 9: Asynchronous JavaScript & Fetch API](./lesson-9.md) (LT)
 -   [Buổi 10: Mock API Setup & Tải dữ liệu (GET)](./lesson-10.md) (TH)
 -   [Buổi 11: HTTP Methods & Tối ưu hóa UI](./lesson-11.md) (LT)
 -   [Buổi 12: Đồng bộ CRUD với API](./lesson-12.md) (TH)

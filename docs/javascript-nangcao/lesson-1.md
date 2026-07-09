@@ -1,19 +1,22 @@
 # Buổi 1: DOM Selection, Traversal & Manipulation
+
+**Loại buổi**: Lý thuyết  
+**Thời lượng**: 120 phút  
 **Dự án**: ZenTask (To-Do App) - Chuẩn bị giao diện
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Hiểu rõ cấu trúc cây DOM (Document Object Model)
-2. ✅ Sử dụng thành thạo các bộ chọn DOM hiện đại (`querySelector`, `querySelectorAll`)
-3. ✅ Di chuyển qua lại giữa các nút trên cây DOM (DOM Traversal)
-4. ✅ Thao tác thay đổi nội dung, thuộc tính, class CSS và CSS Inline của các thẻ HTML
-5. ✅ Ứng dụng để lấy tham chiếu các thành phần giao diện của dự án ZenTask
+- ✅ Hiểu rõ cấu trúc cây DOM (Document Object Model)
+- ✅ Sử dụng thành thạo các bộ chọn DOM hiện đại (`querySelector`, `querySelectorAll`)
+- ✅ Di chuyển qua lại giữa các nút trên cây DOM (DOM Traversal)
+- ✅ Thao tác thay đổi nội dung, thuộc tính, class CSS và CSS Inline của các thẻ HTML
+- ✅ Ứng dụng để lấy tham chiếu các thành phần giao diện của dự án ZenTask
+
+---
 
 ## 🧠 Nội dung chính
 
@@ -42,23 +45,19 @@ Khi trình duyệt tải một trang HTML, nó sẽ chuyển đổi mã nguồn 
 Sử dụng cú pháp selector của CSS để tìm kiếm phần tử, rất linh hoạt và mạnh mẽ.
 
 * `document.querySelector('css-selector')`: Trả về phần tử **đầu tiên** khớp với bộ chọn. Nếu không tìm thấy, trả về `null`.
-
-::: code-group
-
-```javascript [main.js]
+```javascript
 const appTitle = document.querySelector('.brand h2'); // Chọn thẻ h2 nằm trong class brand
 const taskForm = document.querySelector('#form-cong-viec'); // Chọn form theo ID
 ```
 
-```javascript [main.js]
+* `document.querySelectorAll('css-selector')`: Trả về **tất cả** các phần tử khớp với bộ chọn dưới dạng một `NodeList`.
+```javascript
 const allTaskItems = document.querySelectorAll('.task-item');
 // Duyệt qua NodeList bằng forEach
 allTaskItems.forEach(item => {
     console.log(item);
 });
 ```
-
-:::
 
 ---
 
@@ -67,25 +66,20 @@ allTaskItems.forEach(item => {
 Đôi khi ta cần đi từ một phần tử đã chọn để truy cập vào phần tử cha, con hoặc anh em của nó.
 
 * **Đi lên (Cha):** `parentElement`
-
-::: code-group
-
-```javascript [main.js]
+```javascript
 const deleteButton = document.querySelector('.btn-delete');
 const taskItem = deleteButton.parentElement.parentElement; // Đi lên 2 cấp để lấy thẻ <li> chứa nút
 ```
-
-```javascript [main.js]
+* **Đi xuống (Con):** `children` (trả về danh sách thẻ con), `firstElementChild`, `lastElementChild`
+```javascript
 const taskList = document.querySelector('.task-list');
 const firstTask = taskList.firstElementChild; // Phần tử con đầu tiên
 ```
-
-```javascript [main.js]
+* **Đi ngang (Anh em):** `nextElementSibling` (phía sau), `previousElementSibling` (phía trước)
+```javascript
 const currentTask = document.querySelector('.task-item');
 const nextTask = currentTask.nextElementSibling; // Phần tử kế tiếp
 ```
-
-:::
 
 ---
 
@@ -168,6 +162,8 @@ if (firstTask) {
 ```
 
 ---
+
+
 
 ## 📝 Bài tập về nhà
 

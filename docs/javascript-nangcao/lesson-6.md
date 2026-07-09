@@ -1,25 +1,28 @@
 # Buổi 6: Tính năng Sửa, Tìm kiếm & Lọc
+
+**Loại buổi**: Thực hành  
+**Thời lượng**: 120 phút  
 **Dự án**: ZenTask (To-Do App) - Hoàn thiện các chức năng CRUD cơ bản và lọc tìm kiếm nâng cao
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Cập nhật trạng thái hoàn thành (Toggle status) của công việc bằng cách thay đổi State
-2. ✅ Viết logic chuyển đổi Form thành chế độ Chỉnh sửa (Edit mode) và lưu cập nhật
-3. ✅ Thực hiện tìm kiếm công việc theo từ khóa theo thời gian thực (Real-time search)
-4. ✅ Thực hiện lọc danh sách công việc theo Trạng thái và Độ ưu tiên
-5. ✅ Đảm bảo luồng dữ liệu State-driven UI vận hành trơn tru cho toàn bộ tính năng
+- ✅ Cập nhật trạng thái hoàn thành (Toggle status) của công việc bằng cách thay đổi State
+- ✅ Viết logic chuyển đổi Form thành chế độ Chỉnh sửa (Edit mode) và lưu cập nhật
+- ✅ Thực hiện tìm kiếm công việc theo từ khóa theo thời gian thực (Real-time search)
+- ✅ Thực hiện lọc danh sách công việc theo Trạng thái và Độ ưu tiên
+- ✅ Đảm bảo luồng dữ liệu State-driven UI vận hành trơn tru cho toàn bộ tính năng
+
+---
 
 ## 🧩 Task Project
 
 ### Task 1: Toggle Trạng thái Hoàn thành (30 phút)
 
-Khi người dùng nhấn vào checkbox của một công việc, thầy trò mình cần tìm công việc đó trong mảng `danhSachCongViec`, đảo ngược trạng thái `hoanThanh` (từ `true` sang `false` và ngược lại), sau đó cập nhật lại giao diện và tiến độ.
+Khi người dùng nhấn vào checkbox của một công việc, chúng ta cần tìm công việc đó trong mảng `danhSachCongViec`, đảo ngược trạng thái `hoanThanh` (từ `true` sang `false` và ngược lại), sau đó cập nhật lại giao diện và tiến độ.
 
 Hãy sử dụng Event Delegation để bắt sự kiện thay đổi (`change`) trên checkbox:
 
@@ -65,14 +68,12 @@ Chức năng sửa sẽ hoạt động qua 2 bước chính:
 
 #### Bước 2.1: Lắng nghe sự kiện click nút Sửa và điền form
 Khai báo một biến toàn cục ở đầu tệp `main.js` để theo dõi công việc nào đang được sửa:
-
-::: code-group
-
-```javascript [main.js]
+```javascript
 let dangSuaId = null; // null nghĩa là đang ở chế độ thêm mới
 ```
 
-```javascript [main.js]
+Bổ sung xử lý sự kiện click trong listener của `listContainer`:
+```javascript
 listContainer.addEventListener('click', function(event) {
     // ... code cũ xử lý nút xóa ...
     
@@ -112,8 +113,6 @@ function chuyenSangCheDoSua(id) {
     document.querySelector('.task-form-section').scrollIntoView({ behavior: 'smooth' });
 }
 ```
-
-:::
 
 #### Bước 2.2: Cập nhật hàm xử lý submit form để hỗ trợ lưu chỉnh sửa
 Hãy sửa lại event listener `submit` của `formCongViec`:
@@ -177,7 +176,7 @@ formCongViec.addEventListener('submit', function(event) {
 
 ### Task 3: Chức năng Lọc & Tìm kiếm (50 phút)
 
-Thầy trò mình cần có khả năng lọc danh sách theo từ khóa nhập vào ô `#tim-kiem` và lọc theo bộ lọc phân loại bên Sidebar (Tất cả, Chờ xử lý, Đã hoàn thành).
+Chúng ta cần có khả năng lọc danh sách theo từ khóa nhập vào ô `#tim-kiem` và lọc theo bộ lọc phân loại bên Sidebar (Tất cả, Chờ xử lý, Đã hoàn thành).
 
 Để làm việc này một cách sạch sẽ theo tư duy State, ta nên:
 1. Lưu trữ các điều kiện lọc (Filter State) hiện tại vào biến.
@@ -266,10 +265,7 @@ function renderList() {
 
 #### Bước 3.3: Lắng nghe sự kiện Tìm kiếm và Lọc
 * **Tìm kiếm theo từ khóa (Real-time)**:
-
-::: code-group
-
-```javascript [main.js]
+```javascript
 const inputTimKiem = document.getElementById('tim-kiem');
 inputTimKiem.addEventListener('input', function(event) {
     filterState.tuKhoa = event.target.value;
@@ -277,7 +273,9 @@ inputTimKiem.addEventListener('input', function(event) {
 });
 ```
 
-```javascript [main.js]
+* **Lọc theo trạng thái bên Sidebar**:
+Lắng nghe sự kiện click trên các nút lọc ở thanh Sidebar:
+```javascript
 const navItems = document.querySelectorAll('.nav-filters .nav-item');
 
 navItems.forEach(item => {
@@ -301,13 +299,13 @@ navItems.forEach(item => {
 });
 ```
 
-:::
-
 ---
+
+
 
 ## 📝 Bài tập về nhà
 
-1. Hãy tích hợp toàn bộ tính năng Toggle hoàn thành, Sửa công việc, Tìm kiếm và Lọc trạng thái vào file `main.js` của dự án của các em.
+1. Hãy tích hợp toàn bộ tính năng Toggle hoàn thành, Sửa công việc, Tìm kiếm và Lọc trạng thái vào file `main.js` của dự án của bạn.
 2. Thực hiện thêm các nút lọc theo **Độ ưu tiên** (Cao, Trung bình, Thấp) ở phần Sidebar và lắng nghe sự kiện click để cập nhật `filterState.uuTien` tương ứng, giúp người dùng lọc chéo được cả trạng thái lẫn độ ưu tiên.
 3. Khi click nút sửa công việc, làm thế nào để người dùng có thể "Hủy bỏ" hành động sửa (quay về chế độ thêm mới mà không cập nhật) bằng cách lập trình cho nút "Hủy bỏ" (`btn-secondary`) trên form.
 

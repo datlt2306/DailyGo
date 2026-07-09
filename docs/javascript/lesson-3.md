@@ -1,131 +1,82 @@
-# Buổi 3: Sự kiện (Events) & Event Delegation
+# Buổi 3: Toán tử & Câu điều kiện
 
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
-**Dự án**: ZenTask (To-Do App) - Tối ưu hóa lắng nghe sự kiện trên danh sách công việc
+Xin chào các em! 🌟
 
----
+Buổi học này thầy trò mình sẽ học cách làm cho chương trình trở nên thông minh hơn bằng cách đưa ra các quyết định thông qua câu lệnh điều kiện.
 
-## 🎯 Mục tiêu học tập
-
-Sau buổi học này, bạn sẽ có thể:
-
-- ✅ Hiểu rõ cơ chế bắt sự kiện (Event Listeners) và đối tượng sự kiện (Event Object)
-- ✅ Phân biệt được sự khác biệt giữa hai giai đoạn: Event Bubbling (Nổi bọt) và Event Capturing (Lan truyền xuống)
-- ✅ Sử dụng kỹ thuật **Event Delegation** (Ủy quyền sự kiện) để quản lý sự kiện hiệu quả cho danh sách động
-- ✅ Ứng dụng kỹ thuật này để bắt sự kiện click cho các nút được thêm động trên giao diện
+## 🎯 Mục tiêu buổi học
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+1. ✅ Sử dụng thành thạo toán tử so sánh (`>`, `<`, `===`, `!==`).
+2. ✅ Sử dụng toán tử logic (`&&`, `||`, `!`).
+3. ✅ Làm chủ cấu trúc rẽ nhánh `if-else` và `switch-case`.
 
 ---
 
-## 🧠 Nội dung chính
+## 📖 Lý thuyết cốt lõi
 
-### 1. JavaScript Events & Event Object
+### 1. Toán tử so sánh và logic
+* So sánh bằng tuyệt đối: `===` (so sánh cả giá trị và kiểu dữ liệu).
+* Toán tử logic:
+  - `&&` (Và): Đúng khi cả hai vế cùng đúng.
+  - `||` (Hoặc): Đúng khi một trong hai vế đúng.
+  - `!` (Phủ định): Đảo ngược giá trị logic.
 
-**Sự kiện (Event)** là các hành động hoặc sự việc xảy ra trên trình duyệt (ví dụ: người dùng click chuột, gõ phím, gửi form, tải trang...).
+### 2. Cấu trúc rẽ nhánh điều kiện
 
-#### 1.1. Cách lắng nghe sự kiện bằng `addEventListener`
-Đây là phương pháp hiện đại và an toàn nhất để gán trình xử lý sự kiện cho một phần tử DOM:
+::: code-group
+```javascript [Cú pháp if-else]
+let score = 8;
+if (score >= 5) {
+  console.log("Đạt");
+} else {
+  console.log("Học lại");
+}
+```
 
+```javascript [Cú pháp switch-case]
+let role = "admin";
+switch (role) {
+  case "admin":
+    console.log("Được truy cập hệ thống quản trị");
+    break;
+  case "user":
+    console.log("Được xem nội dung");
+    break;
+  default:
+    console.log("Khách vãng lai");
+}
+```
+:::
+
+---
+
+## 💻 Ví dụ minh họa & Thực hành
+
+### Ví dụ: Kiểm tra số chẵn lẻ
 ```javascript
-const btn = document.querySelector('.btn-theme-toggle');
-
-btn.addEventListener('click', function(event) {
-    console.log('Nút đổi giao diện đã được click!');
-});
+let number = 7;
+if (number % 2 === 0) {
+  console.log(number + " là số chẵn");
+} else {
+  console.log(number + " là số lẻ");
+}
 ```
 
-#### 1.2. Đối tượng Sự kiện (Event Object)
-Khi một sự kiện xảy ra, trình duyệt sẽ tự động truyền một đối tượng chứa tất cả thông tin chi tiết về sự kiện đó vào tham số của hàm xử lý (thường được đặt tên là `e` hoặc `event`).
-
-Các thuộc tính quan trọng nhất của `Event Object`:
-* `event.target`: Trả về phần tử **thực tế phát sinh sự kiện** (nơi người dùng click chuột).
-* `event.currentTarget`: Trả về phần tử **đang lắng nghe sự kiện** (nút hoặc thẻ được gán `addEventListener`).
-* `event.preventDefault()`: Ngăn chặn hành vi mặc định của thẻ (ví dụ: ngăn form reload trang khi submit, ngăn thẻ `<a>` chuyển trang).
+### Bài tập thực hành
+Các em hãy viết chương trình khai báo một biến `score` (điểm trung bình học tập của học viên). Sử dụng cấu trúc `if-else if-else` để phân loại học lực:
+- Điểm >= 9: Xuất sắc
+- Điểm >= 8: Giỏi
+- Điểm >= 6.5: Khá
+- Điểm >= 5: Trung bình
+- Điểm < 5: Yếu
 
 ---
 
-### 2. Sự nổi bọt sự kiện (Event Bubbling)
+## 🧪 Câu hỏi ôn tập
+::: details 1. Tại sao nên dùng `===` thay vì `==` trong JavaScript?
+Toán tử `==` chỉ so sánh giá trị và tự ép kiểu, dễ dẫn đến kết quả sai lệch. Toán tử `===` so sánh nghiêm ngặt cả giá trị lẫn kiểu dữ liệu, giúp code chính xác hơn.
+:::
 
-Khi một sự kiện xảy ra trên một phần tử, nó không chỉ dừng lại ở đó. Sự kiện sẽ bắt đầu lan truyền theo 3 giai đoạn:
-1. **Capturing Phase**: Sự kiện đi từ phần tử gốc (`window` -> `document` -> `body` -> các thẻ cha) đi xuống phần tử đích.
-2. **Target Phase**: Sự kiện kích hoạt ngay tại phần tử đích (nơi phát sinh sự kiện).
-3. **Bubbling Phase (Nổi bọt)**: Sự kiện "nổi bọt" ngược từ phần tử đích đi lên qua các thẻ cha cho đến khi chạm tới `window`.
-
-Mặc định, `addEventListener` lắng nghe sự kiện ở giai đoạn **Nổi bọt (Bubbling)**.
-
-```html
-<div class="card" onclick="alert('Click Card')">
-    <button onclick="alert('Click Button')">Click me</button>
-</div>
-```
-*Khi bạn click vào nút `button`, sự kiện nổi bọt lên thẻ cha làm cho cả hai alert đều hiển thị: đầu tiên là "Click Button", sau đó là "Click Card".*
-
-Để ngăn cản sự kiện nổi bọt tiếp tục đi lên thẻ cha, ta dùng:
-```javascript
-event.stopPropagation();
-```
-
----
-
-### 3. Kỹ thuật Ủy quyền sự kiện (Event Delegation)
-
-#### 3.1. Vấn đề của các phần tử được thêm động
-Trong ứng dụng To-Do App, danh sách công việc liên tục được thêm mới hoặc xóa đi. Nếu ta gán trực tiếp sự kiện click cho các nút sửa/xóa khi render:
-```javascript
-// ❌ CÁCH LÀM Kém hiệu quả
-const deleteButtons = document.querySelectorAll('.btn-delete');
-deleteButtons.forEach(btn => {
-    btn.addEventListener('click', handleDelete);
-});
-```
-* **Lỗi 1**: Các nút xóa của các công việc mới được thêm vào sau khi gọi `renderList()` sẽ **không** hoạt động (vì chúng chưa hề được gán sự kiện).
-* **Lỗi 2**: Nếu danh sách có hàng nghìn công việc, việc tạo hàng nghìn event listeners sẽ tiêu tốn bộ nhớ và làm giảm hiệu năng của ứng dụng.
-
-#### 3.2. Giải pháp: Event Delegation
-Thay vì gán sự kiện cho từng nút con, ta **chỉ gán duy nhất một event listener** cho thẻ cha trực tiếp (thẻ `<ul id="danh-sach-cong-viec">` - thẻ này luôn tồn tại cố định trên trang).
-
-Khi người dùng click vào bất kỳ đâu bên trong danh sách, sự kiện click sẽ tự động **nổi bọt** lên thẻ cha. Tại đây, ta kiểm tra xem phần tử thực tế được click (`event.target`) là gì để xử lý thích hợp.
-
-**Ví dụ:**
-```javascript
-const listContainer = document.getElementById('danh-sach-cong-viec');
-
-listContainer.addEventListener('click', function(event) {
-    // Tìm phần tử gần nhất khớp với selector (hữu dụng khi click trúng icon nằm trong button)
-    const btnDelete = event.target.closest('.btn-delete');
-    const btnEdit = event.target.closest('.btn-edit');
-    
-    if (btnDelete) {
-        // Lấy ra thẻ task-item cha của nút xóa
-        const taskItem = btnDelete.closest('.task-item');
-        const id = parseInt(taskItem.dataset.id);
-        console.log(`Yêu cầu xóa task có ID: ${id}`);
-    }
-    
-    if (btnEdit) {
-        const taskItem = btnEdit.closest('.task-item');
-        const id = parseInt(taskItem.dataset.id);
-        console.log(`Yêu cầu sửa task có ID: ${id}`);
-    }
-});
-```
-
-*Hàm `.closest('selector')` sẽ tìm ngược lên trên để tìm thẻ cha gần nhất khớp với bộ chọn. Điều này giúp code hoạt động chính xác ngay cả khi người dùng click vào thẻ `<i>` (icon) thay vì thẻ `<button>`.*
-
----
-
-
-
-## 📝 Bài tập về nhà
-
-1. Viết code JavaScript lắng nghe sự kiện click trên toàn bộ thẻ `<body>` của tài liệu. Mỗi khi click vào một phần tử bất kỳ, hãy in ra console thẻ đó (tagName và className).
-2. Hãy thử nghiệm tạo một nút bấm đơn giản, khi click vào sẽ ngăn chặn không cho nổi bọt lên thẻ cha bằng `event.stopPropagation()` và kiểm tra kết quả.
-3. Giải thích tại sao việc sử dụng `.closest('.btn-delete')` lại tốt hơn việc chỉ kiểm tra `event.target.classList.contains('btn-delete')` khi bên trong nút bấm có chứa thẻ icon `<i>`.
-
----
-
-## 🔗 Tài liệu tham khảo
-
-- [JavaScript.info: Bubbling and capturing](https://javascript.info/bubbling-and-capturing)
-- [JavaScript.info: Event delegation](https://javascript.info/event-delegation)
-- [MDN: Event.target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target)
+::: details 2. Lệnh `break` trong cấu trúc `switch-case` có vai trò gì?
+Lệnh `break` dùng để thoát khỏi khối lệnh `switch` ngay sau khi tìm thấy case phù hợp. Nếu thiếu `break`, chương trình sẽ tiếp tục chạy các case bên dưới bất kể điều kiện.
+:::

@@ -1,130 +1,91 @@
-# Buổi 9: Asynchronous JS & Fetch API
+# Buổi 9: Mảng (Array) cơ bản
 
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
-**Dự án**: ZenTask (To-Do App) - Chuẩn bị kết nối cơ sở dữ liệu Mock API
+Xin chào các em! 👋
 
----
+Hôm nay thầy trò mình sẽ tìm hiểu một cấu trúc dữ liệu cực kỳ quan trọng giúp quản lý danh sách nhiều phần tử cùng lúc — đó là **Mảng (Array)**.
 
-## 🎯 Mục tiêu học tập
-
-Sau buổi học này, bạn sẽ có thể:
-
-- ✅ Phân biệt được sự khác biệt giữa lập trình đồng bộ (Synchronous) và bất đồng bộ (Asynchronous)
-- ✅ Hiểu rõ các giải pháp xử lý bất đồng bộ trong JS: Callbacks, Promises, và Async/Await
-- ✅ Giải thích được mô hình hoạt động của giao thức HTTP và kiến trúc RESTful API
-- ✅ Sử dụng thành thạo `Fetch API` để thực hiện các yêu cầu HTTP Request cơ bản
-- ✅ Áp dụng cơ chế `try...catch` để bắt lỗi khi xử lý bất đồng bộ
+## 🎯 Mục tiêu buổi học
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+1. ✅ Hiểu khái niệm mảng và cách khai báo mảng trong JavaScript.
+2. ✅ Truy xuất và thay đổi các phần tử của mảng qua chỉ số (index).
+3. ✅ Sử dụng thành thạo các hàm tiện ích của mảng: `push`, `pop`, `shift`, `unshift`, `length`.
 
 ---
 
-## 🧠 Nội dung chính
+## 📖 Lý thuyết cốt lõi
 
-### 1. Đồng bộ (Sync) vs Bất đồng bộ (Async)
-
-* **Đồng bộ (Synchronous)**: Các câu lệnh chạy tuần tự từ trên xuống dưới, câu lệnh phía sau phải chờ câu lệnh phía trước hoàn thành rồi mới chạy.
-  * *Hạn chế*: Nếu một tác vụ mất nhiều thời gian (như tải ảnh dung lượng lớn, gọi dữ liệu từ server), toàn bộ trang web sẽ bị "đơ" (blocking).
-* **Bất đồng bộ (Asynchronous)**: Tác vụ tốn thời gian sẽ được đẩy sang chạy ngầm (do trình duyệt xử lý). JS tiếp tục chạy các dòng code bên dưới mà không cần chờ đợi. Khi tác vụ ngầm hoàn thành, nó sẽ gửi kết quả về sau.
-
----
-
-### 2. Các cơ chế xử lý bất đồng bộ trong JavaScript
-
-#### 2.1. Callback (Cách tiếp cận cổ điển)
-Một hàm được truyền dưới dạng đối số vào một hàm khác để được gọi lại sau khi tác vụ hoàn thành.
-* *Hạn chế*: Dẫn đến **Callback Hell** (mã nguồn lồng nhau quá sâu, cực kỳ khó đọc và bảo trì).
-
-#### 2.2. Promise (ES6)
-Đại diện cho một giá trị sẽ có trong tương lai. Một Promise có 3 trạng thái:
-1. `Pending`: Đang chờ xử lý tác vụ ngầm.
-2. `Fulfilled`: Tác vụ hoàn thành thành công (kích hoạt hàm `.then()`).
-3. `Rejected`: Tác vụ thất bại do lỗi (kích hoạt hàm `.catch()`).
+### 1. Mảng là gì?
+Mảng là một biến đặc biệt có thể chứa nhiều giá trị cùng một lúc. Các giá trị trong mảng được sắp xếp theo thứ tự và bắt đầu bằng chỉ số (index) là **0**.
 
 ```javascript
-fetch('https://api.example.com/data')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Lỗi rồi:', error));
+let fruits = ["Táo", "Chuối", "Cam"];
+console.log(fruits[0]); // "Táo"
 ```
 
-#### 2.3. Async / Await (ES7 - Khuyến nghị dùng)
-Cú pháp bọc ngoài Promise giúp ta viết code bất đồng bộ trông giống như code đồng bộ tuần tự, cực kỳ sạch và dễ đọc.
-* Từ khóa `async` đặt trước một hàm để khai báo hàm đó là bất đồng bộ (luôn trả về một Promise).
-* Từ khóa `await` đặt trước một Promise (chỉ dùng được bên trong hàm `async`), bắt trình duyệt dừng đợi Promise đó hoàn thành rồi mới chạy tiếp dòng bên dưới.
+### 2. Các phương thức thao tác mảng phổ biến
 
-```javascript
-async function layDuLieu() {
-    try {
-        const response = await fetch('https://api.example.com/data');
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.error('Lỗi khi gọi API:', error);
-    }
-}
+::: code-group
+```javascript [Thêm phần tử (push / unshift)]
+let students = ["Nam", "Hoa"];
+
+// push(): Thêm vào CUỐI mảng
+students.push("Lan"); // ["Nam", "Hoa", "Lan"]
+
+// unshift(): Thêm vào ĐẦU mảng
+students.unshift("Tuấn"); // ["Tuấn", "Nam", "Hoa", "Lan"]
+```
+
+```javascript [Xóa phần tử (pop / shift)]
+let students = ["Tuấn", "Nam", "Hoa", "Lan"];
+
+// pop(): Xóa ở CUỐI mảng, trả về phần tử bị xóa
+let last = students.pop(); // last = "Lan", mảng còn ["Tuấn", "Nam", "Hoa"]
+
+// shift(): Xóa ở ĐẦU mảng, trả về phần tử bị xóa
+let first = students.shift(); // first = "Tuấn", mảng còn ["Nam", "Hoa"]
+```
+:::
+
+```mermaid
+graph LR
+    subgraph ArrayOperations [Các thao tác trên mảng]
+        DirectionHead[Đầu mảng] --- Unshift["unshift(): Thêm"]
+        DirectionHead --- Shift["shift(): Xóa"]
+        DirectionTail[Cuối mảng] --- Push["push(): Thêm"]
+        DirectionTail --- Pop["pop(): Xóa"]
+    end
 ```
 
 ---
 
-### 3. Giao thức HTTP và RESTful API
+## 💻 Ví dụ minh họa & Thực hành
 
-Khi client muốn tương tác với dữ liệu trên server, chúng gửi đi các **HTTP Requests** và nhận về **HTTP Responses**.
-
-#### 3.1. Các phương thức HTTP (HTTP Methods / Verbs)
-Trong kiến trúc RESTful API, các hành động CRUD tương ứng với các HTTP Methods cụ thể:
-* **GET**: Đọc/Tải dữ liệu từ server về.
-* **POST**: Gửi dữ liệu mới lên server để tạo mới.
-* **PUT**: Ghi đè toàn bộ thông tin của dữ liệu cũ trên server.
-* **PATCH**: Chỉ cập nhật một vài trường thông tin cụ thể của dữ liệu cũ (ví dụ: chỉ sửa trạng thái hoàn thành).
-* **DELETE**: Xóa dữ liệu trên server.
-
-#### 3.2. Mã trạng thái HTTP (HTTP Status Codes)
-* **2xx (Success)**: Thành công (ví dụ: `200 OK`, `201 Created`).
-* **3xx (Redirection)**: Chuyển hướng.
-* **4xx (Client Error)**: Lỗi phía Client (ví dụ: `400 Bad Request`, `401 Unauthorized`, `404 Not Found`).
-* **5xx (Server Error)**: Lỗi phía Server (ví dụ: `500 Internal Server Error`).
-
----
-
-### 4. Fetch API cơ bản
-
-`fetch()` là hàm tích hợp sẵn trong trình duyệt để gửi yêu cầu HTTP. Nó trả về một Promise.
-
+### Ví dụ: Quản lý danh sách hoa quả
 ```javascript
-// Gửi GET Request
-async function taiDanhSachTodo() {
-    const url = 'https://jsonplaceholder.typicode.com/todos?_limit=5';
-    
-    try {
-        const response = await fetch(url);
-        
-        // Kiểm tra xem mã phản hồi có thành công (200-299) không
-        if (!response.ok) {
-            throw new Error(`Lỗi kết nối HTTP: ${response.status}`);
-        }
-        
-        const data = await response.json(); // Chuyển đổi dữ liệu JSON nhận được
-        console.log('Dữ liệu nhận về:', data);
-    } catch (error) {
-        console.error('Xử lý lỗi:', error.message);
-    }
-}
+let myCart = ["Sách", "Bút"];
+
+// Thêm sản phẩm mới vào giỏ hàng
+myCart.push("Thước kẻ"); 
+console.log(myCart); // ["Sách", "Bút", "Thước kẻ"]
+
+// Xóa sản phẩm cuối cùng
+myCart.pop();
+console.log(myCart); // ["Sách", "Bút"]
 ```
 
----
-
-
-
-## 📝 Bài tập về nhà
-
-1. Viết một hàm async `checkUserInfo(userId)` gọi API lấy thông tin người dùng từ URL mẫu: `https://jsonplaceholder.typicode.com/users/1` và in tên (`name`), email (`email`) của họ ra màn hình console.
-2. Thử thay đổi ID người dùng trong URL thành `999` (không tồn tại) để kiểm tra xem khối `try...catch` của bạn có bắt được lỗi 404 và in ra thông báo lỗi chính xác không.
-3. Tìm hiểu khái niệm **API Endpoint** là gì trong lập trình Web API.
+### Bài tập thực hành
+Các em hãy viết chương trình:
+1. Tạo một mảng chứa tên 5 người bạn của mình.
+2. Sử dụng vòng lặp `for` để duyệt qua mảng và in từng tên ra console kèm câu chào (Ví dụ: "Xin chào Nam!").
+3. Thêm một người bạn mới vào đầu danh sách và in lại toàn bộ danh sách ra console.
 
 ---
 
-## 🔗 Tài liệu tham khảo
+## 🧪 Câu hỏi ôn tập
+::: details 1. Chỉ số (index) của phần tử cuối cùng trong mảng luôn bằng bao nhiêu?
+Luôn bằng `mảng.length - 1`. Vì mảng bắt đầu đánh chỉ số từ 0.
+:::
 
-- [JavaScript.info: Promises, async/await](https://javascript.info/js-async)
-- [MDN: Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [MDN: HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+::: details 2. Phân biệt `push()` và `unshift()`?
+Cả hai đều dùng để thêm phần tử mới vào mảng. Tuy nhiên, `push()` thêm vào cuối mảng, còn `unshift()` thêm vào đầu mảng.
+:::

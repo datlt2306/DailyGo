@@ -1,17 +1,20 @@
 # Buổi 2: Tích hợp giao diện mẫu & Render danh sách
+
+**Loại buổi**: Thực hành  
+**Thời lượng**: 120 phút  
 **Dự án**: ZenTask (To-Do App) - Tích hợp giao diện và hiển thị dữ liệu động
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Tích hợp thành công giao diện mẫu ZenTask vào dự án của mình
-2. ✅ Thiết lập cấu trúc lưu trữ dữ liệu dạng mảng đối tượng (Mock Data)
-3. ✅ Viết hàm duyệt mảng dữ liệu để render danh sách công việc động ra giao diện HTML
+- ✅ Tích hợp thành công giao diện mẫu ZenTask vào dự án của mình
+- ✅ Thiết lập cấu trúc lưu trữ dữ liệu dạng mảng đối tượng (Mock Data)
+- ✅ Viết hàm duyệt mảng dữ liệu để render danh sách công việc động ra giao diện HTML
+
+---
 
 ## 🧩 Task Project
 
@@ -31,7 +34,7 @@ Sau buổi học này, các em sẽ có thể:
 
 ### Task 2: Tạo cấu trúc dữ liệu giả lập (Mock Data) (20 phút)
 
-Trong tệp `main.js`, các em các em hãy khai báo một mảng các đối tượng chứa thông tin công việc giả lập. Mỗi công việc cần có các thuộc tính: `id` (số duy nhất), `ten` (tên công việc), `moTa` (mô tả), `uuTien` (mức độ: 'high', 'medium', 'low'), và `hoanThanh` (trạng thái: `true` hoặc `false`).
+Trong tệp `main.js`, hãy khai báo một mảng các đối tượng chứa thông tin công việc giả lập. Mỗi công việc cần có các thuộc tính: `id` (số duy nhất), `ten` (tên công việc), `moTa` (mô tả), `uuTien` (mức độ: 'high', 'medium', 'low'), và `hoanThanh` (trạng thái: `true` hoặc `false`).
 
 ```javascript
 // Mảng lưu trữ trạng thái danh sách công việc (State)
@@ -64,7 +67,7 @@ let danhSachCongViec = [
 
 ### Task 3: Viết hàm Render danh sách động ra HTML (50 phút)
 
-Thầy trò mình cần tạo một hàm `renderList()` để tự động duyệt qua mảng `danhSachCongViec`, tạo mã HTML tương ứng cho từng công việc và cập nhật vào thẻ `<ul id="danh-sach-cong-viec">`.
+Chúng ta cần tạo một hàm `renderList()` để tự động duyệt qua mảng `danhSachCongViec`, tạo mã HTML tương ứng cho từng công việc và cập nhật vào thẻ `<ul id="danh-sach-cong-viec">`.
 
 ```javascript
 /**
@@ -132,7 +135,7 @@ renderList();
 
 ### Task 4: Viết hàm cập nhật Tiến độ công việc (30 phút)
 
-Các em các em các em hãy viết thêm một hàm để tính toán tiến độ hoàn thành dựa trên mảng `danhSachCongViec` và cập nhật thông số lên thanh tiến độ của thanh Sidebar.
+Hãy viết thêm một hàm để tính toán tiến độ hoàn thành dựa trên mảng `danhSachCongViec` và cập nhật thông số lên thanh tiến độ của thanh Sidebar.
 
 ```javascript
 /**
@@ -151,7 +154,7 @@ function capNhatTienDo() {
     
     const descTienDo = document.querySelector('.stats-desc');
     if (descTienDo) {
-        descTienDo.textContent = `Hoàn thành ${completed} trong số ${total} công việc của các em.`;
+        descTienDo.textContent = `Hoàn thành ${completed} trong số ${total} công việc của bạn.`;
     }
     
     // Cập nhật thanh tiến độ
@@ -167,9 +170,11 @@ capNhatTienDo();
 
 ---
 
+
+
 ## 📝 Bài tập về nhà
 
-1. Hãy thêm 2 công việc nữa vào mảng `danhSachCongViec` trong file `main.js` của các em và kiểm tra xem giao diện có tự động hiển thị thêm khi tải lại trang không.
+1. Hãy thêm 2 công việc nữa vào mảng `danhSachCongViec` trong file `main.js` của bạn và kiểm tra xem giao diện có tự động hiển thị thêm khi tải lại trang không.
 2. Đọc hiểu đoạn mã `capNhatTienDo()` và thử đổi trạng thái `hoanThanh` của một công việc trong mảng để kiểm tra xem phần trăm tiến độ có tự động tính toán lại khi tải lại trang không.
 
 ---

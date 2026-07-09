@@ -1,18 +1,21 @@
 # Buổi 7: Web Storage APIs & JSON
+
+**Loại buổi**: Lý thuyết  
+**Thời lượng**: 120 phút  
 **Dự án**: ZenTask (To-Do App) - Lưu trữ dữ liệu bền vững ở trình duyệt phía Client
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Giải thích sự khác biệt giữa hai loại lưu trữ: `localStorage` và `sessionStorage`
-2. ✅ Sử dụng thành thạo các phương thức của Web Storage API (`setItem`, `getItem`, `removeItem`, `clear`)
-3. ✅ Hiểu rõ định dạng dữ liệu JSON và cơ chế tuần tự hóa (serialization) bằng `JSON.stringify` và `JSON.parse`
-4. ✅ Giải quyết được vấn đề mất dữ liệu khi F5 (reload) trình duyệt trong ứng dụng web
+- ✅ Giải thích sự khác biệt giữa hai loại lưu trữ: `localStorage` và `sessionStorage`
+- ✅ Sử dụng thành thạo các phương thức của Web Storage API (`setItem`, `getItem`, `removeItem`, `clear`)
+- ✅ Hiểu rõ định dạng dữ liệu JSON và cơ chế tuần tự hóa (serialization) bằng `JSON.stringify` và `JSON.parse`
+- ✅ Giải quyết được vấn đề mất dữ liệu khi F5 (reload) trình duyệt trong ứng dụng web
+
+---
 
 ## 🧠 Nội dung chính
 
@@ -68,7 +71,7 @@ localStorage.clear();
 
 **⚠️ Hạn chế cực lớn của Web Storage:** Chỉ cho phép lưu trữ dữ liệu dạng **Chuỗi văn bản (String)**.
 
-Nếu các em cố tình truyền một mảng hoặc đối tượng vào:
+Nếu bạn cố tình truyền một mảng hoặc đối tượng vào:
 ```javascript
 const list = [1, 2, 3];
 localStorage.setItem('myList', list);
@@ -140,9 +143,11 @@ saveTasksToStorage(myTasks);
 
 ---
 
+
+
 ## 📝 Bài tập về nhà
 
-1. Các em các em các em hãy mở tab Application trên Chrome Developer Tools (F12) và xem thử trang web polytuts hiện tại đang lưu trữ những giá trị nào trong LocalStorage.
+1. Hãy mở tab Application trên Chrome Developer Tools (F12) và xem thử trang web polytuts hiện tại đang lưu trữ những giá trị nào trong LocalStorage.
 2. Viết một đoạn code lưu trữ thông tin cấu hình cá nhân của người dùng bao gồm: `{ theme: 'dark', fontSize: 16, notifications: true }` vào `localStorage`. Viết hàm đọc ra và kiểm tra xem đối tượng có đọc đúng kiểu dữ liệu hay không.
 3. Giải thích tại sao dung lượng lưu trữ của LocalStorage lại bị hạn chế khoảng 5MB - 10MB thay vì cho phép lưu không giới hạn.
 

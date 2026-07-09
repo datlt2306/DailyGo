@@ -1,18 +1,21 @@
 # Buổi 3: Sự kiện (Events) & Event Delegation
+
+**Loại buổi**: Lý thuyết  
+**Thời lượng**: 120 phút  
 **Dự án**: ZenTask (To-Do App) - Tối ưu hóa lắng nghe sự kiện trên danh sách công việc
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Hiểu rõ cơ chế bắt sự kiện (Event Listeners) và đối tượng sự kiện (Event Object)
-2. ✅ Phân biệt được sự khác biệt giữa hai giai đoạn: Event Bubbling (Nổi bọt) và Event Capturing (Lan truyền xuống)
-3. ✅ Sử dụng kỹ thuật **Event Delegation** (Ủy quyền sự kiện) để quản lý sự kiện hiệu quả cho danh sách động
-4. ✅ Ứng dụng kỹ thuật này để bắt sự kiện click cho các nút được thêm động trên giao diện
+- ✅ Hiểu rõ cơ chế bắt sự kiện (Event Listeners) và đối tượng sự kiện (Event Object)
+- ✅ Phân biệt được sự khác biệt giữa hai giai đoạn: Event Bubbling (Nổi bọt) và Event Capturing (Lan truyền xuống)
+- ✅ Sử dụng kỹ thuật **Event Delegation** (Ủy quyền sự kiện) để quản lý sự kiện hiệu quả cho danh sách động
+- ✅ Ứng dụng kỹ thuật này để bắt sự kiện click cho các nút được thêm động trên giao diện
+
+---
 
 ## 🧠 Nội dung chính
 
@@ -55,7 +58,7 @@ Mặc định, `addEventListener` lắng nghe sự kiện ở giai đoạn **N�
     <button onclick="alert('Click Button')">Click me</button>
 </div>
 ```
-*Khi các em click vào nút `button`, sự kiện nổi bọt lên thẻ cha làm cho cả hai alert đều hiển thị: đầu tiên là "Click Button", sau đó là "Click Card".*
+*Khi bạn click vào nút `button`, sự kiện nổi bọt lên thẻ cha làm cho cả hai alert đều hiển thị: đầu tiên là "Click Button", sau đó là "Click Card".*
 
 Để ngăn cản sự kiện nổi bọt tiếp tục đi lên thẻ cha, ta dùng:
 ```javascript
@@ -111,10 +114,12 @@ listContainer.addEventListener('click', function(event) {
 
 ---
 
+
+
 ## 📝 Bài tập về nhà
 
 1. Viết code JavaScript lắng nghe sự kiện click trên toàn bộ thẻ `<body>` của tài liệu. Mỗi khi click vào một phần tử bất kỳ, hãy in ra console thẻ đó (tagName và className).
-2. Các em các em các em hãy thử nghiệm tạo một nút bấm đơn giản, khi click vào sẽ ngăn chặn không cho nổi bọt lên thẻ cha bằng `event.stopPropagation()` và kiểm tra kết quả.
+2. Hãy thử nghiệm tạo một nút bấm đơn giản, khi click vào sẽ ngăn chặn không cho nổi bọt lên thẻ cha bằng `event.stopPropagation()` và kiểm tra kết quả.
 3. Giải thích tại sao việc sử dụng `.closest('.btn-delete')` lại tốt hơn việc chỉ kiểm tra `event.target.classList.contains('btn-delete')` khi bên trong nút bấm có chứa thẻ icon `<i>`.
 
 ---

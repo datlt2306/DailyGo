@@ -10,7 +10,7 @@ export default withMermaid({
                 text: "Lập trình Web",
                 items: [
                     { text: "Javascript cơ bản", link: "/javascript/" },
-                    { text: "Javascript nâng cao", link: "/javascript/lesson-9" },
+                    { text: "Javascript nâng cao", link: "/javascript-nangcao/" },
                     { text: "ReactJs", link: "/react/" },
                     { text: "Vuejs", link: "/vuejs/" },
                     { text: "NodeJS", link: "/nodejs/" },
@@ -77,103 +77,97 @@ export default withMermaid({
                     ],
                 },
                 {
+                    text: "Giai đoạn 1: Cú pháp cơ bản & Rẽ nhánh (Buổi 1-4)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 1: Nhập môn JavaScript & Biến", link: "/javascript/lesson-1" },
+                        { text: "Buổi 2: Thực hành tính toán cơ bản", link: "/javascript/lesson-2" },
+                        { text: "Buổi 3: Toán tử & Câu điều kiện", link: "/javascript/lesson-3" },
+                        { text: "Buổi 4: Thực hành logic rẽ nhánh", link: "/javascript/lesson-4" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 2: Vòng lặp & Hàm (Buổi 5-8)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 5: Vòng lặp trong JavaScript", link: "/javascript/lesson-5" },
+                        { text: "Buổi 6: Thực hành vòng lặp & Thuật toán", link: "/javascript/lesson-6" },
+                        { text: "Buổi 7: Hàm (Function) & Scope", link: "/javascript/lesson-7" },
+                        { text: "Buổi 8: Thực hành xây dựng hàm", link: "/javascript/lesson-8" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 3: Mảng & Đối tượng (Buổi 9-12)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 9: Mảng (Array) cơ bản", link: "/javascript/lesson-9" },
+                        { text: "Buổi 10: Thực hành làm việc với mảng", link: "/javascript/lesson-10" },
+                        { text: "Buổi 11: Đối tượng (Object) cơ bản", link: "/javascript/lesson-11" },
+                        { text: "Buổi 12: Thực hành quản lý đối tượng", link: "/javascript/lesson-12" },
+                    ],
+                },
+                {
+                    text: "Giai đoạn 4: Chuỗi & DOM tương tác (Buổi 13-16)",
+                    collapsed: false,
+                    items: [
+                        { text: "Buổi 13: Xử lý Chuỗi & Đối tượng Math", link: "/javascript/lesson-13" },
+                        { text: "Buổi 14: Thực hành chuẩn hóa dữ liệu", link: "/javascript/lesson-14" },
+                        { text: "Buổi 15: DOM & Sự kiện cơ bản", link: "/javascript/lesson-15" },
+                        { text: "Buổi 16: Dự án Mini tổng kết", link: "/javascript/lesson-16" },
+                    ],
+                },
+            ],
+            "/javascript-nangcao/": [
+                {
+                    text: "Tổng quan",
+                    collapsed: false,
+                    items: [
+                        { text: "Giới thiệu khóa học", link: "/javascript-nangcao/" },
+                        { text: "Dự án cuối khóa", link: "/javascript-nangcao/final-project" },
+                    ],
+                },
+                {
                     text: "Giai đoạn 1: DOM & Sự kiện (Buổi 1-4)",
                     collapsed: false,
                     items: [
-                        {
-                            text: "Buổi 1: DOM Selection & Manipulation",
-                            link: "/javascript/lesson-1",
-                        },
-                        {
-                            text: "Buổi 2: Tích hợp UI & Render Danh sách",
-                            link: "/javascript/lesson-2",
-                        },
-                        {
-                            text: "Buổi 3: Sự kiện & Event Delegation",
-                            link: "/javascript/lesson-3",
-                        },
-                        {
-                            text: "Buổi 4: Tính năng Thêm & Xóa công việc",
-                            link: "/javascript/lesson-4",
-                        },
+                        { text: "Buổi 1: DOM Selection & Manipulation", link: "/javascript-nangcao/lesson-1" },
+                        { text: "Buổi 2: Tích hợp UI & Render Danh sách", link: "/javascript-nangcao/lesson-2" },
+                        { text: "Buổi 3: Sự kiện & Event Delegation", link: "/javascript-nangcao/lesson-3" },
+                        { text: "Buổi 4: Tính năng Thêm & Xóa công việc", link: "/javascript-nangcao/lesson-4" },
                     ],
                 },
                 {
                     text: "Giai đoạn 2: Quản lý State & CRUD (Buổi 5-6)",
                     collapsed: false,
                     items: [
-                        {
-                            text: "Buổi 5: Mảng, Object & Tư duy State",
-                            link: "/javascript/lesson-5",
-                        },
-                        {
-                            text: "Buổi 6: Tính năng Sửa, Tìm kiếm & Lọc",
-                            link: "/javascript/lesson-6",
-                        },
+                        { text: "Buổi 5: Array/Object Methods & Tư duy State-driven UI", link: "/javascript-nangcao/lesson-5" },
+                        { text: "Buổi 6: Tính năng Sửa, Tìm kiếm & Lọc", link: "/javascript-nangcao/lesson-6" },
                     ],
                 },
                 {
                     text: "Giai đoạn 3: Web Storage & Dark Mode (Buổi 7-8)",
                     collapsed: false,
                     items: [
-                        {
-                            text: "Buổi 7: Web Storage APIs & JSON",
-                            link: "/javascript/lesson-7",
-                        },
-                        {
-                            text: "Buổi 8: Lưu trữ Todo & Đổi Theme",
-                            link: "/javascript/lesson-8",
-                        },
+                        { text: "Buổi 7: Web Storage APIs & JSON", link: "/javascript-nangcao/lesson-7" },
+                        { text: "Buổi 8: Lưu trữ Todo & Giao diện Sáng/Tối", link: "/javascript-nangcao/lesson-8" },
                     ],
                 },
                 {
-                    text: "Giai đoạn 4: Async & Mock API (Buổi 9-12)",
+                    text: "Giai đoạn 4: Lập trình bất đồng bộ & Kết nối API (Buổi 9-12)",
                     collapsed: false,
                     items: [
-                        {
-                            text: "Buổi 9: Asynchronous JS & Fetch API",
-                            link: "/javascript/lesson-9",
-                        },
-                        {
-                            text: "Buổi 10: Mock API Setup & Tải dữ liệu",
-                            link: "/javascript/lesson-10",
-                        },
-                        {
-                            text: "Buổi 11: HTTP Methods & Tối ưu UI",
-                            link: "/javascript/lesson-11",
-                        },
-                        {
-                            text: "Buổi 12: Đồng bộ CRUD với Mock API",
-                            link: "/javascript/lesson-12",
-                        },
+                        { text: "Buổi 9: Asynchronous JavaScript & Fetch API", link: "/javascript-nangcao/lesson-9" },
+                        { text: "Buổi 10: Mock API Setup & Tải dữ liệu (GET)", link: "/javascript-nangcao/lesson-10" },
+                        { text: "Buổi 11: HTTP Methods & Tối ưu hóa UI", link: "/javascript-nangcao/lesson-11" },
+                        { text: "Buổi 12: Đồng bộ CRUD với API", link: "/javascript-nangcao/lesson-12" },
                     ],
                 },
                 {
-                    text: "Giai đoạn 5: Code Organization (Buổi 13-14)",
+                    text: "Giai đoạn 5: Modularization & Refactoring (Buổi 13-14)",
                     collapsed: false,
                     items: [
-                        {
-                            text: "Buổi 13: ES6 Modules & Kiến trúc",
-                            link: "/javascript/lesson-13",
-                        },
-                        {
-                            text: "Buổi 14: Tách Module Code",
-                            link: "/javascript/lesson-14",
-                        },
-                    ],
-                },
-                {
-                    text: "Giai đoạn 6: Tối ưu & Demo (Buổi 15-16)",
-                    collapsed: false,
-                    items: [
-                        {
-                            text: "Buổi 15: Debugging & Performance",
-                            link: "/javascript/lesson-15",
-                        },
-                        {
-                            text: "Buổi 16: Tích hợp Debounce, Deploy & Demo",
-                            link: "/javascript/lesson-16",
-                        },
+                        { text: "Buổi 13: ES6 Modules & Kiến trúc ứng dụng", link: "/javascript-nangcao/lesson-13" },
+                        { text: "Buổi 14: Tách Module code", link: "/javascript-nangcao/lesson-14" },
                     ],
                 },
             ],

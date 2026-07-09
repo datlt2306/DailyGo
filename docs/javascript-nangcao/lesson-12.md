@@ -1,51 +1,29 @@
-# Buổi 12: HTTP Methods nâng cao & Đồng bộ CRUD với API
-- **Dự án**: ZenTask (To-Do App) - Đồng bộ hóa toàn bộ chức năng Thêm, Sửa, Xóa và Check hoàn thành lên JSON Server
+# Buổi 12: Đồng bộ CRUD với API
+
+**Loại buổi**: Thực hành  
+**Thời lượng**: 120 phút  
+**Dự án**: ZenTask (To-Do App) - Đồng bộ hóa toàn bộ chức năng Thêm, Sửa, Xóa và Check hoàn thành lên JSON Server
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Phân biệt rõ sự khác biệt giữa hai phương thức cập nhật dữ liệu: `PUT` và `PATCH`
-2. ✅ Giải thích được hai chiến lược thiết kế giao diện: **Pessimistic UI** (Giao diện bi quan) và **Optimistic UI** (Giao diện lạc quan)
-3. ✅ Gửi yêu cầu HTTP POST, PATCH, và DELETE sử dụng Fetch API để lưu trữ, sửa đổi và xóa dữ liệu thực tế trên Mock Server
-4. ✅ Thiết lập cơ chế **Rollback** (Khôi phục trạng thái cũ) để xử lý khi dữ liệu gửi ngầm gặp lỗi kết nối
-
-## 🧠 Cơ sở lý thuyết
-
-### 1. So sánh HTTP Methods cập nhật: PUT vs PATCH
-
-Khi muốn cập nhật một công việc đã có trên JSON Server, Fetch API hỗ trợ hai phương thức:
-
-- **PUT**: Ghi đè toàn bộ bản ghi cũ bằng một bản ghi mới được gửi lên. Nếu thiếu trường nào, trường đó sẽ bị xóa sạch hoặc thiết lập về giá trị mặc định của server.
-- **PATCH**: Chỉ sửa đổi các trường cụ thể được chỉ định trong body của request. Các trường khác giữ nguyên (Khuyên dùng cho chỉnh sửa nhỏ).
-
-```javascript
-// Ví dụ PATCH cập nhật trạng thái hoàn thành
-fetch('http://localhost:3000/todos/1', {
-  method: 'PATCH',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ hoanThanh: true }) // Chỉ cập nhật hoanThanh, tên/mô tả giữ nguyên
-});
-```
-
-### 2. Chiến lược trải nghiệm người dùng: Pessimistic vs Optimistic UI
-
-- **Pessimistic UI (Giao diện Bi quan)**: Click hành động -> Gửi API lên server -> Chờ server thành công -> Cập nhật giao diện. (An toàn nhưng bị trễ nếu mạng chậm, dùng cho tác vụ quan trọng như Thêm/Xóa).
-- **Optimistic UI (Giao diện Lạc quan)**: Click hành động -> Lập tức cập nhật giao diện lập tức trên màn hình -> Đồng thời gửi API chạy ngầm -> Nếu API thất bại thì khôi phục lại trạng thái cũ (Rollback). (Mượt mà tức thì, dùng cho tác vụ nhẹ như Like hoặc Checkbox).
+- ✅ Gửi yêu cầu HTTP POST để lưu thêm mới công việc lên API Server
+- ✅ Gửi yêu cầu HTTP PATCH để cập nhật trạng thái hoàn thành hoặc nội dung sửa đổi lên API Server
+- ✅ Gửi yêu cầu HTTP DELETE để xóa công việc khỏi API Server
+- ✅ Kết hợp nhuần nhuyễn hai chiến lược UI: Pessimistic cho các thao tác nhạy cảm (Xóa, Thêm) và Optimistic cho thao tác nhanh (Toggle hoàn thành)
 
 ---
 
 ## 🧩 Task Project
 
-Hãy khởi chạy `json-server` tại cổng 3000 và tiến hành đồng bộ các tính năng CRUD.
+Trong buổi này, chúng ta sẽ viết lại toàn bộ các hàm thao tác dữ liệu của `main.js` để kết nối trực tiếp với API Server. Hãy đảm bảo `json-server` đang chạy tại `http://localhost:3000`.
 
 ### Task 1: Đồng bộ tính năng Thêm công việc (POST) (30 phút)
 
-Khi thêm công việc, ta gửi request POST chứa thông tin công việc mới lên server theo chiến lược **Pessimistic UI**:
+Khi thêm công việc, ta sẽ gửi một request POST chứa thông tin công việc mới lên server. Chúng ta áp dụng chiến lược **Pessimistic UI**: Đợi server lưu thành công -> lấy đối tượng phản hồi từ server -> thêm vào State -> vẽ lại giao diện.
 
 ```javascript
 // Cập nhật sự kiện submit form trong main.js
@@ -60,8 +38,8 @@ formCongViec.addEventListener('submit', async function(event) {
     const uuTien = selectUuTien.value === '1' ? 'high' : (selectUuTien.value === '2' ? 'medium' : 'low');
     const moTa = textareaMoTa.value;
     
-    if (!ten.trim()) {
-        alert('Tên công việc không được để trống!');
+    if (!kiemTraTenCongViec(ten)) {
+        alert('Tên công việc không hợp lệ!');
         return;
     }
     
@@ -69,13 +47,15 @@ formCongViec.addEventListener('submit', async function(event) {
     
     try {
         if (dangSuaId !== null) {
-            // Sửa công việc (Task 2)
+            // Xử lý CẬP NHẬT (SẼ VIẾT Ở TASK 2)
             await capNhatCongViecAPI(dangSuaId, ten, moTa, uuTien);
         } else {
-            // Thêm mới công việc (POST)
+            // Xử lý THÊM MỚI (POST)
             const response = await fetch(API_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
                     ten: ten.trim(),
                     moTa: moTa.trim(),
@@ -84,10 +64,13 @@ formCongViec.addEventListener('submit', async function(event) {
                 })
             });
             
-            if (!response.ok) throw new Error('Không thể thêm công việc');
+            if (!response.ok) throw new Error('Không thể thêm công việc lên API');
             
+            // Nhận đối tượng công việc đã có kèm ID do server tự sinh
             const newTodo = await response.json();
-            danhSachCongViec.unshift(newTodo); // Cập nhật State
+            
+            // Cập nhật State
+            danhSachCongViec.unshift(newTodo);
             showToast('Đã thêm công việc thành công!', 'success');
         }
         
@@ -96,8 +79,8 @@ formCongViec.addEventListener('submit', async function(event) {
         formCongViec.reset();
         
     } catch (error) {
-        console.error('Lỗi thêm mới:', error);
-        showToast('Kết nối thất bại!', 'error');
+        console.error('Lỗi khi submit form:', error);
+        showToast('Đã xảy ra lỗi kết nối!', 'error');
     } finally {
         toggleLoading(false);
     }
@@ -106,9 +89,9 @@ formCongViec.addEventListener('submit', async function(event) {
 
 ---
 
-### Task 2: Đồng bộ tính năng Sửa nội dung (PATCH) (30 phút)
+### Task 2: Đồng bộ tính năng Sửa công việc (PATCH) (35 phút)
 
-Gửi một PATCH request lên ID công việc tương ứng để cập nhật các trường thông tin thay đổi:
+Khi chỉnh sửa nội dung, ta sẽ gửi một PATCH request lên ID công việc tương ứng để cập nhật các trường thông tin thay đổi.
 
 ```javascript
 /**
@@ -117,7 +100,9 @@ Gửi một PATCH request lên ID công việc tương ứng để cập nhật 
 async function capNhatCongViecAPI(id, ten, moTa, uuTien) {
     const response = await fetch(`${API_URL}/${id}`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             ten: ten.trim(),
             moTa: moTa.trim(),
@@ -128,8 +113,11 @@ async function capNhatCongViecAPI(id, ten, moTa, uuTien) {
     if (!response.ok) throw new Error('Lỗi cập nhật API');
     
     const updatedTodo = await response.json();
-    danhSachCongViec = danhSachCongViec.map(cv => cv.id === id ? updatedTodo : cv); // Cập nhật State
     
+    // Cập nhật State cục bộ
+    danhSachCongViec = danhSachCongViec.map(cv => cv.id === id ? updatedTodo : cv);
+    
+    // Reset trạng thái sửa
     dangSuaId = null;
     document.querySelector('#form-cong-viec button[type="submit"] span').textContent = 'Thêm công việc';
     showToast('Đã lưu chỉnh sửa!', 'success');
@@ -138,11 +126,12 @@ async function capNhatCongViecAPI(id, ten, moTa, uuTien) {
 
 ---
 
-### Task 3: Đồng bộ trạng thái Check Hoàn thành (Optimistic PATCH) (30 phút)
+### Task 3: Đồng bộ tính năng Check Hoàn thành (Optimistic PATCH) (25 phút)
 
 Áp dụng chiến lược **Optimistic UI** cho nút Checkbox. Khi click sẽ toggle ngay lập tức, rồi gửi PATCH chạy ngầm, nếu lỗi thì rollback dữ liệu.
 
 ```javascript
+// Thay đổi lại hàm toggleHoanThanh trong main.js
 async function toggleHoanThanh(id) {
     const index = danhSachCongViec.findIndex(cv => cv.id === id);
     if (index === -1) return;
@@ -154,21 +143,25 @@ async function toggleHoanThanh(id) {
     renderList();
     capNhatTienDo();
     
-    // 2. Gửi PATCH chạy ngầm dưới nền
+    // 2. Gửi PATCH ngầm
     try {
         const response = await fetch(`${API_URL}/${id}`, {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ hoanThanh: !statusCu })
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                hoanThanh: !statusCu
+            })
         });
         
         if (!response.ok) throw new Error('PATCH Error');
         
     } catch (error) {
         console.error('Lỗi khi toggle. Đang rollback...', error);
-        showToast('Kết nối mạng lỗi! Đang khôi phục...', 'error');
+        showToast('Không thể kết nối! Khôi phục trạng thái cũ.', 'error');
         
-        // 3. Rollback dữ liệu nếu gặp lỗi mạng
+        // Rollback
         danhSachCongViec[index].hoanThanh = statusCu;
         renderList();
         capNhatTienDo();
@@ -180,15 +173,14 @@ async function toggleHoanThanh(id) {
 
 ### Task 4: Đồng bộ tính năng Xóa công việc (DELETE) (30 phút)
 
-Thầy trò mình áp dụng **Pessimistic UI** cho tính năng xóa: Hiện prompt xác nhận -> gửi DELETE request -> chờ server xác nhận xóa thành công -> lọc State -> render lại.
+Chúng ta áp dụng **Pessimistic UI** cho tính năng xóa: Hiện prompt xác nhận -> gửi DELETE request -> chờ server xác nhận xóa thành công -> lọc State -> render lại.
 
 ```javascript
 /**
  * Gọi API DELETE để xóa công việc khỏi JSON Server
+ * @param {number} id - ID công việc cần xóa
  */
 async function xoaCongViec(id) {
-    if (!confirm('Bạn muốn xóa công việc này?')) return;
-    
     toggleLoading(true);
     
     try {
@@ -198,10 +190,12 @@ async function xoaCongViec(id) {
         
         if (!response.ok) throw new Error('DELETE Error');
         
-        danhSachCongViec = danhSachCongViec.filter(cv => cv.id !== id); // Lọc State
+        // Cập nhật State sau khi server xóa thành công
+        danhSachCongViec = danhSachCongViec.filter(cv => cv.id !== id);
+        
         renderList();
         capNhatTienDo();
-        showToast('Đã xóa công việc.', 'info');
+        showToast('Đã xóa công việc khỏi danh sách.', 'info');
         
     } catch (error) {
         console.error('Lỗi khi xóa:', error);
@@ -214,10 +208,13 @@ async function xoaCongViec(id) {
 
 ---
 
+
+
 ## 📝 Bài tập về nhà
 
-1. Các em các em các em hãy thực hiện tích hợp hoàn thiện cả 4 thao tác API (POST, PATCH, DELETE, Toggle) vào ứng dụng ZenTask của các em.
-2. Thử tạo độ trễ mạng giả lập trên JSON Server bằng cách chạy lệnh: `json-server --watch db.json --delay 2000` (delay 2 giây). Hãy click toggle checkbox để kiểm tra xem trải nghiệm Optimistic UI mượt mà thế nào, và click nút xóa để thấy Pessimistic UI hiển thị loading ra sao.
+1. Hãy tích hợp hoàn thiện cả 4 thao tác API (POST, PATCH, DELETE, Toggle) vào ứng dụng ZenTask của bạn.
+2. Mở file `db.json` trên VS Code song song với màn hình trình duyệt. Hãy thực hiện thêm, sửa, xóa trên giao diện và quan sát xem nội dung file `db.json` có tự động thay đổi theo thời gian thực hay không.
+3. Thử tạo độ trễ mạng giả lập trên JSON Server bằng cách chạy lệnh: `json-server --watch db.json --delay 2000` (delay 2 giây). Hãy click toggle checkbox để kiểm tra xem trải nghiệm Optimistic UI mượt mà thế nào, và click nút xóa để thấy Pessimistic UI hiển thị loading ra sao.
 
 ---
 

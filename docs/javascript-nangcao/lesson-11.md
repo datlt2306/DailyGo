@@ -1,165 +1,195 @@
-# Buổi 11: Mock API Setup & Tải dữ liệu (GET)
-- **Dự án**: ZenTask (To-Do App) - Thiết lập Mock API Server nội bộ và tải danh sách công việc động khi mở ứng dụng
+# Buổi 11: HTTP Methods nâng cao & Tối ưu UI
+
+**Loại buổi**: Lý thuyết  
+**Thời lượng**: 120 phút  
+**Dự án**: ZenTask (To-Do App) - Nghiên cứu cơ chế đồng bộ hóa dữ liệu tối ưu
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Tải cài đặt và cấu hình máy chủ giả lập RESTful API cục bộ bằng thư viện `json-server`
-2. ✅ Viết mã nguồn Fetch GET liên kết ứng dụng ZenTask với cổng mạng local `http://localhost:3000/todos`
-3. ✅ Thiết kế và lập trình giao diện trạng thái **Loading Indicator** để nâng cao trải nghiệm người dùng
-4. ✅ Lập trình giao diện xử lý lỗi kết nối và thiết lập nút bấm **"Thử lại"** (Retry Button) để khôi phục khi server lỗi sập
-
-## 🧩 Task Project
-
-### Task 1: Cài đặt và cấu hình Mock API Server (30 phút)
-
-Thầy trò mình sử dụng `json-server` để giả lập một RESTful API Server hoàn chỉnh chạy trên máy tính cá nhân.
-
-1. Mở Terminal tại thư mục gốc dự án `todo-app` và chạy lệnh sau để khởi tạo tệp `package.json` (nếu chưa có) và cài đặt `json-server`:
-   ```bash
-   npm init -y
-   npm install json-server --save-dev
-   ```
-2. Tạo tệp tin `db.json` trong thư mục gốc dự án để chứa cơ sở dữ liệu giả lập dạng JSON:
-   ```json
-   {
-     "todos": [
-       {
-         "id": 1,
-         "ten": "Đọc tài liệu hướng dẫn Mock API",
-         "moTa": "Tìm hiểu cách cài đặt json-server trên local.",
-         "uuTien": "high",
-         "hoanThanh": true
-       },
-       {
-         "id": 2,
-         "ten": "Thiết lập cấu hình json-server",
-         "moTa": "Chạy thử server cổng 3000 để kiểm tra kết nối.",
-         "uuTien": "medium",
-         "hoanThanh": false
-       }
-     ]
-   }
-   ```
-3. Cấu hình câu lệnh khởi chạy nhanh (npm script) trong file `package.json`:
-   ```json
-   "scripts": {
-     "server": "json-server --watch db.json --port 3000"
-   }
-   ```
-4. Khởi chạy API Server bằng lệnh:
-   ```bash
-   npm run server
-   ```
-   *Kiểm tra: Truy cập đường dẫn `http://localhost:3000/todos` trên trình duyệt để kiểm tra xem danh sách JSON có hiển thị không.*
+- ✅ Phân biệt rõ sự khác biệt giữa hai phương thức cập nhật dữ liệu: `PUT` và `PATCH`
+- ✅ Giải thích được hai chiến lược thiết kế giao diện: **Pessimistic UI** (Giao diện bi quan) và **Optimistic UI** (Giao diện lạc quan)
+- ✅ Đánh giá và lựa chọn giải pháp tối ưu UI phù hợp cho từng tính năng nghiệp vụ của ứng dụng
+- ✅ Hiểu cách lập trình Rollback (khôi phục trạng thái cũ) khi áp dụng Optimistic UI gặp lỗi kết nối
 
 ---
 
-### Task 2: Gọi GET API tải dữ liệu về ứng dụng khi load trang (50 phút)
+## 🧠 Nội dung chính
 
-Thầy trò mình sẽ khai báo biến lưu trữ URL gốc của API và viết hàm bất đồng bộ `taiDanhSachTuAPI()` để lấy dữ liệu, lưu vào mảng `danhSachCongViec` rồi gọi hiển thị.
+### 1. So sánh HTTP Methods cập nhật: PUT vs PATCH
 
-#### Bước 2.1: Khai báo hằng số API URL và cấu trúc Loading
-1. Đảm bảo cấu trúc Loading đã có sẵn trong file `index.html` của template ZenTask:
-   ```html
-   <div id="loading-indicator" class="loading-state hidden">
-       <div class="spinner"></div>
-       <span>Đang tải dữ liệu...</span>
-   </div>
-   ```
+Khi muốn cập nhật một công việc đã có trên JSON Server, Fetch API hỗ trợ hai phương thức:
 
-2. Viết logic JavaScript điều khiển hiển thị spinner trong file `main.js`:
-   ```javascript
-   const API_URL = 'http://localhost:3000/todos';
+#### 1. So sánh cú pháp PUT và PATCH
 
-   // Thay đổi mảng lưu trữ ban đầu thành rỗng
-   let danhSachCongViec = [];
+::: code-group
+```javascript [Cập nhật một phần (PATCH)]
+// PATCH chỉ gửi các trường cần sửa đổi lên server.
+// Các thuộc tính khác trong db.json được giữ nguyên vẹn.
+fetch('http://localhost:3000/todos/1', {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        hoanThanh: true // Chỉ thay đổi duy nhất trường này
+    })
+});
+```
 
-   /**
-    * Hàm điều khiển hiển thị trạng thái Loading
-    * @param {boolean} show - true để hiển thị, false để ẩn
-    */
-   function toggleLoading(show) {
-       const loader = document.getElementById('loading-indicator');
-       if (!loader) return;
-       
-       if (show) {
-           loader.classList.remove('hidden');
-       } else {
-           loader.classList.add('hidden');
-       }
-   }
-   ```
+```javascript [Ghi đè toàn bộ (PUT)]
+// PUT gửi toàn bộ bản ghi mới để ghi đè bản ghi cũ.
+// Nếu thiếu thuộc tính (như moTa, uuTien), chúng sẽ bị xóa khỏi db.json!
+fetch('http://localhost:3000/todos/1', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        ten: "Tên mới",
+        moTa: "Mô tả cũ",
+        uuTien: "Cao",
+        hoanThanh: true
+    })
+});
+```
+:::
 
-#### Bước 2.2: Viết hàm Fetch dữ liệu bất đồng bộ từ JSON Server
-```javascript
+---
+
+### 2. Hai chiến lược thiết kế trải nghiệm người dùng: Pessimistic vs Optimistic UI
+
+Khi người dùng thực hiện một hành động (ví dụ: bấm checkbox hoàn thành công việc), ứng dụng cần gửi API lên server và cập nhật giao diện. Ta có hai cách thiết kế:
+
+#### 2.1. Pessimistic UI (Giao diện Bi quan - Chắc chắn mới làm)
+Là chiến lược truyền thống: Ứng dụng gửi API lên server -> Chờ server xử lý thành công và trả về phản hồi -> Cập nhật giao diện.
+* **Quy trình**:
+  ```mermaid
+  sequenceDiagram
+      Client->>Server: Gửi PATCH cập nhật hoanThanh
+      Note over Server: Server cập nhật db.json...
+      Server-->>Client: Trả về 200 OK (Thành công)
+      Note over Client: Client thay đổi giao diện (đánh dấu checked)
+  ```
+* **Ưu điểm**: Giao diện luôn phản ánh chính xác 100% dữ liệu thực tế trên server. Không sợ bị lệch thông tin.
+* **Nhược điểm**: Nếu mạng chậm, người dùng sẽ cảm thấy giao diện bị trễ (bấm vào checkbox phải mất 1-2 giây mới thấy nó được check), trải nghiệm kém mượt mà.
+* **Ứng dụng**: Dành cho các tác vụ quan trọng cần tính chính xác cao (Thanh toán tiền, rút tiền, đổi mật khẩu).
+
+#### 2.2. Optimistic UI (Giao diện Lạc quan - Cứ tin là thành công)
+Là chiến lược hiện đại: Ứng dụng lập tức thay đổi giao diện ngay khi người dùng click -> Đồng thời gửi API chạy ngầm dưới nền -> Nếu server phản hồi thành công thì giữ nguyên giao diện, nếu server báo lỗi thì khôi phục giao diện về trạng thái ban đầu (Rollback).
+* **Quy trình**:
+  ```mermaid
+  sequenceDiagram
+      Note over Client: Client lập tức thay đổi giao diện (checked)
+      Client->>Server: Gửi PATCH chạy ngầm dưới nền
+      Note over Server: Server xử lý...
+      alt Thành công
+          Server-->>Client: 200 OK (Mọi thứ giữ nguyên)
+      else Thất bại (Lỗi kết nối)
+          Server-->>Client: 500 Error hoặc Timeout
+          Note over Client: Client rollback (bỏ checked, báo lỗi)
+      end
+  ```
+* **Ưu điểm**: Trải nghiệm cực kỳ mượt mà, tức thời (ngay lập tức thấy thay đổi trên UI mà không cần chờ đợi mạng).
+* **Nhược điểm**: Phải lập trình thêm phần khôi phục dữ liệu (Rollback) phức tạp nếu API thất bại.
+* **Ứng dụng**: Phù hợp cho các thao tác nhanh, không quá nhạy cảm về bảo mật tài chính (Like bài viết, Toggle checkbox Todo, Thêm bình luận).
+
+---
+
+## 💻 Ví dụ minh họa: So sánh Code Toggle Trạng thái
+
+Dưới đây là so sánh mã nguồn triển khai cùng tính năng checkbox hoàn thành công việc theo 2 chiến lược thiết kế:
+
+::: code-group
+```javascript [Cách 1: Optimistic UI (Lạc quan - Khuyên dùng cho checkbox)]
 /**
- * Gọi API lấy danh sách công việc từ JSON Server
+ * Cập nhật giao diện lập tức, gửi API chạy ngầm, rollback nếu lỗi
  */
-async function taiDanhSachTuAPI() {
-    toggleLoading(true); // 1. Hiện spinner loading
+async function toggleTaskOptimistic(id) {
+    // 1. Tìm công việc hiện tại trong State
+    const taskIndex = danhSachCongViec.findIndex(t => t.id === id);
+    if (taskIndex === -1) return;
     
+    // Ghi nhớ trạng thái cũ để phòng trường hợp lỗi cần rollback
+    const taskGoc = danhSachCongViec[taskIndex];
+    const trangThaiHoanThanhCu = taskGoc.hoanThanh;
+    
+    // 2. CẬP NHẬT GIAO DIỆN NGAY LẬP TỨC
+    danhSachCongViec[taskIndex].hoanThanh = !trangThaiHoanThanhCu;
+    renderList();
+    capNhatTienDo();
+    
+    // 3. Gửi API chạy ngầm dưới nền
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(`http://localhost:3000/todos/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ hoanThanh: !trangThaiHoanThanhCu })
+        });
         
-        if (!response.ok) {
-            throw new Error(`Lỗi kết nối HTTP: ${response.status}`);
-        }
-        
-        // 2. Chuyển đổi dữ liệu và cập nhật vào State
-        const data = await response.json();
-        danhSachCongViec = data;
-        
-        // 3. Render dữ liệu mới ra giao diện
-        renderList();
-        capNhatTienDo();
+        if (!response.ok) throw new Error('API lỗi');
         
     } catch (error) {
-        console.error('Lỗi khi tải dữ liệu từ API:', error);
+        console.warn('Lỗi API. Tiến hành Rollback UI...', error.message);
         
-        // Hiển thị thông báo lỗi trực quan lên UI
-        const listContainer = document.getElementById('danh-sach-cong-viec');
-        listContainer.innerHTML = `
-            <li class="error-state" style="text-align:center; padding:30px; color:#ef4444; list-style:none;">
-                <p>⚠️ Không thể kết nối với API Server!</p>
-                <button onclick="taiDanhSachTuAPI()" style="margin-top:10px; padding:6px 12px; border-radius:6px; cursor:pointer; background:#ef4444; color:#fff; border:none;">Thử lại</button>
-            </li>
-        `;
-        
-    } finally {
-        toggleLoading(false); // 4. Ẩn spinner loading (luôn chạy bất kể thành công hay thất bại)
+        // 4. ROLLBACK UI: Trả về trạng thái cũ nếu API gặp sự cố
+        danhSachCongViec[taskIndex].hoanThanh = trangThaiHoanThanhCu;
+        renderList();
+        capNhatTienDo();
+        alert('Không thể cập nhật trạng thái. Vui lòng thử lại!');
     }
 }
 ```
 
-#### Bước 2.3: Lắng nghe sự kiện DOMContentLoaded để kích hoạt tải dữ liệu
-```javascript
-// Gọi API ngay sau khi trình duyệt dựng xong cây DOM của trang web
-document.addEventListener('DOMContentLoaded', function() {
-    // Khởi chạy lấy theme cũ
-    khoiTaoTheme();
+```javascript [Cách 2: Pessimistic UI (Bi quan - Chờ API phản hồi)]
+/**
+ * Chờ API thành công mới cập nhật giao diện
+ */
+async function toggleTaskPessimistic(id) {
+    const taskIndex = danhSachCongViec.findIndex(t => t.id === id);
+    if (taskIndex === -1) return;
     
-    // Tải danh sách công việc từ API thay vì đọc từ LocalStorage như trước
-    taiDanhSachTuAPI();
-});
+    const taskGoc = danhSachCongViec[taskIndex];
+    const trangThaiHoanThanhCu = taskGoc.hoanThanh;
+    
+    // Bật hiệu ứng loading (nếu có)
+    showLoadingSpinner(true);
+    
+    try {
+        const response = await fetch(`http://localhost:3000/todos/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ hoanThanh: !trangThaiHoanThanhCu })
+        });
+        
+        if (!response.ok) throw new Error('API lỗi');
+        
+        // CẬP NHẬT GIAO DIỆN SAU KHI SERVER TRẢ VỀ THÀNH CÔNG
+        danhSachCongViec[taskIndex].hoanThanh = !trangThaiHoanThanhCu;
+        renderList();
+        capNhatTienDo();
+        
+    } catch (error) {
+        alert('Cập nhật thất bại: ' + error.message);
+    } finally {
+        showLoadingSpinner(false);
+    }
+}
 ```
+:::
 
 ---
 
+
+
 ## 📝 Bài tập về nhà
 
-1. Các em các em các em hãy thực hiện cấu hình chạy Mock API cổng 3000 trên máy của các em và chạy ZenTask để kết nối dữ liệu thành công.
-2. Thử tắt Terminal đang chạy `json-server` đi (mô phỏng server sập đột ngột) để kiểm tra xem giao diện ZenTask có hiển thị đúng thông báo lỗi kết nối và nút "Thử lại" hoạt động chính xác khi các em khởi chạy lại server hay không.
+1. So sánh chi tiết bằng văn bản sự khác biệt khi áp dụng Pessimistic UI và Optimistic UI cho tính năng "Tăng số lượng sản phẩm trong giỏ hàng".
+2. Tìm hiểu tại sao trong các ứng dụng mạng xã hội lớn như Facebook, Instagram, Twitter, các nút Like/Tym hay nút Bookmark luôn được thiết kế theo mô hình Optimistic UI.
 
 ---
 
 ## 🔗 Tài liệu tham khảo
 
-- [GitHub: json-server repository](https://github.com/typicode/json-server)
-- [MDN: DOMContentLoaded event](https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event)
-- [JavaScript.info: Try...catch...finally](https://javascript.info/try-catch)
+- [Smashing Magazine: Optimistic UI Patterns](https://www.smashingmagazine.com/2016/11/true-lies-of-optimistic-ui/)
+- [MDN: HTTP methods PATCH vs PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+- [LogRocket: Understanding Optimistic UI](https://blog.logrocket.com/understanding-optimistic-ui-react/)

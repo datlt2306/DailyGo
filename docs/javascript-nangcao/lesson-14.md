@@ -1,35 +1,38 @@
 # Buổi 14: Tách Module code
+
+**Loại buổi**: Thực hành  
+**Thời lượng**: 120 phút  
 **Dự án**: ZenTask (To-Do App) - Thực hiện tái cấu trúc (Refactoring) mã nguồn sang kiến trúc Module
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Phân rã tệp tin `main.js` cồng kềnh thành các tệp tin module chuyên biệt
-2. ✅ Thiết lập lớp hằng số và các helper tiện ích sử dụng chung
-3. ✅ Xây dựng Module API cô lập các tác vụ HTTP Requests
-4. ✅ Xây dựng Module DOM quản lý hiển thị giao diện độc lập
-5. ✅ Vận hành ứng dụng ZenTask hoàn chỉnh sử dụng mô hình ES6 Modules chạy trên trình duyệt
+- ✅ Phân rã tệp tin `main.js` cồng kềnh thành các tệp tin module chuyên biệt
+- ✅ Thiết lập lớp hằng số và các helper tiện ích sử dụng chung
+- ✅ Xây dựng Module API cô lập các tác vụ HTTP Requests
+- ✅ Xây dựng Module DOM quản lý hiển thị giao diện độc lập
+- ✅ Vận hành ứng dụng ZenTask hoàn chỉnh sử dụng mô hình ES6 Modules chạy trên trình duyệt
+
+---
 
 ## 🧩 Task Project
 
-Thầy trò mình sẽ tiến hành bẻ nhỏ file `main.js` của Buổi 12 thành các file nằm trong thư mục `src/`.
+Chúng ta sẽ tiến hành bẻ nhỏ file `main.js` của Buổi 12 thành các file nằm trong thư mục `src/`.
 
 ### Task 1: Tạo `src/constants.js` và `src/utils.js` (20 phút)
 
-::: code-group
-
-```javascript [src/constants.js]
+1. Tạo file `src/constants.js` để lưu trữ các hằng số cấu hình:
+```javascript
 // src/constants.js
 export const API_URL = 'http://localhost:3000/todos';
 export const THEME_KEY = 'zentask_theme';
 ```
 
-```javascript [src/utils.js]
+2. Tạo file `src/utils.js` chứa các hàm tiện ích dùng chung:
+```javascript
 // src/utils.js
 /**
  * Hiển thị Toast Notification thông báo
@@ -57,15 +60,12 @@ export function showToast(message, type = 'success') {
 }
 ```
 
-:::
-
 ---
 
 ### Task 2: Tạo module `src/api.js` và `src/storage.js` (30 phút)
 
-::: code-group
-
-```javascript [src/api.js]
+1. Tạo module `src/api.js` chịu trách nhiệm gọi API server:
+```javascript
 // src/api.js
 import { API_URL } from './constants.js';
 
@@ -118,7 +118,8 @@ export const api = {
 };
 ```
 
-```javascript [src/storage.js]
+2. Tạo module `src/storage.js` quản lý cấu hình giao diện:
+```javascript
 // src/storage.js
 import { THEME_KEY } from './constants.js';
 
@@ -131,8 +132,6 @@ export const storage = {
     }
 };
 ```
-
-:::
 
 ---
 
@@ -166,7 +165,7 @@ export const dom = {
         if (txt) txt.textContent = `${percent}%`;
         
         const desc = document.querySelector('.stats-desc');
-        if (desc) desc.textContent = `Hoàn thành ${completed} trong số ${total} công việc của các em.`;
+        if (desc) desc.textContent = `Hoàn thành ${completed} trong số ${total} công việc của bạn.`;
         
         const fill = document.querySelector('.progress-bar-fill');
         if (fill) fill.style.width = `${percent}%`;
@@ -427,10 +426,12 @@ initApp();
 
 ---
 
+
+
 ## 📝 Bài tập về nhà
 
-1. Các em các em các em hãy thực hiện phân rã hoàn thiện file `main.js` cũ của các em thành các file modules độc lập nằm trong thư mục `src/` theo đúng cấu trúc hướng dẫn.
-2. Kiểm tra xem ứng dụng của các em có hoạt động bình thường sau khi tách không (các em các em lưu ý: bắt buộc phải mở ứng dụng thông qua Live Server trên VS Code).
+1. Hãy thực hiện phân rã hoàn thiện file `main.js` cũ của bạn thành các file modules độc lập nằm trong thư mục `src/` theo đúng cấu trúc hướng dẫn.
+2. Kiểm tra xem ứng dụng của bạn có hoạt động bình thường sau khi tách không (lưu ý: bắt buộc phải mở ứng dụng thông qua Live Server trên VS Code).
 3. Đọc hiểu luồng dữ liệu khi người dùng bấm nút xóa: Từ sự kiện click ở `main.js`, gọi API xóa ở `api.js`, cập nhật mảng trong `main.js`, gọi vẽ lại UI ở `dom.js`.
 
 ---

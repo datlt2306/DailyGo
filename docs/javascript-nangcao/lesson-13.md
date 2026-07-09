@@ -1,18 +1,21 @@
 # Buổi 13: ES6 Modules & Kiến trúc ứng dụng
+
+**Loại buổi**: Lý thuyết  
+**Thời lượng**: 120 phút  
 **Dự án**: ZenTask (To-Do App) - Lập kế hoạch tái cấu trúc dự án theo kiến trúc Modular
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Hiểu rõ tầm quan trọng của việc tổ chức và kiến trúc mã nguồn trong phát triển phần mềm
-2. ✅ Sử dụng thành thạo cú pháp import và export của ES6 Modules (Default vs Named Exports)
-3. ✅ Phân tách ứng dụng thành các tầng kiến trúc rõ ràng (API, Storage, DOM, Main)
-4. ✅ Cấu hình file HTML để chạy mã nguồn JavaScript dưới dạng Module (`type="module"`)
+- ✅ Hiểu rõ tầm quan trọng của việc tổ chức và kiến trúc mã nguồn trong phát triển phần mềm
+- ✅ Sử dụng thành thạo cú pháp import và export của ES6 Modules (Default vs Named Exports)
+- ✅ Phân tách ứng dụng thành các tầng kiến trúc rõ ràng (API, Storage, DOM, Main)
+- ✅ Cấu hình file HTML để chạy mã nguồn JavaScript dưới dạng Module (`type="module"`)
+
+---
 
 ## 🧠 Nội dung chính
 
@@ -28,59 +31,37 @@ Khi bắt đầu một dự án nhỏ, ta có xu hướng viết tất cả mã 
 
 ES6 giới thiệu hệ thống module chuẩn hóa chạy trực tiếp trên trình duyệt web. Có hai cách xuất (export) dữ liệu từ một module:
 
-#### 2.1. Named Exports (Xuất có đặt tên)
-Dùng để xuất nhiều biến, hằng số hoặc hàm từ cùng một file. Khi import, các em phải dùng chính xác tên đó đặt trong cặp ngoặc nhọn `{}`.
-
-* **Xuất (File `utils.js`):**
-
 ::: code-group
-
-```javascript [main.js]
+```javascript [Named Exports (Xuất có đặt tên)]
+// utils.js - Xuất nhiều biến hoặc hàm cùng lúc
 export const LIMIT = 10;
-
 export function validateEmail(email) {
     return email.includes('@');
 }
-```
 
-```javascript [main.js]
+// main.js - Phải import chính xác tên trong ngoặc nhọn {}
 import { LIMIT, validateEmail } from './utils.js';
-
 console.log(LIMIT); // 10
-console.log(validateEmail('test@gmail.com')); // true
 ```
 
-:::
-
-#### 2.2. Default Export (Xuất mặc định)
-Mỗi file chỉ được phép có duy nhất **một** default export. Thường dùng khi file đó chỉ đại diện cho một class, một component hoặc một tập hợp hàm chính. Khi import, các em có thể đặt tên tùy ý và không dùng ngoặc nhọn `{}`.
-
-* **Xuất (File `api.js`):**
-
-::: code-group
-
-```javascript [main.js]
+```javascript [Default Export (Xuất mặc định)]
+// api.js - Mỗi file chỉ được phép có duy nhất 1 default export
 const apiService = {
-    get(url) { /* ... */ },
-    post(url, data) { /* ... */ }
+    get(url) { /* ... */ }
 };
-
 export default apiService;
-```
 
-```javascript [main.js]
-import customApi from './api.js'; // Tên đặt tùy ý
-
+// main.js - Import không cần ngoặc nhọn và có thể đổi tên tùy ý
+import customApi from './api.js';
 customApi.get('http://api.com');
 ```
-
 :::
 
 ---
 
 ### 3. Phân chia các lớp kiến trúc cho To-Do App
 
-Trong buổi thực hành tiếp theo, thầy trò mình sẽ chia file `main.js` hiện tại thành cấu trúc sau:
+Trong buổi thực hành tiếp theo, chúng ta sẽ chia file `main.js` hiện tại thành cấu trúc sau:
 
 ```
 todo-app/
@@ -112,15 +93,17 @@ Mặc định, trình duyệt coi tệp JS là tệp script thông thường (kh
 ```
 
 #### Đặc điểm của `type="module"`:
-1. **Tự động Defer**: Module mặc định được tải song song và chỉ thực thi sau khi cây DOM đã dựng xong (tương tự thuộc tính `defer`). Do đó các em không cần bọc code trong sự kiện `DOMContentLoaded` nữa.
+1. **Tự động Defer**: Module mặc định được tải song song và chỉ thực thi sau khi cây DOM đã dựng xong (tương tự thuộc tính `defer`). Do đó bạn không cần bọc code trong sự kiện `DOMContentLoaded` nữa.
 2. **Cơ chế Strict Mode**: Code bên trong module tự động chạy dưới dạng `use strict` (ngăn chặn các lỗi viết code cẩu thả).
 3. **Phạm vi riêng (Module Scope)**: Các biến khai báo trong module không bị lộ ra phạm vi toàn cục (global scope), tránh xung đột biến giữa các file.
 
 ---
 
+
+
 ## 📝 Bài tập về nhà
 
-1. Các em các em các em hãy tạo thử cấu trúc các thư mục và file trống tương tự mô tả cấu trúc dự án To-Do App ở phần nội dung chính trong thư mục code của các em.
+1. Hãy tạo thử cấu trúc các thư mục và file trống tương tự mô tả cấu trúc dự án To-Do App ở phần nội dung chính trong thư mục code của bạn.
 2. Viết thử một module `math.js` có các named export là `cong(a, b)`, `tru(a, b)` và default export là đối tượng `calculator`. Viết file `main.js` import các hàm đó về chạy thử.
 3. Giải thích tại sao việc viết code dạng Module lại giúp nhiều lập trình viên có thể làm việc trên cùng một dự án dễ dàng hơn.
 

@@ -1,130 +1,68 @@
-# JavaScript từ cơ bản đến nâng cao
+# JavaScript Cơ bản
 
-Chào mừng bạn đến với khóa học **JavaScript từ cơ bản đến nâng cao** theo mô hình **Project-Based Learning (PBL)**!
+Xin chào các em! 🎉
+
+Chào mừng các em đến với khóa học **JavaScript Cơ bản**! Đây là bước khởi đầu trên hành trình chinh phục lập trình Web chuyên nghiệp của các em.
 
 ## 🎯 Giới thiệu khóa học
 
-Khóa học này được thiết kế với phương pháp **học qua dự án**, giúp bạn vừa hiểu lý thuyết, vừa áp dụng ngay vào thực tế thông qua việc xây dựng một ứng dụng hoàn chỉnh.
+Khóa học này được thiết kế dành riêng cho các em mới bắt đầu làm quen với lập trình. Các em sẽ được học từ những khái niệm căn bản nhất của ngôn ngữ JavaScript: biến, kiểu dữ liệu, các cấu trúc điều khiển, mảng, đối tượng, và cách xử lý logic qua các dự án mini thú vị.
 
 ### Thông tin chung
-
--   **Tổng thời lượng**: 16 buổi (mỗi buổi 120 phút)
--   **Cấu trúc**: 8 cặp buổi (Lý thuyết - Thực hành)
--   **Dự án xuyên suốt**: Mini Website Quản lý Công Việc (To-Do App)
--   **Đối tượng**: Sinh viên cao đẳng ngành lập trình web (đã học HTML/CSS cơ bản)
--   **Phương pháp**: 20% lý thuyết, 80% thực hành
-
-### Điều kiện tiên quyết
-
-✅ HTML cơ bản (thẻ, form, cấu trúc trang)  
-✅ CSS cơ bản (selectors, properties, layout)  
-✅ Biết cách sử dụng trình soạn thảo code (VS Code)  
-✅ Biết cách mở file HTML trong trình duyệt
-
-### Kết quả học tập
-
-Sau khóa học, bạn sẽ có thể:
-
--   ✅ Hiểu rõ cách JavaScript vận hành trong trình duyệt
--   ✅ Sử dụng thành thạo biến, kiểu dữ liệu, toán tử, hàm
--   ✅ Làm việc với DOM để thao tác trang web
--   ✅ Xử lý sự kiện (click, submit, input...)
--   ✅ Làm việc với Mảng và Object để quản lý dữ liệu
--   ✅ Lưu trữ dữ liệu bằng LocalStorage
--   ✅ Gọi API và xử lý dữ liệu bất đồng bộ
--   ✅ Tổ chức code theo module (ES6 Modules)
--   ✅ Debug và tối ưu hóa code
--   ✅ Xây dựng một ứng dụng web hoàn chỉnh
+- **Tổng thời lượng**: 16 buổi (mỗi buổi 120 phút)
+- **Cấu trúc**: 8 cặp buổi (Lý thuyết kết hợp Thực hành)
+- **Phương pháp**: 30% lý thuyết, 70% thực hành viết code thực tế
 
 ## 📚 Nội dung khóa học
 
 ### 📊 Bảng tổng hợp 16 buổi học
 
-| Buổi | Loại | Chủ đề chính | Mục tiêu | Nội dung chính | Task / Bài tập |
-| --- | --- | --- | --- | --- | --- |
-| **1** | **LT** | DOM Selection & Manipulation | Hiểu DOM, biết cách tìm và sửa đổi phần tử HTML bằng JS | - DOM là gì?<br>- querySelector, querySelectorAll<br>- classList, style, attributes, dataset | |
-| **2** | **TH** | Tích hợp UI & Render Danh sách | Tích hợp template ZenTask, render dữ liệu từ mảng mẫu | - Setup cấu trúc giao diện ZenTask<br>- Tạo mảng công việc mẫu (Mock data)<br>- Duyệt mảng và đổ dữ liệu động (innerHTML/textContent) | Task: Render danh sách công việc tĩnh từ mảng |
-| **3** | **LT** | Sự kiện (Events) & Event Delegation | Hiểu cơ chế sự kiện và cách tối ưu với Event Delegation | - Event Listeners & Event Object<br>- Bubbling & Capturing<br>- Event Delegation (Ủy quyền sự kiện) | |
-| **4** | **TH** | Chức năng Thêm & Xóa công việc | Xử lý thêm công việc mới từ form và click nút xóa | - Submit form & validate input cơ bản<br>- Thêm công việc mới vào mảng<br>- Áp dụng Event Delegation xử lý nút Xóa | Task: Thêm mới và xóa công việc động |
-| **5** | **LT** | Mảng & Object nâng cao - Tư duy State | Làm việc với các phương thức mảng nâng cao và tư duy State | - map, filter, find, findIndex, reduce<br>- Tư duy State-driven UI (State -> Render) | |
-| **6** | **TH** | Chức năng Sửa, Tìm kiếm & Lọc | Hoàn thiện CRUD cơ bản và các bộ lọc tìm kiếm | - Toggle status công việc<br>- Điền dữ liệu vào form để Sửa (Edit)<br>- Tìm kiếm (Search) & Lọc (Filter) theo trạng thái/ưu tiên | Task: Hoàn thiện CRUD và bộ lọc |
-| **7** | **LT** | Web Storage APIs & JSON | Hiểu cách lưu trữ dữ liệu bền vững ở phía Client | - localStorage và sessionStorage<br>- JSON.stringify & JSON.parse | |
-| **8** | **TH** | Lưu trữ Todo & Giao diện Sáng/Tối | Đồng bộ công việc với LocalStorage và làm Dark/Light mode | - Lưu và tải danh sách từ LocalStorage<br>- Theme toggle (Dark/Light mode) & lưu theme preference | Task: Lưu Todo bền vững & Đổi Theme |
-| **9** | **LT** | Asynchronous JS & Fetch API | Hiểu lập trình bất đồng bộ và cách giao tiếp với API | - Callback, Promise, Async/Await<br>- HTTP Protocol & RESTful API (GET, POST, PUT, DELETE) | |
-| **10** | **TH** | JSON Server & Tải dữ liệu (GET) | Thiết lập Mock API và tải danh sách công việc | - Cấu hình và chạy json-server<br>- Gọi GET API tải danh sách khi load trang<br>- Xử lý trạng thái Loading & Error | Task: Tải danh sách công việc từ API |
-| **11** | **LT** | HTTP Methods nâng cao & Tối ưu UI | Hiểu các thao tác cập nhật API và các kỹ thuật tối ưu UI | - Phân biệt PUT và PATCH<br>- Pessimistic UI vs Optimistic UI | |
-| **12** | **TH** | Đồng bộ CRUD với API | Hoàn thiện đồng bộ mọi thay đổi dữ liệu lên Mock API | - Gọi POST khi thêm công việc<br>- Gọi PATCH khi cập nhật trạng thái/nội dung<br>- Gọi DELETE khi xóa công việc | Task: Đồng bộ toàn bộ CRUD với Mock API |
-| **13** | **LT** | ES6 Modules & Kiến trúc phần mềm | Hiểu cách tổ chức code dự án sạch sẽ và modular | - ES6 Modules (import/export)<br>- Tách lớp kiến trúc: API, Storage, DOM, Main | |
-| **14** | **TH** | Tách Module code | Tái cấu trúc (Refactor) To-Do App thành các modules riêng | - Tách code thành api.js, storage.js, dom.js, constants.js<br>- Nhúng Script dạng type="module" | Task: Hoàn thành refactor code |
-| **15** | **LT** | Debugging & Performance Optimization | Biết cách gỡ lỗi chuyên nghiệp và tối ưu hiệu năng | - Chrome DevTools debugger, breakpoints<br>- Kỹ thuật Debounce (tối ưu ô tìm kiếm) | |
-| **16** | **TH** | Tích hợp Debounce, Deploy & Demo | Hoàn thiện tính năng tìm kiếm, deploy dự án và thuyết trình | - Tích hợp Debounce vào ô tìm kiếm<br>- Deploy ứng dụng và Mock API lên Cloud<br>- Demo & Q&A | Task: Hoàn thiện & Thuyết trình |
-
-**Chú thích:**
-
--   **LT**: Lý thuyết
--   **TH**: Thực hành
-
-## 📁 Cấu trúc dự án
-
-Xem chi tiết cấu trúc thư mục và rubric đánh giá tại [Dự án cuối khóa](./final-project.md).
-
-## 🎓 Phương pháp học
-
-### Cấu trúc mỗi buổi học
-
-1. **🎯 Mục tiêu học tập** - Xác định rõ bạn sẽ học được gì
-2. **🧠 Nội dung chính** - Lý thuyết hoặc hướng dẫn project
-3. **💻 Ví dụ minh họa** - Code mẫu và giải thích
-4. **🧩 Bài tập/Task** - Thực hành ngay tại lớp
-5. **🧪 Quiz/Checkpoint** - Kiểm tra kiến thức (5-7 câu)
-
-### Nguyên tắc học tập
-
--   ✅ **Học qua làm**: Tập trung vào thực hành (80%)
--   ✅ **Incremental Build**: Xây dựng project từng bước, buổi sau nâng cấp buổi trước
--   ✅ **Hiểu bản chất**: Không chỉ học syntax, mà hiểu tại sao và khi nào dùng
--   ✅ **Ví dụ thực tế**: Gần gũi với đời sống sinh viên
-
-## 📖 Danh sách bài học
-
-### Giai đoạn 1: DOM & Quản lý Sự kiện (Buổi 1-4)
-
--   [Buổi 1: DOM Selection, Traversal & Manipulation](./lesson-1.md) (LT)
--   [Buổi 2: Tích hợp giao diện mẫu & Render danh sách](./lesson-2.md) (TH)
--   [Buổi 3: JavaScript Events & Event Delegation](./lesson-3.md) (LT)
--   [Buổi 4: Tính năng Thêm & Xóa công việc](./lesson-4.md) (TH)
-
-### Giai đoạn 2: Quản lý State & Tính năng CRUD (Buổi 5-6)
-
--   [Buổi 5: Array/Object Methods & Tư duy State-driven UI](./lesson-5.md) (LT)
--   [Buổi 6: Tính năng Sửa, Tìm kiếm & Lọc](./lesson-6.md) (TH)
-
-### Giai đoạn 3: Web Storage & Dark Mode (Buổi 7-8)
-
--   [Buổi 7: Web Storage APIs & JSON](./lesson-7.md) (LT)
--   [Buổi 8: Lưu trữ dữ liệu & Tính năng Dark/Light Mode](./lesson-8.md) (TH)
-
-### Giai đoạn 4: Lập trình bất đồng bộ & Kết nối API (Buổi 9-12)
-
--   [Buổi 9: Asynchronous JavaScript & Fetch API](./lesson-9.md) (LT)
--   [Buổi 10: Mock API Setup & Tải dữ liệu (GET)](./lesson-10.md) (TH)
--   [Buổi 11: HTTP Methods & Tối ưu hóa UI](./lesson-11.md) (LT)
--   [Buổi 12: Đồng bộ CRUD với API](./lesson-12.md) (TH)
-
-### Giai đoạn 5: Modularization & Refactoring (Buổi 13-14)
-
--   [Buổi 13: ES6 Modules & Kiến trúc ứng dụng](./lesson-13.md) (LT)
--   [Buổi 14: Tách Module code](./lesson-14.md) (TH)
-
-### Giai đoạn 6: Tối ưu, Deploy & Demo (Buổi 15-16)
-
--   [Buổi 15: Debugging & Performance Optimization](./lesson-15.md) (LT)
--   [Buổi 16: Tích hợp Debounce, Deploy & Demo](./lesson-16.md) (TH)
-
-## 🎯 Dự án cuối khóa
-
-Xem chi tiết yêu cầu và rubric tại [Dự án cuối khóa](./final-project.md).
+| Buổi | Loại | Chủ đề chính | Mục tiêu |
+|---|---|---|---|
+| **1** | LT | Nhập môn JavaScript & Biến | Hiểu môi trường chạy JS, cách khai báo biến và kiểu dữ liệu cơ bản |
+| **2** | TH | Thực hành tính toán cơ bản | Viết chương trình tính toán số học, chu vi và diện tích |
+| **3** | LT | Toán tử & Câu điều kiện | Sử dụng toán tử số học, so sánh, logic và cấu trúc if-else, switch-case |
+| **4** | TH | Thực hành logic rẽ nhánh | Viết chương trình phân loại học lực, kiểm tra năm nhuận, tính thuế |
+| **5** | LT | Vòng lặp trong JavaScript | Hiểu và sử dụng vòng lặp for, while, do-while |
+| **6** | TH | Thực hành vòng lặp & Thuật toán | Giải các bài toán in hình sao, tính giai thừa, tìm số nguyên tố |
+| **7** | LT | Hàm (Function) & Scope | Cách định nghĩa hàm, tham số, giá trị trả về, Arrow Function |
+| **8** | TH | Thực hành xây dựng hàm | Tạo bộ thư viện các hàm xử lý toán học và chuỗi |
+| **9** | LT | Mảng (Array) cơ bản | Khái niệm mảng, cách truy xuất phần tử và sử dụng các phương thức cơ bản |
+| **10** | TH | Thực hành làm việc với mảng | Viết ứng dụng quản lý danh sách sản phẩm bằng mảng |
+| **11** | LT | Đối tượng (Object) cơ bản | Định nghĩa object, thuộc tính, phương thức và mảng các object |
+| **12** | TH | Thực hành quản lý đối tượng | Xây dựng chương trình quản lý thông tin giỏ hàng |
+| **13** | LT | Xử lý Chuỗi & Đối tượng Math | Các phương thức xử lý chuỗi và tính toán số học nâng cao |
+| **14** | TH | Thực hành chuẩn hóa dữ liệu | Viết hàm định dạng họ tên, số điện thoại và lọc từ nhạy cảm |
+| **15** | LT | DOM & Sự kiện cơ bản | Hiểu về cây DOM và cách bắt sự kiện click cơ bản |
+| **16** | TH | Dự án Mini tổng kết | Xây dựng ứng dụng Máy tính bỏ túi (Calculator) đơn giản trên giao diện |
 
 ---
 
-**Chúc bạn học tập hiệu quả! 🚀**
+## 📖 Danh sách bài học
+
+### Giai đoạn 1: Cú pháp cơ bản & Rẽ nhánh (Buổi 1-4)
+- [Buổi 1: Nhập môn JavaScript & Biến](./lesson-1.md)
+- [Buổi 2: Thực hành tính toán cơ bản](./lesson-2.md)
+- [Buổi 3: Toán tử & Câu điều kiện](./lesson-3.md)
+- [Buổi 4: Thực hành logic rẽ nhánh](./lesson-4.md)
+
+### Giai đoạn 2: Vòng lặp & Hàm (Buổi 5-8)
+- [Buổi 5: Vòng lặp trong JavaScript](./lesson-5.md)
+- [Buổi 6: Thực hành vòng lặp & Thuật toán](./lesson-6.md)
+- [Buổi 7: Hàm (Function) & Scope](./lesson-7.md)
+- [Buổi 8: Thực hành xây dựng hàm](./lesson-8.md)
+
+### Giai đoạn 3: Cấu trúc dữ liệu Mảng & Đối tượng (Buổi 9-12)
+- [Buổi 9: Mảng (Array) cơ bản](./lesson-9.md)
+- [Buổi 10: Thực hành làm việc với mảng](./lesson-10.md)
+- [Buổi 11: Đối tượng (Object) cơ bản](./lesson-11.md)
+- [Buổi 12: Thực hành quản lý đối tượng](./lesson-12.md)
+
+### Giai đoạn 4: Xử lý chuỗi & DOM tương tác (Buổi 13-16)
+- [Buổi 13: Xử lý Chuỗi & Đối tượng Math](./lesson-13.md)
+- [Buổi 14: Thực hành chuẩn hóa dữ liệu](./lesson-14.md)
+- [Buổi 15: DOM & Sự kiện cơ bản](./lesson-15.md)
+- [Buổi 16: Dự án Mini tổng kết](./lesson-16.md)
+
+---
+**Chúc các em học tập thật tốt! 🚀**

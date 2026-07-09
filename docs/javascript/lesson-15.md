@@ -1,144 +1,71 @@
-# Buổi 15: Debugging & Performance Optimization
+# Buổi 15: DOM & Sự kiện cơ bản
 
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
-**Dự án**: ZenTask (To-Do App) - Tối ưu hóa hiệu năng ứng dụng và gỡ lỗi chuyên nghiệp
+Xin chào các em! 👋
 
----
+Hôm nay thầy trò mình sẽ học cách làm cho trang web "sống động" bằng cách kết nối mã JavaScript với giao diện HTML thông qua **DOM (Document Object Model)**.
 
-## 🎯 Mục tiêu học tập
-
-Sau buổi học này, bạn sẽ có thể:
-
-- ✅ Gỡ lỗi (Debug) ứng dụng JavaScript chuyên nghiệp bằng công cụ Chrome DevTools Debugger và Breakpoints thay vì lạm dụng `console.log`
-- ✅ Giải thích được cơ chế hoạt động và tầm quan trọng của kỹ thuật **Debounce** trong lập trình web
-- ✅ Tự viết hàm `debounce` để tối ưu hóa hiệu năng cho tính năng tìm kiếm của ứng dụng
-- ✅ Áp dụng các nguyên tắc tối ưu hóa hiệu năng rendering cơ bản
+## 🎯 Mục tiêu buổi học
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+1. ✅ Hiểu cấu trúc cây DOM là gì.
+2. ✅ Biết cách lấy một phần tử HTML bằng `document.getElementById()`.
+3. ✅ Thay đổi nội dung hiển thị của phần tử HTML bằng thuộc tính `innerText` hoặc `innerHTML`.
+4. ✅ Lắng nghe và xử lý sự kiện click chuột cơ bản (`addEventListener`).
 
 ---
 
-## 🧠 Nội dung chính
+## 📖 Lý thuyết cốt lõi
 
-### 1. Kỹ năng gỡ lỗi (Debugging) chuyên nghiệp với Chrome DevTools
+### 1. Cây DOM là gì?
+Khi tải một trang web, trình duyệt sẽ tự động biên dịch toàn bộ cấu trúc HTML thành một cây đối tượng các nút (Nodes). JavaScript có khả năng truy cập, thay đổi cấu trúc hoặc nội dung các nút này.
 
-Hầu hết người học lập trình đều quen thuộc với việc viết `console.log()` để kiểm tra giá trị của biến.
-* **Hạn chế**: Code bị bẩn do phải viết/xóa console.log liên tục. Không thể dừng chương trình tại thời điểm cụ thể để kiểm tra luồng chạy của dữ liệu.
-
-#### 1.1. Sử dụng từ khóa `debugger;`
-Đặt từ khóa `debugger;` ở bất kỳ dòng code nào bạn nghi ngờ có lỗi. Khi mở Chrome DevTools (F12) và chạy đến dòng này, trình duyệt sẽ tự động **tạm dừng** thực thi toàn bộ chương trình và cho phép bạn soi giá trị của tất cả biến hiện tại.
-
-```javascript
-function tinhTienDo(todos) {
-    const total = todos.length;
-    const completed = todos.filter(t => t.hoanThanh).length;
-    
-    debugger; // 👈 Trình duyệt sẽ dừng lại ở đây để bạn kiểm tra giá trị của total và completed
-    
-    return total === 0 ? 0 : Math.round((completed / total) * 100);
-}
+```mermaid
+graph TD
+    Document --> Root[html]
+    Root --> Head[head]
+    Root --> Body[body]
+    Body --> H1[h1: Tiêu đề]
+    Body --> Button[button: Click me]
 ```
 
-#### 1.2. Sử dụng Breakpoints (Điểm dừng) trực tiếp trên DevTools
-Trong tab **Sources** của DevTools, click chuột vào số dòng của file JS để tạo điểm dừng. Khi code chạy qua dòng đó, chương trình sẽ dừng lại.
-* **Step Over (F10)**: Chạy qua dòng tiếp theo.
-* **Step Into (F11)**: Đi sâu vào bên trong hàm đang được gọi ở dòng hiện tại.
-* **Step Out (Shift+F11)**: Thoát khỏi hàm hiện tại ra ngoài.
-* **Resume (F8)**: Tiếp tục chạy chương trình bình thường cho đến điểm dừng tiếp theo.
-
----
-
-### 2. Tối ưu hóa hiệu năng với kỹ thuật Debounce
-
-#### 2.1. Vấn đề nghẽn cổ chai khi tìm kiếm (Real-time Search)
-Trong Buổi 6 và Buổi 14, ta lắng nghe sự kiện `input` trên ô tìm kiếm:
+### 2. Thao tác DOM cơ bản
+* Lấy thẻ HTML: `let btn = document.getElementById("my-btn");`
+* Bắt sự kiện click:
 ```javascript
-input.addEventListener('input', function(e) {
-    // Gọi renderList hoặc gọi API tìm kiếm
+btn.addEventListener("click", function() {
+  console.log("Nút đã được click!");
 });
 ```
-Nếu người dùng gõ từ khóa "javascript" (10 ký tự), sự kiện `input` sẽ kích hoạt **10 lần liên tục**. Điều này đồng nghĩa với việc ứng dụng phải chạy lại hàm render danh sách (thao tác DOM nặng) 10 lần, hoặc tệ hơn là gửi 10 HTTP requests liên tiếp lên API Server chỉ trong vòng 1-2 giây. 
-* **Hậu quả**: Gây lãng phí băng thông server và làm trình duyệt của client bị giật, đơ.
-
-#### 2.2. Giải pháp: Debounce là gì?
-**Debounce** là kỹ thuật trì hoãn việc thực thi một hàm cho đến khi một khoảng thời gian chờ nhất định trôi qua kể từ lần cuối cùng sự kiện đó được kích hoạt.
-
-*Nói cách khác: "Đợi người dùng ngừng gõ phím trong vòng 500ms thì mới thực hiện tìm kiếm/gọi API".*
-
-```
-Không dùng Debounce:
-Gõ:  j   a   v   a   s   c   r   i   p   t
-API: 🚀  🚀  🚀  🚀  🚀  🚀  🚀  🚀  🚀  🚀  (10 Requests!)
-
-Có dùng Debounce (chờ 500ms):
-Gõ:  j   a   v   a   s   c   r   i   p   t
-Chờ:                                      |---- 500ms ----|
-API:                                                      🚀  (Chỉ 1 Request duy nhất!)
-```
-
-#### 2.3. Viết hàm Debounce trong JavaScript
-Hàm `debounce` sử dụng cơ chế **Closure** và hàm `setTimeout` để ghi nhớ và xóa bộ đếm thời gian:
-
-```javascript
-/**
- * Hàm Debounce trì hoãn gọi hàm callback
- * @param {Function} func - Hàm cần trì hoãn
- * @param {number} delay - Thời gian chờ (miligiây)
- * @returns {Function}
- */
-export function debounce(func, delay = 500) {
-    let timeoutId;
-    
-    return function(...args) {
-        // Xóa bộ đếm thời gian cũ nếu sự kiện lại kích hoạt trước khi hết giờ
-        clearTimeout(timeoutId);
-        
-        // Thiết lập bộ đếm thời gian mới
-        timeoutId = setTimeout(() => {
-            func.apply(this, args);
-        }, delay);
-    };
-}
-```
 
 ---
 
-## 💻 Ví dụ minh họa: Tích hợp Debounce vào ô tìm kiếm ZenTask
+## 💻 Ví dụ minh họa & Thực hành
 
-Cách tích hợp hàm debounce vào ô tìm kiếm của file `main.js`:
+### Ví dụ: Click nút thay đổi tiêu đề
+```html
+<h1 id="title">Tiêu đề ban đầu</h1>
+<button id="btn-change">Thay đổi tiêu đề</button>
 
-```javascript
-import { debounce } from './utils.js';
-
-// 1. Hàm tìm kiếm thực tế (chỉ chạy khi người dùng dừng gõ)
-function thucHienTimKiem(tuKhoa) {
-    filterState.tuKhoa = tuKhoa;
-    dom.renderList(danhSachCongViec, filterState);
-    console.log(`Đang tìm kiếm từ khóa: "${tuKhoa}" qua API...`);
-}
-
-// 2. Tạo phiên bản debounced của hàm tìm kiếm (chờ 500ms)
-const timKiemDebounced = debounce((event) => {
-    thucHienTimKiem(event.target.value);
-}, 500);
-
-// 3. Lắng nghe sự kiện input và truyền hàm debounced vào
-document.getElementById('tim-kiem').addEventListener('input', timKiemDebounced);
+<script>
+  let titleEl = document.getElementById("title");
+  let buttonEl = document.getElementById("btn-change");
+  
+  buttonEl.addEventListener("click", function() {
+    titleEl.innerText = "Chào mừng các em đến với DOM!";
+    titleEl.style.color = "blue"; // Đổi màu chữ sang xanh
+  });
+</script>
 ```
 
----
-
-
-
-## 📝 Bài tập về nhà
-
-1. Hãy tích hợp hàm `debounce` vào tệp tin `utils.js` và áp dụng nó cho ô tìm kiếm của ứng dụng ZenTask của bạn.
-2. Mở tab Network trên Chrome DevTools, thực hiện tìm kiếm gõ nhanh một từ khóa dài và quan sát xem số lượng request gửi lên JSON Server có giảm đi đúng như mong đợi không.
-3. Tìm hiểu sự khác biệt cơ bản giữa hai kỹ thuật tối ưu hóa hiệu năng: **Debounce** và **Throttle** (khi nào nên dùng cái nào).
+### Bài tập thực hành
+Các em hãy viết code HTML/JS tạo ra:
+1. Một thẻ `h1` hiển thị số 0.
+2. Một nút bấm có nhãn "Tăng số".
+3. Khi click vào nút bấm, số hiển thị trong thẻ `h1` sẽ tăng lên 1 đơn vị.
 
 ---
 
-## 🔗 Tài liệu tham khảo
-
-- [JavaScript.info: Debugging in Chrome](https://javascript.info/debugging-chrome)
-- [JavaScript.info: Debounce decorator](https://javascript.info/task/debounce)
-- [CSS Tricks: Debounce and Throttle](https://css-tricks.com/debouncing-throttling-explained-examples/)
+## 🧪 Câu hỏi ôn tập
+::: details 1. Điểm khác biệt giữa `innerText` và `innerHTML` là gì?
+- `innerText` chỉ gán hoặc lấy ra nội dung văn bản thuần túy (text).
+- `innerHTML` gán hoặc lấy ra mã HTML (trình duyệt sẽ tự biên dịch các thẻ HTML bên trong).
+:::

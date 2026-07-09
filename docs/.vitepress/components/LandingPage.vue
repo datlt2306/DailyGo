@@ -6,10 +6,7 @@
     <!-- Hero Section -->
     <div class="hero-container">
       <div class="hero-content">
-        <div class="badge-dev">const user = "developer";</div>
-        <div>
-          <BlurText text="Thầy Đạtlt34 FPoly" :delay="60" animateBy="letters" direction="top" class="gradient-title" />
-        </div>
+        <div class="badge-dev">const me = { role: "Teacher & Developer", loves: "Clean Code" };</div>
         <!-- Terminal Window Wrapper -->
         <div class="terminal-window">
           <div class="terminal-header">
@@ -18,16 +15,16 @@
               <span class="dot minimize"></span>
               <span class="dot expand"></span>
             </div>
-            <div class="terminal-title">poly-tuts.js — node</div>
+            <div class="terminal-title">letrongdat.vercel.app — node</div>
           </div>
           <div class="terminal-body">
             <div class="terminal-line"><span class="cmd-prompt">></span>
-              Học lập trình 
+              Học lập trình
               <TextType :text="[
-                'JavaScript toàn diện ⚡', 
-                'ReactJS hiện đại ⚛️', 
-                'VueJS tối ưu 🟢', 
-                'Node.js chuẩn REST API 🚀', 
+                'JavaScript toàn diện ⚡',
+                'ReactJS hiện đại ⚛️',
+                'VueJS tối ưu 🟢',
+                'Node.js chuẩn REST API 🚀',
                 'WordPress & WooCommerce 🐘',
                 'C cơ bản & giải thuật 💻',
                 'Dự án 1 chuẩn doanh nghiệp 📦'
@@ -224,15 +221,17 @@ function initThree() {
 
 .badge-dev {
   display: inline-block;
-  font-family: 'Courier New', Courier, monospace;
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: #818cf8;
-  padding: 6px 14px;
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  color: #a5b4fc;
+  padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.9rem;
   margin-bottom: 24px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), inset 0 0 10px rgba(99, 102, 241, 0.1);
+  text-shadow: 0 0 8px rgba(165, 180, 252, 0.4);
 }
 
 .gradient-title {

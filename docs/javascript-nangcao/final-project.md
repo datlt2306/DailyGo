@@ -357,4 +357,4 @@ export const CONFIG = { ... };
 
 ---
 
-**Chúc các các em hoàn thành tốt dự án cuối khóa! 🚀🎉**
+**Chúc các bạn hoàn thành tốt dự án cuối khóa! 🚀🎉**

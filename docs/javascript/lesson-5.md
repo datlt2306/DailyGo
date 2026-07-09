@@ -1,168 +1,73 @@
-# Buổi 5: Mảng & Object nâng cao - Tư duy State
+# Buổi 5: Vòng lặp trong JavaScript
 
-**Loại buổi**: Lý thuyết  
-**Thời lượng**: 120 phút  
-**Dự án**: ZenTask (To-Do App) - Quản lý trạng thái dữ liệu một cách tối ưu
+Xin chào các em! 👋
 
----
+Hôm nay thầy trò mình sẽ học cách làm cho máy tính thực hiện các tác vụ lặp đi lặp lại hàng nghìn lần chỉ với vài dòng code thông qua **vòng lặp**.
 
-## 🎯 Mục tiêu học tập
-
-Sau buổi học này, bạn sẽ có thể:
-
-- ✅ Sử dụng thành thạo các phương thức duyệt mảng nâng cao của ES6 (`map`, `filter`, `find`, `findIndex`, `reduce`, `some`, `every`)
-- ✅ Hiểu rõ khái niệm **State** (Trạng thái dữ liệu) và tầm quan trọng của nó trong ứng dụng web
-- ✅ Áp dụng tư duy **State-driven UI** và luồng dữ liệu một chiều (Unidirectional Data Flow)
-- ✅ Giải thích được khái niệm **Immutability** (Bất biến) và cách sao chép đối tượng/mảng an toàn bằng Spread Operator (`...`)
+## 🎯 Mục tiêu buổi học
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+1. ✅ Hiểu rõ khái niệm và nguyên lý hoạt động của vòng lặp.
+2. ✅ Sử dụng thành thạo các loại vòng lặp: `for`, `while`, `do-while`.
+3. ✅ Tránh được lỗi vòng lặp vô hạn (infinite loop) làm treo trình duyệt.
 
 ---
 
-## 🧠 Nội dung chính
+## 📖 Lý thuyết cốt lõi
 
-### 1. Các phương thức duyệt mảng nâng cao (ES6 Array Methods)
+### Các loại vòng lặp cơ bản
 
-Trong lập trình JavaScript hiện đại, thay vì sử dụng vòng lặp `for` truyền thống, ta sử dụng các phương thức có sẵn của Array để code ngắn gọn, rõ ràng và ít lỗi hơn.
-
-#### 1.1. `map()`
-Duyệt qua các phần tử và **trả về một mảng mới** với các giá trị đã được biến đổi.
-```javascript
-const numbers = [1, 2, 3];
-const doubles = numbers.map(x => x * 2); // [2, 4, 6]
+::: code-group
+```javascript [Vòng lặp for]
+// Dùng khi biết trước số lần lặp cụ thể
+for (let i = 1; i <= 5; i++) {
+  console.log("Lần lặp thứ", i);
+}
 ```
 
-#### 1.2. `filter()`
-Lọc các phần tử thỏa mãn điều kiện và **trả về một mảng mới**.
-```javascript
-const tasks = [{id: 1, hoanThanh: true}, {id: 2, hoanThanh: false}];
-const pendingTasks = tasks.filter(task => !task.hoanThanh); // [{id: 2, hoanThanh: false}]
+```javascript [Vòng lặp while]
+// Dùng khi chưa biết trước số lần lặp, lặp dựa trên điều kiện
+let count = 1;
+while (count <= 5) {
+  console.log("Count =", count);
+  count++; // Cập nhật biến điều kiện để thoát vòng lặp
+}
 ```
 
-#### 1.3. `find()` và `findIndex()`
-* `find()`: Trả về **phần tử đầu tiên** tìm thấy thỏa mãn điều kiện. Nếu không có, trả về `undefined`.
-* `findIndex()`: Trả về **chỉ số (index) đầu tiên** của phần tử thỏa mãn điều kiện. Nếu không có, trả về `-1`.
-```javascript
-const tasks = [{id: 101, name: 'A'}, {id: 102, name: 'B'}];
-const found = tasks.find(t => t.id === 102); // {id: 102, name: 'B'}
-const index = tasks.findIndex(t => t.id === 102); // 1
+```javascript [Vòng lặp do-while]
+// Luôn thực thi ít nhất một lần trước khi kiểm tra điều kiện
+let count = 1;
+do {
+  console.log("Count =", count);
+  count++;
+} while (count <= 5);
 ```
-
-#### 1.4. `some()` và `every()`
-* `some()`: Trả về `true` nếu **ít nhất một** phần tử thỏa mãn điều kiện.
-* `every()`: Trả về `true` chỉ khi **tất cả** phần tử thỏa mãn điều kiện.
-```javascript
-const tasks = [{hoanThanh: true}, {hoanThanh: false}];
-const hasCompleted = tasks.some(t => t.hoanThanh); // true
-const allCompleted = tasks.every(t => t.hoanThanh); // false
-```
-
-#### 1.5. `reduce()`
-Tích lũy các phần tử của mảng thành một giá trị duy nhất (số, chuỗi, object, hoặc mảng mới).
-```javascript
-const prices = [100, 200, 300];
-const total = prices.reduce((sum, price) => sum + price, 0); // 600
-```
+:::
 
 ---
 
-### 2. Khái niệm State & Tư duy State-driven UI
+## 💻 Ví dụ minh họa & Thực hành
 
-#### 2.1. State là gì?
-**State (Trạng thái)** là nguồn dữ liệu duy nhất nắm giữ thông tin hiện tại của ứng dụng. Trong ZenTask, mảng `danhSachCongViec` chính là State.
-
-#### 2.2. Tư duy cũ (Direct UI Manipulation)
-Tìm đến thẻ HTML -> Sửa trực tiếp chữ, class, thuộc tính trên thẻ đó.
-* **Hạn chế**: Khi giao diện phức tạp, code sẽ rất rối vì phải quản lý hàng trăm dòng cập nhật giao diện phân tán khắp nơi. Rất dễ bị lệch pha giữa dữ liệu và hiển thị.
-
-#### 2.3. Tư duy hiện đại (State-driven UI / State -> Render)
-1. Giao diện (UI) chỉ là **sự phản ánh** của dữ liệu (State).
-2. Khi có sự kiện (ví dụ: click xóa), ta **không** sửa HTML trực tiếp. Ta chỉ **cập nhật dữ liệu trong State**.
-3. Sau khi State thay đổi, ta gọi một hàm render (ví dụ: `renderList()`) để vẽ lại giao diện hoàn toàn dựa trên State mới.
-
-```mermaid
-graph LR
-    A[Người dùng tương tác] --> B[Cập nhật State dữ liệu]
-    B --> C[Tự động gọi Render lại UI]
-    C --> A
+### Ví dụ: Tính tổng các số từ 1 đến 10
+```javascript
+let sum = 0;
+for (let i = 1; i <= 10; i++) {
+  sum += i;
+}
+console.log("Tổng từ 1 đến 10 là:", sum); // 55
 ```
 
-*Đây là tư duy cốt lõi của các thư viện lớn như React, Vue, Angular.*
+### Bài tập thực hành
+Các em hãy viết chương trình sử dụng vòng lặp để:
+1. In ra các số lẻ từ 1 đến 20 ra console.
+2. Đếm xem có bao nhiêu số chia hết cho 3 trong khoảng từ 1 đến 50.
 
 ---
 
-### 3. Tính Bất Biến (Immutability) & Sao chép dữ liệu
+## 🧪 Câu hỏi ôn tập
+::: details 1. Điều gì xảy ra nếu quên không tăng biến đếm trong vòng lặp `while`?
+Vòng lặp sẽ chạy vô hạn vì điều kiện luôn đúng. Trình duyệt của các em sẽ bị đơ hoặc treo (crash).
+:::
 
-#### 3.1. Tại sao không nên chỉnh sửa trực tiếp (Mutate)?
-Trong JS, Object và Array được truyền dưới dạng **tham chiếu (reference)**. Nếu bạn gán mảng này cho mảng kia hoặc chỉnh sửa trực tiếp, bạn có thể vô tình làm thay đổi dữ liệu ở nơi khác mà không biết.
-
-```javascript
-// ❌ CÁCH LÀM XẤU (Mutate trực tiếp)
-const tasks = [{id: 1, name: 'Học'}];
-const myTask = tasks[0];
-myTask.name = 'Chơi'; // Thay đổi trực tiếp thuộc tính của object gốc trong mảng!
-```
-
-#### 3.2. Sử dụng Spread Operator (`...`) để sao chép an toàn
-Để giữ cho State ổn định và dễ theo dõi, ta nên tạo bản sao mới của mảng hoặc đối tượng trước khi thực hiện thay đổi.
-
-* **Sao chép mảng**:
-```javascript
-const listCu = [1, 2, 3];
-const listMoi = [...listCu, 4]; // [1, 2, 3, 4] - Tạo mảng mới hoàn toàn
-```
-
-* **Sao chép và cập nhật đối tượng**:
-```javascript
-const taskGoc = { id: 1, ten: 'Học', hoanThanh: false };
-
-// Tạo đối tượng mới, ghi đè thuộc tính hoanThanh
-const taskCapNhat = {
-    ...taskGoc,
-    hoanThanh: true
-};
-```
-
----
-
-## 💻 Ví dụ minh họa: Áp dụng các phương thức mảng vào ZenTask
-
-Dưới đây là cách viết code cực sạch cho các logic nghiệp vụ của To-Do App bằng cách áp dụng phương thức mảng ES6:
-
-```javascript
-// Giả lập State
-let state = {
-    todos: [
-        { id: 1, ten: 'Học JS', uuTien: 'high', hoanThanh: false },
-        { id: 2, ten: 'Làm bài tập', uuTien: 'medium', hoanThanh: true }
-    ]
-};
-
-// 1. Tìm công việc có ID là 2
-const targetTodo = state.todos.find(item => item.id === 2);
-console.log('Tìm thấy:', targetTodo);
-
-// 2. Kiểm tra xem có công việc nào ưu tiên cao chưa làm không
-const coUuTienCaoChuaLam = state.todos.some(item => item.uuTien === 'high' && !item.hoanThanh);
-console.log('Có task gấp?', coUuTienCaoChuaLam); // true
-
-// 3. Đếm số lượng công việc đã hoàn thành sử dụng reduce
-const soLuongHoanThanh = state.todos.reduce((count, item) => item.hoanThanh ? count + 1 : count, 0);
-console.log('Số việc đã hoàn thành:', soLuongHoanThanh); // 1
-```
-
----
-
-
-
-## 📝 Bài tập về nhà
-
-1. Viết một đoạn code sử dụng phương thức `filter` để lấy ra tất cả công việc có độ ưu tiên thấp (`low`) từ một mảng công việc cho trước.
-2. Viết một đoạn code sử dụng phương thức `reduce` để tính tổng số giờ dự kiến hoàn thành của tất cả các công việc (giả sử mỗi đối tượng công việc có thêm thuộc tính `soGioDuKien: number`).
-3. Sử dụng Spread Operator để viết một hàm `themThuocTinh(object, key, value)`. Hàm này trả về một object mới đã được bổ sung thuộc tính mà không sửa đổi object ban đầu.
-
----
-
-## 🔗 Tài liệu tham khảo
-
-- [JavaScript.info: Array methods](https://javascript.info/array-methods)
-- [MDN: Spread syntax (...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
-- [FreeCodeCamp: State-driven UI patterns](https://www.freecodecamp.org/news/state-driven-ui-javascript/)
+::: details 2. Vòng lặp `do-while` khác `while` ở điểm mấu chốt nào?
+Vòng lặp `do-while` chạy khối code trước rồi mới kiểm tra điều kiện, do đó luôn chạy ít nhất 1 lần. Còn `while` kiểm tra điều kiện ngay từ đầu, nếu sai thì không chạy lần nào.
+:::

@@ -1,24 +1,27 @@
 # Buổi 8: Lưu trữ Todo & Giao diện Sáng/Tối
+
+**Loại buổi**: Thực hành  
+**Thời lượng**: 120 phút  
 **Dự án**: ZenTask (To-Do App) - Đồng bộ dữ liệu LocalStorage và hoàn thiện tính năng Đổi giao diện Sáng/Tối
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Đồng bộ hóa dữ liệu State của ứng dụng với LocalStorage sau mỗi hành động CRUD
-2. ✅ Đọc dữ liệu từ LocalStorage để tái dựng lại giao diện mỗi khi tải trang
-3. ✅ Xây dựng chức năng chuyển đổi giao diện Sáng/Tối (Dark/Light Mode)
-4. ✅ Lưu trữ cấu hình giao diện ưa thích của người dùng để duy trì trạng thái khi tải lại trang
+- ✅ Đồng bộ hóa dữ liệu State của ứng dụng với LocalStorage sau mỗi hành động CRUD
+- ✅ Đọc dữ liệu từ LocalStorage để tái dựng lại giao diện mỗi khi tải trang
+- ✅ Xây dựng chức năng chuyển đổi giao diện Sáng/Tối (Dark/Light Mode)
+- ✅ Lưu trữ cấu hình giao diện ưa thích của người dùng để duy trì trạng thái khi tải lại trang
+
+---
 
 ## 🧩 Task Project
 
 ### Task 1: Đồng bộ hóa danh sách công việc vào LocalStorage (30 phút)
 
-Thầy trò mình cần tích hợp lưu trữ vào các hàm thay đổi dữ liệu của Buổi 4 và Buổi 6.
+Chúng ta cần tích hợp lưu trữ vào các hàm thay đổi dữ liệu của Buổi 4 và Buổi 6.
 
 #### Bước 1.1: Định nghĩa khóa lưu trữ và hàm ghi/đọc dữ liệu
 Khai báo khóa ở đầu file `main.js`:
@@ -89,12 +92,12 @@ Hãy tìm đến các hàm xử lý dữ liệu và thêm lệnh `luuVaoStorage(
 
 ### Task 2: Xây dựng tính năng đổi giao diện Sáng/Tối (50 phút)
 
-Thầy trò mình sẽ lắng nghe sự kiện click trên nút bấm `.btn-theme-toggle` ở góc trên cùng. Khi người dùng click, ta sẽ đổi class `light-theme` trên thẻ `<body>` để chuyển đổi bảng màu CSS, đồng thời ghi nhớ cấu hình này vào LocalStorage.
+Chúng ta sẽ lắng nghe sự kiện click trên nút bấm `.btn-theme-toggle` ở góc trên cùng. Khi người dùng click, ta sẽ đổi class `light-theme` trên thẻ `<body>` để chuyển đổi bảng màu CSS, đồng thời ghi nhớ cấu hình này vào LocalStorage.
 
 #### Bước 2.1: Chuẩn bị CSS cho Light Theme
 Để cấu trúc CSS đổi màu mượt mà, ta nên định nghĩa bảng màu bằng CSS Variables ở đầu file `styles.css`. 
 
-Hãy đảm bảo tệp `styles.css` của các em hỗ trợ chế độ sáng bằng cách thêm class `.light-theme` ghi đè các biến CSS:
+Hãy đảm bảo tệp `styles.css` của bạn hỗ trợ chế độ sáng bằng cách thêm class `.light-theme` ghi đè các biến CSS:
 
 ```css
 /* Trong file styles.css của template ZenTask */
@@ -172,9 +175,11 @@ khoiTaoTheme();
 
 ---
 
+
+
 ## 📝 Bài tập về nhà
 
-1. Hãy tích hợp hoàn chỉnh cơ chế đồng bộ LocalStorage cho ứng dụng của các em để đảm bảo dữ liệu To-Do và trạng thái Theme (giao diện) không bị mất khi tải lại trang.
+1. Hãy tích hợp hoàn chỉnh cơ chế đồng bộ LocalStorage cho ứng dụng của bạn để đảm bảo dữ liệu To-Do và trạng thái Theme (giao diện) không bị mất khi tải lại trang.
 2. Nâng cấp hàm `khoiTaoTheme()` để tự động đọc cấu hình theme mặc định của hệ điều hành (sử dụng thuộc tính `window.matchMedia('(prefers-color-scheme: light)').matches`) nếu trong LocalStorage chưa lưu cấu hình.
 3. Tạo một nút bấm "Xóa toàn bộ công việc đã hoàn thành" ở Sidebar và lập trình tính năng xóa hàng loạt, lưu vào Storage & render lại UI.
 

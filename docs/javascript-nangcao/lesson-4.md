@@ -1,25 +1,28 @@
 # Buổi 4: Tính năng Thêm & Xóa công việc
+
+**Loại buổi**: Thực hành  
+**Thời lượng**: 120 phút  
 **Dự án**: ZenTask (To-Do App) - Thêm mới và xóa công việc động
 
 ---
 
-## 🎯 Mục tiêu buổi học
+## 🎯 Mục tiêu học tập
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+Sau buổi học này, bạn sẽ có thể:
 
-> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
-Sau buổi học này, các em sẽ có thể:
-1. ✅ Lắng nghe sự kiện submit của form để thu thập dữ liệu nhập vào
-2. ✅ Thực hiện validate (kiểm tra tính hợp lệ) dữ liệu form cơ bản trước khi xử lý
-3. ✅ Thêm phần tử mới vào mảng dữ liệu trạng thái (State) của ứng dụng
-4. ✅ Sử dụng kỹ thuật Event Delegation đã học để thực hiện chức năng Xóa công việc
-5. ✅ Tự động re-render (hiển thị lại) danh sách và cập nhật tiến độ tương ứng sau khi dữ liệu thay đổi
+- ✅ Lắng nghe sự kiện submit của form để thu thập dữ liệu nhập vào
+- ✅ Thực hiện validate (kiểm tra tính hợp lệ) dữ liệu form cơ bản trước khi xử lý
+- ✅ Thêm phần tử mới vào mảng dữ liệu trạng thái (State) của ứng dụng
+- ✅ Sử dụng kỹ thuật Event Delegation đã học để thực hiện chức năng Xóa công việc
+- ✅ Tự động re-render (hiển thị lại) danh sách và cập nhật tiến độ tương ứng sau khi dữ liệu thay đổi
+
+---
 
 ## 🧩 Task Project
 
 ### Task 1: Xử lý Form Submit & Thêm công việc mới (40 phút)
 
-Thầy trò mình cần lắng nghe sự kiện gửi form (#form-cong-viec), lấy giá trị tên và mức độ ưu tiên của công việc, kiểm tra tính hợp lệ và thêm vào mảng `danhSachCongViec`.
+Chúng ta cần lắng nghe sự kiện gửi form (#form-cong-viec), lấy giá trị tên và mức độ ưu tiên của công việc, kiểm tra tính hợp lệ và thêm vào mảng `danhSachCongViec`.
 
 #### Bước 1.1: Viết hàm kiểm tra tính hợp lệ (Validation)
 ```javascript
@@ -88,7 +91,7 @@ formCongViec.addEventListener('submit', function(event) {
 
 ### Task 2: Áp dụng Event Delegation để Xóa công việc (40 phút)
 
-Thầy trò mình sẽ lắng nghe sự kiện click trên thẻ cha `#danh-sach-cong-viec`. Khi người dùng click vào nút xóa (`.btn-delete`), ta sẽ lấy `id` của công việc từ thuộc tính `data-id` của thẻ `<li>`, thực hiện xóa khỏi mảng và render lại giao diện.
+Chúng ta sẽ lắng nghe sự kiện click trên thẻ cha `#danh-sach-cong-viec`. Khi người dùng click vào nút xóa (`.btn-delete`), ta sẽ lấy `id` của công việc từ thuộc tính `data-id` của thẻ `<li>`, thực hiện xóa khỏi mảng và render lại giao diện.
 
 ```javascript
 const listContainer = document.getElementById('danh-sach-cong-viec');
@@ -128,7 +131,7 @@ function xoaCongViec(id) {
 
 ### Task 3: Hiển thị thông báo Toast đơn giản khi hoàn thành hành động (20 phút)
 
-Để cải thiện trải nghiệm người dùng (UX), các em các em hãy viết một hàm hiển thị thông báo góc màn hình (Toast Notification) khi thêm hoặc xóa thành công.
+Để cải thiện trải nghiệm người dùng (UX), hãy viết một hàm hiển thị thông báo góc màn hình (Toast Notification) khi thêm hoặc xóa thành công.
 
 1. Bổ sung cấu trúc HTML của Toast vào cuối file `index.html`:
    ```html
@@ -170,9 +173,11 @@ function xoaCongViec(id) {
 
 ---
 
+
+
 ## 📝 Bài tập về nhà
 
-1. Tích hợp hoàn thiện tính năng Thêm và Xóa công việc vào dự án cá nhân, đảm bảo giao diện ZenTask tự động cập nhật khi các em thêm hoặc xóa.
+1. Tích hợp hoàn thiện tính năng Thêm và Xóa công việc vào dự án cá nhân, đảm bảo giao diện ZenTask tự động cập nhật khi bạn thêm hoặc xóa.
 2. Thử nghiệm bổ sung kiểm tra điều kiện validation: Không cho phép thêm công việc nếu tên công việc trùng lặp với tên của một công việc đã có sẵn trong danh sách (sử dụng phương thức mảng `.some()`).
 3. Tích hợp Toast notification và tùy biến giao diện của nó bằng CSS Class thay vì viết CSS Inline trực tiếp trong JS.
 
