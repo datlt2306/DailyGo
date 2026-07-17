@@ -1,12 +1,15 @@
 # Buổi 4: Conditional & List Rendering
 
-## 🎯 Mục tiêu học tập
-- Phân biệt rõ sự khác nhau về cơ chế hoạt động và trường hợp sử dụng của `v-if` và `v-show`.
-- Sử dụng directive duyệt mảng `v-for` để kết xuất danh sách sản phẩm E-Commerce.
-- Giải thích được tại sao bắt buộc phải sử dụng thuộc tính `:key` khi dùng `v-for`.
-- Kết hợp `computed` để lọc danh sách sản phẩm theo danh mục.
+## 🎯 Mục tiêu buổi học
 
----
+> **Thầy mong muốn sau buổi học này, các em sẽ đạt được:**
+
+1. ✅ Phân biệt rõ sự khác nhau về cơ chế hoạt động và trường hợp sử dụng của `v-if` và `v-show`.
+2. ✅ Sử dụng directive duyệt mảng `v-for` để kết xuất danh sách sản phẩm E-Commerce.
+3. ✅ Giải thích được tại sao bắt buộc phải sử dụng thuộc tính `:key` khi dùng `v-for`.
+4. ✅ Kết hợp `computed` để lọc danh sách sản phẩm theo danh mục.
+
+##
 
 ## 📖 Lý thuyết cốt lõi
 
