@@ -151,6 +151,46 @@ saveTasksToStorage(myTasks);
 2. Viết một đoạn code lưu trữ thông tin cấu hình cá nhân của người dùng bao gồm: `{ theme: 'dark', fontSize: 16, notifications: true }` vào `localStorage`. Viết hàm đọc ra và kiểm tra xem đối tượng có đọc đúng kiểu dữ liệu hay không.
 3. Giải thích tại sao dung lượng lưu trữ của LocalStorage lại bị hạn chế khoảng 5MB - 10MB thay vì cho phép lưu không giới hạn.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Xem LocalStorage trên Chrome DevTools
+* Mở bất kỳ trang web nào (ví dụ: `http://localhost:5173` hoặc trang web bạn đang chạy).
+* Nhấn `F12` hoặc click chuột phải chọn **Inspect** (Kiểm tra).
+* Chuyển qua tab **Application** (hoặc **Storage** trên Firefox/Safari).
+* Ở menu bên trái, tìm mục **Local Storage** và click vào tên miền trang web của bạn để xem danh sách các cặp key-value đang được lưu trữ.
+
+### Yêu cầu 2: Lưu và đọc cấu hình cá nhân bằng JSON
+* **Lưu dữ liệu**: Sử dụng `JSON.stringify` để chuyển object thành chuỗi JSON trước khi lưu:
+  ```javascript
+  const userSettings = {
+      theme: 'dark',
+      fontSize: 16,
+      notifications: true
+  };
+  
+  // Lưu vào localStorage dưới key là 'user_settings'
+  localStorage.setItem('user_settings', JSON.stringify(userSettings));
+  ```
+* **Đọc dữ liệu**: Sử dụng `localStorage.getItem` và `JSON.parse` để chuyển ngược từ chuỗi JSON về dạng Object gốc trong JS:
+  ```javascript
+  const rawSettings = localStorage.getItem('user_settings');
+  
+  if (rawSettings) {
+      const settings = JSON.parse(rawSettings);
+      console.log("Cấu hình người dùng:", settings);
+      console.log("Kiểu dữ liệu của fontSize:", typeof settings.fontSize); // Sẽ in ra: 'number' (đúng kiểu gốc)
+      console.log("Kiểu dữ liệu của notifications:", typeof settings.notifications); // Sẽ in ra: 'boolean'
+  }
+  ```
+
+### Yêu cầu 3: Tại sao LocalStorage bị giới hạn dung lượng?
+* **Lý do bảo mật & hiệu năng**: 
+  1. *Hiệu năng*: LocalStorage hoạt động đồng bộ (synchronous). Khi đọc/ghi dữ liệu lớn, nó sẽ block main thread của trình duyệt, làm đơ/chậm giao diện người dùng.
+  2. *Hạn chế rác*: Nếu cho phép lưu không giới hạn, các website độc hại có thể ghi đầy ổ cứng của người dùng bằng dữ liệu rác, gây ảnh hưởng đến hệ điều hành và các ứng dụng khác.
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

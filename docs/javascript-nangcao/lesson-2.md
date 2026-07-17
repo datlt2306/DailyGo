@@ -177,6 +177,51 @@ capNhatTienDo();
 1. Hãy thêm 2 công việc nữa vào mảng `danhSachCongViec` trong file `main.js` của bạn và kiểm tra xem giao diện có tự động hiển thị thêm khi tải lại trang không.
 2. Đọc hiểu đoạn mã `capNhatTienDo()` và thử đổi trạng thái `hoanThanh` của một công việc trong mảng để kiểm tra xem phần trăm tiến độ có tự động tính toán lại khi tải lại trang không.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Thêm công việc mới vào mảng `danhSachCongViec`
+* Mở file `main.js` nơi bạn khai báo mảng `danhSachCongViec`.
+* Thêm vào mảng 2 đối tượng mới với cấu trúc tương tự. Hãy chú ý đảm bảo thuộc tính `id` là duy nhất (ví dụ: `4` và `5`):
+  ```javascript
+  let danhSachCongViec = [
+      // ... các công việc cũ ...
+      {
+          id: 4,
+          ten: "Học cách viết mã JavaScript sạch",
+          moTa: "Tìm hiểu về ES6 Modules và cách tổ chức file.",
+          uuTien: "high",
+          hoanThanh: false
+      },
+      {
+          id: 5,
+          ten: "Tập thể dục buổi chiều",
+          moTa: "Chạy bộ 30 phút quanh công viên.",
+          uuTien: "low",
+          hoanThanh: false
+      }
+  ];
+  ```
+* Lưu file và tải lại trang trình duyệt để kiểm tra xem danh sách công việc trên màn hình đã tự động hiển thị 5 công việc hay chưa.
+
+### Yêu cầu 2: Thay đổi trạng thái hoàn thành để test tiến độ
+* Tìm một công việc bất kỳ đang có `hoanThanh: false` và chuyển giá trị này thành `true` hoặc ngược lại.
+* Ví dụ:
+  ```javascript
+  {
+      id: 1,
+      ten: "Học JavaScript nâng cao",
+      moTa: "Nắm vững các khái niệm DOM Selection và Manipulation.",
+      uuTien: "high",
+      hoanThanh: true // Đổi từ false sang true
+  }
+  ```
+* Tải lại trang và quan sát:
+  * Checkbox của công việc này có được tự động tích chọn hay không?
+  * Thanh tiến độ có tăng phần trăm lên tương ứng hay không?
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

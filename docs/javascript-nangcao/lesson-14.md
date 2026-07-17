@@ -434,6 +434,53 @@ initApp();
 2. Kiểm tra xem ứng dụng của bạn có hoạt động bình thường sau khi tách không (lưu ý: bắt buộc phải mở ứng dụng thông qua Live Server trên VS Code).
 3. Đọc hiểu luồng dữ liệu khi người dùng bấm nút xóa: Từ sự kiện click ở `main.js`, gọi API xóa ở `api.js`, cập nhật mảng trong `main.js`, gọi vẽ lại UI ở `dom.js`.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Các bước phân rã Module
+* **Bước 1**: Di chuyển tất cả các hằng số cấu hình (như `API_URL`) sang file `js/constants.js`. Export chúng ra ngoài:
+  ```javascript
+  export const API_URL = 'http://localhost:3000/todos';
+  ```
+* **Bước 2**: Di chuyển các hàm gọi API (`fetch`) sang file `js/api.js`. Nhớ import `API_URL` từ file hằng số:
+  ```javascript
+  import { API_URL } from './constants.js';
+
+  export async function fetchTodos() {
+      const response = await fetch(API_URL);
+      return response.json();
+  }
+
+  export async function deleteTodoApi(id) {
+      return fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+  }
+  ```
+* **Bước 3**: Di chuyển các hàm xử lý LocalStorage sang file `js/storage.js`:
+  ```javascript
+  export function saveThemePreference(theme) {
+      localStorage.setItem('theme', theme);
+  }
+  ```
+* **Bước 4**: Di chuyển các hàm tạo HTML, render danh sách và cập nhật tiến độ sang file `js/dom.js`. Nhớ import các hàm phụ trợ nếu cần.
+* **Bước 5**: Giữ file `main.js` làm file điều phối chính. File này sẽ import các hàm từ các module trên, lắng nghe sự kiện từ DOM và gọi các hàm xử lý tương ứng.
+
+### Yêu cầu 2: Kiểm tra chạy ứng dụng với Live Server
+* Do cơ chế bảo mật CORS và module tải của trình duyệt, bạn không thể mở trực tiếp file `index.html` bằng cách double-click từ thư mục (giao thức `file://`).
+* Bạn bắt buộc phải chạy một Local Web Server (ví dụ: extension **Live Server** trên VS Code, hoặc lệnh `npm run dev` nếu chạy dự án Vite/VitePress).
+* Kiểm tra tab Console của DevTools. Nếu có lỗi đỏ dạng `Access to script at ... from origin 'null' has been blocked by CORS policy`, hãy chắc chắn rằng bạn đang xem trang web qua địa chỉ `http://127.0.0.1:5500/...` hoặc `http://localhost:...`.
+
+### Yêu cầu 3: Sơ đồ luồng dữ liệu (Data Flow) khi Xóa công việc
+Hãy đọc và hình dung sơ đồ tương tác sau:
+1. **Người dùng** click nút Xóa trên giao diện -> Trình duyệt phát hiện sự kiện click.
+2. **`main.js`**: Bắt sự kiện click thông qua Event Delegation trên danh sách công việc. Lấy ra `id` của công việc từ thuộc tính `data-id`.
+3. **`main.js`**: Gọi hàm `deleteTodoApi(id)` được import từ `js/api.js`.
+4. **`js/api.js`**: Thực hiện gửi HTTP Request `DELETE` lên JSON Server tại địa chỉ `http://localhost:3000/todos/{id}` và đợi phản hồi.
+5. **`main.js`**: Nhận kết quả thành công từ API -> Tiến hành cập nhật lại State (lọc mảng `danhSachCongViec` loại bỏ ID vừa xóa).
+6. **`main.js`**: Gọi hàm `renderList(danhSachCongViec)` và `capNhatTienDo(danhSachCongViec)` được import từ `js/dom.js`.
+7. **`js/dom.js`**: Xóa trắng container danh sách cũ, tạo các thẻ `<li>` mới cho danh sách công việc đã cập nhật và vẽ lại lên màn hình trình duyệt của người dùng.
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

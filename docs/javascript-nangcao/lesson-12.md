@@ -216,6 +216,92 @@ async function xoaCongViec(id) {
 2. Mở file `db.json` trên VS Code song song với màn hình trình duyệt. Hãy thực hiện thêm, sửa, xóa trên giao diện và quan sát xem nội dung file `db.json` có tự động thay đổi theo thời gian thực hay không.
 3. Thử tạo độ trễ mạng giả lập trên JSON Server bằng cách chạy lệnh: `json-server --watch db.json --delay 2000` (delay 2 giây). Hãy click toggle checkbox để kiểm tra xem trải nghiệm Optimistic UI mượt mà thế nào, và click nút xóa để thấy Pessimistic UI hiển thị loading ra sao.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Tích hợp 4 thao tác CRUD với API
+* **Thêm mới (POST)**:
+  ```javascript
+  async function themCongViec(ten, moTa, uuTien) {
+      const newTodo = { ten, moTa, uuTien, hoanThanh: false };
+      try {
+          const response = await fetch(API_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(newTodo)
+          });
+          if (response.ok) {
+              const addedTodo = await response.json();
+              danhSachCongViec.push(addedTodo);
+              renderList();
+              capNhatTienDo();
+          }
+      } catch (error) {
+          console.error("Lỗi thêm công việc:", error);
+      }
+  }
+  ```
+* **Xóa công việc (DELETE - Pessimistic)**:
+  ```javascript
+  async function xoaCongViec(id) {
+      try {
+          const response = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+          if (response.ok) {
+              danhSachCongViec = danhSachCongViec.filter(cv => cv.id !== id);
+              renderList();
+              capNhatTienDo();
+          }
+      } catch (error) {
+          console.error("Lỗi xóa công việc:", error);
+      }
+  }
+  ```
+* **Cập nhật trạng thái (PATCH - Optimistic)**:
+  ```javascript
+  async function toggleStatus(id, originalStatus) {
+      const targetTodo = danhSachCongViec.find(cv => cv.id === id);
+      if (!targetTodo) return;
+      
+      // Bước 1: Thay đổi ngay trên UI (Optimistic Update)
+      targetTodo.hoanThanh = !originalStatus;
+      renderList();
+      capNhatTienDo();
+      
+      // Bước 2: Gọi API chạy ngầm
+      try {
+          const response = await fetch(`${API_URL}/${id}`, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ hoanThanh: !originalStatus })
+          });
+          if (!response.ok) {
+              throw new Error("Lỗi cập nhật trên server");
+          }
+      } catch (error) {
+          // Bước 3: Rollback nếu lỗi xảy ra
+          alert("Không thể cập nhật trạng thái. Đang khôi phục...");
+          targetTodo.hoanThanh = originalStatus;
+          renderList();
+          capNhatTienDo();
+      }
+  }
+  ```
+
+### Yêu cầu 2: Quan sát thay đổi file `db.json`
+* Xếp cửa sổ VS Code chứa file `db.json` sang một bên màn hình, và cửa sổ trình duyệt sang bên còn lại.
+* Khi bạn click Thêm mới trên giao diện web, quan sát file `db.json` trong VS Code sẽ được tự động ghi thêm một dòng dữ liệu tương ứng.
+* Tương tự khi bạn click Xóa hoặc sửa đổi trạng thái Checkbox.
+
+### Yêu cầu 3: Giả lập trễ mạng
+* Tắt server hiện tại và khởi động lại với tham số `--delay 2000` (hoặc `--delay 2000` tùy phiên bản json-server):
+  ```bash
+  npx json-server --watch db.json --port 3000 --delay 2000
+  ```
+* Nhấp chọn checkbox: Bạn sẽ thấy checkbox được tích chọn lập tức (nhờ Optimistic UI). 2 giây sau server mới nhận được yêu cầu cập nhật âm thầm.
+* Nhấp nút Xóa: Giao diện sẽ hiển thị trạng thái chờ hoặc nút xóa chuyển sang màu nhạt hơn/hiển thị spinner, sau đúng 2 giây công việc mới biến mất khỏi màn hình (Pessimistic UI).
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

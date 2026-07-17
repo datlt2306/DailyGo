@@ -159,6 +159,56 @@ console.log('Số việc đã hoàn thành:', soLuongHoanThanh); // 1
 2. Viết một đoạn code sử dụng phương thức `reduce` để tính tổng số giờ dự kiến hoàn thành của tất cả các công việc (giả sử mỗi đối tượng công việc có thêm thuộc tính `soGioDuKien: number`).
 3. Sử dụng Spread Operator để viết một hàm `themThuocTinh(object, key, value)`. Hàm này trả về một object mới đã được bổ sung thuộc tính mà không sửa đổi object ban đầu.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Lọc công việc ưu tiên thấp (`low`) bằng `.filter()`
+* Sử dụng mảng công việc ban đầu, gọi hàm `.filter()` để lọc phần tử có `uuTien === 'low'`:
+  ```javascript
+  const congViecUuTienThap = danhSachCongViec.filter(cv => cv.uuTien === 'low');
+  console.log("Danh sách công việc ưu tiên thấp:", congViecUuTienThap);
+  ```
+
+### Yêu cầu 2: Tính tổng giờ dự kiến bằng `.reduce()`
+* Định nghĩa thêm thuộc tính `soGioDuKien` cho các đối tượng trong mảng.
+* Sử dụng `.reduce()` để cộng dồn giá trị:
+  ```javascript
+  // Giả sử mảng đã bổ sung thuộc tính:
+  const danhSachCoGio = [
+      { id: 1, ten: "Học JS", soGioDuKien: 3 },
+      { id: 2, ten: "Làm bài tập", soGioDuKien: 2 },
+      { id: 3, ten: "Đọc sách", soGioDuKien: 1 }
+  ];
+  
+  // Tính tổng giờ dự kiến
+  const tongGio = danhSachCoGio.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue.soGioDuKien;
+  }, 0); // Bắt đầu tích lũy từ 0
+  
+  console.log("Tổng số giờ dự kiến hoàn thành:", tongGio); // Kết quả: 6
+  ```
+
+### Yêu cầu 3: Hàm `themThuocTinh` sử dụng Spread Operator
+* Khi muốn sao chép toàn bộ thuộc tính cũ và chèn thêm thuộc tính động (sử dụng dấu ngoặc vuông `[key]` để nhận giá trị động truyền vào):
+  ```javascript
+  function themThuocTinh(object, key, value) {
+      // Dùng Spread Operator (...) để tạo object mới
+      return {
+          ...object,
+          [key]: value
+      };
+  }
+
+  // Ví dụ test:
+  const targetObj = { id: 1, ten: "Task A" };
+  const updatedObj = themThuocTinh(targetObj, "hoanThanh", true);
+
+  console.log("Đối tượng ban đầu:", targetObj); // { id: 1, ten: 'Task A' }
+  console.log("Đối tượng mới:", updatedObj); // { id: 1, ten: 'Task A', hoanThanh: true }
+  ```
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

@@ -121,6 +121,50 @@ async function taiDanhSachTodo() {
 2. Thử thay đổi ID người dùng trong URL thành `999` (không tồn tại) để kiểm tra xem khối `try...catch` của bạn có bắt được lỗi 404 và in ra thông báo lỗi chính xác không.
 3. Tìm hiểu khái niệm **API Endpoint** là gì trong lập trình Web API.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Viết hàm async `checkUserInfo(userId)`
+* Sử dụng `async/await` kết hợp với `fetch()` để gọi API:
+  ```javascript
+  async function checkUserInfo(userId) {
+      try {
+          const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+          
+          // Kiểm tra xem mã HTTP response status có thành công không (200-299)
+          if (!response.ok) {
+              throw new Error(`Lỗi kết nối API: Mã lỗi ${response.status}`);
+          }
+          
+          const user = await response.json();
+          console.log(`Thông tin người dùng ID ${userId}:`);
+          console.log(`- Tên: ${user.name}`);
+          console.log(`- Email: ${user.email}`);
+      } catch (error) {
+          console.error("Đã xảy ra lỗi khi lấy dữ liệu:", error.message);
+      }
+  }
+
+  // Chạy thử với userId = 1
+  checkUserInfo(1);
+  ```
+
+### Yêu cầu 2: Kiểm tra lỗi với ID = 999
+* Chạy thử hàm với `checkUserInfo(999)`.
+* Quan sát kết quả:
+  * URL `https://jsonplaceholder.typicode.com/users/999` sẽ trả về mã HTTP `404 Not Found`.
+  * Vì `response.ok` bằng `false`, hàm `throw new Error` sẽ được kích hoạt.
+  * Khối `catch` bắt được lỗi này và in ra màn hình console thông báo lỗi: `"Đã xảy ra lỗi khi lấy dữ liệu: Lỗi kết nối API: Mã lỗi 404"`.
+
+### Yêu cầu 3: Khái niệm API Endpoint là gì?
+* **API Endpoint** (Điểm cuối API) là một URL cụ thể mà ứng dụng client (như trình duyệt web) gọi đến để tương tác với tài nguyên trên server.
+* Ví dụ:
+  * `GET /users`: Endpoint lấy danh sách người dùng.
+  * `POST /users`: Endpoint tạo mới một người dùng.
+  * `GET /users/1`: Endpoint lấy chi tiết người dùng có ID là 1.
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

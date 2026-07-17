@@ -186,6 +186,25 @@ async function toggleTaskPessimistic(id) {
 1. So sánh chi tiết bằng văn bản sự khác biệt khi áp dụng Pessimistic UI và Optimistic UI cho tính năng "Tăng số lượng sản phẩm trong giỏ hàng".
 2. Tìm hiểu tại sao trong các ứng dụng mạng xã hội lớn như Facebook, Instagram, Twitter, các nút Like/Tym hay nút Bookmark luôn được thiết kế theo mô hình Optimistic UI.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: So sánh Pessimistic UI vs Optimistic UI (Giỏ hàng)
+Hãy viết một đoạn so sánh ngắn vào file markdown ghi chú của bạn dựa trên gợi ý dưới đây:
+* **Pessimistic UI (Giao diện bi quan)**:
+  * *Luồng đi*: Người dùng click nút `+` -> Ứng dụng hiển thị icon loading (xoay tròn) trên nút -> Gửi API lên server cập nhật số lượng -> Đợi server xử lý xong và phản hồi thành công (mất ~1-2 giây) -> Cập nhật số lượng mới lên UI và tắt loading.
+  * *Ưu/Nhược*: Đảm bảo dữ liệu chính xác tuyệt đối nhưng mang lại cảm giác giật lag, chậm chạp cho người dùng khi kết nối mạng kém.
+* **Optimistic UI (Giao diện lạc quan)**:
+  * *Luồng đi*: Người dùng click nút `+` -> UI ngay lập tức hiển thị số lượng tăng thêm 1 đơn vị -> Gửi API chạy ngầm lên server -> Nếu server trả về thành công: giữ nguyên UI và kết thúc. Nếu lỗi (hết hàng, mất mạng): hiển thị thông báo lỗi và tự động roll back (giảm đi 1 đơn vị trên giao diện) để khớp với dữ liệu thực tế trên server.
+  * *Ưu/Nhược*: Trải nghiệm cực kỳ mượt mà, phản hồi tức thì. Tuy nhiên cần viết code xử lý rollback phức tạp hơn để xử lý các kịch bản lỗi mạng.
+
+### Yêu cầu 2: Giải thích cơ chế nút Like của Facebook/Instagram
+* **Tần suất tương tác cực kỳ cao**: Người dùng thường có thói quen cuộn bảng tin nhanh và click Like liên tiếp nhiều bài viết. Nếu dùng Pessimistic UI, việc phải chờ mỗi API Like hoàn thành rồi mới đổi màu nút Like sẽ khiến giao diện bị "đơ" liên tục.
+* **Tỷ lệ thành công cực kỳ cao**: Các thao tác cơ bản như Like, Tym, Bookmark có tỷ lệ thành công gần như 99.9%. Vì vậy, giả định thao tác sẽ thành công và cập nhật UI ngay lập tức là hoàn toàn hợp lý.
+* **Hậu quả khi thất bại cực kỳ thấp**: Nếu xảy ra lỗi mạng khiến lượt Like không thể lưu lại, việc chỉ đơn giản tắt màu nút Like sau đó (hoặc thông báo lỗi nhẹ) không gây ảnh hưởng lớn hay thiệt hại tài chính cho người dùng (khác với thao tác Thanh toán hay Đặt hàng).
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

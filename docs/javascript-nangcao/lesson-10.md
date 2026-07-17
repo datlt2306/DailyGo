@@ -164,6 +164,72 @@ document.addEventListener('DOMContentLoaded', function() {
 2. Viết mã nguồn tải danh sách công việc từ cổng 3000 khi load trang web ZenTask của bạn.
 3. Thử tắt Terminal đang chạy `json-server` đi (simulating API server crash) để kiểm tra xem giao diện ZenTask có hiển thị đúng thông báo lỗi kết nối và nút "Thử lại" hoạt động chính xác khi bạn bật lại server hay không.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Cài đặt và cấu hình `json-server`
+* Tạo một file `db.json` trong thư mục gốc của dự án (cùng cấp với `index.html`) với nội dung mẫu:
+  ```json
+  {
+    "todos": [
+      {
+        "id": "1",
+        "ten": "Học Fetch API",
+        "moTa": "Tải dữ liệu từ Localhost",
+        "uuTien": "high",
+        "hoanThanh": false
+      }
+    ]
+  }
+  ```
+* Mở Terminal tại thư mục dự án và chạy lệnh sau để chạy server ở cổng 3000:
+  ```bash
+  npx json-server --watch db.json --port 3000
+  ```
+* Mở trình duyệt truy cập `http://localhost:3000/todos` để kiểm tra xem API đã hoạt động hay chưa.
+
+### Yêu cầu 2: Tải danh sách công việc khi load trang
+* Trong file `main.js`, viết hàm `taiDanhSachCongViec()` bất đồng bộ:
+  ```javascript
+  const API_URL = 'http://localhost:3000/todos';
+  let danhSachCongViec = [];
+
+  async function taiDanhSachCongViec() {
+      const listContainer = document.getElementById('danh-sach-cong-viec');
+      listContainer.innerHTML = '<li class="loading"><p>Đang tải dữ liệu...</p></li>';
+      
+      try {
+          const response = await fetch(API_URL);
+          if (!response.ok) {
+              throw new Error("Không thể kết nối đến máy chủ.");
+          }
+          danhSachCongViec = await response.json();
+          renderList();
+          capNhatTienDo();
+      } catch (error) {
+          listContainer.innerHTML = `
+              <li class="error-state">
+                  <p>Lỗi: ${error.message}</p>
+                  <button id="btn-retry" class="btn-retry">Thử lại</button>
+              </li>
+          `;
+          // Gắn sự kiện cho nút thử lại
+          document.getElementById('btn-retry')?.addEventListener('click', taiDanhSachCongViec);
+      }
+  }
+
+  // Gọi hàm khi trang web tải xong
+  window.addEventListener('DOMContentLoaded', taiDanhSachCongViec);
+  ```
+
+### Yêu cầu 3: Mô phỏng lỗi sập server
+* Quay lại Terminal đang chạy lệnh `json-server` và nhấn tổ hợp phím `Ctrl + C` để dừng server.
+* Tải lại trang web ZenTask. Bạn sẽ thấy màn hình hiển thị trạng thái lỗi cùng với nút **Thử lại**.
+* Khởi động lại server bằng lệnh: `npx json-server --watch db.json --port 3000`.
+* Click vào nút **Thử lại** trên giao diện trang web. Bạn sẽ thấy danh sách công việc được tải thành công và hiển thị bình thường mà không cần tải lại toàn bộ trang.
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

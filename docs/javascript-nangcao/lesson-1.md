@@ -174,6 +174,67 @@ Tạo một file nháp `app.js` nhúng vào template ZenTask và thực hiện c
 4. Truy xuất tất cả các nút sửa (`.btn-edit`) và in ra màn hình console số lượng nút tìm thấy.
 5. Lấy ra tiêu đề công việc thứ 2 trong danh sách và in ra console.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Bước 1: Tạo file và liên kết
+* Tạo file `app.js` nằm cùng cấp với `index.html`.
+* Mở `index.html`, cuộn xuống cuối trang (trước thẻ đóng `</body>`), thay đổi dòng script liên kết hoặc thêm dòng mới:
+  ```html
+  <script src="app.js"></script>
+  ```
+
+### Bước 2: Viết mã trong `app.js`
+
+1. **Truy xuất form thêm công việc**:
+   * Xác định ID của form trong `index.html` (thường là `#form-them-cong-viec` hoặc tương tự).
+   * Sử dụng `document.getElementById` hoặc `document.querySelector`:
+     ```javascript
+     const formThem = document.getElementById('form-them-cong-viec');
+     console.log(formThem);
+     ```
+
+2. **Truy xuất ô nhập tên công việc & in placeholder**:
+   * Tìm selector của input nhập tên (ví dụ: `input[type="text"]` hoặc `#ten-cong-viec`).
+   * Lấy thuộc tính `placeholder` bằng `.placeholder` hoặc `.getAttribute('placeholder')`:
+     ```javascript
+     const inputTen = document.querySelector('#ten-cong-viec');
+     if (inputTen) {
+         console.log("Placeholder hiện tại:", inputTen.placeholder);
+     }
+     ```
+
+3. **Thay đổi thanh tiến độ**:
+   * Tìm phần tử thanh tiến độ (ví dụ: `.progress-bar-fill`).
+   * Sử dụng thuộc tính `.style.width` để set `80%` và `.style.backgroundColor` để đổi màu nền thành `#f59e0b`:
+     ```javascript
+     const progressBar = document.querySelector('.progress-bar-fill');
+     if (progressBar) {
+         progressBar.style.width = '80%';
+         progressBar.style.backgroundColor = '#f59e0b';
+     }
+     ```
+
+4. **Truy xuất tất cả nút sửa `.btn-edit`**:
+   * Sử dụng `document.querySelectorAll` để lấy một NodeList các nút sửa.
+   * Sử dụng thuộc tính `.length` để đếm số lượng:
+     ```javascript
+     const nutSuas = document.querySelectorAll('.btn-edit');
+     console.log("Số lượng nút sửa tìm thấy:", nutSuas.length);
+     ```
+
+5. **Lấy ra tiêu đề công việc thứ 2**:
+   * Chọn tất cả các tiêu đề công việc (ví dụ: `.task-title`).
+   * Truy cập phần tử thứ hai bằng chỉ số index `1` (vì NodeList bắt đầu từ 0) và lấy `.textContent`:
+     ```javascript
+     const tieuDes = document.querySelectorAll('.task-title');
+     if (tieuDes.length >= 2) {
+         console.log("Tiêu đề công việc thứ 2:", tieuDes[1].textContent);
+     }
+     ```
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

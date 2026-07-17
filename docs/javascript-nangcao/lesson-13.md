@@ -107,6 +107,65 @@ Mặc định, trình duyệt coi tệp JS là tệp script thông thường (kh
 2. Viết thử một module `math.js` có các named export là `cong(a, b)`, `tru(a, b)` và default export là đối tượng `calculator`. Viết file `main.js` import các hàm đó về chạy thử.
 3. Giải thích tại sao việc viết code dạng Module lại giúp nhiều lập trình viên có thể làm việc trên cùng một dự án dễ dàng hơn.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Thiết lập cấu trúc thư mục
+* Tạo một thư mục cha tên `todo-modules` chứa:
+  * Thư mục `js/`
+    * `js/api.js` (rỗng)
+    * `js/storage.js` (rỗng)
+    * `js/dom.js` (rỗng)
+  * `main.js`
+  * `index.html`
+  * `styles.css`
+
+### Yêu cầu 2: Viết module `math.js` và `main.js`
+* Tạo file `js/math.js`:
+  ```javascript
+  // Named exports
+  export function cong(a, b) {
+      return a + b;
+  }
+
+  export function tru(a, b) {
+      return a - b;
+  }
+
+  // Default export
+  const calculator = {
+      description: "Máy tính đơn giản bằng ES6 Module",
+      nhan: (a, b) => a * b,
+      chia: (a, b) => {
+          if (b === 0) return "Không thể chia cho 0";
+          return a / b;
+      }
+  };
+
+  export default calculator;
+  ```
+* Tạo file `main.js` (import tài nguyên từ `math.js`):
+  ```javascript
+  // Lưu ý: Phải ghi rõ đuôi mở rộng '.js' đối với native ES Modules trong trình duyệt
+  import calculator, { cong, tru } from './js/math.js';
+
+  console.log(calculator.description);
+  console.log("Cộng 5 + 3 =", cong(5, 3));
+  console.log("Trừ 10 - 4 =", tru(10, 4));
+  console.log("Nhân 2 * 6 =", calculator.nhan(2, 6));
+  ```
+* Nhúng `main.js` vào file `index.html` với thuộc tính `type="module"`:
+  ```html
+  <script type="module" src="main.js"></script>
+  ```
+* Chạy trang web bằng Live Server (hoặc Vite) và kiểm tra tab Console để xem kết quả hoạt động.
+
+### Yêu cầu 3: Lợi ích của Module trong làm việc nhóm
+* **Tránh xung đột tên (Scope Isolation)**: Mỗi lập trình viên có thể viết biến, hàm có tên trùng nhau (ví dụ: `data`, `config`) trong file của họ mà không sợ đè lên biến của người khác khi gộp code, vì biến chỉ tồn tại nội bộ trong file module đó.
+* **Dễ bảo trì và quản lý**: Dự án được chia nhỏ thành các file độc lập thực hiện các nhiệm vụ riêng biệt (ví dụ: một người làm phần giao diện UI, một người làm phần kết nối API). Khi có lỗi xảy ra ở phần nào, chỉ cần tìm và sửa đúng file tương ứng mà không làm ảnh hưởng đến các phần khác.
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

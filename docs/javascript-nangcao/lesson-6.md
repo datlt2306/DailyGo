@@ -309,6 +309,88 @@ navItems.forEach(item => {
 2. Thực hiện thêm các nút lọc theo **Độ ưu tiên** (Cao, Trung bình, Thấp) ở phần Sidebar và lắng nghe sự kiện click để cập nhật `filterState.uuTien` tương ứng, giúp người dùng lọc chéo được cả trạng thái lẫn độ ưu tiên.
 3. Khi click nút sửa công việc, làm thế nào để người dùng có thể "Hủy bỏ" hành động sửa (quay về chế độ thêm mới mà không cập nhật) bằng cách lập trình cho nút "Hủy bỏ" (`btn-secondary`) trên form.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Đảm bảo đồng bộ hóa luồng lọc dữ liệu
+* Sử dụng một đối tượng trung gian `filterState` để quản lý các điều kiện lọc:
+  ```javascript
+  let filterState = {
+      tuKhoa: '',
+      trangThai: 'all', // 'all', 'active', 'completed'
+      uuTien: 'all'     // 'all', 'high', 'medium', 'low'
+  };
+  ```
+
+### Yêu cầu 2: Lọc chéo trạng thái và độ ưu tiên ở Sidebar
+* Thêm giao diện các nút lọc theo độ ưu tiên ở file HTML (ví dụ: các nút có `data-priority="high"`, `data-priority="medium"`, v.v.).
+* Viết sự kiện click cho các nút lọc độ ưu tiên:
+  ```javascript
+  const priorityFilters = document.querySelectorAll('.priority-filter-btn');
+  priorityFilters.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+          // Xóa class active ở các nút cũ, thêm active vào nút hiện tại
+          priorityFilters.forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          
+          // Cập nhật filterState
+          filterState.uuTien = e.target.dataset.priority;
+          
+          // Gọi hàm lọc và render lại UI
+          renderList();
+      });
+  });
+  ```
+* Trong hàm `renderList()`, ta cần lọc mảng trước khi dùng `forEach`:
+  ```javascript
+  let tasksToRender = danhSachCongViec;
+
+  // Lọc theo từ khóa
+  if (filterState.tuKhoa) {
+      tasksToRender = tasksToRender.filter(cv => 
+          cv.ten.toLowerCase().includes(filterState.tuKhoa.toLowerCase())
+      );
+  }
+
+  // Lọc theo trạng thái
+  if (filterState.trangThai !== 'all') {
+      const isCompleted = filterState.trangThai === 'completed';
+      tasksToRender = tasksToRender.filter(cv => cv.hoanThanh === isCompleted);
+  }
+
+  // Lọc theo độ ưu tiên (Lọc chéo)
+  if (filterState.uuTien !== 'all') {
+      tasksToRender = tasksToRender.filter(cv => cv.uuTien === filterState.uuTien);
+  }
+
+  // Tiến hành duyệt tasksToRender để tạo HTML và append vào danh sách.
+  ```
+
+### Yêu cầu 3: Chức năng "Hủy bỏ" sửa công việc
+* Khi người dùng click nút Sửa, bạn đổi trạng thái form (ví dụ đổi biến `editingId = congViec.id`, đổi text của nút submit từ "Thêm" thành "Cập nhật", đồng thời hiển thị nút "Hủy" vốn ban đầu bị ẩn).
+* Khi người dùng click nút "Hủy":
+  ```javascript
+  const btnHuy = document.getElementById('btn-huy-sua');
+  if (btnHuy) {
+      btnHuy.addEventListener('click', () => {
+          // Reset ID đang sửa về null
+          editingId = null;
+          
+          // Reset dữ liệu trong form
+          document.getElementById('form-them-cong-viec').reset();
+          
+          // Đổi lại text của nút submit
+          const btnSubmit = document.querySelector('#form-them-cong-viec button[type="submit"]');
+          btnSubmit.textContent = 'Thêm công việc';
+          
+          // Ẩn nút Hủy
+          btnHuy.style.display = 'none';
+      });
+  }
+  ```
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

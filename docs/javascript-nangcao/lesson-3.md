@@ -122,6 +122,51 @@ listContainer.addEventListener('click', function(event) {
 2. Hãy thử nghiệm tạo một nút bấm đơn giản, khi click vào sẽ ngăn chặn không cho nổi bọt lên thẻ cha bằng `event.stopPropagation()` và kiểm tra kết quả.
 3. Giải thích tại sao việc sử dụng `.closest('.btn-delete')` lại tốt hơn việc chỉ kiểm tra `event.target.classList.contains('btn-delete')` khi bên trong nút bấm có chứa thẻ icon `<i>`.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Lắng nghe sự kiện click trên thẻ `<body>`
+* Sử dụng `document.body.addEventListener` để bắt sự kiện click:
+  ```javascript
+  document.body.addEventListener('click', function(event) {
+      // event.target đại diện cho phần tử chính xác được click vào
+      const tag = event.target.tagName;
+      const classes = event.target.className || 'Không có class';
+      console.log(`Bạn vừa click vào thẻ: <${tag}> với class: "${classes}"`);
+  });
+  ```
+
+### Yêu cầu 2: Ngăn chặn nổi bọt sự kiện
+* Thêm một khối HTML tạm thời vào `index.html` để kiểm tra:
+  ```html
+  <div id="parent-box" style="padding: 20px; background: lightgray;">
+      Thẻ cha (Parent)
+      <button id="child-btn">Nút con (Child)</button>
+  </div>
+  ```
+* Viết code JS lắng nghe trên cả thẻ cha và nút con để thấy sự khác biệt:
+  ```javascript
+  const parent = document.getElementById('parent-box');
+  const child = document.getElementById('child-btn');
+
+  parent.addEventListener('click', () => {
+      console.log('Click sự kiện trên thẻ CHA');
+  });
+
+  child.addEventListener('click', (event) => {
+      event.stopPropagation(); // Ngăn chặn sự kiện lan truyền lên cha
+      console.log('Click sự kiện trên NÚT CON');
+  });
+  ```
+* Nhấp vào nút con và xem console. Nếu không có `stopPropagation()`, bạn sẽ thấy cả hai dòng log xuất hiện. Khi có `stopPropagation()`, chỉ dòng log của nút con xuất hiện.
+
+### Yêu cầu 3: Giải thích về `.closest()`
+* Khi người dùng click vào icon `<i>` nằm bên trong `<button class="btn-delete"><i></i></button>`, đối tượng `event.target` sẽ là thẻ `<i>`.
+* Nếu chỉ kiểm tra `event.target.classList.contains('btn-delete')`, kết quả trả về là `false` vì thẻ `<i>` không chứa class `btn-delete`.
+* Khi dùng `event.target.closest('.btn-delete')`, JavaScript sẽ tìm ngược từ thẻ `<i>` lên trên, tìm thấy thẻ cha gần nhất là `<button>` có class `.btn-delete` và trả về thẻ `<button>` đó. Điều này giúp sự kiện nút xóa hoạt động chính xác bất kể bạn click trúng viền nút bấm hay trúng icon ở giữa.
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

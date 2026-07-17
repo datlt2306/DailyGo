@@ -183,6 +183,67 @@ khoiTaoTheme();
 2. Nâng cấp hàm `khoiTaoTheme()` để tự động đọc cấu hình theme mặc định của hệ điều hành (sử dụng thuộc tính `window.matchMedia('(prefers-color-scheme: light)').matches`) nếu trong LocalStorage chưa lưu cấu hình.
 3. Tạo một nút bấm "Xóa toàn bộ công việc đã hoàn thành" ở Sidebar và lập trình tính năng xóa hàng loạt, lưu vào Storage & render lại UI.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Lưu & Đọc Todo + Theme
+* Viết hàm lưu và gọi mỗi khi có thay đổi (Thêm, Xóa, Sửa, Toggle hoàn thành):
+  ```javascript
+  function luuDuLieuVaoStorage() {
+      localStorage.setItem('danhSachCongViec', JSON.stringify(danhSachCongViec));
+  }
+  ```
+* Khi khởi động ứng dụng (đầu file `main.js`), lấy dữ liệu ra hoặc dùng mảng mặc định nếu trống:
+  ```javascript
+  let danhSachCongViec = JSON.parse(localStorage.getItem('danhSachCongViec')) || [
+      // Mock data mặc định ban đầu nếu LocalStorage rỗng
+  ];
+  ```
+
+### Yêu cầu 2: Nâng cấp `khoiTaoTheme()` với cấu hình hệ điều hành
+* Kiểm tra xem người dùng có thiết lập hệ điều hành là Dark hay Light mode bằng `window.matchMedia`:
+  ```javascript
+  function khoiTaoTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      
+      if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+      } else {
+          // Kiểm tra chế độ sáng/tối của hệ điều hành
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const systemTheme = prefersDark ? 'dark' : 'light';
+          
+          document.documentElement.setAttribute('data-theme', systemTheme);
+          localStorage.setItem('theme', systemTheme); // Đồng bộ cấu hình
+      }
+  }
+  ```
+
+### Yêu cầu 3: Nút "Xóa toàn bộ công việc đã hoàn thành"
+* **HTML**: Thêm một button vào Sidebar hoặc khu vực danh sách:
+  ```html
+  <button id="btn-clean-completed" class="btn-clean">Xóa công việc đã hoàn thành</button>
+  ```
+* **JS**: Lắng nghe sự kiện click trên nút bấm đó, lọc bỏ các công việc đã hoàn thành khỏi State, lưu vào storage, rồi render lại:
+  ```javascript
+  const btnClean = document.getElementById('btn-clean-completed');
+  if (btnClean) {
+      btnClean.addEventListener('click', () => {
+          if (confirm('Bạn có chắc chắn muốn xóa toàn bộ công việc đã hoàn thành?')) {
+              // Lọc chỉ giữ lại công việc CHƯA hoàn thành
+              danhSachCongViec = danhSachCongViec.filter(cv => !cv.hoanThanh);
+              
+              // Cập nhật Storage & render
+              luuDuLieuVaoStorage();
+              renderList();
+              capNhatTienDo();
+          }
+      });
+  }
+  ```
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo

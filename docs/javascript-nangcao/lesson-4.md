@@ -181,6 +181,76 @@ function xoaCongViec(id) {
 2. Thử nghiệm bổ sung kiểm tra điều kiện validation: Không cho phép thêm công việc nếu tên công việc trùng lặp với tên của một công việc đã có sẵn trong danh sách (sử dụng phương thức mảng `.some()`).
 3. Tích hợp Toast notification và tùy biến giao diện của nó bằng CSS Class thay vì viết CSS Inline trực tiếp trong JS.
 
+<details>
+<summary><b>💡 Gợi ý / Hướng dẫn thực hành từng bước</b></summary>
+
+### Yêu cầu 1: Hoàn thiện Thêm & Xóa với State
+* Đảm bảo rằng hàm thêm công việc của bạn chèn phần tử mới vào mảng `danhSachCongViec` (ví dụ bằng `.push()` hoặc `.unshift()`), sau đó gọi lại `renderList()` và `capNhatTienDo()`.
+* Hàm xóa cũng làm tương tự: lọc mảng bỏ đi công việc có ID tương ứng, sau đó gọi lại `renderList()` và `capNhatTienDo()`.
+
+### Yêu cầu 2: Validation chống trùng lặp bằng `.some()`
+* Trong hàm xử lý sự kiện submit form, trước khi tạo công việc mới, kiểm tra xem tên công việc nhập vào đã tồn tại chưa:
+  ```javascript
+  const inputTen = document.getElementById('ten-cong-viec').value.trim();
+  
+  // Kiểm tra trùng lặp
+  const biTrung = danhSachCongViec.some(congViec => congViec.ten.toLowerCase() === inputTen.toLowerCase());
+  
+  if (biTrung) {
+      alert("Công việc này đã tồn tại trong danh sách!");
+      return; // Dừng hàm, không thêm
+  }
+  ```
+
+### Yêu cầu 3: Toast Notification sử dụng CSS Class
+* Định nghĩa class CSS trong file `styles.css`:
+  ```css
+  .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+  }
+  .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  .toast-success { background-color: #10b981; }
+  .toast-info { background-color: #3b82f6; }
+  .toast-danger { background-color: #ef4444; }
+  ```
+* Viết hàm hiển thị toast trong file JavaScript:
+  ```javascript
+  function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      
+      // Trigger animation hiện
+      setTimeout(() => {
+          toast.classList.add('show');
+      }, 100);
+      
+      // Tự động biến mất sau 3 giây
+      setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => {
+              toast.remove(); // Xóa khỏi DOM
+          }, 300);
+      }, 3000);
+  }
+  ```
+
+</details>
+
 ---
 
 ## 🔗 Tài liệu tham khảo
