@@ -33,24 +33,49 @@
       </div>
     </Transition>
 
-    <!-- SECTION 1: HERO (Course Portal Intro) -->
+    <!-- SECTION 1: HERO (Original Terminal Window Style) -->
     <section class="section-hero">
       <div class="hero-glow"></div>
       <div class="hero-content">
-        <div class="dev-tag">
-          <span class="pulse-dot"></span>
-          const Academy = { methodology: "Project-Based Learning (PBL)", focus: "Web Development" }
+        <div class="badge-dev">const me = { role: "Teacher & Developer", loves: "Clean Code" };</div>
+        <!-- Terminal Window Wrapper -->
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="dot close"></span>
+              <span class="dot minimize"></span>
+              <span class="dot expand"></span>
+            </div>
+            <div class="terminal-title">letrongdat.vercel.app — node</div>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line"><span class="cmd-prompt">></span>
+              Học lập trình
+              <TextType :text="[
+                'JavaScript toàn diện ⚡',
+                'ReactJS hiện đại ⚛️',
+                'VueJS tối ưu 🟢',
+                'Node.js chuẩn REST API 🚀',
+                'WordPress & WooCommerce 🐘',
+                'C cơ bản & giải thuật 💻',
+                'Dự án 1 chuẩn doanh nghiệp 📦'
+              ]" :typingSpeed="70" :pauseDuration="2000" :deletingSpeed="30" class="terminal-typed" />
+            </div>
+
+            <div class="terminal-line comment">// Môi trường học tập tương tác chuẩn PBL (Project-Based Learning)</div>
+
+            <div class="terminal-line output">
+              <span class="keyword">console</span>.<span class="method">log</span>(<span class="string">"Sẵn sàng bứt phá sự nghiệp lập trình của bạn!"</span>);
+            </div>
+
+            <div class="terminal-line result">
+              <span class="system-output">"Sẵn sàng bứt phá sự nghiệp lập trình của bạn!"</span>
+            </div>
+          </div>
         </div>
-        <h1 class="hero-title">
-          Chinh Phục Kỹ Năng Lập Trình<br />
-          <span class="text-glow">Đào Tạo Thực Chiến</span><br />
-          Chuẩn Doanh Nghiệp.
-        </h1>
-        <p class="hero-subtitle">
-          Học qua dự án thực tế (PBL), nắm vững tư duy lập trình cốt lõi và phát triển toàn diện kỹ năng Frontend, Backend cùng Trí Tuệ Nhân Tạo (AI).
-        </p>
+
         <div class="hero-ctas">
-          <a href="#knowledge-hub" class="btn-primary-glow">Khám phá Khóa học</a>
+          <a href="#knowledge-hub" class="btn-primary-glow">Khám phá Khóa học 🚀</a>
         </div>
       </div>
       <div class="scroll-indicator" @click="scrollTo('#knowledge-hub')">
@@ -137,6 +162,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import TextType from './TextType.vue'
 
 const selectedNode = ref(null)
 
@@ -591,49 +617,124 @@ onUnmounted(() => {
   max-width: 900px;
 }
 
-.dev-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.badge-dev {
+  display: inline-block;
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  color: #a5b4fc;
   padding: 8px 16px;
-  border-radius: 99px;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.85rem;
-  color: #9ca3af;
-  margin-bottom: 30px;
-  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), inset 0 0 10px rgba(99, 102, 241, 0.1);
+  text-shadow: 0 0 8px rgba(165, 180, 252, 0.4);
 }
 
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  background: #10b981;
+.terminal-window {
+  background: rgba(13, 17, 23, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  margin: 32px auto 40px auto;
+  max-width: 680px;
+  width: 100%;
+  text-align: left;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: rgba(22, 27, 34, 0.95);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  box-shadow: 0 0 10px #10b981;
+  display: inline-block;
 }
 
-.hero-title {
-  font-size: clamp(2rem, 5.5vw, 4.2rem);
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  color: #ffffff;
+.close {
+  background: #ff5f56;
 }
 
-.text-glow {
-  background: linear-gradient(to right, #60a5fa, #2563eb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.minimize {
+  background: #ffbd2e;
 }
 
-.hero-subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: #9ca3af;
-  max-width: 700px;
-  margin: 24px auto 36px auto;
+.expand {
+  background: #27c93f;
+}
+
+.terminal-title {
+  color: #8b949e;
+  font-size: 0.8rem;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0 auto;
+  transform: translateX(-18px);
+}
+
+.terminal-body {
+  padding: 18px 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
   line-height: 1.6;
+  color: #c9d1d9;
+}
+
+.terminal-line {
+  margin-bottom: 10px;
+}
+
+.cmd-prompt {
+  color: #58a6ff;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.terminal-typed {
+  color: #58a6ff;
+  font-weight: bold;
+}
+
+.comment {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.output {
+  color: #c9d1d9;
+}
+
+.keyword {
+  color: #ff7b72;
+}
+
+.method {
+  color: #d2a8ff;
+}
+
+.string {
+  color: #a5d6ff;
+}
+
+.result {
+  margin-top: 4px;
+}
+
+.system-output {
+  color: #7ee787;
 }
 
 .hero-ctas {
