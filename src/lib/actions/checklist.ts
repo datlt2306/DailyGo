@@ -351,7 +351,7 @@ export async function deleteDailyPlanAction(local_date: string) {
  */
 export async function updateDailyItemAction(
   itemId: string,
-  changes: { is_completed?: boolean; current_value?: string | null; target_value?: string | null }
+  changes: { title?: string; is_completed?: boolean; current_value?: string | null; target_value?: string | null }
 ) {
   const { supabase, user } = await getAuthenticatedUser();
 
