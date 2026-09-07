@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { PlanDraftItem, saveDailyPlanAction } from '@/lib/actions/checklist';
+import { PlanDraftItem, saveDailyPlanAction, deleteDailyPlanAction } from '@/lib/actions/checklist';
 import { formatVietnameseDate } from '@/lib/utils/date';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { CalendarPlus, Plus, Trash2, Save, ArrowLeft } from 'lucide-react';
+import { CalendarPlus, Plus, Trash2, Save, GripVertical, X, AlertTriangle } from 'lucide-react';
 import { ItemType } from '@/lib/database.types';
 
 export function PlanTomorrowEditor({
@@ -27,7 +27,11 @@ export function PlanTomorrowEditor({
   const [newType, setNewType] = useState<ItemType>('checkbox');
   const [newVal, setNewVal] = useState('');
   const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Drag and Drop state
+  const [draggedIdx, setDraggedIdx] = useState<number | null>(null);
 
   const formattedDate = formatVietnameseDate(targetDate);
 
@@ -61,6 +65,31 @@ export function PlanTomorrowEditor({
     setNewVal('');
   }
 
+  // Drag & Drop reorder handlers
+  function handleDragStart(e: React.DragEvent, index: number) {
+    setDraggedIdx(index);
+    e.dataTransfer.effectAllowed = 'move';
+  }
+
+  function handleDragOver(e: React.DragEvent) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  }
+
+  function handleDrop(e: React.DragEvent, targetIndex: number) {
+    e.preventDefault();
+    if (draggedIdx === null || draggedIdx === targetIndex) return;
+
+    setItems((prev) => {
+      const next = [...prev];
+      const [draggedItem] = next.splice(draggedIdx, 1);
+      next.splice(targetIndex, 0, draggedItem);
+      // Re-assign sort_order
+      return next.map((item, i) => ({ ...item, sort_order: i }));
+    });
+    setDraggedIdx(null);
+  }
+
   async function handleSave() {
     setSaving(true);
     setError(null);
@@ -76,6 +105,27 @@ export function PlanTomorrowEditor({
     } else {
       router.push('/today');
     }
+  }
+
+  async function handleDeletePlan() {
+    if (!confirm(`Bạn có chắc chắn muốn XÓA TOÀN BỘ kế hoạch cho ngày ${formattedDate}?`)) {
+      return;
+    }
+
+    setDeleting(true);
+    setError(null);
+
+    const res = await deleteDailyPlanAction(targetDate);
+    if (res?.error) {
+      setError(res.error);
+      setDeleting(false);
+    } else {
+      router.push('/today');
+    }
+  }
+
+  function handleCancel() {
+    router.push('/today');
   }
 
   // Group items by category for UI
@@ -99,8 +149,8 @@ export function PlanTomorrowEditor({
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      {/* Header & Actions */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
         <div className="space-y-1">
           <div className="flex items-center space-x-2 text-indigo-600 font-semibold text-sm">
             <CalendarPlus className="w-4 h-4" />
@@ -112,17 +162,50 @@ export function PlanTomorrowEditor({
           </p>
         </div>
 
-        <Button onClick={handleSave} size="lg" disabled={saving} className="shadow-md">
-          <Save className="w-4 h-4 mr-2" />
-          {saving ? 'Đang lưu...' : 'Lưu kế hoạch'}
-        </Button>
+        {/* Action Buttons: Save, Cancel, Delete */}
+        <div className="flex flex-wrap items-center gap-2">
+          {isExisting && (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleDeletePlan}
+              disabled={deleting || saving}
+              className="border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300"
+            >
+              <Trash2 className="w-4 h-4 mr-1.5" />
+              {deleting ? 'Đang xóa...' : 'Xóa kế hoạch'}
+            </Button>
+          )}
+
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={handleCancel}
+            disabled={saving || deleting}
+          >
+            <X className="w-4 h-4 mr-1.5" />
+            Hủy / Quay lại
+          </Button>
+
+          <Button onClick={handleSave} size="lg" disabled={saving || deleting} className="shadow-md bg-indigo-600 hover:bg-indigo-700">
+            <Save className="w-4 h-4 mr-2" />
+            {saving ? 'Đang lưu...' : 'Lưu kế hoạch'}
+          </Button>
+        </div>
       </div>
 
       {error && (
-        <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
-          {error}
+        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium flex items-center space-x-2">
+          <AlertTriangle className="w-5 h-5 text-red-500 shrink-0" />
+          <span>{error}</span>
         </div>
       )}
+
+      {/* Drag instruction notice */}
+      <div className="text-xs text-slate-500 bg-slate-100/80 px-3.5 py-2 rounded-xl border border-slate-200 flex items-center space-x-2">
+        <GripVertical className="w-4 h-4 text-slate-400 shrink-0" />
+        <span>Bấm và kéo biểu tượng <strong>::</strong> để thay đổi thứ tự công việc tùy ý.</span>
+      </div>
 
       {/* Categories & Editable Items */}
       <div className="space-y-5">
@@ -137,22 +220,38 @@ export function PlanTomorrowEditor({
               {group.itemsWithIdx.map(({ item, idx }) => (
                 <div
                   key={idx}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200"
+                  draggable
+                  onDragStart={(e) => handleDragStart(e, idx)}
+                  onDragOver={handleDragOver}
+                  onDrop={(e) => handleDrop(e, idx)}
+                  className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border transition-all ${
+                    draggedIdx === idx ? 'border-indigo-500 bg-indigo-50/50 opacity-50 scale-[0.99]' : 'border-slate-200 hover:border-slate-300'
+                  }`}
                 >
-                  <div className="flex-1 space-y-1">
-                    <input
-                      type="text"
-                      value={item.title}
-                      onChange={(e) => handleUpdateItem(idx, { title: e.target.value })}
-                      className="font-medium text-sm text-slate-900 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-indigo-500 focus:outline-none w-full py-0.5"
-                    />
-                    <span className="inline-block text-xs text-slate-400 font-medium capitalize">
-                      Loại: {item.item_type}
-                    </span>
+                  <div className="flex items-center space-x-2 flex-1 min-w-0">
+                    {/* Drag Handle Icon */}
+                    <div
+                      className="cursor-grab active:cursor-grabbing p-1 text-slate-400 hover:text-slate-600 rounded"
+                      title="Kéo để thay đổi thứ tự"
+                    >
+                      <GripVertical className="w-4 h-4" />
+                    </div>
+
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <input
+                        type="text"
+                        value={item.title}
+                        onChange={(e) => handleUpdateItem(idx, { title: e.target.value })}
+                        className="font-medium text-sm text-slate-900 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-indigo-500 focus:outline-none w-full py-0.5"
+                      />
+                      <span className="inline-block text-xs text-slate-400 font-medium capitalize">
+                        Loại: {item.item_type}
+                      </span>
+                    </div>
                   </div>
 
                   {/* Target value or custom text input */}
-                  <div className="flex items-center space-x-2 shrink-0">
+                  <div className="flex items-center space-x-2 shrink-0 pl-6 sm:pl-0">
                     {item.item_type === 'duration' && (
                       <div className="flex items-center space-x-1">
                         <input

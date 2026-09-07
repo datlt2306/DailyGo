@@ -237,6 +237,31 @@ export async function saveDailyPlanAction(payload: {
 }
 
 /**
+ * Deletes a daily checklist & all its items for a specified date.
+ */
+export async function deleteDailyPlanAction(local_date: string) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) return { error: 'Chưa đăng nhập.' };
+  if (!local_date) return { error: 'Ngày không hợp lệ.' };
+
+  const { error } = await supabase
+    .from('daily_checklists')
+    .delete()
+    .eq('user_id', user.id)
+    .eq('local_date', local_date);
+
+  if (error) return { error: error.message };
+
+  revalidatePath('/today');
+  revalidatePath('/plan-tomorrow');
+  revalidatePath('/history');
+
+  return { success: true };
+}
+
+/**
  * Updates a single daily item state (toggle checkbox, change duration/text value).
  */
 export async function updateDailyItemAction(
