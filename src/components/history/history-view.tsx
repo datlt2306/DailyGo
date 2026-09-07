@@ -6,14 +6,16 @@ import { formatVietnameseDate } from '@/lib/utils/date';
 import { getChecklistByDateAction } from '@/lib/actions/checklist';
 import { Card, Badge, Progress } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { History, Calendar, CheckCircle2, ChevronRight, ArrowLeft } from 'lucide-react';
+import { History, Calendar, CheckCircle2, ChevronRight, ArrowLeft, LayoutList, CalendarDays } from 'lucide-react';
 import { TaskItemCard } from '../today/task-item';
+import { CalendarView } from './calendar-view';
 
 export function HistoryView({
   checklists,
 }: {
   checklists: Array<DailyChecklist & { total_items: number; completed_items: number }>;
 }) {
+  const [activeTab, setActiveTab] = useState<'calendar' | 'list'>('calendar'); // Default to Calendar view for % stats
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [detailData, setDetailData] = useState<{
     checklist: DailyChecklist | null;
@@ -34,7 +36,7 @@ export function HistoryView({
       <div className="space-y-6">
         <Button variant="ghost" onClick={() => setSelectedDate(null)} className="pl-0 text-slate-600">
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Quay lại lịch sử
+          Quay lại Lịch sử
         </Button>
 
         <div className="space-y-1">
@@ -88,17 +90,51 @@ export function HistoryView({
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="space-y-1">
-        <div className="flex items-center space-x-2 text-indigo-600 font-semibold text-sm">
-          <History className="w-4 h-4" />
-          <span>LỊCH SỬ KẾ HOẠCH</span>
+      {/* Header & View Mode Switcher */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <div className="flex items-center space-x-2 text-indigo-600 font-semibold text-sm">
+            <History className="w-4 h-4" />
+            <span>THỐNG KÊ & LỊCH SỬ KẾ HOẠCH</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Theo dõi tiến độ theo ngày</h1>
+          <p className="text-sm text-slate-500">Xem lại % phần trăm hoàn thành và lịch sử chi tiết</p>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Theo dõi quá trình</h1>
-        <p className="text-sm text-slate-500">Xem lại các kế hoạch và kết quả thực hiện trong quá khứ</p>
+
+        {/* Tab Switcher */}
+        <div className="flex items-center bg-slate-200/60 p-1 rounded-xl self-start sm:self-auto">
+          <button
+            type="button"
+            onClick={() => setActiveTab('calendar')}
+            className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
+              activeTab === 'calendar'
+                ? 'bg-white text-indigo-700 shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <CalendarDays className="w-4 h-4" />
+            <span>Lịch biểu Calendar (%)</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('list')}
+            className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
+              activeTab === 'list'
+                ? 'bg-white text-indigo-700 shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <LayoutList className="w-4 h-4" />
+            <span>Danh sách</span>
+          </button>
+        </div>
       </div>
 
-      {checklists.length === 0 ? (
+      {/* Render selected view */}
+      {activeTab === 'calendar' ? (
+        <CalendarView checklists={checklists} />
+      ) : checklists.length === 0 ? (
         <Card className="p-8 text-center space-y-3 bg-slate-50 border-dashed border-2">
           <p className="text-base font-semibold text-slate-700">Chưa có lịch sử kế hoạch nào</p>
           <p className="text-sm text-slate-500">
