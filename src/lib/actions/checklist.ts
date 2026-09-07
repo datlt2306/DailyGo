@@ -37,7 +37,88 @@ export async function getUserTimezone(): Promise<string> {
 }
 
 /**
+ * Helper to create a checklist and daily items snapshot from template for a given date.
+ */
+export async function createChecklistFromTemplate(
+  supabase: any,
+  userId: string,
+  dateStr: string
+) {
+  const [{ data: categories }, { data: templateItems }] = await Promise.all([
+    supabase
+      .from('template_categories')
+      .select('*')
+      .eq('user_id', userId)
+      .order('sort_order', { ascending: true }),
+    supabase
+      .from('template_items')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('is_enabled', true)
+      .order('sort_order', { ascending: true }),
+  ]);
+
+  if (!templateItems || templateItems.length === 0) return null;
+
+  const { data: checklist, error: clError } = await supabase
+    .from('daily_checklists')
+    .upsert(
+      {
+        user_id: userId,
+        local_date: dateStr,
+        completion_percentage: 0,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: 'user_id, local_date' }
+    )
+    .select()
+    .single();
+
+  if (clError || !checklist) return null;
+
+  // Insert snapshot items
+  const itemsToInsert: Array<{
+    daily_checklist_id: string;
+    user_id: string;
+    category_name: string;
+    category_sort_order: number;
+    title: string;
+    item_type: ItemType;
+    target_value: string | null;
+    current_value: string | null;
+    is_completed: boolean;
+    sort_order: number;
+  }> = [];
+
+  (categories || []).forEach((cat: any) => {
+    const catItems = templateItems.filter((ti: any) => ti.category_id === cat.id);
+    catItems.forEach((ti: any) => {
+      itemsToInsert.push({
+        daily_checklist_id: checklist.id,
+        user_id: userId,
+        category_name: cat.name,
+        category_sort_order: cat.sort_order,
+        title: ti.title,
+        item_type: ti.item_type as ItemType,
+        target_value: ti.default_value || null,
+        current_value: ti.item_type === 'text' ? ti.default_value || null : null,
+        is_completed: false,
+        sort_order: ti.sort_order,
+      });
+    });
+  });
+
+  if (itemsToInsert.length > 0) {
+    await supabase.from('daily_items').delete().eq('daily_checklist_id', checklist.id);
+    await supabase.from('daily_items').insert(itemsToInsert);
+  }
+
+  return checklist;
+}
+
+/**
  * Gets Today's daily checklist & items for the authenticated user.
+ * Auto-creates from template if missing so user always sees checkboxes!
  */
 export async function getTodayChecklistAction(): Promise<{
   local_date: string;
@@ -53,7 +134,7 @@ export async function getTodayChecklistAction(): Promise<{
   const timezone = await getUserTimezone();
   const todayStr = getTodayLocalDate(timezone);
 
-  const { data: checklist, error: clError } = await supabase
+  let { data: checklist, error: clError } = await supabase
     .from('daily_checklists')
     .select('*')
     .eq('user_id', user.id)
@@ -61,6 +142,12 @@ export async function getTodayChecklistAction(): Promise<{
     .maybeSingle();
 
   if (clError) return { local_date: todayStr, checklist: null, groupedItems: [], error: clError.message };
+
+  // Auto-generate today's checklist from template if it doesn't exist yet!
+  if (!checklist) {
+    checklist = await createChecklistFromTemplate(supabase, user.id, todayStr);
+  }
+
   if (!checklist) return { local_date: todayStr, checklist: null, groupedItems: [] };
 
   const { data: items, error: itemError } = await supabase
@@ -433,3 +520,46 @@ function groupDailyItems(items: DailyItem[]): GroupedDailyItems[] {
 
   return result.sort((a, b) => a.category_sort_order - b.category_sort_order);
 }
+
+/**
+ * Applies active template to the next N days (default 7 days / whole week) in one click!
+ */
+export async function applyTemplateToNextNDaysAction(daysCount: number = 7, overwrite: boolean = false) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) return { error: 'Chưa đăng nhập.' };
+
+  const timezone = await getUserTimezone();
+  const todayStr = getTodayLocalDate(timezone);
+  const baseDate = new Date(todayStr);
+
+  let createdCount = 0;
+
+  for (let i = 0; i < daysCount; i++) {
+    const d = new Date(baseDate);
+    d.setDate(baseDate.getDate() + i);
+    const dateStr = d.toISOString().split('T')[0];
+
+    if (!overwrite) {
+      const { data: existing } = await supabase
+        .from('daily_checklists')
+        .select('id')
+        .eq('user_id', user.id)
+        .eq('local_date', dateStr)
+        .maybeSingle();
+
+      if (existing) continue; // Skip existing if overwrite is false
+    }
+
+    const created = await createChecklistFromTemplate(supabase, user.id, dateStr);
+    if (created) createdCount++;
+  }
+
+  revalidatePath('/today');
+  revalidatePath('/plan-tomorrow');
+  revalidatePath('/stats');
+
+  return { success: true, count: createdCount };
+}
+

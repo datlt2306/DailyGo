@@ -2,13 +2,32 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { PlanDraftItem, saveDailyPlanAction, deleteDailyPlanAction } from '@/lib/actions/checklist';
+import {
+  PlanDraftItem,
+  saveDailyPlanAction,
+  deleteDailyPlanAction,
+  applyTemplateToNextNDaysAction,
+} from '@/lib/actions/checklist';
 import { formatVietnameseDate } from '@/lib/utils/date';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { CalendarPlus, Plus, Trash2, Save, GripVertical, X, AlertTriangle } from 'lucide-react';
+import {
+  CalendarPlus,
+  Plus,
+  Trash2,
+  Save,
+  GripVertical,
+  X,
+  AlertTriangle,
+  Sparkles,
+  CheckCircle2,
+  Clock,
+  FileText,
+  Square,
+  Calendar,
+} from 'lucide-react';
 import { ItemType } from '@/lib/database.types';
 
 export function PlanTomorrowEditor({
@@ -28,12 +47,25 @@ export function PlanTomorrowEditor({
   const [newVal, setNewVal] = useState('');
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [applyingWeek, setApplyingWeek] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
   // Drag and Drop state
   const [draggedIdx, setDraggedIdx] = useState<number | null>(null);
 
   const formattedDate = formatVietnameseDate(targetDate);
+
+  // Generate 7-day quick date picker items starting from today
+  const todayObj = new Date();
+  const dateTabs = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(todayObj);
+    d.setDate(todayObj.getDate() + i);
+    const dateStr = d.toISOString().split('T')[0];
+    const dayNames = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+    const label = i === 0 ? 'Hôm nay' : i === 1 ? 'Ngày mai' : `${dayNames[d.getDay()]} ${d.getDate()}/${d.getMonth() + 1}`;
+    return { dateStr, label, isToday: i === 0 };
+  });
 
   function handleUpdateItem(index: number, changes: Partial<PlanDraftItem>) {
     setItems((prev) => {
@@ -92,17 +124,42 @@ export function PlanTomorrowEditor({
   async function handleSave() {
     setSaving(true);
     setError(null);
+    setSuccessMsg(null);
 
     const res = await saveDailyPlanAction({
       local_date: targetDate,
       items,
     });
 
+    setSaving(false);
     if (res?.error) {
       setError(res.error);
-      setSaving(false);
     } else {
-      router.push('/today');
+      setSuccessMsg(`Đã lưu kế hoạch cho ngày ${formattedDate}! Công việc và Checkbox đã sẵn sàng.`);
+    }
+  }
+
+  async function handleApplyWeek() {
+    if (
+      !confirm(
+        'Bạn có muốn tự động tạo kế hoạch từ Template cho cả 7 ngày tới không? (Những ngày đã tạo trước đó sẽ không bị ảnh hưởng)'
+      )
+    ) {
+      return;
+    }
+
+    setApplyingWeek(true);
+    setError(null);
+    setSuccessMsg(null);
+
+    const res = await applyTemplateToNextNDaysAction(7, false);
+    setApplyingWeek(false);
+
+    if (res?.error) {
+      setError(res.error);
+    } else {
+      setSuccessMsg(`Đã áp dụng Template tự động cho 7 ngày tới!`);
+      router.refresh();
     }
   }
 
@@ -128,7 +185,10 @@ export function PlanTomorrowEditor({
   }
 
   // Group items by category for UI
-  const categoriesMap = new Map<string, { sortOrder: number; itemsWithIdx: Array<{ item: PlanDraftItem; idx: number }> }>();
+  const categoriesMap = new Map<
+    string,
+    { sortOrder: number; itemsWithIdx: Array<{ item: PlanDraftItem; idx: number }> }
+  >();
 
   items.forEach((item, idx) => {
     const existing = categoriesMap.get(item.category_name);
@@ -147,51 +207,102 @@ export function PlanTomorrowEditor({
   );
 
   return (
-    <div className="space-y-4 sm:space-y-6 pb-20 sm:pb-8">
-      {/* Mobile-optimized Header */}
+    <div className="space-y-4 sm:space-y-6 pb-24 sm:pb-8">
+      {/* 7-Day Quick Date Navigation Bar */}
+      <div className="bg-slate-100 p-1.5 rounded-2xl border border-slate-200 overflow-x-auto scrollbar-none flex items-center space-x-1.5">
+        {dateTabs.map((tab) => {
+          const isActive = tab.dateStr === targetDate;
+          return (
+            <button
+              key={tab.dateStr}
+              type="button"
+              onClick={() => router.push(`/plan-tomorrow?date=${tab.dateStr}`)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center space-x-1 ${
+                isActive
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-slate-600 hover:bg-white hover:text-slate-900'
+              }`}
+            >
+              <Calendar className="w-3.5 h-3.5" />
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Header & Main Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm">
         <div className="space-y-0.5">
           <div className="flex items-center space-x-2 text-indigo-600 font-semibold text-xs sm:text-sm">
             <CalendarPlus className="w-4 h-4" />
-            <span>LẬP KẾ HOẠCH NGÀY MỚI</span>
+            <span>CHỈNH SỬA KẾ HOẠCH NGÀY</span>
           </div>
           <h1 className="text-xl sm:text-3xl font-bold text-slate-900">{formattedDate}</h1>
           <p className="text-xs sm:text-sm text-slate-500">
-            {isExisting ? 'Đang chỉnh sửa kế hoạch đã lập' : 'Bản nháp được tạo từ template'}
+            {isExisting
+              ? 'Kế hoạch đã được lưu. Chỉnh sửa công việc bên dưới.'
+              : 'Bản nháp tự động từ Template của bạn.'}
           </p>
         </div>
 
-        {/* Desktop Actions */}
-        <div className="hidden sm:flex items-center space-x-2">
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={handleApplyWeek}
+            disabled={applyingWeek || saving}
+            className="border-indigo-200 text-indigo-700 bg-indigo-50/50 hover:bg-indigo-100 text-xs"
+            title="Tự động lập kế hoạch từ Template cho 7 ngày tới"
+          >
+            <Sparkles className="w-4 h-4 mr-1.5 text-indigo-600" />
+            {applyingWeek ? 'Đang tạo...' : 'Áp dụng cho cả tuần (7 ngày)'}
+          </Button>
+
           {isExisting && (
             <Button
               type="button"
               variant="outline"
+              size="sm"
               onClick={handleDeletePlan}
               disabled={deleting || saving}
-              className="border-red-200 text-red-600 hover:bg-red-50"
+              className="border-red-200 text-red-600 hover:bg-red-50 text-xs hidden sm:flex"
             >
               <Trash2 className="w-4 h-4 mr-1.5" />
-              {deleting ? 'Đang xóa...' : 'Xóa kế hoạch'}
+              {deleting ? 'Đang xóa...' : 'Xóa'}
             </Button>
           )}
 
           <Button
-            type="button"
-            variant="ghost"
-            onClick={handleCancel}
-            disabled={saving || deleting}
+            onClick={handleSave}
+            size="sm"
+            disabled={saving || deleting || applyingWeek}
+            className="bg-indigo-600 hover:bg-indigo-700 font-bold shadow-md text-xs sm:text-sm px-4"
           >
-            <X className="w-4 h-4 mr-1.5" />
-            Hủy
-          </Button>
-
-          <Button onClick={handleSave} size="lg" disabled={saving || deleting} className="bg-indigo-600 hover:bg-indigo-700">
-            <Save className="w-4 h-4 mr-2" />
+            <Save className="w-4 h-4 mr-1.5" />
             {saving ? 'Đang lưu...' : 'Lưu kế hoạch'}
           </Button>
         </div>
       </div>
+
+      {/* Success Notification Banner */}
+      {successMsg && (
+        <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-medium flex items-center justify-between gap-2 shadow-sm animate-fadeIn">
+          <div className="flex items-center space-x-2">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+            <span>{successMsg}</span>
+          </div>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => router.push('/today')}
+            className="border-emerald-300 text-emerald-800 hover:bg-emerald-100 text-xs whitespace-nowrap"
+          >
+            Xem Hôm nay
+          </Button>
+        </div>
+      )}
 
       {error && (
         <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm font-medium flex items-center space-x-2">
@@ -200,19 +311,23 @@ export function PlanTomorrowEditor({
         </div>
       )}
 
-      {/* Drag notice */}
+      {/* Drag Notice */}
       <div className="text-[11px] sm:text-xs text-slate-500 bg-slate-100/90 px-3 py-2 rounded-xl border border-slate-200 flex items-center space-x-2">
         <GripVertical className="w-4 h-4 text-slate-400 shrink-0" />
-        <span>Giữ và kéo biểu tượng <strong>::</strong> để di chuyển công việc.</span>
+        <span>
+          Giữ & kéo <strong>::</strong> để sắp xếp công việc. Tất cả công việc dạng <strong>Checkbox</strong> sẽ hiển thị ô chọn hoàn thành trên trang <strong>Hôm nay</strong>.
+        </span>
       </div>
 
-      {/* Categories & Compact Mobile Rows */}
+      {/* Categories & Task Items */}
       <div className="space-y-4 sm:space-y-5">
         {categories.map(([categoryName, group]) => (
           <Card key={categoryName} className="p-3 sm:p-5 space-y-2.5">
             <h2 className="font-bold text-sm sm:text-base text-slate-800 border-b border-slate-100 pb-2 flex items-center justify-between">
               <span>{categoryName}</span>
-              <Badge variant="default" className="text-[10px] sm:text-xs px-2 py-0.5">{group.itemsWithIdx.length} task</Badge>
+              <Badge variant="default" className="text-[10px] sm:text-xs px-2 py-0.5">
+                {group.itemsWithIdx.length} task
+              </Badge>
             </h2>
 
             <div className="space-y-2">
@@ -224,10 +339,12 @@ export function PlanTomorrowEditor({
                   onDragOver={handleDragOver}
                   onDrop={(e) => handleDrop(e, idx)}
                   className={`flex items-center justify-between gap-2 p-2.5 sm:p-3 rounded-xl bg-slate-50 border transition-all ${
-                    draggedIdx === idx ? 'border-indigo-500 bg-indigo-50/50 opacity-50' : 'border-slate-200 hover:border-slate-300'
+                    draggedIdx === idx
+                      ? 'border-indigo-500 bg-indigo-50/50 opacity-50'
+                      : 'border-slate-200 hover:border-slate-300'
                   }`}
                 >
-                  {/* Drag handle & Title input */}
+                  {/* Drag handle & Checkbox visual indicator & Title input */}
                   <div className="flex items-center space-x-2 flex-1 min-w-0">
                     <div
                       className="cursor-grab active:cursor-grabbing p-1 text-slate-400 hover:text-slate-600 rounded touch-manipulation shrink-0"
@@ -235,6 +352,25 @@ export function PlanTomorrowEditor({
                     >
                       <GripVertical className="w-4 h-4" />
                     </div>
+
+                    {/* Task Type Icon / Visual Checkbox */}
+                    {item.item_type === 'checkbox' && (
+                      <div className="flex items-center space-x-1 text-indigo-600 shrink-0" title="Công việc Checkbox">
+                        <Square className="w-4.5 h-4.5 text-indigo-500 rounded" />
+                      </div>
+                    )}
+
+                    {item.item_type === 'duration' && (
+                      <div className="flex items-center space-x-1 text-amber-600 shrink-0" title="Thời lượng số phút">
+                        <Clock className="w-4 h-4 text-amber-500" />
+                      </div>
+                    )}
+
+                    {item.item_type === 'text' && (
+                      <div className="flex items-center space-x-1 text-blue-600 shrink-0" title="Nội dung ghi chú">
+                        <FileText className="w-4 h-4 text-blue-500" />
+                      </div>
+                    )}
 
                     <input
                       type="text"
@@ -244,8 +380,14 @@ export function PlanTomorrowEditor({
                     />
                   </div>
 
-                  {/* Inline value input & delete button */}
+                  {/* Inline value input & type indicator & delete button */}
                   <div className="flex items-center space-x-1.5 shrink-0">
+                    {item.item_type === 'checkbox' && (
+                      <span className="text-[10px] text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded font-semibold hidden sm:inline">
+                        Checkbox
+                      </span>
+                    )}
+
                     {item.item_type === 'duration' && (
                       <div className="flex items-center space-x-1">
                         <input
@@ -302,7 +444,7 @@ export function PlanTomorrowEditor({
             placeholder="Tên công việc phát sinh"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            className="text-xs sm:text-sm"
+            className="text-xs sm:text-sm bg-white"
           />
 
           <select
@@ -328,21 +470,32 @@ export function PlanTomorrowEditor({
           </select>
 
           <Input
-            placeholder={newType === 'duration' ? 'Mặc định (VD: 30)' : newType === 'text' ? 'Nội dung (VD: Đổ rác)' : 'Không cần thiết'}
+            placeholder={
+              newType === 'duration'
+                ? 'Mặc định (VD: 30)'
+                : newType === 'text'
+                ? 'Nội dung (VD: Đổ rác)'
+                : 'Không cần thiết'
+            }
             value={newVal}
             onChange={(e) => setNewVal(e.target.value)}
             disabled={newType === 'checkbox'}
-            className="text-xs sm:text-sm"
+            className="text-xs sm:text-sm bg-white"
           />
         </div>
 
-        <Button type="button" onClick={handleAddItem} variant="secondary" className="w-full sm:w-auto text-xs sm:text-sm">
+        <Button
+          type="button"
+          onClick={handleAddItem}
+          variant="secondary"
+          className="w-full sm:w-auto text-xs sm:text-sm font-semibold"
+        >
           <Plus className="w-4 h-4 mr-1.5" />
           Thêm vào danh sách ngày
         </Button>
       </Card>
 
-      {/* Mobile Floating Action Bar (Sticky at bottom above bottom nav) */}
+      {/* Mobile Floating Action Bar */}
       <div className="sm:hidden fixed bottom-14 left-0 right-0 p-3 bg-white/95 backdrop-blur border-t border-slate-200 shadow-xl flex items-center justify-between gap-2 z-30">
         {isExisting && (
           <Button
@@ -369,7 +522,12 @@ export function PlanTomorrowEditor({
           Hủy
         </Button>
 
-        <Button onClick={handleSave} size="sm" disabled={saving || deleting} className="bg-indigo-600 hover:bg-indigo-700 text-xs px-4 flex-1 shadow-md font-bold">
+        <Button
+          onClick={handleSave}
+          size="sm"
+          disabled={saving || deleting || applyingWeek}
+          className="bg-indigo-600 hover:bg-indigo-700 text-xs px-4 flex-1 shadow-md font-bold"
+        >
           <Save className="w-3.5 h-3.5 mr-1.5" />
           {saving ? 'Đang lưu...' : 'Lưu kế hoạch'}
         </Button>
