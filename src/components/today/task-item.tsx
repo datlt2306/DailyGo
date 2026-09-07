@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { DailyItem } from '@/lib/database.types';
-import { updateDailyItemAction } from '@/lib/actions/checklist';
+import { updateDailyItemAction, deleteDailyItemAction } from '@/lib/actions/checklist';
 import { cn } from '@/lib/utils/cn';
-import { Check, Clock, Edit2, Save, X } from 'lucide-react';
+import { Check, Clock, Edit2, Save, Trash2, X } from 'lucide-react';
 
 export function TaskItemCard({ item }: { item: DailyItem }) {
   const [completed, setCompleted] = useState(item.is_completed);
@@ -13,6 +13,9 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
   const [targetValue, setTargetValue] = useState(item.target_value || '');
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  if (isDeleted) return null;
 
   async function handleToggleCheck() {
     const nextCompleted = !completed;
@@ -38,6 +41,16 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
       is_completed: nextCompleted,
     });
     setIsEditing(false);
+    setLoading(false);
+  }
+
+  async function handleDeleteItem() {
+    if (!confirm(`Bạn có chắc chắn muốn xóa "${title}"?`)) return;
+    setLoading(true);
+    const res = await deleteDailyItemAction(item.id);
+    if (res?.success) {
+      setIsDeleted(true);
+    }
     setLoading(false);
   }
 
@@ -88,6 +101,16 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
 
             <button
               type="button"
+              onClick={handleDeleteItem}
+              disabled={loading}
+              className="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition-colors"
+              title="Xóa công việc"
+            >
+              <Trash2 className="w-4 h-4" />
+            </button>
+
+            <button
+              type="button"
               onClick={() => setIsEditing(false)}
               disabled={loading}
               className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg"
@@ -97,7 +120,7 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
           </div>
         </div>
       ) : (
-        /* Normal View: Checkbox + Title + Edit Button for EVERY item */
+        /* Normal View: Checkbox + Title + Action Buttons (Edit + Delete) */
         <>
           <div className="flex items-center space-x-3 flex-1 min-w-0 mr-2">
             <button
@@ -138,17 +161,31 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
             </div>
           </div>
 
-          {/* Edit button for ALL items */}
-          <button
-            type="button"
-            onClick={() => setIsEditing(true)}
-            className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition-colors shrink-0 touch-manipulation"
-            title="Chỉnh sửa tên công việc"
-          >
-            <Edit2 className="w-3.5 h-3.5" />
-          </button>
+          {/* Action buttons (Edit & Delete) for ALL items */}
+          <div className="flex items-center space-x-1 shrink-0">
+            <button
+              type="button"
+              onClick={() => setIsEditing(true)}
+              disabled={loading}
+              className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition-colors touch-manipulation"
+              title="Chỉnh sửa công việc"
+            >
+              <Edit2 className="w-3.5 h-3.5" />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleDeleteItem}
+              disabled={loading}
+              className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors touch-manipulation"
+              title="Xóa công việc"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </>
       )}
     </div>
   );
 }
+

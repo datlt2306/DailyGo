@@ -396,6 +396,54 @@ export async function updateDailyItemAction(
 }
 
 /**
+ * Deletes a single daily item and updates completion percentage.
+ */
+export async function deleteDailyItemAction(itemId: string) {
+  const { supabase, user } = await getAuthenticatedUser();
+
+  if (!user) return { error: 'Chưa đăng nhập.' };
+
+  // Fetch current item to get checklist ID
+  const { data: currentItem, error: fetchErr } = await supabase
+    .from('daily_items')
+    .select('daily_checklist_id')
+    .eq('id', itemId)
+    .eq('user_id', user.id)
+    .single();
+
+  if (fetchErr || !currentItem) return { error: 'Không tìm thấy công việc.' };
+
+  // Delete item
+  const { error: deleteErr } = await supabase
+    .from('daily_items')
+    .delete()
+    .eq('id', itemId)
+    .eq('user_id', user.id);
+
+  if (deleteErr) return { error: deleteErr.message };
+
+  // Recalculate completion percentage for parent daily_checklist
+  const { data: remainingItems } = await supabase
+    .from('daily_items')
+    .select('*')
+    .eq('daily_checklist_id', currentItem.daily_checklist_id);
+
+  const percentage = calculateCompletionPercentage(remainingItems || []);
+
+  await supabase
+    .from('daily_checklists')
+    .update({ completion_percentage: percentage, updated_at: new Date().toISOString() })
+    .eq('id', currentItem.daily_checklist_id);
+
+  revalidatePath('/today');
+  revalidatePath('/plan-tomorrow');
+  revalidatePath('/history');
+  revalidatePath('/stats');
+
+  return { success: true, percentage };
+}
+
+/**
  * Gets history of daily checklists for the authenticated user.
  * High-performance 2-query batching to eliminate N+1 latency.
  */
