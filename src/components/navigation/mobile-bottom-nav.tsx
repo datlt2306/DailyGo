@@ -2,16 +2,16 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CalendarCheck, CalendarPlus, History, Settings } from 'lucide-react';
+import { BarChart3, CalendarCheck, CalendarPlus, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
 export function MobileBottomNav() {
   const pathname = usePathname();
 
   const navItems = [
+    { label: 'Thống kê', href: '/stats', icon: BarChart3 },
     { label: 'Hôm nay', href: '/today', icon: CalendarCheck },
     { label: 'Kế hoạch', href: '/plan-tomorrow', icon: CalendarPlus },
-    { label: 'Lịch sử', href: '/history', icon: History },
     { label: 'Cài đặt', href: '/settings', icon: Settings },
   ];
 

@@ -61,7 +61,7 @@ export async function registerAction(formData: FormData) {
   // If email confirmation is enabled on Supabase, notify user; otherwise redirect to /today
   if (data.session) {
     revalidatePath('/', 'layout');
-    redirect('/today');
+    redirect('/stats');
   }
 
   return { success: 'Đăng ký thành công! Vui lòng đăng nhập vào hệ thống.' };

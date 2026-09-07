@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CalendarCheck, CalendarPlus, History, Settings, LogOut, CheckSquare } from 'lucide-react';
+import { BarChart3, CalendarCheck, CalendarPlus, Settings, LogOut, CheckSquare } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 import { logoutAction } from '@/lib/actions/auth';
 
@@ -10,9 +10,9 @@ export function DesktopSidebar({ displayName, email }: { displayName?: string; e
   const pathname = usePathname();
 
   const navItems = [
+    { label: 'Thống kê', href: '/stats', icon: BarChart3 },
     { label: 'Hôm nay', href: '/today', icon: CalendarCheck },
     { label: 'Lập kế hoạch ngày mai', href: '/plan-tomorrow', icon: CalendarPlus },
-    { label: 'Lịch sử kế hoạch', href: '/history', icon: History },
     { label: 'Cài đặt & Template', href: '/settings', icon: Settings },
   ];
 
