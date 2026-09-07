@@ -210,6 +210,8 @@ export function PlanTomorrowEditor({
     (a, b) => a[1].sortOrder - b[1].sortOrder
   );
 
+  const isLoading = applyingWeek || saving || deleting;
+
   return (
     <div className="space-y-4 sm:space-y-6 pb-24 sm:pb-8">
       {/* 7-Day Quick Date Navigation Bar */}
@@ -220,12 +222,13 @@ export function PlanTomorrowEditor({
             <button
               key={tab.dateStr}
               type="button"
+              disabled={isLoading}
               onClick={() => router.push(`/plan-tomorrow?date=${tab.dateStr}`)}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center space-x-1 ${
                 isActive
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'text-slate-600 hover:bg-white hover:text-slate-900'
-              }`}
+              } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>{tab.label}</span>
@@ -256,11 +259,11 @@ export function PlanTomorrowEditor({
             variant="outline"
             size="sm"
             onClick={handleApplyWeek}
-            disabled={applyingWeek || saving}
+            disabled={isLoading}
             className="border-indigo-200 text-indigo-700 bg-indigo-50/50 hover:bg-indigo-100 text-xs shrink-0"
             title="Tự động lập kế hoạch từ Template cho 7 ngày tới"
           >
-            <Sparkles className="w-3.5 h-3.5 mr-1 text-indigo-600" />
+            <Sparkles className={`w-3.5 h-3.5 mr-1 text-indigo-600 ${applyingWeek ? 'animate-spin' : ''}`} />
             {applyingWeek ? 'Đang tạo...' : 'Áp dụng cho cả tuần (7 ngày)'}
           </Button>
 
@@ -270,7 +273,7 @@ export function PlanTomorrowEditor({
               variant="outline"
               size="sm"
               onClick={handleDeletePlan}
-              disabled={deleting || saving}
+              disabled={isLoading}
               className="border-red-200 text-red-600 hover:bg-red-50 text-xs shrink-0"
             >
               <Trash2 className="w-3.5 h-3.5 mr-1" />
@@ -281,7 +284,7 @@ export function PlanTomorrowEditor({
           <Button
             onClick={handleSave}
             size="sm"
-            disabled={saving || deleting || applyingWeek}
+            disabled={isLoading}
             className="bg-indigo-600 hover:bg-indigo-700 font-bold shadow-md text-xs sm:text-sm px-3.5 shrink-0"
           >
             <Save className="w-3.5 h-3.5 mr-1" />
@@ -289,6 +292,14 @@ export function PlanTomorrowEditor({
           </Button>
         </div>
       </div>
+
+      {/* Loading Progress Notification Banner */}
+      {applyingWeek && (
+        <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-800 text-xs sm:text-sm font-semibold flex items-center space-x-2.5 animate-pulse shadow-sm">
+          <Sparkles className="w-5 h-5 text-indigo-600 animate-spin shrink-0" />
+          <span>Đang tạo kế hoạch tự động cho 7 ngày tiếp theo từ Template... Vui lòng không đóng trang.</span>
+        </div>
+      )}
 
       {/* Success Notification Banner */}
       {successMsg && (
@@ -322,7 +333,7 @@ export function PlanTomorrowEditor({
       </div>
 
       {/* Categories & Task Items */}
-      <div className="space-y-4 sm:space-y-5">
+      <div className={`space-y-4 sm:space-y-5 ${isLoading ? 'pointer-events-none opacity-60' : ''}`}>
         {categories.map(([categoryName, group]) => (
           <Card key={categoryName} className="p-3 sm:p-5 space-y-2.5">
             <h2 className="font-bold text-sm sm:text-base text-slate-800 border-b border-slate-100 pb-2 flex items-center justify-between">
@@ -336,10 +347,10 @@ export function PlanTomorrowEditor({
               {group.itemsWithIdx.map(({ item, idx }) => (
                 <div
                   key={idx}
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, idx)}
+                  draggable={!isLoading}
+                  onDragStart={(e) => !isLoading && handleDragStart(e, idx)}
                   onDragOver={handleDragOver}
-                  onDrop={(e) => handleDrop(e, idx)}
+                  onDrop={(e) => !isLoading && handleDrop(e, idx)}
                   className={`flex items-center justify-between gap-2 p-2.5 sm:p-3 rounded-xl bg-slate-50 border transition-all ${
                     draggedIdx === idx
                       ? 'border-indigo-500 bg-indigo-50/50 opacity-50'
@@ -357,9 +368,10 @@ export function PlanTomorrowEditor({
 
                     <input
                       type="text"
+                      disabled={isLoading}
                       value={item.title}
                       onChange={(e) => handleUpdateItem(idx, { title: e.target.value })}
-                      className="font-medium text-xs sm:text-sm text-slate-900 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-indigo-500 focus:outline-none flex-1 min-w-0 py-0.5 truncate"
+                      className="font-medium text-xs sm:text-sm text-slate-900 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-indigo-500 focus:outline-none flex-1 min-w-0 py-0.5 truncate disabled:opacity-50"
                     />
                   </div>
 
@@ -369,10 +381,11 @@ export function PlanTomorrowEditor({
                       <div className="flex items-center space-x-1">
                         <input
                           type="number"
+                          disabled={isLoading}
                           value={item.target_value || ''}
                           onChange={(e) => handleUpdateItem(idx, { target_value: e.target.value })}
                           placeholder="30"
-                          className="w-14 sm:w-20 px-1.5 py-1 text-xs text-center rounded-lg border border-slate-300 bg-white font-semibold text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                          className="w-14 sm:w-20 px-1.5 py-1 text-xs text-center rounded-lg border border-slate-300 bg-white font-semibold text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500 disabled:opacity-50"
                         />
                         <span className="text-[11px] sm:text-xs text-slate-500 font-medium">p</span>
                       </div>
@@ -381,6 +394,7 @@ export function PlanTomorrowEditor({
                     {item.item_type === 'text' && (
                       <input
                         type="text"
+                        disabled={isLoading}
                         value={item.target_value || item.current_value || ''}
                         onChange={(e) =>
                           handleUpdateItem(idx, {
@@ -389,14 +403,15 @@ export function PlanTomorrowEditor({
                           })
                         }
                         placeholder="VD: Đổ rác"
-                        className="w-28 sm:w-48 px-2 py-1 text-xs rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                        className="w-28 sm:w-48 px-2 py-1 text-xs rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500 disabled:opacity-50"
                       />
                     )}
 
                     <button
                       type="button"
+                      disabled={isLoading}
                       onClick={() => handleRemoveItem(idx)}
-                      className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors touch-manipulation"
+                      className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors touch-manipulation disabled:opacity-30 disabled:cursor-not-allowed"
                       title="Xóa công việc"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -410,7 +425,7 @@ export function PlanTomorrowEditor({
       </div>
 
       {/* Add New Task Form */}
-      <Card className="p-4 sm:p-5 space-y-3 border-indigo-200 bg-indigo-50/20">
+      <Card className={`p-4 sm:p-5 space-y-3 border-indigo-200 bg-indigo-50/20 ${isLoading ? 'pointer-events-none opacity-60' : ''}`}>
         <h3 className="font-bold text-xs sm:text-sm text-indigo-900 flex items-center space-x-2">
           <Plus className="w-4 h-4 text-indigo-600" />
           <span>Thêm công việc phát sinh cho ngày {formattedDate}</span>
@@ -419,15 +434,17 @@ export function PlanTomorrowEditor({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
           <Input
             placeholder="Tên công việc phát sinh"
+            disabled={isLoading}
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             className="text-xs sm:text-sm bg-white"
           />
 
           <select
+            disabled={isLoading}
             value={newCategory}
             onChange={(e) => setNewCategory(e.target.value)}
-            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 min-h-[40px]"
+            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 min-h-[40px] disabled:opacity-50"
           >
             <option value="📚 Công việc & học tập">📚 Công việc & học tập</option>
             <option value="🏠 Cá nhân & gia đình">🏠 Cá nhân & gia đình</option>
@@ -437,9 +454,10 @@ export function PlanTomorrowEditor({
           </select>
 
           <select
+            disabled={isLoading}
             value={newType}
             onChange={(e) => setNewType(e.target.value as ItemType)}
-            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 min-h-[40px]"
+            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 min-h-[40px] disabled:opacity-50"
           >
             <option value="checkbox">Checkbox (Hoàn thành)</option>
             <option value="duration">Duration (Số phút)</option>
@@ -456,13 +474,14 @@ export function PlanTomorrowEditor({
             }
             value={newVal}
             onChange={(e) => setNewVal(e.target.value)}
-            disabled={newType === 'checkbox'}
+            disabled={isLoading || newType === 'checkbox'}
             className="text-xs sm:text-sm bg-white"
           />
         </div>
 
         <Button
           type="button"
+          disabled={isLoading}
           onClick={handleAddItem}
           variant="secondary"
           className="w-full sm:w-auto text-xs sm:text-sm font-semibold"
@@ -480,7 +499,7 @@ export function PlanTomorrowEditor({
             variant="outline"
             size="sm"
             onClick={handleDeletePlan}
-            disabled={deleting || saving}
+            disabled={isLoading}
             className="border-red-200 text-red-600 hover:bg-red-50 text-xs px-2.5"
           >
             <Trash2 className="w-3.5 h-3.5 mr-1" />
@@ -493,7 +512,7 @@ export function PlanTomorrowEditor({
           variant="ghost"
           size="sm"
           onClick={handleCancel}
-          disabled={saving || deleting}
+          disabled={isLoading}
           className="text-xs px-2.5 text-slate-600"
         >
           Hủy
@@ -502,7 +521,7 @@ export function PlanTomorrowEditor({
         <Button
           onClick={handleSave}
           size="sm"
-          disabled={saving || deleting || applyingWeek}
+          disabled={isLoading}
           className="bg-indigo-600 hover:bg-indigo-700 text-xs px-4 flex-1 shadow-md font-bold"
         >
           <Save className="w-3.5 h-3.5 mr-1.5" />
