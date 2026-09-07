@@ -84,7 +84,6 @@ export function PlanTomorrowEditor({
       const next = [...prev];
       const [draggedItem] = next.splice(draggedIdx, 1);
       next.splice(targetIndex, 0, draggedItem);
-      // Re-assign sort_order
       return next.map((item, i) => ({ ...item, sort_order: i }));
     });
     setDraggedIdx(null);
@@ -148,29 +147,29 @@ export function PlanTomorrowEditor({
   );
 
   return (
-    <div className="space-y-6">
-      {/* Header & Actions */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-        <div className="space-y-1">
-          <div className="flex items-center space-x-2 text-indigo-600 font-semibold text-sm">
+    <div className="space-y-4 sm:space-y-6 pb-20 sm:pb-8">
+      {/* Mobile-optimized Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm">
+        <div className="space-y-0.5">
+          <div className="flex items-center space-x-2 text-indigo-600 font-semibold text-xs sm:text-sm">
             <CalendarPlus className="w-4 h-4" />
             <span>LẬP KẾ HOẠCH NGÀY MỚI</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">{formattedDate}</h1>
-          <p className="text-sm text-slate-500">
-            {isExisting ? 'Đang chỉnh sửa kế hoạch đã lập trước đó' : 'Bản nháp được khởi tạo từ template mặc định của bạn'}
+          <h1 className="text-xl sm:text-3xl font-bold text-slate-900">{formattedDate}</h1>
+          <p className="text-xs sm:text-sm text-slate-500">
+            {isExisting ? 'Đang chỉnh sửa kế hoạch đã lập' : 'Bản nháp được tạo từ template'}
           </p>
         </div>
 
-        {/* Action Buttons: Save, Cancel, Delete */}
-        <div className="flex flex-wrap items-center gap-2">
+        {/* Desktop Actions */}
+        <div className="hidden sm:flex items-center space-x-2">
           {isExisting && (
             <Button
               type="button"
               variant="outline"
               onClick={handleDeletePlan}
               disabled={deleting || saving}
-              className="border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300"
+              className="border-red-200 text-red-600 hover:bg-red-50"
             >
               <Trash2 className="w-4 h-4 mr-1.5" />
               {deleting ? 'Đang xóa...' : 'Xóa kế hoạch'}
@@ -184,10 +183,10 @@ export function PlanTomorrowEditor({
             disabled={saving || deleting}
           >
             <X className="w-4 h-4 mr-1.5" />
-            Hủy / Quay lại
+            Hủy
           </Button>
 
-          <Button onClick={handleSave} size="lg" disabled={saving || deleting} className="shadow-md bg-indigo-600 hover:bg-indigo-700">
+          <Button onClick={handleSave} size="lg" disabled={saving || deleting} className="bg-indigo-600 hover:bg-indigo-700">
             <Save className="w-4 h-4 mr-2" />
             {saving ? 'Đang lưu...' : 'Lưu kế hoạch'}
           </Button>
@@ -195,28 +194,28 @@ export function PlanTomorrowEditor({
       </div>
 
       {error && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium flex items-center space-x-2">
-          <AlertTriangle className="w-5 h-5 text-red-500 shrink-0" />
+        <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm font-medium flex items-center space-x-2">
+          <AlertTriangle className="w-4 h-4 text-red-500 shrink-0" />
           <span>{error}</span>
         </div>
       )}
 
-      {/* Drag instruction notice */}
-      <div className="text-xs text-slate-500 bg-slate-100/80 px-3.5 py-2 rounded-xl border border-slate-200 flex items-center space-x-2">
+      {/* Drag notice */}
+      <div className="text-[11px] sm:text-xs text-slate-500 bg-slate-100/90 px-3 py-2 rounded-xl border border-slate-200 flex items-center space-x-2">
         <GripVertical className="w-4 h-4 text-slate-400 shrink-0" />
-        <span>Bấm và kéo biểu tượng <strong>::</strong> để thay đổi thứ tự công việc tùy ý.</span>
+        <span>Giữ và kéo biểu tượng <strong>::</strong> để di chuyển công việc.</span>
       </div>
 
-      {/* Categories & Editable Items */}
-      <div className="space-y-5">
+      {/* Categories & Compact Mobile Rows */}
+      <div className="space-y-4 sm:space-y-5">
         {categories.map(([categoryName, group]) => (
-          <Card key={categoryName} className="p-4 sm:p-5 space-y-3">
-            <h2 className="font-bold text-base text-slate-800 border-b border-slate-100 pb-2.5 flex items-center justify-between">
+          <Card key={categoryName} className="p-3 sm:p-5 space-y-2.5">
+            <h2 className="font-bold text-sm sm:text-base text-slate-800 border-b border-slate-100 pb-2 flex items-center justify-between">
               <span>{categoryName}</span>
-              <Badge variant="default">{group.itemsWithIdx.length} task</Badge>
+              <Badge variant="default" className="text-[10px] sm:text-xs px-2 py-0.5">{group.itemsWithIdx.length} task</Badge>
             </h2>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               {group.itemsWithIdx.map(({ item, idx }) => (
                 <div
                   key={idx}
@@ -224,34 +223,29 @@ export function PlanTomorrowEditor({
                   onDragStart={(e) => handleDragStart(e, idx)}
                   onDragOver={handleDragOver}
                   onDrop={(e) => handleDrop(e, idx)}
-                  className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border transition-all ${
-                    draggedIdx === idx ? 'border-indigo-500 bg-indigo-50/50 opacity-50 scale-[0.99]' : 'border-slate-200 hover:border-slate-300'
+                  className={`flex items-center justify-between gap-2 p-2.5 sm:p-3 rounded-xl bg-slate-50 border transition-all ${
+                    draggedIdx === idx ? 'border-indigo-500 bg-indigo-50/50 opacity-50' : 'border-slate-200 hover:border-slate-300'
                   }`}
                 >
+                  {/* Drag handle & Title input */}
                   <div className="flex items-center space-x-2 flex-1 min-w-0">
-                    {/* Drag Handle Icon */}
                     <div
-                      className="cursor-grab active:cursor-grabbing p-1 text-slate-400 hover:text-slate-600 rounded"
-                      title="Kéo để thay đổi thứ tự"
+                      className="cursor-grab active:cursor-grabbing p-1 text-slate-400 hover:text-slate-600 rounded touch-manipulation shrink-0"
+                      title="Kéo để xếp lại thứ tự"
                     >
                       <GripVertical className="w-4 h-4" />
                     </div>
 
-                    <div className="flex-1 space-y-1 min-w-0">
-                      <input
-                        type="text"
-                        value={item.title}
-                        onChange={(e) => handleUpdateItem(idx, { title: e.target.value })}
-                        className="font-medium text-sm text-slate-900 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-indigo-500 focus:outline-none w-full py-0.5"
-                      />
-                      <span className="inline-block text-xs text-slate-400 font-medium capitalize">
-                        Loại: {item.item_type}
-                      </span>
-                    </div>
+                    <input
+                      type="text"
+                      value={item.title}
+                      onChange={(e) => handleUpdateItem(idx, { title: e.target.value })}
+                      className="font-medium text-xs sm:text-sm text-slate-900 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-indigo-500 focus:outline-none flex-1 min-w-0 py-0.5 truncate"
+                    />
                   </div>
 
-                  {/* Target value or custom text input */}
-                  <div className="flex items-center space-x-2 shrink-0 pl-6 sm:pl-0">
+                  {/* Inline value input & delete button */}
+                  <div className="flex items-center space-x-1.5 shrink-0">
                     {item.item_type === 'duration' && (
                       <div className="flex items-center space-x-1">
                         <input
@@ -259,9 +253,9 @@ export function PlanTomorrowEditor({
                           value={item.target_value || ''}
                           onChange={(e) => handleUpdateItem(idx, { target_value: e.target.value })}
                           placeholder="30"
-                          className="w-20 px-2 py-1 text-xs rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                          className="w-14 sm:w-20 px-1.5 py-1 text-xs text-center rounded-lg border border-slate-300 bg-white font-semibold text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                         />
-                        <span className="text-xs text-slate-500 font-medium">phút</span>
+                        <span className="text-[11px] sm:text-xs text-slate-500 font-medium">p</span>
                       </div>
                     )}
 
@@ -275,16 +269,16 @@ export function PlanTomorrowEditor({
                             current_value: e.target.value,
                           })
                         }
-                        placeholder="Nội dung cụ thể (VD: Đổ rác)"
-                        className="w-48 sm:w-56 px-2.5 py-1 text-xs rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                        placeholder="VD: Đổ rác"
+                        className="w-28 sm:w-48 px-2 py-1 text-xs rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                       />
                     )}
 
                     <button
                       type="button"
                       onClick={() => handleRemoveItem(idx)}
-                      className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                      title="Xóa công việc khỏi ngày này"
+                      className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors touch-manipulation"
+                      title="Xóa công việc"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -297,23 +291,24 @@ export function PlanTomorrowEditor({
       </div>
 
       {/* Add New Task Form */}
-      <Card className="p-5 space-y-4 border-indigo-200 bg-indigo-50/20">
-        <h3 className="font-bold text-sm text-indigo-900 flex items-center space-x-2">
+      <Card className="p-4 sm:p-5 space-y-3 border-indigo-200 bg-indigo-50/20">
+        <h3 className="font-bold text-xs sm:text-sm text-indigo-900 flex items-center space-x-2">
           <Plus className="w-4 h-4 text-indigo-600" />
           <span>Thêm công việc phát sinh cho ngày {formattedDate}</span>
         </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
           <Input
             placeholder="Tên công việc phát sinh"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
+            className="text-xs sm:text-sm"
           />
 
           <select
             value={newCategory}
             onChange={(e) => setNewCategory(e.target.value)}
-            className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 min-h-[44px]"
+            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 min-h-[40px]"
           >
             <option value="📚 Công việc & học tập">📚 Công việc & học tập</option>
             <option value="🏠 Cá nhân & gia đình">🏠 Cá nhân & gia đình</option>
@@ -325,7 +320,7 @@ export function PlanTomorrowEditor({
           <select
             value={newType}
             onChange={(e) => setNewType(e.target.value as ItemType)}
-            className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 min-h-[44px]"
+            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 min-h-[40px]"
           >
             <option value="checkbox">Checkbox (Hoàn thành)</option>
             <option value="duration">Duration (Số phút)</option>
@@ -333,18 +328,52 @@ export function PlanTomorrowEditor({
           </select>
 
           <Input
-            placeholder={newType === 'duration' ? 'Mặc định số phút (VD: 30)' : newType === 'text' ? 'Nội dung (VD: Đổ rác)' : 'Không cần thiết'}
+            placeholder={newType === 'duration' ? 'Mặc định (VD: 30)' : newType === 'text' ? 'Nội dung (VD: Đổ rác)' : 'Không cần thiết'}
             value={newVal}
             onChange={(e) => setNewVal(e.target.value)}
             disabled={newType === 'checkbox'}
+            className="text-xs sm:text-sm"
           />
         </div>
 
-        <Button type="button" onClick={handleAddItem} variant="secondary" className="w-full sm:w-auto">
-          <Plus className="w-4 h-4 mr-2" />
+        <Button type="button" onClick={handleAddItem} variant="secondary" className="w-full sm:w-auto text-xs sm:text-sm">
+          <Plus className="w-4 h-4 mr-1.5" />
           Thêm vào danh sách ngày
         </Button>
       </Card>
+
+      {/* Mobile Floating Action Bar (Sticky at bottom above bottom nav) */}
+      <div className="sm:hidden fixed bottom-14 left-0 right-0 p-3 bg-white/95 backdrop-blur border-t border-slate-200 shadow-xl flex items-center justify-between gap-2 z-30">
+        {isExisting && (
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={handleDeletePlan}
+            disabled={deleting || saving}
+            className="border-red-200 text-red-600 hover:bg-red-50 text-xs px-2.5"
+          >
+            <Trash2 className="w-3.5 h-3.5 mr-1" />
+            Xóa
+          </Button>
+        )}
+
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          onClick={handleCancel}
+          disabled={saving || deleting}
+          className="text-xs px-2.5 text-slate-600"
+        >
+          Hủy
+        </Button>
+
+        <Button onClick={handleSave} size="sm" disabled={saving || deleting} className="bg-indigo-600 hover:bg-indigo-700 text-xs px-4 flex-1 shadow-md font-bold">
+          <Save className="w-3.5 h-3.5 mr-1.5" />
+          {saving ? 'Đang lưu...' : 'Lưu kế hoạch'}
+        </Button>
+      </div>
     </div>
   );
 }
