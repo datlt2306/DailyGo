@@ -39,6 +39,7 @@ export function DesktopSidebar({ displayName, email }: { displayName?: string; e
             <Link
               key={item.href}
               href={item.href}
+              prefetch={true}
               className={cn(
                 'flex items-center space-x-3 px-3.5 py-3 rounded-xl text-sm font-medium transition-all',
                 isActive

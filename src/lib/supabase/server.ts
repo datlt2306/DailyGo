@@ -30,14 +30,21 @@ export async function createClient() {
 
 /**
  * Deduplicated per-request helper for getting current authenticated user & Supabase client.
- * Uses React.cache to avoid redundant auth token verifications on every server component.
+ * Uses getSession first to read JWT directly from cookies (0ms) instead of HTTPS fetch to Supabase Auth.
  */
 export const getAuthenticatedUser = cache(async () => {
   const supabase = await createClient();
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  let user = session?.user || null;
+  if (!user) {
+    const { data } = await supabase.auth.getUser();
+    user = data.user;
+  }
 
   return { supabase, user };
 });
+
 
