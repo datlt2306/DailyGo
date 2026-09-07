@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { createClient } from '@/lib/supabase/server';
+import { createClient, getAuthenticatedUser } from '@/lib/supabase/server';
 import { ItemType, TemplateCategory, TemplateItem } from '../database.types';
 
 export interface TemplateCategoryWithItems extends TemplateCategory {
@@ -12,8 +12,7 @@ export async function getTemplateAction(): Promise<{
   data: TemplateCategoryWithItems[] | null;
   error?: string;
 }> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) {
     return { data: null, error: 'Chưa đăng nhập.' };
@@ -45,8 +44,7 @@ export async function getTemplateAction(): Promise<{
 }
 
 export async function createCategoryAction(name: string, icon?: string) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
   if (!name.trim()) return { error: 'Tên danh mục không được để trống.' };
@@ -75,8 +73,7 @@ export async function createCategoryAction(name: string, icon?: string) {
 }
 
 export async function updateCategoryAction(id: string, name: string, icon?: string) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
   if (!name.trim()) return { error: 'Tên danh mục không được để trống.' };
@@ -94,8 +91,7 @@ export async function updateCategoryAction(id: string, name: string, icon?: stri
 }
 
 export async function deleteCategoryAction(id: string) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
 
@@ -117,8 +113,7 @@ export async function createTemplateItemAction(payload: {
   item_type: ItemType;
   default_value?: string;
 }) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
   if (!payload.title.trim()) return { error: 'Tiêu đề công việc không được để trống.' };
@@ -160,8 +155,7 @@ export async function updateTemplateItemAction(
     category_id?: string;
   }
 ) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
 
@@ -178,8 +172,7 @@ export async function updateTemplateItemAction(
 }
 
 export async function deleteTemplateItemAction(id: string) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
 
@@ -196,8 +189,7 @@ export async function deleteTemplateItemAction(id: string) {
 }
 
 export async function moveCategoryOrderAction(id: string, direction: 'up' | 'down') {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
 

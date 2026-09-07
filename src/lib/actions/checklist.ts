@@ -1,7 +1,8 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { createClient } from '@/lib/supabase/server';
+import { cache } from 'react';
+import { createClient, getAuthenticatedUser } from '@/lib/supabase/server';
 import {
   DailyChecklist,
   DailyItem,
@@ -22,9 +23,8 @@ export interface PlanDraftItem {
   sort_order: number;
 }
 
-export async function getUserTimezone(): Promise<string> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+export const getUserTimezone = cache(async (): Promise<string> => {
+  const { supabase, user } = await getAuthenticatedUser();
   if (!user) return DEFAULT_TIMEZONE;
 
   const { data: profile } = await supabase
@@ -34,7 +34,7 @@ export async function getUserTimezone(): Promise<string> {
     .single();
 
   return profile?.timezone || DEFAULT_TIMEZONE;
-}
+});
 
 /**
  * Helper to create a checklist and daily items snapshot from template for a given date.
@@ -126,8 +126,7 @@ export async function getTodayChecklistAction(): Promise<{
   groupedItems: GroupedDailyItems[];
   error?: string;
 }> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { local_date: '', checklist: null, groupedItems: [], error: 'Chưa đăng nhập.' };
 
@@ -173,8 +172,7 @@ export async function getPlanTomorrowDraftAction(targetDateStr?: string): Promis
   draftItems: PlanDraftItem[];
   error?: string;
 }> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { local_date: '', isExisting: false, draftItems: [], error: 'Chưa đăng nhập.' };
 
@@ -255,8 +253,7 @@ export async function saveDailyPlanAction(payload: {
   local_date: string;
   items: PlanDraftItem[];
 }) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
   if (!payload.local_date) return { error: 'Ngày không hợp lệ.' };
@@ -329,8 +326,7 @@ export async function saveDailyPlanAction(payload: {
  * Deletes a daily checklist & all its items for a specified date.
  */
 export async function deleteDailyPlanAction(local_date: string) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
   if (!local_date) return { error: 'Ngày không hợp lệ.' };
@@ -357,8 +353,7 @@ export async function updateDailyItemAction(
   itemId: string,
   changes: { is_completed?: boolean; current_value?: string | null; target_value?: string | null }
 ) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
 
@@ -408,8 +403,7 @@ export async function getHistoryChecklistsAction(): Promise<{
   data: Array<DailyChecklist & { total_items: number; completed_items: number }> | null;
   error?: string;
 }> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { data: null, error: 'Chưa đăng nhập.' };
 
@@ -468,8 +462,7 @@ export async function getChecklistByDateAction(local_date: string): Promise<{
   groupedItems: GroupedDailyItems[];
   error?: string;
 }> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { checklist: null, groupedItems: [], error: 'Chưa đăng nhập.' };
 
@@ -525,8 +518,7 @@ function groupDailyItems(items: DailyItem[]): GroupedDailyItems[] {
  * Applies active template to the next N days (default 7 days / whole week) in one click!
  */
 export async function applyTemplateToNextNDaysAction(daysCount: number = 7, overwrite: boolean = false) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { supabase, user } = await getAuthenticatedUser();
 
   if (!user) return { error: 'Chưa đăng nhập.' };
 

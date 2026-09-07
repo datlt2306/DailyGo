@@ -1,5 +1,6 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import { cache } from 'react';
 
 export async function createClient() {
   const cookieStore = cookies();
@@ -26,3 +27,17 @@ export async function createClient() {
     }
   );
 }
+
+/**
+ * Deduplicated per-request helper for getting current authenticated user & Supabase client.
+ * Uses React.cache to avoid redundant auth token verifications on every server component.
+ */
+export const getAuthenticatedUser = cache(async () => {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return { supabase, user };
+});
+
