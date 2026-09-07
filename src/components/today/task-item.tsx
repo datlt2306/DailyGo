@@ -93,17 +93,17 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
         </div>
       </div>
 
-      {/* Quick Edit for duration/text items */}
-      {(item.item_type === 'duration' || item.item_type === 'text') && (
+      {/* Quick Edit for duration items (to enter actual minutes completed) */}
+      {item.item_type === 'duration' && (
         <div className="flex items-center space-x-1">
           {isEditing ? (
             <div className="flex items-center space-x-1">
               <input
-                type={item.item_type === 'duration' ? 'number' : 'text'}
+                type="number"
                 value={currentValue}
                 onChange={(e) => setCurrentValue(e.target.value)}
-                placeholder={item.item_type === 'duration' ? 'Số phút' : 'Chi tiết công việc'}
-                className="w-24 px-2 py-1 text-xs rounded-lg border border-indigo-400 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                placeholder="Số phút"
+                className="w-20 px-2 py-1 text-xs text-center rounded-lg border border-indigo-400 bg-white font-semibold text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               />
               <button
                 type="button"
@@ -119,7 +119,7 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
               type="button"
               onClick={() => setIsEditing(true)}
               className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition-colors"
-              title="Chỉnh sửa"
+              title="Nhập số phút đã thực hiện"
             >
               <Edit2 className="w-3.5 h-3.5" />
             </button>
