@@ -76,6 +76,10 @@ export function PlanTomorrowEditor({
   }
 
   function handleRemoveItem(index: number) {
+    const title = items[index]?.title || 'công việc này';
+    if (!confirm(`Bạn có chắc chắn muốn xóa "${title}" khỏi danh sách?`)) {
+      return;
+    }
     setItems((prev) => prev.filter((_, i) => i !== index));
   }
 
@@ -245,18 +249,18 @@ export function PlanTomorrowEditor({
           </p>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-wrap items-center gap-2">
+        {/* Action Buttons: strictly 1 single horizontal row */}
+        <div className="flex flex-row items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none whitespace-nowrap shrink-0">
           <Button
             type="button"
             variant="outline"
             size="sm"
             onClick={handleApplyWeek}
             disabled={applyingWeek || saving}
-            className="border-indigo-200 text-indigo-700 bg-indigo-50/50 hover:bg-indigo-100 text-xs"
+            className="border-indigo-200 text-indigo-700 bg-indigo-50/50 hover:bg-indigo-100 text-xs shrink-0"
             title="Tự động lập kế hoạch từ Template cho 7 ngày tới"
           >
-            <Sparkles className="w-4 h-4 mr-1.5 text-indigo-600" />
+            <Sparkles className="w-3.5 h-3.5 mr-1 text-indigo-600" />
             {applyingWeek ? 'Đang tạo...' : 'Áp dụng cho cả tuần (7 ngày)'}
           </Button>
 
@@ -267,9 +271,9 @@ export function PlanTomorrowEditor({
               size="sm"
               onClick={handleDeletePlan}
               disabled={deleting || saving}
-              className="border-red-200 text-red-600 hover:bg-red-50 text-xs hidden sm:flex"
+              className="border-red-200 text-red-600 hover:bg-red-50 text-xs shrink-0"
             >
-              <Trash2 className="w-4 h-4 mr-1.5" />
+              <Trash2 className="w-3.5 h-3.5 mr-1" />
               {deleting ? 'Đang xóa...' : 'Xóa'}
             </Button>
           )}
@@ -278,9 +282,9 @@ export function PlanTomorrowEditor({
             onClick={handleSave}
             size="sm"
             disabled={saving || deleting || applyingWeek}
-            className="bg-indigo-600 hover:bg-indigo-700 font-bold shadow-md text-xs sm:text-sm px-4"
+            className="bg-indigo-600 hover:bg-indigo-700 font-bold shadow-md text-xs sm:text-sm px-3.5 shrink-0"
           >
-            <Save className="w-4 h-4 mr-1.5" />
+            <Save className="w-3.5 h-3.5 mr-1" />
             {saving ? 'Đang lưu...' : 'Lưu kế hoạch'}
           </Button>
         </div>
@@ -314,9 +318,7 @@ export function PlanTomorrowEditor({
       {/* Drag Notice */}
       <div className="text-[11px] sm:text-xs text-slate-500 bg-slate-100/90 px-3 py-2 rounded-xl border border-slate-200 flex items-center space-x-2">
         <GripVertical className="w-4 h-4 text-slate-400 shrink-0" />
-        <span>
-          Giữ & kéo <strong>::</strong> để sắp xếp công việc. Tất cả công việc dạng <strong>Checkbox</strong> sẽ hiển thị ô chọn hoàn thành trên trang <strong>Hôm nay</strong>.
-        </span>
+        <span>Giữ & kéo <strong>::</strong> để sắp xếp công việc.</span>
       </div>
 
       {/* Categories & Task Items */}
@@ -344,7 +346,7 @@ export function PlanTomorrowEditor({
                       : 'border-slate-200 hover:border-slate-300'
                   }`}
                 >
-                  {/* Drag handle & Checkbox visual indicator & Title input */}
+                  {/* Drag handle & Title input */}
                   <div className="flex items-center space-x-2 flex-1 min-w-0">
                     <div
                       className="cursor-grab active:cursor-grabbing p-1 text-slate-400 hover:text-slate-600 rounded touch-manipulation shrink-0"
@@ -352,25 +354,6 @@ export function PlanTomorrowEditor({
                     >
                       <GripVertical className="w-4 h-4" />
                     </div>
-
-                    {/* Task Type Icon / Visual Checkbox */}
-                    {item.item_type === 'checkbox' && (
-                      <div className="flex items-center space-x-1 text-indigo-600 shrink-0" title="Công việc Checkbox">
-                        <Square className="w-4.5 h-4.5 text-indigo-500 rounded" />
-                      </div>
-                    )}
-
-                    {item.item_type === 'duration' && (
-                      <div className="flex items-center space-x-1 text-amber-600 shrink-0" title="Thời lượng số phút">
-                        <Clock className="w-4 h-4 text-amber-500" />
-                      </div>
-                    )}
-
-                    {item.item_type === 'text' && (
-                      <div className="flex items-center space-x-1 text-blue-600 shrink-0" title="Nội dung ghi chú">
-                        <FileText className="w-4 h-4 text-blue-500" />
-                      </div>
-                    )}
 
                     <input
                       type="text"
@@ -380,14 +363,8 @@ export function PlanTomorrowEditor({
                     />
                   </div>
 
-                  {/* Inline value input & type indicator & delete button */}
+                  {/* Inline value input & delete button */}
                   <div className="flex items-center space-x-1.5 shrink-0">
-                    {item.item_type === 'checkbox' && (
-                      <span className="text-[10px] text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded font-semibold hidden sm:inline">
-                        Checkbox
-                      </span>
-                    )}
-
                     {item.item_type === 'duration' && (
                       <div className="flex items-center space-x-1">
                         <input

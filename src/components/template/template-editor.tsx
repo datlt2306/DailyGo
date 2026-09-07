@@ -82,6 +82,7 @@ export function TemplateEditor({
   }
 
   async function handleDeleteItem(itemId: string) {
+    if (!confirm('Bạn có chắc chắn muốn xóa công việc mẫu này khỏi Template?')) return;
     await deleteTemplateItemAction(itemId);
     window.location.reload();
   }
