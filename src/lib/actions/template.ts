@@ -19,25 +19,22 @@ export async function getTemplateAction(): Promise<{
     return { data: null, error: 'Chưa đăng nhập.' };
   }
 
-  const { data: categories, error: catError } = await supabase
-    .from('template_categories')
-    .select('*')
-    .eq('user_id', user.id)
-    .order('sort_order', { ascending: true });
+  // Parallel fetch categories and items for maximum performance
+  const [{ data: categories, error: catError }, { data: items, error: itemError }] = await Promise.all([
+    supabase
+      .from('template_categories')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('sort_order', { ascending: true }),
+    supabase
+      .from('template_items')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('sort_order', { ascending: true }),
+  ]);
 
-  if (catError) {
-    return { data: null, error: catError.message };
-  }
-
-  const { data: items, error: itemError } = await supabase
-    .from('template_items')
-    .select('*')
-    .eq('user_id', user.id)
-    .order('sort_order', { ascending: true });
-
-  if (itemError) {
-    return { data: null, error: itemError.message };
-  }
+  if (catError) return { data: null, error: catError.message };
+  if (itemError) return { data: null, error: itemError.message };
 
   const result: TemplateCategoryWithItems[] = (categories || []).map((cat) => ({
     ...cat,

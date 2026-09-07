@@ -78,6 +78,7 @@ export async function getTodayChecklistAction(): Promise<{
 
 /**
  * Gets draft or existing plan items for tomorrow (or a specified target date).
+ * Optimized with parallel database queries for max performance.
  */
 export async function getPlanTomorrowDraftAction(targetDateStr?: string): Promise<{
   local_date: string;
@@ -125,19 +126,20 @@ export async function getPlanTomorrowDraftAction(targetDateStr?: string): Promis
     };
   }
 
-  // Not existing yet -> Generate draft from active template items
-  const { data: categories } = await supabase
-    .from('template_categories')
-    .select('*')
-    .eq('user_id', user.id)
-    .order('sort_order', { ascending: true });
-
-  const { data: templateItems } = await supabase
-    .from('template_items')
-    .select('*')
-    .eq('user_id', user.id)
-    .eq('is_enabled', true)
-    .order('sort_order', { ascending: true });
+  // Not existing yet -> Parallel query categories and template items
+  const [{ data: categories }, { data: templateItems }] = await Promise.all([
+    supabase
+      .from('template_categories')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('sort_order', { ascending: true }),
+    supabase
+      .from('template_items')
+      .select('*')
+      .eq('user_id', user.id)
+      .eq('is_enabled', true)
+      .order('sort_order', { ascending: true }),
+  ]);
 
   const draft: PlanDraftItem[] = [];
 
@@ -313,6 +315,7 @@ export async function updateDailyItemAction(
 
 /**
  * Gets history of daily checklists for the authenticated user.
+ * High-performance 2-query batching to eliminate N+1 latency.
  */
 export async function getHistoryChecklistsAction(): Promise<{
   data: Array<DailyChecklist & { total_items: number; completed_items: number }> | null;
@@ -323,42 +326,49 @@ export async function getHistoryChecklistsAction(): Promise<{
 
   if (!user) return { data: null, error: 'Chưa đăng nhập.' };
 
-  const { data: checklists, error } = await supabase
-    .from('daily_checklists')
-    .select('*')
-    .eq('user_id', user.id)
-    .order('local_date', { ascending: false });
+  const [checklistsRes, allItemsRes] = await Promise.all([
+    supabase
+      .from('daily_checklists')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('local_date', { ascending: false }),
+    supabase
+      .from('daily_items')
+      .select('daily_checklist_id, is_completed, item_type, current_value')
+      .eq('user_id', user.id),
+  ]);
 
-  if (error) return { data: null, error: error.message };
+  if (checklistsRes.error) return { data: null, error: checklistsRes.error.message };
 
-  // Fetch items for each checklist to calculate completed counts
-  const result = await Promise.all(
-    (checklists || []).map(async (cl) => {
-      const { data: items } = await supabase
-        .from('daily_items')
-        .select('id, is_completed, item_type, current_value')
-        .eq('daily_checklist_id', cl.id);
+  const itemsMap = new Map<string, Array<{ is_completed: boolean; item_type: string; current_value: string | null }>>();
+  (allItemsRes.data || []).forEach((item) => {
+    if (!itemsMap.has(item.daily_checklist_id)) {
+      itemsMap.set(item.daily_checklist_id, []);
+    }
+    itemsMap.get(item.daily_checklist_id)!.push(item);
+  });
 
-      const total_items = items?.length || 0;
-      const completed_items = (items || []).filter((item) => {
-        if (item.is_completed) return true;
-        if (item.item_type === 'duration') {
-          const val = parseInt(item.current_value || '0', 10);
-          return !isNaN(val) && val > 0;
-        }
-        if (item.item_type === 'text') {
-          return !!item.current_value && item.current_value.trim().length > 0;
-        }
-        return false;
-      }).length;
+  const result = (checklistsRes.data || []).map((cl) => {
+    const items = itemsMap.get(cl.id) || [];
+    const total_items = items.length;
+    const completed_items = items.filter((item) => {
+      if (item.is_completed) return true;
+      if (item.item_type === 'duration') {
+        const val = parseInt(item.current_value || '0', 10);
+        return !isNaN(val) && val > 0;
+      }
+      if (item.item_type === 'text') {
+        return !!item.current_value && item.current_value.trim().length > 0;
+      }
+      return false;
+    }).length;
 
-      return {
-        ...cl,
-        total_items,
-        completed_items,
-      };
-    })
-  );
+    return {
+      ...cl,
+      total_items,
+      completed_items,
+    };
+  });
 
   return { data: result };
 }
