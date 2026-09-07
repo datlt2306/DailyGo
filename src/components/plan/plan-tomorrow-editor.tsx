@@ -391,21 +391,7 @@ export function PlanTomorrowEditor({
                       </div>
                     )}
 
-                    {item.item_type === 'text' && (
-                      <input
-                        type="text"
-                        disabled={isLoading}
-                        value={item.target_value || item.current_value || ''}
-                        onChange={(e) =>
-                          handleUpdateItem(idx, {
-                            target_value: e.target.value,
-                            current_value: e.target.value,
-                          })
-                        }
-                        placeholder="VD: Đổ rác"
-                        className="w-28 sm:w-48 px-2 py-1 text-xs rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500 disabled:opacity-50"
-                      />
-                    )}
+
 
                     <button
                       type="button"
