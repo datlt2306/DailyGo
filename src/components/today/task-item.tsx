@@ -1,26 +1,54 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { DailyItem } from '@/lib/database.types';
 import { updateDailyItemAction, deleteDailyItemAction } from '@/lib/actions/checklist';
 import { cn } from '@/lib/utils/cn';
-import { Check, Clock, Edit2, Save, Trash2, X } from 'lucide-react';
+import { Check, Clock, Edit2, Loader2, Save, Trash2, X } from 'lucide-react';
 
 export function TaskItemCard({ item }: { item: DailyItem }) {
+  const router = useRouter();
   const [completed, setCompleted] = useState(item.is_completed);
   const [title, setTitle] = useState(item.title);
   const [currentValue, setCurrentValue] = useState(item.current_value || '');
   const [targetValue, setTargetValue] = useState(item.target_value || '');
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isSavingCheck, setIsSavingCheck] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
+
+  // Sync state when props change from server refresh
+  useEffect(() => {
+    setCompleted(item.is_completed);
+    setTitle(item.title);
+    setCurrentValue(item.current_value || '');
+    setTargetValue(item.target_value || '');
+  }, [item.is_completed, item.title, item.current_value, item.target_value]);
 
   if (isDeleted) return null;
 
   async function handleToggleCheck() {
+    if (isSavingCheck || loading) return;
+
+    const previousCompleted = completed;
     const nextCompleted = !completed;
     setCompleted(nextCompleted);
-    await updateDailyItemAction(item.id, { is_completed: nextCompleted });
+    setIsSavingCheck(true);
+
+    try {
+      const res = await updateDailyItemAction(item.id, { is_completed: nextCompleted });
+      if (res?.error) {
+        setCompleted(previousCompleted);
+        alert(`Không thể lưu trạng thái: ${res.error}`);
+      } else {
+        router.refresh();
+      }
+    } catch {
+      setCompleted(previousCompleted);
+    } finally {
+      setIsSavingCheck(false);
+    }
   }
 
   async function handleSaveEdit() {
@@ -34,13 +62,19 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
     }
 
     setCompleted(nextCompleted);
-    await updateDailyItemAction(item.id, {
+    const res = await updateDailyItemAction(item.id, {
       title: title.trim(),
       current_value: currentValue || null,
       target_value: targetValue || null,
       is_completed: nextCompleted,
     });
-    setIsEditing(false);
+
+    if (res?.error) {
+      alert(`Lỗi khi lưu: ${res.error}`);
+    } else {
+      setIsEditing(false);
+      router.refresh();
+    }
     setLoading(false);
   }
 
@@ -50,6 +84,9 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
     const res = await deleteDailyItemAction(item.id);
     if (res?.success) {
       setIsDeleted(true);
+      router.refresh();
+    } else if (res?.error) {
+      alert(`Lỗi khi xóa: ${res.error}`);
     }
     setLoading(false);
   }
@@ -95,7 +132,7 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
               disabled={loading}
               className="px-2.5 py-1 text-xs bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 flex items-center space-x-1"
             >
-              <Save className="w-3.5 h-3.5" />
+              {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
               <span>{loading ? '...' : 'Lưu'}</span>
             </button>
 
@@ -126,14 +163,20 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
             <button
               type="button"
               onClick={handleToggleCheck}
+              disabled={isSavingCheck}
               className={cn(
                 'w-6 h-6 rounded-lg flex items-center justify-center border transition-all shrink-0 touch-manipulation',
                 completed
                   ? 'bg-emerald-600 border-emerald-600 text-white shadow-sm'
-                  : 'border-slate-300 bg-white hover:border-indigo-500'
+                  : 'border-slate-300 bg-white hover:border-indigo-500',
+                isSavingCheck && 'opacity-70 cursor-wait'
               )}
             >
-              {completed && <Check className="w-4 h-4 stroke-[3]" />}
+              {isSavingCheck ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-current" />
+              ) : completed ? (
+                <Check className="w-4 h-4 stroke-[3]" />
+              ) : null}
             </button>
 
             <div className="flex-1 min-w-0">
@@ -166,7 +209,7 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
             <button
               type="button"
               onClick={() => setIsEditing(true)}
-              disabled={loading}
+              disabled={loading || isSavingCheck}
               className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition-colors touch-manipulation"
               title="Chỉnh sửa công việc"
             >
@@ -176,7 +219,7 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
             <button
               type="button"
               onClick={handleDeleteItem}
-              disabled={loading}
+              disabled={loading || isSavingCheck}
               className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors touch-manipulation"
               title="Xóa công việc"
             >
@@ -188,4 +231,5 @@ export function TaskItemCard({ item }: { item: DailyItem }) {
     </div>
   );
 }
+
 

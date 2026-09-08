@@ -390,7 +390,9 @@ export async function updateDailyItemAction(
     .eq('id', currentItem.daily_checklist_id);
 
   revalidatePath('/today');
+  revalidatePath('/plan-tomorrow');
   revalidatePath('/history');
+  revalidatePath('/stats');
 
   return { success: true, percentage };
 }
